@@ -1,0 +1,512 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
+    xmlns:fn="http://www.w3.org/2005/xpath-functions"
+    xmlns:f="http://https://github.com/costezki/model2owl#"
+    xmlns:uml="http://www.omg.org/spec/UML/20131001"
+    xmlns:xmi="http://www.omg.org/spec/XMI/20131001"  
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    
+    stylesheet="../../../src/common/utils.xsl">
+
+    <x:scenario label="Scenario 1 for testing function camelCaseString">
+        <x:call function="f:camelCaseString">
+            <x:param name="input">this    is    a    name</x:param>
+        </x:call>
+        <x:expect label="result" select="fn:string('thisIsAName')"/>
+    </x:scenario>   
+
+    <x:scenario label="Scenario 2 for testing function camelCaseString">
+        <x:call function="f:camelCaseString">
+            <x:param name="input">this</x:param>
+        </x:call>
+        <x:expect label="result" select="fn:string('this')"/>
+    </x:scenario>
+    
+    <x:scenario label="Scenario 3 for testing function camelCaseString">
+        <x:call function="f:camelCaseString">
+            <x:param name="input">This    iS    a    naMe</x:param>
+        </x:call>
+        <x:expect label="result" select="fn:string('thisISANaMe')"/>
+    </x:scenario>
+    
+    <x:scenario label="Scenario 1 for testing function pascalCaseString">
+        <x:call function="f:pascalCaseString">
+            <x:param name="input">this    is    a    name</x:param>
+        </x:call>
+        <x:expect label="result" select="fn:string('ThisIsAName')"/>
+    </x:scenario>
+    
+    <x:scenario label="Scenario 2 for testing function pascalCaseString">
+        <x:call function="f:pascalCaseString">
+            <x:param name="input">this</x:param>
+        </x:call>
+        <x:expect label="result" select="fn:string('This')"/>
+    </x:scenario>
+
+    
+   
+    <x:scenario label="Scenario 1 for testing function getNamespaceURI ">
+        <x:call function="f:getNamespaceURI">
+            <x:param name="prefix">nuts</x:param>
+        </x:call>
+        <x:expect label="ccev base name" select="'http://data.europa.eu/nuts/'"/>
+    </x:scenario>
+    
+    
+    
+    <x:scenario label="Scenario 1 for testing function getXsdRdfDataTypeValues">
+        <x:call function="f:getXsdRdfDataTypeValues">
+            <x:param name="qname">xsd:negativeInteger</x:param>
+            <x:param name="dataTypesDefinitions" href="../../ePO-default-config/xsdAndRdfDataTypes.xml" select="/"/>
+        </x:call>
+        <x:expect label="data-type" select="'xsd:negativeInteger'"/>
+    </x:scenario>
+
+    <x:scenario label="Scenario 2 for testing function getXsdRdfDataTypeValues">
+        <x:call function="f:getXsdRdfDataTypeValues">
+            <x:param name="qname">xsd:!#4354gYearMonth</x:param>
+            <x:param name="dataTypesDefinitions" href="../../ePO-default-config/xsdAndRdfDataTypes.xml" select="/"/>
+        </x:call>
+        <x:expect label="result" select="''"/>
+    </x:scenario>
+
+    <x:scenario label="Scenario 1 for testing function getNamespaceValues ">
+        <x:call function="f:getNamespaceValues">
+            <x:param name="prefix">cccev</x:param>
+            <x:param name="namespaceDefinitions" href="../../ePO-default-config/namespaces.xml" select="/"/>
+        </x:call>
+        <x:expect label="ccev base name" select="'http://data.europa.eu/m8g/'"/>
+    </x:scenario>
+    
+    <x:scenario label="Scenario 2 for testing function getNamespaceValues ">
+        <x:call function="f:getNamespaceValues">
+            <x:param name="prefix">ccevrts</x:param>
+            <x:param name="namespaceDefinitions" href="../../ePO-default-config/namespaces.xml" select="/"/>
+        </x:call>
+        <x:expect label="return nothing" select="''"/>
+    </x:scenario>
+
+    <x:scenario label="Scenario 1 for testing function getUmlDataTypeValues">
+        <x:call function="f:getUmlDataTypeValues">
+            <x:param name="qname">epo:Date</x:param>
+            <x:param name="umlDataTypeMappings" href="../../ePO-default-config/umlToXsdDataTypes.xml" select="/"/>
+        </x:call>
+        <x:expect label="data-type" select="'xsd:date'"/>
+    </x:scenario>
+    
+    <x:scenario label="Scenario 2 for testing function getUmlDataTypeValues">
+        <x:call function="f:getUmlDataTypeValues">
+            <x:param name="qname">DateQ</x:param>
+            <x:param name="umlDataTypeMappings" href="../../ePO-default-config/umlToXsdDataTypes.xml" select="/"/>
+        </x:call>
+        <x:expect label="result" select="''"/>
+    </x:scenario>
+    
+    <x:scenario label="Scenario getting the local segment from element">
+        <x:call function="f:getLocalSegmentForElements">
+            <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[319]"/>
+        </x:call>
+        <x:expect label="correct local segment" select="'Site'"/>
+    </x:scenario>
+    
+    <x:scenario label="Scenario xsd:integer for testing function buildQNameFromLexicalQName">
+        <x:call function="f:buildQNameFromLexicalQName">
+            <x:param name="lexicalQName">xsd:integer</x:param>   
+            
+        </x:call>
+        <x:expect label="result" select="fn:QName('http://www.w3.org/2001/XMLSchema#','xsd:integer')"/>
+    </x:scenario>
+    
+
+   
+    <x:scenario label="Scenario :integer for testing function buildQNameFromLexicalQName">
+        <x:call function="f:buildQNameFromLexicalQName">
+            <x:param name="lexicalQName">:integer</x:param>
+        </x:call>
+        <!--<x:expect label="result" select="fn:QName('http://unknown.domain/for/prefix#','integer')"/>-->
+        <x:expect label="result" select="fn:QName('http://data.europa.eu/a4g/ontology#','integer')"/>
+    </x:scenario>
+    
+       
+    
+
+    <x:scenario label="Scenario for testing function buildURIFromElement for a class">
+        <x:call function="f:buildURIFromElement">            
+            <x:param name="element" href="../../testData/ePO-CM_v.3.0.1.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[152]"/>       
+        </x:call>
+        <x:expect label="result" select="xs:anyURI('http://data.europa.eu/a4g/ontology#ReviewTerm')"/>
+    </x:scenario>
+ 
+ 
+    <x:scenario label="Scenario for testing function buildURIFromElement for an attribute">
+        <x:call function="f:buildURIFromElement">            
+            <x:param name="element" href="../../testData/ePO-CM_v2.0.1_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[55]/attributes[1]/attribute[1]"/>         
+        </x:call>
+        <x:expect label="result" select="xs:anyURI('http://data.europa.eu/a4g/ontology#Weight')"/>
+    </x:scenario>
+    
+    <x:scenario label="Scenario for testing function buildURIFromElement for an attribute">
+        <x:call function="f:buildURIFromElement">
+            <x:param name="element" href="../../testData/ePO-CM_v2.0.1_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[132]/attributes[1]/attribute[2]"/>       
+        </x:call>
+        <x:expect label="result" select="xs:anyURI('http://data.europa.eu/a4g/ontology#STATE_OF_URGENCY')"/>
+    </x:scenario>
+    
+    <x:scenario label="Scenario for testing function buildURIFromElement for an attribute uncontextualised">
+        <x:call function="f:buildURIFromElement">            
+            <x:param name="element" href="../../testData/ePO-CM_v2.0.1_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[55]/attributes[1]/attribute[1]"/>      
+        </x:call>
+        <x:expect label="result" select="xs:anyURI('http://data.europa.eu/a4g/ontology#Weight')"/>
+    </x:scenario>
+    
+    <x:scenario label="Scenario for testing function buildURIFromElement for an attribute in upper case">
+        <x:call function="f:buildURIFromElement">            
+            <x:param name="element" href="../../testData/ePO-CM_v2.0.1_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[55]/attributes[1]/attribute[1]"/>    
+        </x:call>
+        <x:expect label="result" select="xs:anyURI('http://data.europa.eu/a4g/ontology#Weight')"/>
+    </x:scenario>
+    
+    <x:scenario label="Scenario for testing function buildURIFromElement for a datatype">
+        <x:call function="f:buildURIFromElement">            
+            <x:param name="element" href="../../testData/ePO-CM_v2.0.1_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[39]"/>    
+        </x:call>
+        <x:expect label="result" select="xs:anyURI('http://data.europa.eu/a4g/ontology#Amount')"/>
+    </x:scenario>
+    
+    <x:scenario label="Scenario for testing function buildURIFromElement for a class with prefix">
+        <x:call function="f:buildURIFromElement">            
+            <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[39]"/>    
+        </x:call>
+        <x:expect label="result" select="xs:anyURI('http://data.europa.eu/a4g/ontology#AwardDimension')"/>
+    </x:scenario>
+    
+    <x:scenario label="Scenario for testing function buildURIFromElement for a class with prefix">
+        <x:call function="f:buildURIFromElement">
+            <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[40]"/>
+        </x:call>
+        <x:expect label="result"
+            select="xs:anyURI('http://data.europa.eu/a4g/ontology#Business')"/>
+    </x:scenario>
+    
+    <x:scenario label="Scenario xsd:integer for testing function buildQNameFromLexicalQName">
+        <x:call function="f:buildQNameFromLexicalQName">
+            <x:param name="lexicalQName">xsd:integer</x:param> 
+        </x:call>
+        <x:expect label="result" select="fn:QName('http://www.w3.org/2001/XMLSchema#','xsd:integer')"/>
+    </x:scenario>
+    
+    
+    <x:scenario label="Scenario xsd:integer for testing function lexicalQNameToWords">
+        <x:call function="f:lexicalQNameToWords">
+            <x:param name="lexicalqName">xsd:longInteger</x:param> 
+        </x:call>
+        <x:expect label="result" select="string('long Integer')"/>
+    </x:scenario>
+    
+    
+    <x:scenario label="Scenario for getting the min value for multiplicity">
+        <x:call function="f:getMultiplicityMinFromString">
+            <x:param name="multiplicityString" href="../../testData/ePO-CM-v2.0.2-2020-05-17_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[41]/target/type/@multiplicity"/>
+        </x:call>
+        <x:expect label="result" select="()"/>
+    </x:scenario>
+    
+    <x:scenario label="Scenario for getting the max value for multiplicity">
+        <x:call function="f:getMultiplicityMaxFromString">
+            <x:param name="multiplicityString" href="../../testData/ePO-CM-v2.0.2-2020-05-17_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[41]/target/type/@multiplicity"/>
+        </x:call>
+        <x:expect label="result" select="string('1')"/>
+    </x:scenario>
+    
+    <x:scenario label="Scenario for formatting the value of multiplicity to have a min and max">
+        <x:call function="f:normalizeMultiplicity">
+            <x:param name="multiplicityString" href="../../testData/ePO-CM-v2.0.2-2020-05-17_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[42]/target/type/@multiplicity"/>
+        </x:call>
+        <x:expect label="result" select="string('1..1')"/>
+    </x:scenario>
+    
+    <x:scenario label="Scenario for sequence of strings that are not equal">
+        <x:call function="f:areStringsEqual">
+            <x:param name="stringToCompare" select="('one','two')"/> 
+        </x:call>
+        <x:expect label="result" select="fn:false()"/>
+    </x:scenario>
+    
+    <x:scenario label="Scenario for sequence of strings that are equal">
+        <x:call function="f:areStringsEqual">
+            <x:param name="stringToCompare" select="('one','one')"/> 
+        </x:call>
+        <x:expect label="result" select="fn:true()"/>
+    </x:scenario>
+    
+    <x:scenario label="Scenario for sequence of strings with only one string">
+        <x:call function="f:areStringsEqual">
+            <x:param name="stringToCompare" select="('one')"/> 
+        </x:call>
+        <x:expect label="result" select="fn:true()"/>
+    </x:scenario>
+    
+
+    <x:scenario label="Scenario for getting the correct value to display for attribute multiplicity (min = 0)">
+        <x:call function="f:getAttributeValueToDisplay">
+            <x:param name="attributeMultiplicityValue" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[36]/attributes[1]/attribute[2]/bounds[1]/@lower"/>
+        </x:call>
+        <x:expect label="result" select="()"/>
+    </x:scenario>
+    
+    <x:scenario label="Scenario for getting the correct value to display for attribute multiplicity (max = *)">
+        <x:call function="f:getAttributeValueToDisplay">
+            <x:param name="attributeMultiplicityValue" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[36]/attributes[1]/attribute[2]/bounds[1]/@upper"/>
+        </x:call>
+        <x:expect label="result" select="()"/>
+    </x:scenario>
+    
+    <x:scenario label="Scenario for checking if connector target and source are in the model - True">
+        <x:call function="f:checkIfConnectorTargetAndSourceElementsExists">
+            <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2022-04-29_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[12]"/>            
+        </x:call>
+        <x:expect label="result" select="fn:true()"/>
+    </x:scenario>
+    
+    <x:scenario label="Scenario for checking if connector target and source are in the model - False">
+        <x:call function="f:checkIfConnectorTargetAndSourceElementsExists">
+            <x:param name="connector" href="../../testData/ePO-CM-v2.0.1-2022-04-29_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[10]"/>            
+        </x:call>
+        <x:expect label="result" select="fn:false()"/>
+    </x:scenario>
+    
+    
+    <x:scenario label="Scenario for checking if connector is used to reused classes - False">
+        <x:call function="f:connectorToReusedClasses">
+            <x:param name="connector" href="../../testData/ePO_core.xml"
+                select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[76]"/>            
+        </x:call>
+        <x:expect label="result" select="fn:false()"/>
+    </x:scenario>
+    
+    
+    <x:scenario label="Scenario for checking if connector is used to reused classes - True">
+        <x:call function="f:connectorToReusedClasses">
+            <x:param name="connector" href="../../testData/ePO_core.xml"
+                select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[77]"/>            
+        </x:call>
+        <x:expect label="result" select="fn:true()"/>
+    </x:scenario>
+    
+    <x:scenario label="Scenario for checking if connector is used to reused classes using the name - True">
+        <x:call function="f:connectorToReusedClassesByName">
+            <x:param name="connectorName"
+                select="'adms:identifier'"/>            
+        </x:call>
+        <x:expect label="result" select="fn:true()"/>
+    </x:scenario>
+
+
+    <x:scenario label="Scenario for testing function buildPropertyShapeURI">
+        <x:scenario label="valid CURIE">
+            <x:call function="f:buildPropertyShapeURI">
+                <x:param name="firstUri" select="'prefix:Procedure'"/>
+                <x:param name="secondUri" select="'prefix:hasScope'"/>
+            </x:call>
+            <x:expect label="result"
+                select="'http://data.europa.eu/a4g/data-shape#prefix-Procedure-prefix-hasScope'"/>
+        </x:scenario>
+
+        <x:scenario catch="yes" label="unsupported URI">
+            <x:call function="f:buildPropertyShapeURI">
+                <x:param name="firstUri" select="'http://dummy.org/Procedure'"/>
+                <x:param name="secondUri" select="'http://dummy.org/hasScope'"/>
+            </x:call>
+            <x:expect label="err:code" test="$x:result?err?code"
+                select="xs:QName('unsupported-uri')" />
+            <x:expect label="err:description" test="$x:result?err?description"
+                select="'The function supports only a compact URI'" />
+        </x:scenario>
+    </x:scenario>
+
+
+    <x:scenario label="Scenario for testing function normaliseURI">
+        <x:scenario label="valid CURIE">
+            <x:call function="f:normaliseURI">
+                <x:param name="uri" select="'prefix:Procedure'"/>
+            </x:call>
+            <x:expect label="result" select="'prefix-Procedure'"/>
+        </x:scenario>
+
+        <x:scenario catch="yes" label="unsupported URI">
+            <x:call function="f:normaliseURI">
+                <x:param name="uri" select="'http://dummy.org/Procedure'"/>
+            </x:call>
+            <x:expect label="err:code" test="$x:result?err?code"
+                select="xs:QName('unsupported-uri')" />
+            <x:expect label="err:description" test="$x:result?err?description"
+                select="'The function supports only a compact URI'" />
+        </x:scenario>
+    </x:scenario>
+    
+    
+    <x:scenario label="Scenario for testing function getDateInCanonicalFormat">
+        <x:scenario label="Same format">
+            <x:call function="f:getDateInCanonicalFormat">
+                <x:param name="date" select="'20/10/2024'"/>
+            </x:call>
+            <x:expect label="result" select="'20/10/2024'"/>
+        </x:scenario>
+        <x:scenario label="Different format 1">
+            <x:call function="f:getDateInCanonicalFormat">
+                <x:param name="date" select="'20-10-2024'"/>
+            </x:call>
+            <x:expect label="result" select="'20/10/2024'"/>
+        </x:scenario>
+    </x:scenario>
+
+    <x:scenario label="Different format 2">
+        <x:call function="f:extractDateFromText">
+            <x:param name="text" select="'Any additional information about the recurrence of the Procurement.&#xA;&#xA;Additional Information:&#xA;For example estimated timing of the Procedure.&#xA;&#xA;This corresponds in eForms to BT-95 Recurrence Description.&#xA;&#xA;(WG approval 2019-01-16)&#xA;'"/>
+        </x:call>
+        <x:expect label="result" select="'20/10/2024'"/>
+    </x:scenario>
+
+    <x:scenario focus="WIP" label="f:getDateInCanonicalFormat">
+        <x:scenario label="Simple case">
+            <x:call function="f:getDateInCanonicalFormat">
+                <x:param name="date" select="'20/10/2024'"/>
+            </x:call>
+            <x:expect label="result" select="'20/10/2024'"/>
+        </x:scenario>
+        <x:scenario label="Format 1">
+            <x:call function="f:getDateInCanonicalFormat">
+                <x:param name="date" select="'20-10-2024'"/>
+            </x:call>
+            <x:expect label="result" select="'20/10/2024'"/>
+        </x:scenario>
+        <x:scenario label="Format 2">
+            <x:call function="f:getDateInCanonicalFormat">
+                <x:param name="date" select="'2019-01-16'"/>
+            </x:call>
+            <x:expect label="result" select="'16/01/2019'"/>
+        </x:scenario>
+        <x:scenario label="Format 3">
+            <x:call function="f:getDateInCanonicalFormat">
+                <x:param name="date" select="'2019/01/16'"/>
+            </x:call>
+            <x:expect label="result" select="'16/01/2019'"/>
+        </x:scenario>
+        <x:scenario label="Format 3">
+            <x:call function="f:getDateInCanonicalFormat">
+                <x:param name="date" select="'2019/01/16'"/>
+            </x:call>
+            <x:expect label="result" select="'16/01/2019'"/>
+        </x:scenario>
+    </x:scenario>
+
+
+
+    <!-- TO BE MOVED -->
+    
+    <x:scenario focus="WIP" label="Check if text contains WG approval metadata">
+        <x:scenario label="Simple case of WG approval metadata">
+            <x:call function="f:extractWgApprovalDateFromDefinition">
+                <x:param name="text" select="'WG Approval 16/01/2019'"/>
+            </x:call>
+            <x:expect label=" " select="'16/01/2019'"/>
+        </x:scenario>
+        <x:scenario label="WG approval metadata with different data format">
+            <x:call function="f:extractWgApprovalDateFromDefinition">
+                <x:param name="text" select="'Any additional information about the recurrence of the Procurement.&#xA;&#xA;Additional Information:&#xA;For example estimated timing of the Procedure.&#xA;&#xA;This corresponds in eForms to BT-95 Recurrence Description.&#xA;&#xA;(WG approval 2019-01-16)&#xA;'"/>
+            </x:call>
+            <x:expect label=" " select="'16/01/2019'"/>
+        </x:scenario>
+        <x:scenario label="WG approval metadata with different text used">
+            <x:call function="f:extractWgApprovalDateFromDefinition">
+                <x:param name="text" select="'Web page where tools and devices for electronic communication that are not generally available can be downloaded free of charge.&#xA;&#xA;Additional Information:&#xA;&#xA;This corresponds in eForms to BT-724 Tool Atypical.&#xA;&#xA;&#xA;WG Acceptance 10/01/2023'"/>
+            </x:call>
+            <x:expect label=" " select="'10/01/2023'"/>
+        </x:scenario>
+        <x:scenario label="WG metadata">
+            <x:call function="f:extractWgApprovalDateFromDefinition">
+                <x:param name="text" select="'WG  16/01/2019'"/>
+            </x:call>
+            <x:expect label=" " select="'16/01/2019'"/>
+        </x:scenario>
+    </x:scenario>
+
+    <x:scenario label="f:extractBtIdFromDefinition">
+        <x:scenario label="Simple case of BT id metadata">
+            <x:call function="f:extractBtIdFromDefinition">
+                <x:param name="text" select="'This corresponds to BT-156 in the eForms.'"/>
+            </x:call>
+            <x:expect label="detected" select="'BT-156'"/>
+        </x:scenario>
+        <x:scenario label="Simple case of BG id metadata">
+            <x:call function="f:extractBtIdFromDefinition">
+                <x:param name="text" select="'This corresponds in eForms to BG-701 Exclusion Grounds'"/>
+            </x:call>
+            <x:expect label="detected" select="'BG-701'"/>
+        </x:scenario>
+        <x:scenario label="Case of BG id metadata - extra spacing">
+            <x:call function="f:extractBtIdFromDefinition">
+                <x:param name="text" select="'This corresponds in eForms to BG - 61 EU Funds'"/>
+            </x:call>
+            <x:expect label="detected" select="'BG - 61'"/>
+        </x:scenario>
+        <x:scenario label="Case of BG id metadata - two terms">
+            <x:call function="f:extractBtIdFromDefinition">
+                <x:param name="text" select="'This corresponds in eForms to BG - 61 EU Funds (specified per Lot) and to BG - 611 Contract EU Funds'"/>
+            </x:call>
+            <x:expect label="detected" select="('BG - 61', 'BG - 611')"/>
+        </x:scenario>
+        <x:scenario label="Case of BG id metadata - another phrasing">
+            <x:call function="f:extractBtIdFromDefinition">
+                <x:param name="text" select="'Used by eForms BG - 61, eForms BG - 611'"/>
+            </x:call>
+            <x:expect label="detected" select="('BG - 61', 'BG - 611')"/>
+        </x:scenario>
+    </x:scenario>
+
+    <x:scenario focus="WIP" label="f:hasExtDefinitionMetadata">
+        <x:scenario label="Simple case of ext term link">
+            <x:call function="f:hasExtDefinitionMetadata">
+                <x:param name="text" select="'External concept defined by https://semiceu.github.io/ADMS/releases/2.00/#Identifier'"/>
+            </x:call>
+            <x:expect label="detected" select="fn:true()"/>
+        </x:scenario>
+        <x:scenario label="Different URL case">
+            <x:call function="f:hasExtDefinitionMetadata">
+                <x:param name="text" select="'More information can be found at https://op.europa.eu/en/web/eu-vocabularies/e-procurement'"/>
+            </x:call>
+            <x:expect label="detected" select="fn:false()"/>
+        </x:scenario>
+        <x:scenario label="Simple case of missing ext term link">
+            <x:call function="f:hasExtDefinitionMetadata">
+                <x:param name="text" select="'External concept defined by something'"/>
+            </x:call>
+            <x:expect label="detected" select="fn:false()"/>
+        </x:scenario>
+        <x:scenario label="http case">
+            <x:call function="f:hasExtDefinitionMetadata">
+                <x:param name="text" select="'External concept defined by http://semiceu.github.io/ADMS/releases/2.00/#Identifier'"/>
+            </x:call>
+            <x:expect label="detected" select="fn:true()"/>
+        </x:scenario>
+        <x:scenario label="Additional information case">
+            <x:call function="f:hasExtDefinitionMetadata">
+                <x:param name="text" select="'External concept defined by http://semiceu.github.io/ADMS/releases/2.00/#Identifier&#xA;&#xA;Additional information:&#xA;&#xA;The value provided is a threshold value'"/>
+            </x:call>
+            <x:expect label="detected" select="fn:true()"/>
+        </x:scenario>
+        
+    </x:scenario>
+
+</x:description>

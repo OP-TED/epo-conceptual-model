@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:math="http://www.w3.org/2005/xpath-functions/math"
+    xmlns:xd="http://www.oxygenxml.com/ns/doc/xsl"
+    exclude-result-prefixes="xs math xd"
+    version="3.0">
+    <xd:doc scope="stylesheet">
+        <xd:desc>
+            <xd:p><xd:b>Created on:</xd:b> May 2, 2020</xd:p>
+            <xd:p><xd:b>Author:</xd:b> lps</xd:p>
+            <xd:p></xd:p>
+        </xd:desc>
+    </xd:doc>
+    
+    
+    <xsl:template name="footer">
+        <footer class="text-center">
+            <br/><br/>
+            
+            <p>The template of this report is based on the <a
+                    href="https://github.com/thomaspark/pubcss">PubCSS library</a>.</p>
+        </footer>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        
+        <script src="static/js/jquery-3.4.1.min.js"></script>
+        <script src="static/js/jquery-ui.min.js"></script>
+        <script src="static/js/bootstrap.min.js"></script>
+        <script src="static/js/jquery.tocify.min.js"></script>
+        
+        <script>
+            $(function () {
+            //Calls the tocify method on your HTML div.
+            $("#toc").tocify({
+            selectors: "h1",
+            theme: "bootstrap",
+            hashGenerator: "pretty",
+            ignoreSelector: ".skip-toc"
+            });
+            });
+            
+        </script>
+        <script>
+            $(".filter-button").click(function() {
+            let numberOfCheckboxesChecked = $("#filters :checkbox:checked").length
+            if (numberOfCheckboxesChecked == 0){
+            $(".filter").show();
+            }else {
+            $(".filter").hide();
+            
+
+            $("#filters :checkbox:checked").each(function() {
+            let violationClassSelector = '.'.concat($(this).val());
+            console.log(violationClassSelector);
+            $(violationClassSelector).addClass("showThisType");
+	   
+            });
+            $('.showThisType').show();
+            $('.filter').removeClass('showThisType')
+            }
+            });
+        </script>
+    </xsl:template>
+    
+</xsl:stylesheet>

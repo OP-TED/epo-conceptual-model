@@ -1,0 +1,515 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
+    xmlns:f="http://https://github.com/costezki/model2owl#"
+    xmlns:fn="http://www.w3.org/2005/xpath-functions"
+    xmlns:uml="http://www.omg.org/spec/UML/20131001"
+    xmlns:xmi="http://www.omg.org/spec/XMI/20131001"
+    xmlns:umldi="http://www.omg.org/spec/UML/20131001/UMLDI"    
+    stylesheet="../../../src/common/checkers.xsl">
+    
+    <x:scenario label="Check valid normalized string">
+        <x:call function="f:isValidNormalizedString">
+            <x:param name="input">normalized:String</x:param>
+        </x:call>
+        <x:expect label="is valid" select="true()"/>
+    </x:scenario>
+    
+    <x:scenario label="Check invalid normalized string">
+        <x:call function="f:isValidNormalizedString">
+            <x:param name="input">Normalized Str!ng</x:param>
+        </x:call>
+        <x:expect label="is invalid" select="false()"/>
+    </x:scenario>
+    
+    <x:scenario label="Check valid Qname string">
+        <x:call function="f:isValidQname">
+            <x:param name="input">normalized:String</x:param>
+        </x:call>
+        <x:expect label="is valid" select="true()"/>
+    </x:scenario>
+    
+    <x:scenario label="Check invalid Qname string">
+        <x:call function="f:isValidQname">
+            <x:param name="input">normalizedString</x:param>
+        </x:call>
+        <x:expect label="is valid" select="false()"/>
+    </x:scenario>
+    
+    <x:scenario label="Check if local name from Qname is camelCase with first letter uppercased">
+        <x:call function="f:isQNameUpperCasedCamelCase">
+            <x:param name="input">prefix:Local</x:param>
+        </x:call>
+        <x:expect label="boolean-true" select="true()"/>
+    </x:scenario>
+    
+    <x:scenario label="Local name from Qname is not camelCase with first letter uppercased">
+        <x:call function="f:isQNameUpperCasedCamelCase">
+            <x:param name="input">prefix:localName</x:param>
+        </x:call>
+        <x:expect label="boolean-false" select="false()"/>
+    </x:scenario>
+    
+    <x:scenario label="Check if local name from Qname is camelCase with first letter lowercased">
+        <x:call function="f:isQNameLowerCasedCamelCase">
+            <x:param name="input">prefix:localName</x:param>
+        </x:call>
+        <x:expect label="boolean-true" select="true()"/>
+    </x:scenario>
+    
+    <x:scenario label="Local name from Qname is not camelCase with first letter uppercased">
+        <x:call function="f:isQNameLowerCasedCamelCase">
+            <x:param name="input">prefix:LocalName</x:param>
+        </x:call>
+        <x:expect label="boolean-false" select="false()"/>
+    </x:scenario>
+    
+    <x:scenario label="Check if Qname prefix is a valid namespace">
+        <x:call function="f:isValidNamespace">
+            <x:param name="input">cccev:localName</x:param>
+        </x:call>
+        <x:expect label="boolean-true" select="true()"/>
+    </x:scenario>
+    
+    <x:scenario label="Check Qname prefix with a invalid namespace">
+        <x:call function="f:isValidNamespace">
+            <x:param name="input">prefix1:localNamea</x:param>
+        </x:call>
+        <x:expect label="boolean-false" select="false()"/>
+    </x:scenario>
+    
+    <x:scenario label="Check Qname prefix with a invalid namespace">
+        <x:call function="f:isValidNamespace">
+            <x:param name="input">localName</x:param>
+        </x:call>
+        <x:expect label="boolean-false" select="false()"/>
+    </x:scenario>
+    
+    <x:scenario label="Check Qname prefix with a invalid namespace">
+        <x:call function="f:isValidNamespace">
+            <x:param name="input">:localName</x:param>
+        </x:call>
+        <x:expect label="boolean-false" select="false()"/>
+    </x:scenario>
+    
+    <x:scenario label="Check if a data-type is valid ">
+        <x:call function="f:isValidDataType">
+            <x:param name="input">xsd:string</x:param>
+        </x:call>
+        <x:expect label="boolean-true" select="true()"/>
+    </x:scenario>
+    
+    
+    <x:scenario label="Check an invalid data-type">
+        <x:call function="f:isValidDataType">
+            <x:param name="input">prefix:localName</x:param>
+        </x:call>
+        <x:expect label="boolean-false" select="false()"/>
+    </x:scenario>
+    
+    
+    <x:scenario label="Check if a isAttributeTypeValidForObjectProperty is valid ">
+        <x:call function="f:isAttributeTypeValidForObjectProperty">
+            <x:param name="attributeElement"
+                href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[37]/attributes[1]/attribute[1]"
+            />
+        </x:call>
+        <x:expect label="boolean-true" select="true()"/>
+    </x:scenario>
+    
+    
+    <x:scenario label="Check a invalid isAttributeTypeValidForObjectProperty">
+        <x:call function="f:isAttributeTypeValidForObjectProperty">
+            <x:param name="attributeElement"
+                href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[220]/attributes[1]/attribute[4]"
+            />
+        </x:call>
+        <x:expect label="boolean-false" select="false()"/>
+    </x:scenario>
+    
+    <x:scenario label="Check if a data-type is valid - isAttributeTypeValidForDatatypeProperty ">
+        <x:call function="f:isAttributeTypeValidForDatatypeProperty">
+            <x:param name="attributeElement"
+                href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[283]/attributes[1]/attribute[1]"
+            />
+        </x:call>
+        <x:expect label="boolean-true" select="true()"/>
+    </x:scenario>
+    
+    <x:scenario
+        label="Check if a data-type is valid when passing a UML data-type - isAttributeTypeValidForDatatypeProperty">
+        <x:call function="f:isAttributeTypeValidForDatatypeProperty">
+            <x:param name="attributeElement"
+                href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[37]/attributes[1]/attribute[3]"
+            />
+        </x:call>
+        <x:expect label="boolean-true" select="true()"/>
+    </x:scenario>
+    
+    <x:scenario label="Check a invalid data-type - isAttributeTypeValidForDatatypeProperty">
+        <x:call function="f:isAttributeTypeValidForDatatypeProperty">
+            <x:param name="attributeElement"
+                href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[35]/attributes[1]/attribute[9]"
+            />
+        </x:call>
+        <x:expect label="boolean-false" select="false()"/>
+    </x:scenario>
+    
+
+    <x:scenario label="Check isAttributeStereotypeValid - invalid stereotype">
+        <x:call function="f:isAttributeStereotypeValid">
+            <x:param name="element"
+                href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[37]/attributes[1]/attribute[9]"
+            />
+        </x:call>
+        <x:expect label="result" select="false()"/>
+    </x:scenario>
+    
+    <x:scenario label="Check isAttributeStereotypeValid - not stereotype">
+        <x:call function="f:isAttributeStereotypeValid">
+            <x:param name="element"
+                href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[35]/attributes[1]/attribute[3]"
+            />
+        </x:call>
+        <x:expect label="result" select="true()"/>
+    </x:scenario>
+    
+    <x:scenario label="Check isElementStereotypeValid - valid stereotype 1">
+        <x:call function="f:isElementStereotypeValid">
+            <x:param name="element"
+                href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[155]"                
+            />
+        </x:call>
+        <x:expect label="result" select="true()"/>
+    </x:scenario>
+    
+    <x:scenario label="Check isElementStereotypeValid - valid stereotype 2">
+        <x:call function="f:isElementStereotypeValid">
+            <x:param name="element"
+                href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[163]"                
+            />
+        </x:call>
+        <x:expect label="result" select="true()"/>
+    </x:scenario>
+    
+    <x:scenario label="Check isElementStereotypeValid - valid stereotype 2">
+        <x:call function="f:isElementStereotypeValid">
+            <x:param name="element"
+                href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[36]"                
+            />
+        </x:call>
+        <x:expect label="result" select="true()"/>
+    </x:scenario>
+    
+    <x:scenario label="Check isElementStereotypeValid - invalid stereotype 1">
+        <x:call function="f:isElementStereotypeValid">
+            <x:param name="element"
+                href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[103]"                
+            />
+        </x:call>
+        <x:expect label="result" select="false()"/>
+    </x:scenario>
+    
+    <x:scenario label="Check isConnectorStereotypeValid - invalid stereotype">
+        <x:call function="f:isConnectorStereotypeValid">
+            <x:param name="element"
+                href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[5]"
+            />
+        </x:call>
+        <x:expect label="result" select="false()"/>
+    </x:scenario>
+    
+    
+    
+    <x:scenario label="Check isConnectorStereotypeValid - valid stereotype">
+        <x:call function="f:isConnectorStereotypeValid">
+            <x:param name="element"
+                href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[27]"
+            />
+        </x:call>
+        <x:expect label="result" select="true()"/>
+    </x:scenario>
+    
+    <x:scenario label="Check isConnectorStereotypeValid - valid stereotype">
+        <x:call function="f:isConnectorStereotypeValid">
+            <x:param name="element"
+                href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[453]"
+            />
+        </x:call>
+        <x:expect label="result" select="true()"/>
+    </x:scenario>
+    
+    <x:scenario label="Check isConnectorStereotypeValid - invalid stereotype">
+        <x:call function="f:isConnectorStereotypeValid">
+            <x:param name="element"
+                href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/connectors[1]/connector[41]"
+            />
+        </x:call>
+        <x:expect label="result" select="false()"/>
+    </x:scenario>
+
+    
+    <x:scenario label="Check  hasAttributeCorrespondingDependecy- no corresponding Dependency found ">
+        <x:call function="f:hasAttributeCorrespondingDependecy">
+            <x:param name="attribute"
+                href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[38]/attributes[1]/attribute[3]"
+            />
+        </x:call>
+        <x:expect label="result" select="false()"/>
+    </x:scenario>
+
+    <x:scenario label="Check  hasAttributeCorrespondingDependecy- attribute name = dependency target role name with 'has' prefix">
+        <x:call function="f:hasAttributeCorrespondingDependecy">
+            <x:param name="attribute"
+                href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[38]/attributes[1]/attribute[4]"
+            />
+        </x:call>
+        <x:expect label="result" select="true()"/>
+    </x:scenario>
+
+    <x:scenario label="Check hasAttributeCorrespondingDependecy- attribute name = dependency target role name">
+        <x:call function="f:hasAttributeCorrespondingDependecy">
+            <x:param name="attribute"
+                href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[38]/attributes[1]/attribute[2]"
+            />
+        </x:call>
+        <x:expect label="result" select="true()"/>
+    </x:scenario>
+    
+    <x:scenario label="Check an element that is missing the name - no name value">
+        <x:call function="f:isElementNameMissing">
+            <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[317]"/>
+        </x:call>
+        <x:expect label="boolean-true" select="true()"/>
+    </x:scenario>
+    
+    <x:scenario label="Check an element that is missing the name - no name attribute">
+        <x:call function="f:isElementNameMissing">
+            <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[318]"/>
+        </x:call>
+        <x:expect label="boolean-true" select="true()"/>
+    </x:scenario>
+    
+    <x:scenario label="Check an element that is not missing the name">
+        <x:call function="f:isElementNameMissing">
+            <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi"
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[316]"/>
+        </x:call>
+        <x:expect label="boolean-false" select="false()"/>
+    </x:scenario>
+    
+    <x:scenario label="Check an element that has the name prefix missing">
+        <x:call function="f:isElementNamePrefixMissing">
+            <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" 
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[316]"/>
+        </x:call>
+        <x:expect label="boolean-true" select="true()"/>
+    </x:scenario>
+    
+    <x:scenario label="Check an element that is has the name prefix missing - has delimiter but it is empty">
+        <x:call function="f:isElementNamePrefixMissing">
+            <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" 
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[99]"/>
+        </x:call>
+        <x:expect label="boolean-true" select="false()"/>
+    </x:scenario>
+    
+    <x:scenario label="Check an element that has the name prefix">
+        <x:call function="f:isElementNamePrefixMissing">
+            <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" 
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[319]"/>
+        </x:call>
+        <x:expect label="boolean-false" select="false()"/>
+    </x:scenario>
+    
+    <x:scenario label="Check an element that has local segment">
+        <x:call function="f:isElementNameLocalSegmentMissing">
+            <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" 
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[319]"/>
+        </x:call>
+        <x:expect label="boolean-false" select="false()"/>
+    </x:scenario>
+    
+    <x:scenario label="Check an element that has local segment - it is not a Qname">
+        <x:call function="f:isElementNameLocalSegmentMissing">
+            <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" 
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[36]"/>
+        </x:call>
+        <x:expect label="boolean-false" select="false()"/>
+    </x:scenario>
+    
+    
+    <x:scenario label="Check an element that has no local segment">
+        <x:call function="f:isElementNameLocalSegmentMissing">
+            <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" 
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[73]"/>
+        </x:call>
+        <x:expect label="boolean-true" select="true()"/>
+    </x:scenario>
+    
+    <x:scenario label="Check an element with valid prefix">
+        <x:call function="f:isInvalidElementNamePrefix">
+            <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" 
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[156]"/>
+        </x:call>
+        <x:expect label="boolean-false" select="false()"/>
+    </x:scenario>
+    
+    <x:scenario label="Check an element with invalid prefix">
+        <x:call function="f:isInvalidElementNamePrefix">
+            <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" 
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[73]"/>
+        </x:call>
+        <x:expect label="boolean-true" select="true()"/>
+    </x:scenario>
+    
+    <x:scenario label="Check an element with valid local segment - not Qname">
+        <x:call function="f:isInvalidElementLocalSegmentName">
+            <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" 
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[36]"/>
+        </x:call>
+        <x:expect label="boolean-false" select="false()"/>
+    </x:scenario>
+    
+    <x:scenario label="Check an element with valid local segment">
+        <x:call function="f:isInvalidElementLocalSegmentName">
+            <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" 
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[319]"/>
+        </x:call>
+        <x:expect label="boolean-false" select="false()"/>
+    </x:scenario>
+    
+    <x:scenario label="Check an element with invalid local segment">
+        <x:call function="f:isInvalidElementLocalSegmentName">
+            <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" 
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[95]"/>
+        </x:call>
+        <x:expect label="boolean-true" select="true()"/>
+    </x:scenario>
+    
+    <x:scenario label="Check the local segment first character for an element which is valid">
+        <x:call function="f:isValidElementFirstCharacterInLocalSegment">
+            <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" 
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[319]"/>
+        </x:call>
+        <x:expect label="boolean-true" select="true()"/>
+    </x:scenario>
+    
+    <x:scenario label="Check the local segment first character for an element which is invalid">
+        <x:call function="f:isValidElementFirstCharacterInLocalSegment">
+            <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" 
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[36]"/>
+        </x:call>
+        <x:expect label="boolean-false" select="false()"/>
+    </x:scenario>
+    
+    <x:scenario label="Check an element that has the local segment with delimiters">
+        <x:call function="f:isDelimitersInElementLocalSegment">
+            <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" 
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[101]"/>
+        </x:call>
+        <x:expect label="boolean-true" select="true()"/>
+    </x:scenario>
+    
+    <x:scenario label="Check an element that has the local segment with no delimiters">
+        <x:call function="f:isDelimitersInElementLocalSegment">
+            <x:param name="element" href="../../testData/ePO-CM-v2.0.1-2020-03-27_test.eap.xmi" 
+                select="/xmi:XMI/xmi:Extension[1]/elements[1]/element[319]"/>
+        </x:call>
+        <x:expect label="boolean-false" select="false()"/>
+    </x:scenario>
+    
+    <x:scenario label="Check if all namespaces are defined - All used namespaces are defined">
+        <x:call function="f:isAllNamespacesDefined">
+            <x:param name="listOfNamespaces" select="('epo', 'xsd')"/>
+        </x:call>
+        <x:expect label="all namespaces were defined" select="true()"/>
+    </x:scenario>
+    
+    <x:scenario label="Check if all namespaces are defined - not all namespaces were defined">
+        <x:call function="f:isAllNamespacesDefined">
+            <x:param name="listOfNamespaces" select="('epo', 'xsd', 'twe', 'cancan')"/>
+        </x:call>
+        <x:expect label="a list with namespaces that were not defined" select="('twe', 'cancan')"/>
+    </x:scenario>
+    
+    <x:scenario label="Check if text contains WG approval metadata">
+        <x:scenario label="Simple case of WG approval metadata">
+            <x:call function="f:hasWgApprovalMetadata">
+                <x:param name="text" select="'WG Approval 16/01/2019'"/>
+            </x:call>
+            <x:expect label="a list with namespaces that were not defined" select="true()"/>
+        </x:scenario>
+        <x:scenario label="A definition without WG approval">
+            <x:call function="f:hasWgApprovalMetadata">
+                <x:param name="text" select="'Any additional information about the recurrence of the Procurement.'"/>
+            </x:call>
+            <x:expect label="a list with namespaces that were not defined" select="true()"/>
+        </x:scenario>
+        <x:scenario label="WG approval metadata with different data format">
+            <x:call function="f:hasWgApprovalMetadata">
+                <x:param name="text" select="'Any additional information about the recurrence of the Procurement.&#xA;&#xA;Additional Information:&#xA;For example estimated timing of the Procedure.&#xA;&#xA;This corresponds in eForms to BT-95 Recurrence Description.&#xA;&#xA;(WG approval 2019-01-16)&#xA;'"/>
+            </x:call>
+            <x:expect label="a list with namespaces that were not defined" select="true()"/>
+        </x:scenario>
+        <x:scenario label="WG approval metadata with different text used">
+            <x:call function="f:hasWgApprovalMetadata">
+                <x:param name="text" select="'Web page where tools and devices for electronic communication that are not generally available can be downloaded free of charge.&#xA;&#xA;Additional Information:&#xA;&#xA;This corresponds in eForms to BT-724 Tool Atypical.&#xA;&#xA;&#xA;WG Acceptance 10/01/2023'"/>
+            </x:call>
+            <x:expect label="a list with namespaces that were not defined" select="true()"/>
+        </x:scenario>
+    </x:scenario>
+    
+    <x:scenario focus="WIP" label="f:hasBtgTermIdMetadata">
+        <x:scenario label="Simple case of BT id metadata">
+            <x:call function="f:hasBtgTermIdMetadata">
+                <x:param name="text" select="'This corresponds to BT-156 in the eForms.'"/>
+            </x:call>
+            <x:expect label="detected" select="fn:true()"/>
+        </x:scenario>
+        <x:scenario label="Simple case of BT id metadata">
+            <x:call function="f:hasBtgTermIdMetadata">
+                <x:param name="text" select="'This corresponds to the eForms.'"/>
+            </x:call>
+            <x:expect label="not detected" select="fn:false()"/>
+        </x:scenario>
+        <x:scenario label="Simple case of BG id metadata">
+            <x:call function="f:hasBtgTermIdMetadata">
+                <x:param name="text" select="'This corresponds in eForms to BG-701 Exclusion Grounds'"/>
+            </x:call>
+            <x:expect label="detected" select="fn:true()"/>
+        </x:scenario>
+        <x:scenario label="Case of BG id metadata - extra spacing">
+            <x:call function="f:hasBtgTermIdMetadata">
+                <x:param name="text" select="'This corresponds in eForms to BG - 61 EU Funds'"/>
+            </x:call>
+            <x:expect label="detected" select="fn:true()"/>
+        </x:scenario>
+        <x:scenario label="Case of BG id metadata - two terms">
+            <x:call function="f:hasBtgTermIdMetadata">
+                <x:param name="text" select="'This corresponds in eForms to BG - 61 EU Funds (specified per Lot) and to BG - 611 Contract EU Funds'"/>
+            </x:call>
+            <x:expect label="detected" select="fn:true()"/>
+        </x:scenario>
+    </x:scenario>
+</x:description>
+
