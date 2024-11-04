@@ -89,7 +89,7 @@
     </xd:doc>
     <xsl:function name="f:hasExtDefinitionMetadata" as="xs:boolean">
         <xsl:param name="text"/>
-        <xsl:variable name="ExtDefPattern" as="xs:string" select="'External concept defined by *http[s]?://.+'"/>
+        <xsl:variable name="ExtDefPattern" as="xs:string" select="'External concept defined by .*http[s]?://.+'"/>
         <xsl:sequence select="fn:matches($text, $ExtDefPattern)"/>
     </xsl:function>
 
