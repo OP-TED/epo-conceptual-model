@@ -19,7 +19,7 @@
    <body>
       <header class="counter-skip">
          <h1 class="title">UML metadata conventions conformance report</h1>
-         <h2>[ 01/11/2024 ]</h2>
+         <h2>[ 05/11/2024 ]</h2>
       </header>
       <main>
          <div id="toc" class="tocify">
@@ -35,8 +35,8 @@
          <div class="abstract counter-skip">
             <h1>Abstract</h1>
             <p>This is a report outlining results of metadata conventions conformance tests run against
-               XMI/XML file for eProcurement module. The test set objective was to verify that metadata
-               located in the conceptual model objects conforms to a newly established metadata conventions.</p>
+               XMI/XML file. The test set objective was to verify that metadata located in the conceptual
+               model objects conforms to a newly established metadata conventions.</p>
             <p>The organisation of this document is based on major types of UML elements and
                connectors that are employed in the module of the conceptual model and that were in
                the scope of the modification task. They are as
@@ -61,7 +61,7 @@
                   </li>
             </ol>
             <p>The UML model in file <em>Ordering.xml</em> 
-               was tested at 15:53 on November 1, 2024.</p>
+               was tested at 11:08 on November 5, 2024.</p>
          </div>
          <h1 xmlns:f="http://https://github.com/costezki/model2owl#" id="nomenclature">Nomenclature</h1>
          <h2 xmlns:f="http://https://github.com/costezki/model2owl#" id="classNames">Class names</h2>
@@ -85,12 +85,12 @@
          <h2 xmlns:f="http://https://github.com/costezki/model2owl#" id="classAttributesNames">Class attribute names</h2>
          <ul xmlns:f="http://https://github.com/costezki/model2owl#">
             <li><a href="#attribute-dct:description-usage">dct:description (2)</a><ul><em>
-                     <li>epo-ord:DeliveryAgreement (rdf:PlainLiteral) [0..*]</li>
-                     <li>epo-ord:TaxInformation (rdf:PlainLiteral) [0..1]</li></em></ul>
+                     <li>epo-ord:TaxInformation (rdf:PlainLiteral) [0..1]</li>
+                     <li>epo-ord:DeliveryAgreement (rdf:PlainLiteral) [0..*]</li></em></ul>
             </li>
             <li><a href="#attribute-epo-cat:hasPercentage-usage">epo-cat:hasPercentage (2)</a><ul><em>
-                     <li>epo-ord:AllowanceChargeInformation (xsd:decimal) [0..1]</li>
-                     <li>epo-ord:TaxInformation (xsd:decimal) [0..1]</li></em></ul>
+                     <li>epo-ord:TaxInformation (xsd:decimal) [0..1]</li>
+                     <li>epo-ord:AllowanceChargeInformation (xsd:decimal) [0..1]</li></em></ul>
             </li>
             <li><a href="#attribute-epo-ful:hasAllowanceChargeReasonDescription">epo-ful:hasAllowanceChargeReasonDescription</a></li>
             <li><a href="#attribute-epo-inv:hasActualDeliveryDate">epo-inv:hasActualDeliveryDate</a></li>
@@ -105,8 +105,8 @@
          <ul xmlns:f="http://https://github.com/costezki/model2owl#">
             <li>epo:hasValidityPeriod</li>
             <li><a href="#connector-epo:isCalculatedOn">epo:isCalculatedOn (2)</a><ul><em>
-                     <li>epo-ord:AllowanceChargeInformation -&gt;  [0..1]</li>
-                     <li>epo-ord:TaxInformation -&gt;  [0..1]</li></em></ul>
+                     <li>epo-ord:TaxInformation -&gt;  [0..1]</li>
+                     <li>epo-ord:AllowanceChargeInformation -&gt;  [0..1]</li></em></ul>
             </li>
             <li>epo:refersToProject</li>
             <li>epo:specifiesBuyer</li>
@@ -117,8 +117,8 @@
                      <li> -&gt; epo-ord:Seller [1]</li></em></ul>
             </li>
             <li><a href="#connector-epo-cat:hasAmount">epo-cat:hasAmount (2)</a><ul><em>
-                     <li>epo-ord:AllowanceChargeInformation -&gt;  [1]</li>
-                     <li>epo-ord:TaxInformation -&gt;  [0..1]</li></em></ul>
+                     <li>epo-ord:TaxInformation -&gt;  [0..1]</li>
+                     <li>epo-ord:AllowanceChargeInformation -&gt;  [1]</li></em></ul>
             </li>
             <li>epo-cat:hasPrice</li>
             <li>epo-cat:hasQuantity</li>
@@ -176,11 +176,11 @@
             <li>epo-ord:hasTotalTaxInclusiveAmount</li>
             <li>epo-ord:implementsContract</li>
             <li><a href="#connector-epo-ord:isSpecificToOrderLine">epo-ord:isSpecificToOrderLine (5)</a><ul><em>
-                     <li>epo-ord:AllowanceInformation -&gt; epo-ord:OrderLine [0..*]</li>
+                     <li>epo-ord:OriginatorInformation -&gt; epo-ord:OrderLine [0..*]</li>
                      <li>epo-ord:ContractInformation -&gt; epo-ord:OrderLine [0..*]</li>
                      <li>epo-ord:DeliveryInformation -&gt; epo-ord:OrderLine [0..*]</li>
-                     <li> -&gt; epo-ord:OrderLine [0..*]</li>
-                     <li>epo-ord:OriginatorInformation -&gt; epo-ord:OrderLine [0..*]</li></em></ul>
+                     <li>epo-ord:AllowanceInformation -&gt; epo-ord:OrderLine [0..*]</li>
+                     <li> -&gt; epo-ord:OrderLine [0..*]</li></em></ul>
             </li>
             <li>epo-ord:isSpecificToOrderResponseLine</li>
             <li>epo-ord:isSubmittedForOrder</li>
@@ -188,15 +188,15 @@
             <li>epo-ord:refersToCatalogue</li>
             <li>epo-ord:refersToCatalogueLine</li>
             <li><a href="#connector-epo-ord:specifiesAllowanceInformation">epo-ord:specifiesAllowanceInformation (2)</a><ul><em>
-                     <li> -&gt; epo-ord:AllowanceInformation [0..*]</li>
-                     <li>epo-ord:Order -&gt; epo-ord:AllowanceInformation [0..*]</li></em></ul>
+                     <li>epo-ord:Order -&gt; epo-ord:AllowanceInformation [0..*]</li>
+                     <li> -&gt; epo-ord:AllowanceInformation [0..*]</li></em></ul>
             </li>
             <li>epo-ord:specifiesBuyer</li>
             <li>epo-ord:specifiesContractInformation</li>
             <li>epo-ord:specifiesDeliveryAgreementLocation</li>
             <li><a href="#connector-epo-ord:specifiesDeliveryInformation">epo-ord:specifiesDeliveryInformation (2)</a><ul><em>
-                     <li> -&gt; epo-ord:DeliveryInformation [0..1]</li>
-                     <li>epo-ord:Order -&gt; epo-ord:DeliveryInformation [1..*]</li></em></ul>
+                     <li>epo-ord:Order -&gt; epo-ord:DeliveryInformation [1..*]</li>
+                     <li> -&gt; epo-ord:DeliveryInformation [0..1]</li></em></ul>
             </li>
             <li>epo-ord:specifiesGeneralDeliveryAgreement</li>
             <li>epo-ord:specifiesOrderResponseInformation</li>
@@ -235,6 +235,10 @@
          						
          					
          					
+         						
+         						
+         						
+         					
          					
          						
          						
@@ -250,30 +254,36 @@
          						
          						
          					
-         				
-         				
          					
+         						
+         						
+         						
          					
          					
          						
+         						
+         						
          					
-         				
-         				
          					
+         						
+         						
+         						
          					
          					
+         						
+         						
          						
          					
-         				
-         				
          					
+         						
+         						
+         						
          					
          					
+         						
          						
+         						
          					
-         				
-         				
-         				
          					
          						
          						
@@ -285,43 +295,55 @@
          						
          						
          					
-         				
-         				
          					
+         						
+         						
+         						
          					
          					
          						
+         						
+         						
          					
-         				
-         				
          					
+         						
+         						
+         						
          					
          					
          						
+         						
+         						
          					
-         				
-         				
          					
+         						
+         						
+         						
          					
          					
+         						
+         						
          						
          					
-         				
-         				
          					
+         						
+         						
+         						
          					
          					
          						
+         						
+         						
          					
-         				
-         				
          					
+         						
+         						
+         						
          					
          					
          						
-         					
-         				
-         				
+         						
+         						
          					
          				
          				
@@ -346,15 +368,9 @@
          					
          				
          				
-         					
-         						
-         						
-         						
          					
          					
          					
-         						
-         						
          						
          					
          				
@@ -381,14 +397,9 @@
          				
          				
          					
-         						
-         						
-         						
          					
          					
-         						
          						
-         						
          					
          				
          				
@@ -414,55 +425,37 @@
          				
          				
          					
-         						
-         						
-         						
          					
          					
-         						
          						
-         						
-         					
          					
-         						
-         						
-         						
+         				
+         				
          					
          					
          					
-         						
-         						
          						
          					
+         				
+         				
          					
-         						
-         						
-         						
          					
          					
-         						
          						
-         						
          					
+         				
+         				
          					
-         						
-         						
-         						
          					
          					
-         						
          						
-         						
          					
+         				
+         				
          					
-         						
-         						
-         						
          					
          					
-         						
          						
-         						
          					
          				
          				
@@ -516,15 +509,12 @@
          				
          				
          					
-         						
-         						
-         						
          					
          					
          						
-         						
-         						
          					
+         				
+         				
          					
          						
          						
@@ -544,88 +534,68 @@
          						
          						
          						
-         					
          					
-         						
-         						
-         						
          					
+         				
+         				
+         				
          					
-         						
-         						
-         						
          					
          					
-         						
-         						
          						
          					
+         				
+         				
+         				
          					
-         						
-         						
-         						
          					
          					
-         						
          						
-         						
          					
+         				
+         				
          					
-         						
-         						
-         						
          					
          					
-         						
-         						
          						
          					
+         				
+         				
          					
          					
-         						
-         						
+         					
          						
          					
+         				
+         				
          					
-         						
-         						
-         						
          					
          					
-         						
          						
-         						
          					
+         				
+         				
          					
-         						
-         						
-         						
          					
          					
-         						
          						
-         						
          					
+         				
+         				
          					
-         						
-         						
-         						
          					
          					
          						
-         						
-         						
          					
+         				
+         				
          					
-         						
-         						
-         						
          					
          					
          						
-         						
-         						
          					
+         				
+         				
          					
          						
          						
@@ -659,16 +629,20 @@
          					
          				
          				
-         					
          					
          					
          						
+         						
+         						
          					
-         				
-         				
          					
+         						
+         						
+         						
          					
          					
+         						
+         						
          						
          					
          				
@@ -695,23 +669,30 @@
          				
          				
          					
+         						
+         						
+         						
          					
          					
          						
-         					
-         				
-         				
+         						
+         						
          					
          					
          					
+         						
          						
+         						
          					
-         				
-         				
          					
+         						
+         						
+         						
          					
          					
          						
+         						
+         						
          					
          				
          				
@@ -729,16 +710,16 @@
          					
          				
          				
-         					
-         					
+         				
          					
          						
-         					
-         				
-         				
+         						
+         						
          					
          					
          					
+         						
+         						
          						
          					
          				
@@ -758,33 +739,36 @@
          				
          				
          					
-         					
-         					
+         						
+         						
          						
          					
-         				
-         				
          					
+         						
+         						
+         						
          					
          					
          						
-         					
-         				
-         				
+         						
+         						
          					
          					
          					
+         						
          						
+         						
          					
-         				
-         				
          					
+         						
+         						
+         						
          					
          					
+         						
          						
+         						
          					
-         				
-         				
          					
          						
          						
@@ -800,6 +784,10 @@
          						
          						
          					
+         					
+         						
+         						
+         						
          					
          				
          				
@@ -852,14 +840,24 @@
          					
          				
          				
+         					
+         						
+         						
+         						
          					
          					
          					
          						
+         						
+         						
          					
          				
          				
+         					
          					
+         					
+         						
+         					
          				
          				
          					
@@ -876,7 +874,13 @@
          					
          				
          				
+         					
          					
+         					
+         						
+         					
+         				
+         				
          					
          						
          						
@@ -892,15 +896,13 @@
          						
          						
          					
+         					
          				
          				
          					
          					
          					
          						
-         					
-         				
-         				
          					
          				
          				
@@ -940,29 +942,22 @@
          				
          				
          					
-         						
-         						
-         						
          					
          					
-         						
-         						
          						
          					
+         				
+         				
          					
-         						
-         						
-         						
+         				
+         				
          					
          					
-         						
-         						
-         						
          					
+         						
          					
          				
          				
-         				
          					
          					
          					
@@ -970,7 +965,6 @@
          					
          				
          				
-         				
          					
          					
          					
@@ -989,6 +983,9 @@
          					
          					
          						
+         					
+         				
+         				
          					
          				
          				
@@ -1003,6 +1000,9 @@
          					
          					
          						
+         					
+         				
+         				
          					
          				
          				
@@ -1019,6 +1019,63 @@
          				
          				
          					
+         					
+         					
+         					
+         					
+         				
+         				
+         					
+         					
+         						
+         						
+         						
+         					
+         				
+         				
+         					
+         					
+         					
+         						
+         					
+         				
+         				
+         					
+         					
+         					
+         						
+         					
+         				
+         				
+         					
+         					
+         						
+         						
+         						
+         					
+         					
+         						
+         						
+         						
+         					
+         				
+         				
+         					
+         					
+         					
+         						
+         					
+         				
+         				
+         				
+         					
+         					
+         					
+         						
+         					
+         				
+         				
+         					
          						
          						
          						
@@ -1067,63 +1124,6 @@
          					
          					
          						
-         					
-         				
-         				
-         					
-         					
-         					
-         						
-         					
-         				
-         				
-         					
-         					
-         					
-         						
-         					
-         				
-         				
-         					
-         					
-         						
-         						
-         						
-         					
-         					
-         						
-         						
-         						
-         					
-         				
-         				
-         					
-         					
-         					
-         						
-         					
-         				
-         				
-         					
-         					
-         					
-         						
-         					
-         				
-         				
-         				
-         					
-         					
-         						
-         						
-         						
-         					
-         				
-         				
-         					
-         					
-         					
-         					
          					
          				
          			
@@ -3792,280 +3792,6 @@
          				
          				
          				
-         				
-         				
-         				
-         					
-         				
-         			
-         			
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         					
-         					
-         					
-         				
-         			
-         			
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         					
-         				
-         			
-         			
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         					
-         				
-         			
-         			
-         				
-         				
-         				
-         				
-         				
-         				
-         					
-         				
-         				
-         				
-         				
-         					
-         						
-         						
-         						
-         						
-         						
-         						
-         						
-         						
-         						
-         						
-         						
-         						
-         							
-         						
-         						
-         					
-         					
-         						
-         						
-         						
-         						
-         						
-         						
-         						
-         						
-         						
-         						
-         						
-         						
-         						
-         					
-         				
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         			
-         			
-         				
-         				
-         				
-         				
-         				
-         				
-         					
-         				
-         				
-         				
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         			
-         			
-         				
-         				
-         				
-         				
-         				
-         				
-         					
-         				
-         				
-         				
-         				
-         					
-         					
-         					
-         					
-         					
-         				
-         			
-         			
-         				
-         				
-         				
-         				
-         				
-         				
-         					
-         				
-         				
-         				
-         				
-         					
-         					
-         					
-         					
-         				
-         			
-         			
-         				
-         				
-         				
-         				
-         				
-         				
-         					
-         				
-         				
-         				
-         				
-         					
-         						
-         						
-         						
-         						
-         						
-         						
-         						
-         						
-         						
-         						
-         						
-         						
-         							
-         						
-         						
-         					
-         				
-         				
-         					
-         					
-         					
-         				
-         			
-         			
-         				
-         				
-         				
-         				
-         				
-         				
-         					
-         				
-         				
-         				
-         				
-         					
-         						
-         						
-         						
-         						
-         						
-         						
-         						
-         						
-         						
-         						
-         						
-         						
-         						
-         					
-         					
-         						
-         						
-         						
-         						
-         						
-         						
-         						
-         						
-         						
-         						
-         						
-         						
-         						
-         					
-         					
-         						
-         						
-         						
-         						
-         						
-         						
-         						
-         						
-         						
-         						
-         						
-         						
-         						
-         					
-         				
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         			
-         			
-         				
-         				
-         				
-         				
-         				
-         				
          					
          				
          				
@@ -4162,93 +3888,6 @@
          				
          				
          					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         			
-         			
-         				
-         				
-         				
-         				
-         				
-         				
-         					
-         				
-         				
-         				
-         				
-         					
-         					
-         					
-         					
-         				
-         			
-         			
-         				
-         				
-         				
-         				
-         				
-         				
-         					
-         				
-         				
-         				
-         				
-         					
-         					
-         					
-         					
-         					
-         				
-         			
-         			
-         				
-         				
-         				
-         				
-         				
-         				
-         					
-         				
-         				
-         				
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         			
-         			
-         				
-         				
-         				
-         				
-         				
-         				
-         					
-         				
-         				
-         				
-         				
-         					
          						
          						
          						
@@ -4304,33 +3943,6 @@
          				
          				
          				
-         				
-         				
-         				
-         				
-         				
-         				
-         			
-         			
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         					
-         				
-         			
-         			
-         				
-         				
-         				
-         				
-         				
-         				
          					
          				
          				
@@ -4349,15 +3961,12 @@
          						
          						
          						
+         							
+         						
          						
          					
          				
          				
-         					
-         					
-         					
-         					
-         					
          					
          					
          					
@@ -4369,6 +3978,8 @@
          				
          				
          				
+         				
+         					
          				
          				
          				
@@ -4393,9 +4004,311 @@
          				
          				
          					
+         						
+         						
+         						
+         						
+         						
+         						
+         						
+         						
+         						
+         						
+         						
+         						
+         							
+         						
+         						
+         					
+         					
+         						
+         						
+         						
+         						
+         						
+         						
+         						
+         						
+         						
+         						
+         						
+         						
+         						
+         					
+         				
+         				
          					
          					
          					
+         					
+         					
+         					
+         					
+         				
+         			
+         			
+         				
+         				
+         				
+         				
+         				
+         				
+         					
+         				
+         				
+         				
+         				
+         					
+         					
+         					
+         					
+         				
+         			
+         			
+         				
+         				
+         				
+         				
+         				
+         				
+         					
+         				
+         				
+         				
+         				
+         					
+         						
+         						
+         						
+         						
+         						
+         						
+         						
+         						
+         						
+         						
+         						
+         						
+         						
+         					
+         					
+         						
+         						
+         						
+         						
+         						
+         						
+         						
+         						
+         						
+         						
+         						
+         						
+         						
+         					
+         					
+         						
+         						
+         						
+         						
+         						
+         						
+         						
+         						
+         						
+         						
+         						
+         						
+         						
+         					
+         				
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         			
+         			
+         				
+         				
+         				
+         				
+         				
+         				
+         					
+         				
+         				
+         				
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         			
+         			
+         				
+         				
+         				
+         				
+         				
+         				
+         					
+         				
+         				
+         				
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         			
+         			
+         				
+         				
+         				
+         				
+         				
+         				
+         					
+         				
+         				
+         				
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         			
+         			
+         				
+         				
+         				
+         				
+         				
+         				
+         					
+         				
+         				
+         				
+         				
+         					
+         					
+         					
+         					
+         					
+         				
+         			
+         			
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         					
+         				
+         			
+         			
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         					
+         					
+         					
+         				
+         			
+         			
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         					
+         				
+         			
+         			
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         					
+         				
+         			
+         			
+         				
+         				
+         				
+         				
+         				
+         				
+         					
+         				
+         				
+         				
+         				
+         					
+         					
+         					
+         					
+         				
+         			
+         			
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
          				
          			
          			
@@ -4485,6 +4398,93 @@
          					
          				
          				
+         					
+         					
+         				
+         			
+         			
+         				
+         				
+         				
+         				
+         				
+         				
+         					
+         				
+         				
+         				
+         				
+         					
+         					
+         					
+         					
+         				
+         			
+         			
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         					
+         				
+         			
+         			
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         					
+         					
+         					
+         					
+         					
+         				
+         			
+         			
+         				
+         				
+         				
+         				
+         				
+         				
+         					
+         				
+         				
+         				
+         				
+         					
+         						
+         						
+         						
+         						
+         						
+         						
+         						
+         						
+         						
+         						
+         						
+         						
+         						
+         					
+         				
+         				
+         					
+         					
+         					
+         					
+         					
+         					
          					
          					
          				
@@ -4608,419 +4608,6 @@
          				
          				
          				
-         			
-         			
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         			
-         			
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         			
-         			
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         			
-         			
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         			
-         			
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         			
-         			
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         			
-         			
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         			
-         			
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         			
-         			
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         						
-         					
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         			
-         			
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         					
-         				
-         			
-         			
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         			
-         			
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
          				
          			
          			
@@ -5151,75 +4738,6 @@
          					
          					
          				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         			
-         			
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         			
-         			
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
          				
          				
          				
@@ -5407,180 +4925,6 @@
          				
          				
          				
-         			
-         			
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         			
-         			
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         			
-         			
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         			
-         			
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         			
-         			
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
          				
          			
          			
@@ -5673,148 +5017,6 @@
          					
          					
          					
-         					
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         			
-         			
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         			
-         			
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         			
-         			
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         			
-         			
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         						
          					
          				
          				
@@ -6168,1129 +5370,7 @@
          					
          					
          					
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         			
-         			
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         			
-         			
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         			
-         			
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         			
-         			
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         			
-         			
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         			
-         			
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         			
-         			
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         			
-         			
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
          						
-         					
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         			
-         			
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         			
-         			
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         			
-         			
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         						
-         					
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         			
-         			
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         			
-         			
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         			
-         			
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         			
-         			
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         			
-         			
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         			
-         			
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         			
-         			
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         			
-         			
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         			
-         			
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         			
-         			
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         						
-         					
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         			
-         			
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         			
-         			
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         			
-         			
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         			
-         			
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         			
-         			
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         						
-         					
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         			
-         			
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         			
-         			
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         			
-         			
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         			
-         			
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         						
-         					
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         			
-         			
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         				
-         			
-         			
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         				
-         				
-         					
-         					
-         					
-         					
-         					
-         					
-         					
-         					
          					
          				
          				
@@ -7755,6 +5835,1405 @@
          				
          				
          				
+         				
+         			
+         			
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         			
+         			
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         			
+         			
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         			
+         			
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         			
+         			
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         			
+         			
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         			
+         			
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         			
+         			
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         			
+         			
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         			
+         			
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         						
+         					
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         			
+         			
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         					
+         				
+         			
+         			
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         			
+         			
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         			
+         			
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         			
+         			
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         			
+         			
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         			
+         			
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         			
+         			
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         			
+         			
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         			
+         			
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         			
+         			
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         			
+         			
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         			
+         			
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         			
+         			
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         						
+         					
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         			
+         			
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         			
+         			
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         			
+         			
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         			
+         			
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         			
+         			
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         			
+         			
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         			
+         			
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         			
+         			
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         			
+         			
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         			
+         			
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         			
+         			
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         			
+         			
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         						
+         					
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         			
+         			
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         			
+         			
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         			
+         			
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         						
+         					
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         			
+         			
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
          			
          			
          				
@@ -7986,6 +7465,524 @@
          					
          					
          					
+         						
+         					
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         			
+         			
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         			
+         			
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         			
+         			
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         			
+         			
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         			
+         			
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         			
+         			
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         			
+         			
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         						
+         					
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         			
+         			
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         			
+         			
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         			
+         			
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         			
+         			
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         			
+         			
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         			
+         			
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         			
+         			
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         				
+         			
+         			
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         				
+         				
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
+         					
          				
          				
          				
@@ -8066,6 +8063,8 @@
          				
          				
          				
+         				
+         				
          			
          			
          				
@@ -8089,6 +8088,7 @@
          					
          					
          					
+         				
          				
          				
          				
@@ -8742,6 +8742,66 @@
          	
          
          <h1 class="selector-heading" id="classes">Classes and attributes</h1>
+         <h2 xmlns:f="http://https://github.com/costezki/model2owl#" id="epo-ord:Order">epo-ord:Order</h2>
+         <section xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dl>
+               <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>epo-ord:Order (class): The term definition does not contain WG approval metadata.</dd>
+               <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>epo-ord:Order (class): The term definition does not contain eForms (BT/BG identifier)
+                  metadata. </dd>
+            </dl>
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>epo-ord:hasAccountingCost (attribute): The term definition does not contain WG approval
+               metadata.</dd>
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>epo-ord:hasAccountingCost (attribute): The term definition does not contain eForms
+               (BT/BG identifier) metadata. </dd>
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>epo-ord:hasCustomerReference (attribute): The term definition does not contain WG
+               approval metadata.</dd>
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>epo-ord:hasCustomerReference (attribute): The term definition does not contain eForms
+               (BT/BG identifier) metadata. </dd>
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>epo-ord:hasPaymentTerm (attribute): The term definition does not contain WG approval
+               metadata.</dd>
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>epo-ord:hasPaymentTerm (attribute): The term definition does not contain eForms (BT/BG
+               identifier) metadata. </dd>
+         </section>
+         <h2 xmlns:f="http://https://github.com/costezki/model2owl#" id="epo-ord:TaxInformation">epo-ord:TaxInformation</h2>
+         <section xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dl>
+               <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>epo-ord:TaxInformation (class): The term definition does not contain WG approval metadata.</dd>
+               <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>epo-ord:TaxInformation (class): The term definition does not contain eForms (BT/BG
+                  identifier) metadata. </dd>
+            </dl>
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>dct:description (attribute): The term definition does not contain WG approval metadata.</dd>
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>dct:description (attribute): The term definition does not contain eForms (BT/BG identifier)
+               metadata. </dd>
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>dct:description (attribute): The definition of the external term contain an URL pointing
+               to the term original definition. </dd>
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>epo-cat:hasPercentage (attribute): The term definition does not contain WG approval
+               metadata.</dd>
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>epo-cat:hasPercentage (attribute): The term definition does not contain eForms (BT/BG
+               identifier) metadata. </dd>
+         </section>
+         <h2 xmlns:f="http://https://github.com/costezki/model2owl#" id="epo-ord:DeliveryAgreement">epo-ord:DeliveryAgreement</h2>
+         <section xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dl>
+               <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>epo-ord:DeliveryAgreement (class): The term definition does not contain WG approval
+                  metadata.</dd>
+               <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>epo-ord:DeliveryAgreement (class): The term definition does not contain eForms (BT/BG
+                  identifier) metadata. </dd>
+            </dl>
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>dct:description (attribute): The term definition does not contain WG approval metadata.</dd>
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>dct:description (attribute): The term definition does not contain eForms (BT/BG identifier)
+               metadata. </dd>
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>dct:description (attribute): The definition of the external term contain an URL pointing
+               to the term original definition. </dd>
+         </section>
+         <h2 xmlns:f="http://https://github.com/costezki/model2owl#" id="epo-ord:OriginatorInformation">epo-ord:OriginatorInformation</h2>
+         <section xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dl>
+               <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>epo-ord:OriginatorInformation (class): The term definition does not contain WG approval
+                  metadata.</dd>
+               <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>epo-ord:OriginatorInformation (class): The term definition does not contain eForms
+                  (BT/BG identifier) metadata. </dd>
+            </dl>
+         </section>
          <h2 xmlns:f="http://https://github.com/costezki/model2owl#" id="epo-ord:AllowanceChargeInformation">epo-ord:AllowanceChargeInformation</h2>
          <section xmlns:f="http://https://github.com/costezki/model2owl#">
             <dl>
@@ -8759,23 +8819,6 @@
             <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>epo-ful:hasAllowanceChargeReasonDescription (attribute): The term definition does
                not contain eForms (BT/BG identifier) metadata. </dd>
          </section>
-         <h2 xmlns:f="http://https://github.com/costezki/model2owl#" id="epo-ord:AllowanceInformation">epo-ord:AllowanceInformation</h2>
-         <section xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dl>
-               <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>epo-ord:AllowanceInformation (class): The term definition does not contain WG approval
-                  metadata.</dd>
-               <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>epo-ord:AllowanceInformation (class): The term definition does not contain eForms
-                  (BT/BG identifier) metadata. </dd>
-            </dl>
-         </section>
-         <h2 xmlns:f="http://https://github.com/costezki/model2owl#" id="epo-ord:Consignee">epo-ord:Consignee</h2>
-         <section xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dl>
-               <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>epo-ord:Consignee (class): The term definition does not contain WG approval metadata.</dd>
-               <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>epo-ord:Consignee (class): The term definition does not contain eForms (BT/BG identifier)
-                  metadata. </dd>
-            </dl>
-         </section>
          <h2 xmlns:f="http://https://github.com/costezki/model2owl#" id="epo-ord:ContractInformation">epo-ord:ContractInformation</h2>
          <section xmlns:f="http://https://github.com/costezki/model2owl#">
             <dl>
@@ -8784,20 +8827,6 @@
                <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>epo-ord:ContractInformation (class): The term definition does not contain eForms (BT/BG
                   identifier) metadata. </dd>
             </dl>
-         </section>
-         <h2 xmlns:f="http://https://github.com/costezki/model2owl#" id="epo-ord:DeliveryAgreement">epo-ord:DeliveryAgreement</h2>
-         <section xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dl>
-               <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>epo-ord:DeliveryAgreement (class): The term definition does not contain WG approval
-                  metadata.</dd>
-               <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>epo-ord:DeliveryAgreement (class): The term definition does not contain eForms (BT/BG
-                  identifier) metadata. </dd>
-            </dl>
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>dct:description (attribute): The term definition does not contain WG approval metadata.</dd>
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>dct:description (attribute): The term definition does not contain eForms (BT/BG identifier)
-               metadata. </dd>
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>dct:description (attribute): The definition of the external term contain an URL pointing
-               to the term original definition. </dd>
          </section>
          <h2 xmlns:f="http://https://github.com/costezki/model2owl#" id="epo-ord:DeliveryInformation">epo-ord:DeliveryInformation</h2>
          <section xmlns:f="http://https://github.com/costezki/model2owl#">
@@ -8820,31 +8849,36 @@
             <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>epo-ord:hasShippingMark (attribute): The term definition does not contain eForms (BT/BG
                identifier) metadata. </dd>
          </section>
-         <h2 xmlns:f="http://https://github.com/costezki/model2owl#" id="epo-ord:Order">epo-ord:Order</h2>
+         <h2 xmlns:f="http://https://github.com/costezki/model2owl#" id="epo-ord:AllowanceInformation">epo-ord:AllowanceInformation</h2>
          <section xmlns:f="http://https://github.com/costezki/model2owl#">
             <dl>
-               <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>epo-ord:Order (class): The term definition does not contain WG approval metadata.</dd>
-               <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>epo-ord:Order (class): The term definition does not contain eForms (BT/BG identifier)
-                  metadata. </dd>
+               <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>epo-ord:AllowanceInformation (class): The term definition does not contain WG approval
+                  metadata.</dd>
+               <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>epo-ord:AllowanceInformation (class): The term definition does not contain eForms
+                  (BT/BG identifier) metadata. </dd>
             </dl>
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>epo-ord:hasAccountingCost (attribute): The term definition does not contain WG approval
-               metadata.</dd>
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>epo-ord:hasAccountingCost (attribute): The term definition does not contain eForms
-               (BT/BG identifier) metadata. </dd>
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>epo-ord:hasCustomerReference (attribute): The term definition does not contain WG
-               approval metadata.</dd>
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>epo-ord:hasCustomerReference (attribute): The term definition does not contain eForms
-               (BT/BG identifier) metadata. </dd>
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>epo-ord:hasPaymentTerm (attribute): The term definition does not contain WG approval
-               metadata.</dd>
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>epo-ord:hasPaymentTerm (attribute): The term definition does not contain eForms (BT/BG
-               identifier) metadata. </dd>
          </section>
          <h2 xmlns:f="http://https://github.com/costezki/model2owl#" id="epo-ord:OrderLine">epo-ord:OrderLine</h2>
          <section xmlns:f="http://https://github.com/costezki/model2owl#">
             <dl>
                <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>epo-ord:OrderLine (class): The term definition does not contain WG approval metadata.</dd>
                <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>epo-ord:OrderLine (class): The term definition does not contain eForms (BT/BG identifier)
+                  metadata. </dd>
+            </dl>
+         </section>
+         <h2 xmlns:f="http://https://github.com/costezki/model2owl#" id="epo-ord:Seller">epo-ord:Seller</h2>
+         <section xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dl>
+               <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>epo-ord:Seller (class): The term definition does not contain WG approval metadata.</dd>
+               <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>epo-ord:Seller (class): The term definition does not contain eForms (BT/BG identifier)
+                  metadata. </dd>
+            </dl>
+         </section>
+         <h2 xmlns:f="http://https://github.com/costezki/model2owl#" id="epo-ord:Consignee">epo-ord:Consignee</h2>
+         <section xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dl>
+               <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>epo-ord:Consignee (class): The term definition does not contain WG approval metadata.</dd>
+               <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>epo-ord:Consignee (class): The term definition does not contain eForms (BT/BG identifier)
                   metadata. </dd>
             </dl>
          </section>
@@ -8856,39 +8890,23 @@
                   metadata. </dd>
             </dl>
          </section>
-         <h2 xmlns:f="http://https://github.com/costezki/model2owl#" id="epo-ord:OriginatorInformation">epo-ord:OriginatorInformation</h2>
+         <h2 xmlns:f="http://https://github.com/costezki/model2owl#" id="epo-ord:OrderResponseLine">epo-ord:OrderResponseLine</h2>
          <section xmlns:f="http://https://github.com/costezki/model2owl#">
             <dl>
-               <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>epo-ord:OriginatorInformation (class): The term definition does not contain WG approval
+               <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>epo-ord:OrderResponseLine (class): The term definition does not contain WG approval
                   metadata.</dd>
-               <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>epo-ord:OriginatorInformation (class): The term definition does not contain eForms
-                  (BT/BG identifier) metadata. </dd>
-            </dl>
-         </section>
-         <h2 xmlns:f="http://https://github.com/costezki/model2owl#" id="epo-ord:Seller">epo-ord:Seller</h2>
-         <section xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dl>
-               <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>epo-ord:Seller (class): The term definition does not contain WG approval metadata.</dd>
-               <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>epo-ord:Seller (class): The term definition does not contain eForms (BT/BG identifier)
-                  metadata. </dd>
-            </dl>
-         </section>
-         <h2 xmlns:f="http://https://github.com/costezki/model2owl#" id="epo-ord:TaxInformation">epo-ord:TaxInformation</h2>
-         <section xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dl>
-               <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>epo-ord:TaxInformation (class): The term definition does not contain WG approval metadata.</dd>
-               <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>epo-ord:TaxInformation (class): The term definition does not contain eForms (BT/BG
+               <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>epo-ord:OrderResponseLine (class): The term definition does not contain eForms (BT/BG
                   identifier) metadata. </dd>
             </dl>
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>dct:description (attribute): The term definition does not contain WG approval metadata.</dd>
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>dct:description (attribute): The term definition does not contain eForms (BT/BG identifier)
-               metadata. </dd>
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>dct:description (attribute): The definition of the external term contain an URL pointing
-               to the term original definition. </dd>
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>epo-cat:hasPercentage (attribute): The term definition does not contain WG approval
-               metadata.</dd>
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>epo-cat:hasPercentage (attribute): The term definition does not contain eForms (BT/BG
-               identifier) metadata. </dd>
+         </section>
+         <h2 xmlns:f="http://https://github.com/costezki/model2owl#" id="epo-ord:OrderResponseInformation">epo-ord:OrderResponseInformation</h2>
+         <section xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dl>
+               <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>epo-ord:OrderResponseInformation (class): The term definition does not contain WG
+                  approval metadata.</dd>
+               <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>epo-ord:OrderResponseInformation (class): The term definition does not contain eForms
+                  (BT/BG identifier) metadata. </dd>
+            </dl>
          </section>
          <h2 xmlns:f="http://https://github.com/costezki/model2owl#" id="epo-ord:OrderResponse">epo-ord:OrderResponse</h2>
          <section xmlns:f="http://https://github.com/costezki/model2owl#">
@@ -8902,24 +8920,6 @@
             <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>epo-ord:hasResponseDescription (attribute): The term definition does not contain eForms
                (BT/BG identifier) metadata. </dd>
          </section>
-         <h2 xmlns:f="http://https://github.com/costezki/model2owl#" id="epo-ord:OrderResponseInformation">epo-ord:OrderResponseInformation</h2>
-         <section xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dl>
-               <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>epo-ord:OrderResponseInformation (class): The term definition does not contain WG
-                  approval metadata.</dd>
-               <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>epo-ord:OrderResponseInformation (class): The term definition does not contain eForms
-                  (BT/BG identifier) metadata. </dd>
-            </dl>
-         </section>
-         <h2 xmlns:f="http://https://github.com/costezki/model2owl#" id="epo-ord:OrderResponseLine">epo-ord:OrderResponseLine</h2>
-         <section xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dl>
-               <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>epo-ord:OrderResponseLine (class): The term definition does not contain WG approval
-                  metadata.</dd>
-               <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>epo-ord:OrderResponseLine (class): The term definition does not contain eForms (BT/BG
-                  identifier) metadata. </dd>
-            </dl>
-         </section>
          <h1 class="selector-heading" id="enumerations">Enumerations</h1>
          <h2 xmlns:f="http://https://github.com/costezki/model2owl#" id="at-voc-new:ResponseStatus">at-voc-new:ResponseStatus</h2>
          <section xmlns:f="http://https://github.com/costezki/model2owl#">
@@ -8927,154 +8927,8 @@
                <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain WG approval metadata.</dd>
                <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain eForms (BT/BG identifier) metadata. </dd>
             </dl>
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>Accepted (attribute): The term definition does not contain WG approval metadata.</dd>
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>Accepted (attribute): The term definition does not contain eForms (BT/BG identifier)
-               metadata. </dd>
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter errors"><i class="fa fa-times-circle error"></i>Accepted (attribute): The definition of the external term does not contain an URL
-               pointing to the term original definition. </dd>
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>Rejected (attribute): The term definition does not contain WG approval metadata.</dd>
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>Rejected (attribute): The term definition does not contain eForms (BT/BG identifier)
-               metadata. </dd>
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter errors"><i class="fa fa-times-circle error"></i>Rejected (attribute): The definition of the external term does not contain an URL
-               pointing to the term original definition. </dd>
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>ConditionallyAccepted (attribute): The term definition does not contain WG approval
-               metadata.</dd>
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>ConditionallyAccepted (attribute): The term definition does not contain eForms (BT/BG
-               identifier) metadata. </dd>
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter errors"><i class="fa fa-times-circle error"></i>ConditionallyAccepted (attribute): The definition of the external term does not contain
-               an URL pointing to the term original definition. </dd>
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>InProgress (attribute): The term definition does not contain WG approval metadata.</dd>
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>InProgress (attribute): The term definition does not contain eForms (BT/BG identifier)
-               metadata. </dd>
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter errors"><i class="fa fa-times-circle error"></i>InProgress (attribute): The definition of the external term does not contain an URL
-               pointing to the term original definition. </dd>
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>Delivered (attribute): The term definition does not contain WG approval metadata.</dd>
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>Delivered (attribute): The term definition does not contain eForms (BT/BG identifier)
-               metadata. </dd>
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter errors"><i class="fa fa-times-circle error"></i>Delivered (attribute): The definition of the external term does not contain an URL
-               pointing to the term original definition. </dd>
          </section>
          <h1 class="selector-heading" id="associations">Associations</h1>
-         <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo-ord:AllowanceChargeInformation -&gt; epo:MonetaryValue (+epo:isCalculatedOn)</h2>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain WG approval metadata.</dd>
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain eForms (BT/BG identifier) metadata. </dd>
-         </dl>
-         <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo-ord:AllowanceChargeInformation -&gt; epo-ord:TaxInformation (+epo-ord:hasTaxInformation)</h2>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain WG approval metadata.</dd>
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain eForms (BT/BG identifier) metadata. </dd>
-         </dl>
-         <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo-ord:AllowanceChargeInformation -&gt; epo:MonetaryValue (+epo-cat:hasAmount)</h2>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain WG approval metadata.</dd>
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain eForms (BT/BG identifier) metadata. </dd>
-         </dl>
-         <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo-ord:AllowanceInformation -&gt; epo-ord:OrderLine (+epo-ord:isSpecificToOrderLine)</h2>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain WG approval metadata.</dd>
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain eForms (BT/BG identifier) metadata. </dd>
-         </dl>
-         <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo-ord:AllowanceInformation -&gt; epo-inv:InvoiceLine (+epo-inv:isSpecificToInvoiceLine)</h2>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain WG approval metadata.</dd>
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain eForms (BT/BG identifier) metadata. </dd>
-         </dl>
-         <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo-cat:Price -&gt; epo-ord:AllowanceInformation (+epo-ord:hasPriceDiscountInformation)</h2>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain WG approval metadata.</dd>
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain eForms (BT/BG identifier) metadata. </dd>
-         </dl>
-         <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo-inv:Invoice -&gt; epo-ord:AllowanceInformation (+epo-ord:specifiesAllowanceInformation)</h2>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain WG approval metadata.</dd>
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain eForms (BT/BG identifier) metadata. </dd>
-         </dl>
-         <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo-ord:Order -&gt; epo-ord:AllowanceInformation (+epo-ord:specifiesAllowanceInformation)</h2>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain WG approval metadata.</dd>
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain eForms (BT/BG identifier) metadata. </dd>
-         </dl>
-         <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo-ful:DespatchAdvice -&gt; epo-ord:Consignee (+epo-ful:specifiesConsignee)</h2>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain WG approval metadata.</dd>
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain eForms (BT/BG identifier) metadata. </dd>
-         </dl>
-         <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo-ord:DeliveryInformation -&gt; epo-ord:Consignee (+epo-ord:concernsConsignee)</h2>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain WG approval metadata.</dd>
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain eForms (BT/BG identifier) metadata. </dd>
-         </dl>
-         <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo-ful:ReceiptAdvice -&gt; epo-ord:Consignee (+epo-ful:specifiesConsignee)</h2>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain WG approval metadata.</dd>
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain eForms (BT/BG identifier) metadata. </dd>
-         </dl>
-         <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo-ord:ContractInformation -&gt; epo-ord:OrderLine (+epo-ord:isSpecificToOrderLine)</h2>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain WG approval metadata.</dd>
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain eForms (BT/BG identifier) metadata. </dd>
-         </dl>
-         <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo-ord:ContractInformation -&gt; epo:Contract (+epo-ord:concernsContract)</h2>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain WG approval metadata.</dd>
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain eForms (BT/BG identifier) metadata. </dd>
-         </dl>
-         <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo-ord:Order -&gt; epo-ord:ContractInformation (+epo-ord:specifiesContractInformation)</h2>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain WG approval metadata.</dd>
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain eForms (BT/BG identifier) metadata. </dd>
-         </dl>
-         <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo-ord:DeliveryAgreement -&gt; dct:Location (+epo-ord:specifiesDeliveryAgreementLocation)</h2>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain WG approval metadata.</dd>
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain eForms (BT/BG identifier) metadata. </dd>
-         </dl>
-         <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo-ord:DeliveryInformation -&gt; epo-ord:DeliveryAgreement (+epo-ord:specifiesGeneralDeliveryAgreement)</h2>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain WG approval metadata.</dd>
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain eForms (BT/BG identifier) metadata. </dd>
-         </dl>
-         <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo-ord:DeliveryInformation -&gt; epo-ord:DeliveryAgreement (+epo-ord:specifiesSpecificDeliveryAgreement)</h2>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain WG approval metadata.</dd>
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain eForms (BT/BG identifier) metadata. </dd>
-         </dl>
-         <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo-ord:DeliveryInformation -&gt; epo-ord:OrderLine (+epo-ord:isSpecificToOrderLine)</h2>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain WG approval metadata.</dd>
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain eForms (BT/BG identifier) metadata. </dd>
-         </dl>
-         <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo-ord:DeliveryInformation -&gt; dct:Location (+epo-ord:specifiesPlaceOfDelivery)</h2>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain WG approval metadata.</dd>
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain eForms (BT/BG identifier) metadata. </dd>
-         </dl>
-         <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo-ord:DeliveryInformation -&gt; epo:Period (+epo-ord:hasDeliveryPeriod)</h2>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain WG approval metadata.</dd>
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain eForms (BT/BG identifier) metadata. </dd>
-         </dl>
-         <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo-ord:DeliveryInformation -&gt; adms:Identifier (+epo-ful:hasTrackingID)</h2>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain WG approval metadata.</dd>
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain eForms (BT/BG identifier) metadata. </dd>
-         </dl>
-         <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo-inv:Invoice -&gt; epo-ord:DeliveryInformation (+epo-ord:specifiesDeliveryInformation)</h2>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain WG approval metadata.</dd>
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain eForms (BT/BG identifier) metadata. </dd>
-         </dl>
-         <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo-ful:ShipmentInformation -&gt; epo-ord:DeliveryInformation (+epo-ful:refersToDeliveryInformation)</h2>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain WG approval metadata.</dd>
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain eForms (BT/BG identifier) metadata. </dd>
-         </dl>
-         <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo-ord:Order -&gt; epo-ord:DeliveryInformation (+epo-ord:specifiesDeliveryInformation)</h2>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain WG approval metadata.</dd>
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain eForms (BT/BG identifier) metadata. </dd>
-         </dl>
          <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo-ord:Order -&gt; epo:Period (+epo:hasValidityPeriod)</h2>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
             <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain WG approval metadata.</dd>
@@ -9086,6 +8940,11 @@
             <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain eForms (BT/BG identifier) metadata. </dd>
          </dl>
          <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo-ord:Order -&gt; epo:MonetaryValue (+epo-ord:hasTotalTaxExclusiveAmount)</h2>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain WG approval metadata.</dd>
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain eForms (BT/BG identifier) metadata. </dd>
+         </dl>
+         <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo-ord:Order -&gt; epo-ord:ContractInformation (+epo-ord:specifiesContractInformation)</h2>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
             <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain WG approval metadata.</dd>
             <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain eForms (BT/BG identifier) metadata. </dd>
@@ -9135,6 +8994,11 @@
             <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain WG approval metadata.</dd>
             <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain eForms (BT/BG identifier) metadata. </dd>
          </dl>
+         <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo-ord:Order -&gt; epo-ord:AllowanceInformation (+epo-ord:specifiesAllowanceInformation)</h2>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain WG approval metadata.</dd>
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain eForms (BT/BG identifier) metadata. </dd>
+         </dl>
          <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo-ord:Order -&gt; epo:MonetaryValue (+epo-ord:hasPrepaidAmount)</h2>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
             <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain WG approval metadata.</dd>
@@ -9151,6 +9015,11 @@
             <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain eForms (BT/BG identifier) metadata. </dd>
          </dl>
          <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo-ord:Order -&gt; adms:Identifier (+epo-ord:hasSellerOrderID)</h2>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain WG approval metadata.</dd>
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain eForms (BT/BG identifier) metadata. </dd>
+         </dl>
+         <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo-ord:Order -&gt; epo-ord:DeliveryInformation (+epo-ord:specifiesDeliveryInformation)</h2>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
             <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain WG approval metadata.</dd>
             <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain eForms (BT/BG identifier) metadata. </dd>
@@ -9176,6 +9045,151 @@
             <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain eForms (BT/BG identifier) metadata. </dd>
          </dl>
          <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo-ord:OrderResponse -&gt; epo-ord:Order (+epo-ord:isSubmittedForOrder)</h2>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain WG approval metadata.</dd>
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain eForms (BT/BG identifier) metadata. </dd>
+         </dl>
+         <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo-ord:TaxInformation -&gt; epo:MonetaryValue (+epo:isCalculatedOn)</h2>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain WG approval metadata.</dd>
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain eForms (BT/BG identifier) metadata. </dd>
+         </dl>
+         <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo-ord:TaxInformation -&gt; epo:MonetaryValue (+epo-cat:hasAmount)</h2>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain WG approval metadata.</dd>
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain eForms (BT/BG identifier) metadata. </dd>
+         </dl>
+         <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo-ord:AllowanceChargeInformation -&gt; epo-ord:TaxInformation (+epo-ord:hasTaxInformation)</h2>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain WG approval metadata.</dd>
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain eForms (BT/BG identifier) metadata. </dd>
+         </dl>
+         <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo-cat:Item -&gt; epo-ord:TaxInformation (+epo-ord:hasTaxInformation)</h2>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain WG approval metadata.</dd>
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain eForms (BT/BG identifier) metadata. </dd>
+         </dl>
+         <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo-inv:InvoiceLine -&gt; epo-ord:TaxInformation (+epo-ord:hasTaxInformation)</h2>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain WG approval metadata.</dd>
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain eForms (BT/BG identifier) metadata. </dd>
+         </dl>
+         <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo-inv:TaxBreakdownInformation -&gt; epo-ord:TaxInformation (+epo-ord:hasTaxInformation)</h2>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain WG approval metadata.</dd>
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain eForms (BT/BG identifier) metadata. </dd>
+         </dl>
+         <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo-inv:Invoice -&gt; epo-ord:TaxInformation (+epo-ord:hasTaxInformation)</h2>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain WG approval metadata.</dd>
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain eForms (BT/BG identifier) metadata. </dd>
+         </dl>
+         <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo:Contract -&gt; epo-ord:TaxInformation (+epo-ord:hasTaxInformation)</h2>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain WG approval metadata.</dd>
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain eForms (BT/BG identifier) metadata. </dd>
+         </dl>
+         <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo-ord:DeliveryAgreement -&gt; dct:Location (+epo-ord:specifiesDeliveryAgreementLocation)</h2>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain WG approval metadata.</dd>
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain eForms (BT/BG identifier) metadata. </dd>
+         </dl>
+         <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo-ord:DeliveryInformation -&gt; epo-ord:DeliveryAgreement (+epo-ord:specifiesGeneralDeliveryAgreement)</h2>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain WG approval metadata.</dd>
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain eForms (BT/BG identifier) metadata. </dd>
+         </dl>
+         <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo-ord:DeliveryInformation -&gt; epo-ord:DeliveryAgreement (+epo-ord:specifiesSpecificDeliveryAgreement)</h2>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain WG approval metadata.</dd>
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain eForms (BT/BG identifier) metadata. </dd>
+         </dl>
+         <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo-ord:OriginatorInformation -&gt; epo-ord:Originator (+epo-ord:concernsOriginator)</h2>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain WG approval metadata.</dd>
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain eForms (BT/BG identifier) metadata. </dd>
+         </dl>
+         <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo-ord:OriginatorInformation -&gt; epo:OriginatorRequest (+epo-ord:concernsOriginatorRequest)</h2>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain WG approval metadata.</dd>
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain eForms (BT/BG identifier) metadata. </dd>
+         </dl>
+         <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo-ord:OriginatorInformation -&gt; epo-ord:OrderLine (+epo-ord:isSpecificToOrderLine)</h2>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain WG approval metadata.</dd>
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain eForms (BT/BG identifier) metadata. </dd>
+         </dl>
+         <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo-ord:AllowanceChargeInformation -&gt; epo:MonetaryValue (+epo:isCalculatedOn)</h2>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain WG approval metadata.</dd>
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain eForms (BT/BG identifier) metadata. </dd>
+         </dl>
+         <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo-ord:AllowanceChargeInformation -&gt; epo:MonetaryValue (+epo-cat:hasAmount)</h2>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain WG approval metadata.</dd>
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain eForms (BT/BG identifier) metadata. </dd>
+         </dl>
+         <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo-ord:ContractInformation -&gt; epo-ord:OrderLine (+epo-ord:isSpecificToOrderLine)</h2>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain WG approval metadata.</dd>
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain eForms (BT/BG identifier) metadata. </dd>
+         </dl>
+         <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo-ord:ContractInformation -&gt; epo:Contract (+epo-ord:concernsContract)</h2>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain WG approval metadata.</dd>
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain eForms (BT/BG identifier) metadata. </dd>
+         </dl>
+         <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo-ord:DeliveryInformation -&gt; epo-ord:Consignee (+epo-ord:concernsConsignee)</h2>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain WG approval metadata.</dd>
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain eForms (BT/BG identifier) metadata. </dd>
+         </dl>
+         <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo-ord:DeliveryInformation -&gt; epo-ord:OrderLine (+epo-ord:isSpecificToOrderLine)</h2>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain WG approval metadata.</dd>
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain eForms (BT/BG identifier) metadata. </dd>
+         </dl>
+         <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo-ord:DeliveryInformation -&gt; dct:Location (+epo-ord:specifiesPlaceOfDelivery)</h2>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain WG approval metadata.</dd>
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain eForms (BT/BG identifier) metadata. </dd>
+         </dl>
+         <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo-ord:DeliveryInformation -&gt; epo:Period (+epo-ord:hasDeliveryPeriod)</h2>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain WG approval metadata.</dd>
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain eForms (BT/BG identifier) metadata. </dd>
+         </dl>
+         <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo-ord:DeliveryInformation -&gt; adms:Identifier (+epo-ful:hasTrackingID)</h2>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain WG approval metadata.</dd>
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain eForms (BT/BG identifier) metadata. </dd>
+         </dl>
+         <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo-inv:Invoice -&gt; epo-ord:DeliveryInformation (+epo-ord:specifiesDeliveryInformation)</h2>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain WG approval metadata.</dd>
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain eForms (BT/BG identifier) metadata. </dd>
+         </dl>
+         <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo-ful:ShipmentInformation -&gt; epo-ord:DeliveryInformation (+epo-ful:refersToDeliveryInformation)</h2>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain WG approval metadata.</dd>
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain eForms (BT/BG identifier) metadata. </dd>
+         </dl>
+         <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo-ord:AllowanceInformation -&gt; epo-ord:OrderLine (+epo-ord:isSpecificToOrderLine)</h2>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain WG approval metadata.</dd>
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain eForms (BT/BG identifier) metadata. </dd>
+         </dl>
+         <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo-ord:AllowanceInformation -&gt; epo-inv:InvoiceLine (+epo-inv:isSpecificToInvoiceLine)</h2>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain WG approval metadata.</dd>
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain eForms (BT/BG identifier) metadata. </dd>
+         </dl>
+         <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo-cat:Price -&gt; epo-ord:AllowanceInformation (+epo-ord:hasPriceDiscountInformation)</h2>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain WG approval metadata.</dd>
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain eForms (BT/BG identifier) metadata. </dd>
+         </dl>
+         <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo-inv:Invoice -&gt; epo-ord:AllowanceInformation (+epo-ord:specifiesAllowanceInformation)</h2>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
             <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain WG approval metadata.</dd>
             <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain eForms (BT/BG identifier) metadata. </dd>
@@ -9215,26 +9229,6 @@
             <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain WG approval metadata.</dd>
             <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain eForms (BT/BG identifier) metadata. </dd>
          </dl>
-         <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo-ord:OriginatorInformation -&gt; epo-ord:OrderLine (+epo-ord:isSpecificToOrderLine)</h2>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain WG approval metadata.</dd>
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain eForms (BT/BG identifier) metadata. </dd>
-         </dl>
-         <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo-ord:OriginatorInformation -&gt; epo-ord:Originator (+epo-ord:concernsOriginator)</h2>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain WG approval metadata.</dd>
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain eForms (BT/BG identifier) metadata. </dd>
-         </dl>
-         <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo-ful:DespatchAdvice -&gt; epo-ord:Originator (+epo-ful:specifiesOriginator)</h2>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain WG approval metadata.</dd>
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain eForms (BT/BG identifier) metadata. </dd>
-         </dl>
-         <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo-ord:OriginatorInformation -&gt; epo:OriginatorRequest (+epo-ord:concernsOriginatorRequest)</h2>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain WG approval metadata.</dd>
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain eForms (BT/BG identifier) metadata. </dd>
-         </dl>
          <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo-ful:ShipmentAgreement -&gt; epo-ord:Seller (+epo-ful:agreedBySeller)</h2>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
             <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain WG approval metadata.</dd>
@@ -9260,42 +9254,32 @@
             <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain WG approval metadata.</dd>
             <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain eForms (BT/BG identifier) metadata. </dd>
          </dl>
-         <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo-ord:TaxInformation -&gt; epo:MonetaryValue (+epo:isCalculatedOn)</h2>
+         <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo-ful:DespatchAdvice -&gt; epo-ord:Consignee (+epo-ful:specifiesConsignee)</h2>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
             <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain WG approval metadata.</dd>
             <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain eForms (BT/BG identifier) metadata. </dd>
          </dl>
-         <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo-ord:TaxInformation -&gt; epo:MonetaryValue (+epo-cat:hasAmount)</h2>
+         <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo-ful:ReceiptAdvice -&gt; epo-ord:Consignee (+epo-ful:specifiesConsignee)</h2>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
             <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain WG approval metadata.</dd>
             <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain eForms (BT/BG identifier) metadata. </dd>
          </dl>
-         <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo-cat:Item -&gt; epo-ord:TaxInformation (+epo-ord:hasTaxInformation)</h2>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain WG approval metadata.</dd>
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain eForms (BT/BG identifier) metadata. </dd>
-         </dl>
-         <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo-inv:InvoiceLine -&gt; epo-ord:TaxInformation (+epo-ord:hasTaxInformation)</h2>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain WG approval metadata.</dd>
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain eForms (BT/BG identifier) metadata. </dd>
-         </dl>
-         <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo-inv:TaxBreakdownInformation -&gt; epo-ord:TaxInformation (+epo-ord:hasTaxInformation)</h2>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain WG approval metadata.</dd>
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain eForms (BT/BG identifier) metadata. </dd>
-         </dl>
-         <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo-inv:Invoice -&gt; epo-ord:TaxInformation (+epo-ord:hasTaxInformation)</h2>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain WG approval metadata.</dd>
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain eForms (BT/BG identifier) metadata. </dd>
-         </dl>
-         <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo:Contract -&gt; epo-ord:TaxInformation (+epo-ord:hasTaxInformation)</h2>
+         <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo-ful:DespatchAdvice -&gt; epo-ord:Originator (+epo-ful:specifiesOriginator)</h2>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
             <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain WG approval metadata.</dd>
             <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain eForms (BT/BG identifier) metadata. </dd>
          </dl>
          <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo-ord:OrderResponse -&gt; epo-ord:OrderResponseLine (+epo-ord:comprisesOrderResponseLine)</h2>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain WG approval metadata.</dd>
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain eForms (BT/BG identifier) metadata. </dd>
+         </dl>
+         <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo-ord:OrderResponseInformation -&gt; epo-ord:OrderResponseLine (+epo-ord:isSpecificToOrderResponseLine)</h2>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain WG approval metadata.</dd>
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain eForms (BT/BG identifier) metadata. </dd>
+         </dl>
+         <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo-ord:OrderResponseInformation -&gt; epo:Period (+epo-ord:hasDeliveryPeriod)</h2>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
             <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain WG approval metadata.</dd>
             <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain eForms (BT/BG identifier) metadata. </dd>
@@ -9315,28 +9299,18 @@
             <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain WG approval metadata.</dd>
             <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain eForms (BT/BG identifier) metadata. </dd>
          </dl>
-         <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo-ord:OrderResponseInformation -&gt; epo-ord:OrderResponseLine (+epo-ord:isSpecificToOrderResponseLine)</h2>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain WG approval metadata.</dd>
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain eForms (BT/BG identifier) metadata. </dd>
-         </dl>
-         <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo-ord:OrderResponseInformation -&gt; epo:Period (+epo-ord:hasDeliveryPeriod)</h2>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain WG approval metadata.</dd>
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain eForms (BT/BG identifier) metadata. </dd>
-         </dl>
          <h1 class="selector-heading" id="dependencies">Dependencies</h1>
-         <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo-ord:AllowanceChargeInformation -&gt; at-voc-new:allowance-charge-reason (+epo-ful:hasAllowanceChargeReason)</h2>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain WG approval metadata.</dd>
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain eForms (BT/BG identifier) metadata. </dd>
-         </dl>
          <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo-ord:TaxInformation -&gt; at-voc-new:tax-category (+epo-cat:hasTaxCategory)</h2>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
             <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain WG approval metadata.</dd>
             <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain eForms (BT/BG identifier) metadata. </dd>
          </dl>
          <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo-ord:TaxInformation -&gt; at-voc-new:tax-scheme (+epo-cat:hasTaxScheme)</h2>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain WG approval metadata.</dd>
+            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain eForms (BT/BG identifier) metadata. </dd>
+         </dl>
+         <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo-ord:AllowanceChargeInformation -&gt; at-voc-new:allowance-charge-reason (+epo-ful:hasAllowanceChargeReason)</h2>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
             <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain WG approval metadata.</dd>
             <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-check info"></i>The term definition does not contain eForms (BT/BG identifier) metadata. </dd>

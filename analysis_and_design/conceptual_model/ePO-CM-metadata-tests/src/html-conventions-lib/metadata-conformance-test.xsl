@@ -43,25 +43,26 @@
                     </xsl:call-template>
             </xsl:variable>
             <xsl:variable name="classAttributeChecks" as="item()*">
-                <xsl:variable name="attributes" select="attributes/attribute"/>
-                <xsl:for-each select="$attributes">
-                    <xsl:call-template name="wgMetadata">
-                        <xsl:with-param name="obj" select="."/>
-                        <xsl:with-param name="objName" select="./@name"/>
-                        <xsl:with-param name="objType" select="'Attribute'"/>
-                    </xsl:call-template>
-                    <xsl:call-template name="btgMetadata">
-                        <xsl:with-param name="obj" select="."/>
-                        <xsl:with-param name="objName" select="./@name"/>
-                        <xsl:with-param name="objType" select="'Attribute'"/>
-                    </xsl:call-template>
-                    <xsl:call-template name="externalTermDefLink">
-                        <xsl:with-param name="obj" select="."/>
-                        <xsl:with-param name="objName" select="./@name"/>
-                        <xsl:with-param name="objType" select="'Attribute'"/>
-                    </xsl:call-template>
-                </xsl:for-each>
-                
+                <xsl:if test="not($eaObjType = 'uml:Enumeration')">
+                    <xsl:variable name="attributes" select="attributes/attribute"/>
+                    <xsl:for-each select="$attributes">
+                        <xsl:call-template name="wgMetadata">
+                            <xsl:with-param name="obj" select="."/>
+                            <xsl:with-param name="objName" select="./@name"/>
+                            <xsl:with-param name="objType" select="'Attribute'"/>
+                        </xsl:call-template>
+                        <xsl:call-template name="btgMetadata">
+                            <xsl:with-param name="obj" select="."/>
+                            <xsl:with-param name="objName" select="./@name"/>
+                            <xsl:with-param name="objType" select="'Attribute'"/>
+                        </xsl:call-template>
+                        <xsl:call-template name="externalTermDefLink">
+                            <xsl:with-param name="obj" select="."/>
+                            <xsl:with-param name="objName" select="./@name"/>
+                            <xsl:with-param name="objType" select="'Attribute'"/>
+                        </xsl:call-template>
+                    </xsl:for-each>
+                </xsl:if>
             </xsl:variable>
             <xsl:if test="boolean($classChecks) or boolean($classAttributeChecks)">
                 <h2 id="{$elementName}">
