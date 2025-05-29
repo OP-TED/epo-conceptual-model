@@ -1,0 +1,1791 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+   xmlns:dcterms="http://purl.org/dc/terms/"
+   xmlns:owl="http://www.w3.org/2002/07/owl#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+   xmlns:sh="http://www.w3.org/ns/shacl#"
+   xmlns:vann="http://purl.org/vocab/vann/"
+>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#cat-shape">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
+    <owl:imports rdf:resource="http://purl.org/dc/terms/"/>
+    <owl:imports rdf:resource="http://www.w3.org/ns/org#"/>
+    <owl:imports rdf:resource="http://www.w3.org/2004/02/skos/core#"/>
+    <owl:imports rdf:resource="http://data.europa.eu/a4g/ontology#core"/>
+    <owl:imports rdf:resource="http://data.europa.eu/a4g/ontology#ful"/>
+    <owl:imports rdf:resource="http://data.europa.eu/a4g/ontology#ord"/>
+    <owl:imports rdf:resource="http://www.w3.org/2006/time"/>
+    <owl:imports rdf:resource="http://www.w3.org/ns/locn"/>
+    <owl:imports rdf:resource="http://data.europa.eu/m8g/"/>
+    <owl:imports rdf:resource="http://www.w3.org/ns/person"/>
+    <owl:imports rdf:resource="http://www.w3.org/ns/adms"/>
+    <owl:imports rdf:resource="http://data.europa.eu/eli/ontology#"/>
+    <owl:imports rdf:resource="http://data.europa.eu/a4g/ontology#cat"/>
+    <owl:imports rdf:resource="http://data.europa.eu/a4g/ontology#cat-restriction"/>
+    <dcterms:title xml:lang="en">eProcurement Ontology Catalogue - core shapes</dcterms:title>
+    <rdfs:label xml:lang="en">eProcurement Ontology Catalogue - core shapes</rdfs:label>
+    <dcterms:publisher>http://publications.europa.eu/resource/authority/corporate-body/PUBL</dcterms:publisher>
+    <dcterms:description xml:lang="en">The eProcurement Ontology Catalogue core shapes provides the generic datashape specifications for the eProcurement Ontology Catalogue core.</dcterms:description>
+    <rdfs:comment>This version is automatically generated from eCatalogue.xml on 2025-05-29</rdfs:comment>
+    <rdfs:seeAlso rdf:resource="https://github.com/OP-TED/ePO/releases"/>
+    <rdfs:seeAlso rdf:resource="https://joinup.ec.europa.eu/collection/eprocurement/solution/eprocurement-ontology/about"/>
+    <rdfs:seeAlso rdf:resource="https://op.europa.eu/en/web/eu-vocabularies/e-procurement"/>
+    <rdfs:seeAlso rdf:resource="https://docs.ted.europa.eu/home/index.html"/>
+    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-05-29</dcterms:issued>
+    <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2021-06-01</dcterms:created>
+    <owl:versionInfo>5.1.0</owl:versionInfo>
+    <owl:incompatibleWith>4.2.0</owl:incompatibleWith>
+    <owl:versionIRI rdf:resource="http://data.europa.eu/a4g/data-shape#cat-shape-5.1.0"/>
+    <owl:priorVersion>http://data.europa.eu/a4g/data-shape#cat-shape-5.0.0</owl:priorVersion>
+    <vann:preferredNamespaceUri>http://data.europa.eu/a4g/ontology#</vann:preferredNamespaceUri>
+    <vann:preferredNamespacePrefix>epo</vann:preferredNamespacePrefix>
+    <dcterms:license>© European Union, 2014. Unless otherwise noted, the reuse of the Ontology is authorised under the European Union Public Licence v1.2 (https://eupl.eu/).</dcterms:license>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-inv-InvoiceLine-epo-cat-hasPrice">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#Price"/>
+    <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
+    <sh:sparql rdf:nodeID="N4098605400e8452f882cdd1391240f6a"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasPrice"/>
+    <sh:name>has Price</sh:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-CatalogueLine-epo-cat-hasMaximumOrderQuantity">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#Quantity"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:sparql rdf:nodeID="Nf12633fe68544fdabf12c054e4ae5edc"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasMaximumOrderQuantity"/>
+    <sh:name>has Maximum Order Quantity</sh:name>
+    <sh:description>The maximum number of orderable units that can be ordered according to details provided in the catalogue line, such as price.</sh:description>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N4f71a711207240e893f39a3ce48ef8e2">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasBatchID&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasBatchID&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-AbstractItem-epo-hasSellerItemID">
+    <sh:class rdf:resource="http://www.w3.org/ns/adms#Identifier"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:sparql rdf:nodeID="N74993ac6134e4627a546f2259d1bebd4"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasSellerItemID"/>
+    <sh:name>has Seller Item ID</sh:name>
+    <sh:description>The general identifier assigned to the concept as defined by the Seller.​</sh:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-AbstractItem-epo-cat-hasQualifiedItemRelation">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#ItemRelation"/>
+    <sh:sparql rdf:nodeID="N3cce15843a5c4798922c90d710e726bb"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasQualifiedItemRelation"/>
+    <sh:name>has Qualified Item Relation</sh:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-Price-epo-ord-hasGrossMonetaryValue">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#MonetaryValue"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:sparql rdf:nodeID="Nbb40d230999d49f9bf23abd952230527"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasGrossMonetaryValue"/>
+    <sh:name>has Gross Monetary Value</sh:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-AbstractItem-epo-hasSerialID">
+    <sh:class rdf:resource="http://www.w3.org/ns/adms#Identifier"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:sparql rdf:nodeID="N331606f0641041b1a6a14bcaabf6b53d"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasSerialID"/>
+    <sh:name>has Serial ID</sh:name>
+    <sh:description>The identifier assigned to the specific instance of the produced concept.</sh:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-Manufacturer-epo-hasManufacturerID">
+    <sh:class rdf:resource="http://www.w3.org/ns/adms#Identifier"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:sparql rdf:nodeID="N8090622f7a9d4c7792957138ae395223"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasManufacturerID"/>
+    <sh:name>has Manufacturer ID</sh:name>
+    <sh:description>The manufacturer's identifier for the item.</sh:description>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N7c81a2fffff84e74af865c337db5ca16">
+    <rdf:first rdf:nodeID="Nd24c47f7098143d8b669d63e183359bc"/>
+    <rdf:rest rdf:nodeID="N7096a58b038f453093fe5fb06c465491"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-CatalogueLine-epo-cat-hasTransactionConditionsCode">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasTransactionConditionsCode"/>
+    <sh:class rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:name>has Transaction Conditions Code</sh:name>
+    <sh:description>Coded description of the specific transaction conditions (purchasing, sales, payment, delivery) for an item.</sh:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-DimensionInformation-epo-cat-concernsItem">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#AbstractItem"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:sparql rdf:nodeID="N2f5a2e002a1349539f250abb6cd880e2"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#concernsItem"/>
+    <sh:name>concerns Item</sh:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-ItemRequirement">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+    <sh:targetClass rdf:resource="http://data.europa.eu/a4g/ontology#ItemRequirement"/>
+    <rdfs:label>Item Requirement</rdfs:label>
+    <rdfs:comment>Necessity of an Item by the described item. Additional Information: The described item is provided without other items that are required for proper functionality. For example, a printer cannot be used without ink cartridge; or a Server cannot be used without its installation.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#cat-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-EnvironmentalEmissionInformation-epo-cat-concernsItem">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#AbstractItem"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:sparql rdf:nodeID="N569c68a38504437485fa2e35930c0934"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#concernsItem"/>
+    <sh:name>concerns Item</sh:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-AbstractItem">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+    <sh:targetClass rdf:resource="http://data.europa.eu/a4g/ontology#AbstractItem"/>
+    <rdfs:label>Abstract Item</rdfs:label>
+    <rdfs:comment>A product, work, service or any combination of them. Additional Information: An Item can be an atomic Thing or a composition of things that together are seen as a unit, e.g. a tetrabrik of milk or an indivisible package of six tetrabriks. No distinction is provided between services, goods and works to leave room for innovation.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#cat-shape"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-AbstractItem-epo-cat-hasKeyword"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-AbstractItem-epo-cat-isInStock"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-AbstractItem-epo-cat-hasBrand"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-AbstractItem-epo-cat-hasModel"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-AbstractItem-epo-cat-hasQualifiedItemRelation"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-AbstractItem-epo-cat-hasSpecification"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-AbstractItem-epo-cat-hasManufacturer"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-AbstractItem-epo-hasItemStandardID"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-AbstractItem-epo-cat-hasHazardousClassID"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-AbstractItem-epo-cat-hasNetQuantity"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-AbstractItem-epo-ord-hasTaxInformation"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-AbstractItem-epo-inv-hasItemClassificationIdentifier"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-AbstractItem-epo-cat-hasAccessoryItem"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-AbstractItem-epo-hasCertification"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-AbstractItem-epo-hasSellerItemID"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-AbstractItem-epo-cat-hasComplementaryItem"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-AbstractItem-epo-hasSerialID"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-AbstractItem-epo-hasManufacturerItemID"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-AbstractItem-epo-hasBuyerItemID"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-AbstractItem-epo-cat-hasCountryOfOrigin"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-AbstractItem-epo-cat-hasItemClassification"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-AbstractItem-epo-cat-hasHazardousItemUNDGCode"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-AbstractItem-epo-cat-hasDeliveryClassification"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-Line-epo-ful-hasAssociatedDocument">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#Document"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:sparql rdf:nodeID="N08221d9ffdc245ea879c98866f81430e"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasAssociatedDocument"/>
+    <sh:name>has Associated Document</sh:name>
+    <sh:description>Is related to a Document.</sh:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-ItemProperty-epo-cat-hasClassificationScheme">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasClassificationScheme"/>
+    <sh:name>has Classification Scheme</sh:name>
+    <sh:description>The classification scheme where a property is defined. Additional Information: For example, the following two properties are defined in the ECLASS classification of goods and services: (0173-1#02-AAA026#007) drilling diameter: drilling diameter, (0173-1#02-AAA030#007) flange diameter: flange diameter .</sh:description>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#cat-shape"/>
+    <sh:or rdf:nodeID="Ne2c84218febf490c9ea5f36c105814a1"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Nfcab5ac95e5d4f1690e48a40f0d704f2">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#isSpecificToInvoiceLine&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#isSpecificToInvoiceLine&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-inv-Invoice-epo-cat-specifiesChargeInformation">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#ChargeInformation"/>
+    <sh:sparql rdf:nodeID="N2a03ee20fc474e75a267406cd8e40e91"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#specifiesChargeInformation"/>
+    <sh:name>specifies Charge Information</sh:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-EnvironmentalEmissionInformation-epo-hasCalculationMethod">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasCalculationMethod"/>
+    <sh:name>has Calculation Method</sh:name>
+    <sh:description>Formula for obtaining values. Additional Information: The possible values are monetary values, ranking scores, criterion weighting.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#cat-shape"/>
+    <sh:or rdf:nodeID="N031715dbe71240dd9a8a2830230a337d"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-PostAwardDocument-epo-hasDocumentStatus">
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasDocumentStatus"/>
+    <sh:name>has Document Status</sh:name>
+    <sh:description>https://test-docs.peppol.eu/logistics/transport-execution/codelist/DocumentStatusCode/</sh:description>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N7096a58b038f453093fe5fb06c465491">
+    <rdf:first rdf:nodeID="N0fcf368e3cb44c47b9fd95b87903924c"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N27d23b9018b1400bb27e9b6057b95e53">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasMinimumValue&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasMinimumValue&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N30a8fae2b568455f9ba0569d3c017059">
+    <rdf:first rdf:nodeID="N40ed9d7aed4c449fa5efdb90603c0b46"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N1f9806d45d714a97aa9fdc9c641e02ab">
+    <rdf:first rdf:nodeID="N2f53052cbc4843b485a02aae6d7a7562"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-ItemProperty-epo-cat-hasLiteralValue">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasLiteralValue"/>
+    <sh:name>has Literal Value</sh:name>
+    <sh:description>Simple value of the property, which is defined in a classification scheme. Additional Information: For example, the (0173-1#02-AAV139#001) coating 1 of an optical material has value of "silver". This simple literal value is for the cases when the property value does not have units, in which case the qualifiedValue shall be used.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#cat-shape"/>
+    <sh:or rdf:nodeID="Nf6f243566fb44ae2993cfe21a865dfaa"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-AbstractItem-epo-hasItemStandardID">
+    <sh:class rdf:resource="http://www.w3.org/ns/adms#Identifier"/>
+    <sh:sparql rdf:nodeID="Nbd884e6d60bd4fa78b910be5c1fb3d92"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasItemStandardID"/>
+    <sh:name>has Item Standard ID</sh:name>
+    <sh:description>The general identifier assigned to the concept based on a standard scheme.​ Additional information: For example the GTIN scheme (Global Trade Item Number).</sh:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-CatalogueResponse-epo-specifiesCatalogueProvider">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#CatalogueProvider"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
+    <sh:sparql rdf:nodeID="Nb0652aca8c7e4ad79ac5db9ef5bd5456"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#specifiesCatalogueProvider"/>
+    <sh:name>specifies Catalogue Provider</sh:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-ItemReplacement">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+    <sh:targetClass rdf:resource="http://data.europa.eu/a4g/ontology#ItemReplacement"/>
+    <rdfs:label>Item Replacement</rdfs:label>
+    <rdfs:comment>Supplantment, displacement or suspension of an Item by the described Item.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#cat-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-CatalogueLine">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+    <sh:targetClass rdf:resource="http://data.europa.eu/a4g/ontology#CatalogueLine"/>
+    <rdfs:label>Catalogue Line</rdfs:label>
+    <rdfs:comment>Aggregated information about the Terms and specifications for procuring an Item. Details about an Item, like Prices, packaging, discounts, special promotions, etc. TC 440: Detailed information of an Item, Price and its composition in a Catalogue. Composition: e.g. information referring to its description, how to order it, what it is made of, properties, delivery conditions, etc.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#cat-shape"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-CatalogueLine-epo-cat-hasOrderableQuantityIncrement"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-CatalogueLine-epo-cat-hasOrderableUnitFactorRate"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-CatalogueLine-epo-cat-hasTransactionConditions"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-CatalogueLine-epo-cat-hasWarrantyInformation"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-CatalogueLine-epo-cat-isContractedItem"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-CatalogueLine-epo-cat-isOrderable"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-CatalogueLine-epo-cat-hasChargeInformation"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-CatalogueLine-epo-cat-hasPrice"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-CatalogueLine-epo-cat-hasStandardisedUnitPrice"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-CatalogueLine-epo-cat-foreseesPackage"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-CatalogueLine-epo-cat-hasCatalogueLineValidity"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-CatalogueLine-epo-cat-hasMinimumQuantityGuaranteedForDelivery"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-CatalogueLine-epo-cat-hasMaximumOrderQuantity"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-CatalogueLine-epo-cat-hasTransactionConditionsCode"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-CatalogueLine-epo-cat-hasOrderableUnit"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-CatalogueLine-epo-cat-hasActivityCode"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-Price-epo-cat-hasOrderabableUnitFactorRate">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#Quantity"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:sparql rdf:nodeID="Ndb56d7acdd4541af8cae6b0258e8ac78"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasOrderabableUnitFactorRate"/>
+    <sh:name>has Orderabable Unit Factor Rate</sh:name>
+    <sh:description>The factor by which the base unit of the price can be converted to orderable unit. Additional information: This is needed when the base price is provided different than the orderable unit. For example, when selling paper, the price may be set per page, but the orderable unit is a package of 500 pieces. Therefore the price needs to be converted to the orderable unit.</sh:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-Price-epo-cat-hasDeliveryLocation">
+    <sh:class rdf:resource="http://purl.org/dc/terms/Location"/>
+    <sh:sparql rdf:nodeID="N3362dded0a72458e85eb932acc12596f"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasDeliveryLocation"/>
+    <sh:name>has Delivery Location</sh:name>
+    <sh:description>Location delivery area where the Item can be ordered to the given price.</sh:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-Price">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+    <sh:targetClass rdf:resource="http://data.europa.eu/a4g/ontology#Price"/>
+    <rdfs:label>Price</rdfs:label>
+    <rdfs:comment>Amount of money required or given in exchange for Items. Additional information: The Price excludes any charges (such as taxes, duties and fees) and discounts.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#cat-shape"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-Price-epo-hasPriceSurchargeInformation"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-Price-epo-ord-hasPriceDiscountInformation"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-Price-epo-cat-hasQuantityThreshold"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-Price-epo-cat-hasExpectedDeliveryTime"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-Price-epo-ord-hasGrossMonetaryValue"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-Price-epo-cat-hasPriceValidity"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-Price-epo-cat-hasNetMonetaryValue"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-Price-epo-cat-hasBaseQuantity"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-Price-epo-cat-hasOrderabableUnitFactorRate"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-Price-epo-cat-hasDeliveryLocation"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-Price-epo-cat-hasPriceType"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-Price-epo-cat-hasNetMonetaryValue">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#MonetaryValue"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
+    <sh:sparql rdf:nodeID="N7e9d457b93524817bb5ed3ab0e8e5de7"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasNetMonetaryValue"/>
+    <sh:name>has Net Monetary Value</sh:name>
+    <sh:description>The price amount of an Item exclusive of taxes and after substracting price discounts.</sh:description>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N7572b46ffe26471985ec920322352a5b">
+    <rdf:first rdf:nodeID="N25389d6d43ca424e936f76a156bacb2c"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-PostAwardCatalogue">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+    <sh:targetClass rdf:resource="http://data.europa.eu/a4g/ontology#PostAwardCatalogue"/>
+    <rdfs:label>Post Award Catalogue</rdfs:label>
+    <rdfs:comment>A Document describing a set of Items offered for purchase that can be processed in an electronic way, after a Contract is signed.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#cat-shape"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-PostAwardCatalogue-epo-cat-isSubordinatedToContract"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-CatalogueLine-epo-cat-hasPrice">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#Price"/>
+    <sh:sparql rdf:nodeID="Naf7dbf5e2552406eb49ad848b855fae0"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasPrice"/>
+    <sh:name>has Price</sh:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-AbstractItem-epo-cat-hasHazardousItemUNDGCode">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasHazardousItemUNDGCode"/>
+    <sh:class rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <sh:name>has Hazardous Item UNDG Code</sh:name>
+    <sh:description>Specification of the hazardous nature of an item according to the UNDG classification schema. Provides detail of the classification and nature of a hazardous item.</sh:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-AbstractItem-epo-inv-hasItemClassificationIdentifier">
+    <sh:class rdf:resource="http://www.w3.org/ns/adms#Identifier"/>
+    <sh:sparql rdf:nodeID="N059454f8f7994716b68f41f314f9cec8"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasItemClassificationIdentifier"/>
+    <sh:name>has Item Classification Identifier</sh:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-AbstractItem-epo-cat-hasSpecification">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#ProductSpecification"/>
+    <sh:sparql rdf:nodeID="N6e0a479b54f6420eaf13f36e3a552b6d"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasSpecification"/>
+    <sh:name>has Specification</sh:name>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N68e51f2553a34da0ac6bb306c36972f6">
+    <sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N2696b1753dd54274800522dafe1e7a7c">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasCustomerReference&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasCustomerReference&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-ItemComposition">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+    <sh:targetClass rdf:resource="http://data.europa.eu/a4g/ontology#ItemComposition"/>
+    <rdfs:label>Item Composition</rdfs:label>
+    <rdfs:comment>Inclusion of an Item into in the described Item. Additional Information: The Item is provided with its components, however, the component Items may also be provided separately. For example, a bicycle has wheels as components, but they may be provided as spare parts as well. This relation is useful to describe different package levels of an item or hierarchies of Items.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#cat-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-ItemProperty-epo-cat-hasQualifiedValue">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#Quantity"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:sparql rdf:nodeID="N36eee4885a654028ba2a956a4566126e"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasQualifiedValue"/>
+    <sh:name>has Qualified Value</sh:name>
+    <sh:description>Qualified value of the property, which is defined in a classification scheme. Additional Information: For example, the (0173-1#02-AAA026#007) drilling diameter of an item has value of 12 inches.</sh:description>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N07e23c1a60a34eca880163befdb70869">
+    <rdf:first rdf:nodeID="N635596c0a44c46539f7228f22bf37b11"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-Batch">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+    <sh:targetClass rdf:resource="http://data.europa.eu/a4g/ontology#Batch"/>
+    <rdfs:label>Batch</rdfs:label>
+    <rdfs:comment>A production Lot in which the Item instances were produced.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#cat-shape"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-Batch-epo-cat-hasBestBeforeDate"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-Batch-epo-cat-hasExpiryDate"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-Batch-epo-cat-hasManufactureDate"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-Batch-epo-cat-isProductionOf"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-Batch-epo-hasBatchID"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-Document-epo-hasDocumentType">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasDocumentType"/>
+    <sh:class rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:name>has Document Type</sh:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-Line-epo-hasAdditionalInformation">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasAdditionalInformation"/>
+    <sh:name>has Additional Information</sh:name>
+    <sh:description>Supplementary data about the instance of the concept.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#cat-shape"/>
+    <sh:or rdf:nodeID="N11f853531c3e427d8f04920445e8da66"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Nde1fd405f2124ef7a33468cd61167cb5">
+    <sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-CatalogueLine-epo-cat-foreseesPackage">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#Package"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:sparql rdf:nodeID="Nfed64641361c4583a7b9f40ec800581a"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#foreseesPackage"/>
+    <sh:name>foresees Package</sh:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-Brand">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+    <sh:targetClass rdf:resource="http://data.europa.eu/a4g/ontology#Brand"/>
+    <rdfs:label>Brand</rdfs:label>
+    <rdfs:comment>Name given by an organisation to its product or service, or range of products or services. Additional information: Brand name allows economic operators to distinctively describe an item in their eCatalogue. This may be different from the "item name".</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#cat-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-Catalogue-epo-cat-comprisesCatalogueLine">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#CatalogueLine"/>
+    <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
+    <sh:sparql rdf:nodeID="Nf186c5eea0e94812abf7f154afeb8c66"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#comprisesCatalogueLine"/>
+    <sh:name>comprises Catalogue Line</sh:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-ChargeInformation-epo-inv-isSpecificToInvoiceLine">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#InvoiceLine"/>
+    <sh:sparql rdf:nodeID="Nfcab5ac95e5d4f1690e48a40f0d704f2"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#isSpecificToInvoiceLine"/>
+    <sh:name>is Specific To Invoice Line</sh:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-Price-epo-cat-hasBaseQuantity">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#Quantity"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:sparql rdf:nodeID="N009b9a5370234107b98cd52086c99fdc"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasBaseQuantity"/>
+    <sh:name>has Base Quantity</sh:name>
+    <sh:description>The quantity at which the net monetary value applies.</sh:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-DimensionInformation-epo-cat-hasMinimumMeasure">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#Quantity"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:sparql rdf:nodeID="Nfb420ddc3d374c5d8dfc84b93dee5052"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasMinimumMeasure"/>
+    <sh:name>has Minimum Measure</sh:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-CatalogueResponseLine-epo-ord-hasResponseDescription">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasResponseDescription"/>
+    <sh:name>has Response Description</sh:name>
+    <sh:description>Explanation of the response.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#cat-shape"/>
+    <sh:or rdf:nodeID="N4578a0d09c78483cb72c108b2b7b1e2a"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-CatalogueResponseInformation-epo-ord-hasResponseStatus">
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasResponseStatus"/>
+    <sh:name>has Response Status</sh:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-CatalogueLine-epo-cat-isOrderable">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#isOrderable"/>
+    <sh:name>is Orderable</sh:name>
+    <sh:description>Indicator, if the item is orderable or not, e.g. because it is temporarily out of stock.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#cat-shape"/>
+    <sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-Manufacturer">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+    <sh:targetClass rdf:resource="http://data.europa.eu/a4g/ontology#Manufacturer"/>
+    <rdfs:label>Manufacturer</rdfs:label>
+    <rdfs:comment>The Producer of goods or provider of services. Additional Information: Also, known as Supplier and Manufacturer. We do not care who provides these service or products we care with whom Business is done. PEPPOL - Invoice: The Supplier is the Legal Person or Organisation who provides a product and/or service. PEPPOL - Order: The supplier is the legal person or organisation who provides a product or service. Examples of supplier roles: seller, despatch party, creditor, economic operator.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#cat-shape"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-Manufacturer-epo-hasManufacturerID"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-AbstractItem-epo-cat-hasKeyword">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasKeyword"/>
+    <sh:name>has Keyword</sh:name>
+    <sh:description>List of words (e.g, synonyms) to make the item searchable.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#cat-shape"/>
+    <sh:or rdf:nodeID="N18f4bde246e549faa01a4b1b6d98d07f"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-CatalogueLine-epo-cat-hasTransactionConditions">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasTransactionConditions"/>
+    <sh:name>has Transaction Conditions</sh:name>
+    <sh:description>Textual description of the specific transaction conditions (purchasing, sales, payment, delivery) for an item.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#cat-shape"/>
+    <sh:or rdf:nodeID="N283e54028489475aadec74a327dc33d4"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-CatalogueResponseInformation-epo-cat-isSpecificToCatalogueResponseLine">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#CatalogueResponseLine"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:sparql rdf:nodeID="N09b88b1ee56f49fda3fd4252922b00fa"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#isSpecificToCatalogueResponseLine"/>
+    <sh:name>is Specific To Catalogue Response Line</sh:name>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Nf6f243566fb44ae2993cfe21a865dfaa">
+    <rdf:first rdf:nodeID="Nf0025566d7d14535939fdf345acbcea9"/>
+    <rdf:rest rdf:nodeID="N4e989b8625244d129b8b0e83b016a8da"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-CatalogueResponseLine-epo-cat-refersToCatalogueLine">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#CatalogueLine"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
+    <sh:sparql rdf:nodeID="N5f06bb8dce4f4fe2b00cff5e0718574f"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#refersToCatalogueLine"/>
+    <sh:name>refers To Catalogue Line</sh:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-DimensionInformation-epo-cat-hasDimensionDescription">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasDimensionDescription"/>
+    <sh:name>has Dimension Description</sh:name>
+    <sh:description>Textual description of the item's dimensions.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#cat-shape"/>
+    <sh:or rdf:nodeID="N589084f4f18d4ecc93e4f5955bf37328"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-DimensionInformation-epo-cat-hasMaximumMeasure">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#Quantity"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:sparql rdf:nodeID="N4b0aaf216be5425a8044961118931984"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasMaximumMeasure"/>
+    <sh:name>has Maximum Measure</sh:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-DimensionInformation">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+    <sh:targetClass rdf:resource="http://data.europa.eu/a4g/ontology#DimensionInformation"/>
+    <rdfs:label>Dimension Information</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#cat-shape"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-DimensionInformation-epo-cat-hasDimensionDescription"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-DimensionInformation-epo-cat-hasMeasure"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-DimensionInformation-epo-cat-concernsItem"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-DimensionInformation-epo-ful-concernsGoodsItem"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-DimensionInformation-epo-cat-hasMaximumMeasure"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-DimensionInformation-epo-ful-concernsPackage"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-DimensionInformation-epo-cat-hasMinimumMeasure"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-DimensionInformation-epo-ful-concernsTransportEquipment"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-DimensionInformation-epo-ful-concernsTransportMeans"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-DimensionInformation-epo-cat-hasMeasuredAttributeCode"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-CatalogueLine-epo-cat-hasOrderableUnit">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasOrderableUnit"/>
+    <sh:class rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:name>has Orderable Unit</sh:name>
+    <sh:description>The unit in which the item described in this catalogue line can be ordered.</sh:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-ItemProperty-epo-cat-describesItem">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#AbstractItem"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
+    <sh:sparql rdf:nodeID="N894dfe272c4d4e07ae7befb46c7b2daf"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#describesItem"/>
+    <sh:name>describes Item</sh:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-ItemProperty">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+    <sh:targetClass rdf:resource="http://data.europa.eu/a4g/ontology#ItemProperty"/>
+    <rdfs:label>Item Property</rdfs:label>
+    <rdfs:comment>Construct meant to represent the association between an attribute defined in an external classification scheme and the value ascribed to it.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#cat-shape"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-ItemProperty-epo-cat-hasAttributeType"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-ItemProperty-epo-cat-hasClassificationCode"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-ItemProperty-epo-cat-hasClassificationScheme"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-ItemProperty-epo-cat-hasImportanceCode"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-ItemProperty-epo-cat-hasLiteralValue"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-ItemProperty-epo-cat-describesItem"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-ItemProperty-epo-cat-hasMaximumValue"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-ItemProperty-epo-cat-hasMinimumValue"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-ItemProperty-epo-cat-hasQualifiedValue"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-CatalogueLine-epo-cat-hasOrderableQuantityIncrement">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasOrderableQuantityIncrement"/>
+    <sh:name>has Orderable Quantity Increment</sh:name>
+    <sh:description>Orderable quantity increment: The increment of Orderable units that can be ordered.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#cat-shape"/>
+    <sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-Price-epo-cat-hasQuantityThreshold">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#Quantity"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:sparql rdf:nodeID="N21d757f107a546998b829850b820f852"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasQuantityThreshold"/>
+    <sh:name>has Quantity Threshold</sh:name>
+    <sh:description>The minimum quantity of the item that can be ordered to the given net monetary value.</sh:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-Document">
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-Document-epo-hasDocumentType"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-AbstractItem-epo-cat-hasModel">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#ItemModel"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:sparql rdf:nodeID="N7f346b3d32bc43e8b6a97eaa644c1ba5"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasModel"/>
+    <sh:name>has Model</sh:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-CatalogueLine-epo-cat-hasOrderableUnitFactorRate">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasOrderableUnitFactorRate"/>
+    <sh:name>has Orderable Unit Factor Rate</sh:name>
+    <sh:description>The factor by which the Item net price of an unit of an item can be converted to the orderable unit.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#cat-shape"/>
+    <sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Nfed64641361c4583a7b9f40ec800581a">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#foreseesPackage&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#foreseesPackage&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-EnvironmentalEmissionInformation-epo-ful-concernsTransportMeans">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#TransportMeans"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:sparql rdf:nodeID="N0c78b799ca624583ab49a88ed4d473c0"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#concernsTransportMeans"/>
+    <sh:name>concerns Transport Means</sh:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-InformationHub-epo-cat-isSpecificToLine">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#Line"/>
+    <sh:sparql rdf:nodeID="N5bebacbf12634653a47c811e943c41d4"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#isSpecificToLine"/>
+    <sh:name>is Specific To Line</sh:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-ChargeInformation-epo-ord-isSpecificToOrderLine">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#OrderLine"/>
+    <sh:sparql rdf:nodeID="N2ff0700d17bf4ea8bae2cb3c7f8fafac"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#isSpecificToOrderLine"/>
+    <sh:name>is Specific To Order Line</sh:name>
+    <sh:description>Information that is particular to one or multiple Order Lines.</sh:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-Price-epo-hasPriceSurchargeInformation">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#ChargeInformation"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:sparql rdf:nodeID="N39583b9d275c4dbab30f87ee374fc843"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasPriceSurchargeInformation"/>
+    <sh:name>has Price Surcharge Information</sh:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-CatalogueResponseLine">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+    <sh:targetClass rdf:resource="http://data.europa.eu/a4g/ontology#CatalogueResponseLine"/>
+    <rdfs:label>Catalogue Response Line</rdfs:label>
+    <rdfs:comment>Details concerning the Catalogue Receiver’s ability to apply a given Catalogue Line for placing orders. Additional information: The Catalogue Response Line is used to inform on the acceptance or rejection of a Catalogue Line.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#cat-shape"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-CatalogueResponseLine-epo-ord-hasResponseDescription"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-CatalogueResponseLine-epo-cat-refersToCatalogueLine"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-CatalogueResponseLine-epo-hasUUID"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-CatalogueLine-epo-cat-hasChargeInformation">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#ChargeInformation"/>
+    <sh:sparql rdf:nodeID="N1dddb6c731064141b7bc5eab70e48bf9"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasChargeInformation"/>
+    <sh:name>has Charge Information</sh:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-Batch-epo-cat-hasManufactureDate">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasManufactureDate"/>
+    <sh:name>has Manufacture Date</sh:name>
+    <sh:description>The day of production.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#cat-shape"/>
+    <sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N8eead8fc78ef4aec81bf2ff60b7f2a98">
+    <sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-CatalogueLine-epo-cat-hasStandardisedUnitPrice">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#Price"/>
+    <sh:sparql rdf:nodeID="Nc01aec0700624b068a1647086053bc6a"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasStandardisedUnitPrice"/>
+    <sh:name>has Standardised Unit Price</sh:name>
+    <sh:description>The item price based on a standardised unit. Additional Information: The unit must be indicated in the Quantity, with a quantity value of 1.</sh:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-Catalogue">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+    <sh:targetClass rdf:resource="http://data.europa.eu/a4g/ontology#Catalogue"/>
+    <rdfs:label>Catalogue</rdfs:label>
+    <rdfs:comment>A phase-agnostic Document describing a set of Items offered for purchase that can be processed in an electronic way.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#cat-shape"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-Catalogue-epo-cat-hasSpecificPaymentArrangement"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-Catalogue-epo-specifiesCatalogueReceiver"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-Catalogue-epo-specifiesSeller"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-Catalogue-epo-specifiesCatalogueProvider"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-Catalogue-epo-cat-comprisesCatalogueLine"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-Catalogue-epo-hasValidityPeriod"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-Catalogue-epo-specifiesBuyer"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-Catalogue-epo-cat-hasActivityCode"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-EnvironmentalEmissionInformation">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+    <sh:targetClass rdf:resource="http://data.europa.eu/a4g/ontology#EnvironmentalEmissionInformation"/>
+    <rdfs:label>Environmental Emission Information</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#cat-shape"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-EnvironmentalEmissionInformation-epo-hasCalculationMethod"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-EnvironmentalEmissionInformation-epo-ful-concernsTransportMeans"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-EnvironmentalEmissionInformation-epo-cat-hasMeasure"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-EnvironmentalEmissionInformation-epo-cat-concernsItem"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-EnvironmentalEmissionInformation-epo-cat-hasEnvironmentalEmissionCode"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Ne889d2ff53cb40e2810ac6e8f09c1cbb">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#isSubordinatedToContract&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#isSubordinatedToContract&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N8dddb1e4263d4131a7a26f8d5f5db948">
+    <rdf:first rdf:nodeID="N60ed3f0ea1b14cb5960f699a84541388"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-AbstractItem-epo-cat-isInStock">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#isInStock"/>
+    <sh:name>is In Stock</sh:name>
+    <sh:description>Indicator whether an item is in the supplier's stock. If not in stock the supplier has to order the item.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#cat-shape"/>
+    <sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-AbstractItem-epo-hasManufacturerItemID">
+    <sh:class rdf:resource="http://www.w3.org/ns/adms#Identifier"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:sparql rdf:nodeID="N854c33727fcd40cfac21ff00793c7cec"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasManufacturerItemID"/>
+    <sh:name>has Manufacturer Item ID</sh:name>
+    <sh:description>The general identifier assigned to the concept as defined by the Manufacturer. ​</sh:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-CatalogueResponse-epo-cat-comprisesCatalogueResponseLine">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#CatalogueResponseLine"/>
+    <sh:sparql rdf:nodeID="N482dd4dd05294beba947099fc763a28c"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#comprisesCatalogueResponseLine"/>
+    <sh:name>comprises Catalogue Response Line</sh:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-Price-epo-ord-hasPriceDiscountInformation">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#AllowanceInformation"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:sparql rdf:nodeID="Nd39d75e25ca04ce4a92227d9345020e9"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasPriceDiscountInformation"/>
+    <sh:name>has Price Discount Information</sh:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-Catalogue-epo-specifiesCatalogueProvider">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#CatalogueProvider"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:sparql rdf:nodeID="N4ae119ed2180488cb02ca7df5aadda9a"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#specifiesCatalogueProvider"/>
+    <sh:name>specifies Catalogue Provider</sh:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-req-RequestForOffer-epo-cat-refersToCatalogue">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#Catalogue"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:sparql rdf:nodeID="N738441d24ff442e5b90c67c2f415c93f"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#refersToCatalogue"/>
+    <sh:name>refers To Catalogue</sh:name>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Nd7b365c0ac384da0bf4f1f4bd4d57798">
+    <sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Na25288229e0d48dea53ce8586a286c3b">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasBuyerItemID&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasBuyerItemID&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-Catalogue-epo-cat-hasSpecificPaymentArrangement">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasSpecificPaymentArrangement"/>
+    <sh:name>has Specific Payment Arrangement</sh:name>
+    <sh:description>Information about payment conditions applied to all items in the catalogue. Additional information: This property may need to be used together with the payment arrangements provided in the ContractTerms, where such terms exists.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#cat-shape"/>
+    <sh:or rdf:nodeID="N1dbd54b9fc214e6e961ee95b614c472a"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Nc4d9776a00d44fd4a6b6fab7c6097d05">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasMeasure&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasMeasure&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-PostAwardDocument-epo-ord-hasCustomerReference">
+    <sh:class rdf:resource="http://www.w3.org/ns/adms#Identifier"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:sparql rdf:nodeID="N2696b1753dd54274800522dafe1e7a7c"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasCustomerReference"/>
+    <sh:name>has Customer Reference</sh:name>
+    <sh:description>An identifier assigned by the Buyer used for internal routing purposes.</sh:description>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N29636213878b452492e71c526eceebd5">
+    <sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N31204e46626646f388e075bf1294ac91">
+    <sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N388bd5de47bd4218b68ac2bf061ee489">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#specifiesCatalogueResponseInformation&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#specifiesCatalogueResponseInformation&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N2a03ee20fc474e75a267406cd8e40e91">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#specifiesChargeInformation&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#specifiesChargeInformation&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N66e21b6f9e1d4db6ab5ef19674a8a676">
+    <rdf:first rdf:nodeID="N01a033db938a4533b283a227a2386cd3"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-ItemProperty-epo-cat-hasMinimumValue">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#Quantity"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:sparql rdf:nodeID="N27d23b9018b1400bb27e9b6057b95e53"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasMinimumValue"/>
+    <sh:name>has Minimum Value</sh:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-Batch-epo-cat-isProductionOf">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#AbstractItem"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
+    <sh:sparql rdf:nodeID="N815c621c66ba47a5b8af5bd9063313e1"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#isProductionOf"/>
+    <sh:name>is Production Of</sh:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-AbstractItem-epo-cat-hasAccessoryItem">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#AbstractItem"/>
+    <sh:sparql rdf:nodeID="N3dfa269425ed4fdaad58a408952fd5ed"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasAccessoryItem"/>
+    <sh:name>has Accessory Item</sh:name>
+    <sh:description>An additional item that can enhance the original item.</sh:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-EnvironmentalEmissionInformation-epo-cat-hasMeasure">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#Quantity"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
+    <sh:sparql rdf:nodeID="Nc4d9776a00d44fd4a6b6fab7c6097d05"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasMeasure"/>
+    <sh:name>has Measure</sh:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-ItemProperty-epo-cat-hasImportanceCode">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasImportanceCode"/>
+    <sh:name>has Importance Code</sh:name>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#cat-shape"/>
+    <sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-ProductSpecification">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+    <sh:targetClass rdf:resource="http://data.europa.eu/a4g/ontology#ProductSpecification"/>
+    <rdfs:label>Product Specification</rdfs:label>
+    <rdfs:comment>Document providing information about an Item.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#cat-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-DimensionInformation-epo-ful-concernsPackage">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#Package"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:sparql rdf:nodeID="N1621a835eec6415aaa373922b885b952"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#concernsPackage"/>
+    <sh:name>concerns Package</sh:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-Catalogue-epo-specifiesSeller">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#Seller"/>
+    <sh:sparql rdf:nodeID="N2986e872fcce42f697cce8191c816bbe"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#specifiesSeller"/>
+    <sh:name>specifies Seller</sh:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-ItemModel">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+    <sh:targetClass rdf:resource="http://data.europa.eu/a4g/ontology#ItemModel"/>
+    <rdfs:label>Item Model</rdfs:label>
+    <rdfs:comment>A specific design or version of a product or service. Additional information: This class is meant as a reusable reference to the model name rather than as a set of specifications of an Item of this particular model.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#cat-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-ItemRelation-epo-cat-hasFactor">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasFactor"/>
+    <sh:name>has Factor</sh:name>
+    <sh:description>The number or the fraction of a related item.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#cat-shape"/>
+    <sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Nbf2a817267f9497b8fdaf118ed8a2ff6">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#refersToCatalogue&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#refersToCatalogue&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-Price-epo-cat-hasPriceType">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasPriceType"/>
+    <sh:class rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:name>has Price Type</sh:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-CatalogueLine-epo-cat-hasMinimumQuantityGuaranteedForDelivery">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#Quantity"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:sparql rdf:nodeID="N84f22e06f4cf42b69b2c5bc1f470e66b"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasMinimumQuantityGuaranteedForDelivery"/>
+    <sh:name>has Minimum Quantity Guaranteed For Delivery</sh:name>
+    <sh:description>The minimum quantity of an item that is guaranteed by the seller to be delivered.</sh:description>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N60ed3f0ea1b14cb5960f699a84541388">
+    <sh:datatype rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-ItemProperty-epo-cat-hasAttributeType">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasAttributeType"/>
+    <sh:name>has Attribute Type</sh:name>
+    <sh:description>The property defined in a classification scheme. Additional Information: For example, the following two properties are defined in the ECLASS classification of goods and services: (0173-1#02-AAA026#007) drilling diameter: drilling diameter, (0173-1#02-AAA030#007) flange diameter: flange diameter .</sh:description>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#cat-shape"/>
+    <sh:or rdf:nodeID="N1c15f9fb62d34d008acf1a8fa8ef2abf"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-Price-epo-cat-hasExpectedDeliveryTime">
+    <sh:class rdf:resource="http://www.w3.org/2006/time#Duration"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:sparql rdf:nodeID="N2349d05513a5480f9070a9284bb6dd65"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasExpectedDeliveryTime"/>
+    <sh:name>has Expected Delivery Time</sh:name>
+    <sh:description></sh:description>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Nca0a39f9d0bc41e59ef5c518c79f2390">
+    <rdf:first rdf:nodeID="Nff584925aa924f42b6773414bcd0a93d"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N1dbd54b9fc214e6e961ee95b614c472a">
+    <rdf:first rdf:nodeID="N6f136cf067d84f14ac47aa26bf901f0c"/>
+    <rdf:rest rdf:nodeID="N1f9806d45d714a97aa9fdc9c641e02ab"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-CatalogueResponse">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+    <sh:targetClass rdf:resource="http://data.europa.eu/a4g/ontology#CatalogueResponse"/>
+    <rdfs:label>Catalogue Response</rdfs:label>
+    <rdfs:comment>A formal reply from the Catalogue Receiver to the Catalogue Provider stating the Catalogue Receiver's ability to apply the catalogue for placing orders. Additional Information: The Catalogue Response is used to inform on the acceptance or rejection of a Catalogue.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#cat-shape"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-CatalogueResponse-epo-ord-hasResponseDescription"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-CatalogueResponse-epo-cat-refersToCatalogue"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-CatalogueResponse-epo-cat-specifiesCatalogueResponseInformation"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-CatalogueResponse-epo-cat-comprisesCatalogueResponseLine"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-CatalogueResponse-epo-specifiesCatalogueProvider"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-CatalogueResponse-epo-specifiesCatalogueReceiver"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-Batch-epo-cat-hasExpiryDate">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasExpiryDate"/>
+    <sh:name>has Expiry Date</sh:name>
+    <sh:description>The last day until which the item can be used.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#cat-shape"/>
+    <sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-CatalogueLine-epo-cat-hasActivityCode">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasActivityCode"/>
+    <sh:class rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:name>has Activity Code</sh:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-ItemRelation">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+    <sh:targetClass rdf:resource="http://data.europa.eu/a4g/ontology#ItemRelation"/>
+    <rdfs:label>Item Relation</rdfs:label>
+    <rdfs:comment>Connection between two Items.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#cat-shape"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-ItemRelation-epo-cat-hasFactor"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-ItemRelation-epo-cat-isRelatedToItem"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-Line">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+    <sh:targetClass rdf:resource="http://data.europa.eu/a4g/ontology#Line"/>
+    <rdfs:label>Line</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#cat-shape"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-Line-epo-hasAdditionalInformation"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-Line-epo-cat-specifiesItem"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-Line-epo-ful-hasAssociatedDocument"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-AbstractItem-epo-cat-hasDeliveryClassification">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasDeliveryClassification"/>
+    <sh:class rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:name>has Delivery Classification</sh:name>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Nc01aec0700624b068a1647086053bc6a">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasStandardisedUnitPrice&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasStandardisedUnitPrice&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-AbstractItem-epo-hasBuyerItemID">
+    <sh:class rdf:resource="http://www.w3.org/ns/adms#Identifier"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:sparql rdf:nodeID="Na25288229e0d48dea53ce8586a286c3b"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasBuyerItemID"/>
+    <sh:name>has Buyer Item ID</sh:name>
+    <sh:description>The general identifier assigned to the concept as defined by the Buyer.​</sh:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-Catalogue-epo-specifiesCatalogueReceiver">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#CatalogueReceiver"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:sparql rdf:nodeID="Nbbbcc47e87f846cd9c2a33ee44cd2fbe"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#specifiesCatalogueReceiver"/>
+    <sh:name>specifies Catalogue Receiver</sh:name>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N331606f0641041b1a6a14bcaabf6b53d">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasSerialID&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasSerialID&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-Batch-epo-cat-hasBestBeforeDate">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasBestBeforeDate"/>
+    <sh:name>has Best Before Date</sh:name>
+    <sh:description>The day until which the quality of the item will remain optimal.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#cat-shape"/>
+    <sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-Batch-epo-hasBatchID">
+    <sh:class rdf:resource="http://www.w3.org/ns/adms#Identifier"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:sparql rdf:nodeID="N4f71a711207240e893f39a3ce48ef8e2"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasBatchID"/>
+    <sh:name>has Batch ID</sh:name>
+    <sh:description>The identifier assigned to a specific batch of the produced Item.</sh:description>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N114b985a3ec344a29a58d7046c3586ce">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasComplementaryItem&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasComplementaryItem&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-Line-epo-cat-specifiesItem">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#AbstractItem"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
+    <sh:sparql rdf:nodeID="N3c8918e8288b4e4bbf59956b06b7e2e6"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#specifiesItem"/>
+    <sh:name>specifies Item</sh:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-TaxInformation-epo-cat-hasTaxScheme">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasTaxScheme"/>
+    <sh:class rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
+    <sh:name>has Tax Scheme</sh:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-ItemProperty-epo-cat-hasClassificationCode">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasClassificationCode"/>
+    <sh:name>has Classification Code</sh:name>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#cat-shape"/>
+    <sh:or rdf:nodeID="N7c81a2fffff84e74af865c337db5ca16"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N6e0a479b54f6420eaf13f36e3a552b6d">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasSpecification&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasSpecification&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Nd7828e6800bc46c9b2b1000ee473e035">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#concernsTransportMeans&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#concernsTransportMeans&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-Catalogue-epo-hasValidityPeriod">
+    <sh:class rdf:resource="http://www.w3.org/2006/time#Interval"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:sparql rdf:nodeID="N1294639f17a941acb617738a710fe4c0"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasValidityPeriod"/>
+    <sh:name>has Validity Period</sh:name>
+    <sh:description>The relation indicating until when a given instance of a concept is applicable.</sh:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-AbstractItem-epo-cat-hasNetQuantity">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#Quantity"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:sparql rdf:nodeID="N38ba381e74734e61af810b62e4be7e0a"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasNetQuantity"/>
+    <sh:name>has Net Quantity</sh:name>
+    <sh:description>The net quantity of the item that is contained in each consumable unit, excluding any packaging materials.</sh:description>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N9848d3d3134147ec850078f6ab8b5f76">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#concernsTransportEquipment&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#concernsTransportEquipment&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-CatalogueResponse-epo-specifiesCatalogueReceiver">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#CatalogueReceiver"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
+    <sh:sparql rdf:nodeID="N692a6a59717e489b9f9ec39ee10b9e88"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#specifiesCatalogueReceiver"/>
+    <sh:name>specifies Catalogue Receiver</sh:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-AbstractItem-epo-cat-hasComplementaryItem">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#AbstractItem"/>
+    <sh:sparql rdf:nodeID="N114b985a3ec344a29a58d7046c3586ce"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasComplementaryItem"/>
+    <sh:name>has Complementary Item</sh:name>
+    <sh:description>An item that if used with another item provides mutual enhancements to both of them. Additional information: For example, gin and tonic; or smart-phone and smart-watch.</sh:description>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N692a6a59717e489b9f9ec39ee10b9e88">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#specifiesCatalogueReceiver&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#specifiesCatalogueReceiver&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-CatalogueLine-epo-cat-hasWarrantyInformation">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasWarrantyInformation"/>
+    <sh:name>has Warranty Information</sh:name>
+    <sh:description>Warranty information that applies to the catalogue line item.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#cat-shape"/>
+    <sh:or rdf:nodeID="N75697eaa855b449e80c72914ae61b96a"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-PostAwardCatalogue-epo-cat-isSubordinatedToContract">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#Contract"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:sparql rdf:nodeID="Ne889d2ff53cb40e2810ac6e8f09c1cbb"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#isSubordinatedToContract"/>
+    <sh:name>is Subordinated To Contract</sh:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-AbstractItem-epo-cat-hasItemClassification">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasItemClassification"/>
+    <sh:class rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <sh:name>has Item Classification</sh:name>
+    <sh:description>A classification of this item according to a specific system for classifying products or services. Additional information: Examples of classification schemes are: CPV, UNSPC, eCl@ss, GPC, ...</sh:description>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N43f8d598a0ec4290ba2479e07d239314">
+    <sh:datatype rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-Catalogue-epo-cat-hasActivityCode">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasActivityCode"/>
+    <sh:class rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:name>has Activity Code</sh:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-AbstractItem-epo-cat-hasHazardousClassID">
+    <sh:class rdf:resource="http://www.w3.org/ns/adms#Identifier"/>
+    <sh:sparql rdf:nodeID="N63128d82c81349b0a2e3153ec1fe14b1"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasHazardousClassID"/>
+    <sh:name>has Hazardous Class ID</sh:name>
+    <sh:description>Specification of the hazardous nature of an item according to a classification schema. Provides detail of the classification and nature of a hazardous item.</sh:description>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N11f853531c3e427d8f04920445e8da66">
+    <rdf:first rdf:nodeID="Ncd236b24df6d49578b16bbc1dab46c47"/>
+    <rdf:rest rdf:nodeID="N8dddb1e4263d4131a7a26f8d5f5db948"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N9cc99c96bb7445cbadbf63e5dce72534">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasBrand&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasBrand&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-CatalogueResponseLine-epo-hasUUID">
+    <sh:class rdf:resource="http://www.w3.org/ns/adms#Identifier"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
+    <sh:sparql rdf:nodeID="N03f9bbf8068f45fd97c0cf54b35500ef"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasUUID"/>
+    <sh:name>has UUID</sh:name>
+    <sh:description>A universally unique identifier for an instance of this document.</sh:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-AbstractItem-epo-cat-hasManufacturer">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#Manufacturer"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:sparql rdf:nodeID="N894035c5dc52404d8d1de670061f3f45"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasManufacturer"/>
+    <sh:name>has Manufacturer</sh:name>
+    <sh:description>The product maker or service provider.</sh:description>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N0c78b799ca624583ab49a88ed4d473c0">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#concernsTransportMeans&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#concernsTransportMeans&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-CatalogueResponse-epo-cat-refersToCatalogue">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#PostAwardCatalogue"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
+    <sh:sparql rdf:nodeID="Nad1c74f08bbf4752b69768263c571494"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#refersToCatalogue"/>
+    <sh:name>refers To Catalogue</sh:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-DimensionInformation-epo-cat-hasMeasure">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#Quantity"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:sparql rdf:nodeID="N26f6dc984a594e7eade73477493128fa"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasMeasure"/>
+    <sh:name>has Measure</sh:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-CatalogueResponse-epo-cat-specifiesCatalogueResponseInformation">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#CatalogueResponseInformation"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
+    <sh:sparql rdf:nodeID="N388bd5de47bd4218b68ac2bf061ee489"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#specifiesCatalogueResponseInformation"/>
+    <sh:name>specifies Catalogue Response Information</sh:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-AbstractItem-epo-cat-hasBrand">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#Brand"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:sparql rdf:nodeID="N9cc99c96bb7445cbadbf63e5dce72534"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasBrand"/>
+    <sh:name>has Brand</sh:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-inv-InvoiceLine">
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-inv-InvoiceLine-epo-cat-hasPrice"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-DimensionInformation-epo-ful-concernsTransportMeans">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#TransportMeans"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:sparql rdf:nodeID="Nd7828e6800bc46c9b2b1000ee473e035"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#concernsTransportMeans"/>
+    <sh:name>concerns Transport Means</sh:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-ItemAccessoryRelation">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+    <sh:targetClass rdf:resource="http://data.europa.eu/a4g/ontology#ItemAccessoryRelation"/>
+    <rdfs:label>Item Accessory Relation</rdfs:label>
+    <rdfs:comment>Combination of two Items where the former enhances the latter.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#cat-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N8f968906c1c94cce9a853ca3c17d5bf9">
+    <sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N8090622f7a9d4c7792957138ae395223">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasManufacturerID&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasManufacturerID&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Nad1c74f08bbf4752b69768263c571494">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#refersToCatalogue&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#refersToCatalogue&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-EnvironmentalEmissionInformation-epo-cat-hasEnvironmentalEmissionCode">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasEnvironmentalEmissionCode"/>
+    <sh:class rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
+    <sh:name>has Environmental Emission Code</sh:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-AbstractItem-epo-cat-hasCountryOfOrigin">
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasCountryOfOrigin"/>
+    <sh:name>has Country Of Origin</sh:name>
+    <sh:description></sh:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-Catalogue-epo-specifiesBuyer">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#Buyer"/>
+    <sh:sparql rdf:nodeID="N793a272eebb64ab3af6e5826398b5118"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#specifiesBuyer"/>
+    <sh:name>specifies Buyer</sh:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-InformationHub">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+    <sh:targetClass rdf:resource="http://data.europa.eu/a4g/ontology#InformationHub"/>
+    <rdfs:label>Information Hub</rdfs:label>
+    <rdfs:comment>Grouping of data that may be associated to various concepts. Additional Information: For example, AllowanceChargeInformation may be associated to the Order or the Catalogue (either at the Line level or at the Document level), amongst others.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#cat-shape"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-InformationHub-epo-cat-isSpecificToLine"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderLine-epo-ord-refersToCatalogueLine">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#CatalogueLine"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:sparql rdf:nodeID="Ne13fec9d92ee45a1ad61070a4b976c70"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#refersToCatalogueLine"/>
+    <sh:name>refers To Catalogue Line</sh:name>
+    <sh:description>Additional Information: The reference to the catalogue line is for information only, to trace the source of the information provided in the order line.</sh:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-TaxInformation-epo-cat-hasTaxCategory">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasTaxCategory"/>
+    <sh:class rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:name>has Tax Category</sh:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-CatalogueResponse-epo-ord-hasResponseDescription">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasResponseDescription"/>
+    <sh:name>has Response Description</sh:name>
+    <sh:description>Explanation of the response.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#cat-shape"/>
+    <sh:or rdf:nodeID="N6e5f1ab34b4f4b8f896aa9f95d3f166f"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order">
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-cat-specifiesChargeInformation"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-cat-refersToCatalogue"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Nb3a418d161924b028a25feb9ae0199c4">
+    <sh:datatype rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N3c8918e8288b4e4bbf59956b06b7e2e6">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#specifiesItem&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#specifiesItem&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N0c608456e543454ab5308f043f279e27">
+    <sh:datatype rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Nf12633fe68544fdabf12c054e4ae5edc">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasMaximumOrderQuantity&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasMaximumOrderQuantity&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Na98e7c6f5328480e922ef25112a29cf8">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#isRelatedToItem&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#isRelatedToItem&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Nd39d75e25ca04ce4a92227d9345020e9">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasPriceDiscountInformation&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasPriceDiscountInformation&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-DimensionInformation-epo-cat-hasMeasuredAttributeCode">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasMeasuredAttributeCode"/>
+    <sh:class rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
+    <sh:name>has Measured Attribute Code</sh:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-req-RequestForOffer">
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-req-RequestForOffer-epo-cat-refersToCatalogue"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-CatalogueLine-epo-cat-hasCatalogueLineValidity">
+    <sh:class rdf:resource="http://www.w3.org/2006/time#Interval"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:sparql rdf:nodeID="N7b1f66c9ef104f26b3c96198c60cb54d"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasCatalogueLineValidity"/>
+    <sh:name>has Catalogue Line Validity</sh:name>
+    <sh:description>The relation indicating until when a Catalogue Line instance is applicable.</sh:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-DimensionInformation-epo-ful-concernsTransportEquipment">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#TransportEquipment"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:sparql rdf:nodeID="N9848d3d3134147ec850078f6ab8b5f76"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#concernsTransportEquipment"/>
+    <sh:name>concerns Transport Equipment</sh:name>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N18f4bde246e549faa01a4b1b6d98d07f">
+    <rdf:first rdf:nodeID="Nde1fd405f2124ef7a33468cd61167cb5"/>
+    <rdf:rest rdf:nodeID="N763d6de8f9fb42cca84c0b8e17e7f22f"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ful-Consignment-epo-ful-hasFreightCharge">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#ChargeInformation"/>
+    <sh:sparql rdf:nodeID="N4fe9c33331b547c28d2d07009ddf1478"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasFreightCharge"/>
+    <sh:name>has Freight Charge</sh:name>
+    <sh:description>The total cost for moving the goods.</sh:description>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Naf7dbf5e2552406eb49ad848b855fae0">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasPrice&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasPrice&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-CatalogueLine-epo-cat-isContractedItem">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#isContractedItem"/>
+    <sh:name>is Contracted Item</sh:name>
+    <sh:description>Indicator if the item is offered in accordance to an existing contract.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#cat-shape"/>
+    <sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderLine-epo-cat-hasPrice">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#Price"/>
+    <sh:sparql rdf:nodeID="N47c3e3f2e4d84deaac984371d0a4e824"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasPrice"/>
+    <sh:name>has Price</sh:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-AbstractItem-epo-ord-hasTaxInformation">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#TaxInformation"/>
+    <sh:sparql rdf:nodeID="N10dbad2469e041dd9183346255c0ca50"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasTaxInformation"/>
+    <sh:name>has Tax Information</sh:name>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N1dddb6c731064141b7bc5eab70e48bf9">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasChargeInformation&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasChargeInformation&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Ne2c84218febf490c9ea5f36c105814a1">
+    <rdf:first rdf:nodeID="N68e51f2553a34da0ac6bb306c36972f6"/>
+    <rdf:rest rdf:nodeID="Nc32621f08e04434f847a3103c4f1daed"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-ItemRelation-epo-cat-isRelatedToItem">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#AbstractItem"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
+    <sh:sparql rdf:nodeID="Na98e7c6f5328480e922ef25112a29cf8"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#isRelatedToItem"/>
+    <sh:name>is Related To Item</sh:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-Item">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+    <sh:targetClass rdf:resource="http://data.europa.eu/a4g/ontology#Item"/>
+    <rdfs:label>Item</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#cat-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Ncd236b24df6d49578b16bbc1dab46c47">
+    <sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N39583b9d275c4dbab30f87ee374fc843">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasPriceSurchargeInformation&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasPriceSurchargeInformation&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Nff584925aa924f42b6773414bcd0a93d">
+    <sh:datatype rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-AbstractItem-epo-hasCertification">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#Certificate"/>
+    <sh:sparql rdf:nodeID="N4cb3de5aff254b60bbef5459de3194e3"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasCertification"/>
+    <sh:name>has Certification</sh:name>
+    <sh:description>Relation to the proof of conformance.</sh:description>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N7f346b3d32bc43e8b6a97eaa644c1ba5">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasModel&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasModel&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-CatalogueResponseInformation">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+    <sh:targetClass rdf:resource="http://data.europa.eu/a4g/ontology#CatalogueResponseInformation"/>
+    <rdfs:label>Catalogue Response Information</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#cat-shape"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-CatalogueResponseInformation-epo-cat-isSpecificToCatalogueResponseLine"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-CatalogueResponseInformation-epo-ord-hasResponseStatus"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-ItemProperty-epo-cat-hasMaximumValue">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#Quantity"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:sparql rdf:nodeID="Nba1fc20ba5084d7489f21812191e339c"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasMaximumValue"/>
+    <sh:name>has Maximum Value</sh:name>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Ne13fec9d92ee45a1ad61070a4b976c70">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#refersToCatalogueLine&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#refersToCatalogueLine&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N10dbad2469e041dd9183346255c0ca50">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasTaxInformation&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasTaxInformation&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N36eee4885a654028ba2a956a4566126e">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasQualifiedValue&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasQualifiedValue&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-ChargeInformation">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+    <sh:targetClass rdf:resource="http://data.europa.eu/a4g/ontology#ChargeInformation"/>
+    <rdfs:label>Charge Information</rdfs:label>
+    <rdfs:comment>Information about fee or duty imposed. Additional Information: Charge category indicates the nature of the duty/fee, for example CAR, etc. Charge category modifier may be used in case different levels, exemptions or other modifications apply. The charge can be fixed or relative to the price.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#cat-shape"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-ChargeInformation-epo-inv-isSpecificToInvoiceLine"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-ChargeInformation-epo-ord-isSpecificToOrderLine"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-DimensionInformation-epo-ful-concernsGoodsItem">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#GoodsItem"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:sparql rdf:nodeID="N8cbd35426da2417480d4ac47699eacf4"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#concernsGoodsItem"/>
+    <sh:name>concerns Goods Item</sh:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-cat-specifiesChargeInformation">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#ChargeInformation"/>
+    <sh:sparql rdf:nodeID="N27e3f841fd00444087f4563ae09bd641"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#specifiesChargeInformation"/>
+    <sh:name>specifies Charge Information</sh:name>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N2ff0700d17bf4ea8bae2cb3c7f8fafac">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#isSpecificToOrderLine&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#isSpecificToOrderLine&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N763d6de8f9fb42cca84c0b8e17e7f22f">
+    <rdf:first rdf:nodeID="Nfff960d1b29f4b829ac85b67fa9eb187"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N75697eaa855b449e80c72914ae61b96a">
+    <rdf:first rdf:nodeID="N3f6dc03bb5c242c6adcd972952247389"/>
+    <rdf:rest rdf:nodeID="Nffb290e25ee0457582d48f9f01d5f6e8"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N63128d82c81349b0a2e3153ec1fe14b1">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasHazardousClassID&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasHazardousClassID&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-OrderLine">
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-ord-OrderLine-epo-cat-hasPrice"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-ord-OrderLine-epo-ord-refersToCatalogueLine"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N38ba381e74734e61af810b62e4be7e0a">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasNetQuantity&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasNetQuantity&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-TaxInformation">
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-ord-TaxInformation-epo-cat-hasTaxCategory"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-ord-TaxInformation-epo-cat-hasTaxScheme"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N2986e872fcce42f697cce8191c816bbe">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#specifiesSeller&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#specifiesSeller&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N031715dbe71240dd9a8a2830230a337d">
+    <rdf:first rdf:nodeID="N8f968906c1c94cce9a853ca3c17d5bf9"/>
+    <rdf:rest rdf:nodeID="Nca0a39f9d0bc41e59ef5c518c79f2390"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N2f53052cbc4843b485a02aae6d7a7562">
+    <sh:datatype rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-ItemComplementaryRelation">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+    <sh:targetClass rdf:resource="http://data.europa.eu/a4g/ontology#ItemComplementaryRelation"/>
+    <rdfs:label>Item Complementary Relation</rdfs:label>
+    <rdfs:comment>Combination of two Items which mutually enhance one another.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#cat-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N1c15f9fb62d34d008acf1a8fa8ef2abf">
+    <rdf:first rdf:nodeID="N29636213878b452492e71c526eceebd5"/>
+    <rdf:rest rdf:nodeID="N30a8fae2b568455f9ba0569d3c017059"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Nfff960d1b29f4b829ac85b67fa9eb187">
+    <sh:datatype rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N738441d24ff442e5b90c67c2f415c93f">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#refersToCatalogue&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#refersToCatalogue&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N8cbd35426da2417480d4ac47699eacf4">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#concernsGoodsItem&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#concernsGoodsItem&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N793a272eebb64ab3af6e5826398b5118">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#specifiesBuyer&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#specifiesBuyer&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N4b0aaf216be5425a8044961118931984">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasMaximumMeasure&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasMaximumMeasure&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N5bebacbf12634653a47c811e943c41d4">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#isSpecificToLine&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#isSpecificToLine&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-Price-epo-cat-hasPriceValidity">
+    <sh:class rdf:resource="http://www.w3.org/2006/time#Interval"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
+    <sh:sparql rdf:nodeID="N4bd9daf379664304afb2349a1c12fd65"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasPriceValidity"/>
+    <sh:name>has Price Validity</sh:name>
+    <sh:description>The period of time when the Item can be ordered to the given price.</sh:description>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N3cce15843a5c4798922c90d710e726bb">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasQualifiedItemRelation&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasQualifiedItemRelation&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N4ae119ed2180488cb02ca7df5aadda9a">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#specifiesCatalogueProvider&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#specifiesCatalogueProvider&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N854c33727fcd40cfac21ff00793c7cec">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasManufacturerItemID&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasManufacturerItemID&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Nbbbcc47e87f846cd9c2a33ee44cd2fbe">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#specifiesCatalogueReceiver&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#specifiesCatalogueReceiver&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N3dfa269425ed4fdaad58a408952fd5ed">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasAccessoryItem&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasAccessoryItem&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N283e54028489475aadec74a327dc33d4">
+    <rdf:first rdf:nodeID="Nd7b365c0ac384da0bf4f1f4bd4d57798"/>
+    <rdf:rest rdf:nodeID="N07e23c1a60a34eca880163befdb70869"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-Order-epo-cat-refersToCatalogue">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#PostAwardCatalogue"/>
+    <sh:sparql rdf:nodeID="Nbf2a817267f9497b8fdaf118ed8a2ff6"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#refersToCatalogue"/>
+    <sh:name>refers To Catalogue</sh:name>
+    <sh:description>Additional information: If an order refers to multiple catalogues then all these catalogues ideally are subordinated to the same contract. Some countries however may allow multiple contracts per order (i.e Italy).</sh:description>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N09b88b1ee56f49fda3fd4252922b00fa">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#isSpecificToCatalogueResponseLine&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#isSpecificToCatalogueResponseLine&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N6f136cf067d84f14ac47aa26bf901f0c">
+    <sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N5f06bb8dce4f4fe2b00cff5e0718574f">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#refersToCatalogueLine&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#refersToCatalogueLine&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N4bd9daf379664304afb2349a1c12fd65">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasPriceValidity&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasPriceValidity&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N7e9d457b93524817bb5ed3ab0e8e5de7">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasNetMonetaryValue&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasNetMonetaryValue&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Nd93f3cf2a30148b5803009c37a355ffc">
+    <rdf:first rdf:nodeID="N0c608456e543454ab5308f043f279e27"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N47c3e3f2e4d84deaac984371d0a4e824">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasPrice&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasPrice&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N01a033db938a4533b283a227a2386cd3">
+    <sh:datatype rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N1294639f17a941acb617738a710fe4c0">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasValidityPeriod&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasValidityPeriod&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N4cb3de5aff254b60bbef5459de3194e3">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasCertification&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasCertification&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N894035c5dc52404d8d1de670061f3f45">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasManufacturer&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasManufacturer&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Nba1fc20ba5084d7489f21812191e339c">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasMaximumValue&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasMaximumValue&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Ndb56d7acdd4541af8cae6b0258e8ac78">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasOrderabableUnitFactorRate&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasOrderabableUnitFactorRate&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Nbb40d230999d49f9bf23abd952230527">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasGrossMonetaryValue&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasGrossMonetaryValue&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N3f6dc03bb5c242c6adcd972952247389">
+    <sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-cat-PostAwardDocument">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+    <sh:targetClass rdf:resource="http://data.europa.eu/a4g/ontology#PostAwardDocument"/>
+    <rdfs:label>Post Award Document</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#cat-shape"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-PostAwardDocument-epo-ord-hasCustomerReference"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-cat-PostAwardDocument-epo-hasDocumentStatus"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Nf0025566d7d14535939fdf345acbcea9">
+    <sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Nfb420ddc3d374c5d8dfc84b93dee5052">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasMinimumMeasure&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasMinimumMeasure&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ful-Consignment">
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-ful-Consignment-epo-ful-hasFreightCharge"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Nc32621f08e04434f847a3103c4f1daed">
+    <rdf:first rdf:nodeID="N43f8d598a0ec4290ba2479e07d239314"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Nb0652aca8c7e4ad79ac5db9ef5bd5456">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#specifiesCatalogueProvider&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#specifiesCatalogueProvider&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N4b27ce3c3bcf436799090f70c33b150a">
+    <sh:datatype rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N589084f4f18d4ecc93e4f5955bf37328">
+    <rdf:first rdf:nodeID="N31204e46626646f388e075bf1294ac91"/>
+    <rdf:rest rdf:nodeID="N66e21b6f9e1d4db6ab5ef19674a8a676"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N7b1f66c9ef104f26b3c96198c60cb54d">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasCatalogueLineValidity&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasCatalogueLineValidity&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N40ed9d7aed4c449fa5efdb90603c0b46">
+    <sh:datatype rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N4e989b8625244d129b8b0e83b016a8da">
+    <rdf:first rdf:nodeID="Nb3a418d161924b028a25feb9ae0199c4"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N1621a835eec6415aaa373922b885b952">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#concernsPackage&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#concernsPackage&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N84f22e06f4cf42b69b2c5bc1f470e66b">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasMinimumQuantityGuaranteedForDelivery&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasMinimumQuantityGuaranteedForDelivery&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N3362dded0a72458e85eb932acc12596f">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasDeliveryLocation&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasDeliveryLocation&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N4fe9c33331b547c28d2d07009ddf1478">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasFreightCharge&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasFreightCharge&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N059454f8f7994716b68f41f314f9cec8">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasItemClassificationIdentifier&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasItemClassificationIdentifier&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N482dd4dd05294beba947099fc763a28c">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#comprisesCatalogueResponseLine&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#comprisesCatalogueResponseLine&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N4578a0d09c78483cb72c108b2b7b1e2a">
+    <rdf:first rdf:nodeID="N8eead8fc78ef4aec81bf2ff60b7f2a98"/>
+    <rdf:rest rdf:nodeID="N7572b46ffe26471985ec920322352a5b"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N815c621c66ba47a5b8af5bd9063313e1">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#isProductionOf&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#isProductionOf&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Nffb290e25ee0457582d48f9f01d5f6e8">
+    <rdf:first rdf:nodeID="N4b27ce3c3bcf436799090f70c33b150a"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N6e5f1ab34b4f4b8f896aa9f95d3f166f">
+    <rdf:first rdf:nodeID="N9e2b978723de4d6bb104681c0162cd9f"/>
+    <rdf:rest rdf:nodeID="Nd93f3cf2a30148b5803009c37a355ffc"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N21d757f107a546998b829850b820f852">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasQuantityThreshold&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasQuantityThreshold&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N894dfe272c4d4e07ae7befb46c7b2daf">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#describesItem&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#describesItem&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Nf186c5eea0e94812abf7f154afeb8c66">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#comprisesCatalogueLine&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#comprisesCatalogueLine&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N2f5a2e002a1349539f250abb6cd880e2">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#concernsItem&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#concernsItem&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Nd24c47f7098143d8b669d63e183359bc">
+    <sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N25389d6d43ca424e936f76a156bacb2c">
+    <sh:datatype rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N26f6dc984a594e7eade73477493128fa">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasMeasure&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasMeasure&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N2349d05513a5480f9070a9284bb6dd65">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasExpectedDeliveryTime&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasExpectedDeliveryTime&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-inv-Invoice">
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-inv-Invoice-epo-cat-specifiesChargeInformation"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N9e2b978723de4d6bb104681c0162cd9f">
+    <sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N74993ac6134e4627a546f2259d1bebd4">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasSellerItemID&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasSellerItemID&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N4098605400e8452f882cdd1391240f6a">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasPrice&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasPrice&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N03f9bbf8068f45fd97c0cf54b35500ef">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasUUID&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasUUID&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N009b9a5370234107b98cd52086c99fdc">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasBaseQuantity&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasBaseQuantity&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N0fcf368e3cb44c47b9fd95b87903924c">
+    <sh:datatype rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Nbd884e6d60bd4fa78b910be5c1fb3d92">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasItemStandardID&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasItemStandardID&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N27e3f841fd00444087f4563ae09bd641">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#specifiesChargeInformation&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#specifiesChargeInformation&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N569c68a38504437485fa2e35930c0934">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#concernsItem&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#concernsItem&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N08221d9ffdc245ea879c98866f81430e">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasAssociatedDocument&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasAssociatedDocument&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N635596c0a44c46539f7228f22bf37b11">
+    <sh:datatype rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"/>
+  </rdf:Description>
+</rdf:RDF>
