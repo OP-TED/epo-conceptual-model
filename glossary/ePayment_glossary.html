@@ -39,7 +39,20 @@
                      <th>Definition</th>
                   </tr>
                </thead>
-               <tbody></tbody>
+               <tbody>
+                  <tr>
+                     <td>epo-pay:PaymentInformation</td>
+                     <td></td>
+                  </tr>
+                  <tr>
+                     <td>epo-pay:RemittanceAdvice</td>
+                     <td></td>
+                  </tr>
+                  <tr>
+                     <td>epo-pay:RemittanceAdviceLine</td>
+                     <td></td>
+                  </tr>
+               </tbody>
             </table>
             <h2 xmlns:f="http://https://github.com/costezki/model2owl#">Attributes (datatype properties) names and definitions</h2>
             <table xmlns:f="http://https://github.com/costezki/model2owl#" class="display">
@@ -51,7 +64,26 @@
                      <th>Data type / cardinality</th>
                   </tr>
                </thead>
-               <tbody></tbody>
+               <tbody>
+                  <tr>
+                     <td>epo-pay:RemittanceAdvice</td>
+                     <td>epo-pay:hasPayerReference</td>
+                     <td></td>
+                     <td>rdf:PlainLiteral [0..1]</td>
+                  </tr>
+                  <tr>
+                     <td>epo-pay:PaymentInformation</td>
+                     <td>epo-pay:hasPaymentDate</td>
+                     <td></td>
+                     <td>rdf:PlainLiteral [0..1]</td>
+                  </tr>
+                  <tr>
+                     <td>epo-pay:RemittanceAdvice</td>
+                     <td>epo-pay:hasPaymentOrderReference</td>
+                     <td></td>
+                     <td>rdf:PlainLiteral [0..1]</td>
+                  </tr>
+               </tbody>
             </table>
             <h2 xmlns:f="http://https://github.com/costezki/model2owl#">Predicates (object properties) and definitions</h2>
             <table xmlns:f="http://https://github.com/costezki/model2owl#" class="display">
@@ -77,6 +109,56 @@
                      <td>epo-inv:specifiesPayee</td>
                      <td></td>
                      <td>epo-pay:RemittanceAdvice -&gt; epo-inv:Payee [0..1]</td>
+                  </tr>
+                  <tr>
+                     <td>epo-pay:comprisesRemittanceAdviceLine</td>
+                     <td></td>
+                     <td>epo-pay:RemittanceAdvice -&gt; epo-pay:RemittanceAdviceLine [1..*]</td>
+                  </tr>
+                  <tr>
+                     <td>epo-pay:hasBalanceAmount</td>
+                     <td></td>
+                     <td>epo-pay:RemittanceAdviceLine -&gt; epo:MonetaryValue [0..1]</td>
+                  </tr>
+                  <tr>
+                     <td>epo-pay:hasCreditAmount</td>
+                     <td></td>
+                     <td>epo-pay:RemittanceAdviceLine -&gt; epo:MonetaryValue [0..1]</td>
+                  </tr>
+                  <tr>
+                     <td>epo-pay:hasDebitAmount</td>
+                     <td></td>
+                     <td>epo-pay:RemittanceAdviceLine -&gt; epo:MonetaryValue [0..1]</td>
+                  </tr>
+                  <tr>
+                     <td>epo-pay:hasPaymentIdentifier</td>
+                     <td></td>
+                     <td></td>
+                  </tr>
+                  <tr>
+                     <td>epo-pay:hasPaymentInformation</td>
+                     <td></td>
+                     <td>epo-pay:RemittanceAdvice -&gt; epo-pay:PaymentInformation [0..1]</td>
+                  </tr>
+                  <tr>
+                     <td>epo-pay:hasPaymentMeansInformation</td>
+                     <td></td>
+                     <td>epo-pay:PaymentInformation -&gt; epo-inv:PaymentInstructionsInformation [1]</td>
+                  </tr>
+                  <tr>
+                     <td>epo-pay:hasTotalCreditAmount</td>
+                     <td></td>
+                     <td>epo-pay:RemittanceAdvice -&gt; epo:MonetaryValue [0..1]</td>
+                  </tr>
+                  <tr>
+                     <td>epo-pay:hasTotalDebitAmount</td>
+                     <td></td>
+                     <td>epo-pay:RemittanceAdvice -&gt; epo:MonetaryValue [0..1]</td>
+                  </tr>
+                  <tr>
+                     <td>epo-pay:hasTotalPaymentAmount</td>
+                     <td></td>
+                     <td>epo-pay:RemittanceAdvice -&gt; epo:MonetaryValue [0..1]</td>
                   </tr>
                </tbody>
             </table>
