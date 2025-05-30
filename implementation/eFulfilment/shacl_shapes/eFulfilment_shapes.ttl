@@ -145,11 +145,11 @@ ful-shape:epo-ful-ReceiptAdvice a sh:NodeShape ;
     sh:property ful-shape:epo-ful-ReceiptAdvice-epo-ful-comprisesReceiptAdviceLine,
         ful-shape:epo-ful-ReceiptAdvice-epo-ful-isSubmittedForDespatchAdvice,
         ful-shape:epo-ful-ReceiptAdvice-epo-ful-isSubmittedForShipment,
-        ful-shape:epo-ful-ReceiptAdvice-epo-ful-specifiesBuyer,
         ful-shape:epo-ful-ReceiptAdvice-epo-ful-specifiesConsignee,
         ful-shape:epo-ful-ReceiptAdvice-epo-ful-specifiesDespatcher,
         ful-shape:epo-ful-ReceiptAdvice-epo-ful-specifiesReceiptAdviceInformation,
-        ful-shape:epo-ful-ReceiptAdvice-epo-ful-specifiesSeller ;
+        ful-shape:epo-ful-ReceiptAdvice-epo-specifiesBuyer,
+        ful-shape:epo-ful-ReceiptAdvice-epo-specifiesSeller ;
     sh:targetClass :ReceiptAdvice .
 
 ful-shape:epo-ful-ReceiptAdviceInformation a sh:NodeShape ;
@@ -742,13 +742,6 @@ ful-shape:epo-ful-ReceiptAdvice-epo-ful-isSubmittedForShipment a sh:PropertyShap
     sh:path :isSubmittedForShipment ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#isSubmittedForShipment> ?that . ?that <http://data.europa.eu/a4g/ontology#isSubmittedForShipment> ?this .}" ] .
 
-ful-shape:epo-ful-ReceiptAdvice-epo-ful-specifiesBuyer a sh:PropertyShape ;
-    sh:class :Buyer ;
-    sh:maxCount 1 ;
-    sh:name "specifies Buyer" ;
-    sh:path :specifiesBuyer ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#specifiesBuyer> ?that . ?that <http://data.europa.eu/a4g/ontology#specifiesBuyer> ?this .}" ] .
-
 ful-shape:epo-ful-ReceiptAdvice-epo-ful-specifiesConsignee a sh:PropertyShape ;
     sh:class :Consignee ;
     sh:minCount 1 ;
@@ -770,7 +763,14 @@ ful-shape:epo-ful-ReceiptAdvice-epo-ful-specifiesReceiptAdviceInformation a sh:P
     sh:path :specifiesReceiptAdviceInformation ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#specifiesReceiptAdviceInformation> ?that . ?that <http://data.europa.eu/a4g/ontology#specifiesReceiptAdviceInformation> ?this .}" ] .
 
-ful-shape:epo-ful-ReceiptAdvice-epo-ful-specifiesSeller a sh:PropertyShape ;
+ful-shape:epo-ful-ReceiptAdvice-epo-specifiesBuyer a sh:PropertyShape ;
+    sh:class :Buyer ;
+    sh:maxCount 1 ;
+    sh:name "specifies Buyer" ;
+    sh:path :specifiesBuyer ;
+    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#specifiesBuyer> ?that . ?that <http://data.europa.eu/a4g/ontology#specifiesBuyer> ?this .}" ] .
+
+ful-shape:epo-ful-ReceiptAdvice-epo-specifiesSeller a sh:PropertyShape ;
     sh:class :Seller ;
     sh:maxCount 1 ;
     sh:name "specifies Seller" ;
@@ -1103,13 +1103,13 @@ ful-shape:ful-shape a owl:Ontology ;
     rdfs:label "eProcurement Ontology Fulfilment - core shapes"@en ;
     dcterms:created "2021-06-01"^^xsd:date ;
     dcterms:description "The eProcurement Ontology Fulfilment core shapes provides the generic datashape specifications for the eProcurement Ontology Fulfilment core."@en ;
-    dcterms:issued "2025-05-29"^^xsd:date ;
+    dcterms:issued "2025-05-30"^^xsd:date ;
     dcterms:license "© European Union, 2014. Unless otherwise noted, the reuse of the Ontology is authorised under the European Union Public Licence v1.2 (https://eupl.eu/)." ;
     dcterms:publisher "http://publications.europa.eu/resource/authority/corporate-body/PUBL" ;
     dcterms:title "eProcurement Ontology Fulfilment - core shapes"@en ;
     vann:preferredNamespacePrefix "epo" ;
     vann:preferredNamespaceUri "http://data.europa.eu/a4g/ontology#" ;
-    rdfs:comment "This version is automatically generated from eFulfilment.xml on 2025-05-29" ;
+    rdfs:comment "This version is automatically generated from eFulfilment.xml on 2025-05-30" ;
     rdfs:seeAlso <https://docs.ted.europa.eu/home/index.html>,
         <https://github.com/OP-TED/ePO/releases>,
         <https://joinup.ec.europa.eu/collection/eprocurement/solution/eprocurement-ontology/about>,

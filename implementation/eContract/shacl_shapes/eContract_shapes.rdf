@@ -7,47 +7,39 @@
    xmlns:sh="http://www.w3.org/ns/shacl#"
    xmlns:vann="http://purl.org/vocab/vann/"
 >
-  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-con-ContractModificationInformation-epo-concernsContractAmendment">
-    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#ContractAmendment"/>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-con-ContractModificationInformation-epo-hasModificationDescription">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasModificationDescription"/>
+    <sh:name>has Modification Description</sh:name>
+    <sh:description>An explanatory text about this context.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#con-shape"/>
+    <sh:or rdf:nodeID="N0456dcd9be664dbd92a16d4bb820ea95"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-con-ContractModificationInformation-epo-hasModificationJustification">
     <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
     <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
-    <sh:sparql rdf:nodeID="N7d7dab6e0b3b4f8d90961578c1bacd6a"/>
     <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#concernsContractAmendment"/>
-    <sh:name>concerns Contract Amendment</sh:name>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasModificationJustification"/>
+    <sh:name>has Modification Justification</sh:name>
+    <sh:description>Explanation of why a contract was modified. The codelist to be used is at-voc:modification-justification which is available at http://publications.europa.eu/resource/dataset/modification-justification</sh:description>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="Na507ed4420a34f4dbe6bf6b36d3c7ef1">
-    <rdf:first rdf:nodeID="Nd5627f5113b7477e919f6980242343e6"/>
-    <rdf:rest rdf:nodeID="N846c86215e95476796c34d3e321d7857"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-con-Deliverable-epo-cat-hasQuantity">
-    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#Quantity"/>
-    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
-    <sh:sparql rdf:nodeID="Nb78648ec1c8d4aa8876cb1560e84d449"/>
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasQuantity"/>
-    <sh:name>has Quantity</sh:name>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="Nd5627f5113b7477e919f6980242343e6">
-    <sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-con-Deliverable">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+    <sh:targetClass rdf:resource="http://data.europa.eu/a4g/ontology#Deliverable"/>
+    <rdfs:label>Deliverable</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#con-shape"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-con-Deliverable-epo-hasTotalValue"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-con-Deliverable-epo-cat-hasQuantity"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-con-ContractAmendment-epo-amendsContract">
     <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#Contract"/>
     <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
     <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
-    <sh:sparql rdf:nodeID="N82dbaeb79666444b8ec9f4fd271973f2"/>
+    <sh:sparql rdf:nodeID="Ne8f1b31871544da5ad58372cadf83a7e"/>
     <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
     <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#amendsContract"/>
     <sh:name>amends Contract</sh:name>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-con-ContractAmendment">
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
-    <sh:targetClass rdf:resource="http://data.europa.eu/a4g/ontology#ContractAmendment"/>
-    <rdfs:label>Contract Amendment</rdfs:label>
-    <rdfs:comment>A change to an existing Contract that is agreed by the contracting parties.</rdfs:comment>
-    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#con-shape"/>
-    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-con-ContractAmendment-epo-updatesContractValue"/>
-    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-con-ContractAmendment-epo-amendsContract"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#con-shape">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
@@ -69,12 +61,12 @@
     <rdfs:label xml:lang="en">eProcurement Ontology Contract - core shapes</rdfs:label>
     <dcterms:publisher>http://publications.europa.eu/resource/authority/corporate-body/PUBL</dcterms:publisher>
     <dcterms:description xml:lang="en">The eProcurement Ontology Contract core shapes provides the generic datashape specifications for the eProcurement Ontology Contract core.</dcterms:description>
-    <rdfs:comment>This version is automatically generated from eContract.xml on 2025-05-29</rdfs:comment>
+    <rdfs:comment>This version is automatically generated from eContract.xml on 2025-05-30</rdfs:comment>
     <rdfs:seeAlso rdf:resource="https://github.com/OP-TED/ePO/releases"/>
     <rdfs:seeAlso rdf:resource="https://joinup.ec.europa.eu/collection/eprocurement/solution/eprocurement-ontology/about"/>
     <rdfs:seeAlso rdf:resource="https://op.europa.eu/en/web/eu-vocabularies/e-procurement"/>
     <rdfs:seeAlso rdf:resource="https://docs.ted.europa.eu/home/index.html"/>
-    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-05-29</dcterms:issued>
+    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-05-30</dcterms:issued>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2021-06-01</dcterms:created>
     <owl:versionInfo>5.1.0</owl:versionInfo>
     <owl:incompatibleWith>4.2.0</owl:incompatibleWith>
@@ -84,35 +76,47 @@
     <vann:preferredNamespacePrefix>epo</vann:preferredNamespacePrefix>
     <dcterms:license>© European Union, 2014. Unless otherwise noted, the reuse of the Ontology is authorised under the European Union Public Licence v1.2 (https://eupl.eu/).</dcterms:license>
   </rdf:Description>
-  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-con-ContractModificationInformation-epo-relatesToEFormSectionIdentifier">
-    <sh:class rdf:resource="http://www.w3.org/ns/adms#Identifier"/>
-    <sh:sparql rdf:nodeID="N8b4db4f66eb643ba8d33b37484c0a497"/>
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#relatesToEFormSectionIdentifier"/>
-    <sh:name>relates To E Form Section Identifier</sh:name>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-not-ContractModificationNotice">
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-not-ContractModificationNotice-epo-announcesContractAmendment"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-Contract">
-    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-Contract-epo-specifiesDeliverable"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="N93339601dc094a46a994ac87aad6843d">
-    <sh:datatype rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-con-ContractAmendment-epo-updatesContractValue">
-    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#MonetaryValue"/>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-con-Deliverable-epo-cat-hasQuantity">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#Quantity"/>
     <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
-    <sh:sparql rdf:nodeID="N294222778a664619b870dd596b9c1dd6"/>
+    <sh:sparql rdf:nodeID="N670e6ada582c410dac315a79682239c9"/>
     <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#updatesContractValue"/>
-    <sh:name>updates Contract Value</sh:name>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasQuantity"/>
+    <sh:name>has Quantity</sh:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-con-ContractModificationInformation-epo-hasModificationReasonDescription">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasModificationReasonDescription"/>
+    <sh:name>has Modification Reason Description</sh:name>
+    <sh:description>An explanation about the reasons for using the concept.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#con-shape"/>
+    <sh:or rdf:nodeID="N0f48a191874c4f48a2702de2b1c109b6"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N2dde68dd0c5444bc9b7a909b4194d118">
+    <sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-not-ContractModificationNotice-epo-announcesContractAmendment">
     <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#ContractAmendment"/>
     <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
     <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
-    <sh:sparql rdf:nodeID="N72369fb46d8c435f9e6091e38eeedba1"/>
+    <sh:sparql rdf:nodeID="N1703c05d0ba3465184a1f3fce46f0fdb"/>
     <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
     <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#announcesContractAmendment"/>
     <sh:name>announces Contract Amendment</sh:name>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Na222bc85bf0e41de897bae4ab1683585">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#concernsContractAmendment&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#concernsContractAmendment&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-Contract-epo-specifiesDeliverable">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#Deliverable"/>
+    <sh:sparql rdf:nodeID="N5123e167547b433f9f6541aa1af988e7"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#specifiesDeliverable"/>
+    <sh:name>specifies Deliverable</sh:name>
   </rdf:Description>
   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-con-ContractModificationInformation">
     <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
@@ -125,98 +129,94 @@
     <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-con-ContractModificationInformation-epo-relatesToEFormSectionIdentifier"/>
     <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-con-ContractModificationInformation-epo-hasModificationJustification"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-con-ContractModificationInformation-epo-hasModificationReasonDescription">
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasModificationReasonDescription"/>
-    <sh:name>has Modification Reason Description</sh:name>
-    <sh:description>An explanation about the reasons for using the concept.</sh:description>
-    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#con-shape"/>
-    <sh:or rdf:nodeID="Na507ed4420a34f4dbe6bf6b36d3c7ef1"/>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-con-ContractAmendment-epo-updatesContractValue">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#MonetaryValue"/>
     <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-con-Deliverable">
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
-    <sh:targetClass rdf:resource="http://data.europa.eu/a4g/ontology#Deliverable"/>
-    <rdfs:label>Deliverable</rdfs:label>
-    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#con-shape"/>
-    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-con-Deliverable-epo-hasTotalValue"/>
-    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-con-Deliverable-epo-cat-hasQuantity"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="N9b4a7af2b2eb4f7fb58eb66a02db1c5a">
-    <rdf:first rdf:nodeID="Ne6958da4f8194dc98d8649a573cd60ae"/>
-    <rdf:rest rdf:nodeID="N8a364ff49d9e47ca8ba8d5fcf0add3e3"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-con-ContractModificationInformation-epo-hasModificationDescription">
+    <sh:sparql rdf:nodeID="N1d823e382ae04bceabfa82dd1b832a1e"/>
     <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasModificationDescription"/>
-    <sh:name>has Modification Description</sh:name>
-    <sh:description>An explanatory text about this context.</sh:description>
-    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#con-shape"/>
-    <sh:or rdf:nodeID="N9b4a7af2b2eb4f7fb58eb66a02db1c5a"/>
-    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#updatesContractValue"/>
+    <sh:name>updates Contract Value</sh:name>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="N8a364ff49d9e47ca8ba8d5fcf0add3e3">
-    <rdf:first rdf:nodeID="Nc9f85675ab2945ec910a1bf07d86dc3d"/>
-    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="N72369fb46d8c435f9e6091e38eeedba1">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#announcesContractAmendment&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#announcesContractAmendment&gt; ?this .}</sh:select>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="N846c86215e95476796c34d3e321d7857">
-    <rdf:first rdf:nodeID="N93339601dc094a46a994ac87aad6843d"/>
-    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  <rdf:Description rdf:nodeID="Ncd6f648d9f7345f9a9a5b441df7e105e">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#relatesToEFormSectionIdentifier&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#relatesToEFormSectionIdentifier&gt; ?this .}</sh:select>
   </rdf:Description>
   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-con-Deliverable-epo-hasTotalValue">
     <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#MonetaryValue"/>
     <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
-    <sh:sparql rdf:nodeID="Nefd7659dd987447e8f894868db2fc17a"/>
+    <sh:sparql rdf:nodeID="N845e66275dab451ab863d87c0ec4b38b"/>
     <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
     <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasTotalValue"/>
     <sh:name>has Total Value</sh:name>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="N7d7dab6e0b3b4f8d90961578c1bacd6a">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#concernsContractAmendment&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#concernsContractAmendment&gt; ?this .}</sh:select>
+  <rdf:Description rdf:nodeID="N845e66275dab451ab863d87c0ec4b38b">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasTotalValue&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasTotalValue&gt; ?this .}</sh:select>
   </rdf:Description>
-  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-not-ContractModificationNotice">
-    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-not-ContractModificationNotice-epo-announcesContractAmendment"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="Nf7ed625245a9418a977de69657e8e9cc">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#specifiesDeliverable&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#specifiesDeliverable&gt; ?this .}</sh:select>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-con-ContractModificationInformation-epo-hasModificationJustification">
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-con-ContractModificationInformation-epo-concernsContractAmendment">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#ContractAmendment"/>
     <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
     <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
+    <sh:sparql rdf:nodeID="Na222bc85bf0e41de897bae4ab1683585"/>
     <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasModificationJustification"/>
-    <sh:name>has Modification Justification</sh:name>
-    <sh:description>Explanation of why a contract was modified. The codelist to be used is at-voc:modification-justification which is available at http://publications.europa.eu/resource/dataset/modification-justification</sh:description>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#concernsContractAmendment"/>
+    <sh:name>concerns Contract Amendment</sh:name>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="Ne6958da4f8194dc98d8649a573cd60ae">
-    <sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-con-ContractAmendment">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+    <sh:targetClass rdf:resource="http://data.europa.eu/a4g/ontology#ContractAmendment"/>
+    <rdfs:label>Contract Amendment</rdfs:label>
+    <rdfs:comment>A change to an existing Contract that is agreed by the contracting parties.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#con-shape"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-con-ContractAmendment-epo-updatesContractValue"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-con-ContractAmendment-epo-amendsContract"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="N8b4db4f66eb643ba8d33b37484c0a497">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#relatesToEFormSectionIdentifier&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#relatesToEFormSectionIdentifier&gt; ?this .}</sh:select>
+  <rdf:Description rdf:nodeID="N6321d3d6553c4c11a3ac31b53701a9c3">
+    <rdf:first rdf:nodeID="Nab5873f9ef7d4d1baf245fa78af8c006"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-Contract-epo-specifiesDeliverable">
-    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#Deliverable"/>
-    <sh:sparql rdf:nodeID="Nf7ed625245a9418a977de69657e8e9cc"/>
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#specifiesDeliverable"/>
-    <sh:name>specifies Deliverable</sh:name>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="Nc9f85675ab2945ec910a1bf07d86dc3d">
-    <sh:datatype rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="Nb78648ec1c8d4aa8876cb1560e84d449">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasQuantity&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasQuantity&gt; ?this .}</sh:select>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="N294222778a664619b870dd596b9c1dd6">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#updatesContractValue&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#updatesContractValue&gt; ?this .}</sh:select>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="N82dbaeb79666444b8ec9f4fd271973f2">
+  <rdf:Description rdf:nodeID="Ne8f1b31871544da5ad58372cadf83a7e">
     <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#amendsContract&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#amendsContract&gt; ?this .}</sh:select>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="Nefd7659dd987447e8f894868db2fc17a">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasTotalValue&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasTotalValue&gt; ?this .}</sh:select>
+  <rdf:Description rdf:nodeID="N8b9422a4f7dc4b53980979e0fed288f0">
+    <rdf:first rdf:nodeID="Na922d7431c3045348fc9f98a827e04d4"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Nab5873f9ef7d4d1baf245fa78af8c006">
+    <sh:datatype rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N0456dcd9be664dbd92a16d4bb820ea95">
+    <rdf:first rdf:nodeID="N2dde68dd0c5444bc9b7a909b4194d118"/>
+    <rdf:rest rdf:nodeID="N8b9422a4f7dc4b53980979e0fed288f0"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-con-ContractModificationInformation-epo-relatesToEFormSectionIdentifier">
+    <sh:class rdf:resource="http://www.w3.org/ns/adms#Identifier"/>
+    <sh:sparql rdf:nodeID="Ncd6f648d9f7345f9a9a5b441df7e105e"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#relatesToEFormSectionIdentifier"/>
+    <sh:name>relates To E Form Section Identifier</sh:name>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N0f48a191874c4f48a2702de2b1c109b6">
+    <rdf:first rdf:nodeID="N51db8059ddf245d682ae650c366b7fbf"/>
+    <rdf:rest rdf:nodeID="N6321d3d6553c4c11a3ac31b53701a9c3"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Na922d7431c3045348fc9f98a827e04d4">
+    <sh:datatype rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N1703c05d0ba3465184a1f3fce46f0fdb">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#announcesContractAmendment&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#announcesContractAmendment&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N51db8059ddf245d682ae650c366b7fbf">
+    <sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N1d823e382ae04bceabfa82dd1b832a1e">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#updatesContractValue&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#updatesContractValue&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-Contract">
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-Contract-epo-specifiesDeliverable"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N670e6ada582c410dac315a79682239c9">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasQuantity&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasQuantity&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N5123e167547b433f9f6541aa1af988e7">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#specifiesDeliverable&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#specifiesDeliverable&gt; ?this .}</sh:select>
   </rdf:Description>
 </rdf:RDF>

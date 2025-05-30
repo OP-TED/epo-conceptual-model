@@ -22,7 +22,8 @@ sub-shape:epo-sub-ESPD a sh:NodeShape ;
     rdfs:label "ESPD" ;
     rdfs:comment "A self-declaration of an economic operator, stating that it does not fall under the Exclusion Grounds and that it meets the Selection Criteria for a specific procurement." ;
     rdfs:isDefinedBy sub-shape:sub-shape ;
-    sh:property sub-shape:epo-sub-ESPD-epo-sub-providesInformationOn,
+    sh:property sub-shape:epo-sub-ESPD-epo-sub-isContainedInTender,
+        sub-shape:epo-sub-ESPD-epo-sub-providesInformationOn,
         sub-shape:epo-sub-ESPD-epo-sub-relatesToESPDRequest,
         sub-shape:epo-sub-ESPD-epo-sub-specifiesResponse ;
     sh:targetClass :ESPD .
@@ -75,6 +76,12 @@ sub-shape:epo-sub-Response a sh:NodeShape ;
         sub-shape:epo-sub-Response-epo-sub-isReinforcedBy,
         sub-shape:epo-sub-Response-epo-sub-refersToApplicablePeriod ;
     sh:targetClass :Response .
+
+sub-shape:epo-sub-ESPD-epo-sub-isContainedInTender a sh:PropertyShape ;
+    sh:class :Tender ;
+    sh:name "is Contained In Tender" ;
+    sh:path :isContainedInTender ;
+    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#isContainedInTender> ?that . ?that <http://data.europa.eu/a4g/ontology#isContainedInTender> ?this .}" ] .
 
 sub-shape:epo-sub-ESPD-epo-sub-providesInformationOn a sh:PropertyShape ;
     sh:class org:Organization ;
@@ -203,13 +210,13 @@ sub-shape:sub-shape a owl:Ontology ;
     rdfs:label "eProcurement Ontology Submission - core shapes"@en ;
     dcterms:created "2021-06-01"^^xsd:date ;
     dcterms:description "The eProcurement Ontology Submission core shapes provides the generic datashape specifications for the eProcurement Ontology Submission core."@en ;
-    dcterms:issued "2025-05-29"^^xsd:date ;
+    dcterms:issued "2025-05-30"^^xsd:date ;
     dcterms:license "© European Union, 2014. Unless otherwise noted, the reuse of the Ontology is authorised under the European Union Public Licence v1.2 (https://eupl.eu/)." ;
     dcterms:publisher "http://publications.europa.eu/resource/authority/corporate-body/PUBL" ;
     dcterms:title "eProcurement Ontology Submission - core shapes"@en ;
     vann:preferredNamespacePrefix "epo" ;
     vann:preferredNamespaceUri "http://data.europa.eu/a4g/ontology#" ;
-    rdfs:comment "This version is automatically generated from eSubmission.xml on 2025-05-29" ;
+    rdfs:comment "This version is automatically generated from eSubmission.xml on 2025-05-30" ;
     rdfs:seeAlso <https://docs.ted.europa.eu/home/index.html>,
         <https://github.com/OP-TED/ePO/releases>,
         <https://joinup.ec.europa.eu/collection/eprocurement/solution/eprocurement-ontology/about>,

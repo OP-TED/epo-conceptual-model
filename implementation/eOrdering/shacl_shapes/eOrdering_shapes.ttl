@@ -35,7 +35,7 @@ ord-shape:epo-ful-DespatchAdvice sh:property ord-shape:epo-ful-DespatchAdvice-ep
 ord-shape:epo-ful-DespatchLine sh:property ord-shape:epo-ful-DespatchLine-epo-ful-refersToOrderLine .
 
 ord-shape:epo-ful-ReceiptAdvice sh:property ord-shape:epo-ful-ReceiptAdvice-epo-ful-specifiesConsignee,
-        ord-shape:epo-ful-ReceiptAdvice-epo-ful-specifiesSeller .
+        ord-shape:epo-ful-ReceiptAdvice-epo-specifiesSeller .
 
 ord-shape:epo-ful-ReceiptAdviceInformation sh:property ord-shape:epo-ful-ReceiptAdviceInformation-epo-ord-hasAcceptanceStatus .
 
@@ -288,6 +288,8 @@ ord-shape:epo-ord-TaxInformation a sh:NodeShape ;
         ord-shape:epo-ord-TaxInformation-epo-isCalculatedOn ;
     sh:targetClass :TaxInformation .
 
+ord-shape:epo-pay-RemittanceAdvice sh:property ord-shape:epo-pay-RemittanceAdvice-epo-specifiesSeller .
+
 ord-shape:epo-req-RequestForOffer sh:property ord-shape:epo-req-RequestForOffer-epo-ful-specifiesOriginator,
         ord-shape:epo-req-RequestForOffer-epo-ord-specifiesDeliveryInformation .
 
@@ -376,7 +378,7 @@ ord-shape:epo-ful-ReceiptAdvice-epo-ful-specifiesConsignee a sh:PropertyShape ;
     sh:path :specifiesConsignee ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#specifiesConsignee> ?that . ?that <http://data.europa.eu/a4g/ontology#specifiesConsignee> ?this .}" ] .
 
-ord-shape:epo-ful-ReceiptAdvice-epo-ful-specifiesSeller a sh:PropertyShape ;
+ord-shape:epo-ful-ReceiptAdvice-epo-specifiesSeller a sh:PropertyShape ;
     sh:class :Seller ;
     sh:maxCount 1 ;
     sh:name "specifies Seller" ;
@@ -1143,8 +1145,17 @@ ord-shape:epo-ord-TaxInformation-epo-isCalculatedOn a sh:PropertyShape ;
     sh:path :isCalculatedOn ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#isCalculatedOn> ?that . ?that <http://data.europa.eu/a4g/ontology#isCalculatedOn> ?this .}" ] .
 
+ord-shape:epo-pay-RemittanceAdvice-epo-specifiesSeller a sh:PropertyShape ;
+    sh:class :Seller ;
+    sh:maxCount 1 ;
+    sh:minCount 1 ;
+    sh:name "specifies Seller" ;
+    sh:path :specifiesSeller ;
+    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#specifiesSeller> ?that . ?that <http://data.europa.eu/a4g/ontology#specifiesSeller> ?this .}" ] .
+
 ord-shape:epo-req-RequestForOffer-epo-ful-specifiesOriginator a sh:PropertyShape ;
     sh:class :Originator ;
+    sh:description "Relation indicating that the instance of the concept involves the Originator." ;
     sh:maxCount 1 ;
     sh:name "specifies Originator" ;
     sh:path :specifiesOriginator ;
@@ -1160,13 +1171,13 @@ ord-shape:ord-shape a owl:Ontology ;
     rdfs:label "eProcurement Ontology Ordering - core shapes"@en ;
     dcterms:created "2021-06-01"^^xsd:date ;
     dcterms:description "The eProcurement Ontology Ordering core shapes provides the generic datashape specifications for the eProcurement Ontology Ordering core."@en ;
-    dcterms:issued "2025-05-29"^^xsd:date ;
+    dcterms:issued "2025-05-30"^^xsd:date ;
     dcterms:license "© European Union, 2014. Unless otherwise noted, the reuse of the Ontology is authorised under the European Union Public Licence v1.2 (https://eupl.eu/)." ;
     dcterms:publisher "http://publications.europa.eu/resource/authority/corporate-body/PUBL" ;
     dcterms:title "eProcurement Ontology Ordering - core shapes"@en ;
     vann:preferredNamespacePrefix "epo" ;
     vann:preferredNamespaceUri "http://data.europa.eu/a4g/ontology#" ;
-    rdfs:comment "This version is automatically generated from eOrdering.xml on 2025-05-29" ;
+    rdfs:comment "This version is automatically generated from eOrdering.xml on 2025-05-30" ;
     rdfs:seeAlso <https://docs.ted.europa.eu/home/index.html>,
         <https://github.com/OP-TED/ePO/releases>,
         <https://joinup.ec.europa.eu/collection/eprocurement/solution/eprocurement-ontology/about>,

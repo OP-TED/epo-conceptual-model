@@ -340,6 +340,10 @@
     skos:historyNote "WG Approval 22/11/2022"@en ;
     skos:prefLabel "Lead Buyer"@en .
 
+:LocalLegalBasisInformation a owl:Class ;
+    rdfs:isDefinedBy :core ;
+    skos:prefLabel "Local Legal Basis Information"@en .
+
 :Lot a owl:Class ;
     rdfs:isDefinedBy :core ;
     rdfs:subClassOf :ProcurementObject ;
@@ -495,6 +499,11 @@
     rdfs:subClassOf :AcquiringParty ;
     skos:definition "A Role of an Agent responsible for executing the Payment."@en ;
     skos:prefLabel "Payment Executor"@en .
+
+:PlannedProcurement a owl:Class ;
+    rdfs:isDefinedBy :core ;
+    rdfs:subClassOf :ProcurementElement ;
+    skos:prefLabel "Planned Procurement"@en .
 
 :PlannedProcurementPart a owl:Class ;
     rdfs:isDefinedBy :core ;
@@ -684,6 +693,10 @@
     skos:definition "Approach whereby Buyers seek to procure by fulfilling social objectives. Additional Information: Socially Responsible Public Procurement (SRPP) - ‘SRPP’ means Procurement Operations that take into account one or more of the following social considerations: employment opportunities, decent work, compliance with social and labour rights, social inclusion (including persons with disabilities), equal opportunities, accessibility design for all, taking account of sustainability criteria, including ethical trade issues and wider voluntary compliance with corporate social responsibility (CSR), while observing the principles enshrined in the Treaty for the European Union (TFEU) and the Procurement Directives. See Article 18 and Annex X Directive 2014/24."@en ;
     skos:prefLabel "Social Procurement"@en .
 
+:SpecificationInformation a owl:Class ;
+    rdfs:isDefinedBy :core ;
+    skos:prefLabel "Specification Information"@en .
+
 :SubcontractTerm a owl:Class ;
     rdfs:isDefinedBy :core ;
     rdfs:subClassOf :Term ;
@@ -843,6 +856,10 @@
     rdfs:isDefinedBy :core ;
     skos:prefLabel "announces Notice Award Information"@en .
 
+:announcesPlannedProcurement a owl:ObjectProperty ;
+    rdfs:isDefinedBy :core ;
+    skos:prefLabel "announces Planned Procurement"@en .
+
 :announcesPlannedProcurementPart a owl:ObjectProperty ;
     rdfs:isDefinedBy :core ;
     skos:prefLabel "announces Planned Procurement Part"@en .
@@ -977,11 +994,9 @@
     rdfs:isDefinedBy :core ;
     skos:prefLabel "concerns Originator Request"@en .
 
-:concernsProcedure a owl:ObjectProperty ;
+:concernsProcurementElement a owl:ObjectProperty ;
     rdfs:isDefinedBy :core ;
-    skos:definition "Relates to Procedure."@en ;
-    skos:historyNote "WG Approval 05/03/2024"@en ;
-    skos:prefLabel "concerns Procedure"@en .
+    skos:prefLabel "concerns Procurement Element"@en .
 
 :concernsReviewDecision a owl:ObjectProperty ;
     rdfs:isDefinedBy :core ;
@@ -1394,6 +1409,10 @@
     rdfs:isDefinedBy :core ;
     skos:prefLabel "has Backorder Quantity"@en .
 
+:hasBalanceAmount a owl:ObjectProperty ;
+    rdfs:isDefinedBy :core ;
+    skos:prefLabel "has Balance Amount"@en .
+
 :hasBankingIdentifier a owl:ObjectProperty ;
     rdfs:isDefinedBy :core ;
     skos:definition "An unique banking reference identifier of the Payee or Seller, assigned by the Payee or Seller bank."@en ;
@@ -1543,7 +1562,6 @@
 
 :hasConstraint a owl:ObjectProperty ;
     rdfs:isDefinedBy :core ;
-    skos:definition "External concept defined by <xref scope=\"external\" href=\"http://data.europa.eu/m8g/hasConstraint\"><foreign otherprops=\"#0000ff\"><u>http://data.europa.eu/m8g/hasConstraint</u></foreign></xref>"@en ;
     skos:prefLabel "has Constraint"@en .
 
 :hasContactName a owl:DatatypeProperty ;
@@ -1586,6 +1604,10 @@
     skos:definition "The source country of the product or service. Additional Information: The country of origin can be provided by the buyer as a requirement or by the tenderer information of the item to be provided."@en ;
     skos:prefLabel "has Country Of Origin"@en .
 
+:hasCreditAmount a owl:ObjectProperty ;
+    rdfs:isDefinedBy :core ;
+    skos:prefLabel "has Credit Amount"@en .
+
 :hasCrossBorderLaw a owl:DatatypeProperty ;
     rdfs:isDefinedBy :core ;
     skos:definition "The applicable law when buyers from different countries procure together within one procurement procedure. (epo:ProcedureTerm)"@en ;
@@ -1618,6 +1640,7 @@
 :hasCustomerReference a owl:ObjectProperty ;
     rdfs:isDefinedBy :core ;
     skos:definition "An identifier assigned by the Buyer used for internal routing purposes."@en ;
+    skos:historyNote "WG Approval 04/03/2025"@en ;
     skos:prefLabel "has Customer Reference"@en .
 
 :hasDPSScope a owl:ObjectProperty ;
@@ -1630,6 +1653,10 @@
     skos:definition "The time limit by which the security clearance must be submitted to the buyer. (epo:SecurityClearanceTerm)"@en ;
     skos:historyNote "WG Approval 02/05/2024"@en ;
     skos:prefLabel "has Deadline"@en .
+
+:hasDebitAmount a owl:ObjectProperty ;
+    rdfs:isDefinedBy :core ;
+    skos:prefLabel "has Debit Amount"@en .
 
 :hasDebitedAccountIdentifier a owl:ObjectProperty ;
     rdfs:isDefinedBy :core ;
@@ -2117,7 +2144,7 @@
 
 :hasLegalBasisDescription a owl:DatatypeProperty ;
     rdfs:isDefinedBy :core ;
-    skos:definition "Explanatory text about the legal basis. (epo:ProcurementObject)"@en ;
+    skos:definition "Explanatory text about the legal basis. (epo:ProcurementElement)"@en ;
     skos:historyNote "WG Approval 02/05/2024"@en ;
     skos:prefLabel "has Legal Basis Description"@en .
 
@@ -2545,6 +2572,10 @@
     skos:definition "Information about financial clauses that will govern some economic aspects of the execution of the contract. Additional Information: These clauses usually refer to financial and payment provisions. This type of information should be structured instead of a free text in order to reuse it an ideal world. Unfortunately this is an information that in the real life no one is willing to provide pro-actively. WG Pending of discussion with eForms (epo:ContractTerm)"@en ;
     skos:prefLabel "has Payment Arrangement"@en .
 
+:hasPaymentIdentifier a owl:ObjectProperty ;
+    rdfs:isDefinedBy :core ;
+    skos:prefLabel "has Payment Identifier"@en .
+
 :hasPaymentServiceProviderIdentifier a owl:ObjectProperty ;
     rdfs:isDefinedBy :core ;
     skos:definition "An identifier for the payment service provider where a payment account is located."@en ;
@@ -2581,10 +2612,6 @@
 :hasPlannedPeriod a owl:ObjectProperty ;
     rdfs:isDefinedBy :core ;
     skos:prefLabel "has Planned Period"@en .
-
-:hasPreferredLanguageForProcurementDocument a owl:ObjectProperty ;
-    rdfs:isDefinedBy :core ;
-    skos:prefLabel "has Preferred Language For Procurement Document"@en .
 
 :hasPrepaidAmount a owl:ObjectProperty ;
     rdfs:isDefinedBy :core ;
@@ -2925,6 +2952,14 @@
     rdfs:isDefinedBy :core ;
     skos:prefLabel "has Short Quantity"@en .
 
+:hasSourceSpecificationCustomisation a owl:ObjectProperty ;
+    rdfs:isDefinedBy :core ;
+    skos:prefLabel "has Source Specification Customisation"@en .
+
+:hasSourceVersionSpecification a owl:ObjectProperty ;
+    rdfs:isDefinedBy :core ;
+    skos:prefLabel "has Source Version Specification"@en .
+
 :hasStartDate a owl:ObjectProperty ;
     rdfs:isDefinedBy :core ;
     skos:prefLabel "has Start Date"@en .
@@ -3034,6 +3069,14 @@
     rdfs:isDefinedBy :core ;
     skos:prefLabel "has Total Charge Amount"@en .
 
+:hasTotalCreditAmount a owl:ObjectProperty ;
+    rdfs:isDefinedBy :core ;
+    skos:prefLabel "has Total Credit Amount"@en .
+
+:hasTotalDebitAmount a owl:ObjectProperty ;
+    rdfs:isDefinedBy :core ;
+    skos:prefLabel "has Total Debit Amount"@en .
+
 :hasTotalGoodsItemQuantity a owl:ObjectProperty ;
     rdfs:isDefinedBy :core ;
     skos:definition "Relation indicating the number of the Goods Items."@en ;
@@ -3050,6 +3093,10 @@
     skos:editorialNote "Used by eForms BT-712"@en ;
     skos:historyNote "WG Approval 11/04/2019"@en ;
     skos:prefLabel "has Total Number Of Complainants"@en .
+
+:hasTotalPaymentAmount a owl:ObjectProperty ;
+    rdfs:isDefinedBy :core ;
+    skos:prefLabel "has Total Payment Amount"@en .
 
 :hasTotalQuantity a owl:ObjectProperty ;
     rdfs:isDefinedBy :core ;
@@ -3271,6 +3318,10 @@
     skos:editorialNote "Used by eForms BT-756"@en ;
     skos:prefLabel "is Competition Terminated"@en .
 
+:isContainedInTender a owl:ObjectProperty ;
+    rdfs:isDefinedBy :core ;
+    skos:prefLabel "is Contained In Tender"@en .
+
 :isContractingEntity a owl:DatatypeProperty ;
     rdfs:isDefinedBy :core ;
     skos:definition "Role of entities, which: (a) are contracting authorities or public undertakings and which pursue one of the activities referred to in Articles 8 to 14 of the Directive 2014/25/EU. (b) when they are not contracting authorities or public undertakings, have as one of their activities any of the activities referred to in Articles 8 to 14, or any combination thereof and operate on the basis of special or exclusive rights granted by a competent authority of a Member State. Additional Information: The indicator is needed in order to discriminate between those contracts where the Contracting Entity acts as a Contracting Authority undergoing the limits and the rules of Directive 24 and those where it acts as a Contracting Entity, with certain relaxed constraints. For example, the Contracting Entities have different thresholds for the application of Directive 24 if compared with Contracting Authorities. (epo:Buyer)"@en ;
@@ -3455,6 +3506,10 @@
     skos:definition "The criterion will be used to select the candidates to be invited for the second stage of a multistage procedure. Additional Information: This property is only used if a maximum number of candidates was foreseen in the procedure. (epo:SelectionCriterion)"@en ;
     skos:editorialNote "Used by eForms BT-40"@en ;
     skos:prefLabel "is Used For Candidate Restriction"@en .
+
+:isUsedInProfile a owl:ObjectProperty ;
+    rdfs:isDefinedBy :core ;
+    skos:prefLabel "is Used In Profile"@en .
 
 :isUsingEUFunds a owl:DatatypeProperty ;
     rdfs:isDefinedBy :core ;
@@ -3683,10 +3738,6 @@
     rdfs:isDefinedBy :core ;
     skos:prefLabel "specifies Buyer"@en .
 
-:specifiesCatalogueProvider a owl:ObjectProperty ;
-    rdfs:isDefinedBy :core ;
-    skos:prefLabel "specifies Catalogue Provider"@en .
-
 :specifiesCatalogueReceiver a owl:ObjectProperty ;
     rdfs:isDefinedBy :core ;
     skos:prefLabel "specifies Catalogue Receiver"@en .
@@ -3710,10 +3761,6 @@
 :specifiesDeliveryAgreementLocation a owl:ObjectProperty ;
     rdfs:isDefinedBy :core ;
     skos:prefLabel "specifies Delivery Agreement Location"@en .
-
-:specifiesEconomicOperator a owl:ObjectProperty ;
-    rdfs:isDefinedBy :core ;
-    skos:prefLabel "specifies Economic Operator"@en .
 
 :specifiesEvidence a owl:ObjectProperty ;
     rdfs:isDefinedBy :core ;
@@ -3836,11 +3883,6 @@
     skos:historyNote "WG approval 23/11/2018"@en ;
     skos:prefLabel "Evaluation Term"@en .
 
-:ProcurementElement a owl:Class ;
-    rdfs:isDefinedBy :core ;
-    skos:definition "Gathering class for critical/central elements in the Procurement Process. TODO: add definition Additional information: Alias: ProcurementComponent"@en ;
-    skos:prefLabel "Procurement Element"@en .
-
 :ProcurementObject a owl:Class ;
     rdfs:isDefinedBy :core ;
     rdfs:subClassOf :MaskableObject,
@@ -3884,6 +3926,11 @@
     skos:definition "A criterion specific to Procurement. Additional Information: This Procurement Criterion can be only Exclusion Ground, Selection Criterion or Award Criterion. Each of these Criteria can contain subcriteria (Criterion class)."@en ;
     skos:historyNote "WG Approval 23/04/2020"@en ;
     skos:prefLabel "Procurement Criterion"@en .
+
+:ProcurementElement a owl:Class ;
+    rdfs:isDefinedBy :core ;
+    skos:definition "Gathering class for critical/central elements in the Procurement Process. TODO: add definition Additional information: Alias: ProcurementComponent"@en ;
+    skos:prefLabel "Procurement Element"@en .
 
 :SelectionCriteriaSummary a owl:Class ;
     rdfs:isDefinedBy :core ;
@@ -3949,13 +3996,13 @@
     rdfs:label "eProcurement Ontology - core"@en ;
     dcterms:created "2021-06-01"^^xsd:date ;
     dcterms:description "The eProcurement Ontology core describes the concepts and properties representing the European Public Procurement domain. The provision of these semantics offers the basis for a common understanding of the domain for all stakeholders ensuring the quality of data exchange and transparency. The ontology restrictions are published in a separate artefact."@en ;
-    dcterms:issued "2025-05-29"^^xsd:date ;
+    dcterms:issued "2025-05-30"^^xsd:date ;
     dcterms:license "© European Union, 2014. Unless otherwise noted, the reuse of the Ontology is authorised under the European Union Public Licence v1.2 (https://eupl.eu/)." ;
     dcterms:publisher "http://publications.europa.eu/resource/authority/corporate-body/PUBL" ;
     dcterms:title "eProcurement Ontology - core"@en ;
     vann:preferredNamespacePrefix "epo" ;
     vann:preferredNamespaceUri "http://data.europa.eu/a4g/ontology#" ;
-    rdfs:comment "This version is automatically generated from ePO_core.xml on 2025-05-29" ;
+    rdfs:comment "This version is automatically generated from ePO_core.xml on 2025-05-30" ;
     rdfs:seeAlso <https://docs.ted.europa.eu/home/index.html>,
         <https://github.com/OP-TED/ePO/releases>,
         <https://joinup.ec.europa.eu/collection/eprocurement/solution/eprocurement-ontology/about>,

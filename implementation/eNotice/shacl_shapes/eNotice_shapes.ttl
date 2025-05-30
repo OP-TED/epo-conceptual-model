@@ -534,6 +534,7 @@ not-shape:epo-not-PlanningNotice a sh:NodeShape ;
     rdfs:isDefinedBy not-shape:not-shape ;
     sh:property not-shape:epo-not-PlanningNotice-epo-announcesLot,
         not-shape:epo-not-PlanningNotice-epo-announcesLotGroup,
+        not-shape:epo-not-PlanningNotice-epo-announcesPlannedProcurement,
         not-shape:epo-not-PlanningNotice-epo-announcesPlannedProcurementPart,
         not-shape:epo-not-PlanningNotice-epo-announcesProcedure,
         not-shape:epo-not-PlanningNotice-epo-announcesRole ;
@@ -871,6 +872,13 @@ not-shape:epo-not-PlanningNotice-epo-announcesLotGroup a sh:PropertyShape ;
     sh:path :announcesLotGroup ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#announcesLotGroup> ?that . ?that <http://data.europa.eu/a4g/ontology#announcesLotGroup> ?this .}" ] .
 
+not-shape:epo-not-PlanningNotice-epo-announcesPlannedProcurement a sh:PropertyShape ;
+    sh:class :PlannedProcurement ;
+    sh:maxCount 1 ;
+    sh:name "announces Planned Procurement" ;
+    sh:path :announcesPlannedProcurement ;
+    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#announcesPlannedProcurement> ?that . ?that <http://data.europa.eu/a4g/ontology#announcesPlannedProcurement> ?this .}" ] .
+
 not-shape:epo-not-PlanningNotice-epo-announcesPlannedProcurementPart a sh:PropertyShape ;
     sh:class :PlannedProcurementPart ;
     sh:name "announces Planned Procurement Part" ;
@@ -972,13 +980,13 @@ not-shape:not-shape a owl:Ontology ;
     rdfs:label "eProcurement Ontology Notice - core shapes"@en ;
     dcterms:created "2021-06-01"^^xsd:date ;
     dcterms:description "The eProcurement Ontology Notice core shapes provides the generic datashape specifications for the eProcurement Ontology Notice core."@en ;
-    dcterms:issued "2025-05-29"^^xsd:date ;
+    dcterms:issued "2025-05-30"^^xsd:date ;
     dcterms:license "© European Union, 2014. Unless otherwise noted, the reuse of the Ontology is authorised under the European Union Public Licence v1.2 (https://eupl.eu/)." ;
     dcterms:publisher "http://publications.europa.eu/resource/authority/corporate-body/PUBL" ;
     dcterms:title "eProcurement Ontology Notice - core shapes"@en ;
     vann:preferredNamespacePrefix "epo" ;
     vann:preferredNamespaceUri "http://data.europa.eu/a4g/ontology#" ;
-    rdfs:comment "This version is automatically generated from eNotice.xml on 2025-05-29" ;
+    rdfs:comment "This version is automatically generated from eNotice.xml on 2025-05-30" ;
     rdfs:seeAlso <https://docs.ted.europa.eu/home/index.html>,
         <https://github.com/OP-TED/ePO/releases>,
         <https://joinup.ec.europa.eu/collection/eprocurement/solution/eprocurement-ontology/about>,

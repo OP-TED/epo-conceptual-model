@@ -145,6 +145,12 @@ inv-shape:epo-inv-TaxBreakdownInformation a sh:NodeShape ;
 
 inv-shape:epo-ord-AllowanceInformation sh:property inv-shape:epo-ord-AllowanceInformation-epo-inv-isSpecificToInvoiceLine .
 
+inv-shape:epo-pay-PaymentInformation sh:property inv-shape:epo-pay-PaymentInformation-epo-pay-hasPaymentMeansInformation .
+
+inv-shape:epo-pay-RemittanceAdvice sh:property inv-shape:epo-pay-RemittanceAdvice-epo-inv-specifiesPayee .
+
+inv-shape:epo-pay-RemittanceAdviceLine sh:property inv-shape:epo-pay-RemittanceAdviceLine-epo-inv-refersToInvoice .
+
 inv-shape:epo-cat-ChargeInformation-epo-inv-isSpecificToInvoiceLine a sh:PropertyShape ;
     sh:class :InvoiceLine ;
     sh:name "is Specific To Invoice Line" ;
@@ -255,7 +261,6 @@ inv-shape:epo-inv-Invoice-epo-inv-hasPaymentDueDate a sh:PropertyShape ;
 
 inv-shape:epo-inv-Invoice-epo-inv-hasPaymentInstructionsInformation a sh:PropertyShape ;
     sh:class :PaymentInstructionsInformation ;
-    sh:maxCount 1 ;
     sh:name "has Payment Instructions Information" ;
     sh:path :hasPaymentInstructionsInformation ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#hasPaymentInstructionsInformation> ?that . ?that <http://data.europa.eu/a4g/ontology#hasPaymentInstructionsInformation> ?this .}" ] .
@@ -615,17 +620,39 @@ inv-shape:epo-ord-AllowanceInformation-epo-inv-isSpecificToInvoiceLine a sh:Prop
     sh:path :isSpecificToInvoiceLine ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#isSpecificToInvoiceLine> ?that . ?that <http://data.europa.eu/a4g/ontology#isSpecificToInvoiceLine> ?this .}" ] .
 
+inv-shape:epo-pay-PaymentInformation-epo-pay-hasPaymentMeansInformation a sh:PropertyShape ;
+    sh:class :PaymentInstructionsInformation ;
+    sh:maxCount 1 ;
+    sh:minCount 1 ;
+    sh:name "has Payment Means Information" ;
+    sh:path :hasPaymentMeansInformation ;
+    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#hasPaymentMeansInformation> ?that . ?that <http://data.europa.eu/a4g/ontology#hasPaymentMeansInformation> ?this .}" ] .
+
+inv-shape:epo-pay-RemittanceAdvice-epo-inv-specifiesPayee a sh:PropertyShape ;
+    sh:class :Payee ;
+    sh:maxCount 1 ;
+    sh:name "specifies Payee" ;
+    sh:path :specifiesPayee ;
+    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#specifiesPayee> ?that . ?that <http://data.europa.eu/a4g/ontology#specifiesPayee> ?this .}" ] .
+
+inv-shape:epo-pay-RemittanceAdviceLine-epo-inv-refersToInvoice a sh:PropertyShape ;
+    sh:class :Invoice ;
+    sh:maxCount 1 ;
+    sh:name "refers To Invoice" ;
+    sh:path :refersToInvoice ;
+    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#refersToInvoice> ?that . ?that <http://data.europa.eu/a4g/ontology#refersToInvoice> ?this .}" ] .
+
 inv-shape:inv-shape a owl:Ontology ;
     rdfs:label "eProcurement Ontology Invoicing - core shapes"@en ;
     dcterms:created "2021-06-01"^^xsd:date ;
     dcterms:description "The eProcurement Ontology Invoicing core shapes provides the generic datashape specifications for the eProcurement Ontology Invoicing core."@en ;
-    dcterms:issued "2025-05-29"^^xsd:date ;
+    dcterms:issued "2025-05-30"^^xsd:date ;
     dcterms:license "© European Union, 2014. Unless otherwise noted, the reuse of the Ontology is authorised under the European Union Public Licence v1.2 (https://eupl.eu/)." ;
     dcterms:publisher "http://publications.europa.eu/resource/authority/corporate-body/PUBL" ;
     dcterms:title "eProcurement Ontology Invoicing - core shapes"@en ;
     vann:preferredNamespacePrefix "epo" ;
     vann:preferredNamespaceUri "http://data.europa.eu/a4g/ontology#" ;
-    rdfs:comment "This version is automatically generated from eInvoicing.xml on 2025-05-29" ;
+    rdfs:comment "This version is automatically generated from eInvoicing.xml on 2025-05-30" ;
     rdfs:seeAlso <https://docs.ted.europa.eu/home/index.html>,
         <https://github.com/OP-TED/ePO/releases>,
         <https://joinup.ec.europa.eu/collection/eprocurement/solution/eprocurement-ontology/about>,
