@@ -56,7 +56,7 @@
                   Generalisations</em>. Each major section lists model items that need correction of errors
                or consideration of warnings.</p>
             <p>The UML model in file <em>eFulfilment.xml</em> 
-               was tested at 08:07 on May 30, 2025.</p>
+               was tested at 12:33 on May 30, 2025.</p>
          </div>
          <h1 xmlns:f="http://https://github.com/costezki/model2owl#" id="nomenclature">Nomenclature</h1>
          <h2 xmlns:f="http://https://github.com/costezki/model2owl#" id="classNames">Class names</h2>
@@ -87,9 +87,9 @@
          <h2 xmlns:f="http://https://github.com/costezki/model2owl#" id="classAttributesNames">Class attribute names</h2>
          <ul xmlns:f="http://https://github.com/costezki/model2owl#">
             <li><a href="#attribute-dct:description-usage">dct:description (3)</a><ul><em>
+                     <li>epo-ful:ShipmentInformation (rdf:PlainLiteral) [0..*]</li>
                      <li>epo-ful:TemperatureSpecification (rdf:PlainLiteral) [0..1]</li>
-                     <li>epo-ful:TransportEquipment (rdf:PlainLiteral) [0..*]</li>
-                     <li>epo-ful:ShipmentInformation (rdf:PlainLiteral) [0..*]</li></em></ul>
+                     <li>epo-ful:TransportEquipment (rdf:PlainLiteral) [0..*]</li></em></ul>
             </li>
             <li><a href="#attribute-epo-ful:hasDespatchDate">epo-ful:hasDespatchDate</a></li>
             <li><a href="#attribute-epo-ful:hasHandlingInstruction-usage">epo-ful:hasHandlingInstruction (2)</a><ul><em>
@@ -115,11 +115,11 @@
          <ul xmlns:f="http://https://github.com/costezki/model2owl#">
             <li><a href="#connector-adms:identifier">adms:identifier (6)</a><ul><em>
                      <li>epo-ful:AbstractContainer -&gt;  [0..1]</li>
-                     <li>epo-ful:TransportEquipmentSeal -&gt;  [0..1]</li>
+                     <li>epo-ful:Consignment -&gt;  [0..1]</li>
+                     <li>epo-ful:ShipmentInformation -&gt;  [0..1]</li>
                      <li>epo-ful:ShipmentStage -&gt;  [0..1]</li>
                      <li>epo-ful:TransportEquipment -&gt;  [0..1]</li>
-                     <li>epo-ful:Consignment -&gt;  [0..1]</li>
-                     <li>epo-ful:ShipmentInformation -&gt;  [0..1]</li></em></ul>
+                     <li>epo-ful:TransportEquipmentSeal -&gt;  [0..1]</li></em></ul>
             </li>
             <li>epo:hasArrivalShipmentInformation</li>
             <li>epo:hasDocumentStatus</li>
@@ -149,8 +149,8 @@
             <li>epo-ful:hasCarriageShipmentStage</li>
             <li>epo-ful:hasConsigneeConsignmentID</li>
             <li><a href="#connector-epo-ful:hasDeclaredStatisticalValue">epo-ful:hasDeclaredStatisticalValue (2)</a><ul><em>
-                     <li>epo-ful:GoodsItem -&gt;  [0..*]</li>
-                     <li>epo-ful:Consignment -&gt;  [0..1]</li></em></ul>
+                     <li>epo-ful:Consignment -&gt;  [0..1]</li>
+                     <li>epo-ful:GoodsItem -&gt;  [0..*]</li></em></ul>
             </li>
             <li>epo-ful:hasDepartureShipmentInformation</li>
             <li>epo-ful:hasDespatchAdviceType</li>
@@ -168,8 +168,8 @@
                      <li>epo-ful:Consignment -&gt;  [0..1]</li></em></ul>
             </li>
             <li><a href="#connector-epo-ful:hasHandlingInstructionCode">epo-ful:hasHandlingInstructionCode (2)</a><ul><em>
-                     <li>epo-ful:TransportHandlingUnit -&gt; at-voc-new:handling-instruction [0..1]</li>
-                     <li>epo-ful:Consignment -&gt; at-voc-new:handling-instruction [0..1]</li></em></ul>
+                     <li>epo-ful:Consignment -&gt; at-voc-new:handling-instruction [0..1]</li>
+                     <li>epo-ful:TransportHandlingUnit -&gt; at-voc-new:handling-instruction [0..1]</li></em></ul>
             </li>
             <li>epo-ful:hasHeight</li>
             <li>epo-ful:hasLength</li>
@@ -223,9 +223,9 @@
                      <li>epo-ful:ReceiptAdvice -&gt;  [1..*]</li></em></ul>
             </li>
             <li><a href="#connector-epo-ful:specifiesDespatcher">epo-ful:specifiesDespatcher (3)</a><ul><em>
+                     <li>epo-ful:DespatchAdvice -&gt; epo-ful:Despatcher [1..*]</li>
                      <li>epo-ful:ReceiptAdvice -&gt; epo-ful:Despatcher [1]</li>
-                     <li> -&gt; epo-ful:Despatcher [0..1]</li>
-                     <li>epo-ful:DespatchAdvice -&gt; epo-ful:Despatcher [1..*]</li></em></ul>
+                     <li> -&gt; epo-ful:Despatcher [0..1]</li></em></ul>
             </li>
             <li>epo-ful:specifiesOriginator</li>
             <li>epo-ful:specifiesPlaceOfDespatch</li>
@@ -626,13 +626,13 @@
             <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter errors"><i class="fa fa-times-circle error"></i>The prefix for target role  epo:status is not defined. A prefix must be associated
                to a namespace URI.</dd>
          </dl>
-         <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo-ful:ReceiptAdvice -&gt; epo-ful:ShipmentInformation (+epo-ful:isSubmittedForShipment)</h2>
+         <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo-ful:ReceiptAdvice -&gt; epo-ful:Despatcher (+epo-ful:specifiesDespatcher)</h2>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
             <dt> Unmet association conventions </dt>
             <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>The connector is missing a description. It is recommended                      to
                define and describe all the relations.</dd>
          </dl>
-         <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo-ful:ReceiptAdvice -&gt; epo-ful:Despatcher (+epo-ful:specifiesDespatcher)</h2>
+         <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo-ful:ReceiptAdvice -&gt; epo-ful:ShipmentInformation (+epo-ful:isSubmittedForShipment)</h2>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
             <dt> Unmet association conventions </dt>
             <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>The connector is missing a description. It is recommended                      to
@@ -662,14 +662,14 @@
             <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>The connector is missing a description. It is recommended                      to
                define and describe all the relations.</dd>
          </dl>
-         <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo-ful:ShipmentStage -&gt; epo-ful:TransportMeans (+epo-ful:usesTransportMeans)</h2>
+         <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo-ful:ShipmentStage -&gt; epo-ful:Carrier (+epo:specifiesCarrier)</h2>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
             <dt> Unmet association conventions </dt>
             <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter errors"><i class="fa fa-times-circle error"></i>The target tag  epo:status must be an URI.</dd>
             <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter errors"><i class="fa fa-times-circle error"></i>The prefix for target role  epo:status is not defined. A prefix must be associated
                to a namespace URI.</dd>
          </dl>
-         <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo-ful:ShipmentStage -&gt; epo-ful:Carrier (+epo:specifiesCarrier)</h2>
+         <h2 xmlns:f="http://https://github.com/costezki/model2owl#">epo-ful:ShipmentStage -&gt; epo-ful:TransportMeans (+epo-ful:usesTransportMeans)</h2>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
             <dt> Unmet association conventions </dt>
             <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter errors"><i class="fa fa-times-circle error"></i>The target tag  epo:status must be an URI.</dd>
@@ -721,7 +721,10 @@
                   (epo-ful:AbstractContainer -&gt; adms:Identifier (+adms:identifier)) </li>
                <li>External concept defined by &lt;a href="$inet://https://semiceu.github.io/ADMS/releases/2.00/#identifier"&gt;&lt;font
                   color="#0000ff"&gt;&lt;u&gt;https://semiceu.github.io/ADMS/releases/2.00/#identifier&lt;/u&gt;&lt;/font&gt;&lt;/a&gt;
-                  (epo-ful:TransportEquipmentSeal -&gt; adms:Identifier (+adms:identifier)) </li>
+                  (epo-ful:Consignment -&gt; adms:Identifier (+adms:identifier)) </li>
+               <li>External concept defined by &lt;a href="$inet://https://semiceu.github.io/ADMS/releases/2.00/#identifier"&gt;&lt;font
+                  color="#0000ff"&gt;&lt;u&gt;https://semiceu.github.io/ADMS/releases/2.00/#identifier&lt;/u&gt;&lt;/font&gt;&lt;/a&gt;
+                  (epo-ful:ShipmentInformation -&gt; adms:Identifier (+adms:identifier)) </li>
                <li>External concept defined by &lt;a href="$inet://https://semiceu.github.io/ADMS/releases/2.00/#identifier"&gt;&lt;font
                   color="#0000ff"&gt;&lt;u&gt;https://semiceu.github.io/ADMS/releases/2.00/#identifier&lt;/u&gt;&lt;/font&gt;&lt;/a&gt;
                   (epo-ful:ShipmentStage -&gt; adms:Identifier (+adms:identifier)) </li>
@@ -730,10 +733,7 @@
                   (epo-ful:TransportEquipment -&gt; adms:Identifier (+adms:identifier)) </li>
                <li>External concept defined by &lt;a href="$inet://https://semiceu.github.io/ADMS/releases/2.00/#identifier"&gt;&lt;font
                   color="#0000ff"&gt;&lt;u&gt;https://semiceu.github.io/ADMS/releases/2.00/#identifier&lt;/u&gt;&lt;/font&gt;&lt;/a&gt;
-                  (epo-ful:Consignment -&gt; adms:Identifier (+adms:identifier)) </li>
-               <li>External concept defined by &lt;a href="$inet://https://semiceu.github.io/ADMS/releases/2.00/#identifier"&gt;&lt;font
-                  color="#0000ff"&gt;&lt;u&gt;https://semiceu.github.io/ADMS/releases/2.00/#identifier&lt;/u&gt;&lt;/font&gt;&lt;/a&gt;
-                  (epo-ful:ShipmentInformation -&gt; adms:Identifier (+adms:identifier)) </li>
+                  (epo-ful:TransportEquipmentSeal -&gt; adms:Identifier (+adms:identifier)) </li>
             </ul>
          </dd>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#" id="connector-epo-ful:hasDeclaredStatisticalValue">
@@ -744,10 +744,10 @@
          <dd xmlns:f="http://https://github.com/costezki/model2owl#" xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>When a property is reused in multiple contexts, the meaning given by the definition
             is expected to be the same. In this case, multiple definitions are found: 
             <ul>
-               <li>... (epo-ful:GoodsItem -&gt; epo:MonetaryValue (+epo-ful:hasDeclaredStatisticalValue))
-                  </li>
                <li>The Monetary Value declared for statistical purposes. (epo-ful:Consignment -&gt; epo:MonetaryValue
                   (+epo-ful:hasDeclaredStatisticalValue)) </li>
+               <li>... (epo-ful:GoodsItem -&gt; epo:MonetaryValue (+epo-ful:hasDeclaredStatisticalValue))
+                  </li>
             </ul>
          </dd>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#" id="connector-epo-ful:hasGrossVolume">
@@ -781,10 +781,10 @@
             the same.  Here is the property usage: 
             <ul>
                <li>Instruction on how to handle the Goods Items during transportation, expressed as a
-                  code. (epo-ful:TransportHandlingUnit -&gt; at-voc-new:handling-instruction (+epo-ful:hasHandlingInstructionCode))
+                  code. (epo-ful:Consignment -&gt; at-voc-new:handling-instruction (+epo-ful:hasHandlingInstructionCode))
                   </li>
                <li>Instruction on how to handle the Goods Items during transportation, expressed as a
-                  code. (epo-ful:Consignment -&gt; at-voc-new:handling-instruction (+epo-ful:hasHandlingInstructionCode))
+                  code. (epo-ful:TransportHandlingUnit -&gt; at-voc-new:handling-instruction (+epo-ful:hasHandlingInstructionCode))
                   </li>
             </ul>
          </dd>
@@ -831,10 +831,10 @@
          <dd xmlns:f="http://https://github.com/costezki/model2owl#" xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>When a property is reused in multiple contexts, the meaning given by the definition
             is expected to be the same. In this case, multiple definitions are found: 
             <ul>
+               <li>Relation indicating that the instance of the concept involves the Despatcher. (epo-ful:DespatchAdvice
+                  -&gt; epo-ful:Despatcher (+epo-ful:specifiesDespatcher)) </li>
                <li>... (epo-ful:ReceiptAdvice -&gt; epo-ful:Despatcher (+epo-ful:specifiesDespatcher)) </li>
                <li>Relation indicating that the instance of the concept involves the Despatcher. (epo-ord:Order
-                  -&gt; epo-ful:Despatcher (+epo-ful:specifiesDespatcher)) </li>
-               <li>Relation indicating that the instance of the concept involves the Despatcher. (epo-ful:DespatchAdvice
                   -&gt; epo-ful:Despatcher (+epo-ful:specifiesDespatcher)) </li>
             </ul>
          </dd>
@@ -845,9 +845,9 @@
                When a property is reused in multiple contexts, the multiplicity is expected to be
                the same. Please see usage below:
                <ul>
+                  <li>epo-ful:ShipmentInformation (rdf:PlainLiteral) [0..*]</li>
                   <li>epo-ful:TemperatureSpecification (rdf:PlainLiteral) [0..1]</li>
                   <li>epo-ful:TransportEquipment (rdf:PlainLiteral) [0..*]</li>
-                  <li>epo-ful:ShipmentInformation (rdf:PlainLiteral) [0..*]</li>
                </ul>
             </dd>
          </dl>
