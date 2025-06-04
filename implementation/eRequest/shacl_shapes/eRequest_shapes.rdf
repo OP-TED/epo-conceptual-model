@@ -7,65 +7,6 @@
    xmlns:sh="http://www.w3.org/ns/shacl#"
    xmlns:vann="http://purl.org/vocab/vann/"
 >
-  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-req-RequestForOffer-epo-specifiesContractor">
-    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#Contractor"/>
-    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
-    <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
-    <sh:sparql rdf:nodeID="N36835c9e48fb4af7940fddd12f638ba6"/>
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#specifiesContractor"/>
-    <sh:name>specifies Contractor</sh:name>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-req-RequestForOffer-epo-req-comprisesRequestForOfferLine">
-    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#RequestForOfferLine"/>
-    <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
-    <sh:sparql rdf:nodeID="Nbba69a807c22467db481122d72290692"/>
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#comprisesRequestForOfferLine"/>
-    <sh:name>comprises Request For Offer Line</sh:name>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-req-RequestForOffer-epo-hasDestinationCountryCode">
-    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasDestinationCountryCode"/>
-    <sh:name>has Destination Country Code</sh:name>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-req-RequestForOffer">
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
-    <sh:targetClass rdf:resource="http://data.europa.eu/a4g/ontology#RequestForOffer"/>
-    <rdfs:label>Request For Offer</rdfs:label>
-    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#req-shape"/>
-    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-req-RequestForOffer-epo-req-hasSubmissionDueDate"/>
-    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-req-RequestForOffer-epo-ord-specifiesDeliveryInformation"/>
-    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-req-RequestForOffer-epo-req-comprisesRequestForOfferLine"/>
-    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-req-RequestForOffer-epo-specifiesBuyer"/>
-    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-req-RequestForOffer-epo-refersToContract"/>
-    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-req-RequestForOffer-epo-req-specifiesOfferValidityPeriod"/>
-    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-req-RequestForOffer-epo-cat-refersToCatalogue"/>
-    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-req-RequestForOffer-epo-specifiesContractor"/>
-    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-req-RequestForOffer-epo-req-specifiesOfferCurrency"/>
-    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-req-RequestForOffer-epo-ful-specifiesOriginator"/>
-    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-req-RequestForOffer-epo-hasDestinationCountryCode"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-req-RequestForOffer-epo-req-hasSubmissionDueDate">
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasSubmissionDueDate"/>
-    <sh:name>has Submission Due Date</sh:name>
-    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#req-shape"/>
-    <sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
-    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="N36835c9e48fb4af7940fddd12f638ba6">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#specifiesContractor&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#specifiesContractor&gt; ?this .}</sh:select>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-req-RequestForOffer-epo-req-specifiesOfferCurrency">
-    <sh:class rdf:resource="http://publications.europa.eu/resource/authority/currency"/>
-    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
-    <sh:sparql rdf:nodeID="N7da1e1978d594ac6907656cc7e99ce0c"/>
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#specifiesOfferCurrency"/>
-    <sh:name>specifies Offer Currency</sh:name>
-  </rdf:Description>
   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#req-shape">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
     <owl:imports rdf:resource="http://purl.org/dc/terms/"/>
@@ -87,12 +28,12 @@
     <rdfs:label xml:lang="en">eProcurement Ontology Request - core shapes</rdfs:label>
     <dcterms:publisher>http://publications.europa.eu/resource/authority/corporate-body/PUBL</dcterms:publisher>
     <dcterms:description xml:lang="en">The eProcurement Ontology Request core shapes provides the generic datashape specifications for the eProcurement Ontology Request core.</dcterms:description>
-    <rdfs:comment>This version is automatically generated from eRequest.xml on 2025-05-30</rdfs:comment>
+    <rdfs:comment>This version is automatically generated from eRequest.xml on 2025-06-04</rdfs:comment>
     <rdfs:seeAlso rdf:resource="https://github.com/OP-TED/ePO/releases"/>
     <rdfs:seeAlso rdf:resource="https://joinup.ec.europa.eu/collection/eprocurement/solution/eprocurement-ontology/about"/>
     <rdfs:seeAlso rdf:resource="https://op.europa.eu/en/web/eu-vocabularies/e-procurement"/>
     <rdfs:seeAlso rdf:resource="https://docs.ted.europa.eu/home/index.html"/>
-    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-05-30</dcterms:issued>
+    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-06-04</dcterms:issued>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2021-06-01</dcterms:created>
     <owl:versionInfo>5.1.0</owl:versionInfo>
     <owl:incompatibleWith>4.2.0</owl:incompatibleWith>
@@ -102,35 +43,76 @@
     <vann:preferredNamespacePrefix>epo</vann:preferredNamespacePrefix>
     <dcterms:license>© European Union, 2014. Unless otherwise noted, the reuse of the Ontology is authorised under the European Union Public Licence v1.2 (https://eupl.eu/).</dcterms:license>
   </rdf:Description>
-  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-req-RequestForOffer-epo-ful-specifiesOriginator">
-    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#Originator"/>
-    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
-    <sh:sparql rdf:nodeID="Nf652056bb2d840178118949fcb49a200"/>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-req-RequestForOffer">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+    <sh:targetClass rdf:resource="http://data.europa.eu/a4g/ontology#RequestForOffer"/>
+    <rdfs:label>Request For Offer</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#req-shape"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-req-RequestForOffer-epo-req-hasSubmissionDueDate"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-req-RequestForOffer-epo-ord-specifiesDeliveryInformation"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-req-RequestForOffer-epo-req-comprisesRequestForOfferLine"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-req-RequestForOffer-epo-specifiesBuyer"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-req-RequestForOffer-epo-refersToContract"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-req-RequestForOffer-epo-req-specifiesOfferValidityPeriod"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-req-RequestForOffer-epo-cat-refersToCatalogue"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-req-RequestForOffer-epo-specifiesContractor"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-req-RequestForOffer-epo-req-specifiesOfferCurrency"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-req-RequestForOffer-epo-ful-specifiesOriginator"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-req-RequestForOffer-epo-hasDestinationCountryCode"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-req-RequestForOffer-epo-req-comprisesRequestForOfferLine">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#RequestForOfferLine"/>
+    <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
+    <sh:sparql rdf:nodeID="Ndb1d5bfc3d9f4f43982cbf8e06dc0d28"/>
     <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#specifiesOriginator"/>
-    <sh:name>specifies Originator</sh:name>
-    <sh:description>Relation indicating that the instance of the concept involves the Originator.</sh:description>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#comprisesRequestForOfferLine"/>
+    <sh:name>comprises Request For Offer Line</sh:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-req-RequestForOffer-epo-cat-refersToCatalogue">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#Catalogue"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:sparql rdf:nodeID="Na41946d1104f4fe28764e51a8d03e6fa"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#refersToCatalogue"/>
+    <sh:name>refers To Catalogue</sh:name>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Na41946d1104f4fe28764e51a8d03e6fa">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#refersToCatalogue&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#refersToCatalogue&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-req-RequestForOfferLine">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+    <sh:targetClass rdf:resource="http://data.europa.eu/a4g/ontology#RequestForOfferLine"/>
+    <rdfs:label>Request For Offer Line</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#req-shape"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-req-RequestForOfferLine-epo-req-isOptional"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-DeliveryInformation-epo-ord-isSpecificToRequestForOfferLine">
     <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#RequestForOfferLine"/>
-    <sh:sparql rdf:nodeID="N835d15cf09df461fa8dd8eff1a9f2757"/>
+    <sh:sparql rdf:nodeID="N75dac4de3a6e4cb3b7084cfaff879678"/>
     <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
     <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#isSpecificToRequestForOfferLine"/>
     <sh:name>is Specific To Request For Offer Line</sh:name>
   </rdf:Description>
+  <rdf:Description rdf:nodeID="N38172c16a94c491d8326325762ac234a">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#specifiesContractor&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#specifiesContractor&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-req-RequestForOffer-epo-refersToContract">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#Contract"/>
+    <sh:sparql rdf:nodeID="N5bf5d974201d4f51aa1a56c149ade01c"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#refersToContract"/>
+    <sh:name>refers To Contract</sh:name>
+  </rdf:Description>
   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-req-RequestForOffer-epo-req-specifiesOfferValidityPeriod">
     <sh:class rdf:resource="http://www.w3.org/2006/time#Interval"/>
     <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
-    <sh:sparql rdf:nodeID="N5961185cecca4b4580565538e6e2e1b0"/>
+    <sh:sparql rdf:nodeID="N4b952dce04764981b0a5181e85c140e0"/>
     <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
     <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#specifiesOfferValidityPeriod"/>
     <sh:name>specifies Offer Validity Period</sh:name>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="Nbba69a807c22467db481122d72290692">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#comprisesRequestForOfferLine&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#comprisesRequestForOfferLine&gt; ?this .}</sh:select>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="N0ec50cfd5d174ee296006c1f5edeec30">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#specifiesDeliveryInformation&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#specifiesDeliveryInformation&gt; ?this .}</sh:select>
+  <rdf:Description rdf:nodeID="N4fd2f3d0f0354e6b9a18cde5d5fc100e">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#specifiesBuyer&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#specifiesBuyer&gt; ?this .}</sh:select>
   </rdf:Description>
   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-req-RequestForOfferLine-epo-req-isOptional">
     <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
@@ -140,65 +122,83 @@
     <sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
     <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
   </rdf:Description>
-  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-DeliveryInformation">
-    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-ord-DeliveryInformation-epo-ord-isSpecificToRequestForOfferLine"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-req-RequestForOffer-epo-ord-specifiesDeliveryInformation">
-    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#DeliveryInformation"/>
-    <sh:sparql rdf:nodeID="N0ec50cfd5d174ee296006c1f5edeec30"/>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-req-RequestForOffer-epo-ful-specifiesOriginator">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#Originator"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:sparql rdf:nodeID="N048ca38e41de40f98498d778c3f6384c"/>
     <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#specifiesDeliveryInformation"/>
-    <sh:name>specifies Delivery Information</sh:name>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#specifiesOriginator"/>
+    <sh:name>specifies Originator</sh:name>
+    <sh:description>Relation indicating that the instance of the concept involves the Originator.</sh:description>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-req-RequestForOffer-epo-specifiesContractor">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#Contractor"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
+    <sh:sparql rdf:nodeID="N38172c16a94c491d8326325762ac234a"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#specifiesContractor"/>
+    <sh:name>specifies Contractor</sh:name>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N4b952dce04764981b0a5181e85c140e0">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#specifiesOfferValidityPeriod&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#specifiesOfferValidityPeriod&gt; ?this .}</sh:select>
   </rdf:Description>
   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-req-RequestForOffer-epo-specifiesBuyer">
     <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#Buyer"/>
     <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
-    <sh:sparql rdf:nodeID="N64914870056641398faad718e165e81f"/>
+    <sh:sparql rdf:nodeID="N4fd2f3d0f0354e6b9a18cde5d5fc100e"/>
     <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
     <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#specifiesBuyer"/>
     <sh:name>specifies Buyer</sh:name>
   </rdf:Description>
-  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-req-RequestForOffer-epo-refersToContract">
-    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#Contract"/>
-    <sh:sparql rdf:nodeID="Na5d4b572803e452d8952dbadb6851bca"/>
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#refersToContract"/>
-    <sh:name>refers To Contract</sh:name>
-  </rdf:Description>
-  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-req-RequestForOffer-epo-cat-refersToCatalogue">
-    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#Catalogue"/>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-req-RequestForOffer-epo-hasDestinationCountryCode">
     <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
-    <sh:sparql rdf:nodeID="N40054a11b09343b3a8a927df9d02deac"/>
     <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#refersToCatalogue"/>
-    <sh:name>refers To Catalogue</sh:name>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasDestinationCountryCode"/>
+    <sh:name>has Destination Country Code</sh:name>
   </rdf:Description>
-  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-req-RequestForOfferLine">
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
-    <sh:targetClass rdf:resource="http://data.europa.eu/a4g/ontology#RequestForOfferLine"/>
-    <rdfs:label>Request For Offer Line</rdfs:label>
+  <rdf:Description rdf:nodeID="N7ece1de0ec2a4bef923da051a1ab0499">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#specifiesDeliveryInformation&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#specifiesDeliveryInformation&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-req-RequestForOffer-epo-ord-specifiesDeliveryInformation">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#DeliveryInformation"/>
+    <sh:sparql rdf:nodeID="N7ece1de0ec2a4bef923da051a1ab0499"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#specifiesDeliveryInformation"/>
+    <sh:name>specifies Delivery Information</sh:name>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-req-RequestForOffer-epo-req-hasSubmissionDueDate">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasSubmissionDueDate"/>
+    <sh:name>has Submission Due Date</sh:name>
     <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#req-shape"/>
-    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-req-RequestForOfferLine-epo-req-isOptional"/>
+    <sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="N5961185cecca4b4580565538e6e2e1b0">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#specifiesOfferValidityPeriod&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#specifiesOfferValidityPeriod&gt; ?this .}</sh:select>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-req-RequestForOffer-epo-req-specifiesOfferCurrency">
+    <sh:class rdf:resource="http://publications.europa.eu/resource/authority/currency"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:sparql rdf:nodeID="Ne31c0352a7084d53a89064ea9e5f43e6"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#specifiesOfferCurrency"/>
+    <sh:name>specifies Offer Currency</sh:name>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="Nf652056bb2d840178118949fcb49a200">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#specifiesOriginator&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#specifiesOriginator&gt; ?this .}</sh:select>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-ord-DeliveryInformation">
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-ord-DeliveryInformation-epo-ord-isSpecificToRequestForOfferLine"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="N835d15cf09df461fa8dd8eff1a9f2757">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#isSpecificToRequestForOfferLine&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#isSpecificToRequestForOfferLine&gt; ?this .}</sh:select>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="N40054a11b09343b3a8a927df9d02deac">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#refersToCatalogue&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#refersToCatalogue&gt; ?this .}</sh:select>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="N64914870056641398faad718e165e81f">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#specifiesBuyer&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#specifiesBuyer&gt; ?this .}</sh:select>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="N7da1e1978d594ac6907656cc7e99ce0c">
+  <rdf:Description rdf:nodeID="Ne31c0352a7084d53a89064ea9e5f43e6">
     <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#specifiesOfferCurrency&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#specifiesOfferCurrency&gt; ?this .}</sh:select>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="Na5d4b572803e452d8952dbadb6851bca">
+  <rdf:Description rdf:nodeID="N75dac4de3a6e4cb3b7084cfaff879678">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#isSpecificToRequestForOfferLine&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#isSpecificToRequestForOfferLine&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Ndb1d5bfc3d9f4f43982cbf8e06dc0d28">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#comprisesRequestForOfferLine&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#comprisesRequestForOfferLine&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N5bf5d974201d4f51aa1a56c149ade01c">
     <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#refersToContract&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#refersToContract&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N048ca38e41de40f98498d778c3f6384c">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#specifiesOriginator&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#specifiesOriginator&gt; ?this .}</sh:select>
   </rdf:Description>
 </rdf:RDF>

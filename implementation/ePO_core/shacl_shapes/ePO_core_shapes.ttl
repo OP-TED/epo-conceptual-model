@@ -409,12 +409,10 @@ core-shape:epo-Document a sh:NodeShape ;
         core-shape:epo-Document-epo-hasOfficialLanguage,
         core-shape:epo-Document-epo-hasPublicationDate,
         core-shape:epo-Document-epo-hasReceptionDate,
-        core-shape:epo-Document-epo-hasSourceSpecificationCustomisation,
-        core-shape:epo-Document-epo-hasSourceVersionSpecification,
+        core-shape:epo-Document-epo-hasSpecificationInformation,
         core-shape:epo-Document-epo-hasUUID,
         core-shape:epo-Document-epo-hasUnofficialLanguage,
         core-shape:epo-Document-epo-hasVersion,
-        core-shape:epo-Document-epo-isUsedInProfile,
         core-shape:epo-Document-epo-refersToPrevious ;
     sh:targetClass :Document .
 
@@ -513,11 +511,10 @@ core-shape:epo-ExpressionOfInterest a sh:NodeShape ;
     rdfs:label "Expression Of Interest" ;
     rdfs:comment "Document presenting an Economic Operator's Request to be considered for Procedures covering a specific domain." ;
     rdfs:isDefinedBy core-shape:core-shape ;
+    sh:property core-shape:epo-ExpressionOfInterest-epo-concernsProcedure,
+        core-shape:epo-ExpressionOfInterest-epo-hasPreferredLanguageForProcurementDocument,
+        core-shape:epo-ExpressionOfInterest-epo-specifiesEconomicOperator ;
     sh:targetClass :ExpressionOfInterest .
-
-core-shape:epo-ExpressionOfInterest-epo-hasPreferredLanguageForProcurementDocument a sh:PropertyShape ;
-    sh:class skos:Concept ;
-    sh:path :hasPreferredLanguageForProcurementDocument .
 
 core-shape:epo-FrameworkAgreement a sh:NodeShape ;
     rdfs:label "Framework Agreement" ;
@@ -1168,6 +1165,9 @@ core-shape:epo-SocialProcurement a sh:NodeShape ;
 core-shape:epo-SpecificationInformation a sh:NodeShape ;
     rdfs:label "Specification Information" ;
     rdfs:isDefinedBy core-shape:core-shape ;
+    sh:property core-shape:epo-SpecificationInformation-epo-hasSourceSpecificationCustomisation,
+        core-shape:epo-SpecificationInformation-epo-hasSourceVersionSpecification,
+        core-shape:epo-SpecificationInformation-epo-isUsedInProfile ;
     sh:targetClass :SpecificationInformation .
 
 core-shape:epo-StatisticalInformation a sh:NodeShape ;
@@ -2832,19 +2832,11 @@ core-shape:epo-Document-epo-hasReceptionDate a sh:PropertyShape ;
     sh:name "has Reception Date" ;
     sh:path :hasReceptionDate .
 
-core-shape:epo-Document-epo-hasSourceSpecificationCustomisation a sh:PropertyShape ;
+core-shape:epo-Document-epo-hasSpecificationInformation a sh:PropertyShape ;
     sh:class :SpecificationInformation ;
-    sh:maxCount 1 ;
-    sh:name "has Source Specification Customisation" ;
-    sh:path :hasSourceSpecificationCustomisation ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#hasSourceSpecificationCustomisation> ?that . ?that <http://data.europa.eu/a4g/ontology#hasSourceSpecificationCustomisation> ?this .}" ] .
-
-core-shape:epo-Document-epo-hasSourceVersionSpecification a sh:PropertyShape ;
-    sh:class :SpecificationInformation ;
-    sh:maxCount 1 ;
-    sh:name "has Source Version Specification" ;
-    sh:path :hasSourceVersionSpecification ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#hasSourceVersionSpecification> ?that . ?that <http://data.europa.eu/a4g/ontology#hasSourceVersionSpecification> ?this .}" ] .
+    sh:name "has Specification Information" ;
+    sh:path :hasSpecificationInformation ;
+    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#hasSpecificationInformation> ?that . ?that <http://data.europa.eu/a4g/ontology#hasSpecificationInformation> ?this .}" ] .
 
 core-shape:epo-Document-epo-hasUUID a sh:PropertyShape ;
     sh:class adms:Identifier ;
@@ -2867,13 +2859,6 @@ core-shape:epo-Document-epo-hasVersion a sh:PropertyShape ;
     sh:name "has Version" ;
     sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
     sh:path :hasVersion .
-
-core-shape:epo-Document-epo-isUsedInProfile a sh:PropertyShape ;
-    sh:class :SpecificationInformation ;
-    sh:maxCount 1 ;
-    sh:name "is Used In Profile" ;
-    sh:path :isUsedInProfile ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#isUsedInProfile> ?that . ?that <http://data.europa.eu/a4g/ontology#isUsedInProfile> ?this .}" ] .
 
 core-shape:epo-Document-epo-refersToPrevious a sh:PropertyShape ;
     sh:class :Document ;
@@ -2954,6 +2939,25 @@ core-shape:epo-ExclusionGround-epo-hasExclusionGroundType a sh:PropertyShape ;
     sh:maxCount 1 ;
     sh:name "has Exclusion Ground Type" ;
     sh:path :hasExclusionGroundType .
+
+core-shape:epo-ExpressionOfInterest-epo-concernsProcedure a sh:PropertyShape ;
+    sh:class :Procedure ;
+    sh:maxCount 1 ;
+    sh:minCount 1 ;
+    sh:name "concerns Procedure" ;
+    sh:path :concernsProcedure ;
+    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#concernsProcedure> ?that . ?that <http://data.europa.eu/a4g/ontology#concernsProcedure> ?this .}" ] .
+
+core-shape:epo-ExpressionOfInterest-epo-hasPreferredLanguageForProcurementDocument a sh:PropertyShape ;
+    sh:class skos:Concept ;
+    sh:name "has Preferred Language For Procurement Document" ;
+    sh:path :hasPreferredLanguageForProcurementDocument .
+
+core-shape:epo-ExpressionOfInterest-epo-specifiesEconomicOperator a sh:PropertyShape ;
+    sh:class :OfferingParty ;
+    sh:name "specifies Economic Operator" ;
+    sh:path :specifiesEconomicOperator ;
+    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#specifiesEconomicOperator> ?that . ?that <http://data.europa.eu/a4g/ontology#specifiesEconomicOperator> ?this .}" ] .
 
 core-shape:epo-FrameworkAgreement-epo-resultsFromLotAwardOutcome a sh:PropertyShape ;
     sh:class :LotAwardOutcome ;
@@ -4503,6 +4507,27 @@ core-shape:epo-SocialProcurement-epo-includesAccessibilityCriterion a sh:Propert
     sh:description "Explanation as to whether accessibility Criterion are used or not." ;
     sh:name "includes Accessibility Criterion" ;
     sh:path :includesAccessibilityCriterion .
+
+core-shape:epo-SpecificationInformation-epo-hasSourceSpecificationCustomisation a sh:PropertyShape ;
+    sh:class adms:Identifier ;
+    sh:maxCount 1 ;
+    sh:name "has Source Specification Customisation" ;
+    sh:path :hasSourceSpecificationCustomisation ;
+    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#hasSourceSpecificationCustomisation> ?that . ?that <http://data.europa.eu/a4g/ontology#hasSourceSpecificationCustomisation> ?this .}" ] .
+
+core-shape:epo-SpecificationInformation-epo-hasSourceVersionSpecification a sh:PropertyShape ;
+    sh:class adms:Identifier ;
+    sh:maxCount 1 ;
+    sh:name "has Source Version Specification" ;
+    sh:path :hasSourceVersionSpecification ;
+    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#hasSourceVersionSpecification> ?that . ?that <http://data.europa.eu/a4g/ontology#hasSourceVersionSpecification> ?this .}" ] .
+
+core-shape:epo-SpecificationInformation-epo-isUsedInProfile a sh:PropertyShape ;
+    sh:class adms:Identifier ;
+    sh:maxCount 1 ;
+    sh:name "is Used In Profile" ;
+    sh:path :isUsedInProfile ;
+    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#isUsedInProfile> ?that . ?that <http://data.europa.eu/a4g/ontology#isUsedInProfile> ?this .}" ] .
 
 core-shape:epo-StrategicProcurement-epo-hasStrategicProcurementDescription a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
@@ -6980,13 +7005,13 @@ core-shape:core-shape a owl:Ontology ;
     rdfs:label "eProcurement Ontology - core shapes"@en ;
     dcterms:created "2021-06-01"^^xsd:date ;
     dcterms:description "The eProcurement Ontology core shapes provides the generic datashape specifications for the eProcurement Ontology core."@en ;
-    dcterms:issued "2025-05-30"^^xsd:date ;
+    dcterms:issued "2025-06-04"^^xsd:date ;
     dcterms:license "© European Union, 2014. Unless otherwise noted, the reuse of the Ontology is authorised under the European Union Public Licence v1.2 (https://eupl.eu/)." ;
     dcterms:publisher "http://publications.europa.eu/resource/authority/corporate-body/PUBL" ;
     dcterms:title "eProcurement Ontology - core shapes"@en ;
     vann:preferredNamespacePrefix "epo" ;
     vann:preferredNamespaceUri "http://data.europa.eu/a4g/ontology#" ;
-    rdfs:comment "This version is automatically generated from ePO_core.xml on 2025-05-30" ;
+    rdfs:comment "This version is automatically generated from ePO_core.xml on 2025-06-04" ;
     rdfs:seeAlso <https://docs.ted.europa.eu/home/index.html>,
         <https://github.com/OP-TED/ePO/releases>,
         <https://joinup.ec.europa.eu/collection/eprocurement/solution/eprocurement-ontology/about>,
