@@ -4605,11 +4605,6 @@
                      <td>epo:ReviewDecision -&gt; epo:ReviewRequest [0..*]</td>
                   </tr>
                   <tr>
-                     <td>epo:answersToInformationRequirement</td>
-                     <td></td>
-                     <td>epo:TenderingAnswer -&gt; cccev:InformationRequirement [1..*]</td>
-                  </tr>
-                  <tr>
                      <td>epo:associatedWith</td>
                      <td>The document to which a document is associated. 
                         </td>
@@ -4711,10 +4706,10 @@
                   </tr>
                   <tr>
                      <td>epo:concernsProcedure</td>
-                     <td>         Relates to Procedure.   Relates to Procedure.
-                             Relates to Procedure.
+                     <td>        Relates to Procedure.   Relates to Procedure.
+                           Relates to Procedure.
                           </td>
-                     <td>epo-not:CompletionNotice -&gt; epo:Procedure [1]<br>epo-not:ContractModificationNotice -&gt; epo:Procedure [1]<br>epo-not:ResultNotice -&gt; epo:Procedure [1]<br>epo:ProcurementDocumentsProvision -&gt; epo:Procedure [1]<br>epo-qua:EvidenceSubmission -&gt; epo:Procedure [1]<br>epo-awa:AwardDecisionNotification -&gt; epo:Procedure [1]<br>epo-qua:EvidenceRequest -&gt; epo:Procedure [1]<br>cccev:InformationRequirement -&gt; epo:Procedure [0..*]<br>epo-not:ResultNotice -&gt; epo:Procedure [1]<br>epo:ProcurementProcessInformation -&gt; epo:Procedure [0..1]<br>epo-not:ContractModificationNotice -&gt; epo:Procedure [1]<br>epo:ExpressionOfInterest -&gt; epo:Procedure [1]<br>epo-acc:ESPDRequest -&gt; epo:Procedure [1]<br>epo:ProcurementDocumentsRequest -&gt; epo:Procedure [1]<br>epo-not:CompletionNotice -&gt; epo:Procedure [1]<br>epo:UnsubscribeFromProcedureRequest -&gt; epo:Procedure [1]<br>epo-awa:AwardDecisionNotification -&gt; epo:Procedure [1]<br>epo-acc:ESPDRequest -&gt; epo:Procedure [1]<br>epo-qua:EvidenceSubmission -&gt; epo:Procedure [1]<br>epo-qua:EvidenceRequest -&gt; epo:Procedure [1]<br></td>
+                     <td>epo-not:CompletionNotice -&gt; epo:Procedure [1]<br>epo-not:ContractModificationNotice -&gt; epo:Procedure [1]<br>epo-not:ResultNotice -&gt; epo:Procedure [1]<br>epo-qua:EvidenceSubmission -&gt; epo:Procedure [1]<br>epo-awa:AwardDecisionNotification -&gt; epo:Procedure [1]<br>epo-qua:EvidenceRequest -&gt; epo:Procedure [1]<br>cccev:InformationRequirement -&gt; epo:Procedure [0..*]<br>epo-not:ResultNotice -&gt; epo:Procedure [1]<br>epo:ProcurementProcessInformation -&gt; epo:Procedure [0..1]<br>epo-not:ContractModificationNotice -&gt; epo:Procedure [1]<br>epo:ExpressionOfInterest -&gt; epo:Procedure [1]<br>epo-acc:ESPDRequest -&gt; epo:Procedure [1]<br>epo-not:CompletionNotice -&gt; epo:Procedure [1]<br>epo-awa:AwardDecisionNotification -&gt; epo:Procedure [1]<br>epo-acc:ESPDRequest -&gt; epo:Procedure [1]<br>epo-qua:EvidenceSubmission -&gt; epo:Procedure [1]<br>epo-qua:EvidenceRequest -&gt; epo:Procedure [1]<br></td>
                   </tr>
                   <tr>
                      <td>epo:concernsProcurementElement</td>
@@ -4913,16 +4908,6 @@
                      <td>epo:exposesChannel</td>
                      <td> </td>
                      <td>org:Organization -&gt; cv:Channel [0..*]<br>epo:AgentInRole -&gt; cv:Channel [0..*]<br></td>
-                  </tr>
-                  <tr>
-                     <td>epo:exposesReceiverChannel</td>
-                     <td> </td>
-                     <td>epo:SearchNoticeQuery -&gt; cv:Channel [1]<br>epo:SearchNoticeQueryResponse -&gt; cv:Channel [1]<br></td>
-                  </tr>
-                  <tr>
-                     <td>epo:exposesSenderChannel</td>
-                     <td> </td>
-                     <td>epo:SearchNoticeQuery -&gt; cv:Channel [1]<br>epo:SearchNoticeQueryResponse -&gt; cv:Channel [1]<br></td>
                   </tr>
                   <tr>
                      <td>epo:followsRulesSetBy</td>
@@ -5773,12 +5758,17 @@
                   <tr>
                      <td>epo:hasSourceSpecificationCustomisation</td>
                      <td></td>
-                     <td>epo:Document -&gt; epo:SpecificationInformation [0..1]</td>
+                     <td>epo:SpecificationInformation -&gt; adms:Identifier [0..1]</td>
                   </tr>
                   <tr>
                      <td>epo:hasSourceVersionSpecification</td>
                      <td></td>
-                     <td>epo:Document -&gt; epo:SpecificationInformation [0..1]</td>
+                     <td>epo:SpecificationInformation -&gt; adms:Identifier [0..1]</td>
+                  </tr>
+                  <tr>
+                     <td>epo:hasSpecificationInformation</td>
+                     <td></td>
+                     <td>epo:Document -&gt; epo:SpecificationInformation [0..*]</td>
                   </tr>
                   <tr>
                      <td>epo:hasStartDate</td>
@@ -5814,11 +5804,6 @@
                      <td>epo:hasSubdivision</td>
                      <td></td>
                      <td>eli:LegalResourceSubdivision -&gt; at-voc:subdivision [0..1]</td>
-                  </tr>
-                  <tr>
-                     <td>epo:hasSubmissionMethod</td>
-                     <td></td>
-                     <td></td>
                   </tr>
                   <tr>
                      <td>epo:hasTaxIdentifier</td>
@@ -6079,13 +6064,13 @@
                   </tr>
                   <tr>
                      <td>epo:isSupportedBy</td>
-                     <td> </td>
-                     <td>epo:Tender -&gt; epo:Offer [0..1]<br>epo:Tender -&gt; epo-cat:PreAwardCatalogue [0..1]<br></td>
+                     <td></td>
+                     <td>epo:Tender -&gt; epo:Offer [0..1]</td>
                   </tr>
                   <tr>
                      <td>epo:isUsedInProfile</td>
                      <td></td>
-                     <td>epo:Document -&gt; epo:SpecificationInformation [0..1]</td>
+                     <td>epo:SpecificationInformation -&gt; adms:Identifier [0..1]</td>
                   </tr>
                   <tr>
                      <td>epo:leadBy</td>
@@ -6155,11 +6140,6 @@
                      <td>epo:ReviewDecision -&gt; at-voc:remedy-type [0..*]</td>
                   </tr>
                   <tr>
-                     <td>epo:queriesForNotice</td>
-                     <td></td>
-                     <td>epo:SearchNoticeQuery -&gt; epo:Notice [1..*]</td>
-                  </tr>
-                  <tr>
                      <td>epo:refersToAwardDecision</td>
                      <td>   </td>
                      <td>epo-not:CompletionNotice -&gt; epo:AwardDecision [0..*]<br>epo-not:ContractModificationNotice -&gt; epo:AwardDecision [0..*]<br>epo-not:CompletionNotice -&gt; epo:AwardDecision [0..*]<br>epo-not:ContractModificationNotice -&gt; epo:AwardDecision [0..*]<br></td>
@@ -6173,11 +6153,6 @@
                      <td>epo:refersToContractToBeModified</td>
                      <td> </td>
                      <td>epo-not:ContractModificationNotice -&gt; epo:Contract [1]<br>epo-not:ContractModificationNotice -&gt; epo:Contract [1]<br></td>
-                  </tr>
-                  <tr>
-                     <td>epo:refersToExpressionOfInterest</td>
-                     <td></td>
-                     <td>epo:ExpressionOfInterestResponse -&gt; epo:ExpressionOfInterest [1]</td>
                   </tr>
                   <tr>
                      <td>epo:refersToLot</td>
@@ -6253,16 +6228,6 @@
                      <td>epo-not:CompletionNotice -&gt; epo:AgentInRole [0..*]<br>epo-not:ContractModificationNotice -&gt; epo:AgentInRole [0..*]<br>epo-not:PreMarketConsultationNotice -&gt; epo:AgentInRole [0..*]<br>epo-not:ResultNotice -&gt; epo:AgentInRole [1..*]<br>epo-not:ResultNotice -&gt; epo:AgentInRole [1..*]<br>epo-not:ContractModificationNotice -&gt; epo:AgentInRole [0..*]<br>epo-not:PreMarketConsultationNotice -&gt; epo:AgentInRole [0..*]<br>epo-not:CompletionNotice -&gt; epo:AgentInRole [0..*]<br></td>
                   </tr>
                   <tr>
-                     <td>epo:refersToTender</td>
-                     <td> </td>
-                     <td>epo:TenderReceipt -&gt; epo:Tender [1..*]<br>epo:TenderWithdrawalReceipt -&gt; epo:Tender [1..*]<br></td>
-                  </tr>
-                  <tr>
-                     <td>epo:relatesTo</td>
-                     <td></td>
-                     <td>epo-cat:PostAwardCatalogue -&gt; epo-cat:PreAwardCatalogue [0..1]</td>
-                  </tr>
-                  <tr>
                      <td>epo:relatesToEFormSectionIdentifier</td>
                      <td>   </td>
                      <td>epo:ReviewInformation -&gt; adms:Identifier [0..1]<br>epo:ChangeInformation -&gt; adms:Identifier [1..*]<br>epo-con:ContractModificationInformation -&gt; adms:Identifier [0..*]<br>epo-con:ContractModificationInformation -&gt; adms:Identifier [0..*]<br></td>
@@ -6319,13 +6284,13 @@
                   </tr>
                   <tr>
                      <td>epo:specifiesCatalogueProvider</td>
-                     <td>    </td>
-                     <td>epo-cat:PreAwardCatalogueRequest -&gt; epo:CatalogueProvider [1]<br>epo-cat:Catalogue -&gt; epo:CatalogueProvider [0..1]<br>epo-cat:CatalogueResponse -&gt; epo:CatalogueProvider [1]<br>epo-cat:Catalogue -&gt; epo:CatalogueProvider [0..1]<br>epo-cat:CatalogueResponse -&gt; epo:CatalogueProvider [1]<br></td>
+                     <td>   </td>
+                     <td>epo-cat:Catalogue -&gt; epo:CatalogueProvider [0..1]<br>epo-cat:CatalogueResponse -&gt; epo:CatalogueProvider [1]<br>epo-cat:Catalogue -&gt; epo:CatalogueProvider [0..1]<br>epo-cat:CatalogueResponse -&gt; epo:CatalogueProvider [1]<br></td>
                   </tr>
                   <tr>
                      <td>epo:specifiesCatalogueReceiver</td>
-                     <td>    </td>
-                     <td>epo-cat:Catalogue -&gt; epo:CatalogueReceiver [0..1]<br>epo-cat:PreAwardCatalogueRequest -&gt; epo:CatalogueReceiver [1]<br>epo-cat:CatalogueResponse -&gt; epo:CatalogueReceiver [1]<br>epo-cat:Catalogue -&gt; epo:CatalogueReceiver [0..1]<br>epo-cat:CatalogueResponse -&gt; epo:CatalogueReceiver [1]<br></td>
+                     <td>   </td>
+                     <td>epo-cat:Catalogue -&gt; epo:CatalogueReceiver [0..1]<br>epo-cat:CatalogueResponse -&gt; epo:CatalogueReceiver [1]<br>epo-cat:Catalogue -&gt; epo:CatalogueReceiver [0..1]<br>epo-cat:CatalogueResponse -&gt; epo:CatalogueReceiver [1]<br></td>
                   </tr>
                   <tr>
                      <td>epo:specifiesCleanVehicleDirectiveContractType</td>
@@ -6349,8 +6314,8 @@
                   </tr>
                   <tr>
                      <td>epo:specifiesEconomicOperator</td>
-                     <td>          </td>
-                     <td>epo-eva:TenderClarificationRequest -&gt; epo:OfferingParty [1]<br>epo:UnsubscribeFromProcedureRequest -&gt; epo:OfferingParty [1]<br>epo:ProcurementDocumentsRequest -&gt; epo:OfferingParty [1]<br>epo-eva:TenderClarificationRequest -&gt; epo:OfferingParty [1]<br>epo:ProcurementDocumentsProvision -&gt; epo:OfferingParty [1]<br>epo:ExpressionOfInterest -&gt; epo:OfferingParty [0..*]<br>epo:TenderingQuestion -&gt; epo:OfferingParty [1]<br>epo-qua:EvidenceRequest -&gt; epo:OfferingParty [1]<br>epo-qua:EvidenceSubmission -&gt; epo:OfferingParty [1]<br>epo-qua:EvidenceSubmission -&gt; epo:OfferingParty [1]<br>epo-qua:EvidenceRequest -&gt; epo:OfferingParty [1]<br></td>
+                     <td>      </td>
+                     <td>epo-eva:TenderClarificationRequest -&gt; epo:OfferingParty [1]<br>epo-eva:TenderClarificationRequest -&gt; epo:OfferingParty [1]<br>epo:ExpressionOfInterest -&gt; epo:OfferingParty [0..*]<br>epo-qua:EvidenceRequest -&gt; epo:OfferingParty [1]<br>epo-qua:EvidenceSubmission -&gt; epo:OfferingParty [1]<br>epo-qua:EvidenceSubmission -&gt; epo:OfferingParty [1]<br>epo-qua:EvidenceRequest -&gt; epo:OfferingParty [1]<br></td>
                   </tr>
                   <tr>
                      <td>epo:specifiesEvidence</td>
@@ -6679,16 +6644,6 @@
                      <td>epo-cat:CatalogueLine -&gt; at-voc-new:orderable-unit [0..1]</td>
                   </tr>
                   <tr>
-                     <td>epo-cat:hasPreAwardCatalogueRequestLine</td>
-                     <td></td>
-                     <td>epo-cat:PreAwardCatalogueRequest -&gt; epo-cat:CatalogueLine [1..*]</td>
-                  </tr>
-                  <tr>
-                     <td>epo-cat:hasPreAwardCatalogueRequestLineValidity</td>
-                     <td></td>
-                     <td>epo-cat:PreAwardCatalogueRequestLine -&gt; time:Interval [1]</td>
-                  </tr>
-                  <tr>
                      <td>epo-cat:hasPrice</td>
                      <td>    </td>
                      <td>epo-ord:OrderLine -&gt; epo-cat:Price [0..*]<br>epo-inv:InvoiceLine -&gt; epo-cat:Price [1..*]<br>epo-inv:InvoiceLine -&gt; epo-cat:Price [1..*]<br>epo-ord:OrderLine -&gt; epo-cat:Price [0..*]<br>epo-cat:CatalogueLine -&gt; epo-cat:Price [0..*]<br></td>
@@ -6805,11 +6760,6 @@
                      <td>epo-cat:refersToCatalogueLine</td>
                      <td></td>
                      <td>epo-cat:CatalogueResponseLine -&gt; epo-cat:CatalogueLine [1]</td>
-                  </tr>
-                  <tr>
-                     <td>epo-cat:referstoProcurementDocumentsProvisionLine</td>
-                     <td></td>
-                     <td>epo-cat:CatalogueLine -&gt; epo:ProcurementDocumentsProvisionLine [0..1]</td>
                   </tr>
                   <tr>
                      <td>epo-cat:specifiesCatalogueResponseInformation</td>
@@ -6964,8 +6914,8 @@
                   </tr>
                   <tr>
                      <td>epo-ful:hasDeclaredStatisticalValue</td>
-                     <td>The Monetary Value declared for statistical purposes.  The Monetary Value declared for statistical purposes. </td>
-                     <td>epo-ful:Consignment -&gt; epo:MonetaryValue [0..1]<br>epo-ful:GoodsItem -&gt; epo:MonetaryValue [0..*]<br>epo-ful:Consignment -&gt; epo:MonetaryValue [0..1]<br>epo-ful:GoodsItem -&gt; epo:MonetaryValue [0..*]<br></td>
+                     <td>The Monetary Value declared for statistical purposes.   The Monetary Value declared for statistical purposes.</td>
+                     <td>epo-ful:Consignment -&gt; epo:MonetaryValue [0..1]<br>epo-ful:GoodsItem -&gt; epo:MonetaryValue [0..*]<br>epo-ful:GoodsItem -&gt; epo:MonetaryValue [0..*]<br>epo-ful:Consignment -&gt; epo:MonetaryValue [0..1]<br></td>
                   </tr>
                   <tr>
                      <td>epo-ful:hasDepartureShipmentInformation</td>
@@ -7022,7 +6972,7 @@
                      <td>Instruction on how to handle the Goods Items during transportation, expressed as a
                         code. Instruction on how to handle the Goods Items during transportation, expressed as a
                         code.</td>
-                     <td>epo-ful:Consignment -&gt; at-voc-new:handling-instruction [0..1]<br>epo-ful:TransportHandlingUnit -&gt; at-voc-new:handling-instruction [0..1]<br></td>
+                     <td>epo-ful:TransportHandlingUnit -&gt; at-voc-new:handling-instruction [0..1]<br>epo-ful:Consignment -&gt; at-voc-new:handling-instruction [0..1]<br></td>
                   </tr>
                   <tr>
                      <td>epo-ful:hasHeight</td>
@@ -7278,8 +7228,8 @@
                   </tr>
                   <tr>
                      <td>epo-ful:specifiesDespatcher</td>
-                     <td>Relation indicating that the instance of the concept involves the Despatcher. Relation indicating that the instance of the concept involves the Despatcher.  Relation indicating that the instance of the concept involves the Despatcher.</td>
-                     <td>epo-ord:Order -&gt; epo-ful:Despatcher [0..1]<br>epo-ful:DespatchAdvice -&gt; epo-ful:Despatcher [1..*]<br>epo-ful:ReceiptAdvice -&gt; epo-ful:Despatcher [1]<br>epo-ord:Order -&gt; epo-ful:Despatcher [0..1]<br></td>
+                     <td>Relation indicating that the instance of the concept involves the Despatcher.  Relation indicating that the instance of the concept involves the Despatcher. Relation indicating that the instance of the concept involves the Despatcher.</td>
+                     <td>epo-ord:Order -&gt; epo-ful:Despatcher [0..1]<br>epo-ful:ReceiptAdvice -&gt; epo-ful:Despatcher [1]<br>epo-ord:Order -&gt; epo-ful:Despatcher [0..1]<br>epo-ful:DespatchAdvice -&gt; epo-ful:Despatcher [1..*]<br></td>
                   </tr>
                   <tr>
                      <td>epo-ful:specifiesOriginator</td>
