@@ -158,17 +158,20 @@ ord-shape:epo-ord-Order a sh:NodeShape ;
 
 ord-shape:epo-ord-OrderAgreement a sh:NodeShape ;
     rdfs:label "Order Agreement" ;
+    rdfs:comment "A Document sent from the Seller to Buyer specifying the goods, services or works to be delivered concerning a specific Order." ;
     rdfs:isDefinedBy ord-shape:ord-shape ;
     sh:property ord-shape:epo-ord-OrderAgreement-epo-ord-comprisesOrderAgreementLine ;
     sh:targetClass :OrderAgreement .
 
 ord-shape:epo-ord-OrderAgreementLine a sh:NodeShape ;
     rdfs:label "Order Agreement Line" ;
+    rdfs:comment "Details concerning a given unit of goods, services or works mentioned in the Order Agreement." ;
     rdfs:isDefinedBy ord-shape:ord-shape ;
     sh:targetClass :OrderAgreementLine .
 
 ord-shape:epo-ord-OrderCancellation a sh:NodeShape ;
     rdfs:label "Order Cancellation" ;
+    rdfs:comment "A Document providing information on the formal response from the Buyer to the Seller to cancel a previous Order or Order Change." ;
     rdfs:isDefinedBy ord-shape:ord-shape ;
     sh:property ord-shape:epo-ord-OrderCancellation-epo-ord-isSubmittedForOrder,
         ord-shape:epo-ord-OrderCancellation-epo-specifiesBuyer,
@@ -177,6 +180,7 @@ ord-shape:epo-ord-OrderCancellation a sh:NodeShape ;
 
 ord-shape:epo-ord-OrderCancellationConfirmation a sh:NodeShape ;
     rdfs:label "Order Cancellation Confirmation" ;
+    rdfs:comment "A Document providing information on the acknowledgment of the Order Cancellation." ;
     rdfs:isDefinedBy ord-shape:ord-shape ;
     sh:property ord-shape:epo-ord-OrderCancellationConfirmation-epo-ord-respondsToOrderCancellation,
         ord-shape:epo-ord-OrderCancellationConfirmation-epo-specifiesBuyer,
@@ -185,6 +189,7 @@ ord-shape:epo-ord-OrderCancellationConfirmation a sh:NodeShape ;
 
 ord-shape:epo-ord-OrderCancellationRejection a sh:NodeShape ;
     rdfs:label "Order Cancellation Rejection" ;
+    rdfs:comment "A Document providing information on the non-acceptance of the Order Cancellation." ;
     rdfs:isDefinedBy ord-shape:ord-shape ;
     sh:property ord-shape:epo-ord-OrderCancellationRejection-epo-ord-respondsToOrderCancellation,
         ord-shape:epo-ord-OrderCancellationRejection-epo-specifiesBuyer,
@@ -193,6 +198,7 @@ ord-shape:epo-ord-OrderCancellationRejection a sh:NodeShape ;
 
 ord-shape:epo-ord-OrderChange a sh:NodeShape ;
     rdfs:label "Order Change" ;
+    rdfs:comment "A Document providing information on the formal request from the Buyer to the Seller specifying the requested change in goods, services or works to be delivered in respect to a previous Order." ;
     rdfs:isDefinedBy ord-shape:ord-shape ;
     sh:property ord-shape:epo-ord-OrderChange-epo-ord-comprisesOrderChangeLine,
         ord-shape:epo-ord-OrderChange-epo-ord-isSubmittedForOrder ;
@@ -200,6 +206,7 @@ ord-shape:epo-ord-OrderChange a sh:NodeShape ;
 
 ord-shape:epo-ord-OrderChangeConfirmation a sh:NodeShape ;
     rdfs:label "Order Change Confirmation" ;
+    rdfs:comment "A Document providing information on the acknowledgment of the Order Change." ;
     rdfs:isDefinedBy ord-shape:ord-shape ;
     sh:property ord-shape:epo-ord-OrderChangeConfirmation-epo-ord-respondsToOrderChange,
         ord-shape:epo-ord-OrderChangeConfirmation-epo-specifiesBuyer,
@@ -208,6 +215,7 @@ ord-shape:epo-ord-OrderChangeConfirmation a sh:NodeShape ;
 
 ord-shape:epo-ord-OrderChangeLine a sh:NodeShape ;
     rdfs:label "Order Change Line" ;
+    rdfs:comment "Details concerning a given unit of goods, services or works requested in the Order Change." ;
     rdfs:isDefinedBy ord-shape:ord-shape ;
     sh:property ord-shape:epo-ord-OrderChangeLine-epo-ord-hasStatus,
         ord-shape:epo-ord-OrderChangeLine-epo-ord-isSubmittedForOrderLine ;
@@ -215,6 +223,7 @@ ord-shape:epo-ord-OrderChangeLine a sh:NodeShape ;
 
 ord-shape:epo-ord-OrderChangeRejection a sh:NodeShape ;
     rdfs:label "Order Change Rejection" ;
+    rdfs:comment "A Document providing information on the non-acceptance of the Order Change." ;
     rdfs:isDefinedBy ord-shape:ord-shape ;
     sh:property ord-shape:epo-ord-OrderChangeRejection-epo-ord-respondsToOrderChange,
         ord-shape:epo-ord-OrderChangeRejection-epo-specifiesBuyer,
@@ -243,6 +252,7 @@ ord-shape:epo-ord-OrderResponse a sh:NodeShape ;
 
 ord-shape:epo-ord-OrderResponseInformation a sh:NodeShape ;
     rdfs:label "Order Response Information" ;
+    rdfs:comment "Information about an Order Response." ;
     rdfs:isDefinedBy ord-shape:ord-shape ;
     sh:property ord-shape:epo-ord-OrderResponseInformation-epo-ord-hasStatus,
         ord-shape:epo-ord-OrderResponseInformation-epo-ord-isSpecificToOrderResponseLine ;
@@ -295,6 +305,7 @@ ord-shape:epo-req-RequestForOffer sh:property ord-shape:epo-req-RequestForOffer-
 
 ord-shape:epo-Contract-epo-ord-hasTaxInformation a sh:PropertyShape ;
     sh:class :TaxInformation ;
+    sh:description "Relation indicating the Tax Information." ;
     sh:maxCount 1 ;
     sh:name "has Tax Information" ;
     sh:path :hasTaxInformation ;
@@ -302,18 +313,21 @@ ord-shape:epo-Contract-epo-ord-hasTaxInformation a sh:PropertyShape ;
 
 ord-shape:epo-cat-AbstractItem-epo-ord-hasTaxInformation a sh:PropertyShape ;
     sh:class :TaxInformation ;
+    sh:description "Relation indicating the Tax Information." ;
     sh:name "has Tax Information" ;
     sh:path :hasTaxInformation ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#hasTaxInformation> ?that . ?that <http://data.europa.eu/a4g/ontology#hasTaxInformation> ?this .}" ] .
 
 ord-shape:epo-cat-Catalogue-epo-specifiesSeller a sh:PropertyShape ;
     sh:class :Seller ;
+    sh:description "Relation indicating that the instance of the concept involves the Seller." ;
     sh:name "specifies Seller" ;
     sh:path :specifiesSeller ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#specifiesSeller> ?that . ?that <http://data.europa.eu/a4g/ontology#specifiesSeller> ?this .}" ] .
 
 ord-shape:epo-cat-CatalogueResponseInformation-epo-ord-hasResponseStatus a sh:PropertyShape ;
     sh:class skos:Concept ;
+    sh:description "Relation indicating the response status." ;
     sh:maxCount 1 ;
     sh:minCount 1 ;
     sh:name "has Response Status" ;
@@ -328,6 +342,7 @@ ord-shape:epo-cat-ChargeInformation-epo-ord-isSpecificToOrderLine a sh:PropertyS
 
 ord-shape:epo-cat-Price-epo-ord-hasPriceDiscountInformation a sh:PropertyShape ;
     sh:class :AllowanceInformation ;
+    sh:description "Relation indicating the Allowance Information applied on the Price." ;
     sh:maxCount 1 ;
     sh:name "has Price Discount Information" ;
     sh:path :hasPriceDiscountInformation ;
@@ -335,6 +350,7 @@ ord-shape:epo-cat-Price-epo-ord-hasPriceDiscountInformation a sh:PropertyShape ;
 
 ord-shape:epo-ful-AbstractContainer-epo-ord-hasAcceptanceStatus a sh:PropertyShape ;
     sh:class skos:Concept ;
+    sh:description "Relation indicating the acceptance status." ;
     sh:maxCount 1 ;
     sh:name "has Acceptance Status" ;
     sh:path :hasAcceptanceStatus .
@@ -380,6 +396,7 @@ ord-shape:epo-ful-ReceiptAdvice-epo-ful-specifiesConsignee a sh:PropertyShape ;
 
 ord-shape:epo-ful-ReceiptAdvice-epo-specifiesSeller a sh:PropertyShape ;
     sh:class :Seller ;
+    sh:description "Relation indicating that the instance of the concept involves the Seller." ;
     sh:maxCount 1 ;
     sh:name "specifies Seller" ;
     sh:path :specifiesSeller ;
@@ -387,6 +404,7 @@ ord-shape:epo-ful-ReceiptAdvice-epo-specifiesSeller a sh:PropertyShape ;
 
 ord-shape:epo-ful-ReceiptAdviceInformation-epo-ord-hasAcceptanceStatus a sh:PropertyShape ;
     sh:class skos:Concept ;
+    sh:description "Relation indicating the acceptance status." ;
     sh:maxCount 1 ;
     sh:name "has Acceptance Status" ;
     sh:path :hasAcceptanceStatus .
@@ -410,6 +428,7 @@ ord-shape:epo-ful-ShipmentInformation-epo-ful-refersToDeliveryInformation a sh:P
 
 ord-shape:epo-inv-Invoice-epo-ful-refersToOrder a sh:PropertyShape ;
     sh:class :Order ;
+    sh:description "Reference to an Order." ;
     sh:maxCount 1 ;
     sh:name "refers To Order" ;
     sh:path :refersToOrder ;
@@ -417,6 +436,7 @@ ord-shape:epo-inv-Invoice-epo-ful-refersToOrder a sh:PropertyShape ;
 
 ord-shape:epo-inv-Invoice-epo-ord-hasTaxInformation a sh:PropertyShape ;
     sh:class :TaxInformation ;
+    sh:description "Relation indicating the Tax Information." ;
     sh:maxCount 1 ;
     sh:minCount 1 ;
     sh:name "has Tax Information" ;
@@ -425,12 +445,14 @@ ord-shape:epo-inv-Invoice-epo-ord-hasTaxInformation a sh:PropertyShape ;
 
 ord-shape:epo-inv-Invoice-epo-ord-specifiesAllowanceInformation a sh:PropertyShape ;
     sh:class :AllowanceInformation ;
+    sh:description "Relation indicating the Allowance Information." ;
     sh:name "specifies Allowance Information" ;
     sh:path :specifiesAllowanceInformation ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#specifiesAllowanceInformation> ?that . ?that <http://data.europa.eu/a4g/ontology#specifiesAllowanceInformation> ?this .}" ] .
 
 ord-shape:epo-inv-Invoice-epo-ord-specifiesDeliveryInformation a sh:PropertyShape ;
     sh:class :DeliveryInformation ;
+    sh:description "Relation indicating the Delivery Information." ;
     sh:maxCount 1 ;
     sh:name "specifies Delivery Information" ;
     sh:path :specifiesDeliveryInformation ;
@@ -438,6 +460,7 @@ ord-shape:epo-inv-Invoice-epo-ord-specifiesDeliveryInformation a sh:PropertyShap
 
 ord-shape:epo-inv-Invoice-epo-specifiesSeller a sh:PropertyShape ;
     sh:class :Seller ;
+    sh:description "Relation indicating that the instance of the concept involves the Seller." ;
     sh:maxCount 1 ;
     sh:minCount 1 ;
     sh:name "specifies Seller" ;
@@ -446,6 +469,7 @@ ord-shape:epo-inv-Invoice-epo-specifiesSeller a sh:PropertyShape ;
 
 ord-shape:epo-inv-InvoiceLine-epo-inv-refersToOrderLine a sh:PropertyShape ;
     sh:class :OrderLine ;
+    sh:description "Reference to an Order Line." ;
     sh:maxCount 1 ;
     sh:name "refers To Order Line" ;
     sh:path :refersToOrderLine ;
@@ -453,6 +477,7 @@ ord-shape:epo-inv-InvoiceLine-epo-inv-refersToOrderLine a sh:PropertyShape ;
 
 ord-shape:epo-inv-InvoiceLine-epo-ord-hasTaxInformation a sh:PropertyShape ;
     sh:class :TaxInformation ;
+    sh:description "Relation indicating the Tax Information." ;
     sh:maxCount 1 ;
     sh:minCount 1 ;
     sh:name "has Tax Information" ;
@@ -461,6 +486,7 @@ ord-shape:epo-inv-InvoiceLine-epo-ord-hasTaxInformation a sh:PropertyShape ;
 
 ord-shape:epo-inv-TaxBreakdownInformation-epo-ord-hasTaxInformation a sh:PropertyShape ;
     sh:class :TaxInformation ;
+    sh:description "Relation indicating the Tax Information." ;
     sh:maxCount 1 ;
     sh:minCount 1 ;
     sh:name "has Tax Information" ;
@@ -491,6 +517,7 @@ ord-shape:epo-ord-AllowanceChargeInformation-epo-ful-hasAllowanceChargeReason a 
 
 ord-shape:epo-ord-AllowanceChargeInformation-epo-ful-hasAllowanceChargeReasonDescription a sh:PropertyShape ;
     rdfs:isDefinedBy ord-shape:ord-shape ;
+    sh:description "Explanatory text about the motive of the Allowance Charge." ;
     sh:name "has Allowance Charge Reason Description" ;
     sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
     sh:path :hasAllowanceChargeReasonDescription .
@@ -505,6 +532,7 @@ ord-shape:epo-ord-AllowanceChargeInformation-epo-isCalculatedOn a sh:PropertySha
 
 ord-shape:epo-ord-AllowanceChargeInformation-epo-ord-hasTaxInformation a sh:PropertyShape ;
     sh:class :TaxInformation ;
+    sh:description "Relation indicating the Tax Information." ;
     sh:maxCount 1 ;
     sh:name "has Tax Information" ;
     sh:path :hasTaxInformation ;
@@ -512,6 +540,7 @@ ord-shape:epo-ord-AllowanceChargeInformation-epo-ord-hasTaxInformation a sh:Prop
 
 ord-shape:epo-ord-AllowanceChargeInformation-epo-ord-hasVATExemptionReason a sh:PropertyShape ;
     rdfs:isDefinedBy ord-shape:ord-shape ;
+    sh:description "Explanation on why the instance of the concept is not subject to value-added tax." ;
     sh:maxCount 1 ;
     sh:name "has VAT Exemption Reason" ;
     sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
@@ -519,6 +548,7 @@ ord-shape:epo-ord-AllowanceChargeInformation-epo-ord-hasVATExemptionReason a sh:
 
 ord-shape:epo-ord-AllowanceChargeInformation-epo-ord-hasVATExemptionReasonDescription a sh:PropertyShape ;
     rdfs:isDefinedBy ord-shape:ord-shape ;
+    sh:description "Explanatory text about the VAT Exemption Reason." ;
     sh:maxCount 1 ;
     sh:name "has VAT Exemption Reason Description" ;
     sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
@@ -526,6 +556,7 @@ ord-shape:epo-ord-AllowanceChargeInformation-epo-ord-hasVATExemptionReasonDescri
 
 ord-shape:epo-ord-AllowanceInformation-epo-inv-isSpecificToInvoiceLine a sh:PropertyShape ;
     sh:class :InvoiceLine ;
+    sh:description "Information that is particular to an Invoice Line." ;
     sh:name "is Specific To Invoice Line" ;
     sh:path :isSpecificToInvoiceLine ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#isSpecificToInvoiceLine> ?that . ?that <http://data.europa.eu/a4g/ontology#isSpecificToInvoiceLine> ?this .}" ] .
@@ -539,6 +570,7 @@ ord-shape:epo-ord-AllowanceInformation-epo-ord-isSpecificToOrderLine a sh:Proper
 
 ord-shape:epo-ord-ContractInformation-epo-ord-concernsContract a sh:PropertyShape ;
     sh:class :Contract ;
+    sh:description "Relates to Contractor." ;
     sh:maxCount 1 ;
     sh:minCount 1 ;
     sh:name "concerns Contract" ;
@@ -554,6 +586,7 @@ ord-shape:epo-ord-ContractInformation-epo-ord-isSpecificToOrderLine a sh:Propert
 
 ord-shape:epo-ord-DeliveryAgreement-epo-ord-hasGeneralDeliveryTerm a sh:PropertyShape ;
     rdfs:isDefinedBy ord-shape:ord-shape ;
+    sh:description "Terms and conditions related to the delivery of goods." ;
     sh:maxCount 1 ;
     sh:name "has General Delivery Term" ;
     sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
@@ -561,6 +594,7 @@ ord-shape:epo-ord-DeliveryAgreement-epo-ord-hasGeneralDeliveryTerm a sh:Property
 
 ord-shape:epo-ord-DeliveryAgreement-epo-ord-hasRequestedShippingPriority a sh:PropertyShape ;
     rdfs:isDefinedBy ord-shape:ord-shape ;
+    sh:description "The level of importance or sequence assigned to the delivery." ;
     sh:maxCount 1 ;
     sh:name "has Requested Shipping Priority" ;
     sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
@@ -576,6 +610,7 @@ ord-shape:epo-ord-DeliveryAgreement-epo-ord-isPartialDeliveryAllowed a sh:Proper
 
 ord-shape:epo-ord-DeliveryAgreement-epo-ord-specifiesDeliveryAgreementLocation a sh:PropertyShape ;
     sh:class dcterms:Location ;
+    sh:description "Relation indicating the Location from the Delivery Agreement." ;
     sh:maxCount 1 ;
     sh:name "specifies Delivery Agreement Location" ;
     sh:path :specifiesDeliveryAgreementLocation ;
@@ -583,6 +618,7 @@ ord-shape:epo-ord-DeliveryAgreement-epo-ord-specifiesDeliveryAgreementLocation a
 
 ord-shape:epo-ord-DeliveryInformation-epo-ful-hasTrackingID a sh:PropertyShape ;
     sh:class adms:Identifier ;
+    sh:description "Relation indicating that thedelivery has an identifier for traceability purposes." ;
     sh:maxCount 1 ;
     sh:name "has Tracking ID" ;
     sh:path :hasTrackingID ;
@@ -598,12 +634,14 @@ ord-shape:epo-ord-DeliveryInformation-epo-hasAccessURL a sh:PropertyShape ;
 ord-shape:epo-ord-DeliveryInformation-epo-inv-hasActualDeliveryDate a sh:PropertyShape ;
     rdfs:isDefinedBy ord-shape:ord-shape ;
     sh:datatype xsd:dateTime ;
+    sh:description "The date when the Delivery occured." ;
     sh:maxCount 1 ;
     sh:name "has Actual Delivery Date" ;
     sh:path :hasActualDeliveryDate .
 
 ord-shape:epo-ord-DeliveryInformation-epo-ord-concernsConsignee a sh:PropertyShape ;
     sh:class :Consignee ;
+    sh:description "Relates to Consignee." ;
     sh:maxCount 1 ;
     sh:name "concerns Consignee" ;
     sh:path :concernsConsignee ;
@@ -612,6 +650,7 @@ ord-shape:epo-ord-DeliveryInformation-epo-ord-concernsConsignee a sh:PropertySha
 ord-shape:epo-ord-DeliveryInformation-epo-ord-hasDeliveryDeadline a sh:PropertyShape ;
     rdfs:isDefinedBy ord-shape:ord-shape ;
     sh:datatype xsd:dateTime ;
+    sh:description "The final accepted date for Delivery." ;
     sh:maxCount 1 ;
     sh:name "has Delivery Deadline" ;
     sh:path :hasDeliveryDeadline .
@@ -626,6 +665,7 @@ ord-shape:epo-ord-DeliveryInformation-epo-ord-hasDeliveryEmail a sh:PropertyShap
 
 ord-shape:epo-ord-DeliveryInformation-epo-ord-hasDeliveryPeriod a sh:PropertyShape ;
     sh:class time:Interval ;
+    sh:description "Relation indicating the time range for the delivery." ;
     sh:maxCount 1 ;
     sh:name "has Delivery Period" ;
     sh:path :hasDeliveryPeriod ;
@@ -640,6 +680,7 @@ ord-shape:epo-ord-DeliveryInformation-epo-ord-hasDownloadURL a sh:PropertyShape 
 
 ord-shape:epo-ord-DeliveryInformation-epo-ord-hasRequestedDeliveryPeriod a sh:PropertyShape ;
     sh:class time:Interval ;
+    sh:description "Relation indicating the sought time range for the delivery." ;
     sh:maxCount 1 ;
     sh:name "has Requested Delivery Period" ;
     sh:path :hasRequestedDeliveryPeriod ;
@@ -661,12 +702,14 @@ ord-shape:epo-ord-DeliveryInformation-epo-ord-isSpecificToOrderLine a sh:Propert
 
 ord-shape:epo-ord-DeliveryInformation-epo-ord-isSpecificToRequestForOfferLine a sh:PropertyShape ;
     sh:class :RequestForOfferLine ;
+    sh:description "Information that is particular to a Request For Offer Line." ;
     sh:name "is Specific To Request For Offer Line" ;
     sh:path :isSpecificToRequestForOfferLine ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#isSpecificToRequestForOfferLine> ?that . ?that <http://data.europa.eu/a4g/ontology#isSpecificToRequestForOfferLine> ?this .}" ] .
 
 ord-shape:epo-ord-DeliveryInformation-epo-ord-specifiesDeliveryAgreement a sh:PropertyShape ;
     sh:class :DeliveryAgreement ;
+    sh:description "Relation indicating the Delivery Agreement." ;
     sh:maxCount 1 ;
     sh:name "specifies Delivery Agreement" ;
     sh:path :specifiesDeliveryAgreement ;
@@ -674,6 +717,7 @@ ord-shape:epo-ord-DeliveryInformation-epo-ord-specifiesDeliveryAgreement a sh:Pr
 
 ord-shape:epo-ord-DeliveryInformation-epo-ord-specifiesPlaceOfDelivery a sh:PropertyShape ;
     sh:class dcterms:Location ;
+    sh:description "Relation indicating the Location of the despatch." ;
     sh:maxCount 1 ;
     sh:name "specifies Place Of Delivery" ;
     sh:path :specifiesPlaceOfDelivery ;
@@ -688,6 +732,7 @@ ord-shape:epo-ord-Order-epo-cat-refersToCatalogue a sh:PropertyShape ;
 
 ord-shape:epo-ord-Order-epo-cat-specifiesChargeInformation a sh:PropertyShape ;
     sh:class :ChargeInformation ;
+    sh:description "Relation indicating the Charge Information." ;
     sh:name "specifies Charge Information" ;
     sh:path :specifiesChargeInformation ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#specifiesChargeInformation> ?that . ?that <http://data.europa.eu/a4g/ontology#specifiesChargeInformation> ?this .}" ] .
@@ -709,6 +754,7 @@ ord-shape:epo-ord-Order-epo-hasValidityPeriod a sh:PropertyShape ;
 
 ord-shape:epo-ord-Order-epo-ord-comprisesOrderLine a sh:PropertyShape ;
     sh:class :OrderLine ;
+    sh:description "Incorporates Order Line." ;
     sh:name "comprises Order Line" ;
     sh:path :comprisesOrderLine ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#comprisesOrderLine> ?that . ?that <http://data.europa.eu/a4g/ontology#comprisesOrderLine> ?this .}" ] .
@@ -723,6 +769,7 @@ ord-shape:epo-ord-Order-epo-ord-hasAccountingCost a sh:PropertyShape ;
 
 ord-shape:epo-ord-Order-epo-ord-hasAmountDueForPayment a sh:PropertyShape ;
     sh:class :MonetaryValue ;
+    sh:description "Relation indicating the Monetary Value that has to be paid." ;
     sh:maxCount 1 ;
     sh:minCount 1 ;
     sh:name "has Amount Due For Payment" ;
@@ -731,6 +778,7 @@ ord-shape:epo-ord-Order-epo-ord-hasAmountDueForPayment a sh:PropertyShape ;
 
 ord-shape:epo-ord-Order-epo-ord-hasPaymentTerm a sh:PropertyShape ;
     rdfs:isDefinedBy ord-shape:ord-shape ;
+    sh:description "Condition and stipulation of the Payment." ;
     sh:maxCount 1 ;
     sh:name "has Payment Term" ;
     sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
@@ -738,6 +786,7 @@ ord-shape:epo-ord-Order-epo-ord-hasPaymentTerm a sh:PropertyShape ;
 
 ord-shape:epo-ord-Order-epo-ord-hasPrepaidAmount a sh:PropertyShape ;
     sh:class :MonetaryValue ;
+    sh:description "Relation indicating the Monetary Value that is paid in advance." ;
     sh:maxCount 1 ;
     sh:name "has Prepaid Amount" ;
     sh:path :hasPrepaidAmount ;
@@ -745,6 +794,7 @@ ord-shape:epo-ord-Order-epo-ord-hasPrepaidAmount a sh:PropertyShape ;
 
 ord-shape:epo-ord-Order-epo-ord-hasRoundingAmount a sh:PropertyShape ;
     sh:class :MonetaryValue ;
+    sh:description "Relation indicating the adjustment Monetary Value applied to bring calculated total to a convenient value." ;
     sh:maxCount 1 ;
     sh:name "has Rounding Amount" ;
     sh:path :hasRoundingAmount ;
@@ -760,6 +810,7 @@ ord-shape:epo-ord-Order-epo-ord-hasSellerOrderID a sh:PropertyShape ;
 
 ord-shape:epo-ord-Order-epo-ord-hasTotalAllowanceAmount a sh:PropertyShape ;
     sh:class :MonetaryValue ;
+    sh:description "Relation indicating the overall Monetary Value of the Allowance." ;
     sh:maxCount 1 ;
     sh:name "has Total Allowance Amount" ;
     sh:path :hasTotalAllowanceAmount ;
@@ -767,6 +818,7 @@ ord-shape:epo-ord-Order-epo-ord-hasTotalAllowanceAmount a sh:PropertyShape ;
 
 ord-shape:epo-ord-Order-epo-ord-hasTotalChargeAmount a sh:PropertyShape ;
     sh:class :MonetaryValue ;
+    sh:description "Relation indicating the overall Monetary Value of the Charge." ;
     sh:maxCount 1 ;
     sh:name "has Total Charge Amount" ;
     sh:path :hasTotalChargeAmount ;
@@ -774,6 +826,7 @@ ord-shape:epo-ord-Order-epo-ord-hasTotalChargeAmount a sh:PropertyShape ;
 
 ord-shape:epo-ord-Order-epo-ord-hasTotalLineAmount a sh:PropertyShape ;
     sh:class :MonetaryValue ;
+    sh:description "Relation indicating the overall Monetary Value of the Line." ;
     sh:maxCount 1 ;
     sh:minCount 1 ;
     sh:name "has Total Line Amount" ;
@@ -782,6 +835,7 @@ ord-shape:epo-ord-Order-epo-ord-hasTotalLineAmount a sh:PropertyShape ;
 
 ord-shape:epo-ord-Order-epo-ord-hasTotalTaxExclusiveAmount a sh:PropertyShape ;
     sh:class :MonetaryValue ;
+    sh:description "Relation indicating the overall Monetary Value without Tax." ;
     sh:maxCount 1 ;
     sh:name "has Total Tax Exclusive Amount" ;
     sh:path :hasTotalTaxExclusiveAmount ;
@@ -789,6 +843,7 @@ ord-shape:epo-ord-Order-epo-ord-hasTotalTaxExclusiveAmount a sh:PropertyShape ;
 
 ord-shape:epo-ord-Order-epo-ord-hasTotalTaxInclusiveAmount a sh:PropertyShape ;
     sh:class :MonetaryValue ;
+    sh:description "Relation indicating the overall Monetary Value with Tax." ;
     sh:maxCount 1 ;
     sh:name "has Total Tax Inclusive Amount" ;
     sh:path :hasTotalTaxInclusiveAmount ;
@@ -796,25 +851,28 @@ ord-shape:epo-ord-Order-epo-ord-hasTotalTaxInclusiveAmount a sh:PropertyShape ;
 
 ord-shape:epo-ord-Order-epo-ord-specifiesAllowanceInformation a sh:PropertyShape ;
     sh:class :AllowanceInformation ;
+    sh:description "Relation indicating the Allowance Information." ;
     sh:name "specifies Allowance Information" ;
     sh:path :specifiesAllowanceInformation ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#specifiesAllowanceInformation> ?that . ?that <http://data.europa.eu/a4g/ontology#specifiesAllowanceInformation> ?this .}" ] .
 
 ord-shape:epo-ord-Order-epo-ord-specifiesContractInformation a sh:PropertyShape ;
     sh:class :ContractInformation ;
-    sh:description "" ;
+    sh:description "Relation indicating the Contract Information." ;
     sh:name "specifies Contract Information" ;
     sh:path :specifiesContractInformation ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#specifiesContractInformation> ?that . ?that <http://data.europa.eu/a4g/ontology#specifiesContractInformation> ?this .}" ] .
 
 ord-shape:epo-ord-Order-epo-ord-specifiesDeliveryInformation a sh:PropertyShape ;
     sh:class :DeliveryInformation ;
+    sh:description "Relation indicating the Delivery Information." ;
     sh:name "specifies Delivery Information" ;
     sh:path :specifiesDeliveryInformation ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#specifiesDeliveryInformation> ?that . ?that <http://data.europa.eu/a4g/ontology#specifiesDeliveryInformation> ?this .}" ] .
 
 ord-shape:epo-ord-Order-epo-ord-specifiesOriginatorInformation a sh:PropertyShape ;
     sh:class :OriginatorInformation ;
+    sh:description "Relation indicating the Originator Information." ;
     sh:maxCount 1 ;
     sh:name "specifies Originator Information" ;
     sh:path :specifiesOriginatorInformation ;
@@ -822,6 +880,7 @@ ord-shape:epo-ord-Order-epo-ord-specifiesOriginatorInformation a sh:PropertyShap
 
 ord-shape:epo-ord-Order-epo-refersToProject a sh:PropertyShape ;
     sh:class :Project ;
+    sh:description "Reference to a Project." ;
     sh:maxCount 1 ;
     sh:name "refers To Project" ;
     sh:path :refersToProject ;
@@ -829,6 +888,7 @@ ord-shape:epo-ord-Order-epo-refersToProject a sh:PropertyShape ;
 
 ord-shape:epo-ord-Order-epo-specifiesBuyer a sh:PropertyShape ;
     sh:class :Buyer ;
+    sh:description "Relation indicating that the instance of the concept involves the Buyer." ;
     sh:maxCount 1 ;
     sh:minCount 1 ;
     sh:name "specifies Buyer" ;
@@ -837,6 +897,7 @@ ord-shape:epo-ord-Order-epo-specifiesBuyer a sh:PropertyShape ;
 
 ord-shape:epo-ord-Order-epo-specifiesInvoicee a sh:PropertyShape ;
     sh:class :Invoicee ;
+    sh:description "Relation indicating that the instance of the concept involves the Invoicee." ;
     sh:maxCount 1 ;
     sh:name "specifies Invoicee" ;
     sh:path :specifiesInvoicee ;
@@ -844,6 +905,7 @@ ord-shape:epo-ord-Order-epo-specifiesInvoicee a sh:PropertyShape ;
 
 ord-shape:epo-ord-Order-epo-specifiesSeller a sh:PropertyShape ;
     sh:class :Seller ;
+    sh:description "Relation indicating that the instance of the concept involves the Seller." ;
     sh:maxCount 1 ;
     sh:minCount 1 ;
     sh:name "specifies Seller" ;
@@ -852,12 +914,14 @@ ord-shape:epo-ord-Order-epo-specifiesSeller a sh:PropertyShape ;
 
 ord-shape:epo-ord-OrderAgreement-epo-ord-comprisesOrderAgreementLine a sh:PropertyShape ;
     sh:class :OrderAgreementLine ;
+    sh:description "Incorporates Order Agreement Line." ;
     sh:name "comprises Order Agreement Line" ;
     sh:path :comprisesOrderAgreementLine ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#comprisesOrderAgreementLine> ?that . ?that <http://data.europa.eu/a4g/ontology#comprisesOrderAgreementLine> ?this .}" ] .
 
 ord-shape:epo-ord-OrderCancellation-epo-ord-isSubmittedForOrder a sh:PropertyShape ;
     sh:class :Order ;
+    sh:description "Relation indicating that the instance of the concept is sent for a specific Order." ;
     sh:maxCount 1 ;
     sh:minCount 1 ;
     sh:name "is Submitted For Order" ;
@@ -866,6 +930,7 @@ ord-shape:epo-ord-OrderCancellation-epo-ord-isSubmittedForOrder a sh:PropertySha
 
 ord-shape:epo-ord-OrderCancellation-epo-specifiesBuyer a sh:PropertyShape ;
     sh:class :Buyer ;
+    sh:description "Relation indicating that the instance of the concept involves the Buyer." ;
     sh:maxCount 1 ;
     sh:minCount 1 ;
     sh:name "specifies Buyer" ;
@@ -874,6 +939,7 @@ ord-shape:epo-ord-OrderCancellation-epo-specifiesBuyer a sh:PropertyShape ;
 
 ord-shape:epo-ord-OrderCancellation-epo-specifiesSeller a sh:PropertyShape ;
     sh:class :Seller ;
+    sh:description "Relation indicating that the instance of the concept involves the Seller." ;
     sh:maxCount 1 ;
     sh:minCount 1 ;
     sh:name "specifies Seller" ;
@@ -882,6 +948,7 @@ ord-shape:epo-ord-OrderCancellation-epo-specifiesSeller a sh:PropertyShape ;
 
 ord-shape:epo-ord-OrderCancellationConfirmation-epo-ord-respondsToOrderCancellation a sh:PropertyShape ;
     sh:class :OrderCancellation ;
+    sh:description "Takes action in reaction to an Order Cancellation." ;
     sh:maxCount 1 ;
     sh:name "responds To Order Cancellation" ;
     sh:path :respondsToOrderCancellation ;
@@ -889,6 +956,7 @@ ord-shape:epo-ord-OrderCancellationConfirmation-epo-ord-respondsToOrderCancellat
 
 ord-shape:epo-ord-OrderCancellationConfirmation-epo-specifiesBuyer a sh:PropertyShape ;
     sh:class :Buyer ;
+    sh:description "Relation indicating that the instance of the concept involves the Buyer." ;
     sh:maxCount 1 ;
     sh:minCount 1 ;
     sh:name "specifies Buyer" ;
@@ -897,6 +965,7 @@ ord-shape:epo-ord-OrderCancellationConfirmation-epo-specifiesBuyer a sh:Property
 
 ord-shape:epo-ord-OrderCancellationConfirmation-epo-specifiesSeller a sh:PropertyShape ;
     sh:class :Seller ;
+    sh:description "Relation indicating that the instance of the concept involves the Seller." ;
     sh:maxCount 1 ;
     sh:minCount 1 ;
     sh:name "specifies Seller" ;
@@ -905,6 +974,7 @@ ord-shape:epo-ord-OrderCancellationConfirmation-epo-specifiesSeller a sh:Propert
 
 ord-shape:epo-ord-OrderCancellationRejection-epo-ord-respondsToOrderCancellation a sh:PropertyShape ;
     sh:class :OrderCancellation ;
+    sh:description "Takes action in reaction to an Order Cancellation." ;
     sh:maxCount 1 ;
     sh:name "responds To Order Cancellation" ;
     sh:path :respondsToOrderCancellation ;
@@ -912,6 +982,7 @@ ord-shape:epo-ord-OrderCancellationRejection-epo-ord-respondsToOrderCancellation
 
 ord-shape:epo-ord-OrderCancellationRejection-epo-specifiesBuyer a sh:PropertyShape ;
     sh:class :Buyer ;
+    sh:description "Relation indicating that the instance of the concept involves the Buyer." ;
     sh:maxCount 1 ;
     sh:minCount 1 ;
     sh:name "specifies Buyer" ;
@@ -920,6 +991,7 @@ ord-shape:epo-ord-OrderCancellationRejection-epo-specifiesBuyer a sh:PropertySha
 
 ord-shape:epo-ord-OrderCancellationRejection-epo-specifiesSeller a sh:PropertyShape ;
     sh:class :Seller ;
+    sh:description "Relation indicating that the instance of the concept involves the Seller." ;
     sh:maxCount 1 ;
     sh:minCount 1 ;
     sh:name "specifies Seller" ;
@@ -928,12 +1000,14 @@ ord-shape:epo-ord-OrderCancellationRejection-epo-specifiesSeller a sh:PropertySh
 
 ord-shape:epo-ord-OrderChange-epo-ord-comprisesOrderChangeLine a sh:PropertyShape ;
     sh:class :OrderChangeLine ;
+    sh:description "Incorporates Order Change Line." ;
     sh:name "comprises Order Change Line" ;
     sh:path :comprisesOrderChangeLine ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#comprisesOrderChangeLine> ?that . ?that <http://data.europa.eu/a4g/ontology#comprisesOrderChangeLine> ?this .}" ] .
 
 ord-shape:epo-ord-OrderChange-epo-ord-isSubmittedForOrder a sh:PropertyShape ;
     sh:class :Order ;
+    sh:description "Relation indicating that the instance of the concept is sent for a specific Order." ;
     sh:maxCount 1 ;
     sh:minCount 1 ;
     sh:name "is Submitted For Order" ;
@@ -942,6 +1016,7 @@ ord-shape:epo-ord-OrderChange-epo-ord-isSubmittedForOrder a sh:PropertyShape ;
 
 ord-shape:epo-ord-OrderChangeConfirmation-epo-ord-respondsToOrderChange a sh:PropertyShape ;
     sh:class :OrderChange ;
+    sh:description "Takes action in reaction to an Order Change." ;
     sh:maxCount 1 ;
     sh:minCount 1 ;
     sh:name "responds To Order Change" ;
@@ -950,6 +1025,7 @@ ord-shape:epo-ord-OrderChangeConfirmation-epo-ord-respondsToOrderChange a sh:Pro
 
 ord-shape:epo-ord-OrderChangeConfirmation-epo-specifiesBuyer a sh:PropertyShape ;
     sh:class :Buyer ;
+    sh:description "Relation indicating that the instance of the concept involves the Buyer." ;
     sh:maxCount 1 ;
     sh:minCount 1 ;
     sh:name "specifies Buyer" ;
@@ -958,6 +1034,7 @@ ord-shape:epo-ord-OrderChangeConfirmation-epo-specifiesBuyer a sh:PropertyShape 
 
 ord-shape:epo-ord-OrderChangeConfirmation-epo-specifiesSeller a sh:PropertyShape ;
     sh:class :Seller ;
+    sh:description "Relation indicating that the instance of the concept involves the Seller." ;
     sh:maxCount 1 ;
     sh:minCount 1 ;
     sh:name "specifies Seller" ;
@@ -966,12 +1043,14 @@ ord-shape:epo-ord-OrderChangeConfirmation-epo-specifiesSeller a sh:PropertyShape
 
 ord-shape:epo-ord-OrderChangeLine-epo-ord-hasStatus a sh:PropertyShape ;
     sh:class skos:Concept ;
+    sh:description "Relation indicating the status." ;
     sh:maxCount 1 ;
     sh:name "has Status" ;
     sh:path :hasStatus .
 
 ord-shape:epo-ord-OrderChangeLine-epo-ord-isSubmittedForOrderLine a sh:PropertyShape ;
     sh:class :OrderLine ;
+    sh:description "Relation indicating that the instance of the concept is sent for a specific Order Line." ;
     sh:maxCount 1 ;
     sh:minCount 1 ;
     sh:name "is Submitted For Order Line" ;
@@ -980,6 +1059,7 @@ ord-shape:epo-ord-OrderChangeLine-epo-ord-isSubmittedForOrderLine a sh:PropertyS
 
 ord-shape:epo-ord-OrderChangeRejection-epo-ord-respondsToOrderChange a sh:PropertyShape ;
     sh:class :OrderChange ;
+    sh:description "Takes action in reaction to an Order Change." ;
     sh:maxCount 1 ;
     sh:minCount 1 ;
     sh:name "responds To Order Change" ;
@@ -988,6 +1068,7 @@ ord-shape:epo-ord-OrderChangeRejection-epo-ord-respondsToOrderChange a sh:Proper
 
 ord-shape:epo-ord-OrderChangeRejection-epo-specifiesBuyer a sh:PropertyShape ;
     sh:class :Buyer ;
+    sh:description "Relation indicating that the instance of the concept involves the Buyer." ;
     sh:maxCount 1 ;
     sh:minCount 1 ;
     sh:name "specifies Buyer" ;
@@ -996,6 +1077,7 @@ ord-shape:epo-ord-OrderChangeRejection-epo-specifiesBuyer a sh:PropertyShape ;
 
 ord-shape:epo-ord-OrderChangeRejection-epo-specifiesSeller a sh:PropertyShape ;
     sh:class :Seller ;
+    sh:description "Relation indicating that the instance of the concept involves the Seller." ;
     sh:maxCount 1 ;
     sh:minCount 1 ;
     sh:name "specifies Seller" ;
@@ -1004,12 +1086,14 @@ ord-shape:epo-ord-OrderChangeRejection-epo-specifiesSeller a sh:PropertyShape ;
 
 ord-shape:epo-ord-OrderLine-epo-cat-hasPrice a sh:PropertyShape ;
     sh:class :Price ;
+    sh:description "Relation indicating that the instance of the concept has a Price." ;
     sh:name "has Price" ;
     sh:path :hasPrice ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#hasPrice> ?that . ?that <http://data.europa.eu/a4g/ontology#hasPrice> ?this .}" ] .
 
 ord-shape:epo-ord-OrderLine-epo-cat-hasQuantity a sh:PropertyShape ;
     sh:class :Quantity ;
+    sh:description "Relation indicating that the instance of the concept has a Quantity." ;
     sh:maxCount 1 ;
     sh:minCount 1 ;
     sh:name "has Quantity" ;
@@ -1034,6 +1118,7 @@ ord-shape:epo-ord-OrderLine-epo-ord-refersToCatalogueLine a sh:PropertyShape ;
 
 ord-shape:epo-ord-OrderResponse-epo-ord-comprisesOrderResponseLine a sh:PropertyShape ;
     sh:class :OrderResponseLine ;
+    sh:description "Incorporates Order Response Line." ;
     sh:name "comprises Order Response Line" ;
     sh:path :comprisesOrderResponseLine ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#comprisesOrderResponseLine> ?that . ?that <http://data.europa.eu/a4g/ontology#comprisesOrderResponseLine> ?this .}" ] .
@@ -1048,6 +1133,7 @@ ord-shape:epo-ord-OrderResponse-epo-ord-hasResponseDescription a sh:PropertyShap
 
 ord-shape:epo-ord-OrderResponse-epo-ord-isSubmittedForOrder a sh:PropertyShape ;
     sh:class :Order ;
+    sh:description "Relation indicating that the instance of the concept is sent for a specific Order." ;
     sh:maxCount 1 ;
     sh:minCount 1 ;
     sh:name "is Submitted For Order" ;
@@ -1056,12 +1142,14 @@ ord-shape:epo-ord-OrderResponse-epo-ord-isSubmittedForOrder a sh:PropertyShape ;
 
 ord-shape:epo-ord-OrderResponse-epo-ord-specifiesOrderResponseInformation a sh:PropertyShape ;
     sh:class :OrderResponseInformation ;
+    sh:description "Relation indicating the Order Response Information." ;
     sh:name "specifies Order Response Information" ;
     sh:path :specifiesOrderResponseInformation ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#specifiesOrderResponseInformation> ?that . ?that <http://data.europa.eu/a4g/ontology#specifiesOrderResponseInformation> ?this .}" ] .
 
 ord-shape:epo-ord-OrderResponseInformation-epo-ord-hasStatus a sh:PropertyShape ;
     sh:class skos:Concept ;
+    sh:description "Relation indicating the status." ;
     sh:maxCount 1 ;
     sh:minCount 1 ;
     sh:name "has Status" ;
@@ -1069,12 +1157,14 @@ ord-shape:epo-ord-OrderResponseInformation-epo-ord-hasStatus a sh:PropertyShape 
 
 ord-shape:epo-ord-OrderResponseInformation-epo-ord-isSpecificToOrderResponseLine a sh:PropertyShape ;
     sh:class :OrderResponseLine ;
+    sh:description "Information that is particular to an Order Response Line." ;
     sh:name "is Specific To Order Response Line" ;
     sh:path :isSpecificToOrderResponseLine ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#isSpecificToOrderResponseLine> ?that . ?that <http://data.europa.eu/a4g/ontology#isSpecificToOrderResponseLine> ?this .}" ] .
 
 ord-shape:epo-ord-OrderResponseLine-epo-ord-hasBackorderQuantity a sh:PropertyShape ;
     sh:class :Quantity ;
+    sh:description "Relation indicating the number of Items that cannot be fulfilled immediately." ;
     sh:maxCount 1 ;
     sh:name "has Backorder Quantity" ;
     sh:path :hasBackorderQuantity ;
@@ -1082,6 +1172,7 @@ ord-shape:epo-ord-OrderResponseLine-epo-ord-hasBackorderQuantity a sh:PropertySh
 
 ord-shape:epo-ord-OrderResponseLine-epo-ord-isSubmittedForOrderLine a sh:PropertyShape ;
     sh:class :OrderLine ;
+    sh:description "Relation indicating that the instance of the concept is sent for a specific Order Line." ;
     sh:maxCount 1 ;
     sh:minCount 1 ;
     sh:name "is Submitted For Order Line" ;
@@ -1090,6 +1181,7 @@ ord-shape:epo-ord-OrderResponseLine-epo-ord-isSubmittedForOrderLine a sh:Propert
 
 ord-shape:epo-ord-OriginatorInformation-epo-ord-concernsOriginator a sh:PropertyShape ;
     sh:class :Originator ;
+    sh:description "Relates to Originator." ;
     sh:maxCount 1 ;
     sh:minCount 1 ;
     sh:name "concerns Originator" ;
@@ -1098,6 +1190,7 @@ ord-shape:epo-ord-OriginatorInformation-epo-ord-concernsOriginator a sh:Property
 
 ord-shape:epo-ord-OriginatorInformation-epo-ord-concernsOriginatorRequest a sh:PropertyShape ;
     sh:class :OriginatorRequest ;
+    sh:description "Relates to Originator Request." ;
     sh:maxCount 1 ;
     sh:name "concerns Originator Request" ;
     sh:path :concernsOriginatorRequest ;
@@ -1127,11 +1220,13 @@ ord-shape:epo-ord-TaxInformation-epo-cat-hasPercentage a sh:PropertyShape ;
     sh:path :hasPercentage .
 
 ord-shape:epo-ord-TaxInformation-epo-cat-hasTaxCategory a sh:PropertyShape ;
+    sh:description "Relation indicating the Tax Category." ;
     sh:maxCount 1 ;
     sh:name "has Tax Category" ;
     sh:path :hasTaxCategory .
 
 ord-shape:epo-ord-TaxInformation-epo-cat-hasTaxScheme a sh:PropertyShape ;
+    sh:description "Relation indicating the Tax Scheme." ;
     sh:maxCount 1 ;
     sh:minCount 1 ;
     sh:name "has Tax Scheme" ;
@@ -1147,6 +1242,7 @@ ord-shape:epo-ord-TaxInformation-epo-isCalculatedOn a sh:PropertyShape ;
 
 ord-shape:epo-pay-RemittanceAdvice-epo-specifiesSeller a sh:PropertyShape ;
     sh:class :Seller ;
+    sh:description "Relation indicating that the instance of the concept involves the Seller." ;
     sh:maxCount 1 ;
     sh:minCount 1 ;
     sh:name "specifies Seller" ;
@@ -1163,6 +1259,7 @@ ord-shape:epo-req-RequestForOffer-epo-ful-specifiesOriginator a sh:PropertyShape
 
 ord-shape:epo-req-RequestForOffer-epo-ord-specifiesDeliveryInformation a sh:PropertyShape ;
     sh:class :DeliveryInformation ;
+    sh:description "Relation indicating the Delivery Information." ;
     sh:name "specifies Delivery Information" ;
     sh:path :specifiesDeliveryInformation ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#specifiesDeliveryInformation> ?that . ?that <http://data.europa.eu/a4g/ontology#specifiesDeliveryInformation> ?this .}" ] .
@@ -1171,13 +1268,13 @@ ord-shape:ord-shape a owl:Ontology ;
     rdfs:label "eProcurement Ontology Ordering - core shapes"@en ;
     dcterms:created "2021-06-01"^^xsd:date ;
     dcterms:description "The eProcurement Ontology Ordering core shapes provides the generic datashape specifications for the eProcurement Ontology Ordering core."@en ;
-    dcterms:issued "2025-05-30"^^xsd:date ;
+    dcterms:issued "2025-10-10"^^xsd:date ;
     dcterms:license "© European Union, 2014. Unless otherwise noted, the reuse of the Ontology is authorised under the European Union Public Licence v1.2 (https://eupl.eu/)." ;
     dcterms:publisher "http://publications.europa.eu/resource/authority/corporate-body/PUBL" ;
     dcterms:title "eProcurement Ontology Ordering - core shapes"@en ;
     vann:preferredNamespacePrefix "epo" ;
     vann:preferredNamespaceUri "http://data.europa.eu/a4g/ontology#" ;
-    rdfs:comment "This version is automatically generated from eOrdering.xml on 2025-05-30" ;
+    rdfs:comment "This version is automatically generated from eOrdering.xml on 2025-10-10" ;
     rdfs:seeAlso <https://docs.ted.europa.eu/home/index.html>,
         <https://github.com/OP-TED/ePO/releases>,
         <https://joinup.ec.europa.eu/collection/eprocurement/solution/eprocurement-ontology/about>,
@@ -1197,7 +1294,7 @@ ord-shape:ord-shape a owl:Ontology ;
         org:,
         <http://www.w3.org/ns/person> ;
     owl:incompatibleWith "4.2.0" ;
-    owl:priorVersion "http://data.europa.eu/a4g/data-shape#ord-shape-5.0.0" ;
-    owl:versionIRI ord-shape:ord-shape-5.1.0 ;
-    owl:versionInfo "5.1.0" .
+    owl:priorVersion "http://data.europa.eu/a4g/data-shape#ord-shape-5.1.0" ;
+    owl:versionIRI ord-shape:ord-shape-5.2.0 ;
+    owl:versionInfo "5.2.0" .
 

@@ -17,6 +17,7 @@ req-shape:epo-ord-DeliveryInformation sh:property req-shape:epo-ord-DeliveryInfo
 
 req-shape:epo-req-RequestForOffer a sh:NodeShape ;
     rdfs:label "Request For Offer" ;
+    rdfs:comment "A Document sent by the Buyer to the Economic Operator, requesting the submission of a commercial proposal to supply goods, services, or works under specified conditions." ;
     rdfs:isDefinedBy req-shape:req-shape ;
     sh:property req-shape:epo-req-RequestForOffer-epo-cat-refersToCatalogue,
         req-shape:epo-req-RequestForOffer-epo-ful-specifiesOriginator,
@@ -33,12 +34,14 @@ req-shape:epo-req-RequestForOffer a sh:NodeShape ;
 
 req-shape:epo-req-RequestForOfferLine a sh:NodeShape ;
     rdfs:label "Request For Offer Line" ;
+    rdfs:comment "Details concerning a given unit of goods, services or works mentioned in the Request For Offer." ;
     rdfs:isDefinedBy req-shape:req-shape ;
     sh:property req-shape:epo-req-RequestForOfferLine-epo-req-isOptional ;
     sh:targetClass :RequestForOfferLine .
 
 req-shape:epo-ord-DeliveryInformation-epo-ord-isSpecificToRequestForOfferLine a sh:PropertyShape ;
     sh:class :RequestForOfferLine ;
+    sh:description "Information that is particular to a Request For Offer Line." ;
     sh:name "is Specific To Request For Offer Line" ;
     sh:path :isSpecificToRequestForOfferLine ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#isSpecificToRequestForOfferLine> ?that . ?that <http://data.europa.eu/a4g/ontology#isSpecificToRequestForOfferLine> ?this .}" ] .
@@ -59,24 +62,28 @@ req-shape:epo-req-RequestForOffer-epo-ful-specifiesOriginator a sh:PropertyShape
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#specifiesOriginator> ?that . ?that <http://data.europa.eu/a4g/ontology#specifiesOriginator> ?this .}" ] .
 
 req-shape:epo-req-RequestForOffer-epo-hasDestinationCountryCode a sh:PropertyShape ;
+    sh:description "Relation indicating the Country code of the destination." ;
     sh:maxCount 1 ;
     sh:name "has Destination Country Code" ;
     sh:path :hasDestinationCountryCode .
 
 req-shape:epo-req-RequestForOffer-epo-ord-specifiesDeliveryInformation a sh:PropertyShape ;
     sh:class :DeliveryInformation ;
+    sh:description "Relation indicating the Delivery Information." ;
     sh:name "specifies Delivery Information" ;
     sh:path :specifiesDeliveryInformation ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#specifiesDeliveryInformation> ?that . ?that <http://data.europa.eu/a4g/ontology#specifiesDeliveryInformation> ?this .}" ] .
 
 req-shape:epo-req-RequestForOffer-epo-refersToContract a sh:PropertyShape ;
     sh:class :Contract ;
+    sh:description "Reference to a Contract." ;
     sh:name "refers To Contract" ;
     sh:path :refersToContract ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#refersToContract> ?that . ?that <http://data.europa.eu/a4g/ontology#refersToContract> ?this .}" ] .
 
 req-shape:epo-req-RequestForOffer-epo-req-comprisesRequestForOfferLine a sh:PropertyShape ;
     sh:class :RequestForOfferLine ;
+    sh:description "Incorporates Request For Offer Line." ;
     sh:minCount 1 ;
     sh:name "comprises Request For Offer Line" ;
     sh:path :comprisesRequestForOfferLine ;
@@ -85,12 +92,14 @@ req-shape:epo-req-RequestForOffer-epo-req-comprisesRequestForOfferLine a sh:Prop
 req-shape:epo-req-RequestForOffer-epo-req-hasSubmissionDueDate a sh:PropertyShape ;
     rdfs:isDefinedBy req-shape:req-shape ;
     sh:datatype xsd:dateTime ;
+    sh:description "Final date until the Submission is allowed." ;
     sh:maxCount 1 ;
     sh:name "has Submission Due Date" ;
     sh:path :hasSubmissionDueDate .
 
 req-shape:epo-req-RequestForOffer-epo-req-specifiesOfferCurrency a sh:PropertyShape ;
     sh:class at-voc:currency ;
+    sh:description "Relation indicating the Currency for the Offer." ;
     sh:maxCount 1 ;
     sh:name "specifies Offer Currency" ;
     sh:path :specifiesOfferCurrency ;
@@ -98,6 +107,7 @@ req-shape:epo-req-RequestForOffer-epo-req-specifiesOfferCurrency a sh:PropertySh
 
 req-shape:epo-req-RequestForOffer-epo-req-specifiesOfferValidityPeriod a sh:PropertyShape ;
     sh:class time:Interval ;
+    sh:description "Relation indicating the time range in which an Offer is valid." ;
     sh:maxCount 1 ;
     sh:name "specifies Offer Validity Period" ;
     sh:path :specifiesOfferValidityPeriod ;
@@ -105,6 +115,7 @@ req-shape:epo-req-RequestForOffer-epo-req-specifiesOfferValidityPeriod a sh:Prop
 
 req-shape:epo-req-RequestForOffer-epo-specifiesBuyer a sh:PropertyShape ;
     sh:class :Buyer ;
+    sh:description "Relation indicating that the instance of the concept involves the Buyer." ;
     sh:maxCount 1 ;
     sh:name "specifies Buyer" ;
     sh:path :specifiesBuyer ;
@@ -112,6 +123,7 @@ req-shape:epo-req-RequestForOffer-epo-specifiesBuyer a sh:PropertyShape ;
 
 req-shape:epo-req-RequestForOffer-epo-specifiesContractor a sh:PropertyShape ;
     sh:class :Contractor ;
+    sh:description "Relation indicating that the instance of the concept involves the Contractor." ;
     sh:maxCount 1 ;
     sh:minCount 1 ;
     sh:name "specifies Contractor" ;
@@ -121,6 +133,7 @@ req-shape:epo-req-RequestForOffer-epo-specifiesContractor a sh:PropertyShape ;
 req-shape:epo-req-RequestForOfferLine-epo-req-isOptional a sh:PropertyShape ;
     rdfs:isDefinedBy req-shape:req-shape ;
     sh:datatype xsd:boolean ;
+    sh:description "Indicates whether the instance of the concept is not required." ;
     sh:maxCount 1 ;
     sh:name "is Optional" ;
     sh:path :isOptional .
@@ -129,13 +142,13 @@ req-shape:req-shape a owl:Ontology ;
     rdfs:label "eProcurement Ontology Request - core shapes"@en ;
     dcterms:created "2021-06-01"^^xsd:date ;
     dcterms:description "The eProcurement Ontology Request core shapes provides the generic datashape specifications for the eProcurement Ontology Request core."@en ;
-    dcterms:issued "2025-05-30"^^xsd:date ;
+    dcterms:issued "2025-10-10"^^xsd:date ;
     dcterms:license "© European Union, 2014. Unless otherwise noted, the reuse of the Ontology is authorised under the European Union Public Licence v1.2 (https://eupl.eu/)." ;
     dcterms:publisher "http://publications.europa.eu/resource/authority/corporate-body/PUBL" ;
     dcterms:title "eProcurement Ontology Request - core shapes"@en ;
     vann:preferredNamespacePrefix "epo" ;
     vann:preferredNamespaceUri "http://data.europa.eu/a4g/ontology#" ;
-    rdfs:comment "This version is automatically generated from eRequest.xml on 2025-05-30" ;
+    rdfs:comment "This version is automatically generated from eRequest.xml on 2025-10-10" ;
     rdfs:seeAlso <https://docs.ted.europa.eu/home/index.html>,
         <https://github.com/OP-TED/ePO/releases>,
         <https://joinup.ec.europa.eu/collection/eprocurement/solution/eprocurement-ontology/about>,
@@ -156,7 +169,7 @@ req-shape:req-shape a owl:Ontology ;
         org:,
         <http://www.w3.org/ns/person> ;
     owl:incompatibleWith "4.2.0" ;
-    owl:priorVersion "http://data.europa.eu/a4g/data-shape#req-shape-5.0.0" ;
-    owl:versionIRI req-shape:req-shape-5.1.0 ;
-    owl:versionInfo "5.1.0" .
+    owl:priorVersion "http://data.europa.eu/a4g/data-shape#req-shape-5.1.0" ;
+    owl:versionIRI req-shape:req-shape-5.2.0 ;
+    owl:versionInfo "5.2.0" .
 

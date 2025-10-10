@@ -141,6 +141,7 @@ ful-shape:epo-ful-Package a sh:NodeShape ;
 
 ful-shape:epo-ful-ReceiptAdvice a sh:NodeShape ;
     rdfs:label "Receipt Advice" ;
+    rdfs:comment "A formal reply from the Buyer to the Seller acknowledging the physical or electronic receipt of goods or services delivered under a Procurement Contract." ;
     rdfs:isDefinedBy ful-shape:ful-shape ;
     sh:property ful-shape:epo-ful-ReceiptAdvice-epo-ful-comprisesReceiptAdviceLine,
         ful-shape:epo-ful-ReceiptAdvice-epo-ful-isSubmittedForDespatchAdvice,
@@ -154,6 +155,7 @@ ful-shape:epo-ful-ReceiptAdvice a sh:NodeShape ;
 
 ful-shape:epo-ful-ReceiptAdviceInformation a sh:NodeShape ;
     rdfs:label "Receipt Advice Information" ;
+    rdfs:comment "Information about the Receipt Advice." ;
     rdfs:isDefinedBy ful-shape:ful-shape ;
     sh:property ful-shape:epo-ful-ReceiptAdviceInformation-epo-ful-hasRejectAction,
         ful-shape:epo-ful-ReceiptAdviceInformation-epo-ful-hasRejectReason,
@@ -165,6 +167,7 @@ ful-shape:epo-ful-ReceiptAdviceInformation a sh:NodeShape ;
 
 ful-shape:epo-ful-ReceiptAdviceLine a sh:NodeShape ;
     rdfs:label "Receipt Advice Line" ;
+    rdfs:comment "Details concerning the Fulfilment of a Despatch Line." ;
     rdfs:isDefinedBy ful-shape:ful-shape ;
     sh:property ful-shape:epo-ful-ReceiptAdviceLine-epo-ful-hasOversupplyQuantity,
         ful-shape:epo-ful-ReceiptAdviceLine-epo-ful-hasReceivedQuantity,
@@ -265,6 +268,7 @@ ful-shape:epo-ord-Order sh:property ful-shape:epo-ord-Order-epo-ful-specifiesDes
 
 ful-shape:epo-cat-CatalogueLine-epo-cat-foreseesPackage a sh:PropertyShape ;
     sh:class :Package ;
+    sh:description "Relation indicating that an instance of the concept plans to have a Package." ;
     sh:maxCount 1 ;
     sh:name "foresees Package" ;
     sh:path :foreseesPackage ;
@@ -272,6 +276,7 @@ ful-shape:epo-cat-CatalogueLine-epo-cat-foreseesPackage a sh:PropertyShape ;
 
 ful-shape:epo-cat-DimensionInformation-epo-ful-concernsGoodsItem a sh:PropertyShape ;
     sh:class :GoodsItem ;
+    sh:description "Relates to Goods Item." ;
     sh:maxCount 1 ;
     sh:name "concerns Goods Item" ;
     sh:path :concernsGoodsItem ;
@@ -279,6 +284,7 @@ ful-shape:epo-cat-DimensionInformation-epo-ful-concernsGoodsItem a sh:PropertySh
 
 ful-shape:epo-cat-DimensionInformation-epo-ful-concernsPackage a sh:PropertyShape ;
     sh:class :Package ;
+    sh:description "Relates to Package." ;
     sh:maxCount 1 ;
     sh:name "concerns Package" ;
     sh:path :concernsPackage ;
@@ -286,6 +292,7 @@ ful-shape:epo-cat-DimensionInformation-epo-ful-concernsPackage a sh:PropertyShap
 
 ful-shape:epo-cat-DimensionInformation-epo-ful-concernsTransportEquipment a sh:PropertyShape ;
     sh:class :TransportEquipment ;
+    sh:description "Relates to Transport Equipment." ;
     sh:maxCount 1 ;
     sh:name "concerns Transport Equipment" ;
     sh:path :concernsTransportEquipment ;
@@ -293,6 +300,7 @@ ful-shape:epo-cat-DimensionInformation-epo-ful-concernsTransportEquipment a sh:P
 
 ful-shape:epo-cat-DimensionInformation-epo-ful-concernsTransportMeans a sh:PropertyShape ;
     sh:class :TransportMeans ;
+    sh:description "Relates to Transport Means." ;
     sh:maxCount 1 ;
     sh:name "concerns Transport Means" ;
     sh:path :concernsTransportMeans ;
@@ -300,6 +308,7 @@ ful-shape:epo-cat-DimensionInformation-epo-ful-concernsTransportMeans a sh:Prope
 
 ful-shape:epo-cat-EnvironmentalEmissionInformation-epo-ful-concernsTransportMeans a sh:PropertyShape ;
     sh:class :TransportMeans ;
+    sh:description "Relates to Transport Means." ;
     sh:maxCount 1 ;
     sh:name "concerns Transport Means" ;
     sh:path :concernsTransportMeans ;
@@ -362,6 +371,7 @@ ful-shape:epo-ful-AbstractContainer-epo-ful-hasNetWeight a sh:PropertyShape ;
 
 ful-shape:epo-ful-AbstractContainer-epo-ful-hasPackingMaterialDescription a sh:PropertyShape ;
     rdfs:isDefinedBy ful-shape:ful-shape ;
+    sh:description "Explanatory text about the physical substance that a Package is made of." ;
     sh:maxCount 1 ;
     sh:name "has Packing Material Description" ;
     sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
@@ -408,6 +418,7 @@ ful-shape:epo-ful-AbstractContainer-epo-ful-isReturnableMaterial a sh:PropertySh
     sh:path :isReturnableMaterial .
 
 ful-shape:epo-ful-AbstractContainer-epo-ord-hasAcceptanceStatus a sh:PropertyShape ;
+    sh:description "Relation indicating the acceptance status." ;
     sh:maxCount 1 ;
     sh:name "has Acceptance Status" ;
     sh:path :hasAcceptanceStatus .
@@ -554,7 +565,7 @@ ful-shape:epo-ful-Consignment-epo-specifiesFreightForwarder a sh:PropertyShape ;
 
 ful-shape:epo-ful-Consignment-epo-specifiesNotificationReceiver a sh:PropertyShape ;
     sh:class :NotificationReceiver ;
-    sh:description "c" ;
+    sh:description "Relation indicating that the instance of the concept involves the Notification Receiver." ;
     sh:name "specifies Notification Receiver" ;
     sh:path :specifiesNotificationReceiver ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#specifiesNotificationReceiver> ?that . ?that <http://data.europa.eu/a4g/ontology#specifiesNotificationReceiver> ?this .}" ] .
@@ -695,12 +706,14 @@ ful-shape:epo-ful-Package-epo-ful-containsPackage a sh:PropertyShape ;
 
 ful-shape:epo-ful-Package-epo-ful-hasPackagingStatus a sh:PropertyShape ;
     sh:class skos:Concept ;
+    sh:description "Relation indicating the Packaging Status." ;
     sh:maxCount 1 ;
     sh:name "has Packaging Status" ;
     sh:path :hasPackagingStatus .
 
 ful-shape:epo-ful-Package-epo-ful-hasPackagingStatusDescription a sh:PropertyShape ;
     rdfs:isDefinedBy ful-shape:ful-shape ;
+    sh:description "Explanatory text about the condition of a Package." ;
     sh:maxCount 1 ;
     sh:name "has Packaging Status Description" ;
     sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
@@ -723,13 +736,14 @@ ful-shape:epo-ful-Package-epo-ful-hasPackagingTypeDescription a sh:PropertyShape
 
 ful-shape:epo-ful-ReceiptAdvice-epo-ful-comprisesReceiptAdviceLine a sh:PropertyShape ;
     sh:class :ReceiptAdviceLine ;
+    sh:description "Incorporates Receipt Advice Line." ;
     sh:name "comprises Receipt Advice Line" ;
     sh:path :comprisesReceiptAdviceLine ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#comprisesReceiptAdviceLine> ?that . ?that <http://data.europa.eu/a4g/ontology#comprisesReceiptAdviceLine> ?this .}" ] .
 
 ful-shape:epo-ful-ReceiptAdvice-epo-ful-isSubmittedForDespatchAdvice a sh:PropertyShape ;
     sh:class :DespatchAdvice ;
-    sh:description "Additional information: In PEPPOL (https://test-docs.peppol.eu/logistics/qa/codelist/ReceiptAdviceTypeCode/) this predicate is used for option D - Response to the Advanced Despatch Advice document." ;
+    sh:description "Relation indicating that the instance of the concept is sent for a specific Despatch Advice." ;
     sh:maxCount 1 ;
     sh:name "is Submitted For Despatch Advice" ;
     sh:path :isSubmittedForDespatchAdvice ;
@@ -737,6 +751,7 @@ ful-shape:epo-ful-ReceiptAdvice-epo-ful-isSubmittedForDespatchAdvice a sh:Proper
 
 ful-shape:epo-ful-ReceiptAdvice-epo-ful-isSubmittedForShipment a sh:PropertyShape ;
     sh:class :ShipmentInformation ;
+    sh:description "Relation indicating that the instance of the concept is sent for a specific Shipment." ;
     sh:maxCount 1 ;
     sh:name "is Submitted For Shipment" ;
     sh:path :isSubmittedForShipment ;
@@ -759,12 +774,14 @@ ful-shape:epo-ful-ReceiptAdvice-epo-ful-specifiesDespatcher a sh:PropertyShape ;
 
 ful-shape:epo-ful-ReceiptAdvice-epo-ful-specifiesReceiptAdviceInformation a sh:PropertyShape ;
     sh:class :ReceiptAdviceInformation ;
+    sh:description "Relation indicating the Receipt Advice Information." ;
     sh:name "specifies Receipt Advice Information" ;
     sh:path :specifiesReceiptAdviceInformation ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#specifiesReceiptAdviceInformation> ?that . ?that <http://data.europa.eu/a4g/ontology#specifiesReceiptAdviceInformation> ?this .}" ] .
 
 ful-shape:epo-ful-ReceiptAdvice-epo-specifiesBuyer a sh:PropertyShape ;
     sh:class :Buyer ;
+    sh:description "Relation indicating that the instance of the concept involves the Buyer." ;
     sh:maxCount 1 ;
     sh:name "specifies Buyer" ;
     sh:path :specifiesBuyer ;
@@ -772,6 +789,7 @@ ful-shape:epo-ful-ReceiptAdvice-epo-specifiesBuyer a sh:PropertyShape ;
 
 ful-shape:epo-ful-ReceiptAdvice-epo-specifiesSeller a sh:PropertyShape ;
     sh:class :Seller ;
+    sh:description "Relation indicating that the instance of the concept involves the Seller." ;
     sh:maxCount 1 ;
     sh:name "specifies Seller" ;
     sh:path :specifiesSeller ;
@@ -779,18 +797,21 @@ ful-shape:epo-ful-ReceiptAdvice-epo-specifiesSeller a sh:PropertyShape ;
 
 ful-shape:epo-ful-ReceiptAdviceInformation-epo-ful-hasRejectAction a sh:PropertyShape ;
     sh:class skos:Concept ;
+    sh:description "Relation indicating the Action Code for non-acceptance." ;
     sh:maxCount 1 ;
     sh:name "has Reject Action" ;
     sh:path :hasRejectAction .
 
 ful-shape:epo-ful-ReceiptAdviceInformation-epo-ful-hasRejectReason a sh:PropertyShape ;
     sh:class skos:Concept ;
+    sh:description "Relation indicating the reason for non-acceptance." ;
     sh:maxCount 1 ;
     sh:name "has Reject Reason" ;
     sh:path :hasRejectReason .
 
 ful-shape:epo-ful-ReceiptAdviceInformation-epo-ful-hasRejectReasonDescription a sh:PropertyShape ;
     rdfs:isDefinedBy ful-shape:ful-shape ;
+    sh:description "Explanatory text about the motive of the refusal." ;
     sh:maxCount 1 ;
     sh:name "has Reject Reason Description" ;
     sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
@@ -798,23 +819,27 @@ ful-shape:epo-ful-ReceiptAdviceInformation-epo-ful-hasRejectReasonDescription a 
 
 ful-shape:epo-ful-ReceiptAdviceInformation-epo-ful-hasShortageAction a sh:PropertyShape ;
     sh:class skos:Concept ;
+    sh:description "Relation indicating the Action code for Quantity deficiency." ;
     sh:maxCount 1 ;
     sh:name "has Shortage Action" ;
     sh:path :hasShortageAction .
 
 ful-shape:epo-ful-ReceiptAdviceInformation-epo-ful-isSpecificToReceiptAdviceLine a sh:PropertyShape ;
     sh:class :ReceiptAdviceLine ;
+    sh:description "Information that is particular to a Receipt Advice Line." ;
     sh:name "is Specific To Receipt Advice Line" ;
     sh:path :isSpecificToReceiptAdviceLine ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#isSpecificToReceiptAdviceLine> ?that . ?that <http://data.europa.eu/a4g/ontology#isSpecificToReceiptAdviceLine> ?this .}" ] .
 
 ful-shape:epo-ful-ReceiptAdviceInformation-epo-ord-hasAcceptanceStatus a sh:PropertyShape ;
+    sh:description "Relation indicating the acceptance status." ;
     sh:maxCount 1 ;
     sh:name "has Acceptance Status" ;
     sh:path :hasAcceptanceStatus .
 
 ful-shape:epo-ful-ReceiptAdviceLine-epo-ful-hasOversupplyQuantity a sh:PropertyShape ;
     sh:class :Quantity ;
+    sh:description "Relation indicating the Quantity surplus." ;
     sh:maxCount 1 ;
     sh:name "has Oversupply Quantity" ;
     sh:path :hasOversupplyQuantity ;
@@ -822,6 +847,7 @@ ful-shape:epo-ful-ReceiptAdviceLine-epo-ful-hasOversupplyQuantity a sh:PropertyS
 
 ful-shape:epo-ful-ReceiptAdviceLine-epo-ful-hasReceivedQuantity a sh:PropertyShape ;
     sh:class :Quantity ;
+    sh:description "Relation indicating the delivered Quantity." ;
     sh:maxCount 1 ;
     sh:name "has Received Quantity" ;
     sh:path :hasReceivedQuantity ;
@@ -829,6 +855,7 @@ ful-shape:epo-ful-ReceiptAdviceLine-epo-ful-hasReceivedQuantity a sh:PropertySha
 
 ful-shape:epo-ful-ReceiptAdviceLine-epo-ful-hasRejectedQuantity a sh:PropertyShape ;
     sh:class :Quantity ;
+    sh:description "Relation indicating the non-accepted Quantity." ;
     sh:maxCount 1 ;
     sh:name "has Rejected Quantity" ;
     sh:path :hasRejectedQuantity ;
@@ -836,6 +863,7 @@ ful-shape:epo-ful-ReceiptAdviceLine-epo-ful-hasRejectedQuantity a sh:PropertySha
 
 ful-shape:epo-ful-ReceiptAdviceLine-epo-ful-hasShortQuantity a sh:PropertyShape ;
     sh:class :Quantity ;
+    sh:description "Relation indicating the Quantity deficit." ;
     sh:maxCount 1 ;
     sh:name "has Short Quantity" ;
     sh:path :hasShortQuantity ;
@@ -843,6 +871,7 @@ ful-shape:epo-ful-ReceiptAdviceLine-epo-ful-hasShortQuantity a sh:PropertyShape 
 
 ful-shape:epo-ful-ReceiptAdviceLine-epo-ful-isSubmittedForDespatchLine a sh:PropertyShape ;
     sh:class :DespatchLine ;
+    sh:description "Relation indicating that the instance of the concept is sent for a specific Despatch Line." ;
     sh:maxCount 1 ;
     sh:minCount 1 ;
     sh:name "is Submitted For Despatch Line" ;
@@ -1065,6 +1094,7 @@ ful-shape:epo-ful-TransportMeans-epo-hasDriverPerson a sh:PropertyShape ;
 
 ful-shape:epo-ful-TransportMeansOperator-epo-playedBy a sh:PropertyShape ;
     sh:class foaf:Person ;
+    sh:description "Relation indicating the Agent that fulfills the function of the instance of the concept." ;
     sh:maxCount 1 ;
     sh:name "played By" ;
     sh:path :playedBy ;
@@ -1072,6 +1102,7 @@ ful-shape:epo-ful-TransportMeansOperator-epo-playedBy a sh:PropertyShape ;
 
 ful-shape:epo-inv-Invoice-epo-inv-refersToDespatchAdvice a sh:PropertyShape ;
     sh:class :DespatchAdvice ;
+    sh:description "Reference to a Despatch Advice." ;
     sh:maxCount 1 ;
     sh:name "refers To Despatch Advice" ;
     sh:path :refersToDespatchAdvice ;
@@ -1079,6 +1110,7 @@ ful-shape:epo-inv-Invoice-epo-inv-refersToDespatchAdvice a sh:PropertyShape ;
 
 ful-shape:epo-inv-Invoice-epo-inv-refersToReceiptAdvice a sh:PropertyShape ;
     sh:class :ReceiptAdvice ;
+    sh:description "Reference to a Receipt Advice." ;
     sh:maxCount 1 ;
     sh:name "refers To Receipt Advice" ;
     sh:path :refersToReceiptAdvice ;
@@ -1103,13 +1135,13 @@ ful-shape:ful-shape a owl:Ontology ;
     rdfs:label "eProcurement Ontology Fulfilment - core shapes"@en ;
     dcterms:created "2021-06-01"^^xsd:date ;
     dcterms:description "The eProcurement Ontology Fulfilment core shapes provides the generic datashape specifications for the eProcurement Ontology Fulfilment core."@en ;
-    dcterms:issued "2025-05-30"^^xsd:date ;
+    dcterms:issued "2025-10-10"^^xsd:date ;
     dcterms:license "© European Union, 2014. Unless otherwise noted, the reuse of the Ontology is authorised under the European Union Public Licence v1.2 (https://eupl.eu/)." ;
     dcterms:publisher "http://publications.europa.eu/resource/authority/corporate-body/PUBL" ;
     dcterms:title "eProcurement Ontology Fulfilment - core shapes"@en ;
     vann:preferredNamespacePrefix "epo" ;
     vann:preferredNamespaceUri "http://data.europa.eu/a4g/ontology#" ;
-    rdfs:comment "This version is automatically generated from eFulfilment.xml on 2025-05-30" ;
+    rdfs:comment "This version is automatically generated from eFulfilment.xml on 2025-10-10" ;
     rdfs:seeAlso <https://docs.ted.europa.eu/home/index.html>,
         <https://github.com/OP-TED/ePO/releases>,
         <https://joinup.ec.europa.eu/collection/eprocurement/solution/eprocurement-ontology/about>,
@@ -1129,7 +1161,7 @@ ful-shape:ful-shape a owl:Ontology ;
         org:,
         <http://www.w3.org/ns/person> ;
     owl:incompatibleWith "4.2.0" ;
-    owl:priorVersion "http://data.europa.eu/a4g/data-shape#ful-shape-5.0.0" ;
-    owl:versionIRI ful-shape:ful-shape-5.1.0 ;
-    owl:versionInfo "5.1.0" .
+    owl:priorVersion "http://data.europa.eu/a4g/data-shape#ful-shape-5.1.0" ;
+    owl:versionIRI ful-shape:ful-shape-5.2.0 ;
+    owl:versionInfo "5.2.0" .
 

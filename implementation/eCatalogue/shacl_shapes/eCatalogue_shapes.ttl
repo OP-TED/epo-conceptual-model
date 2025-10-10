@@ -18,7 +18,7 @@ cat-shape:epo-Document sh:property cat-shape:epo-Document-epo-hasDocumentType .
 
 cat-shape:epo-cat-AbstractItem a sh:NodeShape ;
     rdfs:label "Abstract Item" ;
-    rdfs:comment "A product, work, service or any combination of them. Additional Information: An Item can be an atomic Thing or a composition of things that together are seen as a unit, e.g. a tetrabrik of milk or an indivisible package of six tetrabriks. No distinction is provided between services, goods and works to leave room for innovation." ;
+    rdfs:comment "Gathering class for the Items, Item Requests and Deliverables. Additional information: The subclasses have in common that they are related to a procurement need." ;
     rdfs:isDefinedBy cat-shape:cat-shape ;
     sh:property cat-shape:epo-cat-AbstractItem-epo-cat-hasAccessoryItem,
         cat-shape:epo-cat-AbstractItem-epo-cat-hasBrand,
@@ -47,7 +47,7 @@ cat-shape:epo-cat-AbstractItem a sh:NodeShape ;
 
 cat-shape:epo-cat-Batch a sh:NodeShape ;
     rdfs:label "Batch" ;
-    rdfs:comment "A production Lot in which the Item instances were produced." ;
+    rdfs:comment "A production lot in which the Item instances were produced." ;
     rdfs:isDefinedBy cat-shape:cat-shape ;
     sh:property cat-shape:epo-cat-Batch-epo-cat-hasBestBeforeDate,
         cat-shape:epo-cat-Batch-epo-cat-hasExpiryDate,
@@ -112,6 +112,7 @@ cat-shape:epo-cat-CatalogueResponse a sh:NodeShape ;
 
 cat-shape:epo-cat-CatalogueResponseInformation a sh:NodeShape ;
     rdfs:label "Catalogue Response Information" ;
+    rdfs:comment "Information about a Catalogue Response." ;
     rdfs:isDefinedBy cat-shape:cat-shape ;
     sh:property cat-shape:epo-cat-CatalogueResponseInformation-epo-cat-isSpecificToCatalogueResponseLine,
         cat-shape:epo-cat-CatalogueResponseInformation-epo-ord-hasResponseStatus ;
@@ -136,6 +137,7 @@ cat-shape:epo-cat-ChargeInformation a sh:NodeShape ;
 
 cat-shape:epo-cat-DimensionInformation a sh:NodeShape ;
     rdfs:label "Dimension Information" ;
+    rdfs:comment "Information about the physical or measurable attributes of the instance of the concept described." ;
     rdfs:isDefinedBy cat-shape:cat-shape ;
     sh:property cat-shape:epo-cat-DimensionInformation-epo-cat-concernsItem,
         cat-shape:epo-cat-DimensionInformation-epo-cat-hasDimensionDescription,
@@ -151,6 +153,7 @@ cat-shape:epo-cat-DimensionInformation a sh:NodeShape ;
 
 cat-shape:epo-cat-EnvironmentalEmissionInformation a sh:NodeShape ;
     rdfs:label "Environmental Emission Information" ;
+    rdfs:comment "Information about the emissions related to a product, work or service that are released into the environment." ;
     rdfs:isDefinedBy cat-shape:cat-shape ;
     sh:property cat-shape:epo-cat-EnvironmentalEmissionInformation-epo-cat-concernsItem,
         cat-shape:epo-cat-EnvironmentalEmissionInformation-epo-cat-hasEnvironmentalEmissionCode,
@@ -168,6 +171,7 @@ cat-shape:epo-cat-InformationHub a sh:NodeShape ;
 
 cat-shape:epo-cat-Item a sh:NodeShape ;
     rdfs:label "Item" ;
+    rdfs:comment "A product, work, service or any combination of them. Additional Information: An Item can be an atomic Thing or a composition of things that together are seen as a unit, e.g. a tetrabrik of milk or an indivisible package of six tetrabriks. No distinction is provided between services, goods and works to leave room for innovation. An Item is used to fulfill a need which is described in an Item Request." ;
     rdfs:isDefinedBy cat-shape:cat-shape ;
     sh:targetClass :Item .
 
@@ -232,6 +236,7 @@ cat-shape:epo-cat-ItemRequirement a sh:NodeShape ;
 
 cat-shape:epo-cat-Line a sh:NodeShape ;
     rdfs:label "Line" ;
+    rdfs:comment "Component of a document providing specific information." ;
     rdfs:isDefinedBy cat-shape:cat-shape ;
     sh:property cat-shape:epo-cat-Line-epo-cat-specifiesItem,
         cat-shape:epo-cat-Line-epo-ful-hasAssociatedDocument,
@@ -254,6 +259,7 @@ cat-shape:epo-cat-PostAwardCatalogue a sh:NodeShape ;
 
 cat-shape:epo-cat-PostAwardDocument a sh:NodeShape ;
     rdfs:label "Post Award Document" ;
+    rdfs:comment "Document created after the award of a Contract during a Procurement Procedure." ;
     rdfs:isDefinedBy cat-shape:cat-shape ;
     sh:property cat-shape:epo-cat-PostAwardDocument-epo-hasDocumentStatus,
         cat-shape:epo-cat-PostAwardDocument-epo-ord-hasCustomerReference ;
@@ -301,6 +307,7 @@ cat-shape:epo-req-RequestForOffer sh:property cat-shape:epo-req-RequestForOffer-
 
 cat-shape:epo-Document-epo-hasDocumentType a sh:PropertyShape ;
     sh:class skos:Concept ;
+    sh:description "Relation indicating the Document Type." ;
     sh:maxCount 1 ;
     sh:name "has Document Type" ;
     sh:path :hasDocumentType .
@@ -314,6 +321,7 @@ cat-shape:epo-cat-AbstractItem-epo-cat-hasAccessoryItem a sh:PropertyShape ;
 
 cat-shape:epo-cat-AbstractItem-epo-cat-hasBrand a sh:PropertyShape ;
     sh:class :Brand ;
+    sh:description "Relation indicating that the instance of the concept has a Brand." ;
     sh:maxCount 1 ;
     sh:name "has Brand" ;
     sh:path :hasBrand ;
@@ -334,6 +342,7 @@ cat-shape:epo-cat-AbstractItem-epo-cat-hasCountryOfOrigin a sh:PropertyShape ;
 
 cat-shape:epo-cat-AbstractItem-epo-cat-hasDeliveryClassification a sh:PropertyShape ;
     sh:class skos:Concept ;
+    sh:description "Relation indicating the Delivery Item Type." ;
     sh:maxCount 1 ;
     sh:name "has Delivery Classification" ;
     sh:path :hasDeliveryClassification .
@@ -374,6 +383,7 @@ cat-shape:epo-cat-AbstractItem-epo-cat-hasManufacturer a sh:PropertyShape ;
 
 cat-shape:epo-cat-AbstractItem-epo-cat-hasModel a sh:PropertyShape ;
     sh:class :ItemModel ;
+    sh:description "Relation indicating that the instance of the concept has an Item Model." ;
     sh:maxCount 1 ;
     sh:name "has Model" ;
     sh:path :hasModel ;
@@ -389,12 +399,14 @@ cat-shape:epo-cat-AbstractItem-epo-cat-hasNetQuantity a sh:PropertyShape ;
 
 cat-shape:epo-cat-AbstractItem-epo-cat-hasQualifiedItemRelation a sh:PropertyShape ;
     sh:class :ItemRelation ;
+    sh:description "Relation indicating that the instance of the concept has an Item Relation." ;
     sh:name "has Qualified Item Relation" ;
     sh:path :hasQualifiedItemRelation ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#hasQualifiedItemRelation> ?that . ?that <http://data.europa.eu/a4g/ontology#hasQualifiedItemRelation> ?this .}" ] .
 
 cat-shape:epo-cat-AbstractItem-epo-cat-hasSpecification a sh:PropertyShape ;
     sh:class :ProductSpecification ;
+    sh:description "Relation indicating that the instance of the concept has a Product Specification." ;
     sh:name "has Specification" ;
     sh:path :hasSpecification ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#hasSpecification> ?that . ?that <http://data.europa.eu/a4g/ontology#hasSpecification> ?this .}" ] .
@@ -455,12 +467,14 @@ cat-shape:epo-cat-AbstractItem-epo-hasSerialID a sh:PropertyShape ;
 
 cat-shape:epo-cat-AbstractItem-epo-inv-hasItemClassificationIdentifier a sh:PropertyShape ;
     sh:class adms:Identifier ;
+    sh:description "The Identifier of the Item categorisation." ;
     sh:name "has Item Classification Identifier" ;
     sh:path :hasItemClassificationIdentifier ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#hasItemClassificationIdentifier> ?that . ?that <http://data.europa.eu/a4g/ontology#hasItemClassificationIdentifier> ?this .}" ] .
 
 cat-shape:epo-cat-AbstractItem-epo-ord-hasTaxInformation a sh:PropertyShape ;
     sh:class :TaxInformation ;
+    sh:description "Relation indicating the Tax Information." ;
     sh:name "has Tax Information" ;
     sh:path :hasTaxInformation ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#hasTaxInformation> ?that . ?that <http://data.europa.eu/a4g/ontology#hasTaxInformation> ?this .}" ] .
@@ -491,6 +505,7 @@ cat-shape:epo-cat-Batch-epo-cat-hasManufactureDate a sh:PropertyShape ;
 
 cat-shape:epo-cat-Batch-epo-cat-isProductionOf a sh:PropertyShape ;
     sh:class :AbstractItem ;
+    sh:description "Relation indicating the Item that is manufactured." ;
     sh:maxCount 1 ;
     sh:minCount 1 ;
     sh:name "is Production Of" ;
@@ -507,6 +522,7 @@ cat-shape:epo-cat-Batch-epo-hasBatchID a sh:PropertyShape ;
 
 cat-shape:epo-cat-Catalogue-epo-cat-comprisesCatalogueLine a sh:PropertyShape ;
     sh:class :CatalogueLine ;
+    sh:description "Incorporates Catalogue Line." ;
     sh:minCount 1 ;
     sh:name "comprises Catalogue Line" ;
     sh:path :comprisesCatalogueLine ;
@@ -514,6 +530,7 @@ cat-shape:epo-cat-Catalogue-epo-cat-comprisesCatalogueLine a sh:PropertyShape ;
 
 cat-shape:epo-cat-Catalogue-epo-cat-hasActivityCode a sh:PropertyShape ;
     sh:class skos:Concept ;
+    sh:description "Relation indicating the Activity Code." ;
     sh:maxCount 1 ;
     sh:name "has Activity Code" ;
     sh:path :hasActivityCode .
@@ -536,12 +553,14 @@ cat-shape:epo-cat-Catalogue-epo-hasValidityPeriod a sh:PropertyShape ;
 
 cat-shape:epo-cat-Catalogue-epo-specifiesBuyer a sh:PropertyShape ;
     sh:class :Buyer ;
+    sh:description "Relation indicating that the instance of the concept involves the Buyer." ;
     sh:name "specifies Buyer" ;
     sh:path :specifiesBuyer ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#specifiesBuyer> ?that . ?that <http://data.europa.eu/a4g/ontology#specifiesBuyer> ?this .}" ] .
 
 cat-shape:epo-cat-Catalogue-epo-specifiesCatalogueProvider a sh:PropertyShape ;
     sh:class :CatalogueProvider ;
+    sh:description "Relation indicating that the instance of the concept involves the Catalogue Provider." ;
     sh:maxCount 1 ;
     sh:name "specifies Catalogue Provider" ;
     sh:path :specifiesCatalogueProvider ;
@@ -549,6 +568,7 @@ cat-shape:epo-cat-Catalogue-epo-specifiesCatalogueProvider a sh:PropertyShape ;
 
 cat-shape:epo-cat-Catalogue-epo-specifiesCatalogueReceiver a sh:PropertyShape ;
     sh:class :CatalogueReceiver ;
+    sh:description "Relation indicating that the instance of the concept involves the Catalogue Receiver." ;
     sh:maxCount 1 ;
     sh:name "specifies Catalogue Receiver" ;
     sh:path :specifiesCatalogueReceiver ;
@@ -556,12 +576,14 @@ cat-shape:epo-cat-Catalogue-epo-specifiesCatalogueReceiver a sh:PropertyShape ;
 
 cat-shape:epo-cat-Catalogue-epo-specifiesSeller a sh:PropertyShape ;
     sh:class :Seller ;
+    sh:description "Relation indicating that the instance of the concept involves the Seller." ;
     sh:name "specifies Seller" ;
     sh:path :specifiesSeller ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#specifiesSeller> ?that . ?that <http://data.europa.eu/a4g/ontology#specifiesSeller> ?this .}" ] .
 
 cat-shape:epo-cat-CatalogueLine-epo-cat-foreseesPackage a sh:PropertyShape ;
     sh:class :Package ;
+    sh:description "Relation indicating that an instance of the concept plans to have a Package." ;
     sh:maxCount 1 ;
     sh:name "foresees Package" ;
     sh:path :foreseesPackage ;
@@ -569,6 +591,7 @@ cat-shape:epo-cat-CatalogueLine-epo-cat-foreseesPackage a sh:PropertyShape ;
 
 cat-shape:epo-cat-CatalogueLine-epo-cat-hasActivityCode a sh:PropertyShape ;
     sh:class skos:Concept ;
+    sh:description "Relation indicating the Activity Code." ;
     sh:maxCount 1 ;
     sh:name "has Activity Code" ;
     sh:path :hasActivityCode .
@@ -583,6 +606,7 @@ cat-shape:epo-cat-CatalogueLine-epo-cat-hasCatalogueLineValidity a sh:PropertySh
 
 cat-shape:epo-cat-CatalogueLine-epo-cat-hasChargeInformation a sh:PropertyShape ;
     sh:class :ChargeInformation ;
+    sh:description "Relation indicating that the instance of the concept has Charge Information." ;
     sh:name "has Charge Information" ;
     sh:path :hasChargeInformation ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#hasChargeInformation> ?that . ?that <http://data.europa.eu/a4g/ontology#hasChargeInformation> ?this .}" ] .
@@ -628,6 +652,7 @@ cat-shape:epo-cat-CatalogueLine-epo-cat-hasOrderableUnitFactorRate a sh:Property
 
 cat-shape:epo-cat-CatalogueLine-epo-cat-hasPrice a sh:PropertyShape ;
     sh:class :Price ;
+    sh:description "Relation indicating that the instance of the concept has a Price." ;
     sh:name "has Price" ;
     sh:path :hasPrice ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#hasPrice> ?that . ?that <http://data.europa.eu/a4g/ontology#hasPrice> ?this .}" ] .
@@ -680,6 +705,7 @@ cat-shape:epo-cat-CatalogueLine-epo-cat-isOrderable a sh:PropertyShape ;
 
 cat-shape:epo-cat-CatalogueResponse-epo-cat-comprisesCatalogueResponseLine a sh:PropertyShape ;
     sh:class :CatalogueResponseLine ;
+    sh:description "Incorporates Catalogue Response Line." ;
     sh:name "comprises Catalogue Response Line" ;
     sh:path :comprisesCatalogueResponseLine ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#comprisesCatalogueResponseLine> ?that . ?that <http://data.europa.eu/a4g/ontology#comprisesCatalogueResponseLine> ?this .}" ] .
@@ -694,6 +720,7 @@ cat-shape:epo-cat-CatalogueResponse-epo-cat-refersToCatalogue a sh:PropertyShape
 
 cat-shape:epo-cat-CatalogueResponse-epo-cat-specifiesCatalogueResponseInformation a sh:PropertyShape ;
     sh:class :CatalogueResponseInformation ;
+    sh:description "Relation indicating the Catalogue Response Information." ;
     sh:maxCount 1 ;
     sh:minCount 1 ;
     sh:name "specifies Catalogue Response Information" ;
@@ -710,6 +737,7 @@ cat-shape:epo-cat-CatalogueResponse-epo-ord-hasResponseDescription a sh:Property
 
 cat-shape:epo-cat-CatalogueResponse-epo-specifiesCatalogueProvider a sh:PropertyShape ;
     sh:class :CatalogueProvider ;
+    sh:description "Relation indicating that the instance of the concept involves the Catalogue Provider." ;
     sh:maxCount 1 ;
     sh:minCount 1 ;
     sh:name "specifies Catalogue Provider" ;
@@ -718,6 +746,7 @@ cat-shape:epo-cat-CatalogueResponse-epo-specifiesCatalogueProvider a sh:Property
 
 cat-shape:epo-cat-CatalogueResponse-epo-specifiesCatalogueReceiver a sh:PropertyShape ;
     sh:class :CatalogueReceiver ;
+    sh:description "Relation indicating that the instance of the concept involves the Catalogue Receiver." ;
     sh:maxCount 1 ;
     sh:minCount 1 ;
     sh:name "specifies Catalogue Receiver" ;
@@ -726,12 +755,14 @@ cat-shape:epo-cat-CatalogueResponse-epo-specifiesCatalogueReceiver a sh:Property
 
 cat-shape:epo-cat-CatalogueResponseInformation-epo-cat-isSpecificToCatalogueResponseLine a sh:PropertyShape ;
     sh:class :CatalogueResponseLine ;
+    sh:description "Information that is particular to a Catalogue Response Line." ;
     sh:maxCount 1 ;
     sh:name "is Specific To Catalogue Response Line" ;
     sh:path :isSpecificToCatalogueResponseLine ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#isSpecificToCatalogueResponseLine> ?that . ?that <http://data.europa.eu/a4g/ontology#isSpecificToCatalogueResponseLine> ?this .}" ] .
 
 cat-shape:epo-cat-CatalogueResponseInformation-epo-ord-hasResponseStatus a sh:PropertyShape ;
+    sh:description "Relation indicating the response status." ;
     sh:maxCount 1 ;
     sh:minCount 1 ;
     sh:name "has Response Status" ;
@@ -739,6 +770,7 @@ cat-shape:epo-cat-CatalogueResponseInformation-epo-ord-hasResponseStatus a sh:Pr
 
 cat-shape:epo-cat-CatalogueResponseLine-epo-cat-refersToCatalogueLine a sh:PropertyShape ;
     sh:class :CatalogueLine ;
+    sh:description "Reference to a Catalogue Line." ;
     sh:maxCount 1 ;
     sh:minCount 1 ;
     sh:name "refers To Catalogue Line" ;
@@ -764,6 +796,7 @@ cat-shape:epo-cat-CatalogueResponseLine-epo-ord-hasResponseDescription a sh:Prop
 
 cat-shape:epo-cat-ChargeInformation-epo-inv-isSpecificToInvoiceLine a sh:PropertyShape ;
     sh:class :InvoiceLine ;
+    sh:description "Information that is particular to an Invoice Line." ;
     sh:name "is Specific To Invoice Line" ;
     sh:path :isSpecificToInvoiceLine ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#isSpecificToInvoiceLine> ?that . ?that <http://data.europa.eu/a4g/ontology#isSpecificToInvoiceLine> ?this .}" ] .
@@ -777,6 +810,7 @@ cat-shape:epo-cat-ChargeInformation-epo-ord-isSpecificToOrderLine a sh:PropertyS
 
 cat-shape:epo-cat-DimensionInformation-epo-cat-concernsItem a sh:PropertyShape ;
     sh:class :AbstractItem ;
+    sh:description "Relates to Item." ;
     sh:maxCount 1 ;
     sh:name "concerns Item" ;
     sh:path :concernsItem ;
@@ -792,6 +826,7 @@ cat-shape:epo-cat-DimensionInformation-epo-cat-hasDimensionDescription a sh:Prop
 
 cat-shape:epo-cat-DimensionInformation-epo-cat-hasMaximumMeasure a sh:PropertyShape ;
     sh:class :Quantity ;
+    sh:description "Relation indicating the upper limit of the measure." ;
     sh:maxCount 1 ;
     sh:name "has Maximum Measure" ;
     sh:path :hasMaximumMeasure ;
@@ -799,6 +834,7 @@ cat-shape:epo-cat-DimensionInformation-epo-cat-hasMaximumMeasure a sh:PropertySh
 
 cat-shape:epo-cat-DimensionInformation-epo-cat-hasMeasure a sh:PropertyShape ;
     sh:class :Quantity ;
+    sh:description "Relation indicating the unit used for stating the size." ;
     sh:maxCount 1 ;
     sh:name "has Measure" ;
     sh:path :hasMeasure ;
@@ -806,6 +842,7 @@ cat-shape:epo-cat-DimensionInformation-epo-cat-hasMeasure a sh:PropertyShape ;
 
 cat-shape:epo-cat-DimensionInformation-epo-cat-hasMeasuredAttributeCode a sh:PropertyShape ;
     sh:class skos:Concept ;
+    sh:description "Relation indicating the Measured Attribute Code." ;
     sh:maxCount 1 ;
     sh:minCount 1 ;
     sh:name "has Measured Attribute Code" ;
@@ -813,6 +850,7 @@ cat-shape:epo-cat-DimensionInformation-epo-cat-hasMeasuredAttributeCode a sh:Pro
 
 cat-shape:epo-cat-DimensionInformation-epo-cat-hasMinimumMeasure a sh:PropertyShape ;
     sh:class :Quantity ;
+    sh:description "Relation indicating the lower limit of the measure." ;
     sh:maxCount 1 ;
     sh:name "has Minimum Measure" ;
     sh:path :hasMinimumMeasure ;
@@ -820,6 +858,7 @@ cat-shape:epo-cat-DimensionInformation-epo-cat-hasMinimumMeasure a sh:PropertySh
 
 cat-shape:epo-cat-DimensionInformation-epo-ful-concernsGoodsItem a sh:PropertyShape ;
     sh:class :GoodsItem ;
+    sh:description "Relates to Goods Item." ;
     sh:maxCount 1 ;
     sh:name "concerns Goods Item" ;
     sh:path :concernsGoodsItem ;
@@ -827,6 +866,7 @@ cat-shape:epo-cat-DimensionInformation-epo-ful-concernsGoodsItem a sh:PropertySh
 
 cat-shape:epo-cat-DimensionInformation-epo-ful-concernsPackage a sh:PropertyShape ;
     sh:class :Package ;
+    sh:description "Relates to Package." ;
     sh:maxCount 1 ;
     sh:name "concerns Package" ;
     sh:path :concernsPackage ;
@@ -834,6 +874,7 @@ cat-shape:epo-cat-DimensionInformation-epo-ful-concernsPackage a sh:PropertyShap
 
 cat-shape:epo-cat-DimensionInformation-epo-ful-concernsTransportEquipment a sh:PropertyShape ;
     sh:class :TransportEquipment ;
+    sh:description "Relates to Transport Equipment." ;
     sh:maxCount 1 ;
     sh:name "concerns Transport Equipment" ;
     sh:path :concernsTransportEquipment ;
@@ -841,6 +882,7 @@ cat-shape:epo-cat-DimensionInformation-epo-ful-concernsTransportEquipment a sh:P
 
 cat-shape:epo-cat-DimensionInformation-epo-ful-concernsTransportMeans a sh:PropertyShape ;
     sh:class :TransportMeans ;
+    sh:description "Relates to Transport Means." ;
     sh:maxCount 1 ;
     sh:name "concerns Transport Means" ;
     sh:path :concernsTransportMeans ;
@@ -848,6 +890,7 @@ cat-shape:epo-cat-DimensionInformation-epo-ful-concernsTransportMeans a sh:Prope
 
 cat-shape:epo-cat-EnvironmentalEmissionInformation-epo-cat-concernsItem a sh:PropertyShape ;
     sh:class :AbstractItem ;
+    sh:description "Relates to Item." ;
     sh:maxCount 1 ;
     sh:name "concerns Item" ;
     sh:path :concernsItem ;
@@ -855,6 +898,7 @@ cat-shape:epo-cat-EnvironmentalEmissionInformation-epo-cat-concernsItem a sh:Pro
 
 cat-shape:epo-cat-EnvironmentalEmissionInformation-epo-cat-hasEnvironmentalEmissionCode a sh:PropertyShape ;
     sh:class skos:Concept ;
+    sh:description "Relation indicating the Environmental Emission Code." ;
     sh:maxCount 1 ;
     sh:minCount 1 ;
     sh:name "has Environmental Emission Code" ;
@@ -862,6 +906,7 @@ cat-shape:epo-cat-EnvironmentalEmissionInformation-epo-cat-hasEnvironmentalEmiss
 
 cat-shape:epo-cat-EnvironmentalEmissionInformation-epo-cat-hasMeasure a sh:PropertyShape ;
     sh:class :Quantity ;
+    sh:description "Relation indicating the unit used for stating the size." ;
     sh:maxCount 1 ;
     sh:minCount 1 ;
     sh:name "has Measure" ;
@@ -870,6 +915,7 @@ cat-shape:epo-cat-EnvironmentalEmissionInformation-epo-cat-hasMeasure a sh:Prope
 
 cat-shape:epo-cat-EnvironmentalEmissionInformation-epo-ful-concernsTransportMeans a sh:PropertyShape ;
     sh:class :TransportMeans ;
+    sh:description "Relates to Transport Means." ;
     sh:maxCount 1 ;
     sh:name "concerns Transport Means" ;
     sh:path :concernsTransportMeans ;
@@ -885,12 +931,14 @@ cat-shape:epo-cat-EnvironmentalEmissionInformation-epo-hasCalculationMethod a sh
 
 cat-shape:epo-cat-InformationHub-epo-cat-isSpecificToLine a sh:PropertyShape ;
     sh:class :Line ;
+    sh:description "Information that is particular to a Line." ;
     sh:name "is Specific To Line" ;
     sh:path :isSpecificToLine ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#isSpecificToLine> ?that . ?that <http://data.europa.eu/a4g/ontology#isSpecificToLine> ?this .}" ] .
 
 cat-shape:epo-cat-ItemProperty-epo-cat-describesItem a sh:PropertyShape ;
     sh:class :AbstractItem ;
+    sh:description "Characterises Item." ;
     sh:maxCount 1 ;
     sh:minCount 1 ;
     sh:name "describes Item" ;
@@ -907,6 +955,7 @@ cat-shape:epo-cat-ItemProperty-epo-cat-hasAttributeType a sh:PropertyShape ;
 
 cat-shape:epo-cat-ItemProperty-epo-cat-hasClassificationCode a sh:PropertyShape ;
     rdfs:isDefinedBy cat-shape:cat-shape ;
+    sh:description "The categorization of the instance of the concept expressed as a code." ;
     sh:maxCount 1 ;
     sh:name "has Classification Code" ;
     sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
@@ -923,6 +972,7 @@ cat-shape:epo-cat-ItemProperty-epo-cat-hasClassificationScheme a sh:PropertyShap
 cat-shape:epo-cat-ItemProperty-epo-cat-hasImportanceCode a sh:PropertyShape ;
     rdfs:isDefinedBy cat-shape:cat-shape ;
     sh:datatype xsd:integer ;
+    sh:description "The significance of the instance of the concept expressed as a code." ;
     sh:maxCount 1 ;
     sh:name "has Importance Code" ;
     sh:path :hasImportanceCode .
@@ -936,6 +986,7 @@ cat-shape:epo-cat-ItemProperty-epo-cat-hasLiteralValue a sh:PropertyShape ;
 
 cat-shape:epo-cat-ItemProperty-epo-cat-hasMaximumValue a sh:PropertyShape ;
     sh:class :Quantity ;
+    sh:description "Relation indicating the upper limit of the numerical quantity." ;
     sh:maxCount 1 ;
     sh:name "has Maximum Value" ;
     sh:path :hasMaximumValue ;
@@ -943,6 +994,7 @@ cat-shape:epo-cat-ItemProperty-epo-cat-hasMaximumValue a sh:PropertyShape ;
 
 cat-shape:epo-cat-ItemProperty-epo-cat-hasMinimumValue a sh:PropertyShape ;
     sh:class :Quantity ;
+    sh:description "Relation indicating the lower limit of the numerical quantity." ;
     sh:maxCount 1 ;
     sh:name "has Minimum Value" ;
     sh:path :hasMinimumValue ;
@@ -966,6 +1018,7 @@ cat-shape:epo-cat-ItemRelation-epo-cat-hasFactor a sh:PropertyShape ;
 
 cat-shape:epo-cat-ItemRelation-epo-cat-isRelatedToItem a sh:PropertyShape ;
     sh:class :AbstractItem ;
+    sh:description "Relation indicating the association with an Item." ;
     sh:maxCount 1 ;
     sh:minCount 1 ;
     sh:name "is Related To Item" ;
@@ -974,6 +1027,7 @@ cat-shape:epo-cat-ItemRelation-epo-cat-isRelatedToItem a sh:PropertyShape ;
 
 cat-shape:epo-cat-Line-epo-cat-specifiesItem a sh:PropertyShape ;
     sh:class :AbstractItem ;
+    sh:description "Relation indicating the Item." ;
     sh:maxCount 1 ;
     sh:minCount 1 ;
     sh:name "specifies Item" ;
@@ -1006,6 +1060,7 @@ cat-shape:epo-cat-Manufacturer-epo-hasManufacturerID a sh:PropertyShape ;
 
 cat-shape:epo-cat-PostAwardCatalogue-epo-cat-isSubordinatedToContract a sh:PropertyShape ;
     sh:class :Contract ;
+    sh:description "Relation indicating that the instance of the concept is governed by a specific Contract." ;
     sh:maxCount 1 ;
     sh:name "is Subordinated To Contract" ;
     sh:path :isSubordinatedToContract ;
@@ -1050,7 +1105,7 @@ cat-shape:epo-cat-Price-epo-cat-hasExpectedDeliveryTime a sh:PropertyShape ;
 
 cat-shape:epo-cat-Price-epo-cat-hasNetMonetaryValue a sh:PropertyShape ;
     sh:class :MonetaryValue ;
-    sh:description "The price amount of an Item exclusive of taxes and after substracting price discounts." ;
+    sh:description "The price amount of an Item exclusive of taxes and after subtracting price discounts." ;
     sh:maxCount 1 ;
     sh:minCount 1 ;
     sh:name "has Net Monetary Value" ;
@@ -1067,6 +1122,7 @@ cat-shape:epo-cat-Price-epo-cat-hasOrderabableUnitFactorRate a sh:PropertyShape 
 
 cat-shape:epo-cat-Price-epo-cat-hasPriceType a sh:PropertyShape ;
     sh:class skos:Concept ;
+    sh:description "Relation indicating the Price Type." ;
     sh:maxCount 1 ;
     sh:name "has Price Type" ;
     sh:path :hasPriceType .
@@ -1090,6 +1146,7 @@ cat-shape:epo-cat-Price-epo-cat-hasQuantityThreshold a sh:PropertyShape ;
 
 cat-shape:epo-cat-Price-epo-hasPriceSurchargeInformation a sh:PropertyShape ;
     sh:class :ChargeInformation ;
+    sh:description "Relation indicating the Charge Information applied on the Price." ;
     sh:maxCount 1 ;
     sh:name "has Price Surcharge Information" ;
     sh:path :hasPriceSurchargeInformation ;
@@ -1097,6 +1154,7 @@ cat-shape:epo-cat-Price-epo-hasPriceSurchargeInformation a sh:PropertyShape ;
 
 cat-shape:epo-cat-Price-epo-ord-hasGrossMonetaryValue a sh:PropertyShape ;
     sh:class :MonetaryValue ;
+    sh:description "The Monetary Value before any deductions." ;
     sh:maxCount 1 ;
     sh:name "has Gross Monetary Value" ;
     sh:path :hasGrossMonetaryValue ;
@@ -1104,6 +1162,7 @@ cat-shape:epo-cat-Price-epo-ord-hasGrossMonetaryValue a sh:PropertyShape ;
 
 cat-shape:epo-cat-Price-epo-ord-hasPriceDiscountInformation a sh:PropertyShape ;
     sh:class :AllowanceInformation ;
+    sh:description "Relation indicating the Allowance Information applied on the Price." ;
     sh:maxCount 1 ;
     sh:name "has Price Discount Information" ;
     sh:path :hasPriceDiscountInformation ;
@@ -1118,12 +1177,14 @@ cat-shape:epo-ful-Consignment-epo-ful-hasFreightCharge a sh:PropertyShape ;
 
 cat-shape:epo-inv-Invoice-epo-cat-specifiesChargeInformation a sh:PropertyShape ;
     sh:class :ChargeInformation ;
+    sh:description "Relation indicating the Charge Information." ;
     sh:name "specifies Charge Information" ;
     sh:path :specifiesChargeInformation ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#specifiesChargeInformation> ?that . ?that <http://data.europa.eu/a4g/ontology#specifiesChargeInformation> ?this .}" ] .
 
 cat-shape:epo-inv-InvoiceLine-epo-cat-hasPrice a sh:PropertyShape ;
     sh:class :Price ;
+    sh:description "Relation indicating that the instance of the concept has a Price." ;
     sh:minCount 1 ;
     sh:name "has Price" ;
     sh:path :hasPrice ;
@@ -1138,12 +1199,14 @@ cat-shape:epo-ord-Order-epo-cat-refersToCatalogue a sh:PropertyShape ;
 
 cat-shape:epo-ord-Order-epo-cat-specifiesChargeInformation a sh:PropertyShape ;
     sh:class :ChargeInformation ;
+    sh:description "Relation indicating the Charge Information." ;
     sh:name "specifies Charge Information" ;
     sh:path :specifiesChargeInformation ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#specifiesChargeInformation> ?that . ?that <http://data.europa.eu/a4g/ontology#specifiesChargeInformation> ?this .}" ] .
 
 cat-shape:epo-ord-OrderLine-epo-cat-hasPrice a sh:PropertyShape ;
     sh:class :Price ;
+    sh:description "Relation indicating that the instance of the concept has a Price." ;
     sh:name "has Price" ;
     sh:path :hasPrice ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#hasPrice> ?that . ?that <http://data.europa.eu/a4g/ontology#hasPrice> ?this .}" ] .
@@ -1158,12 +1221,14 @@ cat-shape:epo-ord-OrderLine-epo-ord-refersToCatalogueLine a sh:PropertyShape ;
 
 cat-shape:epo-ord-TaxInformation-epo-cat-hasTaxCategory a sh:PropertyShape ;
     sh:class skos:Concept ;
+    sh:description "Relation indicating the Tax Category." ;
     sh:maxCount 1 ;
     sh:name "has Tax Category" ;
     sh:path :hasTaxCategory .
 
 cat-shape:epo-ord-TaxInformation-epo-cat-hasTaxScheme a sh:PropertyShape ;
     sh:class skos:Concept ;
+    sh:description "Relation indicating the Tax Scheme." ;
     sh:maxCount 1 ;
     sh:minCount 1 ;
     sh:name "has Tax Scheme" ;
@@ -1180,13 +1245,13 @@ cat-shape:cat-shape a owl:Ontology ;
     rdfs:label "eProcurement Ontology Catalogue - core shapes"@en ;
     dcterms:created "2021-06-01"^^xsd:date ;
     dcterms:description "The eProcurement Ontology Catalogue core shapes provides the generic datashape specifications for the eProcurement Ontology Catalogue core."@en ;
-    dcterms:issued "2025-05-30"^^xsd:date ;
+    dcterms:issued "2025-10-10"^^xsd:date ;
     dcterms:license "© European Union, 2014. Unless otherwise noted, the reuse of the Ontology is authorised under the European Union Public Licence v1.2 (https://eupl.eu/)." ;
     dcterms:publisher "http://publications.europa.eu/resource/authority/corporate-body/PUBL" ;
     dcterms:title "eProcurement Ontology Catalogue - core shapes"@en ;
     vann:preferredNamespacePrefix "epo" ;
     vann:preferredNamespaceUri "http://data.europa.eu/a4g/ontology#" ;
-    rdfs:comment "This version is automatically generated from eCatalogue.xml on 2025-05-30" ;
+    rdfs:comment "This version is automatically generated from eCatalogue.xml on 2025-10-10" ;
     rdfs:seeAlso <https://docs.ted.europa.eu/home/index.html>,
         <https://github.com/OP-TED/ePO/releases>,
         <https://joinup.ec.europa.eu/collection/eprocurement/solution/eprocurement-ontology/about>,
@@ -1206,7 +1271,7 @@ cat-shape:cat-shape a owl:Ontology ;
         org:,
         <http://www.w3.org/ns/person> ;
     owl:incompatibleWith "4.2.0" ;
-    owl:priorVersion "http://data.europa.eu/a4g/data-shape#cat-shape-5.0.0" ;
-    owl:versionIRI cat-shape:cat-shape-5.1.0 ;
-    owl:versionInfo "5.1.0" .
+    owl:priorVersion "http://data.europa.eu/a4g/data-shape#cat-shape-5.1.0" ;
+    owl:versionIRI cat-shape:cat-shape-5.2.0 ;
+    owl:versionInfo "5.2.0" .
 

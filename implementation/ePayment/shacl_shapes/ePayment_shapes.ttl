@@ -15,6 +15,7 @@
 
 pay-shape:epo-pay-PaymentInformation a sh:NodeShape ;
     rdfs:label "Payment Information" ;
+    rdfs:comment "Information about a remittance." ;
     rdfs:isDefinedBy pay-shape:pay-shape ;
     sh:property pay-shape:epo-pay-PaymentInformation-epo-pay-hasPaymentDate,
         pay-shape:epo-pay-PaymentInformation-epo-pay-hasPaymentIdentifier,
@@ -23,6 +24,7 @@ pay-shape:epo-pay-PaymentInformation a sh:NodeShape ;
 
 pay-shape:epo-pay-RemittanceAdvice a sh:NodeShape ;
     rdfs:label "Remittance Advice" ;
+    rdfs:comment "Document sent by the Buyer to the Seller, informing about the payment made." ;
     rdfs:isDefinedBy pay-shape:pay-shape ;
     sh:property pay-shape:epo-pay-RemittanceAdvice-epo-inv-specifiesPayee,
         pay-shape:epo-pay-RemittanceAdvice-epo-pay-comprisesRemittanceAdviceLine,
@@ -38,6 +40,7 @@ pay-shape:epo-pay-RemittanceAdvice a sh:NodeShape ;
 
 pay-shape:epo-pay-RemittanceAdviceLine a sh:NodeShape ;
     rdfs:label "Remittance Advice Line" ;
+    rdfs:comment "Details concerning a given Invoice from the Remittance Advice." ;
     rdfs:isDefinedBy pay-shape:pay-shape ;
     sh:property pay-shape:epo-pay-RemittanceAdviceLine-epo-inv-refersToInvoice,
         pay-shape:epo-pay-RemittanceAdviceLine-epo-pay-hasBalanceAmount,
@@ -47,6 +50,7 @@ pay-shape:epo-pay-RemittanceAdviceLine a sh:NodeShape ;
 
 pay-shape:epo-pay-PaymentInformation-epo-pay-hasPaymentDate a sh:PropertyShape ;
     rdfs:isDefinedBy pay-shape:pay-shape ;
+    sh:description "The date of the Payment." ;
     sh:maxCount 1 ;
     sh:name "has Payment Date" ;
     sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
@@ -54,6 +58,7 @@ pay-shape:epo-pay-PaymentInformation-epo-pay-hasPaymentDate a sh:PropertyShape ;
 
 pay-shape:epo-pay-PaymentInformation-epo-pay-hasPaymentIdentifier a sh:PropertyShape ;
     sh:class adms:Identifier ;
+    sh:description "Relation indicating the Identifier of the Payment." ;
     sh:maxCount 1 ;
     sh:name "has Payment Identifier" ;
     sh:path :hasPaymentIdentifier ;
@@ -61,6 +66,7 @@ pay-shape:epo-pay-PaymentInformation-epo-pay-hasPaymentIdentifier a sh:PropertyS
 
 pay-shape:epo-pay-PaymentInformation-epo-pay-hasPaymentMeansInformation a sh:PropertyShape ;
     sh:class :PaymentInstructionsInformation ;
+    sh:description "Relation indicating the Payment Instruction Information." ;
     sh:maxCount 1 ;
     sh:minCount 1 ;
     sh:name "has Payment Means Information" ;
@@ -69,6 +75,7 @@ pay-shape:epo-pay-PaymentInformation-epo-pay-hasPaymentMeansInformation a sh:Pro
 
 pay-shape:epo-pay-RemittanceAdvice-epo-inv-specifiesPayee a sh:PropertyShape ;
     sh:class :Payee ;
+    sh:description "Relation indicating that the instance of the concept involves the Payee." ;
     sh:maxCount 1 ;
     sh:name "specifies Payee" ;
     sh:path :specifiesPayee ;
@@ -76,6 +83,7 @@ pay-shape:epo-pay-RemittanceAdvice-epo-inv-specifiesPayee a sh:PropertyShape ;
 
 pay-shape:epo-pay-RemittanceAdvice-epo-pay-comprisesRemittanceAdviceLine a sh:PropertyShape ;
     sh:class :RemittanceAdviceLine ;
+    sh:description "Incorporates Remittance Advice Line." ;
     sh:minCount 1 ;
     sh:name "comprises Remittance Advice Line" ;
     sh:path :comprisesRemittanceAdviceLine ;
@@ -83,6 +91,7 @@ pay-shape:epo-pay-RemittanceAdvice-epo-pay-comprisesRemittanceAdviceLine a sh:Pr
 
 pay-shape:epo-pay-RemittanceAdvice-epo-pay-hasPayerReference a sh:PropertyShape ;
     rdfs:isDefinedBy pay-shape:pay-shape ;
+    sh:description "Reference to the Payer." ;
     sh:maxCount 1 ;
     sh:name "has Payer Reference" ;
     sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
@@ -90,6 +99,7 @@ pay-shape:epo-pay-RemittanceAdvice-epo-pay-hasPayerReference a sh:PropertyShape 
 
 pay-shape:epo-pay-RemittanceAdvice-epo-pay-hasPaymentInformation a sh:PropertyShape ;
     sh:class :PaymentInformation ;
+    sh:description "Relation indicating the Payment Information." ;
     sh:maxCount 1 ;
     sh:name "has Payment Information" ;
     sh:path :hasPaymentInformation ;
@@ -97,6 +107,7 @@ pay-shape:epo-pay-RemittanceAdvice-epo-pay-hasPaymentInformation a sh:PropertySh
 
 pay-shape:epo-pay-RemittanceAdvice-epo-pay-hasPaymentOrderReference a sh:PropertyShape ;
     rdfs:isDefinedBy pay-shape:pay-shape ;
+    sh:description "Reference to the Payment Order." ;
     sh:maxCount 1 ;
     sh:name "has Payment Order Reference" ;
     sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
@@ -104,6 +115,7 @@ pay-shape:epo-pay-RemittanceAdvice-epo-pay-hasPaymentOrderReference a sh:Propert
 
 pay-shape:epo-pay-RemittanceAdvice-epo-pay-hasTotalCreditAmount a sh:PropertyShape ;
     sh:class :MonetaryValue ;
+    sh:description "Relation indicating the overall Monetary Value that reduces the amount owed." ;
     sh:maxCount 1 ;
     sh:name "has Total Credit Amount" ;
     sh:path :hasTotalCreditAmount ;
@@ -111,6 +123,7 @@ pay-shape:epo-pay-RemittanceAdvice-epo-pay-hasTotalCreditAmount a sh:PropertySha
 
 pay-shape:epo-pay-RemittanceAdvice-epo-pay-hasTotalDebitAmount a sh:PropertyShape ;
     sh:class :MonetaryValue ;
+    sh:description "Relation indicating the overall Monetary Value that increases the amount owed." ;
     sh:maxCount 1 ;
     sh:name "has Total Debit Amount" ;
     sh:path :hasTotalDebitAmount ;
@@ -118,6 +131,7 @@ pay-shape:epo-pay-RemittanceAdvice-epo-pay-hasTotalDebitAmount a sh:PropertyShap
 
 pay-shape:epo-pay-RemittanceAdvice-epo-pay-hasTotalPaymentAmount a sh:PropertyShape ;
     sh:class :MonetaryValue ;
+    sh:description "Relation indicating the overall paid Monetary Value." ;
     sh:maxCount 1 ;
     sh:name "has Total Payment Amount" ;
     sh:path :hasTotalPaymentAmount ;
@@ -125,6 +139,7 @@ pay-shape:epo-pay-RemittanceAdvice-epo-pay-hasTotalPaymentAmount a sh:PropertySh
 
 pay-shape:epo-pay-RemittanceAdvice-epo-specifiesBuyer a sh:PropertyShape ;
     sh:class :Buyer ;
+    sh:description "Relation indicating that the instance of the concept involves the Buyer." ;
     sh:maxCount 1 ;
     sh:minCount 1 ;
     sh:name "specifies Buyer" ;
@@ -133,6 +148,7 @@ pay-shape:epo-pay-RemittanceAdvice-epo-specifiesBuyer a sh:PropertyShape ;
 
 pay-shape:epo-pay-RemittanceAdvice-epo-specifiesSeller a sh:PropertyShape ;
     sh:class :Seller ;
+    sh:description "Relation indicating that the instance of the concept involves the Seller." ;
     sh:maxCount 1 ;
     sh:minCount 1 ;
     sh:name "specifies Seller" ;
@@ -141,6 +157,7 @@ pay-shape:epo-pay-RemittanceAdvice-epo-specifiesSeller a sh:PropertyShape ;
 
 pay-shape:epo-pay-RemittanceAdviceLine-epo-inv-refersToInvoice a sh:PropertyShape ;
     sh:class :Invoice ;
+    sh:description "Reference to an Invoice." ;
     sh:maxCount 1 ;
     sh:name "refers To Invoice" ;
     sh:path :refersToInvoice ;
@@ -148,6 +165,7 @@ pay-shape:epo-pay-RemittanceAdviceLine-epo-inv-refersToInvoice a sh:PropertyShap
 
 pay-shape:epo-pay-RemittanceAdviceLine-epo-pay-hasBalanceAmount a sh:PropertyShape ;
     sh:class :MonetaryValue ;
+    sh:description "Relation indicating the outstanding amount that remains unpaid or unsettled." ;
     sh:maxCount 1 ;
     sh:name "has Balance Amount" ;
     sh:path :hasBalanceAmount ;
@@ -155,6 +173,7 @@ pay-shape:epo-pay-RemittanceAdviceLine-epo-pay-hasBalanceAmount a sh:PropertySha
 
 pay-shape:epo-pay-RemittanceAdviceLine-epo-pay-hasCreditAmount a sh:PropertyShape ;
     sh:class :MonetaryValue ;
+    sh:description "Relation indicating the Monetary Value that reduces the amount owed." ;
     sh:maxCount 1 ;
     sh:name "has Credit Amount" ;
     sh:path :hasCreditAmount ;
@@ -162,6 +181,7 @@ pay-shape:epo-pay-RemittanceAdviceLine-epo-pay-hasCreditAmount a sh:PropertyShap
 
 pay-shape:epo-pay-RemittanceAdviceLine-epo-pay-hasDebitAmount a sh:PropertyShape ;
     sh:class :MonetaryValue ;
+    sh:description "Relation indicating the Monetary Value that increases the amount owed." ;
     sh:maxCount 1 ;
     sh:name "has Debit Amount" ;
     sh:path :hasDebitAmount ;
@@ -171,13 +191,13 @@ pay-shape:pay-shape a owl:Ontology ;
     rdfs:label "eProcurement Ontology Payment - core shapes"@en ;
     dcterms:created "2021-06-01"^^xsd:date ;
     dcterms:description "The eProcurement Ontology Payment core shapes provides the generic datashape specifications for the eProcurement Ontology Payment core."@en ;
-    dcterms:issued "2025-05-30"^^xsd:date ;
+    dcterms:issued "2025-10-10"^^xsd:date ;
     dcterms:license "© European Union, 2014. Unless otherwise noted, the reuse of the Ontology is authorised under the European Union Public Licence v1.2 (https://eupl.eu/)." ;
     dcterms:publisher "http://publications.europa.eu/resource/authority/corporate-body/PUBL" ;
     dcterms:title "eProcurement Ontology Payment - core shapes"@en ;
     vann:preferredNamespacePrefix "epo" ;
     vann:preferredNamespaceUri "http://data.europa.eu/a4g/ontology#" ;
-    rdfs:comment "This version is automatically generated from ePayment.xml on 2025-05-30" ;
+    rdfs:comment "This version is automatically generated from ePayment.xml on 2025-10-10" ;
     rdfs:seeAlso <https://docs.ted.europa.eu/home/index.html>,
         <https://github.com/OP-TED/ePO/releases>,
         <https://joinup.ec.europa.eu/collection/eprocurement/solution/eprocurement-ontology/about>,
@@ -198,7 +218,7 @@ pay-shape:pay-shape a owl:Ontology ;
         org:,
         <http://www.w3.org/ns/person> ;
     owl:incompatibleWith "4.2.0" ;
-    owl:priorVersion "http://data.europa.eu/a4g/data-shape#pay-shape-5.0.0" ;
-    owl:versionIRI pay-shape:pay-shape-5.1.0 ;
-    owl:versionInfo "5.1.0" .
+    owl:priorVersion "http://data.europa.eu/a4g/data-shape#pay-shape-5.1.0" ;
+    owl:versionIRI pay-shape:pay-shape-5.2.0 ;
+    owl:versionInfo "5.2.0" .
 
