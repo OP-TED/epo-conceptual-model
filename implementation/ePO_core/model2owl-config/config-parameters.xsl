@@ -124,6 +124,32 @@
     -->
     <xsl:variable name="translatePlainLiteralToStringTypesInSHACL" select="fn:true()"/>
 
+    <!-- JSON metadata configuration -->
+    <xsl:variable name="metadataJson" select="fn:json-doc('metadata.json')"/>
+    <!-- suffix for URIs of sh:NodeShape instances in the SHACL artefact -->
+    <xsl:variable name="nodeShapeURIsuffix" select="'Shape'"/>
+    <!-- The variable controls the generation of reused concepts within artifacts.
+    -->
+    <xsl:variable name="generateReusedConceptsJSONLDcontext" select="fn:true()"/>
+    <!-- Tag name/key that is used to describe a usage note of a class or
+    property-->
+    <xsl:variable name="usageNoteTagName" select="'skos:note'"/>
+    <!-- Tag name/key that is used to provide reference links/reuse information for
+    a class or property-->
+    <xsl:variable name="referenceTagName" select="'dct:references'"/>
+    <!-- Label that will be used in the ReSpec docs to describe values of
+    `referenceTagName` for properties -->
+    <xsl:variable name="propertyReferenceRespecLabel" select="'Reuse'"/>
+    <!-- Label that will be used in the ReSpec docs to describe values of
+    `referenceTagName` for classes -->
+    <xsl:variable name="classReferenceRespecLabel" select="'Reference'"/>
+    <!-- A flag to control whether references/reuse information is shown in the
+    ReSpec docs -->
+    <xsl:variable name="showReferencesInRespec" select="fn:true()"/>
+    <!-- Tag name/key that is used as custom label for terms in the ReSpec
+    documentation-->
+    <xsl:variable name="customTermLabelTagName" select="'skos:prefLabel'"/>
+
     <!-- _______________________________________________________________________   -->
     <!--                            METADATA SECTION                               -->
     <!-- _______________________________________________________________________   -->
