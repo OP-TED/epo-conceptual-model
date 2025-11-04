@@ -9,19 +9,19 @@ on:
       - "!master"
     paths:
       - "implementation/ePO_core/xmi_conceptual_model/ePO_core.xml"
-      - "implementation/eCatalogue/xmi_conceptual_model/eCatalogue.xml"
-      - "implementation/eNotice/xmi_conceptual_model/eNotice.xml"
-      - "implementation/eOrdering/xmi_conceptual_model/eOrdering.xml"
-      - "implementation/eFulfilment/xmi_conceptual_model/eFulfilment.xml"
-      - "implementation/eContract/xmi_conceptual_model/eContract.xml"
-      - "implementation/eInvoicing/xmi_conceptual_model/eInvoicing.xml"
-      - "implementation/eAccess/xmi_conceptual_model/eAccess.xml"
-      - "implementation/eSubmission/xmi_conceptual_model/eSubmission.xml"
-      - "implementation/eEvaluation/xmi_conceptual_model/eEvaluation.xml"
-      - "implementation/eAwarding/xmi_conceptual_model/eAwarding.xml"
-      - "implementation/eQualification/xmi_conceptual_model/eQualification.xml"
-      - "implementation/eRequest/xmi_conceptual_model/eRequest.xml"
-      - "implementation/ePayment/xmi_conceptual_model/ePayment.xml"
+      # - "implementation/eCatalogue/xmi_conceptual_model/eCatalogue.xml"
+      # - "implementation/eNotice/xmi_conceptual_model/eNotice.xml"
+      # - "implementation/eOrdering/xmi_conceptual_model/eOrdering.xml"
+      # - "implementation/eFulfilment/xmi_conceptual_model/eFulfilment.xml"
+      # - "implementation/eContract/xmi_conceptual_model/eContract.xml"
+      # - "implementation/eInvoicing/xmi_conceptual_model/eInvoicing.xml"
+      # - "implementation/eAccess/xmi_conceptual_model/eAccess.xml"
+      # - "implementation/eSubmission/xmi_conceptual_model/eSubmission.xml"
+      # - "implementation/eEvaluation/xmi_conceptual_model/eEvaluation.xml"
+      # - "implementation/eAwarding/xmi_conceptual_model/eAwarding.xml"
+      # - "implementation/eQualification/xmi_conceptual_model/eQualification.xml"
+      # - "implementation/eRequest/xmi_conceptual_model/eRequest.xml"
+      # - "implementation/ePayment/xmi_conceptual_model/ePayment.xml"
 
 jobs:
   report_and_glossary:
@@ -42,10 +42,10 @@ jobs:
       - name: get-saxon
         run: pwd && cd model2owl && make get-saxon
 
-
+# (eInvoicing eOrdering eFulfilment eCatalogue eNotice eContract eAccess eSubmission ePO_core eAwarding eEvaluation eQualification eRequest ePayment)
       - name: generate convention report and glossary
         run: |
-          AVAILABLE_IMPLEMENTATIONS=(eInvoicing eOrdering eFulfilment eCatalogue eNotice eContract eAccess eSubmission ePO_core eAwarding eEvaluation eQualification eRequest ePayment)
+          AVAILABLE_IMPLEMENTATIONS=(ePO_core)
           for implementation in "${AVAILABLE_IMPLEMENTATIONS[@]}"
           do
             echo "-------------------${implementation}---------------------------------"
@@ -85,7 +85,7 @@ jobs:
 
       - name: merge implementations xmi files into one
         run: |
-          AVAILABLE_IMPLEMENTATIONS=(eInvoicing eOrdering eFulfilment eCatalogue eNotice eContract eAccess eSubmission ePO_core eAwarding eEvaluation eQualification eRequest ePayment)
+          AVAILABLE_IMPLEMENTATIONS=(ePO_core)
           cd model2owl
           mkdir -p merge-xmis
           for implementation in "${AVAILABLE_IMPLEMENTATIONS[@]}"
@@ -171,7 +171,7 @@ jobs:
 
       - name: transform step
         run: |
-          AVAILABLE_IMPLEMENTATIONS=(eInvoicing eOrdering eFulfilment eCatalogue eNotice eContract eAccess eSubmission ePO_core eAwarding eEvaluation eQualification eRequest ePayment)
+          AVAILABLE_IMPLEMENTATIONS=(ePO_core)
           for implementation in "${AVAILABLE_IMPLEMENTATIONS[@]}"
           do
             echo "-------------------${implementation} transform---------------------------------"
