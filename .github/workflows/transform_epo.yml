@@ -1,27 +1,27 @@
-name: transform ePO and ePO modules XMIs
+name: transform UML model
 on:
   push:
     branches:
       - "**"
-      - "!demo"
-      - "!develop"
-      - "!main"
-      - "!master"
-    paths:
-      - "implementation/ePO_core/xmi_conceptual_model/ePO_core.xml"
-      # - "implementation/eCatalogue/xmi_conceptual_model/eCatalogue.xml"
-      # - "implementation/eNotice/xmi_conceptual_model/eNotice.xml"
-      # - "implementation/eOrdering/xmi_conceptual_model/eOrdering.xml"
-      # - "implementation/eFulfilment/xmi_conceptual_model/eFulfilment.xml"
-      # - "implementation/eContract/xmi_conceptual_model/eContract.xml"
-      # - "implementation/eInvoicing/xmi_conceptual_model/eInvoicing.xml"
-      # - "implementation/eAccess/xmi_conceptual_model/eAccess.xml"
-      # - "implementation/eSubmission/xmi_conceptual_model/eSubmission.xml"
-      # - "implementation/eEvaluation/xmi_conceptual_model/eEvaluation.xml"
-      # - "implementation/eAwarding/xmi_conceptual_model/eAwarding.xml"
-      # - "implementation/eQualification/xmi_conceptual_model/eQualification.xml"
-      # - "implementation/eRequest/xmi_conceptual_model/eRequest.xml"
-      # - "implementation/ePayment/xmi_conceptual_model/ePayment.xml"
+      # - "implementation/eAccess/xmi_conceptual_model/eAccess_CM.xml"
+      # - "implementation/eAwarding/xmi_conceptual_model/eAwarding_CM.xml"
+      # - "implementation/eCatalogue/xmi_conceptual_model/eCatalogue_CM.xml"
+      # - "implementation/eContract/xmi_conceptual_model/eContract_CM.xml"
+      # - "implementation/eEvaluation/xmi_conceptual_model/eEvaluation_CM.xml"
+      # - "implementation/eFulfilment/xmi_conceptual_model/eFulfilment_CM.xml"
+      # - "implementation/eInvoicing/xmi_conceptual_model/eInvoicing_CM.xml"
+      # - "implementation/eNotice/xmi_conceptual_model/eNotice_CM.xml"
+      # - "implementation/eOrdering/xmi_conceptual_model/eOrdering_CM.xml"
+      # - "implementation/ePayment/xmi_conceptual_model/ePayment_CM.xml"
+      - "implementation/ePO_core/xmi_conceptual_model/ePO_core_CM.xml"
+      # - "implementation/eQualification/xmi_conceptual_model/eQualification_CM.xml"
+      # - "implementation/eRequest/xmi_conceptual_model/eRequest_CM.xml"
+      # - "implementation/eSubmission/xmi_conceptual_model/eSubmission_CM.xml"
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
 
 jobs:
   report_and_glossary:
@@ -35,14 +35,13 @@ jobs:
 
       - name: get model2owl
         run: |
-          git clone --branch release/3.1.0 https://github.com/OP-TED/model2owl.git
+          git clone --branch release/3.1.0 https://github.com/OP-TED/model2owl.git 
           pwd
-
 
       - name: get-saxon
         run: pwd && cd model2owl && make get-saxon
 
-# (eInvoicing eOrdering eFulfilment eCatalogue eNotice eContract eAccess eSubmission ePO_core eAwarding eEvaluation eQualification eRequest ePayment)
+# (eAccess eAwarding eCatalogue eContract eEvaluation eFulfilment eInvoicing eNotice eOrdering ePayment ePO_core eQualification eRequest eSubmission)
       - name: generate convention report and glossary
         run: |
           AVAILABLE_IMPLEMENTATIONS=(ePO_core)
@@ -53,7 +52,7 @@ jobs:
             cat model2owl/config-proxy.xsl
 
 
-            CM_FILE_NAME=$(echo "${implementation}.xml")
+            CM_FILE_NAME=$(echo "${implementation}_CM.xml")
             CM_FILE_PATH=$(echo "implementation/$implementation/xmi_conceptual_model/${CM_FILE_NAME}")
             NS_XML_FILE_PATH="../implementation/${implementation}/model2owl-config/namespaces.xml"
 
@@ -74,7 +73,8 @@ jobs:
               XMI_INPUT_FILE_PATH=../$CM_FILE_PATH \
               OUTPUT_CONVENTION_REPORT_PATH=../$OUTPUT_CONVENTION_REPORT_PATH \
               NAMESPACES_USER_XML_FILE_PATH=${NS_XML_FILE_PATH}
-            make generate-glossary XMI_INPUT_FILE_PATH=../$CM_FILE_PATH \
+            make generate-glossary \
+              XMI_INPUT_FILE_PATH=../$CM_FILE_PATH \
               OUTPUT_GLOSSARY_PATH=../$OUTPUT_GLOSSARY_PATH \
               NAMESPACES_USER_XML_FILE_PATH=${NS_XML_FILE_PATH}
 
@@ -90,20 +90,15 @@ jobs:
           mkdir -p merge-xmis
           for implementation in "${AVAILABLE_IMPLEMENTATIONS[@]}"
           do
-            cp ../implementation/$implementation/xmi_conceptual_model/e*.xml merge-xmis
+            cp ../implementation/$implementation/xmi_conceptual_model/*_CM.xml merge-xmis
           done
           ls merge-xmis
 
-          make merge-xmi FIRST_XMI_TO_BE_MERGED_FILE_PATH=merge-xmis/ePO_core.xml MERGED_XMIS_FILE_NAME=ePO_combined.xmi
+          make merge-xmi FIRST_XMI_TO_BE_MERGED_FILE_PATH=merge-xmis/eAccess_CM.xml
 
           echo "merged XMI file"
           ls output/combined-xmi
         shell: bash
-
-      - name: change config to core
-        run: |
-          sed -i "s/test\/ePO-default-config/..\/implementation\/ePO_core\/model2owl-config/g" model2owl/config-proxy.xsl
-          cat model2owl/config-proxy.xsl
 
       - name: generate combined glossary from the merged xmi
         run: |
@@ -112,15 +107,9 @@ jobs:
           echo "NS_XML_FILE_PATH is $NS_XML_FILE_PATH"
           cd model2owl
           make generate-glossary \
-            XMI_INPUT_FILE_PATH=output/combined-xmi/ePO_combined.xmi \
+            XMI_INPUT_FILE_PATH=output/combined-xmi/ontologies-combined.xmi \
             OUTPUT_GLOSSARY_PATH=../$OUTPUT_GLOSSARY_PATH \
             NAMESPACES_USER_XML_FILE_PATH=${NS_XML_FILE_PATH}
-
-#      - name: generate widoco
-#        run: |
-#          cd model2owl
-#          make generate-html-docs-from-rdf WIDOCO_RDF_INPUT_FILE_PATH=../implementation/ePO/owl_ontology/ePO_CM-core.rdf WIDOCO_OUTPUT_FOLDER_PATH=../implementation/ePO/widoco
-#        shell: bash
 
       - name: remove unnecessary files
         run: |
@@ -160,7 +149,7 @@ jobs:
 
       - name: get model2owl
         run: |
-          git clone --branch alt-saxon-source https://github.com/OP-TED/model2owl.git
+          git clone --branch release/3.1.0 https://github.com/OP-TED/model2owl.git 
           pwd
 
       - name: get-saxon
@@ -172,16 +161,16 @@ jobs:
       - name: transform step
         run: |
           AVAILABLE_IMPLEMENTATIONS=(ePO_core)
-          for implementation in "${AVAILABLE_IMPLEMENTATIONS[@]}"
+                  for implementation in "${AVAILABLE_IMPLEMENTATIONS[@]}"
           do
             echo "-------------------${implementation} transform---------------------------------"
             sed -i "s/test\/ePO-default-config/..\/implementation\/${implementation}\/model2owl-config/g" model2owl/config-proxy.xsl
             cat model2owl/config-proxy.xsl
 
 
-            CM_FILE_NAME=$(echo "${implementation}.xml")
-            NS_XML_FILE_PATH="../implementation/${implementation}/model2owl-config/namespaces.xml"
+            CM_FILE_NAME=$(echo "${implementation}_CM.xml")
             CM_FILE_PATH=$(echo "implementation/$implementation/xmi_conceptual_model/${CM_FILE_NAME}")
+            NS_XML_FILE_PATH="../implementation/${implementation}/model2owl-config/namespaces.xml"
             OUTPUT_PATH_OWL=$(echo "implementation/$implementation/owl_ontology/")
             OUTPUT_PATH_SHACL=$(echo "implementation/$implementation/shacl_shapes/")
 
@@ -209,11 +198,12 @@ jobs:
               NAMESPACES_USER_XML_FILE_PATH=${NS_XML_FILE_PATH}
 
             echo "+++++++++++++++++transform to turtle++++++++++++++++++++++++++++"
-            echo $(ls ${OUTPUT_PATH_OWL}*.rdf)
+            echo $(ls ../${OUTPUT_PATH_OWL}*.rdf)
             make convert-rdf-to-turtle \
               ONTOLOGY_FOLDER_PATH=../$OUTPUT_PATH_OWL \
               NAMESPACES_USER_XML_FILE_PATH=${NS_XML_FILE_PATH}
-            echo $(ls ${OUTPUT_PATH_SHACL}*.rdf)
+
+            echo $(ls ../${OUTPUT_PATH_SHACL}*.rdf)
             make convert-rdf-to-turtle \
               ONTOLOGY_FOLDER_PATH=../$OUTPUT_PATH_SHACL \
               NAMESPACES_USER_XML_FILE_PATH=${NS_XML_FILE_PATH}
@@ -252,7 +242,7 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: ${{ github.ref }}
-
+  
   generate_jsonld_context:
     needs: transform
     runs-on: ubuntu-latest
@@ -263,7 +253,7 @@ jobs:
 
       - name: get model2owl
         run: |
-          git clone --branch develop https://github.com/OP-TED/model2owl.git 
+          git clone --branch release/3.1.0 https://github.com/OP-TED/model2owl.git 
           pwd
 
       - name: get-saxon
@@ -274,7 +264,7 @@ jobs:
 
       - name: generate JSON-LD context
         run: |
-          AVAILABLE_IMPLEMENTATIONS=(demo_ontology demo_ontology_module)
+          AVAILABLE_IMPLEMENTATIONS=(ePO_core)
           for implementation in "${AVAILABLE_IMPLEMENTATIONS[@]}"
           do
             echo "-------------------${implementation} JSON-LD context generation---------------------------------"
@@ -349,7 +339,7 @@ jobs:
 
       - name: get model2owl
         run: |
-          git clone --branch develop https://github.com/OP-TED/model2owl.git 
+          git clone --branch release/3.1.0 https://github.com/OP-TED/model2owl.git 
           pwd
 
       - name: get-saxon
@@ -366,7 +356,7 @@ jobs:
 
       - name: generate ReSpec documentation
         run: |
-          AVAILABLE_IMPLEMENTATIONS=(demo_ontology demo_ontology_module)
+          AVAILABLE_IMPLEMENTATIONS=(ePO_core)
           for implementation in "${AVAILABLE_IMPLEMENTATIONS[@]}"
           do
             echo "-------------------${implementation} ReSpec generation---------------------------------"
@@ -512,177 +502,177 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: ${{ github.ref }}
 
-  build_pages:
-    needs: generate_respec
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          ref: ${{ github.ref }}
+  # build_pages:
+  #   needs: generate_respec
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v4
+  #       with:
+  #         ref: ${{ github.ref }}
           
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
+  #     - name: Setup Pages
+  #       uses: actions/configure-pages@v4
         
-      - name: Prepare ReSpec documentation for Pages
-        run: |
-          # Define available implementations
-          AVAILABLE_IMPLEMENTATIONS=(demo_ontology demo_ontology_module)
+  #     - name: Prepare ReSpec documentation for Pages
+  #       run: |
+  #         # Define available implementations
+  #         AVAILABLE_IMPLEMENTATIONS=(ePO_core)
           
-          # Create a temporary directory for Pages content
-          mkdir -p _site
+  #         # Create a temporary directory for Pages content
+  #         mkdir -p _site
           
-          # Track found implementations
-          FOUND_IMPLEMENTATIONS=()
+  #         # Track found implementations
+  #         FOUND_IMPLEMENTATIONS=()
           
-          # Copy ReSpec documentation for each implementation
-          for implementation in "${AVAILABLE_IMPLEMENTATIONS[@]}"
-          do
-            if [ -d "implementation/$implementation/respec" ]; then
-              echo "Found ReSpec documentation for $implementation, copying to _site..."
-              mkdir -p "_site/$implementation"
-              cp -r "implementation/$implementation/respec/"* "_site/$implementation/"
-              FOUND_IMPLEMENTATIONS+=("$implementation")
-            else
-              echo "No ReSpec documentation found for $implementation"
-            fi
-          done
+  #         # Copy ReSpec documentation for each implementation
+  #         for implementation in "${AVAILABLE_IMPLEMENTATIONS[@]}"
+  #         do
+  #           if [ -d "implementation/$implementation/respec" ]; then
+  #             echo "Found ReSpec documentation for $implementation, copying to _site..."
+  #             mkdir -p "_site/$implementation"
+  #             cp -r "implementation/$implementation/respec/"* "_site/$implementation/"
+  #             FOUND_IMPLEMENTATIONS+=("$implementation")
+  #           else
+  #             echo "No ReSpec documentation found for $implementation"
+  #           fi
+  #         done
           
-          # Create dynamic landing page
-          echo "Creating dynamic landing page..."
-          cat > _site/index.html << 'EOF'
-          <!DOCTYPE html>
-          <html lang="en">
-          <head>
-              <meta charset="UTF-8">
-              <meta name="viewport" content="width=device-width, initial-scale=1.0">
-              <title>Ontology Documentation</title>
-              <style>
-                  body { 
-                      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
-                      margin: 0; 
-                      padding: 40px; 
-                      background-color: #f8f9fa;
-                      line-height: 1.6;
-                  }
-                  .container { 
-                      max-width: 1000px; 
-                      margin: 0 auto; 
-                      background: white;
-                      border-radius: 8px;
-                      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-                      padding: 40px;
-                  }
-                  h1 { 
-                      color: #2c3e50; 
-                      text-align: center;
-                      margin-bottom: 40px;
-                      font-size: 2.5em;
-                  }
-                  .implementations-grid {
-                      display: grid;
-                      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-                      gap: 20px;
-                      margin-top: 30px;
-                  }
-                  .card { 
-                      border: 1px solid #e1e8ed; 
-                      padding: 25px; 
-                      border-radius: 8px; 
-                      background: #fff;
-                      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-                      transition: transform 0.2s, box-shadow 0.2s;
-                  }
-                  .card:hover {
-                      transform: translateY(-2px);
-                      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-                  }
-                  .card h2 {
-                      color: #34495e;
-                      margin-top: 0;
-                      font-size: 1.4em;
-                  }
-                  .card p {
-                      color: #7f8c8d;
-                      margin-bottom: 20px;
-                  }
-                  a { 
-                      color: #3498db; 
-                      text-decoration: none; 
-                      font-weight: 500;
-                      display: inline-block;
-                      padding: 10px 20px;
-                      background: #ecf0f1;
-                      border-radius: 5px;
-                      transition: background-color 0.2s;
-                  }
-                  a:hover { 
-                      background: #3498db;
-                      color: white;
-                  }
-                  .no-docs {
-                      text-align: center;
-                      color: #95a5a6;
-                      font-style: italic;
-                      padding: 40px;
-                  }
-                  .implementation-name {
-                      text-transform: capitalize;
-                  }
-              </style>
-          </head>
-          <body>
-              <div class="container">
-                  <h1>Ontology Documentation</h1>
-          EOF
+  #         # Create dynamic landing page
+  #         echo "Creating dynamic landing page..."
+  #         cat > _site/index.html << 'EOF'
+  #         <!DOCTYPE html>
+  #         <html lang="en">
+  #         <head>
+  #             <meta charset="UTF-8">
+  #             <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  #             <title>Ontology Documentation</title>
+  #             <style>
+  #                 body { 
+  #                     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
+  #                     margin: 0; 
+  #                     padding: 40px; 
+  #                     background-color: #f8f9fa;
+  #                     line-height: 1.6;
+  #                 }
+  #                 .container { 
+  #                     max-width: 1000px; 
+  #                     margin: 0 auto; 
+  #                     background: white;
+  #                     border-radius: 8px;
+  #                     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  #                     padding: 40px;
+  #                 }
+  #                 h1 { 
+  #                     color: #2c3e50; 
+  #                     text-align: center;
+  #                     margin-bottom: 40px;
+  #                     font-size: 2.5em;
+  #                 }
+  #                 .implementations-grid {
+  #                     display: grid;
+  #                     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  #                     gap: 20px;
+  #                     margin-top: 30px;
+  #                 }
+  #                 .card { 
+  #                     border: 1px solid #e1e8ed; 
+  #                     padding: 25px; 
+  #                     border-radius: 8px; 
+  #                     background: #fff;
+  #                     box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  #                     transition: transform 0.2s, box-shadow 0.2s;
+  #                 }
+  #                 .card:hover {
+  #                     transform: translateY(-2px);
+  #                     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  #                 }
+  #                 .card h2 {
+  #                     color: #34495e;
+  #                     margin-top: 0;
+  #                     font-size: 1.4em;
+  #                 }
+  #                 .card p {
+  #                     color: #7f8c8d;
+  #                     margin-bottom: 20px;
+  #                 }
+  #                 a { 
+  #                     color: #3498db; 
+  #                     text-decoration: none; 
+  #                     font-weight: 500;
+  #                     display: inline-block;
+  #                     padding: 10px 20px;
+  #                     background: #ecf0f1;
+  #                     border-radius: 5px;
+  #                     transition: background-color 0.2s;
+  #                 }
+  #                 a:hover { 
+  #                     background: #3498db;
+  #                     color: white;
+  #                 }
+  #                 .no-docs {
+  #                     text-align: center;
+  #                     color: #95a5a6;
+  #                     font-style: italic;
+  #                     padding: 40px;
+  #                 }
+  #                 .implementation-name {
+  #                     text-transform: capitalize;
+  #                 }
+  #             </style>
+  #         </head>
+  #         <body>
+  #             <div class="container">
+  #                 <h1>Ontology Documentation</h1>
+  #         EOF
           
-          # Add cards for each found implementation
-          if [ ${#FOUND_IMPLEMENTATIONS[@]} -gt 0 ]; then
-            echo '        <div class="implementations-grid">' >> _site/index.html
-            for implementation in "${FOUND_IMPLEMENTATIONS[@]}"
-            do
-              # Convert implementation name to readable format
-              readable_name=$(echo "$implementation" | sed 's/_/ /g' | sed 's/\b\w/\U&/g')
+  #         # Add cards for each found implementation
+  #         if [ ${#FOUND_IMPLEMENTATIONS[@]} -gt 0 ]; then
+  #           echo '        <div class="implementations-grid">' >> _site/index.html
+  #           for implementation in "${FOUND_IMPLEMENTATIONS[@]}"
+  #           do
+  #             # Convert implementation name to readable format
+  #             readable_name=$(echo "$implementation" | sed 's/_/ /g' | sed 's/\b\w/\U&/g')
               
-              cat >> _site/index.html << EOF
-                  <div class="card">
-                      <h2 class="implementation-name">$readable_name</h2>
-                      <p>Complete ReSpec documentation including semantic artifacts (OWL, SHACL, JSON-LD context files).</p>
-                      <a href="./$implementation/">View Documentation →</a>
-                  </div>
-          EOF
-            done
-            echo '        </div>' >> _site/index.html
-          else
-            cat >> _site/index.html << 'EOF'
-                  <div class="no-docs">
-                      <h2>Documentation Not Available</h2>
-                      <p>No ReSpec documentation has been generated yet.</p>
-                      <p>Please run the transformation workflow first to generate the documentation.</p>
-                  </div>
-          EOF
-          fi
+  #             cat >> _site/index.html << EOF
+  #                 <div class="card">
+  #                     <h2 class="implementation-name">$readable_name</h2>
+  #                     <p>Complete ReSpec documentation including semantic artifacts (OWL, SHACL, JSON-LD context files).</p>
+  #                     <a href="./$implementation/">View Documentation →</a>
+  #                 </div>
+  #         EOF
+  #           done
+  #           echo '        </div>' >> _site/index.html
+  #         else
+  #           cat >> _site/index.html << 'EOF'
+  #                 <div class="no-docs">
+  #                     <h2>Documentation Not Available</h2>
+  #                     <p>No ReSpec documentation has been generated yet.</p>
+  #                     <p>Please run the transformation workflow first to generate the documentation.</p>
+  #                 </div>
+  #         EOF
+  #         fi
           
-          # Close HTML
-          cat >> _site/index.html << 'EOF'
-              </div>
-          </body>
-          </html>
-          EOF
+  #         # Close HTML
+  #         cat >> _site/index.html << 'EOF'
+  #             </div>
+  #         </body>
+  #         </html>
+  #         EOF
           
-          echo "Found implementations: ${FOUND_IMPLEMENTATIONS[*]}"
-          find _site -type f -name "*.html" | head -10
+  #         echo "Found implementations: ${FOUND_IMPLEMENTATIONS[*]}"
+  #         find _site -type f -name "*.html" | head -10
           
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+  #     - name: Upload artifact
+  #       uses: actions/upload-pages-artifact@v3
 
-  deploy_pages:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build_pages
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4  
+  # deploy_pages:
+  #   environment:
+  #     name: github-pages
+  #     url: ${{ steps.deployment.outputs.page_url }}
+  #   runs-on: ubuntu-latest
+  #   needs: build_pages
+  #   steps:
+  #     - name: Deploy to GitHub Pages
+  #       id: deployment
+  #       uses: actions/deploy-pages@v4
