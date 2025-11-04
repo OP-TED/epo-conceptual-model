@@ -83,33 +83,33 @@ jobs:
           done
         shell: bash
 
-      - name: merge implementations xmi files into one
-        run: |
-          AVAILABLE_IMPLEMENTATIONS=(ePO_core)
-          cd model2owl
-          mkdir -p merge-xmis
-          for implementation in "${AVAILABLE_IMPLEMENTATIONS[@]}"
-          do
-            cp ../implementation/$implementation/xmi_conceptual_model/*_CM.xml merge-xmis
-          done
-          ls merge-xmis
+      # - name: merge implementations xmi files into one
+      #   run: |
+      #     AVAILABLE_IMPLEMENTATIONS=(ePO_core)
+      #     cd model2owl
+      #     mkdir -p merge-xmis
+      #     for implementation in "${AVAILABLE_IMPLEMENTATIONS[@]}"
+      #     do
+      #       cp ../implementation/$implementation/xmi_conceptual_model/*_CM.xml merge-xmis
+      #     done
+      #     ls merge-xmis
 
-          make merge-xmi FIRST_XMI_TO_BE_MERGED_FILE_PATH=merge-xmis/eAccess_CM.xml
+      #     make merge-xmi FIRST_XMI_TO_BE_MERGED_FILE_PATH=merge-xmis/eAccess_CM.xml
 
-          echo "merged XMI file"
-          ls output/combined-xmi
-        shell: bash
+      #     echo "merged XMI file"
+      #     ls output/combined-xmi
+      #   shell: bash
 
-      - name: generate combined glossary from the merged xmi
-        run: |
-          # get a namespaces file from an arbitrary module
-          NS_XML_FILE_PATH=$(realpath $(find . -type f -path './implementation/*/model2owl-config/namespaces.xml' | head -1))
-          echo "NS_XML_FILE_PATH is $NS_XML_FILE_PATH"
-          cd model2owl
-          make generate-glossary \
-            XMI_INPUT_FILE_PATH=output/combined-xmi/ontologies-combined.xmi \
-            OUTPUT_GLOSSARY_PATH=../$OUTPUT_GLOSSARY_PATH \
-            NAMESPACES_USER_XML_FILE_PATH=${NS_XML_FILE_PATH}
+      # - name: generate combined glossary from the merged xmi
+      #   run: |
+      #     # get a namespaces file from an arbitrary module
+      #     NS_XML_FILE_PATH=$(realpath $(find . -type f -path './implementation/*/model2owl-config/namespaces.xml' | head -1))
+      #     echo "NS_XML_FILE_PATH is $NS_XML_FILE_PATH"
+      #     cd model2owl
+      #     make generate-glossary \
+      #       XMI_INPUT_FILE_PATH=output/combined-xmi/ontologies-combined.xmi \
+      #       OUTPUT_GLOSSARY_PATH=../$OUTPUT_GLOSSARY_PATH \
+      #       NAMESPACES_USER_XML_FILE_PATH=${NS_XML_FILE_PATH}
 
       - name: remove unnecessary files
         run: |
