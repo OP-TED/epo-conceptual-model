@@ -686,7 +686,8 @@ core-shape:epo-GreenProcurementShape a sh:NodeShape ;
     rdfs:label "Green procurement" ;
     rdfs:comment "Approach whereby Buyers seek to procure with a reduced Environmental Impact. Additional Information: The approach may apply to the complete life cycle. The reduced Environmental Impact is in comparison to goods, services and works with the same primary function that would otherwise be procured. Tightly related are article 68 - Life-cycle costing and article 67 - most economically advantageous Tender (see GPP handbook) https://ec.europa.eu/environment/gpp/pdf/Buying-Green-Handbook-3rd-Edition.pdf An instance of the class GreenProcurement is represented in eForms with the code \"env-imp\" defined in the codelist Strategic-Procurement.Paragraphs) https://ec.europa.eu/environment/gpp/pdf/Buying-Green-Handbook-3rd-Edition.pdf" ;
     rdfs:isDefinedBy core-shape:core-shape ;
-    sh:property core-shape:epo-GreenProcurement-epo-fulfillsRequirement,
+    sh:property core-shape:epo-GreenProcurement-epo-fulfillsGreenRequirement,
+        core-shape:epo-GreenProcurement-epo-fulfillsRequirement,
         core-shape:epo-GreenProcurement-epo-usesCleanVehicleDirective ;
     sh:targetClass :GreenProcurement .
 
@@ -4027,6 +4028,13 @@ core-shape:epo-Fund-epo-hasURL a sh:PropertyShape ;
     sh:maxCount 1 ;
     sh:name "Has URL" ;
     sh:path :hasURL .
+
+core-shape:epo-GreenProcurement-epo-fulfillsGreenRequirement a sh:PropertyShape ;
+    rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class skos:Concept ;
+    sh:description "The requirement to which the concept meets." ;
+    sh:name "Fulfills green requirement" ;
+    sh:path :fulfillsGreenRequirement .
 
 core-shape:epo-GreenProcurement-epo-fulfillsRequirement a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
