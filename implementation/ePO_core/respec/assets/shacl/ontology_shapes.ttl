@@ -1,12 +1,10 @@
 @prefix : <http://data.europa.eu/a4g/ontology#> .
 @prefix adms: <http://www.w3.org/ns/adms#> .
-@prefix at-voc: <http://publications.europa.eu/resource/authority/> .
 @prefix cccev: <http://data.europa.eu/m8g/> .
 @prefix core-shape: <http://data.europa.eu/a4g/data-shape#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix eli: <http://data.europa.eu/eli/ontology#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
-@prefix locn: <http://www.w3.org/ns/locn#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix person: <http://www.w3.org/ns/person#> .
@@ -18,136 +16,42 @@
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-core-shape:adms-IdentifierShape a sh:NodeShape ;
-    rdfs:label "Identifier" ;
-    rdfs:comment "External concept defined by <xref scope=\"external\" href=\"https://semiceu.github.io/ADMS/releases/2.00/#Identifier\"><foreign otherprops=\"#0000ff\"><u>https://semiceu.github.io/ADMS/releases/2.00/#Identifier</u></foreign></xref>" ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:property core-shape:adms-Identifier-adms-schemaAgency,
-        core-shape:adms-Identifier-epo-hasExtension,
+core-shape:adms-IdentifierShape sh:property core-shape:adms-Identifier-epo-hasExtension,
         core-shape:adms-Identifier-epo-hasScheme,
-        core-shape:adms-Identifier-epo-hasSchemeVersion,
-        core-shape:adms-Identifier-skos-notation ;
-    sh:targetClass adms:Identifier .
+        core-shape:adms-Identifier-epo-hasSchemeVersion .
 
-core-shape:cccev-ConstraintShape a sh:NodeShape ;
-    rdfs:label "Constraint" ;
-    rdfs:comment "External concept defined by <xref scope=\"external\" href=\"http://data.europa.eu/m8g/Constraint\"><foreign otherprops=\"#0000ff\"><u>http://data.europa.eu/m8g/Constraint</u></foreign></xref>" ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:property core-shape:cccev-Constraint-cccev-constrains,
-        core-shape:cccev-Constraint-epo-hasThresholdType,
-        core-shape:cccev-Constraint-epo-hasThresholdValue ;
-    sh:targetClass cccev:Constraint .
+core-shape:cccev-ConstraintShape sh:property core-shape:cccev-Constraint-epo-hasThresholdType,
+        core-shape:cccev-Constraint-epo-hasThresholdValue .
 
-core-shape:cccev-CriterionShape a sh:NodeShape ;
-    rdfs:label "Criterion" ;
-    rdfs:comment "External concept defined by <xref scope=\"external\" href=\"http://data.europa.eu/m8g/Criterion\"><foreign otherprops=\"#0000ff\"><u>http://data.europa.eu/m8g/Criterion</u></foreign></xref>" ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:property core-shape:cccev-Criterion-cccev-bias,
-        core-shape:cccev-Criterion-cccev-weight,
-        core-shape:cccev-Criterion-cccev-weightingConsiderationDescription,
-        core-shape:cccev-Criterion-dct-type ;
-    sh:targetClass cccev:Criterion .
+core-shape:cccev-Criterion-dct-type a sh:PropertyShape ;
+    sh:class skos:Concept ;
+    sh:path dcterms:type .
 
-core-shape:cccev-EvidenceShape a sh:NodeShape ;
-    rdfs:label "Evidence" ;
-    rdfs:comment "External concept defined by <xref scope=\"external\" href=\"http://data.europa.eu/m8g/Evidence\"><foreign otherprops=\"#0000ff\"><u>http://data.europa.eu/m8g/Evidence</u></foreign></xref>" ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:property core-shape:cccev-Evidence-adms-identifier,
-        core-shape:cccev-Evidence-cccev-confidentialityLevelType,
-        core-shape:cccev-Evidence-cccev-supportsConcept,
-        core-shape:cccev-Evidence-cccev-supportsRequirement,
-        core-shape:cccev-Evidence-cccev-supportsValue,
-        core-shape:cccev-Evidence-dct-conformsTo,
-        core-shape:cccev-Evidence-dct-description,
-        core-shape:cccev-Evidence-dct-title,
-        core-shape:cccev-Evidence-epo-hasURL,
-        core-shape:cccev-Evidence-epo-hasValidityPeriod ;
-    sh:targetClass cccev:Evidence .
+core-shape:cccev-Evidence-cccev-confidentialityLevelType a sh:PropertyShape ;
+    sh:class skos:Concept ;
+    sh:path cccev:confidentialityLevelType .
 
-core-shape:cccev-EvidenceTypeListShape sh:property core-shape:cccev-EvidenceTypeList-adms-identifier .
+core-shape:cccev-EvidenceShape sh:property core-shape:cccev-Evidence-epo-hasURL,
+        core-shape:cccev-Evidence-epo-hasValidityPeriod .
 
-core-shape:cccev-EvidenceTypeShape sh:property core-shape:cccev-EvidenceType-adms-identifier,
-        core-shape:cccev-EvidenceType-cccev-validityPeriodConstraint .
-
-core-shape:cccev-InformationConceptShape a sh:NodeShape ;
-    rdfs:label "Information concept" ;
-    rdfs:comment "External concept defined by <xref scope=\"external\" href=\"http://data.europa.eu/m8g/InformationConcept\"><foreign otherprops=\"#0000ff\"><u>http://data.europa.eu/m8g/InformationConcept</u></foreign></xref>" ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:property core-shape:cccev-InformationConcept-adms-identifier,
-        core-shape:cccev-InformationConcept-dct-description,
-        core-shape:cccev-InformationConcept-skos-prefLabel ;
-    sh:targetClass cccev:InformationConcept .
-
-core-shape:cccev-InformationRequirementShape a sh:NodeShape ;
-    rdfs:label "Information requirement" ;
-    rdfs:comment "External concept defined by <xref scope=\"external\" href=\"http://data.europa.eu/m8g/InformationRequirement\"><foreign otherprops=\"#0000ff\"><u>http://data.europa.eu/m8g/InformationRequirement</u></foreign></xref>" ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:property core-shape:cccev-InformationRequirement-epo-concernsLot,
+core-shape:cccev-InformationRequirementShape sh:property core-shape:cccev-InformationRequirement-epo-concernsLot,
         core-shape:cccev-InformationRequirement-epo-concernsLotGroup,
         core-shape:cccev-InformationRequirement-epo-concernsProcedure,
-        core-shape:cccev-InformationRequirement-epo-hasConstraint ;
-    sh:targetClass cccev:InformationRequirement .
+        core-shape:cccev-InformationRequirement-epo-hasConstraint .
 
-core-shape:cccev-RequirementShape a sh:NodeShape ;
-    rdfs:label "Requirement" ;
-    rdfs:comment "External concept defined by <xref scope=\"external\" href=\"http://data.europa.eu/m8g/Requirement\"><foreign otherprops=\"#0000ff\"><u>http://data.europa.eu/m8g/Requirement</u></foreign></xref> Additional Information: To stay consistent to how identification is realised in the eProcurement ontology, we switch to using `adms:identifier` instead of `dct:identifier` as per CCCEV specification." ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:property core-shape:cccev-Requirement-adms-identifier,
-        core-shape:cccev-Requirement-cccev-hasConcept,
-        core-shape:cccev-Requirement-cccev-hasEvidenceTypeList,
-        core-shape:cccev-Requirement-cccev-hasRequirement,
-        core-shape:cccev-Requirement-cccev-isDerivedFrom,
-        core-shape:cccev-Requirement-dct-description,
-        core-shape:cccev-Requirement-skos-prefLabel ;
-    sh:targetClass cccev:Requirement .
-
-core-shape:cccev-SupportedValueShape sh:property core-shape:cccev-SupportedValue-cccev-providesValueFor .
-
-core-shape:cpov-ContactPointShape a sh:NodeShape ;
-    rdfs:label "Contact point" ;
-    rdfs:comment "External concept defined by <xref scope=\"external\" href=\"http://data.europa.eu/m8g/ContactPoint\"><foreign otherprops=\"#0000ff\"><u>http://data.europa.eu/m8g/ContactPoint</u></foreign></xref>" ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:property core-shape:cpov-ContactPoint-cpov-email,
-        core-shape:cpov-ContactPoint-cpov-telephone,
-        core-shape:cpov-ContactPoint-dct-description,
-        core-shape:cpov-ContactPoint-epo-hasContactName,
+core-shape:cpov-ContactPointShape sh:property core-shape:cpov-ContactPoint-epo-hasContactName,
         core-shape:cpov-ContactPoint-epo-hasFax,
-        core-shape:cpov-ContactPoint-epo-hasInternetAddress,
-        core-shape:cpov-ContactPoint-locn-address ;
-    sh:targetClass cccev:ContactPoint .
+        core-shape:cpov-ContactPoint-epo-hasInternetAddress .
 
-core-shape:cpov-PublicOrganisationShape a sh:NodeShape ;
-    rdfs:label "Public organisation" ;
-    rdfs:comment "External concept defined by <xref scope=\"external\" href=\"http://data.europa.eu/m8g/PublicOrganisation\"><foreign otherprops=\"#0000ff\"><u>http://data.europa.eu/m8g/PublicOrganisation</u></foreign></xref>" ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:targetClass cccev:PublicOrganisation .
+core-shape:cv-ChannelShape sh:property core-shape:cv-Channel-epo-hasAddressURL,
+        core-shape:cv-Channel-epo-hasEndpointIdentifier .
 
-core-shape:cv-ChannelShape a sh:NodeShape ;
-    rdfs:label "Channel" ;
-    rdfs:comment "External concept defined by <xref scope=\"external\" href=\"http://data.europa.eu/m8g/Channel\"><foreign otherprops=\"#0000ff\"><u>http://data.europa.eu/m8g/Channel</u></foreign></xref> Additional Information Software solutions and electronic devices for communication and exchange of information between Buyers and economic Operators. Lots may use ad-hoc electronic means of communication that are not generally available such as specific solutions for secure and dedicated communication or non-standard eCatalogues. See also Directive recitals 53 to 56." ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:property core-shape:cv-Channel-dct-description,
-        core-shape:cv-Channel-epo-hasAddressURL,
-        core-shape:cv-Channel-epo-hasEndpointIdentifier ;
-    sh:targetClass cccev:Channel .
+core-shape:dct-LocationShape sh:property core-shape:dct-Location-epo-hasCountryCode,
+        core-shape:dct-Location-epo-hasNutsCode .
 
-core-shape:dct-LocationShape a sh:NodeShape ;
-    rdfs:label "Location" ;
-    rdfs:comment "External concept defined by <xref scope=\"external\" href=\"https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/Location\"><foreign otherprops=\"#0000ff\"><u>https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/Location</u></foreign></xref>" ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:property core-shape:dct-Location-adms-identifier,
-        core-shape:dct-Location-epo-hasCountryCode,
-        core-shape:dct-Location-epo-hasNutsCode,
-        core-shape:dct-Location-locn-address,
-        core-shape:dct-Location-locn-geographicIdentifier,
-        core-shape:dct-Location-locn-geographicName,
-        core-shape:dct-Location-locn-geometry ;
-    sh:targetClass dcterms:Location .
-
-core-shape:eli-LegalExpressionShape sh:property core-shape:eli-LegalExpression-dct-language,
-        core-shape:eli-LegalExpression-eli-uri_schema .
-
-core-shape:eli-LegalResourceSubdivisionShape sh:property core-shape:eli-LegalResourceSubdivision-eli-uri_schema .
+core-shape:eli-LegalExpression-dct-language a sh:PropertyShape ;
+    sh:class skos:Concept ;
+    sh:path dcterms:language .
 
 core-shape:epo-AccessTermShape a sh:NodeShape ;
     rdfs:label "Access term" ;
@@ -190,9 +94,7 @@ core-shape:epo-AgentInRoleShape a sh:NodeShape ;
     rdfs:label "Agent in role" ;
     rdfs:comment "Relative concept that ties an Agent to a part they play in a given Situational Context. Additional information: The classification of roles is based is based on the degree of involvement into the Procurement Process: - Primary (Procurement) Pole is directly involved in the Procurement Process; - Secondary (Procurement sub-) Role is secondary to the Procurement Process - Tertiary (Related) Role is not involved in the Procurement Process." ;
     rdfs:isDefinedBy core-shape:core-shape ;
-    sh:property core-shape:epo-AgentInRole-dct-description,
-        core-shape:epo-AgentInRole-dct-title,
-        core-shape:epo-AgentInRole-epo-contextualisedBy,
+    sh:property core-shape:epo-AgentInRole-epo-contextualisedBy,
         core-shape:epo-AgentInRole-epo-exposesChannel,
         core-shape:epo-AgentInRole-epo-hasContactPointInRole,
         core-shape:epo-AgentInRole-epo-playedBy ;
@@ -202,8 +104,7 @@ core-shape:epo-AssetShape a sh:NodeShape ;
     rdfs:label "Asset" ;
     rdfs:comment "Resource necessary for the provision of a service." ;
     rdfs:isDefinedBy core-shape:core-shape ;
-    sh:property core-shape:epo-Asset-dct-description,
-        core-shape:epo-Asset-epo-hasPredominance,
+    sh:property core-shape:epo-Asset-epo-hasPredominance,
         core-shape:epo-Asset-epo-hasSignificance ;
     sh:targetClass :Asset .
 
@@ -520,11 +421,7 @@ core-shape:epo-DocumentShape a sh:NodeShape ;
     rdfs:label "Document" ;
     rdfs:comment "A set of interrelated Business Information representing the Business facts and associated metadata. The information may be conveyed in any language, medium or form, including textual, numerical, graphic, cartographic, audio-visual forms, etc." ;
     rdfs:isDefinedBy core-shape:core-shape ;
-    sh:property core-shape:epo-Document-adms-identifier,
-        core-shape:epo-Document-dct-description,
-        core-shape:epo-Document-dct-issued,
-        core-shape:epo-Document-dct-title,
-        core-shape:epo-Document-epo-associatedWith,
+    sh:property core-shape:epo-Document-epo-associatedWith,
         core-shape:epo-Document-epo-hasAccessURL,
         core-shape:epo-Document-epo-hasAdditionalInformation,
         core-shape:epo-Document-epo-hasDispatchDate,
@@ -574,7 +471,6 @@ core-shape:epo-ElectronicSignatureShape a sh:NodeShape ;
     rdfs:label "Electronic signature" ;
     rdfs:comment "Data in electronic form which is attached to or logically associated with other data in electronic form and which is used by the signatory to sign. Additional information: The definition comes from REGULATION (EU) No 910/2014." ;
     rdfs:isDefinedBy core-shape:core-shape ;
-    sh:property core-shape:epo-ElectronicSignature-dct-description ;
     sh:targetClass :ElectronicSignature .
 
 core-shape:epo-EmploymentDocumentationShape a sh:NodeShape ;
@@ -675,10 +571,7 @@ core-shape:epo-FundShape a sh:NodeShape ;
     rdfs:label "Fund" ;
     rdfs:comment "A financial resource used to support the Procurement. Additional Information: In the context of EU, Funds can be divided into programmes, actions and projects. Examples of EU funds are: the European Structural and Investment Funds, European Social Fund (ESF), the Connecting Europe Facility (CEF) programme, or the ISA2 programme and its actions (e.g. Action 2016.05 European Public Procurement Initiative, which supports the eProcurement Ontology under sub-action 3). Funds may change between the lot and the contract, for example in the case of an emergency crisis, a contract may be financed by a budget that was not foreseen in the call." ;
     rdfs:isDefinedBy core-shape:core-shape ;
-    sh:property core-shape:epo-Fund-adms-identifier,
-        core-shape:epo-Fund-dct-description,
-        core-shape:epo-Fund-dct-title,
-        core-shape:epo-Fund-epo-hasFundProgramme,
+    sh:property core-shape:epo-Fund-epo-hasFundProgramme,
         core-shape:epo-Fund-epo-hasURL ;
     sh:targetClass :Fund .
 
@@ -726,8 +619,7 @@ core-shape:epo-LocalLegalBasisInformationShape a sh:NodeShape ;
     rdfs:label "Local legal basis information" ;
     rdfs:comment "Information about the legal basis at the level of the Member State." ;
     rdfs:isDefinedBy core-shape:core-shape ;
-    sh:property core-shape:epo-LocalLegalBasisInformation-dct-description,
-        core-shape:epo-LocalLegalBasisInformation-epo-concernsProcurementElement,
+    sh:property core-shape:epo-LocalLegalBasisInformation-epo-concernsProcurementElement,
         core-shape:epo-LocalLegalBasisInformation-epo-hasLegalBasis ;
     sh:targetClass :LocalLegalBasisInformation .
 
@@ -756,10 +648,7 @@ core-shape:epo-LotGroupShape a sh:NodeShape ;
     rdfs:label "Lot group" ;
     rdfs:comment "Combination of several Lots to conduct comparative assessment of the Tenders. Additional Information: The comparative assessment may refer to the Selection Criteria, Award and Value that apply to several Lots. Pending of discussion with eForms Member States may provide that, where more than one lot may be awarded to the same tenderer, contracting authorities may award contracts combining several or all lots where they have specified in the contract notice or in the invitation to confirm interest that they reserve the possibility of doing so and indicate the lots or groups of lots that may be combined." ;
     rdfs:isDefinedBy core-shape:core-shape ;
-    sh:property core-shape:epo-LotGroup-adms-identifier,
-        core-shape:epo-LotGroup-dct-description,
-        core-shape:epo-LotGroup-dct-title,
-        core-shape:epo-LotGroup-epo-hasEstimatedValue,
+    sh:property core-shape:epo-LotGroup-epo-hasEstimatedValue,
         core-shape:epo-LotGroup-epo-hasInternalIdentifier,
         core-shape:epo-LotGroup-epo-hasLaunchFrameworkAgreementMaximumValue,
         core-shape:epo-LotGroup-epo-isSMESuitable,
@@ -823,8 +712,7 @@ core-shape:epo-NonDisclosureAgreementTermShape a sh:NodeShape ;
     rdfs:label "Non disclosure agreement term" ;
     rdfs:comment "Conditions and stipulations about a non-disclosure agreement. Additional information: A non-disclosure agreement is a Contract between different parties which ensures information is not shared with other parties." ;
     rdfs:isDefinedBy core-shape:core-shape ;
-    sh:property core-shape:epo-NonDisclosureAgreementTerm-dct-description,
-        core-shape:epo-NonDisclosureAgreementTerm-epo-isNonDisclosureAgreementRequired ;
+    sh:property core-shape:epo-NonDisclosureAgreementTerm-epo-isNonDisclosureAgreementRequired ;
     sh:targetClass :NonDisclosureAgreementTerm .
 
 core-shape:epo-NonPublishedInformationShape a sh:NodeShape ;
@@ -1058,10 +946,7 @@ core-shape:epo-ProcurementElementShape a sh:NodeShape ;
     rdfs:label "Procurement element" ;
     rdfs:comment "Gathering class for critical/central elements in the Procurement Process. TODO: add definition Additional information: Alias: ProcurementComponent" ;
     rdfs:isDefinedBy core-shape:core-shape ;
-    sh:property core-shape:epo-ProcurementElement-adms-identifier,
-        core-shape:epo-ProcurementElement-dct-description,
-        core-shape:epo-ProcurementElement-dct-title,
-        core-shape:epo-ProcurementElement-epo-appliesForeignSubsidiesRegulation,
+    sh:property core-shape:epo-ProcurementElement-epo-appliesForeignSubsidiesRegulation,
         core-shape:epo-ProcurementElement-epo-doesNotRequireSelectionCriterionType,
         core-shape:epo-ProcurementElement-epo-foreseesTerm,
         core-shape:epo-ProcurementElement-epo-hasAdditionalInformation,
@@ -1129,7 +1014,6 @@ core-shape:epo-ProjectShape a sh:NodeShape ;
     rdfs:label "Project" ;
     rdfs:comment "A collaborative enterprise that is carefully planned to achieve a particular aim." ;
     rdfs:isDefinedBy core-shape:core-shape ;
-    sh:property core-shape:epo-Project-adms-identifier ;
     sh:targetClass :Project .
 
 core-shape:epo-PurchaseContractShape a sh:NodeShape ;
@@ -1279,8 +1163,7 @@ core-shape:epo-SecurityClearanceTermShape a sh:NodeShape ;
     rdfs:label "Security clearance term" ;
     rdfs:comment "Conditions and stipulations about the status requested of individuals allowing them access to classified information (state or organisational secrets) or to restricted areas, after completion of a thorough background check." ;
     rdfs:isDefinedBy core-shape:core-shape ;
-    sh:property core-shape:epo-SecurityClearanceTerm-dct-description,
-        core-shape:epo-SecurityClearanceTerm-epo-hasDeadline,
+    sh:property core-shape:epo-SecurityClearanceTerm-epo-hasDeadline,
         core-shape:epo-SecurityClearanceTerm-epo-isSecurityClearanceRequired ;
     sh:targetClass :SecurityClearanceTerm .
 
@@ -1349,8 +1232,7 @@ core-shape:epo-SubcontractTermShape a sh:NodeShape ;
     rdfs:label "Subcontract term" ;
     rdfs:comment "A concept to describe the main information regarding the share of parts of the Contract to third parties." ;
     rdfs:isDefinedBy core-shape:core-shape ;
-    sh:property core-shape:epo-SubcontractTerm-dct-description,
-        core-shape:epo-SubcontractTerm-epo-hasMaximumShare,
+    sh:property core-shape:epo-SubcontractTerm-epo-hasMaximumShare,
         core-shape:epo-SubcontractTerm-epo-hasMinimumShare,
         core-shape:epo-SubcontractTerm-epo-hasMinimumSubcontractorsProposedObligation,
         core-shape:epo-SubcontractTerm-epo-hasSubcontractingInvolved,
@@ -1362,8 +1244,7 @@ core-shape:epo-SubcontractingEstimateShape a sh:NodeShape ;
     rdfs:label "Subcontracting estimate" ;
     rdfs:comment "Approximation concerning the foreseen Subcontracting." ;
     rdfs:isDefinedBy core-shape:core-shape ;
-    sh:property core-shape:epo-SubcontractingEstimate-dct-description,
-        core-shape:epo-SubcontractingEstimate-epo-hasEstimatedPercentage,
+    sh:property core-shape:epo-SubcontractingEstimate-epo-hasEstimatedPercentage,
         core-shape:epo-SubcontractingEstimate-epo-hasSubcontractingEstimatedValue,
         core-shape:epo-SubcontractingEstimate-epo-hasSubjectMatter,
         core-shape:epo-SubcontractingEstimate-epo-isSubcontractingPercentageKnown,
@@ -1437,8 +1318,7 @@ core-shape:epo-SystemShape a sh:NodeShape ;
     rdfs:label "System" ;
     rdfs:comment "Software application used for performing Procurement activities." ;
     rdfs:isDefinedBy core-shape:core-shape ;
-    sh:property core-shape:epo-System-dct-description,
-        core-shape:epo-System-epo-isOwnedByAgent ;
+    sh:property core-shape:epo-System-epo-isOwnedByAgent ;
     sh:targetClass :System .
 
 core-shape:epo-TaxDocumentationShape a sh:NodeShape ;
@@ -1469,8 +1349,7 @@ core-shape:epo-TechniqueShape a sh:NodeShape ;
     rdfs:label "Technique" ;
     rdfs:comment "Method used for conducting Procurement Procedures. Several Techniques can be combined in one single Procurement Procedure (e.g. eAuction can be carried out in a Framework Agreement or DPS)." ;
     rdfs:isDefinedBy core-shape:core-shape ;
-    sh:property core-shape:epo-Technique-dct-description,
-        core-shape:epo-Technique-epo-hasEstimatedValidityPeriod,
+    sh:property core-shape:epo-Technique-epo-hasEstimatedValidityPeriod,
         core-shape:epo-Technique-epo-hasValidityPeriod ;
     sh:targetClass :Technique .
 
@@ -1488,10 +1367,7 @@ core-shape:epo-TenderGroupShape a sh:NodeShape ;
     rdfs:label "Tender group" ;
     rdfs:comment "Specific Offer in response to a Lot Group. Additional Information: This class is generally used to provide the Monetary Value in response to a Lot Group." ;
     rdfs:isDefinedBy core-shape:core-shape ;
-    sh:property core-shape:epo-TenderGroup-adms-identifier,
-        core-shape:epo-TenderGroup-dct-description,
-        core-shape:epo-TenderGroup-dct-title,
-        core-shape:epo-TenderGroup-epo-comprisesTender,
+    sh:property core-shape:epo-TenderGroup-epo-comprisesTender,
         core-shape:epo-TenderGroup-epo-hasTotalValue,
         core-shape:epo-TenderGroup-epo-isSubmittedForLotGroup ;
     sh:targetClass :TenderGroup .
@@ -1553,8 +1429,7 @@ core-shape:epo-WinnerShape a sh:NodeShape ;
     sh:property core-shape:epo-Winner-epo-needsToBeATenderer ;
     sh:targetClass :Winner .
 
-core-shape:epo-acc-ESPDRequestShape sh:property core-shape:epo-acc-ESPDRequest-epo-acc-refersToNotice,
-        core-shape:epo-acc-ESPDRequest-epo-concernsProcedure,
+core-shape:epo-acc-ESPDRequestShape sh:property core-shape:epo-acc-ESPDRequest-epo-concernsProcedure,
         core-shape:epo-acc-ESPDRequest-epo-specifiesProcurementCriterion .
 
 core-shape:epo-awa-AwardDecisionNotificationShape sh:property core-shape:epo-awa-AwardDecisionNotification-epo-concernsAwardOutcome,
@@ -1569,8 +1444,7 @@ core-shape:epo-cat-AbstractItemShape sh:property core-shape:epo-cat-AbstractItem
         core-shape:epo-cat-AbstractItem-epo-hasItemStandardID,
         core-shape:epo-cat-AbstractItem-epo-hasManufacturerItemID,
         core-shape:epo-cat-AbstractItem-epo-hasSellerItemID,
-        core-shape:epo-cat-AbstractItem-epo-hasSerialID,
-        core-shape:epo-cat-AbstractItem-epo-inv-hasItemClassificationIdentifier .
+        core-shape:epo-cat-AbstractItem-epo-hasSerialID .
 
 core-shape:epo-cat-BatchShape sh:property core-shape:epo-cat-Batch-epo-hasBatchID .
 
@@ -1594,13 +1468,11 @@ core-shape:epo-cat-DimensionInformationShape sh:property core-shape:epo-cat-Dime
 
 core-shape:epo-cat-EnvironmentalEmissionInformationShape sh:property core-shape:epo-cat-EnvironmentalEmissionInformation-epo-cat-hasMeasure .
 
-core-shape:epo-cat-ItemPropertyShape sh:property core-shape:epo-cat-ItemProperty-adms-identifier,
-        core-shape:epo-cat-ItemProperty-epo-cat-hasMaximumValue,
+core-shape:epo-cat-ItemPropertyShape sh:property core-shape:epo-cat-ItemProperty-epo-cat-hasMaximumValue,
         core-shape:epo-cat-ItemProperty-epo-cat-hasMinimumValue,
         core-shape:epo-cat-ItemProperty-epo-cat-hasQualifiedValue .
 
-core-shape:epo-cat-LineShape sh:property core-shape:epo-cat-Line-adms-identifier,
-        core-shape:epo-cat-Line-epo-ful-hasAssociatedDocument .
+core-shape:epo-cat-LineShape sh:property core-shape:epo-cat-Line-epo-ful-hasAssociatedDocument .
 
 core-shape:epo-cat-ManufacturerShape sh:property core-shape:epo-cat-Manufacturer-epo-hasManufacturerID .
 
@@ -1626,24 +1498,15 @@ core-shape:epo-con-ContractModificationInformationShape sh:property core-shape:e
 core-shape:epo-con-DeliverableShape sh:property core-shape:epo-con-Deliverable-epo-cat-hasQuantity,
         core-shape:epo-con-Deliverable-epo-hasTotalValue .
 
-core-shape:epo-eva-EvaluationBoardShape sh:property core-shape:epo-eva-EvaluationBoard-epo-eva-hasJuryMember,
-        core-shape:epo-eva-EvaluationBoard-epo-eva-isAppointedBy,
-        core-shape:epo-eva-EvaluationBoard-epo-isAssignedForEvaluationOf .
-
-core-shape:epo-eva-EvaluationCriterionShape sh:property core-shape:epo-eva-EvaluationCriterion-epo-eva-evaluatesProcurementCriterion .
-
-core-shape:epo-eva-EvaluationReportShape sh:property core-shape:epo-eva-EvaluationReport-epo-eva-providesRankToTender,
-        core-shape:epo-eva-EvaluationReport-epo-eva-usesEvaluationFormula .
+core-shape:epo-eva-EvaluationBoardShape sh:property core-shape:epo-eva-EvaluationBoard-epo-isAssignedForEvaluationOf .
 
 core-shape:epo-eva-EvaluatorShape sh:property core-shape:epo-eva-Evaluator-epo-playedBy .
 
 core-shape:epo-eva-ExcludedCandidateListShape sh:property core-shape:epo-eva-ExcludedCandidateList-epo-containsCandidate .
 
-core-shape:epo-eva-TenderClarificationRequestShape sh:property core-shape:epo-eva-TenderClarificationRequest-cccev-hasRequirement,
-        core-shape:epo-eva-TenderClarificationRequest-epo-specifiesEconomicOperator .
+core-shape:epo-eva-TenderClarificationRequestShape sh:property core-shape:epo-eva-TenderClarificationRequest-epo-specifiesEconomicOperator .
 
-core-shape:epo-ful-AbstractContainerShape sh:property core-shape:epo-ful-AbstractContainer-adms-identifier,
-        core-shape:epo-ful-AbstractContainer-epo-ful-hasGrossVolume,
+core-shape:epo-ful-AbstractContainerShape sh:property core-shape:epo-ful-AbstractContainer-epo-ful-hasGrossVolume,
         core-shape:epo-ful-AbstractContainer-epo-ful-hasGrossWeight,
         core-shape:epo-ful-AbstractContainer-epo-ful-hasHeight,
         core-shape:epo-ful-AbstractContainer-epo-ful-hasLength,
@@ -1652,8 +1515,7 @@ core-shape:epo-ful-AbstractContainerShape sh:property core-shape:epo-ful-Abstrac
         core-shape:epo-ful-AbstractContainer-epo-ful-hasTotalGoodsItemQuantity,
         core-shape:epo-ful-AbstractContainer-epo-ful-hasWidth .
 
-core-shape:epo-ful-ConsignmentShape sh:property core-shape:epo-ful-Consignment-adms-identifier,
-        core-shape:epo-ful-Consignment-epo-ful-hasConsigneeConsignmentID,
+core-shape:epo-ful-ConsignmentShape sh:property core-shape:epo-ful-Consignment-epo-ful-hasConsigneeConsignmentID,
         core-shape:epo-ful-Consignment-epo-ful-hasDeclaredStatisticalValue,
         core-shape:epo-ful-Consignment-epo-ful-hasDespatcherConsignmentID,
         core-shape:epo-ful-Consignment-epo-ful-hasGrossVolume,
@@ -1678,38 +1540,21 @@ core-shape:epo-ful-ReceiptAdviceShape sh:property core-shape:epo-ful-ReceiptAdvi
 
 core-shape:epo-ful-ShipmentAgreementShape sh:property core-shape:epo-ful-ShipmentAgreement-epo-ful-agreedByBuyer .
 
-core-shape:epo-ful-ShipmentInformationShape sh:property core-shape:epo-ful-ShipmentInformation-adms-identifier,
-        core-shape:epo-ful-ShipmentInformation-epo-ful-hasDespatchPeriod,
+core-shape:epo-ful-ShipmentInformationShape sh:property core-shape:epo-ful-ShipmentInformation-epo-ful-hasDespatchPeriod,
         core-shape:epo-ful-ShipmentInformation-epo-ful-hasEstimatedDeliveryPeriod,
         core-shape:epo-ful-ShipmentInformation-epo-ful-specifiesPlaceOfDespatch .
 
-core-shape:epo-ful-ShipmentStageShape sh:property core-shape:epo-ful-ShipmentStage-adms-identifier .
-
 core-shape:epo-ful-TemperatureSpecificationShape sh:property core-shape:epo-ful-TemperatureSpecification-epo-ful-hasMaximumTemperature,
         core-shape:epo-ful-TemperatureSpecification-epo-ful-hasMinimumTemperature .
-
-core-shape:epo-ful-TransportEquipmentSealShape sh:property core-shape:epo-ful-TransportEquipmentSeal-adms-identifier .
-
-core-shape:epo-ful-TransportEquipmentShape sh:property core-shape:epo-ful-TransportEquipment-adms-identifier .
 
 core-shape:epo-ful-TransportMeansOperatorShape sh:property core-shape:epo-ful-TransportMeansOperator-epo-playedBy .
 
 core-shape:epo-ful-TransportMeansShape sh:property core-shape:epo-ful-TransportMeans-epo-ful-hasVehicleID,
         core-shape:epo-ful-TransportMeans-epo-ful-hasVehicleSegmentID .
 
-core-shape:epo-inv-CreditTransferInformationShape sh:property core-shape:epo-inv-CreditTransferInformation-epo-inv-hasPaymentAccountIdentifier,
-        core-shape:epo-inv-CreditTransferInformation-epo-inv-hasPaymentServiceProviderIdentifier .
-
-core-shape:epo-inv-InvoiceLineShape sh:property core-shape:epo-inv-InvoiceLine-epo-cat-hasQuantity,
-        core-shape:epo-inv-InvoiceLine-epo-inv-hasInvoiceLineObjectIdentifier,
-        core-shape:epo-inv-InvoiceLine-epo-inv-hasInvoiceLinePeriod,
-        core-shape:epo-inv-InvoiceLine-epo-inv-hasNetAmount .
+core-shape:epo-inv-InvoiceLineShape sh:property core-shape:epo-inv-InvoiceLine-epo-cat-hasQuantity .
 
 core-shape:epo-inv-InvoiceShape sh:property core-shape:epo-inv-Invoice-epo-hasLotReference,
-        core-shape:epo-inv-Invoice-epo-inv-hasInvoicedObjectIdentifier,
-        core-shape:epo-inv-Invoice-epo-inv-hasInvoicingPeriod,
-        core-shape:epo-inv-Invoice-epo-inv-hasTotalAccountingCurrencyTaxAmount,
-        core-shape:epo-inv-Invoice-epo-inv-hasTotalTaxAmount,
         core-shape:epo-inv-Invoice-epo-ord-hasAmountDueForPayment,
         core-shape:epo-inv-Invoice-epo-ord-hasPrepaidAmount,
         core-shape:epo-inv-Invoice-epo-ord-hasRoundingAmount,
@@ -1721,10 +1566,6 @@ core-shape:epo-inv-InvoiceShape sh:property core-shape:epo-inv-Invoice-epo-hasLo
         core-shape:epo-inv-Invoice-epo-refersToContract,
         core-shape:epo-inv-Invoice-epo-refersToProject,
         core-shape:epo-inv-Invoice-epo-specifiesBuyer .
-
-core-shape:epo-inv-PaymentInstructionsInformationShape sh:property core-shape:epo-inv-PaymentInstructionsInformation-epo-inv-hasBankingIdentifier,
-        core-shape:epo-inv-PaymentInstructionsInformation-epo-inv-hasDebitedAccountIdentifier,
-        core-shape:epo-inv-PaymentInstructionsInformation-epo-inv-hasMandateIdentifier .
 
 core-shape:epo-not-CompetitionNoticeShape sh:property core-shape:epo-not-CompetitionNotice-epo-announcesLot,
         core-shape:epo-not-CompetitionNotice-epo-announcesLotGroup,
@@ -1825,16 +1666,7 @@ core-shape:epo-ord-OriginatorInformationShape sh:property core-shape:epo-ord-Ori
 core-shape:epo-ord-TaxInformationShape sh:property core-shape:epo-ord-TaxInformation-epo-cat-hasAmount,
         core-shape:epo-ord-TaxInformation-epo-isCalculatedOn .
 
-core-shape:epo-pay-PaymentInformationShape sh:property core-shape:epo-pay-PaymentInformation-epo-pay-hasPaymentIdentifier .
-
-core-shape:epo-pay-RemittanceAdviceLineShape sh:property core-shape:epo-pay-RemittanceAdviceLine-epo-pay-hasBalanceAmount,
-        core-shape:epo-pay-RemittanceAdviceLine-epo-pay-hasCreditAmount,
-        core-shape:epo-pay-RemittanceAdviceLine-epo-pay-hasDebitAmount .
-
-core-shape:epo-pay-RemittanceAdviceShape sh:property core-shape:epo-pay-RemittanceAdvice-epo-pay-hasTotalCreditAmount,
-        core-shape:epo-pay-RemittanceAdvice-epo-pay-hasTotalDebitAmount,
-        core-shape:epo-pay-RemittanceAdvice-epo-pay-hasTotalPaymentAmount,
-        core-shape:epo-pay-RemittanceAdvice-epo-specifiesBuyer .
+core-shape:epo-pay-RemittanceAdviceShape sh:property core-shape:epo-pay-RemittanceAdvice-epo-specifiesBuyer .
 
 core-shape:epo-qua-EvidenceOutcomeShape sh:property core-shape:epo-qua-EvidenceOutcome-epo-specifiesEvidence .
 
@@ -1847,79 +1679,25 @@ core-shape:epo-qua-EvidenceSubmissionShape sh:property core-shape:epo-qua-Eviden
         core-shape:epo-qua-EvidenceSubmission-epo-providesEvidence,
         core-shape:epo-qua-EvidenceSubmission-epo-specifiesEconomicOperator .
 
-core-shape:epo-qua-QualificationDecisionInformationShape sh:property core-shape:epo-qua-QualificationDecisionInformation-epo-qua-providesDecisionFor .
-
 core-shape:epo-req-RequestForOfferShape sh:property core-shape:epo-req-RequestForOffer-epo-hasDestinationCountryCode,
         core-shape:epo-req-RequestForOffer-epo-refersToContract,
-        core-shape:epo-req-RequestForOffer-epo-req-specifiesOfferCurrency,
-        core-shape:epo-req-RequestForOffer-epo-req-specifiesOfferValidityPeriod,
         core-shape:epo-req-RequestForOffer-epo-specifiesBuyer,
         core-shape:epo-req-RequestForOffer-epo-specifiesContractor .
 
-core-shape:epo-sub-ESPDShape sh:property core-shape:epo-sub-ESPD-epo-sub-isContainedInTender,
-        core-shape:epo-sub-ESPD-epo-sub-providesInformationOn .
-
-core-shape:epo-sub-EvidenceInformationShape sh:property core-shape:epo-sub-EvidenceInformation-epo-sub-summarisesInformationAboutEvidence .
-
 core-shape:epo-sub-LegalRepresentativeShape sh:property core-shape:epo-sub-LegalRepresentative-epo-actsOnBehalfOf .
 
-core-shape:epo-sub-OrganisationInformationSummaryShape sh:property core-shape:epo-sub-OrganisationInformationSummary-epo-sub-concernsOrganisation,
-        core-shape:epo-sub-OrganisationInformationSummary-epo-sub-providesOrganisationEmployeeQuantity,
-        core-shape:epo-sub-OrganisationInformationSummary-epo-sub-providesOrganisationFinancialCapability .
+core-shape:epo-sub-Response-cccev-confidentialityLevelType a sh:PropertyShape ;
+    sh:class skos:Concept ;
+    sh:path cccev:confidentialityLevelType .
 
-core-shape:epo-sub-ResponseShape sh:property core-shape:epo-sub-Response-cccev-confidentialityLevelType,
-        core-shape:epo-sub-Response-epo-sub-answersQuestion,
-        core-shape:epo-sub-Response-epo-sub-isReinforcedBy,
-        core-shape:epo-sub-Response-epo-sub-refersToApplicablePeriod .
-
-core-shape:foaf-AgentShape a sh:NodeShape ;
-    rdfs:label "Agent" ;
-    rdfs:comment "External concept defined by <xref scope=\"external\" href=\"http://xmlns.com/foaf/spec/#term_Agent\"><foreign otherprops=\"#0000ff\"><u>http://xmlns.com/foaf/spec/#term_Agent</u></foreign></xref>" ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:property core-shape:foaf-Agent-adms-identifier,
-        core-shape:foaf-Agent-dct-title,
-        core-shape:foaf-Agent-epo-hasAlias,
+core-shape:foaf-AgentShape sh:property core-shape:foaf-Agent-epo-hasAlias,
         core-shape:foaf-Agent-epo-hasCertification,
-        core-shape:foaf-Agent-epo-ownsSystem ;
-    sh:targetClass foaf:Agent .
+        core-shape:foaf-Agent-epo-ownsSystem .
 
-core-shape:foaf-PersonShape a sh:NodeShape ;
-    rdfs:label "Person" ;
-    rdfs:comment "External concept defined by <xref scope=\"external\" href=\"http://xmlns.com/foaf/spec/#term_Person\"><foreign otherprops=\"#0000ff\"><u>http://xmlns.com/foaf/spec/#term_Person</u></foreign></xref>" ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:targetClass foaf:Person .
+core-shape:locn-AddressShape sh:property core-shape:locn-Address-epo-hasCountryCode,
+        core-shape:locn-Address-epo-hasNutsCode .
 
-core-shape:locn-AddressShape a sh:NodeShape ;
-    rdfs:label "Address" ;
-    rdfs:comment "External concept defined by <xref scope=\"external\" href=\"https://semiceu.github.io/Core-Location-Vocabulary/releases/2.1.0/#Address\"><foreign otherprops=\"#0000ff\"><u>https://semiceu.github.io/Core-Location-Vocabulary/releases/2.1.0/#Address</u></foreign></xref>" ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:property core-shape:locn-Address-epo-hasCountryCode,
-        core-shape:locn-Address-epo-hasNutsCode,
-        core-shape:locn-Address-locn-addressArea,
-        core-shape:locn-Address-locn-addressID,
-        core-shape:locn-Address-locn-fullAddress,
-        core-shape:locn-Address-locn-locatorDesignator,
-        core-shape:locn-Address-locn-locatorName,
-        core-shape:locn-Address-locn-postCode,
-        core-shape:locn-Address-locn-postName,
-        core-shape:locn-Address-locn-thoroughfare ;
-    sh:targetClass locn:Address .
-
-core-shape:locn-GeometryShape a sh:NodeShape ;
-    rdfs:label "Geometry" ;
-    rdfs:comment "External concept defined by <xref scope=\"external\" href=\"https://semiceu.github.io/Core-Location-Vocabulary/releases/2.1.0/#Geometry\"><foreign otherprops=\"#0000ff\"><u>https://semiceu.github.io/Core-Location-Vocabulary/releases/2.1.0/#Geometry</u></foreign></xref>" ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:property core-shape:locn-Geometry-cv-coordinates,
-        core-shape:locn-Geometry-cv-latitude,
-        core-shape:locn-Geometry-cv-longitude ;
-    sh:targetClass locn:Geometry .
-
-core-shape:org-OrganizationShape a sh:NodeShape ;
-    rdfs:label "Organization" ;
-    rdfs:comment "External concept defined by <xref scope=\"external\" href=\"by https://www.w3.org/TR/vocab-org/#org:Organization\"><foreign otherprops=\"#0000ff\"><u>https://www.w3.org/TR/vocab-org/#org:Organization</u></foreign></xref>" ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:property core-shape:org-Organization-cv-registeredAddress,
-        core-shape:org-Organization-epo-canProvideEvidence,
+core-shape:org-OrganizationShape sh:property core-shape:org-Organization-epo-canProvideEvidence,
         core-shape:org-Organization-epo-canProvideNonDiscriminatoryEvidence,
         core-shape:org-Organization-epo-exposesChannel,
         core-shape:org-Organization-epo-foreseesSubcontractor,
@@ -1933,85 +1711,15 @@ core-shape:org-OrganizationShape a sh:NodeShape ;
         core-shape:org-Organization-epo-hasMainActivityDescription,
         core-shape:org-Organization-epo-hasPrimaryContactPoint,
         core-shape:org-Organization-epo-hasRegistrationCountry,
-        core-shape:org-Organization-epo-hasTaxIdentifier,
-        core-shape:org-Organization-locn-address,
-        core-shape:org-Organization-org-hasUnit,
-        core-shape:org-Organization-org-subOrganizationOf ;
-    sh:targetClass org:Organization .
+        core-shape:org-Organization-epo-hasTaxIdentifier .
 
-core-shape:org-OrganizationalUnitShape a sh:NodeShape ;
-    rdfs:label "Organizational unit" ;
-    rdfs:comment "External concept defined by <xref scope=\"external\" href=\"https://www.w3.org/TR/vocab-org/#org:OrganizationalUnit\"><foreign otherprops=\"#0000ff\"><u>https://www.w3.org/TR/vocab-org/#org:OrganizationalUnit</u></foreign></xref>" ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:targetClass org:OrganizationalUnit .
-
-core-shape:person-PersonShape a sh:NodeShape ;
-    rdfs:label "Person" ;
-    rdfs:comment "External concept defined by <xref scope=\"external\" href=\"https://semiceu.github.io/Core-Person-Vocabulary/releases/2.1.1/#Person\"><foreign otherprops=\"#0000ff\"><u>https://semiceu.github.io/Core-Person-Vocabulary/releases/2.1.1/#Person</u></foreign></xref>" ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:property core-shape:person-Person-cv-birthDate,
-        core-shape:person-Person-cv-registeredAddress,
-        core-shape:person-Person-dct-alternative,
-        core-shape:person-Person-epo-hasCountryOfBirth,
+core-shape:person-PersonShape sh:property core-shape:person-Person-epo-hasCountryOfBirth,
         core-shape:person-Person-epo-hasNationality,
-        core-shape:person-Person-epo-isBeneficialOwnerOf,
-        core-shape:person-Person-foaf-familyName,
-        core-shape:person-Person-foaf-givenName,
-        core-shape:person-Person-foaf-name,
-        core-shape:person-Person-person-birthName,
-        core-shape:person-Person-person-patronymicName ;
-    sh:targetClass person:Person .
+        core-shape:person-Person-epo-isBeneficialOwnerOf .
 
-core-shape:time-DurationShape a sh:NodeShape ;
-    rdfs:label "Duration" ;
-    rdfs:comment "External concept defined by <xref scope=\"external\" href=\"https://www.w3.org/TR/owl-time/#time:Duration\"><foreign otherprops=\"#0000ff\"><u>https://www.w3.org/TR/owl-time/#time:Duration</u></foreign></xref>" ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:property core-shape:time-Duration-time-numericDuration,
-        core-shape:time-Duration-time-unitType ;
-    sh:targetClass time:Duration .
-
-core-shape:time-InstantShape a sh:NodeShape ;
-    rdfs:label "Instant" ;
-    rdfs:comment "External concept defined by <xref scope=\"external\" href=\"https://www.w3.org/TR/owl-time/#time:Instant\"><foreign otherprops=\"#0000ff\"><u>https://www.w3.org/TR/owl-time/#time:Instant</u></foreign></xref>" ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:property core-shape:time-Instant-time-inXSDDate,
-        core-shape:time-Instant-time-inXSDDateTimeStamp ;
-    sh:targetClass time:Instant .
-
-core-shape:time-IntervalShape a sh:NodeShape ;
-    rdfs:label "Interval" ;
-    rdfs:comment "External concept defined by <xref scope=\"external\" href=\"https://www.w3.org/TR/owl-time/#time:Interval\"><foreign otherprops=\"#0000ff\"><u>https://www.w3.org/TR/owl-time/#time:Interval</u></foreign></xref>" ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:targetClass time:Interval .
-
-core-shape:time-ProperIntervalShape a sh:NodeShape ;
-    rdfs:label "Proper interval" ;
-    rdfs:comment "External concept defined by <xref scope=\"external\" href=\"https://www.w3.org/TR/owl-time/#time:ProperInterval\"><foreign otherprops=\"#0000ff\"><u>https://www.w3.org/TR/owl-time/#time:ProperInterval</u></foreign></xref>" ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:targetClass time:ProperInterval .
-
-core-shape:time-TemporalDurationShape a sh:NodeShape ;
-    rdfs:label "Temporal duration" ;
-    rdfs:comment "External concept defined by <xref scope=\"external\" href=\"https://www.w3.org/TR/owl-time/#time:hasTemporalDuration\"><foreign otherprops=\"#0000ff\"><u>https://www.w3.org/TR/owl-time/#time:hasTemporalDuration</u></foreign></xref>" ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:targetClass time:TemporalDuration .
-
-core-shape:time-TemporalEntityShape a sh:NodeShape ;
-    rdfs:label "Temporal entity" ;
-    rdfs:comment "External concept defined by <xref scope=\"external\" href=\"https://www.w3.org/TR/owl-time/#time:TemporalEntity\"><foreign otherprops=\"#0000ff\"><u>https://www.w3.org/TR/owl-time/#time:TemporalEntity</u></foreign></xref>" ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:property core-shape:time-TemporalEntity-time-hasBeginning,
-        core-shape:time-TemporalEntity-time-hasDuration,
-        core-shape:time-TemporalEntity-time-hasEnd,
-        core-shape:time-TemporalEntity-time-hasTemporalDuration ;
-    sh:targetClass time:TemporalEntity .
-
-core-shape:adms-Identifier-adms-schemaAgency a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:description "External concept defined by <a href=\"$inet://https://semiceu.github.io/ADMS/releases/2.00/#schemaAgency\"><font color=\"#0000ff\"><u>https://semiceu.github.io/ADMS/releases/2.00/#schemaAgency</u></font></a>" ;
-    sh:name "Schema agency" ;
-    sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
-    sh:path adms:schemaAgency .
+core-shape:time-Duration-time-unitType a sh:PropertyShape ;
+    sh:class skos:Concept ;
+    sh:path time:unitType .
 
 core-shape:adms-Identifier-epo-hasExtension a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
@@ -2035,23 +1743,6 @@ core-shape:adms-Identifier-epo-hasSchemeVersion a sh:PropertyShape ;
     sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
     sh:path :hasSchemeVersion .
 
-core-shape:adms-Identifier-skos-notation a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:description "External concept defined by <a href=\"$inet://https://www.w3.org/2009/08/skos-reference/skos.html#notation\"><font color=\"#0000ff\"><u>https://www.w3.org/2009/08/skos-reference/skos.html#notation</u></font></a>" ;
-    sh:maxCount 1 ;
-    sh:minCount 1 ;
-    sh:name "Notation" ;
-    sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
-    sh:path skos:notation .
-
-core-shape:cccev-Constraint-cccev-constrains a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:class cccev:InformationConcept ;
-    sh:description "External concept defined by <a href=\"$inet://http://data.europa.eu/m8g/constrains\"><font color=\"#0000ff\"><u>http://data.europa.eu/m8g/constrains</u></font></a>" ;
-    sh:name "Constrains" ;
-    sh:path cccev:constrains ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/m8g/constrains> ?that . ?that <http://data.europa.eu/m8g/constrains> ?this .}" ] .
-
 core-shape:cccev-Constraint-epo-hasThresholdType a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
     sh:class skos:Concept ;
@@ -2067,102 +1758,6 @@ core-shape:cccev-Constraint-epo-hasThresholdValue a sh:PropertyShape ;
     sh:minCount 1 ;
     sh:name "Has threshold value" ;
     sh:path :hasThresholdValue .
-
-core-shape:cccev-Criterion-cccev-bias a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:datatype xsd:decimal ;
-    sh:description "External concept defined by <a href=\"$inet://http://data.europa.eu/m8g/bias\"><font color=\"#0000ff\"><u>http://data.europa.eu/m8g/bias</u></font></a>" ;
-    sh:maxCount 1 ;
-    sh:name "Bias" ;
-    sh:path cccev:bias .
-
-core-shape:cccev-Criterion-cccev-weight a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:datatype xsd:decimal ;
-    sh:description "External concept defined by <a href=\"$inet://http://data.europa.eu/m8g/weight\"><font color=\"#0000ff\"><u>http://data.europa.eu/m8g/weight</u></font></a>" ;
-    sh:maxCount 1 ;
-    sh:name "Weight" ;
-    sh:path cccev:weight .
-
-core-shape:cccev-Criterion-cccev-weightingConsiderationDescription a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:description "External concept defined by <a href=\"$inet://http://data.europa.eu/m8g/weightingConsiderationDescription\"><font color=\"#0000ff\"><u>http://data.europa.eu/m8g/weightingConsiderationDescription</u></font></a>" ;
-    sh:maxCount 1 ;
-    sh:name "Weighting consideration description" ;
-    sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
-    sh:path cccev:weightingConsiderationDescription .
-
-core-shape:cccev-Criterion-dct-type a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:class skos:Concept ;
-    sh:description "External concept defined by <a href=\"$inet://https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/type\"><font color=\"#0000ff\"><u>https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/type</u></font></a>" ;
-    sh:maxCount 1 ;
-    sh:name "Type" ;
-    sh:path dcterms:type .
-
-core-shape:cccev-Evidence-adms-identifier a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:class adms:Identifier ;
-    sh:description "External concept defined by <a href=\"$inet://https://semiceu.github.io/ADMS/releases/2.00/#identifier\"><font color=\"#0000ff\"><u>https://semiceu.github.io/ADMS/releases/2.00/#identifier</u></font></a>" ;
-    sh:maxCount 1 ;
-    sh:name "Identifier" ;
-    sh:path adms:identifier ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://www.w3.org/ns/adms#identifier> ?that . ?that <http://www.w3.org/ns/adms#identifier> ?this .}" ] .
-
-core-shape:cccev-Evidence-cccev-confidentialityLevelType a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:class skos:Concept ;
-    sh:description "External concept defined by <a href=\"$inet://http://data.europa.eu/m8g/confidentialityLevelType\"><font color=\"#0000ff\"><u>http://data.europa.eu/m8g/confidentialityLevelType</u></font></a>" ;
-    sh:maxCount 1 ;
-    sh:name "Confidentiality level type" ;
-    sh:path cccev:confidentialityLevelType .
-
-core-shape:cccev-Evidence-cccev-supportsConcept a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:class cccev:InformationConcept ;
-    sh:description "External concept defined by <a href=\"$inet://http://data.europa.eu/m8g/supportsConcept\"><font color=\"#0000ff\"><u>http://data.europa.eu/m8g/supportsConcept</u></font></a>" ;
-    sh:name "Supports concept" ;
-    sh:path cccev:supportsConcept ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/m8g/supportsConcept> ?that . ?that <http://data.europa.eu/m8g/supportsConcept> ?this .}" ] .
-
-core-shape:cccev-Evidence-cccev-supportsRequirement a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:class cccev:Requirement ;
-    sh:description "External concept defined by <a href=\"$inet://http://data.europa.eu/m8g/supportsRequirement\"><font color=\"#0000ff\"><u>http://data.europa.eu/m8g/supportsRequirement</u></font></a>" ;
-    sh:name "Supports requirement" ;
-    sh:path cccev:supportsRequirement ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/m8g/supportsRequirement> ?that . ?that <http://data.europa.eu/m8g/supportsRequirement> ?this .}" ] .
-
-core-shape:cccev-Evidence-cccev-supportsValue a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:class cccev:SupportedValue ;
-    sh:description "External concept defined by <a href=\"$inet://http://data.europa.eu/m8g/supportsValue\"><font color=\"#0000ff\"><u>http://data.europa.eu/m8g/supportsValue</u></font></a>" ;
-    sh:name "Supports value" ;
-    sh:path cccev:supportsValue ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/m8g/supportsValue> ?that . ?that <http://data.europa.eu/m8g/supportsValue> ?this .}" ] .
-
-core-shape:cccev-Evidence-dct-conformsTo a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:class cccev:EvidenceType ;
-    sh:description "External concept defined by <a href=\"$inet://https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/conformsTo\"><font color=\"#0000ff\"><u>https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/conformsTo</u></font></a> Additional Information: Examples of characteristics could be the layout or the configuration of the Evidence." ;
-    sh:name "Conforms to" ;
-    sh:path dcterms:conformsTo ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://purl.org/dc/terms/conformsTo> ?that . ?that <http://purl.org/dc/terms/conformsTo> ?this .}" ] .
-
-core-shape:cccev-Evidence-dct-description a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:description "External concept defined by <a href=\"$inet://https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/description\"><font color=\"#0000ff\"><u>https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/description</u></font></a>" ;
-    sh:maxCount 1 ;
-    sh:name "Description" ;
-    sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
-    sh:path dcterms:description .
-
-core-shape:cccev-Evidence-dct-title a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:maxCount 1 ;
-    sh:name "Title" ;
-    sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
-    sh:path dcterms:title .
 
 core-shape:cccev-Evidence-epo-hasURL a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
@@ -2180,55 +1775,6 @@ core-shape:cccev-Evidence-epo-hasValidityPeriod a sh:PropertyShape ;
     sh:name "Has validity period" ;
     sh:path :hasValidityPeriod ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#hasValidityPeriod> ?that . ?that <http://data.europa.eu/a4g/ontology#hasValidityPeriod> ?this .}" ] .
-
-core-shape:cccev-EvidenceType-adms-identifier a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:class adms:Identifier ;
-    sh:description "External concept defined by <a href=\"$inet://https://semiceu.github.io/ADMS/releases/2.00/#identifier\"><font color=\"#0000ff\"><u>https://semiceu.github.io/ADMS/releases/2.00/#identifier</u></font></a>" ;
-    sh:maxCount 1 ;
-    sh:name "Identifier" ;
-    sh:path adms:identifier ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://www.w3.org/ns/adms#identifier> ?that . ?that <http://www.w3.org/ns/adms#identifier> ?this .}" ] .
-
-core-shape:cccev-EvidenceType-cccev-validityPeriodConstraint a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:class time:Interval ;
-    sh:description "External concept defined by <a href=\"$inet://http://data.europa.eu/m8g/validityPeriodConstraint\"><font color=\"#0000ff\"><u>http://data.europa.eu/m8g/validityPeriodConstraint</u></font></a>" ;
-    sh:name "Validity period constraint" ;
-    sh:path cccev:validityPeriodConstraint ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/m8g/validityPeriodConstraint> ?that . ?that <http://data.europa.eu/m8g/validityPeriodConstraint> ?this .}" ] .
-
-core-shape:cccev-EvidenceTypeList-adms-identifier a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:class adms:Identifier ;
-    sh:description "External concept defined by <a href=\"$inet://https://semiceu.github.io/ADMS/releases/2.00/#identifier\"><font color=\"#0000ff\"><u>https://semiceu.github.io/ADMS/releases/2.00/#identifier</u></font></a>" ;
-    sh:maxCount 1 ;
-    sh:name "Identifier" ;
-    sh:path adms:identifier ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://www.w3.org/ns/adms#identifier> ?that . ?that <http://www.w3.org/ns/adms#identifier> ?this .}" ] .
-
-core-shape:cccev-InformationConcept-adms-identifier a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:class adms:Identifier ;
-    sh:description "External concept defined by <a href=\"$inet://https://semiceu.github.io/ADMS/releases/2.00/#identifier\"><font color=\"#0000ff\"><u>https://semiceu.github.io/ADMS/releases/2.00/#identifier</u></font></a>" ;
-    sh:maxCount 1 ;
-    sh:name "Identifier" ;
-    sh:path adms:identifier ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://www.w3.org/ns/adms#identifier> ?that . ?that <http://www.w3.org/ns/adms#identifier> ?this .}" ] .
-
-core-shape:cccev-InformationConcept-dct-description a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:description "External concept defined by <a href=\"$inet:// https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/description\"><font color=\"#0000ff\"><u>https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/description</u></font></a>" ;
-    sh:name "Description" ;
-    sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
-    sh:path dcterms:description .
-
-core-shape:cccev-InformationConcept-skos-prefLabel a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:description "External concept defined by <a href=\"$inet://https://www.w3.org/2009/08/skos-reference/skos.html#prefLabel\"><font color=\"#0000ff\"><u>https://www.w3.org/2009/08/skos-reference/skos.html#prefLabel</u></font></a>" ;
-    sh:name "Pref label" ;
-    sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
-    sh:path skos:prefLabel .
 
 core-shape:cccev-InformationRequirement-epo-concernsLot a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
@@ -2262,92 +1808,6 @@ core-shape:cccev-InformationRequirement-epo-hasConstraint a sh:PropertyShape ;
     sh:path :hasConstraint ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#hasConstraint> ?that . ?that <http://data.europa.eu/a4g/ontology#hasConstraint> ?this .}" ] .
 
-core-shape:cccev-Requirement-adms-identifier a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:class adms:Identifier ;
-    sh:description "External concept defined by <a href=\"$inet://https://semiceu.github.io/ADMS/releases/2.00/#identifier\"><font color=\"#0000ff\"><u>https://semiceu.github.io/ADMS/releases/2.00/#identifier</u></font></a>" ;
-    sh:maxCount 1 ;
-    sh:name "Identifier" ;
-    sh:path adms:identifier ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://www.w3.org/ns/adms#identifier> ?that . ?that <http://www.w3.org/ns/adms#identifier> ?this .}" ] .
-
-core-shape:cccev-Requirement-cccev-hasConcept a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:class cccev:InformationConcept ;
-    sh:description "External concept defined by <a href=\"$inet://http://data.europa.eu/m8g/hasConcept\"><font color=\"#0000ff\"><u>http://data.europa.eu/m8g/hasConcept</u></font></a>" ;
-    sh:name "Has concept" ;
-    sh:path cccev:hasConcept ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/m8g/hasConcept> ?that . ?that <http://data.europa.eu/m8g/hasConcept> ?this .}" ] .
-
-core-shape:cccev-Requirement-cccev-hasEvidenceTypeList a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:class cccev:EvidenceTypeList ;
-    sh:description "External concept defined by <a href=\"$inet://http://data.europa.eu/m8g/hasEvidenceTypeList\"><font color=\"#0000ff\"><u>http://data.europa.eu/m8g/hasEvidenceTypeList</u></font></a> Additional Information: One or several Lists of Evidence Types can support a Requirement. At least one of them must be satisfied by the response to the Requirement." ;
-    sh:name "Has evidence type list" ;
-    sh:path cccev:hasEvidenceTypeList ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/m8g/hasEvidenceTypeList> ?that . ?that <http://data.europa.eu/m8g/hasEvidenceTypeList> ?this .}" ] .
-
-core-shape:cccev-Requirement-cccev-hasRequirement a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:class cccev:Requirement ;
-    sh:description "External concept defined by <a href=\"$inet://http://data.europa.eu/m8g/hasRequirement\"><font color=\"#0000ff\"><u>http://data.europa.eu/m8g/hasRequirement</u></font></a>" ;
-    sh:name "Has requirement" ;
-    sh:path cccev:hasRequirement ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/m8g/hasRequirement> ?that . ?that <http://data.europa.eu/m8g/hasRequirement> ?this .}" ] .
-
-core-shape:cccev-Requirement-cccev-isDerivedFrom a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:class eli:LegalResource ;
-    sh:description "External concept defined by <a href=\"$inet://http://data.europa.eu/m8g/isDerivedFrom\"><font color=\"#0000ff\"><u>http://data.europa.eu/m8g/isDerivedFrom</u></font></a> Additional Information: The relation between a parent Requirement and a sub-Requirement can be complex. Therefore, qualified relations (see hasQualifiedRelation) can be used to represent this relationship on its own and qualify it with additional information such as a date, a place. This is left to implementers. In the case where the purpose is to link the two Requirements without additional information, the simple relationship as proposed here can be directly used." ;
-    sh:name "Is derived from" ;
-    sh:path cccev:isDerivedFrom ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/m8g/isDerivedFrom> ?that . ?that <http://data.europa.eu/m8g/isDerivedFrom> ?this .}" ] .
-
-core-shape:cccev-Requirement-dct-description a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:description "External concept defined by <a href=\"$inet://https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/description\"><font color=\"#0000ff\"><u>https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/description</u></font></a>" ;
-    sh:maxCount 1 ;
-    sh:name "Description" ;
-    sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
-    sh:path dcterms:description .
-
-core-shape:cccev-Requirement-skos-prefLabel a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:description "External concept defined by <a href=\"$inet://https://www.w3.org/2009/08/skos-reference/skos.html#prefLabel\"><font color=\"#0000ff\"><u>https://www.w3.org/2009/08/skos-reference/skos.html#prefLabel</u></font></a>" ;
-    sh:maxCount 1 ;
-    sh:name "Pref label" ;
-    sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
-    sh:path skos:prefLabel .
-
-core-shape:cccev-SupportedValue-cccev-providesValueFor a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:class cccev:InformationConcept ;
-    sh:description "External concept defined by <a href=\"$inet://http://data.europa.eu/m8g/providesValueFor\"><font color=\"#0000ff\"><u>http://data.europa.eu/m8g/providesValueFor</u></font></a>" ;
-    sh:name "Provides value for" ;
-    sh:path cccev:providesValueFor ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/m8g/providesValueFor> ?that . ?that <http://data.europa.eu/m8g/providesValueFor> ?this .}" ] .
-
-core-shape:cpov-ContactPoint-cpov-email a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:description "External concept defined by <a href=\"$inet://http://data.europa.eu/m8g/email\"><font color=\"#0000ff\"><u>http://data.europa.eu/m8g/email</u></font></a>" ;
-    sh:name "Email" ;
-    sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
-    sh:path cccev:email .
-
-core-shape:cpov-ContactPoint-cpov-telephone a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:description "External concept defined by <a href=\"$inet://http://data.europa.eu/m8g/telephone\"><font color=\"#0000ff\"><u>http://data.europa.eu/m8g/telephone</u></font></a>" ;
-    sh:name "Telephone" ;
-    sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
-    sh:path cccev:telephone .
-
-core-shape:cpov-ContactPoint-dct-description a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:description "External concept defined by <a href=\"$inet://https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/description\"><font color=\"#0000ff\"><u>https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/description</u></font></a>" ;
-    sh:name "Description" ;
-    sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
-    sh:path dcterms:description .
-
 core-shape:cpov-ContactPoint-epo-hasContactName a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
     sh:description "A short text by which a contact is known or referred to." ;
@@ -2371,23 +1831,6 @@ core-shape:cpov-ContactPoint-epo-hasInternetAddress a sh:PropertyShape ;
     sh:name "Has internet address" ;
     sh:path :hasInternetAddress .
 
-core-shape:cpov-ContactPoint-locn-address a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:class locn:Address ;
-    sh:description "External concept defined by <a href=\"$inet://https://semiceu.github.io/Core-Location-Vocabulary/releases/2.1.0/#Resource.address\"><font color=\"#0000ff\"><u>https://semiceu.github.io/Core-Location-Vocabulary/releases/2.1.0/#Resource.address</u></font></a>" ;
-    sh:maxCount 1 ;
-    sh:name "Address" ;
-    sh:path locn:address ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://www.w3.org/ns/locn#address> ?that . ?that <http://www.w3.org/ns/locn#address> ?this .}" ] .
-
-core-shape:cv-Channel-dct-description a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:description "External concept defined by <a href=\"$inet://https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/description\"><font color=\"#0000ff\"><u>https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/description</u></font></a>" ;
-    sh:maxCount 1 ;
-    sh:name "Description" ;
-    sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
-    sh:path dcterms:description .
-
 core-shape:cv-Channel-epo-hasAddressURL a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
     sh:datatype xsd:anyURI ;
@@ -2404,15 +1847,6 @@ core-shape:cv-Channel-epo-hasEndpointIdentifier a sh:PropertyShape ;
     sh:path :hasEndpointIdentifier ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#hasEndpointIdentifier> ?that . ?that <http://data.europa.eu/a4g/ontology#hasEndpointIdentifier> ?this .}" ] .
 
-core-shape:dct-Location-adms-identifier a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:class adms:Identifier ;
-    sh:description "External concept defined by <a href=\"$inet://https://semiceu.github.io/ADMS/releases/2.00/#identifier\"><font color=\"#0000ff\"><u>https://semiceu.github.io/ADMS/releases/2.00/#identifier</u></font></a>" ;
-    sh:maxCount 1 ;
-    sh:name "Identifier" ;
-    sh:path adms:identifier ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://www.w3.org/ns/adms#identifier> ?that . ?that <http://www.w3.org/ns/adms#identifier> ?this .}" ] .
-
 core-shape:dct-Location-epo-hasCountryCode a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
     sh:class skos:Concept ;
@@ -2428,65 +1862,6 @@ core-shape:dct-Location-epo-hasNutsCode a sh:PropertyShape ;
     sh:maxCount 1 ;
     sh:name "Has nuts code" ;
     sh:path :hasNutsCode .
-
-core-shape:dct-Location-locn-address a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:class locn:Address ;
-    sh:description "External concept defined by <a href=\"$inet://https://semiceu.github.io/Core-Location-Vocabulary/releases/2.1.0/#Resource.address\"><font color=\"#0000ff\"><u>https://semiceu.github.io/Core-Location-Vocabulary/releases/2.1.0/#Resource.address</u></font></a>" ;
-    sh:maxCount 1 ;
-    sh:name "Address" ;
-    sh:path locn:address ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://www.w3.org/ns/locn#address> ?that . ?that <http://www.w3.org/ns/locn#address> ?this .}" ] .
-
-core-shape:dct-Location-locn-geographicIdentifier a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:class adms:Identifier ;
-    sh:description "External concept defined by <a href=\"$inet://https://semiceu.github.io/Core-Location-Vocabulary/releases/2.1.0/#Location.geographicidentifier\"><font color=\"#0000ff\"><u>https://semiceu.github.io/Core-Location-Vocabulary/releases/2.1.0/#Location.geographicidentifier</u></font></a>" ;
-    sh:maxCount 1 ;
-    sh:name "Geographic identifier" ;
-    sh:path locn:geographicIdentifier ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://www.w3.org/ns/locn#geographicIdentifier> ?that . ?that <http://www.w3.org/ns/locn#geographicIdentifier> ?this .}" ] .
-
-core-shape:dct-Location-locn-geographicName a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:description "External concept defined by <a href=\"$inet://https://semiceu.github.io/Core-Location-Vocabulary/releases/2.1.0/#Location.geographicname\"><font color=\"#0000ff\"><u>https://semiceu.github.io/Core-Location-Vocabulary/releases/2.1.0/#Location.geographicname</u></font></a>" ;
-    sh:maxCount 1 ;
-    sh:name "Geographic name" ;
-    sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
-    sh:path locn:geographicName .
-
-core-shape:dct-Location-locn-geometry a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:class locn:Geometry ;
-    sh:description "External concept defined by <a href=\"$inet://https://semiceu.github.io/Core-Location-Vocabulary/releases/2.1.0/#Resource.geometry\"><font color=\"#0000ff\"><u>https://semiceu.github.io/Core-Location-Vocabulary/releases/2.1.0/#Resource.geometry</u></font></a>" ;
-    sh:maxCount 1 ;
-    sh:name "Geometry" ;
-    sh:path locn:geometry ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://www.w3.org/ns/locn#geometry> ?that . ?that <http://www.w3.org/ns/locn#geometry> ?this .}" ] .
-
-core-shape:eli-LegalExpression-dct-language a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:class skos:Concept ;
-    sh:description "External concept defined by <a href=\"$inet://https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/language\"><font color=\"#0000ff\"><u>https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/language</u></font></a>" ;
-    sh:minCount 1 ;
-    sh:name "Language" ;
-    sh:path dcterms:language .
-
-core-shape:eli-LegalExpression-eli-uri_schema a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:class adms:Identifier ;
-    sh:description "External concept defined by <a href=\"$inet://https://op.europa.eu/o/opportal-service/euvoc-download-handler?cellarURI=http%3A%2F%2Fpublications.europa.eu%2Fresource%2Fcellar%2Faeb9c9ab-e782-11ee-9ea8-01aa75ed71a1.0001.03%2FDOC_2&amp;fileName=eli.xlsx\"><font color=\"#0000ff\"><u>https://op.europa.eu/o/opportal-service/euvoc-download-handler?cellarURI=http%3A%2F%2Fpublications.europa.eu%2Fresource%2Fcellar%2Faeb9c9ab-e782-11ee-9ea8-01aa75ed71a1.0001.03%2FDOC_2&amp;fileName=eli.xlsx</u></font></a>" ;
-    sh:name "Uri_schema" ;
-    sh:path eli:uri_schema ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/eli/ontology#uri_schema> ?that . ?that <http://data.europa.eu/eli/ontology#uri_schema> ?this .}" ] .
-
-core-shape:eli-LegalResourceSubdivision-eli-uri_schema a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:class adms:Identifier ;
-    sh:description "External concept defined by <a href=\"$inet://https://op.europa.eu/o/opportal-service/euvoc-download-handler?cellarURI=http%3A%2F%2Fpublications.europa.eu%2Fresource%2Fcellar%2Faeb9c9ab-e782-11ee-9ea8-01aa75ed71a1.0001.03%2FDOC_2&amp;fileName=eli.xlsx\"><font color=\"#0000ff\"><u>https://op.europa.eu/o/opportal-service/euvoc-download-handler?cellarURI=http%3A%2F%2Fpublications.europa.eu%2Fresource%2Fcellar%2Faeb9c9ab-e782-11ee-9ea8-01aa75ed71a1.0001.03%2FDOC_2&amp;fileName=eli.xlsx</u></font></a>" ;
-    sh:name "Uri_schema" ;
-    sh:path eli:uri_schema ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/eli/ontology#uri_schema> ?that . ?that <http://data.europa.eu/eli/ontology#uri_schema> ?this .}" ] .
 
 core-shape:epo-AccessTerm-epo-definesCatalogueProvider a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
@@ -2593,20 +1968,6 @@ core-shape:epo-AccessTerm-epo-refersToPlannedPart a sh:PropertyShape ;
     sh:path :refersToPlannedPart ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#refersToPlannedPart> ?that . ?that <http://data.europa.eu/a4g/ontology#refersToPlannedPart> ?this .}" ] .
 
-core-shape:epo-AgentInRole-dct-description a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:description "External concept defined by <a href=\"$inet://https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/description\"><font color=\"#0000ff\"><u>https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/description</u></font></a>" ;
-    sh:name "Description" ;
-    sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
-    sh:path dcterms:description .
-
-core-shape:epo-AgentInRole-dct-title a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:description "External concept defined by <a href=\"$inet://https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/title\"><font color=\"#0000ff\"><u>https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/title</u></font></a>" ;
-    sh:name "Title" ;
-    sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
-    sh:path dcterms:title .
-
 core-shape:epo-AgentInRole-epo-contextualisedBy a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
     sh:class :ProcurementElement ;
@@ -2640,14 +2001,6 @@ core-shape:epo-AgentInRole-epo-playedBy a sh:PropertyShape ;
     sh:name "Played by" ;
     sh:path :playedBy ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#playedBy> ?that . ?that <http://data.europa.eu/a4g/ontology#playedBy> ?this .}" ] .
-
-core-shape:epo-Asset-dct-description a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:description "External concept defined by <a href=\"$inet://https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/description\"><font color=\"#0000ff\"><u>https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/description</u></font></a>" ;
-    sh:maxCount 1 ;
-    sh:name "Description" ;
-    sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
-    sh:path dcterms:description .
 
 core-shape:epo-Asset-epo-hasPredominance a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
@@ -3661,38 +3014,6 @@ core-shape:epo-DirectContract-epo-resultsFromLotAwardOutcome a sh:PropertyShape 
     sh:path :resultsFromLotAwardOutcome ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#resultsFromLotAwardOutcome> ?that . ?that <http://data.europa.eu/a4g/ontology#resultsFromLotAwardOutcome> ?this .}" ] .
 
-core-shape:epo-Document-adms-identifier a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:class adms:Identifier ;
-    sh:description "External concept defined by <a href=\"$inet://https://semiceu.github.io/ADMS/releases/2.00/#identifier\"><font color=\"#0000ff\"><u>https://semiceu.github.io/ADMS/releases/2.00/#identifier</u></font></a>" ;
-    sh:name "Identifier" ;
-    sh:path adms:identifier ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://www.w3.org/ns/adms#identifier> ?that . ?that <http://www.w3.org/ns/adms#identifier> ?this .}" ] .
-
-core-shape:epo-Document-dct-description a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:description "External concept defined by <a href=\"$inet://https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/description\"><font color=\"#0000ff\"><u>https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/description</u></font></a>" ;
-    sh:maxCount 1 ;
-    sh:name "Description" ;
-    sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
-    sh:path dcterms:description .
-
-core-shape:epo-Document-dct-issued a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:datatype xsd:dateTime ;
-    sh:description "External concept defined by <a href=\"$inet://https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/issued\"><font color=\"#0000ff\"><u>https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/issued</u></font></a>" ;
-    sh:maxCount 1 ;
-    sh:name "Issued" ;
-    sh:path dcterms:issued .
-
-core-shape:epo-Document-dct-title a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:description "External concept defined by <a href=\"$inet://https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/title\"><font color=\"#0000ff\"><u>https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/title</u></font></a>" ;
-    sh:maxCount 1 ;
-    sh:name "Title" ;
-    sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
-    sh:path dcterms:title .
-
 core-shape:epo-Document-epo-associatedWith a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
     sh:class :Document ;
@@ -3850,15 +3171,6 @@ core-shape:epo-DynamicPurchaseSystemTechnique-epo-hasUnlimitedDuration a sh:Prop
     sh:name "Has unlimited duration" ;
     sh:path :hasUnlimitedDuration .
 
-core-shape:epo-ElectronicSignature-dct-description a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:description "External concept defined by <a href=\"$inet://https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/description\"><font color=\"#0000ff\"><u>https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/description</u></font></a>" ;
-    sh:maxCount 1 ;
-    sh:minCount 1 ;
-    sh:name "Description" ;
-    sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
-    sh:path dcterms:description .
-
 core-shape:epo-EnergyEfficiencyInformation-epo-concernsEnergyEfficiencyItemCategory a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
     sh:class skos:Concept ;
@@ -3990,29 +3302,6 @@ core-shape:epo-FrameworkAgreementTerm-epo-hasMaximumParticipantsNumber a sh:Prop
     sh:name "Has maximum participants number" ;
     sh:path :hasMaximumParticipantsNumber .
 
-core-shape:epo-Fund-adms-identifier a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:class adms:Identifier ;
-    sh:description "External concept defined by <a href=\"$inet://https://semiceu.github.io/ADMS/releases/2.00/#identifier\"><font color=\"#0000ff\"><u>https://semiceu.github.io/ADMS/releases/2.00/#identifier</u></font></a>" ;
-    sh:maxCount 1 ;
-    sh:name "Identifier" ;
-    sh:path adms:identifier ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://www.w3.org/ns/adms#identifier> ?that . ?that <http://www.w3.org/ns/adms#identifier> ?this .}" ] .
-
-core-shape:epo-Fund-dct-description a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:description "External concept defined by <a href=\"$inet://https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/description\"><font color=\"#0000ff\"><u>https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/description</u></font></a>" ;
-    sh:name "Description" ;
-    sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
-    sh:path dcterms:description .
-
-core-shape:epo-Fund-dct-title a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:description "External concept defined by <a href=\"$inet://https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/title\"><font color=\"#0000ff\"><u>https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/title</u></font></a>" ;
-    sh:name "Title" ;
-    sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
-    sh:path dcterms:title .
-
 core-shape:epo-Fund-epo-hasFundProgramme a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
     sh:class skos:Concept ;
@@ -4107,13 +3396,6 @@ core-shape:epo-JuryMember-epo-playedBy a sh:PropertyShape ;
     sh:path :playedBy ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#playedBy> ?that . ?that <http://data.europa.eu/a4g/ontology#playedBy> ?this .}" ] .
 
-core-shape:epo-LocalLegalBasisInformation-dct-description a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:maxCount 1 ;
-    sh:name "Description" ;
-    sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
-    sh:path dcterms:description .
-
 core-shape:epo-LocalLegalBasisInformation-epo-concernsProcurementElement a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
     sh:class :ProcurementElement ;
@@ -4182,29 +3464,6 @@ core-shape:epo-LotAwardOutcome-epo-hasNonAwardedContractTitle a sh:PropertyShape
     sh:name "Has non awarded contract title" ;
     sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
     sh:path :hasNonAwardedContractTitle .
-
-core-shape:epo-LotGroup-adms-identifier a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:class adms:Identifier ;
-    sh:description "External concept defined by <a href=\"$inet://https://semiceu.github.io/ADMS/releases/2.00/#identifier\"><font color=\"#0000ff\"><u>https://semiceu.github.io/ADMS/releases/2.00/#identifier</u></font></a>" ;
-    sh:maxCount 1 ;
-    sh:name "Identifier" ;
-    sh:path adms:identifier ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://www.w3.org/ns/adms#identifier> ?that . ?that <http://www.w3.org/ns/adms#identifier> ?this .}" ] .
-
-core-shape:epo-LotGroup-dct-description a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:description "External concept defined by <a href=\"$inet://https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/description\"><font color=\"#0000ff\"><u>https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/description</u></font></a>" ;
-    sh:name "Description" ;
-    sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
-    sh:path dcterms:description .
-
-core-shape:epo-LotGroup-dct-title a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:description "External concept defined by <a href=\"$inet://https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/title\"><font color=\"#0000ff\"><u>https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/title</u></font></a>" ;
-    sh:name "Title" ;
-    sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
-    sh:path dcterms:title .
 
 core-shape:epo-LotGroup-epo-hasEstimatedValue a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
@@ -4406,14 +3665,6 @@ core-shape:epo-MultipleStageProcedureTerm-epo-hasSuccessiveReduction a sh:Proper
     sh:maxCount 1 ;
     sh:name "Has successive reduction" ;
     sh:path :hasSuccessiveReduction .
-
-core-shape:epo-NonDisclosureAgreementTerm-dct-description a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:description "External concept defined by <a href=\"$inet://https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/description\"><font color=\"#0000ff\"><u>https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/description</u></font></a>" ;
-    sh:maxCount 1 ;
-    sh:name "Description" ;
-    sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
-    sh:path dcterms:description .
 
 core-shape:epo-NonDisclosureAgreementTerm-epo-isNonDisclosureAgreementRequired a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
@@ -5060,30 +4311,6 @@ core-shape:epo-ProcurementCriterion-epo-hasWeightValueType a sh:PropertyShape ;
     sh:name "Has weight value type" ;
     sh:path :hasWeightValueType .
 
-core-shape:epo-ProcurementElement-adms-identifier a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:class adms:Identifier ;
-    sh:description "External concept defined by <a href=\"https://semiceu.github.io/ADMS/releases/2.00/#identifier\"><font color=\"#0000ff\"><u>https://semiceu.github.io/ADMS/releases/2.00/#identifier</u></font></a>" ;
-    sh:maxCount 1 ;
-    sh:minCount 1 ;
-    sh:name "Identifier" ;
-    sh:path adms:identifier ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://www.w3.org/ns/adms#identifier> ?that . ?that <http://www.w3.org/ns/adms#identifier> ?this .}" ] .
-
-core-shape:epo-ProcurementElement-dct-description a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:description "External concept defined by <a href=\"$inet://https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/description\"><font color=\"#0000ff\"><u>https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/description</u></font></a>" ;
-    sh:name "Description" ;
-    sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
-    sh:path dcterms:description .
-
-core-shape:epo-ProcurementElement-dct-title a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:description "External concept defined by <a href=\"$inet://https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/title\"><font color=\"#0000ff\"><u>https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/title</u></font></a>" ;
-    sh:name "Title" ;
-    sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
-    sh:path dcterms:title .
-
 core-shape:epo-ProcurementElement-epo-appliesForeignSubsidiesRegulation a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
     sh:datatype xsd:boolean ;
@@ -5341,15 +4568,6 @@ core-shape:epo-ProfessionalSuitabilitySummary-epo-hasServiceReservedToParticular
     sh:maxCount 1 ;
     sh:name "Has service reserved to particular profession" ;
     sh:path :hasServiceReservedToParticularProfession .
-
-core-shape:epo-Project-adms-identifier a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:class adms:Identifier ;
-    sh:description "External concept defined by <a href=\"https://semiceu.github.io/ADMS/releases/2.00/#identifier\"><font color=\"#0000ff\"><u>https://semiceu.github.io/ADMS/releases/2.00/#identifier</u></font></a>" ;
-    sh:maxCount 1 ;
-    sh:name "Identifier" ;
-    sh:path adms:identifier ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://www.w3.org/ns/adms#identifier> ?that . ?that <http://www.w3.org/ns/adms#identifier> ?this .}" ] .
 
 core-shape:epo-PurchaseContract-epo-followsRulesSetBy a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
@@ -5737,13 +4955,6 @@ core-shape:epo-Reviewer-epo-hasReviewBodyType a sh:PropertyShape ;
     sh:name "Has review body type" ;
     sh:path :hasReviewBodyType .
 
-core-shape:epo-SecurityClearanceTerm-dct-description a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:description "External concept defined by <a href=\"$inet://https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/description\"><font color=\"#0000ff\"><u>https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/description</u></font></a>" ;
-    sh:name "Description" ;
-    sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
-    sh:path dcterms:description .
-
 core-shape:epo-SecurityClearanceTerm-epo-hasDeadline a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
     sh:datatype xsd:dateTime ;
@@ -5864,13 +5075,6 @@ core-shape:epo-StrategicProcurement-epo-hasStrategicProcurementDescription a sh:
     sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
     sh:path :hasStrategicProcurementDescription .
 
-core-shape:epo-SubcontractTerm-dct-description a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:description "External concept defined by <a href=\"$inet://https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/description\"><font color=\"#0000ff\"><u>https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/description</u></font></a>" ;
-    sh:name "Description" ;
-    sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
-    sh:path dcterms:description .
-
 core-shape:epo-SubcontractTerm-epo-hasMaximumShare a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
     sh:datatype xsd:decimal ;
@@ -5917,13 +5121,6 @@ core-shape:epo-SubcontractTerm-epo-hasSubcontractorsProposedAboveObligation a sh
     sh:maxCount 1 ;
     sh:name "Has subcontractors proposed above obligation" ;
     sh:path :hasSubcontractorsProposedAboveObligation .
-
-core-shape:epo-SubcontractingEstimate-dct-description a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:description "External concept defined by <a href=\"$inet://https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/description\"><font color=\"#0000ff\"><u>https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/description</u></font></a>" ;
-    sh:name "Description" ;
-    sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
-    sh:path dcterms:description .
 
 core-shape:epo-SubcontractingEstimate-epo-hasEstimatedPercentage a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
@@ -6326,13 +5523,6 @@ core-shape:epo-SubmissionTerm-epo-isMultipleTenderSubmissionAllowed a sh:Propert
     sh:name "Is multiple tender submission allowed" ;
     sh:path :isMultipleTenderSubmissionAllowed .
 
-core-shape:epo-System-dct-description a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:description "External concept defined by <a href=\"$inet://https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/description\"><font color=\"#0000ff\"><u>https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/description</u></font></a>" ;
-    sh:name "Description" ;
-    sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
-    sh:path dcterms:description .
-
 core-shape:epo-System-epo-isOwnedByAgent a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
     sh:class foaf:Agent ;
@@ -6341,13 +5531,6 @@ core-shape:epo-System-epo-isOwnedByAgent a sh:PropertyShape ;
     sh:name "Is owned by agent" ;
     sh:path :isOwnedByAgent ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#isOwnedByAgent> ?that . ?that <http://data.europa.eu/a4g/ontology#isOwnedByAgent> ?this .}" ] .
-
-core-shape:epo-Technique-dct-description a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:description "External concept defined by <a href=\"$inet://https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/description\"><font color=\"#0000ff\"><u>https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/description</u></font></a>" ;
-    sh:name "Description" ;
-    sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
-    sh:path dcterms:description .
 
 core-shape:epo-Technique-epo-hasEstimatedValidityPeriod a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
@@ -6496,29 +5679,6 @@ core-shape:epo-TenderAwardOutcome-epo-specifiesForeignSubsidiesMeasureConclusion
     sh:name "Specifies foreign subsidies measure conclusion" ;
     sh:path :specifiesForeignSubsidiesMeasureConclusion .
 
-core-shape:epo-TenderGroup-adms-identifier a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:class adms:Identifier ;
-    sh:description "External concept defined by <a href=\"https://semiceu.github.io/ADMS/releases/2.00/#identifier\"><font color=\"#0000ff\"><u>https://semiceu.github.io/ADMS/releases/2.00/#identifier</u></font></a>" ;
-    sh:maxCount 1 ;
-    sh:name "Identifier" ;
-    sh:path adms:identifier ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://www.w3.org/ns/adms#identifier> ?that . ?that <http://www.w3.org/ns/adms#identifier> ?this .}" ] .
-
-core-shape:epo-TenderGroup-dct-description a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:description "External concept defined by <a href=\"$inet://https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/description\"><font color=\"#0000ff\"><u>https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/description</u></font></a>" ;
-    sh:name "Description" ;
-    sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
-    sh:path dcterms:description .
-
-core-shape:epo-TenderGroup-dct-title a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:description "External concept defined by <a href=\"$inet://https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/title\"><font color=\"#0000ff\"><u>https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/title</u></font></a>" ;
-    sh:name "Title" ;
-    sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
-    sh:path dcterms:title .
-
 core-shape:epo-TenderGroup-epo-comprisesTender a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
     sh:class :Tender ;
@@ -6581,14 +5741,6 @@ core-shape:epo-Winner-epo-needsToBeATenderer a sh:PropertyShape ;
     sh:name "Needs to be A tenderer" ;
     sh:path :needsToBeATenderer ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#needsToBeATenderer> ?that . ?that <http://data.europa.eu/a4g/ontology#needsToBeATenderer> ?this .}" ] .
-
-core-shape:epo-acc-ESPDRequest-epo-acc-refersToNotice a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:class :Notice ;
-    sh:description "Reference to a Notice." ;
-    sh:name "Refers to notice" ;
-    sh:path :refersToNotice ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#refersToNotice> ?that . ?that <http://data.europa.eu/a4g/ontology#refersToNotice> ?this .}" ] .
 
 core-shape:epo-acc-ESPDRequest-epo-concernsProcedure a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
@@ -6714,14 +5866,6 @@ core-shape:epo-cat-AbstractItem-epo-hasSerialID a sh:PropertyShape ;
     sh:name "Has serial ID" ;
     sh:path :hasSerialID ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#hasSerialID> ?that . ?that <http://data.europa.eu/a4g/ontology#hasSerialID> ?this .}" ] .
-
-core-shape:epo-cat-AbstractItem-epo-inv-hasItemClassificationIdentifier a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:class adms:Identifier ;
-    sh:description "The Identifier of the Item categorisation." ;
-    sh:name "Has item classification identifier" ;
-    sh:path :hasItemClassificationIdentifier ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#hasItemClassificationIdentifier> ?that . ?that <http://data.europa.eu/a4g/ontology#hasItemClassificationIdentifier> ?this .}" ] .
 
 core-shape:epo-cat-Batch-epo-hasBatchID a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
@@ -6861,14 +6005,6 @@ core-shape:epo-cat-EnvironmentalEmissionInformation-epo-cat-hasMeasure a sh:Prop
     sh:path :hasMeasure ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#hasMeasure> ?that . ?that <http://data.europa.eu/a4g/ontology#hasMeasure> ?this .}" ] .
 
-core-shape:epo-cat-ItemProperty-adms-identifier a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:class adms:Identifier ;
-    sh:maxCount 1 ;
-    sh:name "Identifier" ;
-    sh:path adms:identifier ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://www.w3.org/ns/adms#identifier> ?that . ?that <http://www.w3.org/ns/adms#identifier> ?this .}" ] .
-
 core-shape:epo-cat-ItemProperty-epo-cat-hasMaximumValue a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
     sh:class :Quantity ;
@@ -6895,15 +6031,6 @@ core-shape:epo-cat-ItemProperty-epo-cat-hasQualifiedValue a sh:PropertyShape ;
     sh:name "Has qualified value" ;
     sh:path :hasQualifiedValue ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#hasQualifiedValue> ?that . ?that <http://data.europa.eu/a4g/ontology#hasQualifiedValue> ?this .}" ] .
-
-core-shape:epo-cat-Line-adms-identifier a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:class adms:Identifier ;
-    sh:description "External concept defined by <a href=\"$inet://https://semiceu.github.io/ADMS/releases/2.00/#identifier\"><font color=\"#0000ff\"><u>https://semiceu.github.io/ADMS/releases/2.00/#identifier</u></font></a>" ;
-    sh:maxCount 1 ;
-    sh:name "Identifier" ;
-    sh:path adms:identifier ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://www.w3.org/ns/adms#identifier> ?that . ?that <http://www.w3.org/ns/adms#identifier> ?this .}" ] .
 
 core-shape:epo-cat-Line-epo-ful-hasAssociatedDocument a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
@@ -7068,24 +6195,6 @@ core-shape:epo-con-Deliverable-epo-hasTotalValue a sh:PropertyShape ;
     sh:path :hasTotalValue ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#hasTotalValue> ?that . ?that <http://data.europa.eu/a4g/ontology#hasTotalValue> ?this .}" ] .
 
-core-shape:epo-eva-EvaluationBoard-epo-eva-hasJuryMember a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:class :JuryMember ;
-    sh:description "An agent involved in an evaluation board." ;
-    sh:name "Has jury member" ;
-    sh:path :hasJuryMember ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#hasJuryMember> ?that . ?that <http://data.europa.eu/a4g/ontology#hasJuryMember> ?this .}" ] .
-
-core-shape:epo-eva-EvaluationBoard-epo-eva-isAppointedBy a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:class :UniqueResponsibleOfTheProcurement ;
-    sh:description "Relation indicating that by whom the instance of the concept is formally assigned." ;
-    sh:maxCount 1 ;
-    sh:minCount 1 ;
-    sh:name "Is appointed by" ;
-    sh:path :isAppointedBy ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#isAppointedBy> ?that . ?that <http://data.europa.eu/a4g/ontology#isAppointedBy> ?this .}" ] .
-
 core-shape:epo-eva-EvaluationBoard-epo-isAssignedForEvaluationOf a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
     sh:class :Lot ;
@@ -7093,35 +6202,6 @@ core-shape:epo-eva-EvaluationBoard-epo-isAssignedForEvaluationOf a sh:PropertySh
     sh:name "Is assigned for evaluation of" ;
     sh:path :isAssignedForEvaluationOf ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#isAssignedForEvaluationOf> ?that . ?that <http://data.europa.eu/a4g/ontology#isAssignedForEvaluationOf> ?this .}" ] .
-
-core-shape:epo-eva-EvaluationCriterion-epo-eva-evaluatesProcurementCriterion a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:class :ProcurementCriterion ;
-    sh:description "Assesses Procurement Criterion." ;
-    sh:maxCount 1 ;
-    sh:minCount 1 ;
-    sh:name "Evaluates procurement criterion" ;
-    sh:path :evaluatesProcurementCriterion ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#evaluatesProcurementCriterion> ?that . ?that <http://data.europa.eu/a4g/ontology#evaluatesProcurementCriterion> ?this .}" ] .
-
-core-shape:epo-eva-EvaluationReport-epo-eva-providesRankToTender a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:class :TenderAwardOutcome ;
-    sh:description "Makes available the assigned position for the Tender." ;
-    sh:maxCount 1 ;
-    sh:minCount 1 ;
-    sh:name "Provides rank to tender" ;
-    sh:path :providesRankToTender ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#providesRankToTender> ?that . ?that <http://data.europa.eu/a4g/ontology#providesRankToTender> ?this .}" ] .
-
-core-shape:epo-eva-EvaluationReport-epo-eva-usesEvaluationFormula a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:class :AwardEvaluationTerm ;
-    sh:description "Applies systematic method for assessment." ;
-    sh:maxCount 1 ;
-    sh:name "Uses evaluation formula" ;
-    sh:path :usesEvaluationFormula ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#usesEvaluationFormula> ?that . ?that <http://data.europa.eu/a4g/ontology#usesEvaluationFormula> ?this .}" ] .
 
 core-shape:epo-eva-Evaluator-epo-playedBy a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
@@ -7139,15 +6219,6 @@ core-shape:epo-eva-ExcludedCandidateList-epo-containsCandidate a sh:PropertyShap
     sh:path :containsCandidate ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#containsCandidate> ?that . ?that <http://data.europa.eu/a4g/ontology#containsCandidate> ?this .}" ] .
 
-core-shape:epo-eva-TenderClarificationRequest-cccev-hasRequirement a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:class cccev:InformationRequirement ;
-    sh:description "External concept defined by <a href=\"$inet://http://data.europa.eu/m8g/hasRequirement\"><font color=\"#0000ff\"><u>http://data.europa.eu/m8g/hasRequirement</u></font></a>" ;
-    sh:minCount 1 ;
-    sh:name "Has requirement" ;
-    sh:path cccev:hasRequirement ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/m8g/hasRequirement> ?that . ?that <http://data.europa.eu/m8g/hasRequirement> ?this .}" ] .
-
 core-shape:epo-eva-TenderClarificationRequest-epo-specifiesEconomicOperator a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
     sh:class :OfferingParty ;
@@ -7157,15 +6228,6 @@ core-shape:epo-eva-TenderClarificationRequest-epo-specifiesEconomicOperator a sh
     sh:name "Specifies economic operator" ;
     sh:path :specifiesEconomicOperator ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#specifiesEconomicOperator> ?that . ?that <http://data.europa.eu/a4g/ontology#specifiesEconomicOperator> ?this .}" ] .
-
-core-shape:epo-ful-AbstractContainer-adms-identifier a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:class adms:Identifier ;
-    sh:description "External concept defined by <a href=\"$inet://https://semiceu.github.io/ADMS/releases/2.00/#identifier\"><font color=\"#0000ff\"><u>https://semiceu.github.io/ADMS/releases/2.00/#identifier</u></font></a>" ;
-    sh:maxCount 1 ;
-    sh:name "Identifier" ;
-    sh:path adms:identifier ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://www.w3.org/ns/adms#identifier> ?that . ?that <http://www.w3.org/ns/adms#identifier> ?this .}" ] .
 
 core-shape:epo-ful-AbstractContainer-epo-ful-hasGrossVolume a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
@@ -7238,15 +6300,6 @@ core-shape:epo-ful-AbstractContainer-epo-ful-hasWidth a sh:PropertyShape ;
     sh:name "Has width" ;
     sh:path :hasWidth ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#hasWidth> ?that . ?that <http://data.europa.eu/a4g/ontology#hasWidth> ?this .}" ] .
-
-core-shape:epo-ful-Consignment-adms-identifier a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:class adms:Identifier ;
-    sh:description "External concept defined by <a href=\"$inet://https://semiceu.github.io/ADMS/releases/2.00/#identifier\"><font color=\"#0000ff\"><u>https://semiceu.github.io/ADMS/releases/2.00/#identifier</u></font></a>" ;
-    sh:maxCount 1 ;
-    sh:name "Identifier" ;
-    sh:path adms:identifier ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://www.w3.org/ns/adms#identifier> ?that . ?that <http://www.w3.org/ns/adms#identifier> ?this .}" ] .
 
 core-shape:epo-ful-Consignment-epo-ful-hasConsigneeConsignmentID a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
@@ -7418,15 +6471,6 @@ core-shape:epo-ful-ShipmentAgreement-epo-ful-agreedByBuyer a sh:PropertyShape ;
     sh:path :agreedByBuyer ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#agreedByBuyer> ?that . ?that <http://data.europa.eu/a4g/ontology#agreedByBuyer> ?this .}" ] .
 
-core-shape:epo-ful-ShipmentInformation-adms-identifier a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:class adms:Identifier ;
-    sh:description "External concept defined by <a href=\"$inet://https://semiceu.github.io/ADMS/releases/2.00/#identifier\"><font color=\"#0000ff\"><u>https://semiceu.github.io/ADMS/releases/2.00/#identifier</u></font></a>" ;
-    sh:maxCount 1 ;
-    sh:name "Identifier" ;
-    sh:path adms:identifier ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://www.w3.org/ns/adms#identifier> ?that . ?that <http://www.w3.org/ns/adms#identifier> ?this .}" ] .
-
 core-shape:epo-ful-ShipmentInformation-epo-ful-hasDespatchPeriod a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
     sh:class time:Interval ;
@@ -7454,15 +6498,6 @@ core-shape:epo-ful-ShipmentInformation-epo-ful-specifiesPlaceOfDespatch a sh:Pro
     sh:path :specifiesPlaceOfDespatch ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#specifiesPlaceOfDespatch> ?that . ?that <http://data.europa.eu/a4g/ontology#specifiesPlaceOfDespatch> ?this .}" ] .
 
-core-shape:epo-ful-ShipmentStage-adms-identifier a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:class adms:Identifier ;
-    sh:description "External concept defined by <a href=\"$inet://https://semiceu.github.io/ADMS/releases/2.00/#identifier\"><font color=\"#0000ff\"><u>https://semiceu.github.io/ADMS/releases/2.00/#identifier</u></font></a>" ;
-    sh:maxCount 1 ;
-    sh:name "Identifier" ;
-    sh:path adms:identifier ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://www.w3.org/ns/adms#identifier> ?that . ?that <http://www.w3.org/ns/adms#identifier> ?this .}" ] .
-
 core-shape:epo-ful-TemperatureSpecification-epo-ful-hasMaximumTemperature a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
     sh:class :Quantity ;
@@ -7480,24 +6515,6 @@ core-shape:epo-ful-TemperatureSpecification-epo-ful-hasMinimumTemperature a sh:P
     sh:name "Has minimum temperature" ;
     sh:path :hasMinimumTemperature ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#hasMinimumTemperature> ?that . ?that <http://data.europa.eu/a4g/ontology#hasMinimumTemperature> ?this .}" ] .
-
-core-shape:epo-ful-TransportEquipment-adms-identifier a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:class adms:Identifier ;
-    sh:description "External concept defined by <a href=\"$inet://https://semiceu.github.io/ADMS/releases/2.00/#identifier\"><font color=\"#0000ff\"><u>https://semiceu.github.io/ADMS/releases/2.00/#identifier</u></font></a>" ;
-    sh:maxCount 1 ;
-    sh:name "Identifier" ;
-    sh:path adms:identifier ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://www.w3.org/ns/adms#identifier> ?that . ?that <http://www.w3.org/ns/adms#identifier> ?this .}" ] .
-
-core-shape:epo-ful-TransportEquipmentSeal-adms-identifier a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:class adms:Identifier ;
-    sh:description "External concept defined by <a href=\"$inet://https://semiceu.github.io/ADMS/releases/2.00/#identifier\"><font color=\"#0000ff\"><u>https://semiceu.github.io/ADMS/releases/2.00/#identifier</u></font></a>" ;
-    sh:maxCount 1 ;
-    sh:name "Identifier" ;
-    sh:path adms:identifier ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://www.w3.org/ns/adms#identifier> ?that . ?that <http://www.w3.org/ns/adms#identifier> ?this .}" ] .
 
 core-shape:epo-ful-TransportMeans-epo-ful-hasVehicleID a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
@@ -7527,25 +6544,6 @@ core-shape:epo-ful-TransportMeansOperator-epo-playedBy a sh:PropertyShape ;
     sh:path :playedBy ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#playedBy> ?that . ?that <http://data.europa.eu/a4g/ontology#playedBy> ?this .}" ] .
 
-core-shape:epo-inv-CreditTransferInformation-epo-inv-hasPaymentAccountIdentifier a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:class adms:Identifier ;
-    sh:description "A unique identifier of the financial payment account, at a payment service provider, to which payment should be made." ;
-    sh:maxCount 1 ;
-    sh:minCount 1 ;
-    sh:name "Has payment account identifier" ;
-    sh:path :hasPaymentAccountIdentifier ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#hasPaymentAccountIdentifier> ?that . ?that <http://data.europa.eu/a4g/ontology#hasPaymentAccountIdentifier> ?this .}" ] .
-
-core-shape:epo-inv-CreditTransferInformation-epo-inv-hasPaymentServiceProviderIdentifier a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:class adms:Identifier ;
-    sh:description "An identifier for the payment service provider where a payment account is located." ;
-    sh:maxCount 1 ;
-    sh:name "Has payment service provider identifier" ;
-    sh:path :hasPaymentServiceProviderIdentifier ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#hasPaymentServiceProviderIdentifier> ?that . ?that <http://data.europa.eu/a4g/ontology#hasPaymentServiceProviderIdentifier> ?this .}" ] .
-
 core-shape:epo-inv-Invoice-epo-hasLotReference a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
     sh:class :Lot ;
@@ -7554,40 +6552,6 @@ core-shape:epo-inv-Invoice-epo-hasLotReference a sh:PropertyShape ;
     sh:name "Has lot reference" ;
     sh:path :hasLotReference ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#hasLotReference> ?that . ?that <http://data.europa.eu/a4g/ontology#hasLotReference> ?this .}" ] .
-
-core-shape:epo-inv-Invoice-epo-inv-hasInvoicedObjectIdentifier a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:class adms:Identifier ;
-    sh:description "An identifier for an object on which the invoice is based, given by the Seller." ;
-    sh:maxCount 1 ;
-    sh:name "Has invoiced object identifier" ;
-    sh:path :hasInvoicedObjectIdentifier ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#hasInvoicedObjectIdentifier> ?that . ?that <http://data.europa.eu/a4g/ontology#hasInvoicedObjectIdentifier> ?this .}" ] .
-
-core-shape:epo-inv-Invoice-epo-inv-hasInvoicingPeriod a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:class time:Interval ;
-    sh:description "Relation indicating the time range for creating, sending, and managing Invoices." ;
-    sh:maxCount 1 ;
-    sh:name "Has invoicing period" ;
-    sh:path :hasInvoicingPeriod ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#hasInvoicingPeriod> ?that . ?that <http://data.europa.eu/a4g/ontology#hasInvoicingPeriod> ?this .}" ] .
-
-core-shape:epo-inv-Invoice-epo-inv-hasTotalAccountingCurrencyTaxAmount a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:class :MonetaryValue ;
-    sh:description "Relation indicating the overall Monetary Value of the Tax applied on the currency in which the financial transactions are recorded at the company level." ;
-    sh:name "Has total accounting currency tax amount" ;
-    sh:path :hasTotalAccountingCurrencyTaxAmount ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#hasTotalAccountingCurrencyTaxAmount> ?that . ?that <http://data.europa.eu/a4g/ontology#hasTotalAccountingCurrencyTaxAmount> ?this .}" ] .
-
-core-shape:epo-inv-Invoice-epo-inv-hasTotalTaxAmount a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:class :MonetaryValue ;
-    sh:description "Relation indicating the overall Monetary Value of the Tax applied." ;
-    sh:name "Has total tax amount" ;
-    sh:path :hasTotalTaxAmount ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#hasTotalTaxAmount> ?that . ?that <http://data.europa.eu/a4g/ontology#hasTotalTaxAmount> ?this .}" ] .
 
 core-shape:epo-inv-Invoice-epo-ord-hasAmountDueForPayment a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
@@ -7696,61 +6660,6 @@ core-shape:epo-inv-InvoiceLine-epo-cat-hasQuantity a sh:PropertyShape ;
     sh:name "Has quantity" ;
     sh:path :hasQuantity ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#hasQuantity> ?that . ?that <http://data.europa.eu/a4g/ontology#hasQuantity> ?this .}" ] .
-
-core-shape:epo-inv-InvoiceLine-epo-inv-hasInvoiceLineObjectIdentifier a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:class adms:Identifier ;
-    sh:description "An identifier for an object on which the invoice line is based, given by the Seller. Additional Information: It may be a subscription number, telephone number, meter point etc., as applicable." ;
-    sh:maxCount 1 ;
-    sh:name "Has invoice line object identifier" ;
-    sh:path :hasInvoiceLineObjectIdentifier ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#hasInvoiceLineObjectIdentifier> ?that . ?that <http://data.europa.eu/a4g/ontology#hasInvoiceLineObjectIdentifier> ?this .}" ] .
-
-core-shape:epo-inv-InvoiceLine-epo-inv-hasInvoiceLinePeriod a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:class time:Interval ;
-    sh:description "Relation indicating the time range of the Invoice Line." ;
-    sh:maxCount 1 ;
-    sh:name "Has invoice line period" ;
-    sh:path :hasInvoiceLinePeriod ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#hasInvoiceLinePeriod> ?that . ?that <http://data.europa.eu/a4g/ontology#hasInvoiceLinePeriod> ?this .}" ] .
-
-core-shape:epo-inv-InvoiceLine-epo-inv-hasNetAmount a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:class :MonetaryValue ;
-    sh:description "Relation indicating the Monetary Value exclusive of taxes and after substracting price discounts." ;
-    sh:maxCount 1 ;
-    sh:minCount 1 ;
-    sh:name "Has net amount" ;
-    sh:path :hasNetAmount ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#hasNetAmount> ?that . ?that <http://data.europa.eu/a4g/ontology#hasNetAmount> ?this .}" ] .
-
-core-shape:epo-inv-PaymentInstructionsInformation-epo-inv-hasBankingIdentifier a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:class adms:Identifier ;
-    sh:description "An unique banking reference identifier of the Payee or Seller, assigned by the Payee or Seller bank." ;
-    sh:maxCount 1 ;
-    sh:name "Has banking identifier" ;
-    sh:path :hasBankingIdentifier ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#hasBankingIdentifier> ?that . ?that <http://data.europa.eu/a4g/ontology#hasBankingIdentifier> ?this .}" ] .
-
-core-shape:epo-inv-PaymentInstructionsInformation-epo-inv-hasDebitedAccountIdentifier a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:class adms:Identifier ;
-    sh:description "An identifier for the account to be debited by the direct debit." ;
-    sh:maxCount 1 ;
-    sh:name "Has debited account identifier" ;
-    sh:path :hasDebitedAccountIdentifier ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#hasDebitedAccountIdentifier> ?that . ?that <http://data.europa.eu/a4g/ontology#hasDebitedAccountIdentifier> ?this .}" ] .
-
-core-shape:epo-inv-PaymentInstructionsInformation-epo-inv-hasMandateIdentifier a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:class adms:Identifier ;
-    sh:description "An unique identifier for referencing the direct debit mandate, assigned by the Payee." ;
-    sh:maxCount 1 ;
-    sh:name "Has mandate identifier" ;
-    sh:path :hasMandateIdentifier ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#hasMandateIdentifier> ?that . ?that <http://data.europa.eu/a4g/ontology#hasMandateIdentifier> ?this .}" ] .
 
 core-shape:epo-not-CompetitionNotice-epo-announcesLot a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
@@ -8444,42 +7353,6 @@ core-shape:epo-ord-TaxInformation-epo-isCalculatedOn a sh:PropertyShape ;
     sh:path :isCalculatedOn ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#isCalculatedOn> ?that . ?that <http://data.europa.eu/a4g/ontology#isCalculatedOn> ?this .}" ] .
 
-core-shape:epo-pay-PaymentInformation-epo-pay-hasPaymentIdentifier a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:class adms:Identifier ;
-    sh:description "Relation indicating the Identifier of the Payment." ;
-    sh:maxCount 1 ;
-    sh:name "Has payment identifier" ;
-    sh:path :hasPaymentIdentifier ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#hasPaymentIdentifier> ?that . ?that <http://data.europa.eu/a4g/ontology#hasPaymentIdentifier> ?this .}" ] .
-
-core-shape:epo-pay-RemittanceAdvice-epo-pay-hasTotalCreditAmount a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:class :MonetaryValue ;
-    sh:description "Relation indicating the overall Monetary Value that reduces the amount owed." ;
-    sh:maxCount 1 ;
-    sh:name "Has total credit amount" ;
-    sh:path :hasTotalCreditAmount ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#hasTotalCreditAmount> ?that . ?that <http://data.europa.eu/a4g/ontology#hasTotalCreditAmount> ?this .}" ] .
-
-core-shape:epo-pay-RemittanceAdvice-epo-pay-hasTotalDebitAmount a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:class :MonetaryValue ;
-    sh:description "Relation indicating the overall Monetary Value that increases the amount owed." ;
-    sh:maxCount 1 ;
-    sh:name "Has total debit amount" ;
-    sh:path :hasTotalDebitAmount ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#hasTotalDebitAmount> ?that . ?that <http://data.europa.eu/a4g/ontology#hasTotalDebitAmount> ?this .}" ] .
-
-core-shape:epo-pay-RemittanceAdvice-epo-pay-hasTotalPaymentAmount a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:class :MonetaryValue ;
-    sh:description "Relation indicating the overall paid Monetary Value." ;
-    sh:maxCount 1 ;
-    sh:name "Has total payment amount" ;
-    sh:path :hasTotalPaymentAmount ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#hasTotalPaymentAmount> ?that . ?that <http://data.europa.eu/a4g/ontology#hasTotalPaymentAmount> ?this .}" ] .
-
 core-shape:epo-pay-RemittanceAdvice-epo-specifiesBuyer a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
     sh:class :Buyer ;
@@ -8489,33 +7362,6 @@ core-shape:epo-pay-RemittanceAdvice-epo-specifiesBuyer a sh:PropertyShape ;
     sh:name "Specifies buyer" ;
     sh:path :specifiesBuyer ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#specifiesBuyer> ?that . ?that <http://data.europa.eu/a4g/ontology#specifiesBuyer> ?this .}" ] .
-
-core-shape:epo-pay-RemittanceAdviceLine-epo-pay-hasBalanceAmount a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:class :MonetaryValue ;
-    sh:description "Relation indicating the outstanding amount that remains unpaid or unsettled." ;
-    sh:maxCount 1 ;
-    sh:name "Has balance amount" ;
-    sh:path :hasBalanceAmount ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#hasBalanceAmount> ?that . ?that <http://data.europa.eu/a4g/ontology#hasBalanceAmount> ?this .}" ] .
-
-core-shape:epo-pay-RemittanceAdviceLine-epo-pay-hasCreditAmount a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:class :MonetaryValue ;
-    sh:description "Relation indicating the Monetary Value that reduces the amount owed." ;
-    sh:maxCount 1 ;
-    sh:name "Has credit amount" ;
-    sh:path :hasCreditAmount ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#hasCreditAmount> ?that . ?that <http://data.europa.eu/a4g/ontology#hasCreditAmount> ?this .}" ] .
-
-core-shape:epo-pay-RemittanceAdviceLine-epo-pay-hasDebitAmount a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:class :MonetaryValue ;
-    sh:description "Relation indicating the Monetary Value that increases the amount owed." ;
-    sh:maxCount 1 ;
-    sh:name "Has debit amount" ;
-    sh:path :hasDebitAmount ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#hasDebitAmount> ?that . ?that <http://data.europa.eu/a4g/ontology#hasDebitAmount> ?this .}" ] .
 
 core-shape:epo-qua-EvidenceOutcome-epo-specifiesEvidence a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
@@ -8593,16 +7439,6 @@ core-shape:epo-qua-EvidenceSubmission-epo-specifiesEconomicOperator a sh:Propert
     sh:path :specifiesEconomicOperator ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#specifiesEconomicOperator> ?that . ?that <http://data.europa.eu/a4g/ontology#specifiesEconomicOperator> ?this .}" ] .
 
-core-shape:epo-qua-QualificationDecisionInformation-epo-qua-providesDecisionFor a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:class :Lot ;
-    sh:description "Makes available the resolution." ;
-    sh:maxCount 1 ;
-    sh:minCount 1 ;
-    sh:name "Provides decision for" ;
-    sh:path :providesDecisionFor ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#providesDecisionFor> ?that . ?that <http://data.europa.eu/a4g/ontology#providesDecisionFor> ?this .}" ] .
-
 core-shape:epo-req-RequestForOffer-epo-hasDestinationCountryCode a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
     sh:class skos:Concept ;
@@ -8618,24 +7454,6 @@ core-shape:epo-req-RequestForOffer-epo-refersToContract a sh:PropertyShape ;
     sh:name "Refers to contract" ;
     sh:path :refersToContract ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#refersToContract> ?that . ?that <http://data.europa.eu/a4g/ontology#refersToContract> ?this .}" ] .
-
-core-shape:epo-req-RequestForOffer-epo-req-specifiesOfferCurrency a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:class at-voc:currency ;
-    sh:description "Relation indicating the Currency for the Offer." ;
-    sh:maxCount 1 ;
-    sh:name "Specifies offer currency" ;
-    sh:path :specifiesOfferCurrency ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#specifiesOfferCurrency> ?that . ?that <http://data.europa.eu/a4g/ontology#specifiesOfferCurrency> ?this .}" ] .
-
-core-shape:epo-req-RequestForOffer-epo-req-specifiesOfferValidityPeriod a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:class time:Interval ;
-    sh:description "Relation indicating the time range in which an Offer is valid." ;
-    sh:maxCount 1 ;
-    sh:name "Specifies offer validity period" ;
-    sh:path :specifiesOfferValidityPeriod ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#specifiesOfferValidityPeriod> ?that . ?that <http://data.europa.eu/a4g/ontology#specifiesOfferValidityPeriod> ?this .}" ] .
 
 core-shape:epo-req-RequestForOffer-epo-specifiesBuyer a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
@@ -8656,32 +7474,6 @@ core-shape:epo-req-RequestForOffer-epo-specifiesContractor a sh:PropertyShape ;
     sh:path :specifiesContractor ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#specifiesContractor> ?that . ?that <http://data.europa.eu/a4g/ontology#specifiesContractor> ?this .}" ] .
 
-core-shape:epo-sub-ESPD-epo-sub-isContainedInTender a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:class :Tender ;
-    sh:description "Relation indicating that the instance of the concept is part of a Tender." ;
-    sh:name "Is contained in tender" ;
-    sh:path :isContainedInTender ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#isContainedInTender> ?that . ?that <http://data.europa.eu/a4g/ontology#isContainedInTender> ?this .}" ] .
-
-core-shape:epo-sub-ESPD-epo-sub-providesInformationOn a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:class org:Organization ;
-    sh:description "Offers information about an instance of a concept." ;
-    sh:name "Provides information on" ;
-    sh:path :providesInformationOn ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#providesInformationOn> ?that . ?that <http://data.europa.eu/a4g/ontology#providesInformationOn> ?this .}" ] .
-
-core-shape:epo-sub-EvidenceInformation-epo-sub-summarisesInformationAboutEvidence a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:class cccev:Evidence ;
-    sh:description "Relation indicating the Certificate that the information refers to." ;
-    sh:maxCount 1 ;
-    sh:minCount 1 ;
-    sh:name "Summarises information about evidence" ;
-    sh:path :summarisesInformationAboutEvidence ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#summarisesInformationAboutEvidence> ?that . ?that <http://data.europa.eu/a4g/ontology#summarisesInformationAboutEvidence> ?this .}" ] .
-
 core-shape:epo-sub-LegalRepresentative-epo-actsOnBehalfOf a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
     sh:class :OfferingParty ;
@@ -8689,82 +7481,6 @@ core-shape:epo-sub-LegalRepresentative-epo-actsOnBehalfOf a sh:PropertyShape ;
     sh:name "Acts on behalf of" ;
     sh:path :actsOnBehalfOf ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#actsOnBehalfOf> ?that . ?that <http://data.europa.eu/a4g/ontology#actsOnBehalfOf> ?this .}" ] .
-
-core-shape:epo-sub-OrganisationInformationSummary-epo-sub-concernsOrganisation a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:class org:Organization ;
-    sh:description "Relates to Organization." ;
-    sh:maxCount 1 ;
-    sh:minCount 1 ;
-    sh:name "Concerns organisation" ;
-    sh:path :concernsOrganisation ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#concernsOrganisation> ?that . ?that <http://data.europa.eu/a4g/ontology#concernsOrganisation> ?this .}" ] .
-
-core-shape:epo-sub-OrganisationInformationSummary-epo-sub-providesOrganisationEmployeeQuantity a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:class :Quantity ;
-    sh:description "The number of people hired by the Organization." ;
-    sh:maxCount 1 ;
-    sh:name "Provides organisation employee quantity" ;
-    sh:path :providesOrganisationEmployeeQuantity ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#providesOrganisationEmployeeQuantity> ?that . ?that <http://data.europa.eu/a4g/ontology#providesOrganisationEmployeeQuantity> ?this .}" ] .
-
-core-shape:epo-sub-OrganisationInformationSummary-epo-sub-providesOrganisationFinancialCapability a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:class :MonetaryValue ;
-    sh:description "A monetary amount representing the financial capability of the Organization. Additional information: Used to represent the general Turnover of the Organization (for statistical purposes)." ;
-    sh:maxCount 1 ;
-    sh:name "Provides organisation financial capability" ;
-    sh:path :providesOrganisationFinancialCapability ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#providesOrganisationFinancialCapability> ?that . ?that <http://data.europa.eu/a4g/ontology#providesOrganisationFinancialCapability> ?this .}" ] .
-
-core-shape:epo-sub-Response-cccev-confidentialityLevelType a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:class skos:Concept ;
-    sh:description "External concept defined by <a href=\"$inet://http://data.europa.eu/m8g/confidentialityLevelType\"><font color=\"#0000ff\"><u>http://data.europa.eu/m8g/confidentialityLevelType</u></font></a>" ;
-    sh:maxCount 1 ;
-    sh:name "Confidentiality level type" ;
-    sh:path cccev:confidentialityLevelType .
-
-core-shape:epo-sub-Response-epo-sub-answersQuestion a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:class cccev:InformationRequirement ;
-    sh:description "Relation indicating that the Response replies to a question." ;
-    sh:name "Answers question" ;
-    sh:path :answersQuestion ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#answersQuestion> ?that . ?that <http://data.europa.eu/a4g/ontology#answersQuestion> ?this .}" ] .
-
-core-shape:epo-sub-Response-epo-sub-isReinforcedBy a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:class cccev:Evidence ;
-    sh:description "Relation indicating an Evidence that supports the Response." ;
-    sh:name "Is reinforced by" ;
-    sh:path :isReinforcedBy ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#isReinforcedBy> ?that . ?that <http://data.europa.eu/a4g/ontology#isReinforcedBy> ?this .}" ] .
-
-core-shape:epo-sub-Response-epo-sub-refersToApplicablePeriod a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:class time:Interval ;
-    sh:description "Relation indicating the period to which the Response shall apply." ;
-    sh:maxCount 1 ;
-    sh:name "Refers to applicable period" ;
-    sh:path :refersToApplicablePeriod ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#refersToApplicablePeriod> ?that . ?that <http://data.europa.eu/a4g/ontology#refersToApplicablePeriod> ?this .}" ] .
-
-core-shape:foaf-Agent-adms-identifier a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:class adms:Identifier ;
-    sh:description "External concept defined by <a href=\"https://semiceu.github.io/ADMS/releases/2.00/#identifier\"><font color=\"#0000ff\"><u>https://semiceu.github.io/ADMS/releases/2.00/#identifier</u></font></a>" ;
-    sh:name "Identifier" ;
-    sh:path adms:identifier ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://www.w3.org/ns/adms#identifier> ?that . ?that <http://www.w3.org/ns/adms#identifier> ?this .}" ] .
-
-core-shape:foaf-Agent-dct-title a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:description "External concept defined by <a href=\"$inet://https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/title\"><font color=\"#0000ff\"><u>https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/title</u></font></a>" ;
-    sh:name "Title" ;
-    sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
-    sh:path dcterms:title .
 
 core-shape:foaf-Agent-epo-hasAlias a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
@@ -8804,101 +7520,6 @@ core-shape:locn-Address-epo-hasNutsCode a sh:PropertyShape ;
     sh:maxCount 1 ;
     sh:name "Has nuts code" ;
     sh:path :hasNutsCode .
-
-core-shape:locn-Address-locn-addressArea a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:description "External concept defined by <a href=\"$inet://https://semiceu.github.io/Core-Location-Vocabulary/releases/2.1.0/#Address.addressarea\"><font color=\"#0000ff\"><u>https://semiceu.github.io/Core-Location-Vocabulary/releases/2.1.0/#Address.addressarea</u></font></a>" ;
-    sh:maxCount 1 ;
-    sh:name "Address area" ;
-    sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
-    sh:path locn:addressArea .
-
-core-shape:locn-Address-locn-addressID a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:class adms:Identifier ;
-    sh:description "External concept defined by <a href=\"$inet://https://semiceu.github.io/Core-Location-Vocabulary/releases/2.1.0/#Address.addressID\"><font color=\"#0000ff\"><u>https://semiceu.github.io/Core-Location-Vocabulary/releases/2.1.0/#Address.addressID</u></font></a>" ;
-    sh:maxCount 1 ;
-    sh:name "Address ID" ;
-    sh:path locn:addressID ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://www.w3.org/ns/locn#addressID> ?that . ?that <http://www.w3.org/ns/locn#addressID> ?this .}" ] .
-
-core-shape:locn-Address-locn-fullAddress a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:description "External concept defined by <a href=\"$inet://https://semiceu.github.io/Core-Location-Vocabulary/releases/2.1.0/#Address.fulladdress\"><font color=\"#0000ff\"><u>https://semiceu.github.io/Core-Location-Vocabulary/releases/2.1.0/#Address.fulladdress</u></font></a>" ;
-    sh:maxCount 1 ;
-    sh:name "Full address" ;
-    sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
-    sh:path locn:fullAddress .
-
-core-shape:locn-Address-locn-locatorDesignator a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:description "External concept defined by <a href=\"$inet://https://semiceu.github.io/Core-Location-Vocabulary/releases/2.1.0/#Address.haslocatordesignator\"><font color=\"#0000ff\"><u>https://semiceu.github.io/Core-Location-Vocabulary/releases/2.1.0/#Address.haslocatordesignator</u></font></a>" ;
-    sh:maxCount 1 ;
-    sh:name "Locator designator" ;
-    sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
-    sh:path locn:locatorDesignator .
-
-core-shape:locn-Address-locn-locatorName a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:description "External concept defined by <a href=\"$inet://https://semiceu.github.io/Core-Location-Vocabulary/releases/2.1.0/#Address.locatorname\"><font color=\"#0000ff\"><u>https://semiceu.github.io/Core-Location-Vocabulary/releases/2.1.0/#Address.locatorname</u></font></a>" ;
-    sh:maxCount 1 ;
-    sh:name "Locator name" ;
-    sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
-    sh:path locn:locatorName .
-
-core-shape:locn-Address-locn-postCode a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:description "External concept defined by <a href=\"$inet://https://semiceu.github.io/Core-Location-Vocabulary/releases/2.1.0/#Address.postcode\"><font color=\"#0000ff\"><u>https://semiceu.github.io/Core-Location-Vocabulary/releases/2.1.0/#Address.postcode</u></font></a>" ;
-    sh:maxCount 1 ;
-    sh:name "Post code" ;
-    sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
-    sh:path locn:postCode .
-
-core-shape:locn-Address-locn-postName a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:description "External concept defined by <a href=\"$inet://https://semiceu.github.io/Core-Location-Vocabulary/releases/2.1.0/#Address.postname\"><font color=\"#0000ff\"><u>https://semiceu.github.io/Core-Location-Vocabulary/releases/2.1.0/#Address.postname</u></font></a>" ;
-    sh:maxCount 1 ;
-    sh:name "Post name" ;
-    sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
-    sh:path locn:postName .
-
-core-shape:locn-Address-locn-thoroughfare a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:description "External concept defined by <a href=\"$inet://https://semiceu.github.io/Core-Location-Vocabulary/releases/2.1.0/#Address.thoroughfare\"><font color=\"#0000ff\"><u>https://semiceu.github.io/Core-Location-Vocabulary/releases/2.1.0/#Address.thoroughfare</u></font></a>" ;
-    sh:maxCount 1 ;
-    sh:name "Thoroughfare" ;
-    sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
-    sh:path locn:thoroughfare .
-
-core-shape:locn-Geometry-cv-coordinates a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:description "External concept defined by <a href=\"$inet://http://data.europa.eu/m8g/coordinates\"><font color=\"#0000ff\"><u>http://data.europa.eu/m8g/coordinates</u></font></a>" ;
-    sh:name "Coordinates" ;
-    sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
-    sh:path cccev:coordinates .
-
-core-shape:locn-Geometry-cv-latitude a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:description "External concept defined by <a href=\"$inet://http://data.europa.eu/m8g/latitude\"><font color=\"#0000ff\"><u>http://data.europa.eu/m8g/latitude</u></font></a>" ;
-    sh:name "Latitude" ;
-    sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
-    sh:path cccev:latitude .
-
-core-shape:locn-Geometry-cv-longitude a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:description "External concept defined by <a href=\"$inet://http://data.europa.eu/m8g/longitude\"><font color=\"#0000ff\"><u>http://data.europa.eu/m8g/longitude</u></font></a>" ;
-    sh:name "Longitude" ;
-    sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
-    sh:path cccev:longitude .
-
-core-shape:org-Organization-cv-registeredAddress a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:class locn:Address ;
-    sh:description "External concept defined by <a href=\"$inet://http://data.europa.eu/m8g/registeredAddress\"><font color=\"#0000ff\"><u>http://data.europa.eu/m8g/registeredAddress</u></font></a>" ;
-    sh:maxCount 1 ;
-    sh:name "Registered address" ;
-    sh:path cccev:registeredAddress ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/m8g/registeredAddress> ?that . ?that <http://data.europa.eu/m8g/registeredAddress> ?this .}" ] .
 
 core-shape:org-Organization-epo-canProvideEvidence a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
@@ -9018,54 +7639,6 @@ core-shape:org-Organization-epo-hasTaxIdentifier a sh:PropertyShape ;
     sh:path :hasTaxIdentifier ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#hasTaxIdentifier> ?that . ?that <http://data.europa.eu/a4g/ontology#hasTaxIdentifier> ?this .}" ] .
 
-core-shape:org-Organization-locn-address a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:class locn:Address ;
-    sh:description "External concept defined by <a href=\"$inet://https://semiceu.github.io/Core-Location-Vocabulary/releases/2.1.0/#Resource.address\"><font color=\"#0000ff\"><u>https://semiceu.github.io/Core-Location-Vocabulary/releases/2.1.0/#Resource.address</u></font></a>" ;
-    sh:name "Address" ;
-    sh:path locn:address ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://www.w3.org/ns/locn#address> ?that . ?that <http://www.w3.org/ns/locn#address> ?this .}" ] .
-
-core-shape:org-Organization-org-hasUnit a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:class org:OrganizationalUnit ;
-    sh:description "External concept defined by <a href=\"$inet://https://www.w3.org/TR/vocab-org/#org:OrganizationalUnit\"><font color=\"#0000ff\"><u>https://www.w3.org/TR/vocab-org/#org:hasUnit</u></font></a>" ;
-    sh:name "Has unit" ;
-    sh:path org:hasUnit ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://www.w3.org/ns/org#hasUnit> ?that . ?that <http://www.w3.org/ns/org#hasUnit> ?this .}" ] .
-
-core-shape:org-Organization-org-subOrganizationOf a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:class org:Organization ;
-    sh:description "External concept defined by <a href=\"$inet://https://www.w3.org/TR/vocab-org/#org:subOrganizationOf\"><font color=\"#0000ff\"><u>https://www.w3.org/TR/vocab-org/#org:subOrganizationOf</u></font></a>" ;
-    sh:name "Sub organization of" ;
-    sh:path org:subOrganizationOf ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://www.w3.org/ns/org#subOrganizationOf> ?that . ?that <http://www.w3.org/ns/org#subOrganizationOf> ?this .}" ] .
-
-core-shape:person-Person-cv-birthDate a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:datatype xsd:date ;
-    sh:description "External concept defined by <a href=\"$inet://http://data.europa.eu/m8g/birthDate\"><font color=\"#0000ff\"><u>http://data.europa.eu/m8g/birthDate</u></font></a>" ;
-    sh:maxCount 1 ;
-    sh:name "Birth date" ;
-    sh:path cccev:birthDate .
-
-core-shape:person-Person-cv-registeredAddress a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:class locn:Address ;
-    sh:description "External concept defined by <a href=\"$inet://http://data.europa.eu/m8g/registeredAddress\"><font color=\"#0000ff\"><u>http://data.europa.eu/m8g/registeredAddress</u></font></a>" ;
-    sh:maxCount 1 ;
-    sh:name "Registered address" ;
-    sh:path cccev:registeredAddress ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/m8g/registeredAddress> ?that . ?that <http://data.europa.eu/m8g/registeredAddress> ?this .}" ] .
-
-core-shape:person-Person-dct-alternative a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:description "External concept defined by <a href=\"$inet://https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/alternative\"><font color=\"#0000ff\"><u>https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/alternative</u></font></a>" ;
-    sh:name "Alternative" ;
-    sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
-    sh:path dcterms:alternative .
-
 core-shape:person-Person-epo-hasCountryOfBirth a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
     sh:class skos:Concept ;
@@ -9088,111 +7661,6 @@ core-shape:person-Person-epo-isBeneficialOwnerOf a sh:PropertyShape ;
     sh:name "Is beneficial owner of" ;
     sh:path :isBeneficialOwnerOf ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#isBeneficialOwnerOf> ?that . ?that <http://data.europa.eu/a4g/ontology#isBeneficialOwnerOf> ?this .}" ] .
-
-core-shape:person-Person-foaf-familyName a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:description "External concept defined by <a href=\"$inet://http://xmlns.com/foaf/spec/#term_familyName\"><font color=\"#0000ff\"><u>http://xmlns.com/foaf/spec/#term_familyName</u></font></a>" ;
-    sh:name "Family name" ;
-    sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
-    sh:path foaf:familyName .
-
-core-shape:person-Person-foaf-givenName a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:description "External concept defined by <a href=\"$inet://http://xmlns.com/foaf/spec/#term_givenName\"><font color=\"#0000ff\"><u>http://xmlns.com/foaf/spec/#term_givenName</u></font></a>" ;
-    sh:name "Given name" ;
-    sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
-    sh:path foaf:givenName .
-
-core-shape:person-Person-foaf-name a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:description "External concept defined by <a href=\"$inet://http://xmlns.com/foaf/spec/#term_name\"><font color=\"#0000ff\"><u>http://xmlns.com/foaf/spec/#term_name</u></font></a>" ;
-    sh:name "Name" ;
-    sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
-    sh:path foaf:name .
-
-core-shape:person-Person-person-birthName a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:description "External concept defined by <a href=\"$inet://https://semiceu.github.io/Core-Person-Vocabulary/releases/2.1.1/#Person.birthname\"><font color=\"#0000ff\"><u>https://semiceu.github.io/Core-Person-Vocabulary/releases/2.1.1/#Person.birthname</u></font></a>" ;
-    sh:name "Birth name" ;
-    sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
-    sh:path person:birthName .
-
-core-shape:person-Person-person-patronymicName a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:description "External concept defined by <a href=\"$inet://https://semiceu.github.io/Core-Person-Vocabulary/releases/2.1.1/#Person.patronymicname\"><font color=\"#0000ff\"><u>https://semiceu.github.io/Core-Person-Vocabulary/releases/2.1.1/#Person.patronymicname</u></font></a>" ;
-    sh:name "Patronymic name" ;
-    sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
-    sh:path person:patronymicName .
-
-core-shape:time-Duration-time-numericDuration a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:datatype xsd:decimal ;
-    sh:description "External concept defined by <a href=\"$inet://https://www.w3.org/TR/owl-time/#time:numericDuration\"><font color=\"#0000ff\"><u>https://www.w3.org/TR/owl-time/#time:numericDuration</u></font></a>" ;
-    sh:maxCount 1 ;
-    sh:minCount 1 ;
-    sh:name "Numeric duration" ;
-    sh:path time:numericDuration .
-
-core-shape:time-Duration-time-unitType a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:class skos:Concept ;
-    sh:description "External concept defined by <a href=\"$inet://https://www.w3.org/TR/owl-time/#time:unitType\"><font color=\"#0000ff\"><u>https://www.w3.org/TR/owl-time/#time:unitType</u></font></a>" ;
-    sh:maxCount 1 ;
-    sh:minCount 1 ;
-    sh:name "Unit type" ;
-    sh:path time:unitType .
-
-core-shape:time-Instant-time-inXSDDate a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:datatype xsd:date ;
-    sh:description "External concept defined by <a href=\"$inet://https://www.w3.org/TR/owl-time/#time:inXSDDate\"><font color=\"#0000ff\"><u>https://www.w3.org/TR/owl-time/#time:inXSDDate</u></font></a>" ;
-    sh:maxCount 1 ;
-    sh:name "In XSD date" ;
-    sh:path time:inXSDDate .
-
-core-shape:time-Instant-time-inXSDDateTimeStamp a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:datatype xsd:dateTime ;
-    sh:description "External concept defined by <a href=\"$inet://https://www.w3.org/TR/owl-time/#time:inXSDDateTimeStamp\"><font color=\"#0000ff\"><u>https://www.w3.org/TR/owl-time/#time:inXSDDateTimeStamp</u></font></a>" ;
-    sh:maxCount 1 ;
-    sh:name "In XSD date time stamp" ;
-    sh:path time:inXSDDateTimeStamp .
-
-core-shape:time-TemporalEntity-time-hasBeginning a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:class time:Instant ;
-    sh:description "External concept defined by <a href=\"$inet://https://www.w3.org/TR/owl-time/#time:hasBeginning\"><font color=\"#0000ff\"><u>https://www.w3.org/TR/owl-time/#time:hasBeginning</u></font></a>" ;
-    sh:maxCount 1 ;
-    sh:name "Has beginning" ;
-    sh:path time:hasBeginning ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://www.w3.org/2006/time#hasBeginning> ?that . ?that <http://www.w3.org/2006/time#hasBeginning> ?this .}" ] .
-
-core-shape:time-TemporalEntity-time-hasDuration a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:class time:TemporalDuration ;
-    sh:description "External concept defined by <a href=\"$inet://https://www.w3.org/TR/owl-time/#time:hasDuration\"><font color=\"#0000ff\"><u>https://www.w3.org/TR/owl-time/#time:hasDuration</u></font></a>" ;
-    sh:maxCount 1 ;
-    sh:name "Has duration" ;
-    sh:path time:hasDuration ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://www.w3.org/2006/time#hasDuration> ?that . ?that <http://www.w3.org/2006/time#hasDuration> ?this .}" ] .
-
-core-shape:time-TemporalEntity-time-hasEnd a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:class time:Instant ;
-    sh:description "External concept defined by <a href=\"$inet://https://www.w3.org/TR/owl-time/#time:hasEnd\"><font color=\"#0000ff\"><u>https://www.w3.org/TR/owl-time/#time:hasEnd</u></font></a>" ;
-    sh:maxCount 1 ;
-    sh:name "Has end" ;
-    sh:path time:hasEnd ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://www.w3.org/2006/time#hasEnd> ?that . ?that <http://www.w3.org/2006/time#hasEnd> ?this .}" ] .
-
-core-shape:time-TemporalEntity-time-hasTemporalDuration a sh:PropertyShape ;
-    rdfs:isDefinedBy core-shape:core-shape ;
-    sh:class time:TemporalDuration ;
-    sh:description "External concept defined by <a href=\"$inet://https://www.w3.org/TR/owl-time/#time:hasTemporalDuration\"><font color=\"#0000ff\"><u>https://www.w3.org/TR/owl-time/#time:hasTemporalDuration</u></font></a>" ;
-    sh:maxCount 1 ;
-    sh:name "Has temporal duration" ;
-    sh:path time:hasTemporalDuration ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://www.w3.org/2006/time#hasTemporalDuration> ?that . ?that <http://www.w3.org/2006/time#hasTemporalDuration> ?this .}" ] .
 
 core-shape:core-shape a owl:Ontology ;
     rdfs:label "eProcurement Ontology - core shapes"@en ;
