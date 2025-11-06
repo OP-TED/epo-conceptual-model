@@ -173,10 +173,13 @@ jobs:
             NS_XML_FILE_PATH="../implementation/${implementation}/model2owl-config/namespaces.xml"
             OUTPUT_PATH_OWL=$(echo "implementation/$implementation/owl_ontology/")
             OUTPUT_PATH_SHACL=$(echo "implementation/$implementation/shacl_shapes/")
+            MODULE_DIR=$(realpath "implementation/${implementation}")
+            IMPORTS_XML_FILE_PATH="$MODULE_DIR/model2owl-config/imports.xml"
 
             ls -la implementation/$implementation/xmi_conceptual_model/
             echo "CM_FILE_PATH is $CM_FILE_PATH"
             echo "NS_XML_FILE_PATH is $NS_XML_FILE_PATH"
+            echo "IMPORTS_XML_FILE_PATH is $IMPORTS_XML_FILE_PATH"
             echo "OUTPUT_PATH_OWL is $OUTPUT_PATH_OWL"
             echo "OUTPUT_PATH_SHACL is $OUTPUT_PATH_SHACL"
 
