@@ -84,11 +84,11 @@
     <!--    Generate reused classes, attributes and connectors. Concepts with these prefixes will be included in the generated artefacts. -->
     <xsl:variable name="includedPrefixesList" select="('epo', 'epo-not', 'epo-ord', 'epo-cat', 'epo-con', 'epo-ful')"/>
     <!-- This set of variables controls the generation of reused concepts within artifacts. -->
-    <xsl:variable name="generateReusedConceptsSHACL" select="fn:true()"/>
-    <xsl:variable name="generateReusedConceptsOWLcore" select="fn:true()"/>
-    <xsl:variable name="generateReusedConceptsOWLrestrictions" select="fn:true()"/>
-    <xsl:variable name="generateReusedConceptsGlossary" select="fn:true()"/>
-    <xsl:variable name="generateReusedConceptsJSONLDcontext" select="fn:true()"/>
+    <xsl:variable name="generateReusedConceptsSHACL" select="fn:false()"/>
+    <xsl:variable name="generateReusedConceptsOWLcore" select="fn:false()"/>
+    <xsl:variable name="generateReusedConceptsOWLrestrictions" select="fn:false()"/>
+    <xsl:variable name="generateReusedConceptsGlossary" select="fn:false()"/>
+    <xsl:variable name="generateReusedConceptsJSONLDcontext" select="fn:false()"/>
     
     <!--    This set of variables controls generation of comments and how they will generate in the output -->
     <xsl:variable name="commentsGeneration" select="fn:true()"/>
