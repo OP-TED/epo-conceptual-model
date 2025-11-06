@@ -190,15 +190,18 @@ jobs:
             make owl-core \
               XMI_INPUT_FILE_PATH=../$CM_FILE_PATH \
               OUTPUT_FOLDER_PATH=../$OUTPUT_PATH_OWL \
-              NAMESPACES_USER_XML_FILE_PATH=${NS_XML_FILE_PATH}
+              NAMESPACES_USER_XML_FILE_PATH=${NS_XML_FILE_PATH} \
+              IMPORTS_XML_FILE_PATH=${IMPORTS_XML_FILE_PATH}
             make owl-restrictions \
               XMI_INPUT_FILE_PATH=../$CM_FILE_PATH \
               OUTPUT_FOLDER_PATH=../$OUTPUT_PATH_OWL \
-              NAMESPACES_USER_XML_FILE_PATH=${NS_XML_FILE_PATH}
+              NAMESPACES_USER_XML_FILE_PATH=${NS_XML_FILE_PATH} \
+              IMPORTS_XML_FILE_PATH=${IMPORTS_XML_FILE_PATH}
             make shacl \
               XMI_INPUT_FILE_PATH=../$CM_FILE_PATH \
               OUTPUT_FOLDER_PATH=../$OUTPUT_PATH_SHACL \
-              NAMESPACES_USER_XML_FILE_PATH=${NS_XML_FILE_PATH}
+              NAMESPACES_USER_XML_FILE_PATH=${NS_XML_FILE_PATH} \
+              IMPORTS_XML_FILE_PATH=${IMPORTS_XML_FILE_PATH}
 
             echo "+++++++++++++++++transform to turtle++++++++++++++++++++++++++++"
             echo $(ls ../${OUTPUT_PATH_OWL}*.rdf)
