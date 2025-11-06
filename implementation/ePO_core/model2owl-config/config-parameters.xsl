@@ -112,7 +112,7 @@
     <!-- Label that will be used in the ReSpec docs to describe values of `referenceTagName` for classes -->
     <xsl:variable name="classReferenceRespecLabel" select="'Reference'"/>
     <!-- A flag to control whether references/reuse information is shown in the ReSpec docs -->
-    <xsl:variable name="showReferencesInRespec" select="fn:true()"/>
+    <xsl:variable name="showReferencesInRespec" select="fn:false()"/>
     <!-- Tag name/key that is used as custom label for terms in the ReSpec documentation-->
     <xsl:variable name="customTermLabelTagName" select="'skos:prefLabel'"/>
 
