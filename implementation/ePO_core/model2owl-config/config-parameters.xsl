@@ -150,4 +150,11 @@
 
     <xsl:variable name="moduleReference" select="'core'"/>
 
+    <!-- Date used for dct:issued property in the RDF artefacts and ReSpec
+    documentation. Defaults to the currrent date.
+    A fixed date can be set as follows:
+    select="xs:date('2024-01-01')"
+    -->
+    <xsl:variable name="issuedDate" select="format-date(current-date(),'[Y0001]-[M01]-[D01]')"/>
+
 </xsl:stylesheet>
