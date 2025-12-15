@@ -42,10 +42,12 @@ jobs:
       - name: get-saxon
         run: pwd && cd model2owl && make get-saxon
 
-# (eAccess eAwarding eCatalogue eContract eEvaluation eFulfilment eInvoicing eNotice eOrdering ePayment ePO_core eQualification eRequest eSubmission)
-      - name: generate convention report and glossary
+      - name: get-jinja
+        run: cd model2owl && make create-virtual-env && make get-jinja
+
+      - name: generate convention report and glossaries
         run: |
-          AVAILABLE_IMPLEMENTATIONS=(ePO_core)
+          AVAILABLE_IMPLEMENTATIONS=(demo_ontology demo_ontology_module)
           for implementation in "${AVAILABLE_IMPLEMENTATIONS[@]}"
           do
             echo "-------------------${implementation}---------------------------------"
@@ -78,44 +80,75 @@ jobs:
               XMI_INPUT_FILE_PATH=../$CM_FILE_PATH \
               OUTPUT_GLOSSARY_PATH=../$OUTPUT_GLOSSARY_PATH \
               NAMESPACES_USER_XML_FILE_PATH=${NS_XML_FILE_PATH}
+            make generate-asciidoc-glossary \
+              XMI_INPUT_FILE_PATH=../$CM_FILE_PATH \
+              OUTPUT_GLOSSARY_PATH=../$OUTPUT_GLOSSARY_PATH \
+              OUTPUT_FOLDER_PATH=$(mktemp -d)
 
             sed -i "s/..\/implementation\/${implementation}\/model2owl-config/test\/ePO-default-config/g" config-proxy.xsl
             cd ..
           done
         shell: bash
 
-      # - name: merge implementations xmi files into one
-      #   run: |
-      #     AVAILABLE_IMPLEMENTATIONS=(ePO_core)
-      #     cd model2owl
-      #     mkdir -p merge-xmis
-      #     for implementation in "${AVAILABLE_IMPLEMENTATIONS[@]}"
-      #     do
-      #       cp ../implementation/$implementation/xmi_conceptual_model/*_CM.xml merge-xmis
-      #     done
-      #     ls merge-xmis
+      - name: merge implementations xmi files into one
+        run: |
+          AVAILABLE_IMPLEMENTATIONS=(demo_ontology demo_ontology_module)
+          cd model2owl
+          mkdir -p merge-xmis
+          for implementation in "${AVAILABLE_IMPLEMENTATIONS[@]}"
+          do
+            cp ../implementation/$implementation/xmi_conceptual_model/*_CM.xml merge-xmis
+          done
+          ls merge-xmis
 
-      #     make merge-xmi FIRST_XMI_TO_BE_MERGED_FILE_PATH=merge-xmis/eAccess_CM.xml
+          make merge-xmi FIRST_XMI_TO_BE_MERGED_FILE_PATH=merge-xmis/demo_ontology_CM.xml
 
-      #     echo "merged XMI file"
-      #     ls output/combined-xmi
-      #   shell: bash
+          echo "merged XMI file"
+          ls output/combined-xmi
+        shell: bash
 
-      # - name: generate combined glossary from the merged xmi
-      #   run: |
-      #     # get a namespaces file from an arbitrary module
-      #     NS_XML_FILE_PATH=$(realpath $(find . -type f -path './implementation/*/model2owl-config/namespaces.xml' | head -1))
-      #     echo "NS_XML_FILE_PATH is $NS_XML_FILE_PATH"
-      #     cd model2owl
-      #     make generate-glossary \
-      #       XMI_INPUT_FILE_PATH=output/combined-xmi/ontologies-combined.xmi \
-      #       OUTPUT_GLOSSARY_PATH=../$OUTPUT_GLOSSARY_PATH \
-      #       NAMESPACES_USER_XML_FILE_PATH=${NS_XML_FILE_PATH}
+      - name: generate combined glossaries from the merged xmi
+        run: |
+          # get a namespaces file from an arbitrary module
+          NS_XML_FILE_PATH=$(realpath $(find . -type f -path './implementation/*/model2owl-config/namespaces.xml' | head -1))
+          echo "NS_XML_FILE_PATH is $NS_XML_FILE_PATH"
+          cd model2owl
+          make generate-glossary \
+            XMI_INPUT_FILE_PATH=output/combined-xmi/ontologies-combined.xmi \
+            OUTPUT_GLOSSARY_PATH=../$OUTPUT_GLOSSARY_PATH \
+            NAMESPACES_USER_XML_FILE_PATH=${NS_XML_FILE_PATH}
+          make generate-asciidoc-glossary \
+            XMI_INPUT_FILE_PATH=output/combined-xmi/ontologies-combined.xmi \
+            OUTPUT_GLOSSARY_PATH=../$OUTPUT_GLOSSARY_PATH \
+            OUTPUT_FOLDER_PATH=$(mktemp -d)
 
       - name: remove unnecessary files
         run: |
           sudo rm -rf model2owl
         shell: bash
+
+      - name: Install AsciiDoctor
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y asciidoctor
+
+      - name: Convert AsciiDoc to HTML
+        run: |
+          ADOC_GLOSSARY_PATHS=($(find "${OUTPUT_GLOSSARY_PATH}" -maxdepth 1 -name '*_glossary.adoc'))
+          for src in "${ADOC_GLOSSARY_PATHS[@]}"
+          do
+              echo "Converting ${src} to HTML..."
+              asciidoctor \
+                --attribute source-highlighter=rouge \
+                --attribute toc=left \
+                --attribute toclevels=3 \
+                --attribute sectlinks \
+                --attribute sectanchors \
+                --attribute icons=font \
+                --out-file "${src}.html" \
+                "${src}"
+              echo "Generated ${src}.html"
+          done
 
       - name: commit files
         id: commit
@@ -150,7 +183,7 @@ jobs:
 
       - name: get model2owl
         run: |
-          git clone --branch release/3.1.0 https://github.com/OP-TED/model2owl.git 
+          git clone --branch 3.2.0-rc.1 https://github.com/OP-TED/model2owl.git 
           pwd
 
       - name: get-saxon
@@ -260,7 +293,7 @@ jobs:
 
       - name: get model2owl
         run: |
-          git clone --branch release/3.1.0 https://github.com/OP-TED/model2owl.git 
+          git clone --branch 3.2.0-rc.1 https://github.com/OP-TED/model2owl.git 
           pwd
 
       - name: get-saxon
@@ -346,7 +379,7 @@ jobs:
 
       - name: get model2owl
         run: |
-          git clone --branch release/3.1.0 https://github.com/OP-TED/model2owl.git 
+          git clone --branch 3.2.0-rc.1 https://github.com/OP-TED/model2owl.git 
           pwd
 
       - name: get-saxon
