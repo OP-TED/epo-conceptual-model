@@ -1,0 +1,229 @@
+name: RDF Diff Combined
+
+on:
+  push:
+    paths:
+      - 'implementation/ePO_core/owl_ontology/ePO_core_CM.ttl'
+      - 'implementation/ePO_core/shacl_shapes/ePO_core_CM_shapes.ttl'
+  workflow_dispatch:
+
+jobs:
+  rdf-diff-combined:
+    runs-on: ubuntu-latest
+
+    env:
+      REVISION_TO_COMPARE_COMMIT_ID: ${{ vars.REVISION_TO_COMPARE_COMMIT_ID || 'release/5.0.0' }}
+      REVISION_TO_COMPARE_REPO_URL: ${{ vars.REVISION_TO_COMPARE_REPO_URL || 'https://github.com/OP-TED/ePO.git' }}
+      OLD_ONTOLOGY_FILE: ${{ vars.OLD_ONTOLOGY_FILE || 'implementation/ePO_core/owl_ontology/ePO_core.ttl' }}
+      OLD_SHACL_FILE: ${{ vars.OLD_SHACL_FILE || 'implementation/ePO_core/shacl_shapes/ePO_core_shapes.ttl' }}
+      NEW_ONTOLOGY_FILE: ${{ vars.NEW_ONTOLOGY_FILE || 'implementation/ePO_core/owl_ontology/ePO_core_CM.ttl' }}
+      NEW_SHACL_FILE: ${{ vars.NEW_SHACL_FILE || 'implementation/ePO_core/shacl_shapes/ePO_core_CM_shapes.ttl' }}
+      RDF_DIFF_OUTDIR: ${{ vars.RDF_DIFF_OUTDIR || 'diff-reports' }}
+      RDF_DIFF_AP: ${{ vars.RDF_DIFF_AP || 'owl-core-en-only' }}
+
+    steps:
+    - name: Check out this repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0  # Required for committing back
+
+    - name: Prepare old files from specific commit (if provided)
+      run: |
+        # Case 1: Both REVISION_TO_COMPARE_COMMIT_ID and REVISION_TO_COMPARE_REPO_URL provided
+        if [ -n "${REVISION_TO_COMPARE_COMMIT_ID}" ] && [ -n "${REVISION_TO_COMPARE_REPO_URL}" ]; then
+          echo "📋 Case 1: External repository comparison"
+          echo "REVISION_TO_COMPARE_COMMIT_ID: ${REVISION_TO_COMPARE_COMMIT_ID}"
+          echo "REVISION_TO_COMPARE_REPO_URL: ${REVISION_TO_COMPARE_REPO_URL}"
+          echo "Cloning external repository for comparison..."
+          
+          # Create temporary directory for old files
+          mkdir -p old-files
+          
+          # Clone the external repository
+          git clone ${REVISION_TO_COMPARE_REPO_URL} old-repo
+          cd old-repo
+          
+          # Checkout the specific commit/branch
+          echo "Checking out ${REVISION_TO_COMPARE_COMMIT_ID}..."
+          git checkout ${REVISION_TO_COMPARE_COMMIT_ID}
+          
+          # Copy files from external repo
+          echo "Extracting ${OLD_ONTOLOGY_FILE} from external repo..."
+          cp ${OLD_ONTOLOGY_FILE} ../old-files/old_ontology.ttl
+          
+          echo "Extracting ${OLD_SHACL_FILE} from external repo..."
+          cp ${OLD_SHACL_FILE} ../old-files/old_shacl.ttl
+          
+          cd ..
+          rm -rf old-repo
+          echo "Old files extracted from external repository successfully"
+          
+          echo "OLD_ONTOLOGY_PATH=old-files/old_ontology.ttl" >> $GITHUB_ENV
+          echo "OLD_SHACL_PATH=old-files/old_shacl.ttl" >> $GITHUB_ENV
+          
+        # Case 2: Only REVISION_TO_COMPARE_COMMIT_ID provided (current repo)
+        elif [ -n "${REVISION_TO_COMPARE_COMMIT_ID}" ]; then
+          echo "📋 Case 2: Current repository historical comparison"
+          echo "REVISION_TO_COMPARE_COMMIT_ID: ${REVISION_TO_COMPARE_COMMIT_ID}"
+          echo "Using current repository for comparison..."
+          
+          # Create temporary directory for old files
+          mkdir -p old-files
+          
+          # Extract old ontology file from current repo
+          echo "Extracting ${OLD_ONTOLOGY_FILE} from commit ${REVISION_TO_COMPARE_COMMIT_ID}..."
+          git show ${REVISION_TO_COMPARE_COMMIT_ID}:${OLD_ONTOLOGY_FILE} > old-files/old_ontology.ttl
+          
+          # Extract old SHACL file from current repo
+          echo "Extracting ${OLD_SHACL_FILE} from commit ${REVISION_TO_COMPARE_COMMIT_ID}..."
+          git show ${REVISION_TO_COMPARE_COMMIT_ID}:${OLD_SHACL_FILE} > old-files/old_shacl.ttl
+          
+          echo "Old files extracted from current repository successfully"
+          
+          echo "OLD_ONTOLOGY_PATH=old-files/old_ontology.ttl" >> $GITHUB_ENV
+          echo "OLD_SHACL_PATH=old-files/old_shacl.ttl" >> $GITHUB_ENV
+          
+        # Case 3: No commit ID provided (current files comparison)
+        else
+          echo "📋 Case 3: Current files comparison"
+          echo "No REVISION_TO_COMPARE_COMMIT_ID provided, using current files for both old and new"
+          echo "This will compare current files with themselves (useful for testing)"
+          
+          echo "OLD_ONTOLOGY_PATH=${OLD_ONTOLOGY_FILE}" >> $GITHUB_ENV
+          echo "OLD_SHACL_PATH=${OLD_SHACL_FILE}" >> $GITHUB_ENV
+        fi
+
+    - name: Clone model2owl repository (develop branch)
+      run: |
+        git clone --branch 3.2.0-rc.1 https://github.com/OP-TED/model2owl.git
+        echo "model2owl/" >> .gitignore
+        echo "✅ Added model2owl/ to .gitignore"
+
+    - name: Install dependencies
+      run: |
+        cd model2owl
+        make install
+
+    - name: Merge OWL and SHACL for old version
+      run: |
+        echo "Merging old files: ${OLD_ONTOLOGY_PATH} with ${OLD_SHACL_PATH}..."
+        OLD_BASENAME=$(basename "${OLD_ONTOLOGY_PATH}" .ttl)
+        MERGE_OUTPUT_FILE1="${OLD_BASENAME}_combined.ttl"
+        cd model2owl
+        make merge-owl-shacl \
+          MERGE_ONTOLOGY_FILE=../${OLD_ONTOLOGY_PATH} \
+          MERGE_SHAPES_FILE=../${OLD_SHACL_PATH} \
+          MERGE_OUTPUT_FILE=../${MERGE_OUTPUT_FILE1}
+        echo "✅ Merged old file created: ${MERGE_OUTPUT_FILE1}"
+        echo "MERGE_OUTPUT_FILE1=${MERGE_OUTPUT_FILE1}" >> $GITHUB_ENV
+
+    - name: Merge OWL and SHACL for new version
+      run: |
+        echo "Merging ${NEW_ONTOLOGY_FILE} with ${NEW_SHACL_FILE}..."
+        NEW_BASENAME=$(basename "${NEW_ONTOLOGY_FILE}" .ttl)
+        MERGE_OUTPUT_FILE2="${NEW_BASENAME}_combined.ttl"
+        cd model2owl
+        make merge-owl-shacl \
+          MERGE_ONTOLOGY_FILE=../${NEW_ONTOLOGY_FILE} \
+          MERGE_SHAPES_FILE=../${NEW_SHACL_FILE} \
+          MERGE_OUTPUT_FILE=../${MERGE_OUTPUT_FILE2}
+        echo "✅ Merged file created: ${MERGE_OUTPUT_FILE2}"
+        echo "MERGE_OUTPUT_FILE2=${MERGE_OUTPUT_FILE2}" >> $GITHUB_ENV
+
+    - name: Generate AsciiDoc RDF diff report
+      run: |
+        echo "📊 RDF Diff Configuration:"
+        echo "REVISION_TO_COMPARE_COMMIT_ID: ${REVISION_TO_COMPARE_COMMIT_ID}"
+        echo "REVISION_TO_COMPARE_REPO_URL: ${REVISION_TO_COMPARE_REPO_URL:-'(current repo)'}"
+        echo "Merged OLD FILE: ${MERGE_OUTPUT_FILE1}"
+        echo "Merged NEW FILE: ${MERGE_OUTPUT_FILE2}"
+        echo "OUTPUT DIR: ${RDF_DIFF_OUTDIR}"
+        echo "AP: ${RDF_DIFF_AP}"
+        echo "Generating AsciiDoc report..."
+
+        cd model2owl
+        make run-rdf-diff \
+          RDF_DIFF_FILE1=../${MERGE_OUTPUT_FILE1} \
+          RDF_DIFF_FILE2=../${MERGE_OUTPUT_FILE2} \
+          RDF_DIFF_OUTDIR=../${RDF_DIFF_OUTDIR} \
+          RDF_DIFF_AP=${RDF_DIFF_AP} \
+          RDF_DIFF_TEMPLATE=asciidoc
+        echo "AsciiDoc report generated successfully"
+      env:
+        MERGE_OUTPUT_FILE1: ${{ env.MERGE_OUTPUT_FILE1 }}
+        MERGE_OUTPUT_FILE2: ${{ env.MERGE_OUTPUT_FILE2 }}
+
+    - name: Generate JSON RDF diff report
+      run: |
+        echo "Generating JSON report..."
+        cd model2owl
+        make run-rdf-diff \
+          RDF_DIFF_FILE1=../${MERGE_OUTPUT_FILE1} \
+          RDF_DIFF_FILE2=../${MERGE_OUTPUT_FILE2} \
+          RDF_DIFF_OUTDIR=../${RDF_DIFF_OUTDIR} \
+          RDF_DIFF_AP=${RDF_DIFF_AP} \
+          RDF_DIFF_TEMPLATE=json
+        echo "JSON report generated successfully"
+      env:
+        MERGE_OUTPUT_FILE1: ${{ env.MERGE_OUTPUT_FILE1 }}
+        MERGE_OUTPUT_FILE2: ${{ env.MERGE_OUTPUT_FILE2 }}
+
+    - name: Install AsciiDoctor
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y asciidoctor
+
+    - name: Convert AsciiDoc to HTML
+      run: |
+        if [ -f "${RDF_DIFF_OUTDIR}/diff.asciidoc" ]; then
+          echo "Converting ${RDF_DIFF_OUTDIR}/diff.asciidoc to HTML..."
+          asciidoctor \
+            --attribute source-highlighter=rouge \
+            --attribute toc=left \
+            --attribute toclevels=3 \
+            --attribute sectlinks \
+            --attribute sectanchors \
+            --attribute icons=font \
+            --out-file "${RDF_DIFF_OUTDIR}/diff.html" \
+            "${RDF_DIFF_OUTDIR}/diff.asciidoc"
+          echo "✅ Generated ${RDF_DIFF_OUTDIR}/diff.html"
+        else
+          echo "❌ No diff.asciidoc file found in ${RDF_DIFF_OUTDIR}/"
+          ls -la "${RDF_DIFF_OUTDIR}/" || echo "Output directory does not exist"
+        fi
+
+    - name: Commit and push diff result
+      run: |
+        git config user.name "github-actions[bot]"
+        git config user.email "github-actions[bot]@users.noreply.github.com"
+        git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+        git fetch origin ${GITHUB_REF#refs/heads/}
+        git pull --rebase --autostash origin ${GITHUB_REF#refs/heads/} || echo "No remote changes to pull"
+        git add ${RDF_DIFF_OUTDIR}
+
+        # Generate detailed commit message based on the comparison case
+        if [ -n "${REVISION_TO_COMPARE_COMMIT_ID}" ] && [ -n "${REVISION_TO_COMPARE_REPO_URL}" ]; then
+          # Case 1: External repository comparison
+          REPO_NAME=$(basename "${REVISION_TO_COMPARE_REPO_URL}" .git)
+          OLD_ONT_NAME=$(basename "${OLD_ONTOLOGY_FILE}")
+          OLD_SHACL_NAME=$(basename "${OLD_SHACL_FILE}")
+          NEW_ONT_NAME=$(basename "${NEW_ONTOLOGY_FILE}")
+          NEW_SHACL_NAME=$(basename "${NEW_SHACL_FILE}")
+          COMMIT_MSG="chore(ci-auto): add RDF diff reports (${REPO_NAME}@${REVISION_TO_COMPARE_COMMIT_ID}: ${OLD_ONT_NAME}+${OLD_SHACL_NAME} vs current: ${NEW_ONT_NAME}+${NEW_SHACL_NAME})"
+        elif [ -n "${REVISION_TO_COMPARE_COMMIT_ID}" ]; then
+          # Case 2: Current repository historical comparison
+          OLD_ONT_NAME=$(basename "${OLD_ONTOLOGY_FILE}")
+          OLD_SHACL_NAME=$(basename "${OLD_SHACL_FILE}")
+          NEW_ONT_NAME=$(basename "${NEW_ONTOLOGY_FILE}")
+          NEW_SHACL_NAME=$(basename "${NEW_SHACL_FILE}")
+          COMMIT_MSG="chore(ci-auto): add RDF diff reports (${REVISION_TO_COMPARE_COMMIT_ID}: ${OLD_ONT_NAME}+${OLD_SHACL_NAME} vs current: ${NEW_ONT_NAME}+${NEW_SHACL_NAME})"
+        else
+          # Case 3: Current files comparison
+          NEW_ONT_NAME=$(basename "${NEW_ONTOLOGY_FILE}")
+          NEW_SHACL_NAME=$(basename "${NEW_SHACL_FILE}")
+          COMMIT_MSG="chore(ci-auto): add RDF diff reports (${NEW_ONT_NAME}+${NEW_SHACL_NAME} vs ${NEW_ONT_NAME}+${NEW_SHACL_NAME})"
+        fi
+        git commit -m "${COMMIT_MSG}" || echo "No changes to commit"
+        git push
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
