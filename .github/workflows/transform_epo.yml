@@ -12,7 +12,7 @@ on:
       # - "implementation/eFulfilment/xmi_conceptual_model/eFulfilment_CM.xml"
       # - "implementation/eInvoicing/xmi_conceptual_model/eInvoicing_CM.xml"
       # - "implementation/eNotice/xmi_conceptual_model/eNotice_CM.xml"
-      # - "implementation/eOrdering/xmi_conceptual_model/eOrdering_CM.xml"
+      - "implementation/eOrdering/xmi_conceptual_model/eOrdering_CM.xml"
       # - "implementation/ePayment/xmi_conceptual_model/ePayment_CM.xml"
       - "implementation/ePO_core/xmi_conceptual_model/ePO_core_CM.xml"
       # - "implementation/eQualification/xmi_conceptual_model/eQualification_CM.xml"
@@ -48,7 +48,7 @@ jobs:
 # (eAccess eAwarding eCatalogue eContract eEvaluation eFulfilment eInvoicing eNotice eOrdering ePayment ePO_core eQualification eRequest eSubmission)
       - name: generate convention report and glossaries
         run: |
-          AVAILABLE_IMPLEMENTATIONS=(ePO_core)
+          AVAILABLE_IMPLEMENTATIONS=(ePO_core eOrdering)
           for implementation in "${AVAILABLE_IMPLEMENTATIONS[@]}"
           do
             echo "-------------------${implementation}---------------------------------"
@@ -93,7 +93,7 @@ jobs:
 
       # - name: merge implementations xmi files into one
       #   run: |
-      #     AVAILABLE_IMPLEMENTATIONS=(ePO_core)
+      #     AVAILABLE_IMPLEMENTATIONS=(ePO_core eOrdering)
       #     cd model2owl
       #     mkdir -p merge-xmis
       #     for implementation in "${AVAILABLE_IMPLEMENTATIONS[@]}"
@@ -196,7 +196,7 @@ jobs:
 
       - name: transform step
         run: |
-          AVAILABLE_IMPLEMENTATIONS=(ePO_core)
+          AVAILABLE_IMPLEMENTATIONS=(ePO_core eOrdering)
                   for implementation in "${AVAILABLE_IMPLEMENTATIONS[@]}"
           do
             echo "-------------------${implementation} transform---------------------------------"
@@ -306,7 +306,7 @@ jobs:
 
       - name: generate JSON-LD context
         run: |
-          AVAILABLE_IMPLEMENTATIONS=(ePO_core)
+          AVAILABLE_IMPLEMENTATIONS=(ePO_core eOrdering)
           for implementation in "${AVAILABLE_IMPLEMENTATIONS[@]}"
           do
             echo "-------------------${implementation} JSON-LD context generation---------------------------------"
@@ -398,7 +398,7 @@ jobs:
 
       - name: generate ReSpec documentation
         run: |
-          AVAILABLE_IMPLEMENTATIONS=(ePO_core)
+          AVAILABLE_IMPLEMENTATIONS=(ePO_core eOrdering)
           for implementation in "${AVAILABLE_IMPLEMENTATIONS[@]}"
           do
             echo "-------------------${implementation} ReSpec generation---------------------------------"
@@ -559,7 +559,7 @@ jobs:
   #     - name: Prepare ReSpec documentation for Pages
   #       run: |
   #         # Define available implementations
-  #         AVAILABLE_IMPLEMENTATIONS=(ePO_core)
+  #         AVAILABLE_IMPLEMENTATIONS=(ePO_core eOrdering)
           
   #         # Create a temporary directory for Pages content
   #         mkdir -p _site
