@@ -19,7 +19,7 @@
    <body>
       <header class="counter-skip">
          <h1 class="title">UML Conventions Comformance Report</h1>
-         <h2>[ 23/12/2025 ]</h2>
+         <h2>[ 09/01/2026 ]</h2>
          <div class="authors col-span">
             <div class="author">
                <div>Publications Office of the European Union</div>
@@ -56,7 +56,7 @@
                   Generalisations</em>. Each major section lists model items that need correction of errors
                or consideration of warnings.</p>
             <p>The UML model in file <em>ePO_core_CM.xml</em> 
-               was tested at 09:20 on December 23, 2025.</p>
+               was tested at 11:50 on January 9, 2026.</p>
          </div>
          <h1 xmlns:f="http://https://github.com/costezki/model2owl#" id="nomenclature">Nomenclature</h1>
          <h2 xmlns:f="http://https://github.com/costezki/model2owl#" id="classNames">Class names</h2>
@@ -229,7 +229,6 @@
             <li><a href="#org:Organization">org:Organization</a></li>
             <li><a href="#org:OrganizationalUnit">org:OrganizationalUnit</a></li>
             <li><a href="#person:Person">person:Person</a></li>
-            <li><a href="#skos:Concept">skos:Concept</a></li>
             <li><a href="#time:Duration">time:Duration</a></li>
             <li><a href="#time:Instant">time:Instant</a></li>
             <li><a href="#time:Interval">time:Interval</a></li>
@@ -663,7 +662,7 @@
                      <li>epo:EnergyEfficiencyInformation -&gt; epo:GreenProcurement [0..1]</li></em></ul>
             </li>
             <li>epo:concernsInternationalProcurementInstrumentMeasure</li>
-            <li><a href="#connector-epo:concernsLot">epo:concernsLot (9)</a><ul><em>
+            <li><a href="#connector-epo:concernsLot">epo:concernsLot (10)</a><ul><em>
                      <li> -&gt; epo:Lot [1..*]</li>
                      <li> -&gt; epo:Lot [1..*]</li>
                      <li>epo:ContractLotCompletionInformation -&gt; epo:Lot [0..1]</li>
@@ -672,12 +671,14 @@
                      <li>epo:LotAwardOutcome -&gt; epo:Lot [1]</li>
                      <li>cccev:InformationRequirement -&gt; epo:Lot [0..*]</li>
                      <li> -&gt; epo:Lot [1..*]</li>
-                     <li> -&gt; epo:Lot [1..*]</li></em></ul>
+                     <li> -&gt; epo:Lot [1..*]</li>
+                     <li> -&gt; epo:Lot [0..*]</li></em></ul>
             </li>
             <li>epo:concernsLotAwardOutcome</li>
-            <li><a href="#connector-epo:concernsLotGroup">epo:concernsLotGroup (5)</a><ul><em>
+            <li><a href="#connector-epo:concernsLotGroup">epo:concernsLotGroup (6)</a><ul><em>
                      <li> -&gt; epo:LotGroup [0..*]</li>
                      <li>cccev:InformationRequirement -&gt; epo:LotGroup [0..*]</li>
+                     <li> -&gt; epo:LotGroup [0..*]</li>
                      <li>epo:ContractLotCompletionInformation -&gt; epo:LotGroup [0..1]</li>
                      <li> -&gt; epo:LotGroup [0..*]</li>
                      <li> -&gt; epo:LotGroup [0..*]</li></em></ul>
@@ -687,15 +688,20 @@
                      <li>epo:NonPublishedInformation -&gt; epo:Notice [1]</li>
                      <li>epo:ChangeInformation -&gt; epo:Notice [1]</li></em></ul>
             </li>
-            <li><a href="#connector-epo:concernsProcedure">epo:concernsProcedure (10)</a><ul><em>
+            <li><a href="#connector-epo:concernsProcedure">epo:concernsProcedure (15)</a><ul><em>
+                     <li> -&gt; epo:Procedure [1]</li>
+                     <li> -&gt; epo:Procedure [1]</li>
                      <li> -&gt; epo:Procedure [1]</li>
                      <li> -&gt; epo:Procedure [1]</li>
                      <li>cccev:InformationRequirement -&gt; epo:Procedure [0..*]</li>
                      <li> -&gt; epo:Procedure [1]</li>
+                     <li> -&gt; epo:Procedure [0..*]</li>
                      <li> -&gt; epo:Procedure [1]</li>
                      <li>epo:ProcurementProcessInformation -&gt; epo:Procedure [0..1]</li>
                      <li> -&gt; epo:Procedure [1]</li>
                      <li>epo:ExpressionOfInterest -&gt; epo:Procedure [1]</li>
+                     <li> -&gt; epo:Procedure [1]</li>
+                     <li> -&gt; epo:Procedure [1]</li>
                      <li> -&gt; epo:Procedure [1]</li>
                      <li> -&gt; epo:Procedure [1]</li></em></ul>
             </li>
@@ -742,6 +748,14 @@
             <li><a href="#connector-epo:exposesChannel">epo:exposesChannel (2)</a><ul><em>
                      <li>org:Organization -&gt; cv:Channel [0..*]</li>
                      <li>epo:AgentInRole -&gt; cv:Channel [0..*]</li></em></ul>
+            </li>
+            <li><a href="#connector-epo:exposesReceiverChannel">epo:exposesReceiverChannel (2)</a><ul><em>
+                     <li> -&gt; cv:Channel [1]</li>
+                     <li> -&gt; cv:Channel [1]</li></em></ul>
+            </li>
+            <li><a href="#connector-epo:exposesSenderChannel">epo:exposesSenderChannel (2)</a><ul><em>
+                     <li> -&gt; cv:Channel [1]</li>
+                     <li> -&gt; cv:Channel [1]</li></em></ul>
             </li>
             <li>epo:followsRulesSetBy</li>
             <li><a href="#connector-epo:foreseesConcession">epo:foreseesConcession (2)</a><ul><em>
@@ -846,6 +860,7 @@
             <li>epo:hasItemStandardID</li>
             <li>epo:hasLabelType</li>
             <li>epo:hasLanguage</li>
+            <li>epo:hasLanguageOfProcurementDocument</li>
             <li>epo:hasLateSubmissionPermission</li>
             <li><a href="#connector-epo:hasLaunchFrameworkAgreementMaximumValue">epo:hasLaunchFrameworkAgreementMaximumValue (2)</a><ul><em>
                      <li>epo:ProcurementObject -&gt; epo:MonetaryValue [0..1]</li>
@@ -916,6 +931,7 @@
             <li>epo:hasSubcontractingEstimatedValue</li>
             <li>epo:hasSubcontractingObligation</li>
             <li>epo:hasSubcontractor</li>
+            <li>epo:hasSubmissionMethod</li>
             <li>epo:hasTaxIdentifier</li>
             <li>epo:hasTenderSubcontractingInformation</li>
             <li>epo:hasTenderValidityDuration</li>
@@ -973,7 +989,10 @@
             <li>epo:isSubmittedForLot</li>
             <li>epo:isSubmittedForLotGroup</li>
             <li>epo:issuedByCertifier</li>
-            <li>epo:isSupportedBy</li>
+            <li><a href="#connector-epo:isSupportedBy">epo:isSupportedBy (2)</a><ul><em>
+                     <li>epo:Tender -&gt; epo:Offer [0..1]</li>
+                     <li>epo:Tender -&gt;  [0..1]</li></em></ul>
+            </li>
             <li>epo:isUsedInProfile</li>
             <li>epo:leadBy</li>
             <li>epo:needsToBeATenderer</li>
@@ -997,6 +1016,7 @@
             <li>epo:providesProcurementDocumentsInOfficialLanguage</li>
             <li>epo:providesProcurementDocumentsInUnofficialLanguage</li>
             <li>epo:providesRulingOnRemedy</li>
+            <li>epo:queriesForNotice</li>
             <li><a href="#connector-epo:refersToAwardDecision">epo:refersToAwardDecision (2)</a><ul><em>
                      <li> -&gt; epo:AwardDecision [0..*]</li>
                      <li> -&gt; epo:AwardDecision [0..*]</li></em></ul>
@@ -1007,6 +1027,7 @@
                      <li> -&gt; epo:Contract [0..*]</li></em></ul>
             </li>
             <li>epo:refersToContractToBeModified</li>
+            <li>epo:refersToExpressionOfInterest</li>
             <li>epo:refersToLot</li>
             <li><a href="#connector-epo:refersToLotGroupAwardInformation">epo:refersToLotGroupAwardInformation (2)</a><ul><em>
                      <li> -&gt; epo:LotGroupAwardInformation [0..*]</li>
@@ -1033,6 +1054,10 @@
                      <li> -&gt; epo:AgentInRole [0..*]</li>
                      <li> -&gt; epo:AgentInRole [0..*]</li>
                      <li> -&gt; epo:AgentInRole [0..*]</li></em></ul>
+            </li>
+            <li><a href="#connector-epo:refersToTender">epo:refersToTender (2)</a><ul><em>
+                     <li> -&gt; epo:Tender [1]</li>
+                     <li> -&gt; epo:Tender [1]</li></em></ul>
             </li>
             <li><a href="#connector-epo:relatesToEFormSectionIdentifier">epo:relatesToEFormSectionIdentifier (3)</a><ul><em>
                      <li>epo:ReviewInformation -&gt; adms:Identifier [0..1]</li>
@@ -1064,21 +1089,28 @@
                      <li> -&gt; epo:Buyer [1]</li>
                      <li> -&gt; epo:Buyer [1]</li></em></ul>
             </li>
-            <li><a href="#connector-epo:specifiesCatalogueProvider">epo:specifiesCatalogueProvider (2)</a><ul><em>
+            <li><a href="#connector-epo:specifiesCatalogueProvider">epo:specifiesCatalogueProvider (3)</a><ul><em>
+                     <li> -&gt; epo:CatalogueProvider [1]</li>
                      <li> -&gt; epo:CatalogueProvider [0..1]</li>
                      <li> -&gt; epo:CatalogueProvider [1]</li></em></ul>
             </li>
-            <li><a href="#connector-epo:specifiesCatalogueReceiver">epo:specifiesCatalogueReceiver (2)</a><ul><em>
+            <li><a href="#connector-epo:specifiesCatalogueReceiver">epo:specifiesCatalogueReceiver (3)</a><ul><em>
                      <li> -&gt; epo:CatalogueReceiver [0..1]</li>
+                     <li> -&gt; epo:CatalogueReceiver [1]</li>
                      <li> -&gt; epo:CatalogueReceiver [1]</li></em></ul>
             </li>
             <li>epo:specifiesCleanVehicleDirectiveContractType</li>
             <li>epo:specifiesCleanVehicleDirectiveVehicleCategory</li>
             <li>epo:specifiesContractor</li>
             <li>epo:specifiesDeliverable</li>
-            <li><a href="#connector-epo:specifiesEconomicOperator">epo:specifiesEconomicOperator (4)</a><ul><em>
+            <li><a href="#connector-epo:specifiesEconomicOperator">epo:specifiesEconomicOperator (9)</a><ul><em>
+                     <li> -&gt; epo:OfferingParty [1]</li>
+                     <li> -&gt; epo:OfferingParty [1]</li>
+                     <li> -&gt; epo:OfferingParty [1]</li>
                      <li> -&gt; epo:OfferingParty [1]</li>
                      <li>epo:ExpressionOfInterest -&gt; epo:OfferingParty [0..*]</li>
+                     <li> -&gt; epo:OfferingParty [1]</li>
+                     <li> -&gt; epo:OfferingParty [1]</li>
                      <li> -&gt; epo:OfferingParty [1]</li>
                      <li> -&gt; epo:OfferingParty [1]</li></em></ul>
             </li>
@@ -1101,6 +1133,10 @@
             <li>epo:updatesContractValue</li>
             <li>epo:usesChannel</li>
             <li>epo:usesTechnique</li>
+            <li><a href="#connector-epo-acc:containsProvidedProcurementDocument">epo-acc:containsProvidedProcurementDocument (2)</a><ul><em>
+                     <li> -&gt; epo:ProcurementDocument []</li>
+                     <li> -&gt; epo:ProcurementDocument [0..*]</li></em></ul>
+            </li>
             <li>epo-acc:refersToNotice</li>
             <li><a href="#connector-epo-cat:hasAmount">epo-cat:hasAmount (2)</a><ul><em>
                      <li> -&gt; epo:MonetaryValue [0..1]</li>
@@ -1125,6 +1161,7 @@
             <li>epo-cat:hasNetMonetaryValue</li>
             <li>epo-cat:hasNetQuantity</li>
             <li>epo-cat:hasOrderabableUnitFactorRate</li>
+            <li>epo-cat:hasPreAwardCatalogueRequestLineValidity</li>
             <li>epo-cat:hasPriceValidity</li>
             <li>epo-cat:hasQualifiedValue</li>
             <li><a href="#connector-epo-cat:hasQuantity">epo-cat:hasQuantity (3)</a><ul><em>
@@ -2215,15 +2252,6 @@
                   some attributes.</dd>
             </dl>
          </section>
-         <h2 xmlns:f="http://https://github.com/costezki/model2owl#" id="skos:Concept">skos:Concept</h2>
-         <section xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dl>
-               <dt>Unmet class conventions</dt>
-               <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>skos:Concept is missing a description. All concepts should be defined or described.</dd>
-               <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>The class skos:Concept has no attributes provided. A class should define some attributes.</dd>
-               <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>The class skos:Concept is is disconnected. A class should be connected to other elements.</dd>
-            </dl>
-         </section>
          <h2 xmlns:f="http://https://github.com/costezki/model2owl#" id="time:Interval">time:Interval</h2>
          <section xmlns:f="http://https://github.com/costezki/model2owl#">
             <dl>
@@ -2907,12 +2935,6 @@
             <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-info-circle info"></i>The class foaf:Person has only one sub-class person:Person. Class inheritance should
                be built employing at least two subclasses for each class or not at all.</dd>
          </dl>
-         <h2 xmlns:f="http://https://github.com/costezki/model2owl#">time:Duration -&gt; time:TemporalDuration (+)</h2>
-         <dl xmlns:f="http://https://github.com/costezki/model2owl#">
-            <dt> Unmet generalisation conventions </dt>
-            <dd xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-info-circle info"></i>The class time:TemporalDuration has only one sub-class time:Duration. Class inheritance
-               should be built employing at least two subclasses for each class or not at all.</dd>
-         </dl>
          <h2 xmlns:f="http://https://github.com/costezki/model2owl#">time:ProperInterval -&gt; time:Interval (+)</h2>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#">
             <dt> Unmet generalisation conventions </dt>
@@ -3247,6 +3269,8 @@
                   (epo-qua:EvidenceRequest -&gt; epo:Lot (+epo:concernsLot)) </li>
                <li>Relates to Lot.
                   (epo-qua:EvidenceSubmission -&gt; epo:Lot (+epo:concernsLot)) </li>
+               <li>Relates to Lot.
+                  (epo:InformationRequest -&gt; epo:Lot (+epo:concernsLot)) </li>
             </ul>
          </dd>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#" id="connector-epo:concernsLotGroup">
@@ -3261,6 +3285,8 @@
                   (epo-not:ContractModificationNotice -&gt; epo:LotGroup (+epo:concernsLotGroup)) </li>
                <li>Relates to Lot Group.
                   (cccev:InformationRequirement -&gt; epo:LotGroup (+epo:concernsLotGroup)) </li>
+               <li>Relates to Lot Group.
+                  (epo:InformationRequest -&gt; epo:LotGroup (+epo:concernsLotGroup)) </li>
                <li>Relates to Lot Group.
                   (epo:ContractLotCompletionInformation -&gt; epo:LotGroup (+epo:concernsLotGroup)) </li>
                <li>Relates to Lot Group. (epo-not:ResultNotice -&gt; epo:LotGroup (+epo:concernsLotGroup))
@@ -3289,13 +3315,19 @@
          <dd xmlns:f="http://https://github.com/costezki/model2owl#" xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>When a property is reused in multiple contexts, the meaning given by the definition
             is expected to be the same. In this case, multiple definitions are found: 
             <ul>
+               <li>Relates to Procedure. (epo-acc:ProcurementDocumentsProvision -&gt; epo:Procedure (+epo:concernsProcedure))
+                  </li>
                <li>Relates to Procedure. (epo-qua:EvidenceSubmission -&gt; epo:Procedure (+epo:concernsProcedure))
                   </li>
                <li>Relates to Procedure. (epo-awa:AwardDecisionNotification -&gt; epo:Procedure (+epo:concernsProcedure))
                   </li>
+               <li>Relates to Procedure. (epo-acc:InvitationToTender -&gt; epo:Procedure (+epo:concernsProcedure))
+                  </li>
                <li>Relates to Procedure. (cccev:InformationRequirement -&gt; epo:Procedure (+epo:concernsProcedure))
                   </li>
                <li>Relates to Procedure. (epo-qua:EvidenceRequest -&gt; epo:Procedure (+epo:concernsProcedure))
+                  </li>
+               <li>Relates to Procedure. (epo:InformationRequest -&gt; epo:Procedure (+epo:concernsProcedure))
                   </li>
                <li>Relates to Procedure. (epo-not:ResultNotice -&gt; epo:Procedure (+epo:concernsProcedure))
                   </li>
@@ -3307,7 +3339,11 @@
                   </li>
                <li>Relates to Procedure.
                   (epo-acc:ESPDRequest -&gt; epo:Procedure (+epo:concernsProcedure)) </li>
+               <li>Relates to Procedure. (epo-acc:ProcurementDocumentsRequest -&gt; epo:Procedure (+epo:concernsProcedure))
+                  </li>
                <li>Relates to Procedure. (epo-not:CompletionNotice -&gt; epo:Procedure (+epo:concernsProcedure))
+                  </li>
+               <li>Relates to Procedure. (epo-acc:UnsubscribeFromProcedure -&gt; epo:Procedure (+epo:concernsProcedure))
                   </li>
             </ul>
          </dd>
@@ -3694,6 +3730,17 @@
                   -&gt; epo:Term (+epo:isSubjectToTerm)) </li>
             </ul>
          </dd>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#" id="connector-epo:isSupportedBy">
+            <dt>epo:isSupportedBy</dt>
+         </dl>
+         <dd xmlns:f="http://https://github.com/costezki/model2owl#" xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>When a property is reused in multiple contexts, the meaning given by the definition
+            is expected to be the same. In this case, multiple definitions are found: 
+            <ul>
+               <li>Relation indicating the proof for the instance of the concept. (epo:Tender -&gt; epo:Offer
+                  (+epo:isSupportedBy)) </li>
+               <li>... (epo:Tender -&gt; epo-cat:PreAwardCatalogue (+epo:isSupportedBy)) </li>
+            </ul>
+         </dd>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#" id="connector-epo:playedBy">
             <dt>epo:playedBy</dt>
          </dl>
@@ -3885,9 +3932,11 @@
          </dl>
          <dd xmlns:f="http://https://github.com/costezki/model2owl#" xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>When a property is reused in multiple contexts the multiplicity is expected to be
             the same.</dd>
-         <dd xmlns:f="http://https://github.com/costezki/model2owl#" xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-info-circle info"></i>The property is reused in multiple contexts, the meaning given by the definition is
-            the same.  Here is the property usage: 
+         <dd xmlns:f="http://https://github.com/costezki/model2owl#" xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>When a property is reused in multiple contexts, the meaning given by the definition
+            is expected to be the same. In this case, multiple definitions are found: 
             <ul>
+               <li>... (epo-cat:PreAwardCatalogueRequest -&gt; epo:CatalogueProvider (+epo:specifiesCatalogueProvider))
+                  </li>
                <li>Relation indicating that the instance of the concept involves the Catalogue Provider.
                   (epo-cat:Catalogue -&gt; epo:CatalogueProvider (+epo:specifiesCatalogueProvider)) </li>
                <li>Relation indicating that the instance of the concept involves the Catalogue Provider.
@@ -3900,11 +3949,13 @@
          </dl>
          <dd xmlns:f="http://https://github.com/costezki/model2owl#" xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>When a property is reused in multiple contexts the multiplicity is expected to be
             the same.</dd>
-         <dd xmlns:f="http://https://github.com/costezki/model2owl#" xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter infos"><i class="fa fa-info-circle info"></i>The property is reused in multiple contexts, the meaning given by the definition is
-            the same.  Here is the property usage: 
+         <dd xmlns:f="http://https://github.com/costezki/model2owl#" xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>When a property is reused in multiple contexts, the meaning given by the definition
+            is expected to be the same. In this case, multiple definitions are found: 
             <ul>
                <li>Relation indicating that the instance of the concept involves the Catalogue Receiver.
                   (epo-cat:Catalogue -&gt; epo:CatalogueReceiver (+epo:specifiesCatalogueReceiver)) </li>
+               <li>... (epo-cat:PreAwardCatalogueRequest -&gt; epo:CatalogueReceiver (+epo:specifiesCatalogueReceiver))
+                  </li>
                <li>Relation indicating that the instance of the concept involves the Catalogue Receiver.
                   (epo-cat:CatalogueResponse -&gt; epo:CatalogueReceiver (+epo:specifiesCatalogueReceiver))
                   </li>
@@ -3919,10 +3970,25 @@
             is expected to be the same. In this case, multiple definitions are found: 
             <ul>
                <li>Relation indicating that the instance of the concept involves the Economic Operator.
+                  (epo-acc:UnsubscribeFromProcedure -&gt; epo:OfferingParty (+epo:specifiesEconomicOperator))
+                  </li>
+               <li>Relation indicating that the instance of the concept involves the Economic Operator.
+                  (epo-acc:ProcurementDocumentsRequest -&gt; epo:OfferingParty (+epo:specifiesEconomicOperator))
+                  </li>
+               <li>Relation indicating that the instance of the concept involves the Economic Operator.
                   (epo-eva:TenderClarificationRequest -&gt; epo:OfferingParty (+epo:specifiesEconomicOperator))
                   </li>
                <li>Relation indicating that the instance of the concept involves the Economic Operator.
+                  (epo-acc:ProcurementDocumentsProvision -&gt; epo:OfferingParty (+epo:specifiesEconomicOperator))
+                  </li>
+               <li>Relation indicating that the instance of the concept involves the Economic Operator.
                   (epo:ExpressionOfInterest -&gt; epo:OfferingParty (+epo:specifiesEconomicOperator)) </li>
+               <li>Relation indicating that the instance of the concept involves the Economic Operator.
+                  (epo-acc:ProcurementQuestion -&gt; epo:OfferingParty (+epo:specifiesEconomicOperator))
+                  </li>
+               <li>Relation indicating that the instance of the concept involves the Economic Operator.
+                  (epo-acc:InvitationToTender -&gt; epo:OfferingParty (+epo:specifiesEconomicOperator))
+                  </li>
                <li>Relation indicating that the instance of the concept involves the Economic Operator.
                   (epo-qua:EvidenceRequest -&gt; epo:OfferingParty (+epo:specifiesEconomicOperator)) </li>
                <li>Relation indicating that the instance of the concept involves the Economic Operator.
@@ -3959,6 +4025,11 @@
                   (epo:ReviewRequest -&gt; epo:ReviewRequester (+epo:specifiesReviewRequester)) </li>
             </ul>
          </dd>
+         <dl xmlns:f="http://https://github.com/costezki/model2owl#" id="connector-epo-acc:containsProvidedProcurementDocument">
+            <dt>epo-acc:containsProvidedProcurementDocument</dt>
+         </dl>
+         <dd xmlns:f="http://https://github.com/costezki/model2owl#" xmlns:svrl="http://purl.oclc.org/dsdl/svrl" class="filter warnings"><i class="fa fa-exclamation-triangle warning"></i>When a property is reused in multiple contexts the multiplicity is expected to be
+            the same.</dd>
          <dl xmlns:f="http://https://github.com/costezki/model2owl#" id="connector-epo-cat:hasAmount">
             <dt>epo-cat:hasAmount</dt>
          </dl>
