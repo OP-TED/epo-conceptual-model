@@ -2966,7 +2966,7 @@
                      <tr>
                         <td>epo:actsOnBehalfOf</td>
                         <td>Represents. </td>
-                        <td>epo:ProcurementServiceProvider -&gt; epo:Buyer [1..*]<br><br></td>
+                        <td>epo:ProcurementServiceProvider -&gt; epo:Buyer [1..*]<br>epo-sub:LegalRepresentative -&gt; epo:OfferingParty [0..1]<br></td>
                      </tr>
                      <tr>
                         <td>epo:amendsContract</td>
@@ -3105,7 +3105,7 @@
                      <tr>
                         <td>epo:concernsAwardOutcome</td>
                         <td>Relates to Award Outcome.</td>
-                        <td></td>
+                        <td>epo-awa:AwardDecisionNotification -&gt; epo:AwardOutcome [1..*]</td>
                      </tr>
                      <tr>
                         <td>epo:concernsContractTerm</td>
@@ -3137,7 +3137,7 @@
                             Relates to Lot.
                             Relates to Lot.
                            </td>
-                        <td>epo-not:CompletionNotice -&gt; epo:Lot [1..*]<br>epo-not:ContractModificationNotice -&gt; epo:Lot [1..*]<br>epo:ContractLotCompletionInformation -&gt; epo:Lot [0..1]<br>epo-not:ResultNotice -&gt; epo:Lot [1..*]<br>epo:ProcurementProcessInformation -&gt; epo:Lot [0..1]<br>epo:LotAwardOutcome -&gt; epo:Lot [1]<br>cccev:InformationRequirement -&gt; epo:Lot [0..*]<br><br><br>epo:InformationRequest -&gt; epo:Lot [0..*]<br></td>
+                        <td>epo-not:CompletionNotice -&gt; epo:Lot [1..*]<br>epo-not:ContractModificationNotice -&gt; epo:Lot [1..*]<br>epo:ContractLotCompletionInformation -&gt; epo:Lot [0..1]<br>epo-not:ResultNotice -&gt; epo:Lot [1..*]<br>epo:ProcurementProcessInformation -&gt; epo:Lot [0..1]<br>epo:LotAwardOutcome -&gt; epo:Lot [1]<br>cccev:InformationRequirement -&gt; epo:Lot [0..*]<br>epo-qua:EvidenceRequest -&gt; epo:Lot [1..*]<br>epo-qua:EvidenceSubmission -&gt; epo:Lot [1..*]<br>epo:InformationRequest -&gt; epo:Lot [0..*]<br></td>
                      </tr>
                      <tr>
                         <td>epo:concernsLotAwardOutcome</td>
@@ -3202,7 +3202,7 @@
                      <tr>
                         <td>epo:containsCandidate</td>
                         <td>Includes Candidate. </td>
-                        <td>epo:SelectedCandidateList -&gt; epo:Candidate [0..*]<br><br></td>
+                        <td>epo:SelectedCandidateList -&gt; epo:Candidate [0..*]<br>epo-eva:ExcludedCandidateList -&gt; epo:Candidate [0..*]<br></td>
                      </tr>
                      <tr>
                         <td>epo:contextualisedBy</td>
@@ -3654,7 +3654,7 @@
                      <tr>
                         <td>epo:hasDestinationCountryCode</td>
                         <td>Relation indicating the Country code of the destination.</td>
-                        <td></td>
+                        <td>epo-req:RequestForOffer -&gt; at-voc:country [0..1]</td>
                      </tr>
                      <tr>
                         <td>epo:hasDirectAwardJustification</td>
@@ -3950,7 +3950,7 @@
                         <td>Relation indicating the instance of the concept refers to a Lot.
                             Relation indicating the instance of the concept refers to a Lot.
                            </td>
-                        <td>epo:Contract -&gt; epo:Lot [1..*]<br><br></td>
+                        <td>epo:Contract -&gt; epo:Lot [1..*]<br>epo-inv:Invoice -&gt; epo:Lot [1..*]<br></td>
                      </tr>
                      <tr>
                         <td>epo:hasLowestReceivedTenderValue</td>
@@ -4424,7 +4424,7 @@
                      <tr>
                         <td>epo:isAssignedForEvaluationOf</td>
                         <td>Relation indicating that the instance of the concept is selected for Evaluation.</td>
-                        <td></td>
+                        <td>epo-eva:EvaluationBoard -&gt; epo:Lot [0..*]</td>
                      </tr>
                      <tr>
                         <td>epo:isBasedOnImplementingRegulation</td>
@@ -4561,7 +4561,7 @@
                             Relation indicating the Agent that fulfills the function of the instance of the concept.
                             Relation indicating the Agent that fulfills the function of the instance of the concept.
                            </td>
-                        <td>epo:AgentInRole -&gt; foaf:Agent [1]<br>epo-ful:TransportMeansOperator -&gt; foaf:Person [0..1]<br><br>epo:UniqueResponsibleOfTheProcurement -&gt; person:Person [0..1]<br>epo:JuryMember -&gt; person:Person [0..1]<br></td>
+                        <td>epo:AgentInRole -&gt; foaf:Agent [1]<br>epo-ful:TransportMeansOperator -&gt; foaf:Person [0..1]<br>epo-eva:Evaluator -&gt; person:Person [0..1]<br>epo:UniqueResponsibleOfTheProcurement -&gt; person:Person [0..1]<br>epo:JuryMember -&gt; person:Person [0..1]<br></td>
                      </tr>
                      <tr>
                         <td>epo:preparesForPotentialProcurementObject</td>
@@ -4587,7 +4587,7 @@
                         <td>epo:providesEvidence</td>
                         <td>Makes available the Evidence.
                             Makes available the Evidence.</td>
-                        <td><br>epo:Offer -&gt; cccev:Evidence [1]<br></td>
+                        <td>epo-qua:EvidenceSubmission -&gt; cccev:Evidence [0..*]<br>epo:Offer -&gt; cccev:Evidence [1]<br></td>
                      </tr>
                      <tr>
                         <td>epo:providesProcurementDocumentsInOfficialLanguage</td>
@@ -4616,7 +4616,7 @@
                         <td>Reference to a Contract. Reference to a Contract.
                             Reference to a Contract.
                            </td>
-                        <td>epo:ContractLotCompletionInformation -&gt; epo:Contract [1]<br><br><br></td>
+                        <td>epo:ContractLotCompletionInformation -&gt; epo:Contract [1]<br>epo-inv:Invoice -&gt; epo:Contract [0..1]<br>epo-req:RequestForOffer -&gt; epo:Contract [0..*]<br></td>
                      </tr>
                      <tr>
                         <td>epo:refersToContractToBeModified</td>
@@ -4690,7 +4690,7 @@
                         <td>Reference to a Project.
                             Reference to a Project.
                            </td>
-                        <td>epo-ord:Order -&gt; epo:Project [0..1]<br><br></td>
+                        <td>epo-ord:Order -&gt; epo:Project [0..1]<br>epo-inv:Invoice -&gt; epo:Project [0..1]<br></td>
                      </tr>
                      <tr>
                         <td>epo:refersToReviewRequest</td>
@@ -4756,7 +4756,7 @@
                      <tr>
                         <td>epo:specifiesBuyer</td>
                         <td>Relation indicating that the instance of the concept involves the Buyer. Relation indicating that the instance of the concept involves the Buyer. Relation indicating that the instance of the concept involves the Buyer. Relation indicating that the instance of the concept involves the Buyer. Relation indicating that the instance of the concept involves the Buyer. Relation indicating that the instance of the concept involves the Buyer. Relation indicating that the instance of the concept involves the Buyer. Relation indicating that the instance of the concept involves the Buyer. Relation indicating that the instance of the concept involves the Buyer. Relation indicating that the instance of the concept involves the Buyer. Relation indicating that the instance of the concept involves the Buyer.</td>
-                        <td>epo-ful:ReceiptAdvice -&gt; epo:Buyer [0..1]<br>epo-ord:OrderChangeRejection -&gt; epo:Buyer [1]<br>epo-ord:OrderCancellationRejection -&gt; epo:Buyer [1]<br><br>epo-ord:OrderCancellation -&gt; epo:Buyer [1]<br>epo-ord:OrderCancellationConfirmation -&gt; epo:Buyer [1]<br>epo-ord:OrderChangeConfirmation -&gt; epo:Buyer [1]<br><br>epo-cat:Catalogue -&gt; epo:Buyer [0..*]<br>epo-ord:Order -&gt; epo:Buyer [1]<br><br></td>
+                        <td>epo-ful:ReceiptAdvice -&gt; epo:Buyer [0..1]<br>epo-ord:OrderChangeRejection -&gt; epo:Buyer [1]<br>epo-ord:OrderCancellationRejection -&gt; epo:Buyer [1]<br>epo-req:RequestForOffer -&gt; epo:Buyer [0..1]<br>epo-ord:OrderCancellation -&gt; epo:Buyer [1]<br>epo-ord:OrderCancellationConfirmation -&gt; epo:Buyer [1]<br>epo-ord:OrderChangeConfirmation -&gt; epo:Buyer [1]<br>epo-inv:Invoice -&gt; epo:Buyer [1]<br>epo-cat:Catalogue -&gt; epo:Buyer [0..*]<br>epo-ord:Order -&gt; epo:Buyer [1]<br>epo-pay:RemittanceAdvice -&gt; epo:Buyer [1]<br></td>
                      </tr>
                      <tr>
                         <td>epo:specifiesCatalogueReceiver</td>
@@ -4778,7 +4778,7 @@
                      <tr>
                         <td>epo:specifiesContractor</td>
                         <td>Relation indicating that the instance of the concept involves the Contractor.</td>
-                        <td></td>
+                        <td>epo-req:RequestForOffer -&gt; epo:Contractor [1]</td>
                      </tr>
                      <tr>
                         <td>epo:specifiesDeliverable</td>
@@ -4788,7 +4788,7 @@
                      <tr>
                         <td>epo:specifiesEvidence</td>
                         <td>Relation indicating the Evidence.</td>
-                        <td></td>
+                        <td>epo-qua:EvidenceOutcome -&gt; cccev:Evidence [1]</td>
                      </tr>
                      <tr>
                         <td>epo:specifiesForeignSubsidiesMeasureConclusion</td>
@@ -4805,7 +4805,7 @@
                         <td>Relation indicating the Procurement Criterion to be used.
                             Relation indicating the Procurement Criterion to be used.
                             Relation indicating the Procurement Criterion to be used.</td>
-                        <td>epo:LotGroup -&gt; epo:ProcurementCriterion [0..*]<br>epo:ProcurementElement -&gt; epo:ProcurementCriterion [0..*]<br><br></td>
+                        <td>epo:LotGroup -&gt; epo:ProcurementCriterion [0..*]<br>epo:ProcurementElement -&gt; epo:ProcurementCriterion [0..*]<br>epo-acc:ESPDRequest -&gt; epo:ProcurementCriterion [1..*]<br></td>
                      </tr>
                      <tr>
                         <td>epo:specifiesReviewer</td>
@@ -4822,7 +4822,7 @@
                      <tr>
                         <td>epo:specifiesTenderer</td>
                         <td>Relation indicating that the instance of the concept involves the Tenderer.</td>
-                        <td></td>
+                        <td>epo-awa:AwardDecisionNotification -&gt; epo:Tenderer [1]</td>
                      </tr>
                      <tr>
                         <td>epo:substantiatesExclusionGround</td>
@@ -4849,6 +4849,16 @@
                         <td>epo:usesTechnique</td>
                         <td>Relation indicating that a Technique is being applied.</td>
                         <td>epo:ProcurementObject -&gt; epo:Technique [0..*]</td>
+                     </tr>
+                     <tr>
+                        <td>epo-acc:containsProvidedProcurementDocument</td>
+                        <td> </td>
+                        <td>epo-acc:InvitationToTender -&gt; epo:ProcurementDocument []<br>epo-acc:ProcurementDocumentsProvision -&gt; epo:ProcurementDocument [0..*]<br></td>
+                     </tr>
+                     <tr>
+                        <td>epo-acc:refersToNotice</td>
+                        <td>Reference to a Notice.</td>
+                        <td>epo-acc:ESPDRequest -&gt; epo:Notice [0..*]</td>
                      </tr>
                      <tr>
                         <td>epo-cat:hasAmount</td>
@@ -4980,7 +4990,7 @@
                      <tr>
                         <td>epo-cat:hasQuantity</td>
                         <td>Relation indicating that the instance of the concept has a Quantity. Relation indicating that the instance of the concept has a Quantity. Relation indicating that the instance of the concept has a Quantity.</td>
-                        <td>epo-ord:OrderLine -&gt; epo:Quantity [1]<br><br>epo-con:Deliverable -&gt; epo:Quantity [0..1]<br></td>
+                        <td>epo-ord:OrderLine -&gt; epo:Quantity [1]<br>epo-inv:InvoiceLine -&gt; epo:Quantity [1]<br>epo-con:Deliverable -&gt; epo:Quantity [0..1]<br></td>
                      </tr>
                      <tr>
                         <td>epo-cat:hasQuantityThreshold</td>
@@ -4991,6 +5001,31 @@
                         <td>epo-cat:isSubordinatedToContract</td>
                         <td>Relation indicating that the instance of the concept is governed by a specific Contract.</td>
                         <td>epo-cat:PostAwardCatalogue -&gt; epo:Contract [0..1]</td>
+                     </tr>
+                     <tr>
+                        <td>epo-eva:evaluatesProcurementCriterion</td>
+                        <td>Assesses Procurement Criterion.</td>
+                        <td>epo-eva:EvaluationCriterion -&gt; epo:ProcurementCriterion [1]</td>
+                     </tr>
+                     <tr>
+                        <td>epo-eva:hasJuryMember</td>
+                        <td>An agent involved in an evaluation board.</td>
+                        <td>epo-eva:EvaluationBoard -&gt; epo:JuryMember [0..*]</td>
+                     </tr>
+                     <tr>
+                        <td>epo-eva:isAppointedBy</td>
+                        <td>Relation indicating that by whom the instance of the concept is formally assigned.</td>
+                        <td>epo-eva:EvaluationBoard -&gt; epo:UniqueResponsibleOfTheProcurement [1]</td>
+                     </tr>
+                     <tr>
+                        <td>epo-eva:providesRankToTender</td>
+                        <td>Makes available the assigned position for the Tender.</td>
+                        <td>epo-eva:EvaluationReport -&gt; epo:TenderAwardOutcome [1]</td>
+                     </tr>
+                     <tr>
+                        <td>epo-eva:usesEvaluationFormula</td>
+                        <td>Applies systematic method for assessment.</td>
+                        <td>epo-eva:EvaluationReport -&gt; epo:AwardEvaluationTerm [0..1]</td>
                      </tr>
                      <tr>
                         <td>epo-ful:agreedByBuyer</td>
@@ -5159,6 +5194,83 @@
                         <td>epo-ful:ShipmentInformation -&gt; dct:Location [0..1]</td>
                      </tr>
                      <tr>
+                        <td>epo-inv:hasBankingIdentifier</td>
+                        <td>An unique banking reference identifier of the Payee or Seller, assigned by the Payee
+                           or Seller bank.
+                           </td>
+                        <td>epo-inv:PaymentInstructionsInformation -&gt; adms:Identifier [0..1]</td>
+                     </tr>
+                     <tr>
+                        <td>epo-inv:hasDebitedAccountIdentifier</td>
+                        <td>An identifier for the account to be debited by the direct debit.
+                           </td>
+                        <td>epo-inv:PaymentInstructionsInformation -&gt; adms:Identifier [0..1]</td>
+                     </tr>
+                     <tr>
+                        <td>epo-inv:hasInvoicedObjectIdentifier</td>
+                        <td>An identifier for an object on which the invoice is based, given by the Seller.</td>
+                        <td>epo-inv:Invoice -&gt; adms:Identifier [0..1]</td>
+                     </tr>
+                     <tr>
+                        <td>epo-inv:hasInvoiceLineObjectIdentifier</td>
+                        <td>An identifier for an object on which the invoice line is based, given by the Seller.
+                           
+                           Additional Information:
+                           It may be a subscription number, telephone number, meter point etc., as applicable.
+                           </td>
+                        <td>epo-inv:InvoiceLine -&gt; adms:Identifier [0..1]</td>
+                     </tr>
+                     <tr>
+                        <td>epo-inv:hasInvoiceLinePeriod</td>
+                        <td>Relation indicating the time range of the Invoice Line.</td>
+                        <td>epo-inv:InvoiceLine -&gt; time:Interval [0..1]</td>
+                     </tr>
+                     <tr>
+                        <td>epo-inv:hasInvoicingPeriod</td>
+                        <td>Relation indicating the time range for creating, sending, and managing Invoices.</td>
+                        <td>epo-inv:Invoice -&gt; time:Interval [0..1]</td>
+                     </tr>
+                     <tr>
+                        <td>epo-inv:hasItemClassificationIdentifier</td>
+                        <td>The Identifier of the Item categorisation.</td>
+                        <td>epo-cat:AbstractItem -&gt; adms:Identifier [0..*]</td>
+                     </tr>
+                     <tr>
+                        <td>epo-inv:hasMandateIdentifier</td>
+                        <td>An unique identifier for referencing the direct debit mandate, assigned by the Payee.</td>
+                        <td>epo-inv:PaymentInstructionsInformation -&gt; adms:Identifier [0..1]</td>
+                     </tr>
+                     <tr>
+                        <td>epo-inv:hasNetAmount</td>
+                        <td>Relation indicating the Monetary Value exclusive of taxes and after substracting price
+                           discounts.</td>
+                        <td>epo-inv:InvoiceLine -&gt; epo:MonetaryValue [1]</td>
+                     </tr>
+                     <tr>
+                        <td>epo-inv:hasPaymentAccountIdentifier</td>
+                        <td>A unique identifier of the financial payment account, at a payment service provider,
+                           to which payment should be made.
+                           </td>
+                        <td>epo-inv:CreditTransferInformation -&gt; adms:Identifier [1]</td>
+                     </tr>
+                     <tr>
+                        <td>epo-inv:hasPaymentServiceProviderIdentifier</td>
+                        <td>An identifier for the payment service provider where a payment account is located.
+                           </td>
+                        <td>epo-inv:CreditTransferInformation -&gt; adms:Identifier [0..1]</td>
+                     </tr>
+                     <tr>
+                        <td>epo-inv:hasTotalAccountingCurrencyTaxAmount</td>
+                        <td>Relation indicating the overall Monetary Value of the Tax applied on the currency
+                           in which the financial transactions are recorded at the company level.</td>
+                        <td>epo-inv:Invoice -&gt; epo:MonetaryValue [0..*]</td>
+                     </tr>
+                     <tr>
+                        <td>epo-inv:hasTotalTaxAmount</td>
+                        <td>Relation indicating the overall Monetary Value of the Tax applied.</td>
+                        <td>epo-inv:Invoice -&gt; epo:MonetaryValue [0..*]</td>
+                     </tr>
+                     <tr>
                         <td>epo-ord:concernsContract</td>
                         <td>Relates to Contractor.</td>
                         <td>epo-ord:ContractInformation -&gt; epo:Contract [1]</td>
@@ -5171,7 +5283,7 @@
                      <tr>
                         <td>epo-ord:hasAmountDueForPayment</td>
                         <td>Relation indicating the Monetary Value that has to be paid. Relation indicating the Monetary Value that has to be paid.</td>
-                        <td><br>epo-ord:Order -&gt; epo:MonetaryValue [1]<br></td>
+                        <td>epo-inv:Invoice -&gt; epo:MonetaryValue [1]<br>epo-ord:Order -&gt; epo:MonetaryValue [1]<br></td>
                      </tr>
                      <tr>
                         <td>epo-ord:hasBackorderQuantity</td>
@@ -5197,7 +5309,7 @@
                      <tr>
                         <td>epo-ord:hasPrepaidAmount</td>
                         <td>Relation indicating the Monetary Value that is paid in advance. Relation indicating the Monetary Value that is paid in advance.</td>
-                        <td><br>epo-ord:Order -&gt; epo:MonetaryValue [0..1]<br></td>
+                        <td>epo-inv:Invoice -&gt; epo:MonetaryValue [0..*]<br>epo-ord:Order -&gt; epo:MonetaryValue [0..1]<br></td>
                      </tr>
                      <tr>
                         <td>epo-ord:hasRequestedDeliveryPeriod</td>
@@ -5209,7 +5321,7 @@
                         <td>Relation indicating the adjustment Monetary Value applied to bring calculated total
                            to a convenient value. Relation indicating the adjustment Monetary Value applied to bring calculated total
                            to a convenient value.</td>
-                        <td><br>epo-ord:Order -&gt; epo:MonetaryValue [0..1]<br></td>
+                        <td>epo-inv:Invoice -&gt; epo:MonetaryValue [0..1]<br>epo-ord:Order -&gt; epo:MonetaryValue [0..1]<br></td>
                      </tr>
                      <tr>
                         <td>epo-ord:hasSellerOrderID</td>
@@ -5229,27 +5341,27 @@
                      <tr>
                         <td>epo-ord:hasTotalAllowanceAmount</td>
                         <td>Relation indicating the overall Monetary Value of the Allowance. Relation indicating the overall Monetary Value of the Allowance.</td>
-                        <td><br>epo-ord:Order -&gt; epo:MonetaryValue [0..1]<br></td>
+                        <td>epo-inv:Invoice -&gt; epo:MonetaryValue [0..*]<br>epo-ord:Order -&gt; epo:MonetaryValue [0..1]<br></td>
                      </tr>
                      <tr>
                         <td>epo-ord:hasTotalChargeAmount</td>
                         <td>Relation indicating the overall Monetary Value of the Charge. Relation indicating the overall Monetary Value of the Charge.</td>
-                        <td><br>epo-ord:Order -&gt; epo:MonetaryValue [0..1]<br></td>
+                        <td>epo-inv:Invoice -&gt; epo:MonetaryValue [0..*]<br>epo-ord:Order -&gt; epo:MonetaryValue [0..1]<br></td>
                      </tr>
                      <tr>
                         <td>epo-ord:hasTotalLineAmount</td>
                         <td>Relation indicating the overall Monetary Value of the Line. Relation indicating the overall Monetary Value of the Line.</td>
-                        <td>epo-ord:Order -&gt; epo:MonetaryValue [1]<br><br></td>
+                        <td>epo-ord:Order -&gt; epo:MonetaryValue [1]<br>epo-inv:Invoice -&gt; epo:MonetaryValue [1..*]<br></td>
                      </tr>
                      <tr>
                         <td>epo-ord:hasTotalTaxExclusiveAmount</td>
                         <td>Relation indicating the overall Monetary Value without Tax. Relation indicating the overall Monetary Value without Tax.</td>
-                        <td>epo-ord:Order -&gt; epo:MonetaryValue [0..1]<br><br></td>
+                        <td>epo-ord:Order -&gt; epo:MonetaryValue [0..1]<br>epo-inv:Invoice -&gt; epo:MonetaryValue [1..*]<br></td>
                      </tr>
                      <tr>
                         <td>epo-ord:hasTotalTaxInclusiveAmount</td>
                         <td>Relation indicating the overall Monetary Value with Tax. Relation indicating the overall Monetary Value with Tax.</td>
-                        <td>epo-ord:Order -&gt; epo:MonetaryValue [0..1]<br><br></td>
+                        <td>epo-ord:Order -&gt; epo:MonetaryValue [0..1]<br>epo-inv:Invoice -&gt; epo:MonetaryValue [1..*]<br></td>
                      </tr>
                      <tr>
                         <td>epo-ord:specifiesDeliveryAgreementLocation</td>
@@ -5260,6 +5372,106 @@
                         <td>epo-ord:specifiesPlaceOfDelivery</td>
                         <td>Relation indicating the Location of the despatch.</td>
                         <td>epo-ord:DeliveryInformation -&gt; dct:Location [0..1]</td>
+                     </tr>
+                     <tr>
+                        <td>epo-pay:hasBalanceAmount</td>
+                        <td>Relation indicating the outstanding amount that remains unpaid or unsettled.</td>
+                        <td>epo-pay:RemittanceAdviceLine -&gt; epo:MonetaryValue [0..1]</td>
+                     </tr>
+                     <tr>
+                        <td>epo-pay:hasCreditAmount</td>
+                        <td>Relation indicating the Monetary Value that reduces the amount owed.</td>
+                        <td>epo-pay:RemittanceAdviceLine -&gt; epo:MonetaryValue [0..1]</td>
+                     </tr>
+                     <tr>
+                        <td>epo-pay:hasDebitAmount</td>
+                        <td>Relation indicating the Monetary Value that increases the amount owed.</td>
+                        <td>epo-pay:RemittanceAdviceLine -&gt; epo:MonetaryValue [0..1]</td>
+                     </tr>
+                     <tr>
+                        <td>epo-pay:hasPaymentIdentifier</td>
+                        <td>Relation indicating the Identifier of the Payment.</td>
+                        <td>epo-pay:PaymentInformation -&gt; adms:Identifier [0..1]</td>
+                     </tr>
+                     <tr>
+                        <td>epo-pay:hasTotalCreditAmount</td>
+                        <td>Relation indicating the overall Monetary Value that reduces the amount owed.</td>
+                        <td>epo-pay:RemittanceAdvice -&gt; epo:MonetaryValue [0..1]</td>
+                     </tr>
+                     <tr>
+                        <td>epo-pay:hasTotalDebitAmount</td>
+                        <td>Relation indicating the overall Monetary Value that increases the amount owed.</td>
+                        <td>epo-pay:RemittanceAdvice -&gt; epo:MonetaryValue [0..1]</td>
+                     </tr>
+                     <tr>
+                        <td>epo-pay:hasTotalPaymentAmount</td>
+                        <td>Relation indicating the overall paid Monetary Value.</td>
+                        <td>epo-pay:RemittanceAdvice -&gt; epo:MonetaryValue [0..1]</td>
+                     </tr>
+                     <tr>
+                        <td>epo-qua:providesDecisionFor</td>
+                        <td>Makes available the resolution.</td>
+                        <td>epo-qua:QualificationDecisionInformation -&gt; epo:Lot [1]</td>
+                     </tr>
+                     <tr>
+                        <td>epo-req:specifiesOfferCurrency</td>
+                        <td>Relation indicating the Currency for the Offer.</td>
+                        <td>epo-req:RequestForOffer -&gt; at-voc:currency [0..1]</td>
+                     </tr>
+                     <tr>
+                        <td>epo-req:specifiesOfferValidityPeriod</td>
+                        <td>Relation indicating the time range in which an Offer is valid.</td>
+                        <td>epo-req:RequestForOffer -&gt; time:Interval [0..1]</td>
+                     </tr>
+                     <tr>
+                        <td>epo-sub:answersQuestion</td>
+                        <td>Relation indicating that the Response replies to a question.</td>
+                        <td>epo-sub:Response -&gt; cccev:InformationRequirement [0..*]</td>
+                     </tr>
+                     <tr>
+                        <td>epo-sub:concernsOrganisation</td>
+                        <td>Relates to Organization.
+                           
+                           </td>
+                        <td>epo-sub:OrganisationInformationSummary -&gt; org:Organization [1]</td>
+                     </tr>
+                     <tr>
+                        <td>epo-sub:isContainedInTender</td>
+                        <td>Relation indicating that the instance of the concept is part of a Tender.</td>
+                        <td>epo-sub:ESPD -&gt; epo:Tender [0..*]</td>
+                     </tr>
+                     <tr>
+                        <td>epo-sub:isReinforcedBy</td>
+                        <td>Relation indicating an Evidence that supports the Response.</td>
+                        <td>epo-sub:Response -&gt; cccev:Evidence [0..*]</td>
+                     </tr>
+                     <tr>
+                        <td>epo-sub:providesInformationOn</td>
+                        <td>Offers information about an instance of a concept.</td>
+                        <td>epo-sub:ESPD -&gt; org:Organization [0..*]</td>
+                     </tr>
+                     <tr>
+                        <td>epo-sub:providesOrganisationEmployeeQuantity</td>
+                        <td>The number of people hired by the Organization.</td>
+                        <td>epo-sub:OrganisationInformationSummary -&gt; epo:Quantity [0..1]</td>
+                     </tr>
+                     <tr>
+                        <td>epo-sub:providesOrganisationFinancialCapability</td>
+                        <td>A monetary amount representing the financial capability of the Organization.
+                           
+                           Additional information:
+                           Used to represent the general Turnover of the Organization (for statistical purposes).</td>
+                        <td>epo-sub:OrganisationInformationSummary -&gt; epo:MonetaryValue [0..1]</td>
+                     </tr>
+                     <tr>
+                        <td>epo-sub:refersToApplicablePeriod</td>
+                        <td>Relation indicating the period to which the Response shall apply.</td>
+                        <td>epo-sub:Response -&gt; time:Interval [0..1]</td>
+                     </tr>
+                     <tr>
+                        <td>epo-sub:summarisesInformationAboutEvidence</td>
+                        <td>Relation indicating the Certificate that the information refers to.</td>
+                        <td>epo-sub:EvidenceInformation -&gt; cccev:Evidence [1]</td>
                      </tr>
                   </tbody>
                </table>
