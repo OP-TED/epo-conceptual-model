@@ -1,0 +1,71 @@
+{
+  "@context": {
+    "AgentInRole.playedBy": {
+      "@id": "http://data.europa.eu/a4g/ontology#playedBy",
+      "@type": "@id"
+    },
+    "Location.hasCountryCode": {
+      "@id": "http://data.europa.eu/a4g/ontology#hasCountryCode",
+      "@type": "@id"
+    },
+    "epo:hasLegalName": {
+      "@id": "http://data.europa.eu/a4g/ontology#hasLegalName"
+    },
+    "cv:registeredAddress": {
+      "@id": "http://data.europa.eu/m8g/registeredAddress",
+      "@type": "@id"
+    },
+    "adms:identifier": {
+      "@id": "http://www.w3.org/ns/adms#identifier",
+      "@type": "@id"
+    },
+    "epo:hasScheme": {
+      "@id": "http://data.europa.eu/a4g/ontology#hasScheme"
+    },
+    "skos:notation": {
+      "@id": "http://www.w3.org/2004/02/skos/core#notation"
+    },
+    "at-voc": "http://publications.europa.eu/resource/authority/",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "org": "http://www.w3.org/ns/org#",
+    "epo": "http://data.europa.eu/a4g/ontology#",
+    "cv": "http://data.europa.eu/m8g/",
+    "adms": "http://www.w3.org/ns/adms#"
+  },
+  "@graph": [
+    {
+      "@id": "at-voc:country/LUX",
+      "@type": "skos:Concept"
+    },
+    {
+      "@id": "http://data.europa.eu/a4g/resource/address01",
+      "@type": "locn:Address",
+      "Location.hasCountryCode": "at-voc:country/LUX"
+    },
+    {
+      "@id": "http://data.europa.eu/a4g/resource/identifier01",
+      "@type": "adms:Identifier",
+      "epo:hasScheme": "Organization",
+      "skos:notation": "ORG-0001"
+    },
+    {
+      "@id": "http://data.europa.eu/a4g/resource/org01",
+      "@type": "org:Organization",
+      "epo:hasLegalName": {
+        "@language": "en",
+        "@value": "Buyer Org"
+      },
+      "cv:registeredAddress": {
+        "@id": "http://data.europa.eu/a4g/resource/address01"
+      },
+      "adms:identifier": {
+        "@id": "http://data.europa.eu/a4g/resource/identifier01"
+      }
+    },
+    {
+      "@id": "http://data.europa.eu/a4g/resource/buyer01",
+      "@type": "Buyer",
+      "AgentInRole.playedBy": "http://data.europa.eu/a4g/resource/org01"
+    }
+  ]
+}
