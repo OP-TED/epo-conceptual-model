@@ -242,8 +242,7 @@ ord-shape:epo-ord-OrderShape a sh:NodeShape ;
     rdfs:label "Order" ;
     rdfs:comment "A formal request of the Buyer to the Seller specifying the goods, services or works to be delivered. Additional Information: A Buyer submits an Order for delivery of goods, services or works to a Seller." ;
     rdfs:isDefinedBy ord-shape:ord-shape ;
-    sh:property ord-shape:epo-ord-Order-epo-cat-refersToCatalogue,
-        ord-shape:epo-ord-Order-epo-cat-specifiesChargeInformation,
+    sh:property ord-shape:epo-ord-Order-epo-cat-specifiesChargeInformation,
         ord-shape:epo-ord-Order-epo-ful-specifiesDespatcher,
         ord-shape:epo-ord-Order-epo-hasValidityPeriod,
         ord-shape:epo-ord-Order-epo-ord-comprisesOrderLine,
@@ -334,7 +333,6 @@ ord-shape:epo-cat-Catalogue-epo-specifiesSeller a sh:PropertyShape ;
 
 ord-shape:epo-cat-CatalogueResponseInformation-epo-ord-hasResponseStatus a sh:PropertyShape ;
     rdfs:isDefinedBy ord-shape:ord-shape ;
-    sh:class skos:Concept ;
     sh:description "Relation indicating the response status." ;
     sh:maxCount 1 ;
     sh:minCount 1 ;
@@ -360,7 +358,6 @@ ord-shape:epo-cat-Price-epo-ord-hasPriceDiscountInformation a sh:PropertyShape ;
 
 ord-shape:epo-ful-AbstractContainer-epo-ord-hasAcceptanceStatus a sh:PropertyShape ;
     rdfs:isDefinedBy ord-shape:ord-shape ;
-    sh:class skos:Concept ;
     sh:description "Relation indicating the acceptance status." ;
     sh:maxCount 1 ;
     sh:name "Has acceptance status" ;
@@ -421,7 +418,6 @@ ord-shape:epo-ful-ReceiptAdvice-epo-specifiesSeller a sh:PropertyShape ;
 
 ord-shape:epo-ful-ReceiptAdviceInformation-epo-ord-hasAcceptanceStatus a sh:PropertyShape ;
     rdfs:isDefinedBy ord-shape:ord-shape ;
-    sh:class skos:Concept ;
     sh:description "Relation indicating the acceptance status." ;
     sh:maxCount 1 ;
     sh:name "Has acceptance status" ;
@@ -767,14 +763,6 @@ ord-shape:epo-ord-DeliveryInformation-epo-ord-specifiesPlaceOfDelivery a sh:Prop
     sh:name "Specifies place of delivery" ;
     sh:path :specifiesPlaceOfDelivery ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#specifiesPlaceOfDelivery> ?that . ?that <http://data.europa.eu/a4g/ontology#specifiesPlaceOfDelivery> ?this .}" ] .
-
-ord-shape:epo-ord-Order-epo-cat-refersToCatalogue a sh:PropertyShape ;
-    rdfs:isDefinedBy ord-shape:ord-shape ;
-    sh:class :PostAwardCatalogue ;
-    sh:description "Additional information: If an order refers to multiple catalogues then all these catalogues ideally are subordinated to the same contract. Some countries however may allow multiple contracts per order (i.e Italy)." ;
-    sh:name "Refers to catalogue" ;
-    sh:path :refersToCatalogue ;
-    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#refersToCatalogue> ?that . ?that <http://data.europa.eu/a4g/ontology#refersToCatalogue> ?this .}" ] .
 
 ord-shape:epo-ord-Order-epo-cat-specifiesChargeInformation a sh:PropertyShape ;
     rdfs:isDefinedBy ord-shape:ord-shape ;
@@ -1125,7 +1113,6 @@ ord-shape:epo-ord-OrderChangeConfirmation-epo-specifiesSeller a sh:PropertyShape
 
 ord-shape:epo-ord-OrderChangeLine-epo-ord-hasStatus a sh:PropertyShape ;
     rdfs:isDefinedBy ord-shape:ord-shape ;
-    sh:class skos:Concept ;
     sh:description "Relation indicating the status." ;
     sh:maxCount 1 ;
     sh:name "Has status" ;
@@ -1242,7 +1229,6 @@ ord-shape:epo-ord-OrderResponse-epo-ord-specifiesOrderResponseInformation a sh:P
 
 ord-shape:epo-ord-OrderResponseInformation-epo-ord-hasStatus a sh:PropertyShape ;
     rdfs:isDefinedBy ord-shape:ord-shape ;
-    sh:class skos:Concept ;
     sh:description "Relation indicating the status." ;
     sh:maxCount 1 ;
     sh:minCount 1 ;
@@ -1375,13 +1361,13 @@ ord-shape:ord-shape a owl:Ontology ;
     rdfs:label "eProcurement Ontology Ordering - core shapes"@en ;
     dcterms:created "2021-06-01"^^xsd:date ;
     dcterms:description "The eProcurement Ontology Ordering core shapes provides the generic datashape specifications for the eProcurement Ontology Ordering core."@en ;
-    dcterms:issued "2026-01-12"^^xsd:date ;
+    dcterms:issued "2026-01-13"^^xsd:date ;
     dcterms:license "CC BY 4.0" ;
     dcterms:publisher "http://publications.europa.eu/resource/authority/corporate-body/PUBL" ;
     dcterms:title "eProcurement Ontology Ordering - core shapes"@en ;
     vann:preferredNamespacePrefix "epo" ;
     vann:preferredNamespaceUri "http://data.europa.eu/a4g/ontology#" ;
-    rdfs:comment "This version is automatically generated from eOrdering_CM.xml on 2026-01-12" ;
+    rdfs:comment "This version is automatically generated from eOrdering_CM.xml on 2026-01-13" ;
     rdfs:seeAlso <https://docs.ted.europa.eu/home/index.html>,
         <https://github.com/OP-TED/ePO/releases>,
         <https://joinup.ec.europa.eu/collection/eprocurement/solution/eprocurement-ontology/about>,
