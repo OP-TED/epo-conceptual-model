@@ -123,7 +123,7 @@
      - The default status value interpretation for elements without a status set -->
     <xsl:variable name="statusProperty" select="'epo:status'"/>
     <xsl:variable name="validStatusesList" select="('proposed', 'approved', 'implemented')"/>
-    <xsl:variable name="excludedElementStatusesList" select="('proposed', 'approved')"/>
+    <xsl:variable name="excludedElementStatusesList" select="()"/>
     <xsl:variable name="unspecifiedStatusInterpretation" select="'implemented'"/>
     
     <!-- This variable control if Object and Realisation are generated -->
