@@ -24,6 +24,14 @@ core-shape:adms-IdentifierShape sh:property core-shape:adms-Identifier-epo-hasEx
 core-shape:cccev-ConstraintShape sh:property core-shape:cccev-Constraint-epo-hasThresholdType,
         core-shape:cccev-Constraint-epo-hasThresholdValue .
 
+core-shape:cccev-Criterion-dct-type a sh:PropertyShape ;
+    sh:class skos:Concept ;
+    sh:path dcterms:type .
+
+core-shape:cccev-Evidence-cccev-confidentialityLevelType a sh:PropertyShape ;
+    sh:class skos:Concept ;
+    sh:path cccev:confidentialityLevelType .
+
 core-shape:cccev-EvidenceShape sh:property core-shape:cccev-Evidence-epo-hasURL,
         core-shape:cccev-Evidence-epo-hasValidityPeriod .
 
@@ -41,6 +49,10 @@ core-shape:cv-ChannelShape sh:property core-shape:cv-Channel-epo-hasAddressURL,
 
 core-shape:dct-LocationShape sh:property core-shape:dct-Location-epo-hasCountryCode,
         core-shape:dct-Location-epo-hasNutsCode .
+
+core-shape:eli-LegalExpression-dct-language a sh:PropertyShape ;
+    sh:class skos:Concept ;
+    sh:path dcterms:language .
 
 core-shape:epo-AccessTermShape a sh:NodeShape ;
     rdfs:label "Access Term" ;
@@ -393,7 +405,8 @@ core-shape:epo-DirectAwardTermShape a sh:NodeShape ;
     rdfs:label "Direct Award Term" ;
     rdfs:comment "Conditions and stipulations defining particularities of the award of a Contract without prior publication. Addtional Information: Direct award may refer to a previous Procedure and/or specific Lot(s). It may also refer to other justified situations whereby there is no previous Procedure. See Directive 2014/24/EU Article 32." ;
     rdfs:isDefinedBy core-shape:core-shape ;
-    sh:property core-shape:epo-DirectAwardTerm-epo-hasJustification,
+    sh:property core-shape:epo-DirectAwardTerm-epo-hasDirectAwardJustification,
+        core-shape:epo-DirectAwardTerm-epo-hasJustification,
         core-shape:epo-DirectAwardTerm-epo-refersToPreviousProcedure,
         core-shape:epo-DirectAwardTerm-epo-refersToPreviousProcedureLot ;
     sh:targetClass :DirectAwardTerm .
@@ -522,6 +535,10 @@ core-shape:epo-ExclusionGroundsSummaryShape a sh:NodeShape ;
     rdfs:comment "Overview of the Exclusion Grounds." ;
     rdfs:isDefinedBy core-shape:core-shape ;
     sh:targetClass :ExclusionGroundsSummary .
+
+core-shape:epo-ExpressionOfInterestResponse-epo-hasLanguageOfProcurementDocument a sh:PropertyShape ;
+    sh:class skos:Concept ;
+    sh:path :hasLanguageOfProcurementDocument .
 
 core-shape:epo-ExpressionOfInterestShape a sh:NodeShape ;
     rdfs:label "Expression Of Interest" ;
@@ -1080,9 +1097,15 @@ core-shape:epo-ReviewDecisionShape a sh:NodeShape ;
         core-shape:epo-ReviewDecision-epo-specifiesReviewer ;
     sh:targetClass :ReviewDecision .
 
-core-shape:epo-ReviewInformationShape sh:property core-shape:epo-ReviewInformation-epo-concernsReviewDecision,
+core-shape:epo-ReviewInformationShape a sh:NodeShape ;
+    rdfs:label "Review Information" ;
+    rdfs:comment "Information about the Review Decision or the Review Request." ;
+    rdfs:isDefinedBy core-shape:core-shape ;
+    sh:property core-shape:epo-ReviewInformation-epo-concernsReviewDecision,
         core-shape:epo-ReviewInformation-epo-concernsReviewRequest,
-        core-shape:epo-ReviewInformation-epo-relatesToEFormSectionIdentifier .
+        core-shape:epo-ReviewInformation-epo-hasElementReference,
+        core-shape:epo-ReviewInformation-epo-relatesToEFormSectionIdentifier ;
+    sh:targetClass :ReviewInformation .
 
 core-shape:epo-ReviewIrregularitySummaryShape a sh:NodeShape ;
     rdfs:label "Review Irregularity Summary" ;
@@ -1375,6 +1398,7 @@ core-shape:epo-TenderShape a sh:NodeShape ;
         core-shape:epo-Tender-epo-foreseesSubcontracting,
         core-shape:epo-Tender-epo-hasElectronicSubmission,
         core-shape:epo-Tender-epo-hasFinancialOfferValue,
+        core-shape:epo-Tender-epo-hasItemCountryOfOrigin,
         core-shape:epo-Tender-epo-hasSubcontracting,
         core-shape:epo-Tender-epo-isSubjectToGrouping,
         core-shape:epo-Tender-epo-isSubmittedBy,
@@ -1414,6 +1438,8 @@ core-shape:epo-WinnerShape a sh:NodeShape ;
 core-shape:epo-acc-ESPDRequestShape sh:property core-shape:epo-acc-ESPDRequest-epo-acc-refersToNotice,
         core-shape:epo-acc-ESPDRequest-epo-concernsProcedure,
         core-shape:epo-acc-ESPDRequest-epo-specifiesProcurementCriterion .
+
+core-shape:epo-acc-InvitationToTenderShape sh:property core-shape:epo-acc-InvitationToTender-epo-acc-containsProvidedProcurementDocument .
 
 core-shape:epo-awa-AwardDecisionNotificationShape sh:property core-shape:epo-awa-AwardDecisionNotification-epo-concernsAwardOutcome,
         core-shape:epo-awa-AwardDecisionNotification-epo-concernsProcedure,
@@ -1713,6 +1739,10 @@ core-shape:epo-sub-OrganisationInformationSummaryShape sh:property core-shape:ep
         core-shape:epo-sub-OrganisationInformationSummary-epo-sub-providesOrganisationEmployeeQuantity,
         core-shape:epo-sub-OrganisationInformationSummary-epo-sub-providesOrganisationFinancialCapability .
 
+core-shape:epo-sub-Response-cccev-confidentialityLevelType a sh:PropertyShape ;
+    sh:class skos:Concept ;
+    sh:path cccev:confidentialityLevelType .
+
 core-shape:epo-sub-ResponseShape sh:property core-shape:epo-sub-Response-epo-sub-answersQuestion,
         core-shape:epo-sub-Response-epo-sub-isReinforcedBy,
         core-shape:epo-sub-Response-epo-sub-refersToApplicablePeriod .
@@ -1744,6 +1774,10 @@ core-shape:person-PersonShape sh:property core-shape:person-Person-epo-hasCountr
         core-shape:person-Person-epo-hasNationality,
         core-shape:person-Person-epo-isBeneficialOwnerOf .
 
+core-shape:time-Duration-time-unitType a sh:PropertyShape ;
+    sh:class skos:Concept ;
+    sh:path time:unitType .
+
 core-shape:adms-Identifier-epo-hasExtension a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
     sh:description "The name of the addition to the Identifier." ;
@@ -1768,6 +1802,7 @@ core-shape:adms-Identifier-epo-hasSchemeVersion a sh:PropertyShape ;
 
 core-shape:cccev-Constraint-epo-hasThresholdType a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class skos:Concept ;
     sh:description "The method to interpret the threshold value as minimum or a maximum." ;
     sh:name "Has threshold type" ;
     sh:path :hasThresholdType .
@@ -1871,6 +1906,7 @@ core-shape:cv-Channel-epo-hasEndpointIdentifier a sh:PropertyShape ;
 
 core-shape:dct-Location-epo-hasCountryCode a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class skos:Concept ;
     sh:description "Relation indicating the Country code." ;
     sh:maxCount 1 ;
     sh:name "Has country code" ;
@@ -1878,6 +1914,7 @@ core-shape:dct-Location-epo-hasCountryCode a sh:PropertyShape ;
 
 core-shape:dct-Location-epo-hasNutsCode a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class skos:Concept ;
     sh:description "Relation indicating the Nomenclature of Territorial Units for Statistics code." ;
     sh:maxCount 1 ;
     sh:name "Has nuts code" ;
@@ -1927,6 +1964,7 @@ core-shape:epo-AccessTerm-epo-hasAdditionalInformationDeadline a sh:PropertyShap
 
 core-shape:epo-AccessTerm-epo-hasDocumentRestrictionJustification a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class skos:Concept ;
     sh:description "An explanation about the reasons why some procurement documents are restricted." ;
     sh:maxCount 1 ;
     sh:name "Has document restriction justification" ;
@@ -1967,12 +2005,14 @@ core-shape:epo-AccessTerm-epo-isProcurementDocumentRestricted a sh:PropertyShape
 
 core-shape:epo-AccessTerm-epo-providesProcurementDocumentsInOfficialLanguage a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class skos:Concept ;
     sh:description "Relation indicating the official language of the provided Procurement Documents." ;
     sh:name "Provides procurement documents in official language" ;
     sh:path :providesProcurementDocumentsInOfficialLanguage .
 
 core-shape:epo-AccessTerm-epo-providesProcurementDocumentsInUnofficialLanguage a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class skos:Concept ;
     sh:description "Relation indicating the unofficial language of the provided Procurement Documents." ;
     sh:name "Provides procurement documents in unofficial language" ;
     sh:path :providesProcurementDocumentsInUnofficialLanguage .
@@ -2053,6 +2093,7 @@ core-shape:epo-AwardCriterion-epo-hasAwardCriteriaStatedInProcurementDocuments a
 
 core-shape:epo-AwardCriterion-epo-hasAwardCriterionType a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class skos:Concept ;
     sh:description "Category of award criterion." ;
     sh:maxCount 1 ;
     sh:name "Has award criterion type" ;
@@ -2068,6 +2109,7 @@ core-shape:epo-AwardCriterion-epo-hasFixedValue a sh:PropertyShape ;
 
 core-shape:epo-AwardCriterion-epo-hasFixedValueType a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class skos:Concept ;
     sh:description "The method to interpret the fixed value as pertaining to a total or unit." ;
     sh:maxCount 1 ;
     sh:name "Has fixed value type" ;
@@ -2146,6 +2188,7 @@ core-shape:epo-AwardOutcome-epo-hasAwardJustification a sh:PropertyShape ;
 
 core-shape:epo-AwardOutcome-epo-hasAwardStatus a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class skos:Concept ;
     sh:description "Indicates whether the lot is awarded, not awarded or still open." ;
     sh:maxCount 1 ;
     sh:name "Has award status" ;
@@ -2172,6 +2215,7 @@ core-shape:epo-AwardOutcome-epo-hasBargainPrice a sh:PropertyShape ;
 
 core-shape:epo-AwardOutcome-epo-hasNonAwardJustification a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class skos:Concept ;
     sh:description "On hold; Enumeration." ;
     sh:maxCount 1 ;
     sh:name "Has non award justification" ;
@@ -2187,6 +2231,7 @@ core-shape:epo-Business-epo-hasBeneficialOwner a sh:PropertyShape ;
 
 core-shape:epo-Business-epo-hasBusinessSize a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class skos:Concept ;
     sh:description "The category of the business depending on number of employees and turnover. Additional information: See Commission Recommendation of 6 May 2003 concerning the definition of micro, small and medium-sized enterprises." ;
     sh:maxCount 1 ;
     sh:name "Has business size" ;
@@ -2259,6 +2304,7 @@ core-shape:epo-Certificate-epo-issuedByCertifier a sh:PropertyShape ;
 
 core-shape:epo-CertificationLabel-epo-hasLabelType a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class skos:Concept ;
     sh:description "The label type such environmental, quality, social etc." ;
     sh:maxCount 1 ;
     sh:name "Has label type" ;
@@ -2299,6 +2345,7 @@ core-shape:epo-ChangeInformation-epo-hasChangeDescription a sh:PropertyShape ;
 
 core-shape:epo-ChangeInformation-epo-hasChangeJustification a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class skos:Concept ;
     sh:description "Code explaining the change." ;
     sh:maxCount 1 ;
     sh:minCount 1 ;
@@ -2382,6 +2429,7 @@ core-shape:epo-CleanVehicleDirectiveInformation-epo-hasZeroEmissionVehicles a sh
 
 core-shape:epo-CleanVehicleDirectiveInformation-epo-specifiesCleanVehicleDirectiveContractType a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class skos:Concept ;
     sh:description "Relation indicating the Clean Vehicle Directive Contract type." ;
     sh:maxCount 1 ;
     sh:name "Specifies clean vehicle directive contract type" ;
@@ -2389,6 +2437,7 @@ core-shape:epo-CleanVehicleDirectiveInformation-epo-specifiesCleanVehicleDirecti
 
 core-shape:epo-CleanVehicleDirectiveInformation-epo-specifiesCleanVehicleDirectiveVehicleCategory a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class skos:Concept ;
     sh:description "Relation indicating the Clean Vehicle Directive Category." ;
     sh:maxCount 1 ;
     sh:name "Specifies clean vehicle directive vehicle category" ;
@@ -2678,12 +2727,14 @@ core-shape:epo-ContractTerm-epo-describesAsset a sh:PropertyShape ;
 
 core-shape:epo-ContractTerm-epo-hasAdditionalContractNature a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class skos:Concept ;
     sh:description "Additional type of acquisition taken into consideration in the contract." ;
     sh:name "Has additional contract nature" ;
     sh:path :hasAdditionalContractNature .
 
 core-shape:epo-ContractTerm-epo-hasBroadPlaceOfPerformance a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class skos:Concept ;
     sh:description "Geopolitical zone where the contract can be executed. Additional Information Used for setting restrictions that cannot be established with one country code or a geographical zone identifier (like NUTS), because they have a broader scope (geographical, economic, political, other)." ;
     sh:maxCount 1 ;
     sh:name "Has broad place of performance" ;
@@ -2699,6 +2750,7 @@ core-shape:epo-ContractTerm-epo-hasCompensationCostParametersDescription a sh:Pr
 
 core-shape:epo-ContractTerm-epo-hasContractNatureType a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class skos:Concept ;
     sh:description "Subject of the acquisition." ;
     sh:maxCount 1 ;
     sh:name "Has contract nature type" ;
@@ -2722,6 +2774,7 @@ core-shape:epo-ContractTerm-epo-hasEInvoicing a sh:PropertyShape ;
 
 core-shape:epo-ContractTerm-epo-hasEInvoicingPermission a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class skos:Concept ;
     sh:description "Relation indicating the eInvoicing Permission." ;
     sh:maxCount 1 ;
     sh:name "Has E invoicing permission" ;
@@ -2814,6 +2867,7 @@ core-shape:epo-ContractTerm-epo-hasPerformanceConditions a sh:PropertyShape ;
 
 core-shape:epo-ContractTerm-epo-hasPerformingStaffQualificationInformation a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class skos:Concept ;
     sh:description "Explanation as to if and/or when information of the persons to carry out the contract is to be provided. The codelist to be used is at-voc:requirement-stage which is available at http://publications.europa.eu/resource/dataset/requirement-stage" ;
     sh:name "Has performing staff qualification information" ;
     sh:path :hasPerformingStaffQualificationInformation .
@@ -2842,6 +2896,7 @@ core-shape:epo-ContractTerm-epo-hasRenewalDescription a sh:PropertyShape ;
 
 core-shape:epo-ContractTerm-epo-hasReservedExecution a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class skos:Concept ;
     sh:description "Relation indication whether the execution of the contract must be performed in the framework of sheltered employment programmes." ;
     sh:maxCount 1 ;
     sh:name "Has reserved execution" ;
@@ -2873,6 +2928,7 @@ core-shape:epo-ContractTerm-epo-hasTicketsSalesRevenueAllocation a sh:PropertySh
 
 core-shape:epo-ContractTerm-epo-hasTransportServiceType a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class skos:Concept ;
     sh:description "Relation indicating the Transport Service category." ;
     sh:name "Has transport service type" ;
     sh:path :hasTransportServiceType .
@@ -2975,6 +3031,14 @@ core-shape:epo-DesignContestRegimeTerm-epo-isJuryDecisionBinding a sh:PropertySh
     sh:name "Is jury decision binding" ;
     sh:path :isJuryDecisionBinding .
 
+core-shape:epo-DirectAwardTerm-epo-hasDirectAwardJustification a sh:PropertyShape ;
+    rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class skos:Concept ;
+    sh:description "List of reasons for using a procedure which allows awarding contracts directly without publishing a notice." ;
+    sh:maxCount 1 ;
+    sh:name "Has direct award justification" ;
+    sh:path :hasDirectAwardJustification .
+
 core-shape:epo-DirectAwardTerm-epo-hasJustification a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
     sh:description "An explanation about the reasons for using the concept." ;
@@ -3062,6 +3126,7 @@ core-shape:epo-Document-epo-hasElectronicSignature a sh:PropertyShape ;
 
 core-shape:epo-Document-epo-hasOfficialLanguage a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class skos:Concept ;
     sh:description "The language(s) in which the instances of the given concepts are officially available. These linguistic versions are equally legally valid." ;
     sh:minCount 1 ;
     sh:name "Has official language" ;
@@ -3102,6 +3167,7 @@ core-shape:epo-Document-epo-hasUUID a sh:PropertyShape ;
 
 core-shape:epo-Document-epo-hasUnofficialLanguage a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class skos:Concept ;
     sh:description "The language translation(s) in which the instances of the given concepts are available. These linguistic versions are not an official translation, they are provided only for information." ;
     sh:name "Has unofficial language" ;
     sh:path :hasUnofficialLanguage .
@@ -3131,6 +3197,7 @@ core-shape:epo-Documentation-epo-hasAddressURL a sh:PropertyShape ;
 
 core-shape:epo-DynamicPurchaseSystemTechnique-epo-hasDPSScope a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class skos:Concept ;
     sh:description "Explanation as to whether a dps is used and by whom. The codelist to be used is at-voc:dps-usage which is available at http://publications.europa.eu/resource/dataset/dps-usage" ;
     sh:maxCount 1 ;
     sh:name "Has DPS scope" ;
@@ -3163,6 +3230,7 @@ core-shape:epo-DynamicPurchaseSystemTechnique-epo-hasUnlimitedDuration a sh:Prop
 
 core-shape:epo-EnergyEfficiencyInformation-epo-concernsEnergyEfficiencyItemCategory a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class skos:Concept ;
     sh:description "Relates to Energy Efficiency Item Category." ;
     sh:maxCount 1 ;
     sh:name "Concerns energy efficiency item category" ;
@@ -3186,6 +3254,7 @@ core-shape:epo-EnergyEfficiencyInformation-epo-concernsTotalItems a sh:PropertyS
 
 core-shape:epo-EnergyEfficiencyInformation-epo-hasCalculationBasedOn a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class skos:Concept ;
     sh:description "Relation indicating the basis for the calculation of the energy efficiency." ;
     sh:maxCount 1 ;
     sh:name "Has calculation based on" ;
@@ -3193,6 +3262,7 @@ core-shape:epo-EnergyEfficiencyInformation-epo-hasCalculationBasedOn a sh:Proper
 
 core-shape:epo-EnergyEfficiencyInformation-epo-hasEnergyEfficiencyLabel a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class skos:Concept ;
     sh:description "Relation indicating the Energy Efficiency Label." ;
     sh:maxCount 1 ;
     sh:name "Has energy efficiency label" ;
@@ -3218,6 +3288,7 @@ core-shape:epo-EnergyEfficiencyInformation-epo-hasItemConsumptionSavings a sh:Pr
 
 core-shape:epo-ExclusionGround-epo-hasExclusionGroundType a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class skos:Concept ;
     sh:description "Relation indicating the exclusion ground classification." ;
     sh:maxCount 1 ;
     sh:name "Has exclusion ground type" ;
@@ -3235,6 +3306,7 @@ core-shape:epo-ExpressionOfInterest-epo-concernsProcedure a sh:PropertyShape ;
 
 core-shape:epo-ExpressionOfInterest-epo-hasPreferredLanguageForProcurementDocument a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class skos:Concept ;
     sh:description "Relation indicating the language in which the Procurement Documents should be submitted." ;
     sh:name "Has preferred language for procurement document" ;
     sh:path :hasPreferredLanguageForProcurementDocument .
@@ -3272,6 +3344,7 @@ core-shape:epo-FrameworkAgreementTerm-epo-hasDurationExtensionJustification a sh
 
 core-shape:epo-FrameworkAgreementTerm-epo-hasFrameworkAgreementType a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class skos:Concept ;
     sh:description "The form of framework agreement used in a procurement procedure. Addition information: A concept to distinguish the different types of framework agreement, which are: 1. Framework agreement without reopening of competition, 2. Framework agreement with reopening of competition, or 3. Framework agreement partly without reopening of competition." ;
     sh:maxCount 1 ;
     sh:minCount 1 ;
@@ -3288,6 +3361,7 @@ core-shape:epo-FrameworkAgreementTerm-epo-hasMaximumParticipantsNumber a sh:Prop
 
 core-shape:epo-Fund-epo-hasFundProgramme a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class skos:Concept ;
     sh:description "Relation indicating the EU programme used for funding." ;
     sh:maxCount 1 ;
     sh:name "Has fund programme" ;
@@ -3303,6 +3377,7 @@ core-shape:epo-Fund-epo-hasURL a sh:PropertyShape ;
 
 core-shape:epo-GreenProcurement-epo-fulfillsRequirement a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class skos:Concept ;
     sh:description "The requirement to which the concept meets." ;
     sh:name "Fulfills requirement" ;
     sh:path :fulfillsRequirement .
@@ -3325,12 +3400,14 @@ core-shape:epo-InformationRequest-epo-concernsProcedure a sh:PropertyShape ;
 
 core-shape:epo-InnovativeProcurement-epo-fulfillsRequirement a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class skos:Concept ;
     sh:description "The requirement to which the concept meets." ;
     sh:name "Fulfills requirement" ;
     sh:path :fulfillsRequirement .
 
 core-shape:epo-InternationalProcurementInstrumentMeasuresInformation-epo-concernsInternationalProcurementInstrumentMeasure a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class skos:Concept ;
     sh:description "Relates to International Procurement Instrument Measure." ;
     sh:maxCount 1 ;
     sh:name "Concerns international procurement instrument measure" ;
@@ -3346,6 +3423,7 @@ core-shape:epo-InternationalProcurementInstrumentMeasuresInformation-epo-concern
 
 core-shape:epo-InternationalProcurementInstrumentMeasuresInformation-epo-hasInternationalProcurementInstrumentExceptionInformation a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class skos:Concept ;
     sh:description "Relation indicating the International Procurement Instrument Application." ;
     sh:maxCount 1 ;
     sh:name "Has international procurement instrument exception information" ;
@@ -3388,6 +3466,7 @@ core-shape:epo-LocalLegalBasisInformation-epo-concernsProcurementElement a sh:Pr
 
 core-shape:epo-LocalLegalBasisInformation-epo-hasLegalBasis a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class skos:Concept ;
     sh:maxCount 1 ;
     sh:name "Has legal basis" ;
     sh:path :hasLegalBasis .
@@ -3552,6 +3631,7 @@ core-shape:epo-MonetaryValue-epo-hasAmountValue a sh:PropertyShape ;
 
 core-shape:epo-MonetaryValue-epo-hasCurrency a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class skos:Concept ;
     sh:description "The identifier of the currency as in the standard code list used." ;
     sh:maxCount 1 ;
     sh:minCount 1 ;
@@ -3699,6 +3779,7 @@ core-shape:epo-NonPublishedInformation-epo-hasMaskableProperty a sh:PropertyShap
 
 core-shape:epo-NonPublishedInformation-epo-hasNonPublicationJustification a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class skos:Concept ;
     sh:description "The reason why data is not published." ;
     sh:maxCount 1 ;
     sh:minCount 1 ;
@@ -3707,6 +3788,7 @@ core-shape:epo-NonPublishedInformation-epo-hasNonPublicationJustification a sh:P
 
 core-shape:epo-Notice-epo-conformsToLegalBasis a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class skos:Concept ;
     sh:description "The Notice was designed in accordance with the given legal basis. Additional Information: This Notice can be used for Procedures which do not have the same legal basis. This holds for standard forms." ;
     sh:name "Conforms to legal basis" ;
     sh:path :conformsToLegalBasis .
@@ -3729,6 +3811,7 @@ core-shape:epo-Notice-epo-hasFormNumber a sh:PropertyShape ;
 
 core-shape:epo-Notice-epo-hasFormType a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class skos:Concept ;
     sh:description "A categorisation of the steps in which the Notice is used." ;
     sh:maxCount 1 ;
     sh:name "Has form type" ;
@@ -3744,6 +3827,7 @@ core-shape:epo-Notice-epo-hasNoticePublicationNumber a sh:PropertyShape ;
 
 core-shape:epo-Notice-epo-hasNoticeType a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class skos:Concept ;
     sh:description "Relation indicating the Notice Type." ;
     sh:maxCount 1 ;
     sh:minCount 1 ;
@@ -3760,6 +3844,7 @@ core-shape:epo-Notice-epo-hasOJSIssueNumber a sh:PropertyShape ;
 
 core-shape:epo-Notice-epo-isBasedOnImplementingRegulation a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class skos:Concept ;
     sh:description "Indicates under which Implementing Regulation a Notice is created." ;
     sh:maxCount 1 ;
     sh:name "Is based on implementing regulation" ;
@@ -3931,6 +4016,7 @@ core-shape:epo-OrganisationGroup-epo-leadBy a sh:PropertyShape ;
 
 core-shape:epo-ParticipationCondition-epo-hasReservedProcurement a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class skos:Concept ;
     sh:description "Explanation as to whether a procurement may be reserved for the participation of certain types of organisation." ;
     sh:name "Has reserved procurement" ;
     sh:path :hasReservedProcurement .
@@ -3953,6 +4039,7 @@ core-shape:epo-ParticipationConditionsSummary-epo-describesVerificationMethod a 
 
 core-shape:epo-ParticipationConditionsSummary-epo-hasReservedProcurement a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class skos:Concept ;
     sh:description "Explanation as to whether a procurement may be reserved for the participation of certain types of organisation." ;
     sh:name "Has reserved procurement" ;
     sh:path :hasReservedProcurement .
@@ -4043,6 +4130,7 @@ core-shape:epo-Procedure-epo-hasMainFeature a sh:PropertyShape ;
 
 core-shape:epo-Procedure-epo-hasProcedureType a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class skos:Concept ;
     sh:description "Identification of the Procedure used." ;
     sh:maxCount 1 ;
     sh:name "Has procedure type" ;
@@ -4275,6 +4363,7 @@ core-shape:epo-ProcurementCriterion-epo-hasFormula a sh:PropertyShape ;
 
 core-shape:epo-ProcurementCriterion-epo-hasWeightValueType a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class skos:Concept ;
     sh:description "No definition. Waiting on CCCEV alignment." ;
     sh:maxCount 1 ;
     sh:name "Has weight value type" ;
@@ -4290,6 +4379,7 @@ core-shape:epo-ProcurementElement-epo-appliesForeignSubsidiesRegulation a sh:Pro
 
 core-shape:epo-ProcurementElement-epo-doesNotRequireSelectionCriterionType a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class skos:Concept ;
     sh:description "Relation indicating that a Selection Criterion type is not used." ;
     sh:name "Does not require selection criterion type" ;
     sh:path :doesNotRequireSelectionCriterionType .
@@ -4328,6 +4418,7 @@ core-shape:epo-ProcurementElement-epo-hasInternalIdentifier a sh:PropertyShape ;
 
 core-shape:epo-ProcurementElement-epo-hasLegalBasis a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class skos:Concept ;
     sh:description "The legal basis under which the procurement procedure takes place. Additional Information: For example European Directives or Regulations, national laws etc. The recommended code list is the example for the legal basis at the European level." ;
     sh:name "Has legal basis" ;
     sh:path :hasLegalBasis .
@@ -4350,6 +4441,7 @@ core-shape:epo-ProcurementElement-epo-hasPurpose a sh:PropertyShape ;
 
 core-shape:epo-ProcurementElement-epo-hasUnknownUsageOfSelectionCriterionType a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class skos:Concept ;
     sh:description "Relation indicating that it is not known whether a Selection Criterion type is to be used or not." ;
     sh:name "Has unknown usage of selection criterion type" ;
     sh:path :hasUnknownUsageOfSelectionCriterionType .
@@ -4555,12 +4647,14 @@ core-shape:epo-PurchaseContract-epo-resultsFromMiniCompetitionAwardOutcome a sh:
 
 core-shape:epo-Purpose-epo-hasAdditionalClassification a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class skos:Concept ;
     sh:description "Relation indicating the additional Common Procurement Vocabulary code." ;
     sh:name "Has additional classification" ;
     sh:path :hasAdditionalClassification .
 
 core-shape:epo-Purpose-epo-hasMainClassification a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class skos:Concept ;
     sh:description "Relation indicating the main Common Procurement Vocabulary code." ;
     sh:minCount 1 ;
     sh:name "Has main classification" ;
@@ -4633,6 +4727,7 @@ core-shape:epo-QualityTargetInformation-epo-concernsContractTerm a sh:PropertySh
 
 core-shape:epo-QualityTargetInformation-epo-hasQualityTargetCode a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class skos:Concept ;
     sh:description "Relation indicating the type of performance goal." ;
     sh:maxCount 1 ;
     sh:minCount 1 ;
@@ -4659,6 +4754,7 @@ core-shape:epo-Quantity-epo-hasQuantityValue a sh:PropertyShape ;
 
 core-shape:epo-Quantity-epo-hasUnitCode a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class skos:Concept ;
     sh:description "Relation indicating the Measurement Unit." ;
     sh:maxCount 1 ;
     sh:name "Has unit code" ;
@@ -4681,6 +4777,7 @@ core-shape:epo-ReviewDecision-epo-answersReviewRequest a sh:PropertyShape ;
 
 core-shape:epo-ReviewDecision-epo-hasConfirmedIrregularityType a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class skos:Concept ;
     sh:description "Relation indicating the confirmed Irregularity Type." ;
     sh:name "Has confirmed irregularity type" ;
     sh:path :hasConfirmedIrregularityType .
@@ -4696,6 +4793,7 @@ core-shape:epo-ReviewDecision-epo-hasRemedyValue a sh:PropertyShape ;
 
 core-shape:epo-ReviewDecision-epo-hasReviewDecisionType a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class skos:Concept ;
     sh:description "Relation indicating the Review Decision Type." ;
     sh:name "Has review decision type" ;
     sh:path :hasReviewDecisionType .
@@ -4726,6 +4824,7 @@ core-shape:epo-ReviewDecision-epo-isWithdrawn a sh:PropertyShape ;
 
 core-shape:epo-ReviewDecision-epo-providesRulingOnRemedy a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class skos:Concept ;
     sh:description "States the measures to be taken after a review procedure." ;
     sh:name "Provides ruling on remedy" ;
     sh:path :providesRulingOnRemedy .
@@ -4766,6 +4865,13 @@ core-shape:epo-ReviewInformation-epo-concernsReviewRequest a sh:PropertyShape ;
     sh:path :concernsReviewRequest ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#concernsReviewRequest> ?that . ?that <http://data.europa.eu/a4g/ontology#concernsReviewRequest> ?this .}" ] .
 
+core-shape:epo-ReviewInformation-epo-hasElementReference a sh:PropertyShape ;
+    rdfs:isDefinedBy core-shape:core-shape ;
+    sh:datatype xsd:anyURI ;
+    sh:description "Reference to the class instance in the current notice." ;
+    sh:name "Has element reference" ;
+    sh:path :hasElementReference .
+
 core-shape:epo-ReviewInformation-epo-relatesToEFormSectionIdentifier a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
     sh:class adms:Identifier ;
@@ -4777,6 +4883,7 @@ core-shape:epo-ReviewInformation-epo-relatesToEFormSectionIdentifier a sh:Proper
 
 core-shape:epo-ReviewIrregularitySummary-epo-hasIrregularityType a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class skos:Concept ;
     sh:description "Relation indicating the Irregularity Type." ;
     sh:maxCount 1 ;
     sh:minCount 1 ;
@@ -4794,6 +4901,7 @@ core-shape:epo-ReviewIrregularitySummary-epo-hasReviewIrregularityCount a sh:Pro
 
 core-shape:epo-ReviewRequest-epo-hasAllegedIrregularityType a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class skos:Concept ;
     sh:description "Relation indicating the presumed Irregularity Type." ;
     sh:minCount 1 ;
     sh:name "Has alleged irregularity type" ;
@@ -4810,6 +4918,7 @@ core-shape:epo-ReviewRequest-epo-hasReviewRequestFee a sh:PropertyShape ;
 
 core-shape:epo-ReviewRequest-epo-requestsRemedyType a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class skos:Concept ;
     sh:description "Relation indicating the demanded Remedy Type." ;
     sh:name "Requests remedy type" ;
     sh:path :requestsRemedyType .
@@ -4899,6 +5008,7 @@ core-shape:epo-ReviewTerm-epo-hasReviewProcedure a sh:PropertyShape ;
 
 core-shape:epo-Reviewer-epo-hasReviewBodyType a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class skos:Concept ;
     sh:description "Relation indicating the Review Body Type." ;
     sh:name "Has review body type" ;
     sh:path :hasReviewBodyType .
@@ -4954,6 +5064,7 @@ core-shape:epo-SelectionCriteriaSummary-epo-hasSelectionCriteriaStatedInProcurem
 
 core-shape:epo-SelectionCriterion-epo-hasSelectionCriterionType a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class skos:Concept ;
     sh:description "The classification of the selection criteria." ;
     sh:maxCount 1 ;
     sh:name "Has selection criterion type" ;
@@ -4969,6 +5080,7 @@ core-shape:epo-SelectionCriterion-epo-isUsedForCandidateRestriction a sh:Propert
 
 core-shape:epo-SocialProcurement-epo-fulfillsRequirement a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class skos:Concept ;
     sh:description "The requirement to which the concept meets." ;
     sh:name "Fulfills requirement" ;
     sh:path :fulfillsRequirement .
@@ -4982,6 +5094,7 @@ core-shape:epo-SocialProcurement-epo-hasNonAccessibilityCriterionJustification a
 
 core-shape:epo-SocialProcurement-epo-includesAccessibilityCriterion a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class skos:Concept ;
     sh:description "Explanation as to whether accessibility Criterion are used or not." ;
     sh:name "Includes accessibility criterion" ;
     sh:path :includesAccessibilityCriterion .
@@ -5054,6 +5167,7 @@ core-shape:epo-SubcontractTerm-epo-hasSubcontractingInvolved a sh:PropertyShape 
 
 core-shape:epo-SubcontractTerm-epo-hasSubcontractingObligation a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class skos:Concept ;
     sh:description "The requirement the tender must meet with regard to subcontracting parts of the contract." ;
     sh:name "Has subcontracting obligation" ;
     sh:path :hasSubcontractingObligation .
@@ -5306,6 +5420,7 @@ core-shape:epo-SubmissionTerm-epo-hasEAuctionURL a sh:PropertyShape ;
 
 core-shape:epo-SubmissionTerm-epo-hasECataloguePermission a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class skos:Concept ;
     sh:description "The extent to which electronic catalogues may be used in tenders." ;
     sh:maxCount 1 ;
     sh:name "Has E catalogue permission" ;
@@ -5313,6 +5428,7 @@ core-shape:epo-SubmissionTerm-epo-hasECataloguePermission a sh:PropertyShape ;
 
 core-shape:epo-SubmissionTerm-epo-hasESubmissionPermission a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class skos:Concept ;
     sh:description "The requirements as to what extent electronic submission is allowed." ;
     sh:maxCount 1 ;
     sh:name "Has E submission permission" ;
@@ -5327,6 +5443,7 @@ core-shape:epo-SubmissionTerm-epo-hasGuaranteeDescription a sh:PropertyShape ;
 
 core-shape:epo-SubmissionTerm-epo-hasLanguage a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class skos:Concept ;
     sh:description "Language in which the submitted information is to be expressed." ;
     sh:name "Has language" ;
     sh:path :hasLanguage .
@@ -5340,6 +5457,7 @@ core-shape:epo-SubmissionTerm-epo-hasLateSubmissionInformationDescription a sh:P
 
 core-shape:epo-SubmissionTerm-epo-hasLateSubmissionPermission a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class skos:Concept ;
     sh:description "Whether economic operator-related information can be supplemented even after the submission deadline. Additional Information This is specific to the information on the economic operator and not the actual offer. This does not apply to the requests for clarification." ;
     sh:maxCount 1 ;
     sh:name "Has late submission permission" ;
@@ -5354,6 +5472,7 @@ core-shape:epo-SubmissionTerm-epo-hasNonElectronicSubmissionDescription a sh:Pro
 
 core-shape:epo-SubmissionTerm-epo-hasNonElectronicSubmissionJustification a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class skos:Concept ;
     sh:description "Reason for not accepting electronic information." ;
     sh:name "Has non electronic submission justification" ;
     sh:path :hasNonElectronicSubmissionJustification .
@@ -5407,6 +5526,7 @@ core-shape:epo-SubmissionTerm-epo-hasSubmissionURL a sh:PropertyShape ;
 
 core-shape:epo-SubmissionTerm-epo-hasTenderSubcontractingInformation a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class skos:Concept ;
     sh:description "The information about subcontracting that must be indicated in the tender." ;
     sh:name "Has tender subcontracting information" ;
     sh:path :hasTenderSubcontractingInformation .
@@ -5431,6 +5551,7 @@ core-shape:epo-SubmissionTerm-epo-hasTenderValidityPeriod a sh:PropertyShape ;
 
 core-shape:epo-SubmissionTerm-epo-hasVariantPermission a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class skos:Concept ;
     sh:description "The obligation or possibility for tenderers to submit variants or not. Additional Information: Variants are alternative ways to fulfil the buyer's needs as opposed to solutions indicated in the procurement documents. eForms: Whether tenderers are required, allowed or forbidden to submit tenders which fulfil the buyer's needs differently than as proposed in the procurement documents. Additional Information: Further conditions for submitting variant tenders are in the procurement documents." ;
     sh:maxCount 1 ;
     sh:name "Has variant permission" ;
@@ -5521,8 +5642,16 @@ core-shape:epo-Tender-epo-hasFinancialOfferValue a sh:PropertyShape ;
     sh:path :hasFinancialOfferValue ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#hasFinancialOfferValue> ?that . ?that <http://data.europa.eu/a4g/ontology#hasFinancialOfferValue> ?this .}" ] .
 
+core-shape:epo-Tender-epo-hasItemCountryOfOrigin a sh:PropertyShape ;
+    rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class skos:Concept ;
+    sh:description "The source country of the product or service. Additional Information: The country of origin can be provided by the buyer as a requirement or by the tenderer information of the item to be provided. The codelist to be used is at-voc:country which is available at http://publications.europa.eu/resource/dataset/country" ;
+    sh:name "Has item country of origin" ;
+    sh:path :hasItemCountryOfOrigin .
+
 core-shape:epo-Tender-epo-hasSubcontracting a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class skos:Concept ;
     sh:description "Relation indicating whether the Tender is subject to Subcontracting or not." ;
     sh:maxCount 1 ;
     sh:name "Has subcontracting" ;
@@ -5602,6 +5731,7 @@ core-shape:epo-TenderAwardOutcome-epo-indicatesAwardToWinner a sh:PropertyShape 
 
 core-shape:epo-TenderAwardOutcome-epo-specifiesForeignSubsidiesMeasureConclusion a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class skos:Concept ;
     sh:description "Relation indicating the Foreign Subsidy Measure Conclusion." ;
     sh:maxCount 1 ;
     sh:name "Specifies foreign subsidies measure conclusion" ;
@@ -5697,6 +5827,13 @@ core-shape:epo-acc-ESPDRequest-epo-specifiesProcurementCriterion a sh:PropertySh
     sh:path :specifiesProcurementCriterion ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#specifiesProcurementCriterion> ?that . ?that <http://data.europa.eu/a4g/ontology#specifiesProcurementCriterion> ?this .}" ] .
 
+core-shape:epo-acc-InvitationToTender-epo-acc-containsProvidedProcurementDocument a sh:PropertyShape ;
+    rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class :ProcurementDocument ;
+    sh:name "Contains provided procurement document" ;
+    sh:path :containsProvidedProcurementDocument ;
+    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#containsProvidedProcurementDocument> ?that . ?that <http://data.europa.eu/a4g/ontology#containsProvidedProcurementDocument> ?this .}" ] .
+
 core-shape:epo-awa-AwardDecisionNotification-epo-concernsAwardOutcome a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
     sh:class :AwardOutcome ;
@@ -5728,6 +5865,7 @@ core-shape:epo-awa-AwardDecisionNotification-epo-specifiesTenderer a sh:Property
 
 core-shape:epo-cat-AbstractItem-epo-cat-hasCountryOfOrigin a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class skos:Concept ;
     sh:description "" ;
     sh:maxCount 1 ;
     sh:name "Has country of origin" ;
@@ -6105,6 +6243,7 @@ core-shape:epo-con-ContractAmendment-epo-updatesContractValue a sh:PropertyShape
 
 core-shape:epo-con-ContractModificationInformation-epo-hasModificationJustification a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class skos:Concept ;
     sh:description "Explanation of why a contract was modified. The codelist to be used is at-voc:modification-justification which is available at http://publications.europa.eu/resource/dataset/modification-justification" ;
     sh:maxCount 1 ;
     sh:minCount 1 ;
@@ -7611,6 +7750,7 @@ core-shape:epo-qua-QualificationDecisionInformation-epo-qua-providesDecisionFor 
 
 core-shape:epo-req-RequestForOffer-epo-hasDestinationCountryCode a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class skos:Concept ;
     sh:description "Relation indicating the Country code of the destination." ;
     sh:maxCount 1 ;
     sh:name "Has destination country code" ;
@@ -7773,6 +7913,7 @@ core-shape:foaf-Agent-epo-ownsSystem a sh:PropertyShape ;
 
 core-shape:locn-Address-epo-hasCountryCode a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class skos:Concept ;
     sh:description "Relation indicating the Country code." ;
     sh:maxCount 1 ;
     sh:name "Has country code" ;
@@ -7780,6 +7921,7 @@ core-shape:locn-Address-epo-hasCountryCode a sh:PropertyShape ;
 
 core-shape:locn-Address-epo-hasNutsCode a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class skos:Concept ;
     sh:description "Relation indicating the Nomenclature of Territorial Units for Statistics code." ;
     sh:maxCount 1 ;
     sh:name "Has nuts code" ;
@@ -7819,6 +7961,7 @@ core-shape:org-Organization-epo-foreseesSubcontractor a sh:PropertyShape ;
 
 core-shape:org-Organization-epo-hasBuyerLegalType a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class skos:Concept ;
     sh:description "A category that indicates the right of an Organisation to play the role of a buyer. Additional Information: The category also effects the rules that the buyer has to abide to within the public procurement procedure." ;
     sh:maxCount 1 ;
     sh:name "Has buyer legal type" ;
@@ -7864,6 +8007,7 @@ core-shape:org-Organization-epo-hasLegalName a sh:PropertyShape ;
 
 core-shape:org-Organization-epo-hasMainActivity a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class skos:Concept ;
     sh:description "The principal sectoral area in which an organisation operates. Additional information: The activities associated with buyers are derived from the top level of the Classification of the functions of the government (COFOG) from the United Nations Statistics Division. The activities associated with buyer are derived from sectors explicitly falling within the sectoral directive (2014/25/EU Art. 8 - Art. 14)." ;
     sh:name "Has main activity" ;
     sh:path :hasMainActivity .
@@ -7887,6 +8031,7 @@ core-shape:org-Organization-epo-hasPrimaryContactPoint a sh:PropertyShape ;
 
 core-shape:org-Organization-epo-hasRegistrationCountry a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class skos:Concept ;
     sh:description "Relation indicating the official country." ;
     sh:maxCount 1 ;
     sh:name "Has registration country" ;
@@ -7902,6 +8047,7 @@ core-shape:org-Organization-epo-hasTaxIdentifier a sh:PropertyShape ;
 
 core-shape:person-Person-epo-hasCountryOfBirth a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class skos:Concept ;
     sh:description "The country in which the Person was born." ;
     sh:maxCount 1 ;
     sh:name "Has country of birth" ;
@@ -7909,6 +8055,7 @@ core-shape:person-Person-epo-hasCountryOfBirth a sh:PropertyShape ;
 
 core-shape:person-Person-epo-hasNationality a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class skos:Concept ;
     sh:description "Relation indicating the country code to which the instance of the concept officially belongs to." ;
     sh:name "Has nationality" ;
     sh:path :hasNationality .
@@ -7925,13 +8072,13 @@ core-shape:core-shape a owl:Ontology ;
     rdfs:label "eProcurement Ontology - core shapes"@en ;
     dcterms:created "2021-06-01"^^xsd:date ;
     dcterms:description "The eProcurement Ontology core shapes provides the generic datashape specifications for the eProcurement Ontology core."@en ;
-    dcterms:issued "2026-01-13"^^xsd:date ;
+    dcterms:issued "2026-01-15"^^xsd:date ;
     dcterms:license "CC BY 4.0" ;
     dcterms:publisher "http://publications.europa.eu/resource/authority/corporate-body/PUBL" ;
     dcterms:title "eProcurement Ontology - core shapes"@en ;
     vann:preferredNamespacePrefix "epo" ;
     vann:preferredNamespaceUri "http://data.europa.eu/a4g/ontology#" ;
-    rdfs:comment "This version is automatically generated from ePO_core_CM.xml on 2026-01-13" ;
+    rdfs:comment "This version is automatically generated from ePO_core_CM.xml on 2026-01-15" ;
     rdfs:seeAlso <https://docs.ted.europa.eu/home/index.html>,
         <https://github.com/OP-TED/ePO/releases>,
         <https://joinup.ec.europa.eu/collection/eprocurement/solution/eprocurement-ontology/about>,
