@@ -2607,6 +2607,8 @@ epo:ProcurementElement
   
   
   
+  
+  
 | epo:SubmissionTerm
 | epo:isAdvancedElectronicSignatureRequired| 
   Advanced or qualified electronic signature or seal (as defined in Regulation (EU) No 910/2014) is required. The submitted information is required to be signed electronically. Additional Information: Signature can be defined as "data in electronic form which is attached to or logically associated with other data in electronic form and which is used by the signatory to sign. For more details on the meaning and uses of electronic signature you may consult different authoritative sources, a relevant one being for instance the Regulation (EU) 910/2014 on electronic identification and trust services for electronic transactions in the internal market.|xsd:boolean [0..1]
@@ -2666,6 +2668,20 @@ epo:ProcurementElement
 | epo:TenderAwardOutcome
 | epo:hasAwardRank| 
   The position of the tender (i.e. whether the tender ended up first, second, third, etc.) in a design contest, some framework agreements with multiple winners (e.g. cascades) or an innovation partnership.|xsd:integer [0..1]
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
   
   
@@ -3605,7 +3621,8 @@ epo-not:CompletionNotice → epo:Lot [1..&#42;] +
 epo-not:ContractModificationNotice → epo:Lot [1..&#42;] +
 epo-not:ResultNotice → epo:Lot [1..&#42;] +
 epo-qua:EvidenceRequest → epo:Lot [1..&#42;] +
-epo-qua:EvidenceSubmission → epo:Lot [1..&#42;]
+epo-qua:EvidenceSubmission → epo:Lot [1..&#42;] +
+epo:InformationRequest → epo:Lot [0..&#42;]
 
   
 
@@ -3616,7 +3633,8 @@ epo-qua:EvidenceSubmission → epo:Lot [1..&#42;]
 cccev:InformationRequirement → epo:LotGroup [0..&#42;] +
 epo-not:CompletionNotice → epo:LotGroup [0..&#42;] +
 epo-not:ContractModificationNotice → epo:LotGroup [0..&#42;] +
-epo-not:ResultNotice → epo:LotGroup [0..&#42;]
+epo-not:ResultNotice → epo:LotGroup [0..&#42;] +
+epo:InformationRequest → epo:LotGroup [0..&#42;]
 
   
 
@@ -4112,8 +4130,12 @@ epo-not:ResultNotice → epo:Procedure [1] +
 epo-qua:EvidenceRequest → epo:Procedure [1] +
 epo-qua:EvidenceSubmission → epo:Procedure [1] +
 epo:InformationRequest → epo:Procedure [0..&#42;] +
+epo-acc:ProcurementDocumentsProvision → epo:Procedure [1] +
 epo-awa:AwardDecisionNotification → epo:Procedure [1] +
-epo-acc:ESPDRequest → epo:Procedure [1]
+epo-acc:InvitationToTender → epo:Procedure [1] +
+epo-acc:ESPDRequest → epo:Procedure [1] +
+epo-acc:ProcurementDocumentsRequest → epo:Procedure [1] +
+epo-acc:UnsubscribeFromProcedure → epo:Procedure [1]
 
   
 
@@ -4130,7 +4152,12 @@ epo-acc:ESPDRequest → epo:Procedure [1]
   Relation indicating that the instance of the concept involves the Economic Operator.|epo:ExpressionOfInterest → epo:OfferingParty [0..&#42;] +
 epo-qua:EvidenceRequest → epo:OfferingParty [1] +
 epo-qua:EvidenceSubmission → epo:OfferingParty [1] +
-epo-eva:TenderClarificationRequest → epo:OfferingParty [1]
+epo-acc:ProcurementDocumentsProvision → epo:OfferingParty [1] +
+epo-acc:InvitationToTender → epo:OfferingParty [1] +
+epo-acc:ProcurementDocumentsRequest → epo:OfferingParty [1] +
+epo-acc:UnsubscribeFromProcedure → epo:OfferingParty [1] +
+epo-eva:TenderClarificationRequest → epo:OfferingParty [1] +
+epo-acc:ProcurementQuestion → epo:OfferingParty [1]
 
   
 
@@ -5623,6 +5650,13 @@ epo-eva:ExcludedCandidateList → epo:Candidate [0..&#42;]
 
   
   
+| epo:hasSubmissionMethod| 
+  |epo:SubmissionTerm → at-voc-new:submission-method [0..1]
+
+  
+
+  
+  
 | epo:hasTenderSubcontractingInformation| 
   The information about subcontracting that must be indicated in the tender.|epo:SubmissionTerm → at-voc:subcontracting-indication [0..&#42;]
 
@@ -5739,7 +5773,8 @@ epo-eva:ExcludedCandidateList → epo:Candidate [0..&#42;]
   
   
 | epo:isSupportedBy| 
-  Relation indicating the proof for the instance of the concept.|epo:Tender → epo:Offer [0..1]
+  Relation indicating the proof for the instance of the concept.|epo:Tender → epo:Offer [0..1] +
+epo:Tender → epo-cat:PreAwardCatalogue [0..1]
 
   
 
@@ -6122,6 +6157,14 @@ epo-not:ResultNotice → epo:NoticeAwardInformation [0..1]
 
   
   
+| epo-acc:containsProvidedProcurementDocument| 
+  |epo-acc:ProcurementDocumentsProvision → epo:ProcurementDocument [0..&#42;] +
+epo-acc:InvitationToTender → epo:ProcurementDocument []
+
+  
+
+  
+  
 | epo:concernsAwardOutcome| 
   Relates to Award Outcome.|epo-awa:AwardDecisionNotification → epo:AwardOutcome [1..&#42;]
 
@@ -6131,13 +6174,6 @@ epo-not:ResultNotice → epo:NoticeAwardInformation [0..1]
   
 | epo:specifiesTenderer| 
   Relation indicating that the instance of the concept involves the Tenderer.|epo-awa:AwardDecisionNotification → epo:Tenderer [1]
-
-  
-
-  
-  
-| epo-acc:containsProvidedProcurementDocument| 
-  |epo-acc:InvitationToTender → epo:ProcurementDocument []
 
   
 
@@ -6222,6 +6258,7 @@ epo-not:ResultNotice → epo:NoticeAwardInformation [0..1]
   
 | epo:specifiesCatalogueProvider| 
   Relation indicating that the instance of the concept involves the Catalogue Provider.|epo-cat:Catalogue → epo:CatalogueProvider [0..1] +
+epo-cat:PreAwardCatalogueRequest → epo:CatalogueProvider [1] +
 epo-cat:CatalogueResponse → epo:CatalogueProvider [1]
 
   
@@ -6230,6 +6267,7 @@ epo-cat:CatalogueResponse → epo:CatalogueProvider [1]
   
 | epo:specifiesCatalogueReceiver| 
   Relation indicating that the instance of the concept involves the Catalogue Receiver.|epo-cat:Catalogue → epo:CatalogueReceiver [0..1] +
+epo-cat:PreAwardCatalogueRequest → epo:CatalogueReceiver [1] +
 epo-cat:CatalogueResponse → epo:CatalogueReceiver [1]
 
   
@@ -6252,6 +6290,29 @@ epo-cat:CatalogueResponse → epo:CatalogueReceiver [1]
   
 | epo-pay:hasTotalPaymentAmount| 
   Relation indicating the overall paid Monetary Value.|epo-pay:RemittanceAdvice → epo:MonetaryValue [0..1]
+
+  
+
+  
+  
+| epo:exposesReceiverChannel| 
+  |epo:SearchNoticeQuery → cv:Channel [1] +
+epo:SearchNoticeQueryResponse → cv:Channel [1]
+
+  
+
+  
+  
+| epo:exposesSenderChannel| 
+  |epo:SearchNoticeQuery → cv:Channel [1] +
+epo:SearchNoticeQueryResponse → cv:Channel [1]
+
+  
+
+  
+  
+| epo:queriesForNotice| 
+  |epo:SearchNoticeQuery → epo:Notice [1..&#42;]
 
   
 
@@ -6497,8 +6558,30 @@ epo-cat:CatalogueResponse → epo:CatalogueReceiver [1]
 
   
   
+| epo:hasLanguageOfProcurementDocument| 
+  |epo:ExpressionOfInterestResponse → at-voc:language [0..&#42;]
+
+  
+
+  
+  
+| epo:refersToExpressionOfInterest| 
+  |epo:ExpressionOfInterestResponse → epo:ExpressionOfInterest [1]
+
+  
+
+  
+  
 | epo-ord:concernsOriginatorRequest| 
   Relates to Originator Request.|epo-ord:OriginatorInformation → epo:OriginatorRequest [0..1]
+
+  
+
+  
+  
+| epo:refersToTender| 
+  |epo:TenderReceipt → epo:Tender [1] +
+epo-sub:TenderWithdrawalReceipt → epo:Tender [1]
 
   
 
@@ -6914,6 +6997,13 @@ epo-cat:EnvironmentalEmissionInformation → epo:Quantity [1]
   
 | epo-cat:hasMinimumQuantityGuaranteedForDelivery| 
   The minimum quantity of an item that is guaranteed by the seller to be delivered.|epo-cat:CatalogueLine → epo:Quantity [0..1]
+
+  
+
+  
+  
+| epo-cat:hasPreAwardCatalogueRequestLineValidity| 
+  |epo-cat:PreAwardCatalogueRequestLine → time:Interval [1]
 
   
 

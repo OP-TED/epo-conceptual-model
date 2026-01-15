@@ -2741,7 +2741,8 @@ epo-not:CompletionNotice → epo:Lot [1..&#42;]<br>
 epo-not:ContractModificationNotice → epo:Lot [1..&#42;]<br>
 epo-not:ResultNotice → epo:Lot [1..&#42;]<br>
 epo-qua:EvidenceRequest → epo:Lot [1..&#42;]<br>
-epo-qua:EvidenceSubmission → epo:Lot [1..&#42;]</p></td>
+epo-qua:EvidenceSubmission → epo:Lot [1..&#42;]<br>
+epo:InformationRequest → epo:Lot [0..&#42;]</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo:concernsLotGroup</p></td>
@@ -2750,7 +2751,8 @@ epo-qua:EvidenceSubmission → epo:Lot [1..&#42;]</p></td>
 cccev:InformationRequirement → epo:LotGroup [0..&#42;]<br>
 epo-not:CompletionNotice → epo:LotGroup [0..&#42;]<br>
 epo-not:ContractModificationNotice → epo:LotGroup [0..&#42;]<br>
-epo-not:ResultNotice → epo:LotGroup [0..&#42;]</p></td>
+epo-not:ResultNotice → epo:LotGroup [0..&#42;]<br>
+epo:InformationRequest → epo:LotGroup [0..&#42;]</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo:providesContractTotalPaymentValue</p></td>
@@ -2986,8 +2988,12 @@ epo-not:ResultNotice → epo:Procedure [1]<br>
 epo-qua:EvidenceRequest → epo:Procedure [1]<br>
 epo-qua:EvidenceSubmission → epo:Procedure [1]<br>
 epo:InformationRequest → epo:Procedure [0..&#42;]<br>
+epo-acc:ProcurementDocumentsProvision → epo:Procedure [1]<br>
 epo-awa:AwardDecisionNotification → epo:Procedure [1]<br>
-epo-acc:ESPDRequest → epo:Procedure [1]</p></td>
+epo-acc:InvitationToTender → epo:Procedure [1]<br>
+epo-acc:ESPDRequest → epo:Procedure [1]<br>
+epo-acc:ProcurementDocumentsRequest → epo:Procedure [1]<br>
+epo-acc:UnsubscribeFromProcedure → epo:Procedure [1]</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo:hasPreferredLanguageForProcurementDocument</p></td>
@@ -3000,7 +3006,12 @@ epo-acc:ESPDRequest → epo:Procedure [1]</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo:ExpressionOfInterest → epo:OfferingParty [0..&#42;]<br>
 epo-qua:EvidenceRequest → epo:OfferingParty [1]<br>
 epo-qua:EvidenceSubmission → epo:OfferingParty [1]<br>
-epo-eva:TenderClarificationRequest → epo:OfferingParty [1]</p></td>
+epo-acc:ProcurementDocumentsProvision → epo:OfferingParty [1]<br>
+epo-acc:InvitationToTender → epo:OfferingParty [1]<br>
+epo-acc:ProcurementDocumentsRequest → epo:OfferingParty [1]<br>
+epo-acc:UnsubscribeFromProcedure → epo:OfferingParty [1]<br>
+epo-eva:TenderClarificationRequest → epo:OfferingParty [1]<br>
+epo-acc:ProcurementQuestion → epo:OfferingParty [1]</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo:hasFrameworkAgreementType</p></td>
@@ -3646,6 +3657,11 @@ epo-eva:ExcludedCandidateList → epo:Candidate [0..&#42;]</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo:SubmissionTerm → at-voc:communication-justification [0..&#42;]</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:hasSubmissionMethod</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:SubmissionTerm → at-voc-new:submission-method [0..1]</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo:hasTenderSubcontractingInformation</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The information about subcontracting that must be indicated in the tender.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo:SubmissionTerm → at-voc:subcontracting-indication [0..&#42;]</p></td>
@@ -3713,7 +3729,8 @@ epo-eva:ExcludedCandidateList → epo:Candidate [0..&#42;]</p></td>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo:isSupportedBy</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating the proof for the instance of the concept.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">epo:Tender → epo:Offer [0..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:Tender → epo:Offer [0..1]<br>
+epo:Tender → epo-cat:PreAwardCatalogue [0..1]</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo:concernsTender</p></td>
@@ -3991,6 +4008,12 @@ epo-not:ResultNotice → epo:NoticeAwardInformation [0..1]</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo-not:ResultNotice → epo:ReviewRequest [0..&#42;]</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-acc:containsProvidedProcurementDocument</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-acc:ProcurementDocumentsProvision → epo:ProcurementDocument [0..&#42;]<br>
+epo-acc:InvitationToTender → epo:ProcurementDocument []</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo:concernsAwardOutcome</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Relates to Award Outcome.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo-awa:AwardDecisionNotification → epo:AwardOutcome [1..&#42;]</p></td>
@@ -3999,11 +4022,6 @@ epo-not:ResultNotice → epo:NoticeAwardInformation [0..1]</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo:specifiesTenderer</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating that the instance of the concept involves the Tenderer.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo-awa:AwardDecisionNotification → epo:Tenderer [1]</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">epo-acc:containsProvidedProcurementDocument</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">epo-acc:InvitationToTender → epo:ProcurementDocument []</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo-acc:refersToNotice</p></td>
@@ -4064,12 +4082,14 @@ epo-not:ResultNotice → epo:NoticeAwardInformation [0..1]</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo:specifiesCatalogueProvider</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating that the instance of the concept involves the Catalogue Provider.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo-cat:Catalogue → epo:CatalogueProvider [0..1]<br>
+epo-cat:PreAwardCatalogueRequest → epo:CatalogueProvider [1]<br>
 epo-cat:CatalogueResponse → epo:CatalogueProvider [1]</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo:specifiesCatalogueReceiver</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating that the instance of the concept involves the Catalogue Receiver.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo-cat:Catalogue → epo:CatalogueReceiver [0..1]<br>
+epo-cat:PreAwardCatalogueRequest → epo:CatalogueReceiver [1]<br>
 epo-cat:CatalogueResponse → epo:CatalogueReceiver [1]</p></td>
 </tr>
 <tr>
@@ -4086,6 +4106,23 @@ epo-cat:CatalogueResponse → epo:CatalogueReceiver [1]</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo-pay:hasTotalPaymentAmount</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating the overall paid Monetary Value.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo-pay:RemittanceAdvice → epo:MonetaryValue [0..1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:exposesReceiverChannel</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:SearchNoticeQuery → cv:Channel [1]<br>
+epo:SearchNoticeQueryResponse → cv:Channel [1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:exposesSenderChannel</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:SearchNoticeQuery → cv:Channel [1]<br>
+epo:SearchNoticeQueryResponse → cv:Channel [1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:queriesForNotice</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:SearchNoticeQuery → epo:Notice [1..&#42;]</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo-ord:specifiesDeliveryAgreementLocation</p></td>
@@ -4258,9 +4295,25 @@ epo-cat:CatalogueResponse → epo:CatalogueReceiver [1]</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo-cat:Line → epo:Document [0..1]</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:hasLanguageOfProcurementDocument</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:ExpressionOfInterestResponse → at-voc:language [0..&#42;]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:refersToExpressionOfInterest</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:ExpressionOfInterestResponse → epo:ExpressionOfInterest [1]</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo-ord:concernsOriginatorRequest</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Relates to Originator Request.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo-ord:OriginatorInformation → epo:OriginatorRequest [0..1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:refersToTender</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:TenderReceipt → epo:Tender [1]<br>
+epo-sub:TenderWithdrawalReceipt → epo:Tender [1]</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo:amendsContract</p></td>
@@ -4557,6 +4610,11 @@ epo-cat:EnvironmentalEmissionInformation → epo:Quantity [1]</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The minimum quantity of an item that is guaranteed by the seller to be delivered.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo-cat:CatalogueLine → epo:Quantity [0..1]</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-cat:hasPreAwardCatalogueRequestLineValidity</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-cat:PreAwardCatalogueRequestLine → time:Interval [1]</p></td>
+</tr>
 </tbody>
 </table>
 <div class="paragraph">
@@ -4567,7 +4625,7 @@ epo-cat:EnvironmentalEmissionInformation → epo:Quantity [1]</p></td>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2026-01-15 08:29:11 UTC
+Last updated 2026-01-15 15:29:32 UTC
 </div>
 </div>
 </body>
