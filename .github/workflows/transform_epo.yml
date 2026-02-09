@@ -468,7 +468,7 @@ jobs:
   # Compare new outputs against previous version
   diff:
     needs: [detect_modules, commit_transform]
-    uses: ./.github/workflows/diff-combined.yml
+    uses: .github/workflows/diff-combined.yml
     with:
       modules: ${{ needs.detect_modules.outputs.modules }}  # Pass all modules
       from_workflow_artifacts: true  # Use artifacts instead of committed files
@@ -560,70 +560,70 @@ jobs:
           - [Diff reports](${REPO_URL}/commits/${{ github.ref_name }})
           EOF
 
-  # Build and deploy GitHub Pages
-  build_pages:
-    needs: [detect_modules, commit_transform]
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/configure-pages@v4
+  # # Build and deploy GitHub Pages
+  # build_pages:
+  #   needs: [detect_modules, commit_transform]
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/configure-pages@v4
 
-      - name: Download respec artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: respec-output
-          path: respec-artifacts/
+  #     - name: Download respec artifact
+  #       uses: actions/download-artifact@v4
+  #       with:
+  #         name: respec-output
+  #         path: respec-artifacts/
 
-      - name: Prepare Pages content
-        run: |
-          MODULES_JSON='${{ needs.detect_modules.outputs.modules }}'
-          AVAILABLE_IMPLEMENTATIONS=($(echo $MODULES_JSON | jq -r '.[]'))
+  #     - name: Prepare Pages content
+  #       run: |
+  #         MODULES_JSON='${{ needs.detect_modules.outputs.modules }}'
+  #         AVAILABLE_IMPLEMENTATIONS=($(echo $MODULES_JSON | jq -r '.[]'))
 
-          mkdir -p _site
-          FOUND_IMPLEMENTATIONS=()
+  #         mkdir -p _site
+  #         FOUND_IMPLEMENTATIONS=()
 
-          for implementation in "${AVAILABLE_IMPLEMENTATIONS[@]}"
-          do
-            if [ -d "respec-artifacts/$implementation/respec" ]; then
-              mkdir -p "_site/$implementation"
-              cp -r "respec-artifacts/$implementation/respec/"* "_site/$implementation/"
-              FOUND_IMPLEMENTATIONS+=("$implementation")
-            fi
-          done
+  #         for implementation in "${AVAILABLE_IMPLEMENTATIONS[@]}"
+  #         do
+  #           if [ -d "respec-artifacts/$implementation/respec" ]; then
+  #             mkdir -p "_site/$implementation"
+  #             cp -r "respec-artifacts/$implementation/respec/"* "_site/$implementation/"
+  #             FOUND_IMPLEMENTATIONS+=("$implementation")
+  #           fi
+  #         done
 
-          cat > _site/index.html << 'HTMLEOF'
-          <!DOCTYPE html>
-          <html lang="en">
-          <head>
-              <meta charset="UTF-8">
-              <title>Ontology Documentation</title>
-              <style>
-                  body { font-family: sans-serif; margin: 40px; background: #f8f9fa; }
-                  .container { max-width: 800px; margin: 0 auto; background: white; padding: 40px; border-radius: 8px; }
-                  h1 { color: #2c3e50; }
-                  .card { border: 1px solid #ddd; padding: 20px; margin: 10px 0; border-radius: 8px; }
-                  a { color: #3498db; text-decoration: none; }
-              </style>
-          </head>
-          <body>
-              <div class="container">
-                  <h1>Ontology Documentation</h1>
-          HTMLEOF
+  #         cat > _site/index.html << 'HTMLEOF'
+  #         <!DOCTYPE html>
+  #         <html lang="en">
+  #         <head>
+  #             <meta charset="UTF-8">
+  #             <title>Ontology Documentation</title>
+  #             <style>
+  #                 body { font-family: sans-serif; margin: 40px; background: #f8f9fa; }
+  #                 .container { max-width: 800px; margin: 0 auto; background: white; padding: 40px; border-radius: 8px; }
+  #                 h1 { color: #2c3e50; }
+  #                 .card { border: 1px solid #ddd; padding: 20px; margin: 10px 0; border-radius: 8px; }
+  #                 a { color: #3498db; text-decoration: none; }
+  #             </style>
+  #         </head>
+  #         <body>
+  #             <div class="container">
+  #                 <h1>Ontology Documentation</h1>
+  #         HTMLEOF
 
-          for impl in "${FOUND_IMPLEMENTATIONS[@]}"; do
-            echo "        <div class=\"card\"><a href=\"./$impl/\">$impl</a></div>" >> _site/index.html
-          done
+  #         for impl in "${FOUND_IMPLEMENTATIONS[@]}"; do
+  #           echo "        <div class=\"card\"><a href=\"./$impl/\">$impl</a></div>" >> _site/index.html
+  #         done
 
-          echo "    </div></body></html>" >> _site/index.html
+  #         echo "    </div></body></html>" >> _site/index.html
 
-      - uses: actions/upload-pages-artifact@v3
+  #     - uses: actions/upload-pages-artifact@v3
 
-  deploy_pages:
-    needs: build_pages
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+  # deploy_pages:
+  #   needs: build_pages
+  #   environment:
+  #     name: github-pages
+  #     url: ${{ steps.deployment.outputs.page_url }}
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Deploy to GitHub Pages
+  #       id: deployment
+  #       uses: actions/deploy-pages@v4
