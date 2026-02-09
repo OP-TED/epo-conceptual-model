@@ -1,231 +1,408 @@
-name: RDF Diff Combined
+name: RDF Diff
 
 on:
-  push:
-    # paths:
-    #   - 'implementation/ePO_core/owl_ontology/ePO_core_CM.ttl'
-    #   - 'implementation/ePO_core/shacl_shapes/ePO_core_CM_shapes.ttl'
-      # - 'implementation/ePO_core/owl_ontology/eOrdering_CM.ttl'
-      # - 'implementation/ePO_core/shacl_shapes/eOrdering_CM_shapes.ttl'
+  workflow_call:
+    inputs:
+      modules:
+        description: 'JSON array of module names'
+        required: false
+        type: string
+      revision_to_compare:
+        description: 'Version to compare against (branch/tag/commit)'
+        required: false
+        type: string
+      revision_repo_url:
+        description: 'External repository URL (optional)'
+        required: false
+        type: string
+      from_workflow_artifacts:
+        description: 'Use OWL/SHACL from workflow artifacts (true) or committed files (false)'
+        required: false
+        type: boolean
+        default: false
+
   workflow_dispatch:
+    inputs:
+      modules:
+        description: 'Comma-separated module names (empty = all modules)'
+        required: false
+        type: string
+        default: ''
+      revision_to_compare:
+        description: 'Version to compare against (e.g., main, release/5.0.0)'
+        required: false
+        type: string
+        default: 'develop'
+      revision_repo_url:
+        description: 'External repository URL (leave empty for same repo)'
+        required: false
+        type: string
+        default: ''
+      old_ontology_dir:
+        description: 'Root directory for old OWL/SHACL files'
+        required: false
+        type: string
+        default: 'implementation'
+      new_ontology_dir:
+        description: 'Root directory for new OWL/SHACL files'
+        required: false
+        type: string
+        default: 'implementation'
+      output_dir:
+        description: 'Output directory for diff reports'
+        required: false
+        type: string
+        default: 'diff-reports'
+
+env:
+  # Default directory for module implementations
+  IMPL_DIR: implementation
+  # Path to diff configuration file
+  DIFF_CONFIG: .github/workflows/diff-config.env
 
 jobs:
-  rdf-diff-combined:
+  # Resolve modules: single from workflow_call, or list/auto-detect from dispatch
+  resolve:
     runs-on: ubuntu-latest
-
-    env:
-      REVISION_TO_COMPARE_COMMIT_ID: ${{ vars.REVISION_TO_COMPARE_COMMIT_ID || 'v5.1.0' }}
-      REVISION_TO_COMPARE_REPO_URL: ${{ vars.REVISION_TO_COMPARE_REPO_URL || 'https://github.com/OP-TED/ePO.git' }}
-      OLD_ONTOLOGY_FILE: ${{ vars.OLD_ONTOLOGY_FILE || 'implementation/ePO_core/owl_ontology/ePO_core.ttl' }}
-      OLD_SHACL_FILE: ${{ vars.OLD_SHACL_FILE || 'implementation/ePO_core/shacl_shapes/ePO_core_shapes.ttl' }}
-      NEW_ONTOLOGY_FILE: ${{ vars.NEW_ONTOLOGY_FILE || 'implementation/ePO_core/owl_ontology/ePO_core_CM.ttl' }}
-      NEW_SHACL_FILE: ${{ vars.NEW_SHACL_FILE || 'implementation/ePO_core/shacl_shapes/ePO_core_CM_shapes.ttl' }}
-      RDF_DIFF_OUTDIR: ${{ vars.RDF_DIFF_OUTDIR || 'diff-reports' }}
-      RDF_DIFF_AP: ${{ vars.RDF_DIFF_AP || 'owl-core-en-only' }}
-
+    outputs:
+      modules: ${{ steps.resolve.outputs.modules }}
+      count: ${{ steps.resolve.outputs.count }}
     steps:
-    - name: Check out this repository
-      uses: actions/checkout@v4
-      with:
-        fetch-depth: 0  # Required for committing back
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            ${{ env.DIFF_CONFIG }}
+            ${{ env.IMPL_DIR }}
 
-    - name: Prepare old files from specific commit (if provided)
-      run: |
-        # Case 1: Both REVISION_TO_COMPARE_COMMIT_ID and REVISION_TO_COMPARE_REPO_URL provided
-        if [ -n "${REVISION_TO_COMPARE_COMMIT_ID}" ] && [ -n "${REVISION_TO_COMPARE_REPO_URL}" ]; then
-          echo "📋 Case 1: External repository comparison"
-          echo "REVISION_TO_COMPARE_COMMIT_ID: ${REVISION_TO_COMPARE_COMMIT_ID}"
-          echo "REVISION_TO_COMPARE_REPO_URL: ${REVISION_TO_COMPARE_REPO_URL}"
-          echo "Cloning external repository for comparison..."
-          
-          # Create temporary directory for old files
+      - name: Resolve modules
+        id: resolve
+        run: |
+          # Load config
+          source "${DIFF_CONFIG}" 2>/dev/null || true
+
+          INPUT='${{ inputs.modules }}'
+
+          if [ -n "$INPUT" ] && [[ "$INPUT" == \[* ]]; then
+            # Already JSON array (from workflow_call)
+            MODULES_JSON="$INPUT"
+          elif [ -n "$INPUT" ]; then
+            # Comma-separated string (from workflow_dispatch)
+            MODULES_JSON=$(echo "$INPUT" | jq -Rc 'split(",") | map(gsub("^\\s+|\\s+$";""))')
+          elif [ -n "${MODULES:-}" ]; then
+            # From config file
+            MODULES_JSON=$(echo "$MODULES" | jq -Rc 'split(",") | map(gsub("^\\s+|\\s+$";""))')
+          else
+            # Auto-detect from NEW_ONTOLOGY_DIR
+            NEW_DIR="${NEW_ONTOLOGY_DIR:-${IMPL_DIR}}"
+            MODULES_JSON=$(ls -d ${NEW_DIR}/*/owl_ontology 2>/dev/null | cut -d/ -f2 | jq -Rsc 'split("\n") | map(select(. != ""))')
+          fi
+
+          COUNT=$(echo "$MODULES_JSON" | jq length)
+          echo "Resolved $COUNT module(s): $MODULES_JSON"
+          echo "modules=${MODULES_JSON}" >> $GITHUB_OUTPUT
+          echo "count=$COUNT" >> $GITHUB_OUTPUT
+
+  # Compare old vs new OWL/SHACL and generate diff reports
+  diff:
+    needs: resolve
+    strategy:
+      fail-fast: false
+      matrix:
+        module: ${{ fromJson(needs.resolve.outputs.modules) }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Needed to fetch old version
+
+      - name: Download transform artifacts
+        if: inputs.from_workflow_artifacts == true
+        uses: actions/download-artifact@v4
+        with:
+          pattern: transform-*
+          path: new-artifacts/
+          merge-multiple: true
+
+      - name: Load configuration
+        id: config
+        run: |
+          MODULE="${{ matrix.module }}"
+          echo "module=${MODULE}" >> $GITHUB_OUTPUT
+
+          # Load diff-config if exists
+          if [ -f "${DIFF_CONFIG}" ]; then
+            echo "Loading diff-config..."
+            source "${DIFF_CONFIG}"
+          fi
+
+          # Priority: inputs > config file > vars > defaults
+          # Use ${VAR-default} (no colon) so empty config values override vars
+          REV="${{ inputs.revision_to_compare }}"
+          if [ -z "$REV" ]; then
+            REV="${REVISION_TO_COMPARE_COMMIT_ID-${{ vars.REVISION_TO_COMPARE_COMMIT_ID }}}"
+          fi
+          REV="${REV:-develop}"
+          echo "revision=${REV}" >> $GITHUB_OUTPUT
+
+          REPO="${{ inputs.revision_repo_url }}"
+          if [ -z "$REPO" ] && [ -n "${REVISION_TO_COMPARE_REPO_URL+set}" ]; then
+            # Config file explicitly set (even if empty) - use that
+            REPO="${REVISION_TO_COMPARE_REPO_URL}"
+          elif [ -z "$REPO" ]; then
+            # Fall back to vars
+            REPO="${{ vars.REVISION_TO_COMPARE_REPO_URL }}"
+          fi
+          echo "repo_url=${REPO}" >> $GITHUB_OUTPUT
+
+          # Directory configuration (priority: inputs > config > vars > default)
+          OLD_DIR="${{ inputs.old_ontology_dir }}"
+          if [ -z "$OLD_DIR" ] || [ "$OLD_DIR" == "implementation" ]; then
+            OLD_DIR="${OLD_ONTOLOGY_DIR:-${{ vars.OLD_ONTOLOGY_DIR }}}"
+          fi
+          OLD_DIR="${OLD_DIR:-${IMPL_DIR}}"
+          echo "old_dir=${OLD_DIR}" >> $GITHUB_OUTPUT
+
+          NEW_DIR="${{ inputs.new_ontology_dir }}"
+          if [ -z "$NEW_DIR" ] || [ "$NEW_DIR" == "implementation" ]; then
+            NEW_DIR="${NEW_ONTOLOGY_DIR:-${{ vars.NEW_ONTOLOGY_DIR }}}"
+          fi
+          NEW_DIR="${NEW_DIR:-${IMPL_DIR}}"
+          echo "new_dir=${NEW_DIR}" >> $GITHUB_OUTPUT
+
+          OUTDIR="${{ inputs.output_dir }}"
+          if [ -z "$OUTDIR" ] || [ "$OUTDIR" == "diff-reports" ]; then
+            OUTDIR="${RDF_DIFF_OUTDIR:-${{ vars.RDF_DIFF_OUTDIR }}}"
+          fi
+          OUTDIR="${OUTDIR:-diff-reports}"
+          echo "outdir=${OUTDIR}" >> $GITHUB_OUTPUT
+
+          # Derive file paths from module name and directories
+          echo "old_ontology=${OLD_DIR}/${MODULE}/owl_ontology/${MODULE}.ttl" >> $GITHUB_OUTPUT
+          echo "old_shacl=${OLD_DIR}/${MODULE}/shacl_shapes/${MODULE}_shapes.ttl" >> $GITHUB_OUTPUT
+          echo "new_ontology=${NEW_DIR}/${MODULE}/owl_ontology/${MODULE}.ttl" >> $GITHUB_OUTPUT
+          echo "new_shacl=${NEW_DIR}/${MODULE}/shacl_shapes/${MODULE}_shapes.ttl" >> $GITHUB_OUTPUT
+
+          echo "Configuration loaded:"
+          echo "  module: ${MODULE}"
+          echo "  revision: ${REV}"
+          echo "  repo_url: ${REPO:-'(same repo)'}"
+          echo "  old_dir: ${OLD_DIR}"
+          echo "  new_dir: ${NEW_DIR}"
+          echo "  outdir: ${RDF_DIFF_OUTDIR}"
+
+      - name: Fetch old TTL files
+        id: fetch_old
+        run: |
+          MODULE="${{ steps.config.outputs.module }}"
+          REVISION="${{ steps.config.outputs.revision }}"
+          REPO_URL="${{ steps.config.outputs.repo_url }}"
+          OLD_ONTOLOGY="${{ steps.config.outputs.old_ontology }}"
+          OLD_SHACL="${{ steps.config.outputs.old_shacl }}"
+
           mkdir -p old-files
-          
-          # Clone the external repository
-          git clone ${REVISION_TO_COMPARE_REPO_URL} old-repo
-          cd old-repo
-          
-          # Checkout the specific commit/branch
-          echo "Checking out ${REVISION_TO_COMPARE_COMMIT_ID}..."
-          git checkout ${REVISION_TO_COMPARE_COMMIT_ID}
-          
-          # Copy files from external repo
-          echo "Extracting ${OLD_ONTOLOGY_FILE} from external repo..."
-          cp ${OLD_ONTOLOGY_FILE} ../old-files/old_ontology.ttl
-          
-          echo "Extracting ${OLD_SHACL_FILE} from external repo..."
-          cp ${OLD_SHACL_FILE} ../old-files/old_shacl.ttl
-          
-          cd ..
-          rm -rf old-repo
-          echo "Old files extracted from external repository successfully"
-          
+
+          if [ -n "${REPO_URL}" ]; then
+            echo "Fetching from external repo: ${REPO_URL}@${REVISION}"
+            git clone --depth 1 --branch "${REVISION}" "${REPO_URL}" old-repo || {
+              git clone "${REPO_URL}" old-repo
+              cd old-repo && git checkout "${REVISION}" && cd ..
+            }
+            cp "old-repo/${OLD_ONTOLOGY}" old-files/old_ontology.ttl
+            cp "old-repo/${OLD_SHACL}" old-files/old_shacl.ttl
+            rm -rf old-repo
+          else
+            echo "Fetching from current repo at ${REVISION}"
+            # Try origin/REVISION for branches, fall back to REVISION for tags/commits
+            REF="${REVISION}"
+            if git show-ref --verify --quiet "refs/remotes/origin/${REVISION}"; then
+              REF="origin/${REVISION}"
+            fi
+            echo "Using ref: ${REF}"
+            git show "${REF}:${OLD_ONTOLOGY}" > old-files/old_ontology.ttl || {
+              echo "::error::Comparison with module ${MODULE} failed: No preexisting files to compare to (${OLD_ONTOLOGY} not found at ${REF})"
+              exit 1
+            }
+            git show "${REF}:${OLD_SHACL}" > old-files/old_shacl.ttl || {
+              echo "::error::Comparison with module ${MODULE} failed: No preexisting files to compare to (${OLD_SHACL} not found at ${REF})"
+              exit 1
+            }
+          fi
+
           echo "OLD_ONTOLOGY_PATH=old-files/old_ontology.ttl" >> $GITHUB_ENV
           echo "OLD_SHACL_PATH=old-files/old_shacl.ttl" >> $GITHUB_ENV
-          
-        # Case 2: Only REVISION_TO_COMPARE_COMMIT_ID provided (current repo)
-        elif [ -n "${REVISION_TO_COMPARE_COMMIT_ID}" ]; then
-          echo "📋 Case 2: Current repository historical comparison"
-          echo "REVISION_TO_COMPARE_COMMIT_ID: ${REVISION_TO_COMPARE_COMMIT_ID}"
-          echo "Using current repository for comparison..."
-          
-          # Create temporary directory for old files
-          mkdir -p old-files
-          
-          # Extract old ontology file from current repo
-          echo "Extracting ${OLD_ONTOLOGY_FILE} from commit ${REVISION_TO_COMPARE_COMMIT_ID}..."
-          git show ${REVISION_TO_COMPARE_COMMIT_ID}:${OLD_ONTOLOGY_FILE} > old-files/old_ontology.ttl
-          
-          # Extract old SHACL file from current repo
-          echo "Extracting ${OLD_SHACL_FILE} from commit ${REVISION_TO_COMPARE_COMMIT_ID}..."
-          git show ${REVISION_TO_COMPARE_COMMIT_ID}:${OLD_SHACL_FILE} > old-files/old_shacl.ttl
-          
-          echo "Old files extracted from current repository successfully"
-          
-          echo "OLD_ONTOLOGY_PATH=old-files/old_ontology.ttl" >> $GITHUB_ENV
-          echo "OLD_SHACL_PATH=old-files/old_shacl.ttl" >> $GITHUB_ENV
-          
-        # Case 3: No commit ID provided (current files comparison)
-        else
-          echo "📋 Case 3: Current files comparison"
-          echo "No REVISION_TO_COMPARE_COMMIT_ID provided, using current files for both old and new"
-          echo "This will compare current files with themselves (useful for testing)"
-          
-          echo "OLD_ONTOLOGY_PATH=${OLD_ONTOLOGY_FILE}" >> $GITHUB_ENV
-          echo "OLD_SHACL_PATH=${OLD_SHACL_FILE}" >> $GITHUB_ENV
-        fi
 
-    - name: Clone model2owl repository (develop branch)
-      run: |
-        git clone --branch 3.2.0-rc.1 https://github.com/OP-TED/model2owl.git
-        echo "model2owl/" >> .gitignore
-        echo "✅ Added model2owl/ to .gitignore"
+      - name: Prepare new TTL files
+        run: |
+          MODULE="${{ steps.config.outputs.module }}"
+          NEW_ONTOLOGY="${{ steps.config.outputs.new_ontology }}"
+          NEW_SHACL="${{ steps.config.outputs.new_shacl }}"
 
-    - name: Install dependencies
-      run: |
-        cd model2owl
-        make install
+          # If artifact was downloaded, use those files
+          if [ -d "new-artifacts" ]; then
+            echo "Using new TTL files from artifact"
+            NEW_ONTOLOGY_PATH=$(find new-artifacts -name "${MODULE}.ttl" -path "*/owl_ontology/*" | head -1)
+            NEW_SHACL_PATH=$(find new-artifacts -name "${MODULE}_shapes.ttl" | head -1)
+          else
+            echo "Using new TTL files from repository"
+            NEW_ONTOLOGY_PATH="${NEW_ONTOLOGY}"
+            NEW_SHACL_PATH="${NEW_SHACL}"
+          fi
 
-    - name: Merge OWL and SHACL for old version
-      run: |
-        echo "Merging old files: ${OLD_ONTOLOGY_PATH} with ${OLD_SHACL_PATH}..."
-        OLD_BASENAME=$(basename "${OLD_ONTOLOGY_PATH}" .ttl)
-        MERGE_OUTPUT_FILE1="${OLD_BASENAME}_combined.ttl"
-        cd model2owl
-        make merge-owl-shacl \
-          MERGE_ONTOLOGY_FILE=../${OLD_ONTOLOGY_PATH} \
-          MERGE_SHAPES_FILE=../${OLD_SHACL_PATH} \
-          MERGE_OUTPUT_FILE=../${MERGE_OUTPUT_FILE1}
-        echo "✅ Merged old file created: ${MERGE_OUTPUT_FILE1}"
-        echo "MERGE_OUTPUT_FILE1=${MERGE_OUTPUT_FILE1}" >> $GITHUB_ENV
+          echo "NEW_ONTOLOGY_PATH=${NEW_ONTOLOGY_PATH}" >> $GITHUB_ENV
+          echo "NEW_SHACL_PATH=${NEW_SHACL_PATH}" >> $GITHUB_ENV
 
-    - name: Merge OWL and SHACL for new version
-      run: |
-        echo "Merging ${NEW_ONTOLOGY_FILE} with ${NEW_SHACL_FILE}..."
-        NEW_BASENAME=$(basename "${NEW_ONTOLOGY_FILE}" .ttl)
-        MERGE_OUTPUT_FILE2="${NEW_BASENAME}_combined.ttl"
-        cd model2owl
-        make merge-owl-shacl \
-          MERGE_ONTOLOGY_FILE=../${NEW_ONTOLOGY_FILE} \
-          MERGE_SHAPES_FILE=../${NEW_SHACL_FILE} \
-          MERGE_OUTPUT_FILE=../${MERGE_OUTPUT_FILE2}
-        echo "✅ Merged file created: ${MERGE_OUTPUT_FILE2}"
-        echo "MERGE_OUTPUT_FILE2=${MERGE_OUTPUT_FILE2}" >> $GITHUB_ENV
+          echo "New ontology: ${NEW_ONTOLOGY_PATH}"
+          echo "New SHACL: ${NEW_SHACL_PATH}"
 
-    - name: Generate AsciiDoc RDF diff report
-      run: |
-        echo "📊 RDF Diff Configuration:"
-        echo "REVISION_TO_COMPARE_COMMIT_ID: ${REVISION_TO_COMPARE_COMMIT_ID}"
-        echo "REVISION_TO_COMPARE_REPO_URL: ${REVISION_TO_COMPARE_REPO_URL:-'(current repo)'}"
-        echo "Merged OLD FILE: ${MERGE_OUTPUT_FILE1}"
-        echo "Merged NEW FILE: ${MERGE_OUTPUT_FILE2}"
-        echo "OUTPUT DIR: ${RDF_DIFF_OUTDIR}"
-        echo "AP: ${RDF_DIFF_AP}"
-        echo "Generating AsciiDoc report..."
+      - name: Clone model2owl
+        run: |
+          git clone --branch 3.2.0-rc.2 https://github.com/OP-TED/model2owl.git
+          echo "model2owl/" >> .gitignore
 
-        cd model2owl
-        make run-rdf-diff \
-          RDF_DIFF_FILE1=../${MERGE_OUTPUT_FILE1} \
-          RDF_DIFF_FILE2=../${MERGE_OUTPUT_FILE2} \
-          RDF_DIFF_OUTDIR=../${RDF_DIFF_OUTDIR} \
-          RDF_DIFF_AP=${RDF_DIFF_AP} \
-          RDF_DIFF_TEMPLATE=asciidoc
-        echo "AsciiDoc report generated successfully"
-      env:
-        MERGE_OUTPUT_FILE1: ${{ env.MERGE_OUTPUT_FILE1 }}
-        MERGE_OUTPUT_FILE2: ${{ env.MERGE_OUTPUT_FILE2 }}
+      - name: Install dependencies
+        run: |
+          cd model2owl
+          make install
 
-    - name: Generate JSON RDF diff report
-      run: |
-        echo "Generating JSON report..."
-        cd model2owl
-        make run-rdf-diff \
-          RDF_DIFF_FILE1=../${MERGE_OUTPUT_FILE1} \
-          RDF_DIFF_FILE2=../${MERGE_OUTPUT_FILE2} \
-          RDF_DIFF_OUTDIR=../${RDF_DIFF_OUTDIR} \
-          RDF_DIFF_AP=${RDF_DIFF_AP} \
-          RDF_DIFF_TEMPLATE=json
-        echo "JSON report generated successfully"
-      env:
-        MERGE_OUTPUT_FILE1: ${{ env.MERGE_OUTPUT_FILE1 }}
-        MERGE_OUTPUT_FILE2: ${{ env.MERGE_OUTPUT_FILE2 }}
+      - name: Merge OWL and SHACL for old version
+        run: |
+          cd model2owl
+          make merge-owl-shacl \
+            MERGE_ONTOLOGY_FILE=../${OLD_ONTOLOGY_PATH} \
+            MERGE_SHAPES_FILE=../${OLD_SHACL_PATH} \
+            MERGE_OUTPUT_FILE=../old_combined.ttl
+          echo "MERGE_OLD=old_combined.ttl" >> $GITHUB_ENV
 
-    - name: Install AsciiDoctor
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y asciidoctor
+      - name: Merge OWL and SHACL for new version
+        run: |
+          cd model2owl
+          make merge-owl-shacl \
+            MERGE_ONTOLOGY_FILE=../${NEW_ONTOLOGY_PATH} \
+            MERGE_SHAPES_FILE=../${NEW_SHACL_PATH} \
+            MERGE_OUTPUT_FILE=../new_combined.ttl
+          echo "MERGE_NEW=new_combined.ttl" >> $GITHUB_ENV
 
-    - name: Convert AsciiDoc to HTML
-      run: |
-        if [ -f "${RDF_DIFF_OUTDIR}/diff.asciidoc" ]; then
-          echo "Converting ${RDF_DIFF_OUTDIR}/diff.asciidoc to HTML..."
-          asciidoctor \
-            --attribute source-highlighter=rouge \
-            --attribute toc=left \
-            --attribute toclevels=3 \
-            --attribute sectlinks \
-            --attribute sectanchors \
-            --attribute icons=font \
-            --out-file "${RDF_DIFF_OUTDIR}/diff.html" \
-            "${RDF_DIFF_OUTDIR}/diff.asciidoc"
-          echo "✅ Generated ${RDF_DIFF_OUTDIR}/diff.html"
-        else
-          echo "❌ No diff.asciidoc file found in ${RDF_DIFF_OUTDIR}/"
-          ls -la "${RDF_DIFF_OUTDIR}/" || echo "Output directory does not exist"
-        fi
+      - name: Generate diff reports
+        run: |
+          MODULE="${{ steps.config.outputs.module }}"
+          OUTDIR="${{ steps.config.outputs.outdir }}/${MODULE}"
 
-    - name: Commit and push diff result
-      run: |
-        git config user.name "github-actions[bot]"
-        git config user.email "github-actions[bot]@users.noreply.github.com"
-        git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
-        git fetch origin ${GITHUB_REF#refs/heads/}
-        git pull --rebase --autostash origin ${GITHUB_REF#refs/heads/} || echo "No remote changes to pull"
-        git add ${RDF_DIFF_OUTDIR}
+          mkdir -p "${OUTDIR}"
 
-        # Generate detailed commit message based on the comparison case
-        if [ -n "${REVISION_TO_COMPARE_COMMIT_ID}" ] && [ -n "${REVISION_TO_COMPARE_REPO_URL}" ]; then
-          # Case 1: External repository comparison
-          REPO_NAME=$(basename "${REVISION_TO_COMPARE_REPO_URL}" .git)
-          OLD_ONT_NAME=$(basename "${OLD_ONTOLOGY_FILE}")
-          OLD_SHACL_NAME=$(basename "${OLD_SHACL_FILE}")
-          NEW_ONT_NAME=$(basename "${NEW_ONTOLOGY_FILE}")
-          NEW_SHACL_NAME=$(basename "${NEW_SHACL_FILE}")
-          COMMIT_MSG="chore(ci-auto): add RDF diff reports (${REPO_NAME}@${REVISION_TO_COMPARE_COMMIT_ID}: ${OLD_ONT_NAME}+${OLD_SHACL_NAME} vs current: ${NEW_ONT_NAME}+${NEW_SHACL_NAME})"
-        elif [ -n "${REVISION_TO_COMPARE_COMMIT_ID}" ]; then
-          # Case 2: Current repository historical comparison
-          OLD_ONT_NAME=$(basename "${OLD_ONTOLOGY_FILE}")
-          OLD_SHACL_NAME=$(basename "${OLD_SHACL_FILE}")
-          NEW_ONT_NAME=$(basename "${NEW_ONTOLOGY_FILE}")
-          NEW_SHACL_NAME=$(basename "${NEW_SHACL_FILE}")
-          COMMIT_MSG="chore(ci-auto): add RDF diff reports (${REVISION_TO_COMPARE_COMMIT_ID}: ${OLD_ONT_NAME}+${OLD_SHACL_NAME} vs current: ${NEW_ONT_NAME}+${NEW_SHACL_NAME})"
-        else
-          # Case 3: Current files comparison
-          NEW_ONT_NAME=$(basename "${NEW_ONTOLOGY_FILE}")
-          NEW_SHACL_NAME=$(basename "${NEW_SHACL_FILE}")
-          COMMIT_MSG="chore(ci-auto): add RDF diff reports (${NEW_ONT_NAME}+${NEW_SHACL_NAME} vs ${NEW_ONT_NAME}+${NEW_SHACL_NAME})"
-        fi
-        git commit -m "${COMMIT_MSG}" || echo "No changes to commit"
-        git push
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          cd model2owl
+
+          # Generate AsciiDoc report
+          make run-rdf-diff \
+            RDF_DIFF_FILE1=../${MERGE_OLD} \
+            RDF_DIFF_FILE2=../${MERGE_NEW} \
+            RDF_DIFF_OUTDIR=../${OUTDIR} \
+            RDF_DIFF_AP=owl-core-en-only \
+            RDF_DIFF_TEMPLATE=asciidoc
+
+          # Generate JSON report
+          make run-rdf-diff \
+            RDF_DIFF_FILE1=../${MERGE_OLD} \
+            RDF_DIFF_FILE2=../${MERGE_NEW} \
+            RDF_DIFF_OUTDIR=../${OUTDIR} \
+            RDF_DIFF_AP=owl-core-en-only \
+            RDF_DIFF_TEMPLATE=json
+
+          echo "DIFF_OUTDIR=${OUTDIR}" >> $GITHUB_ENV
+
+      - name: Install AsciiDoctor
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y asciidoctor
+
+      - name: Convert AsciiDoc to HTML
+        run: |
+          if [ -f "${DIFF_OUTDIR}/diff.asciidoc" ]; then
+            asciidoctor \
+              --attribute source-highlighter=rouge \
+              --attribute toc=left \
+              --attribute toclevels=3 \
+              --attribute sectlinks \
+              --attribute sectanchors \
+              --attribute icons=font \
+              --out-file "${DIFF_OUTDIR}/diff.html" \
+              "${DIFF_OUTDIR}/diff.asciidoc"
+            echo "Generated ${DIFF_OUTDIR}/diff.html"
+          fi
+
+      - name: Upload diff artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: diff-${{ matrix.module }}
+          path: ${{ steps.config.outputs.outdir }}/${{ matrix.module }}/
+          retention-days: 1
+
+  # Commit results only when triggered manually (not from workflow_call)
+  commit_dispatch:
+    if: github.event_name == 'workflow_dispatch' && !cancelled()
+    needs: [resolve, diff]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+          fetch-depth: 0
+
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: diff-*
+          path: artifacts/
+
+      - name: Merge and commit diff reports
+        run: |
+          # Load config for outdir
+          source "${DIFF_CONFIG}" 2>/dev/null || true
+          OUTDIR="${RDF_DIFF_OUTDIR:-diff-reports}"
+
+          # Track which modules had successful diff artifacts
+          SUCCESSFUL_MODULES=""
+          mkdir -p "$OUTDIR"
+          for diff_dir in artifacts/diff-*/; do
+            if [ -d "$diff_dir" ]; then
+              module=$(basename "$diff_dir" | sed 's/diff-//')
+              SUCCESSFUL_MODULES="${SUCCESSFUL_MODULES} ${module}"
+              mkdir -p "$OUTDIR/$module"
+              cp -r "${diff_dir}"* "$OUTDIR/$module/" 2>/dev/null || true
+            fi
+          done
+          echo "SUCCESSFUL_DIFF_MODULES=${SUCCESSFUL_MODULES}" >> $GITHUB_ENV
+          rm -rf artifacts/
+
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add "$OUTDIR"
+          git commit -m "chore(ci): diff ${{ needs.resolve.outputs.count }} module(s) #${{ github.run_number }} [skip ci]" || echo "No changes to commit"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Generate workflow summary
+        run: |
+          MODULES_JSON='${{ needs.resolve.outputs.modules }}'
+          COUNT='${{ needs.resolve.outputs.count }}'
+          REPO_URL="${{ github.server_url }}/${{ github.repository }}"
+          OUTDIR="${RDF_DIFF_OUTDIR:-diff-reports}"
+
+          cat >> $GITHUB_STEP_SUMMARY << EOF
+          ## ${{ github.workflow }} - Run #${{ github.run_number }}
+
+          **Modules compared:** ${COUNT}
+          EOF
+
+          echo "$MODULES_JSON" | jq -r '.[]' | while read module; do
+            if [[ " ${SUCCESSFUL_DIFF_MODULES} " =~ " ${module} " ]]; then
+              echo "- ${module} → [${OUTDIR}/${module}/](${REPO_URL}/tree/${{ github.ref_name }}/${OUTDIR}/${module})" >> $GITHUB_STEP_SUMMARY
+            else
+              echo "- ${module} — No preexisting files to compare to" >> $GITHUB_STEP_SUMMARY
+            fi
+          done
+
+          cat >> $GITHUB_STEP_SUMMARY << EOF
+
+          **Commit:** [Diff reports](${REPO_URL}/commits/${{ github.ref_name }})
+          EOF
