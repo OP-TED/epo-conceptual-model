@@ -1,0 +1,2846 @@
+{
+  "classes": [
+    {
+      "classType": "definition",
+      "description": {
+        "en": "A Document sent by the Seller to the Buyer to reduce or cancel all or part of the amount previously invoiced."
+      },
+      "label": {
+        "en": "Credit note"
+      },
+      "name": "epo-inv:CreditNote",
+      "parents": [
+        {
+          "label": {
+            "en": "Invoice"
+          },
+          "name": "epo-inv:Invoice",
+          "scoped_uri": "http://data.europa.eu/a4g/ontology#Invoice"
+        }
+      ],
+      "properties": [
+        {
+          "cardinality": "1..*",
+          "description": {
+            "en": "Incorporates Credit Note Line."
+          },
+          "domain": [
+            {
+              "name": "epo-inv:CreditNote",
+              "uri": "http://data.europa.eu/a4g/ontology#CreditNote"
+            }
+          ],
+          "label": {
+            "en": "Comprises credit note line"
+          },
+          "name": "epo-inv:comprisesCreditNoteLine",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo-inv:CreditNoteLine",
+              "range_label": {
+                "en": "Credit note line"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#CreditNoteLine",
+              "range_uri": "http://data.europa.eu/a4g/ontology#CreditNoteLine"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#comprisesCreditNoteLine",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "Reference to an Invoice."
+          },
+          "domain": [
+            {
+              "name": "epo-inv:CreditNote",
+              "uri": "http://data.europa.eu/a4g/ontology#CreditNote"
+            }
+          ],
+          "label": {
+            "en": "Refers to invoice"
+          },
+          "name": "epo-inv:refersToInvoice",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo-inv:Invoice",
+              "range_label": {
+                "en": "Invoice"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#Invoice",
+              "range_uri": "http://data.europa.eu/a4g/ontology#Invoice"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#refersToInvoice",
+          "usage": {}
+        }
+      ],
+      "rawTags": {
+        "class-usage-scope": "main"
+      },
+      "tags": {
+        "epo:status": "implemented",
+        "skos:historyNote": "WG approval 16/09/2025"
+      },
+      "uri": "http://data.europa.eu/a4g/ontology#CreditNote",
+      "usage": {
+        "en": "A Document sent by the Seller to the Buyer to reduce or cancel all or part of the amount previously invoiced."
+      }
+    },
+    {
+      "classType": "definition",
+      "description": {
+        "en": "Details concerning a given unit of goods, services or works mentioned in the Credit Note."
+      },
+      "label": {
+        "en": "Credit note line"
+      },
+      "name": "epo-inv:CreditNoteLine",
+      "parents": [
+        {
+          "label": {
+            "en": "Invoice line"
+          },
+          "name": "epo-inv:InvoiceLine",
+          "scoped_uri": "http://data.europa.eu/a4g/ontology#InvoiceLine"
+        }
+      ],
+      "properties": [
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "Relation indicating that the instance of the concept is sent for a specific Invoice Line."
+          },
+          "domain": [
+            {
+              "name": "epo-inv:CreditNoteLine",
+              "uri": "http://data.europa.eu/a4g/ontology#CreditNoteLine"
+            }
+          ],
+          "label": {
+            "en": "Is submitted for invoice line"
+          },
+          "name": "epo-inv:isSubmittedForInvoiceLine",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo-inv:InvoiceLine",
+              "range_label": {
+                "en": "Invoice line"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#InvoiceLine",
+              "range_uri": "http://data.europa.eu/a4g/ontology#InvoiceLine"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#isSubmittedForInvoiceLine",
+          "usage": {}
+        }
+      ],
+      "rawTags": {
+        "class-usage-scope": "main"
+      },
+      "tags": {
+        "epo:status": "implemented",
+        "skos:historyNote": "WG approval 16/09/2025"
+      },
+      "uri": "http://data.europa.eu/a4g/ontology#CreditNoteLine",
+      "usage": {
+        "en": "Details concerning a given unit of goods, services or works mentioned in the Credit Note."
+      }
+    },
+    {
+      "classType": "definition",
+      "description": {
+        "en": "Information about a direct payment of money from one bank account into another."
+      },
+      "label": {
+        "en": "Credit transfer information"
+      },
+      "name": "epo-inv:CreditTransferInformation",
+      "parents": [
+        {
+          "label": {
+            "en": "Information hub"
+          },
+          "name": "epo-cat:InformationHub",
+          "scoped_uri": "http://data.europa.eu/a4g/ontology#InformationHub"
+        }
+      ],
+      "properties": [
+        {
+          "cardinality": "1",
+          "description": {
+            "en": "A unique identifier of the financial payment account, at a payment service provider, to which payment should be made."
+          },
+          "domain": [
+            {
+              "name": "epo-inv:CreditTransferInformation",
+              "uri": "http://data.europa.eu/a4g/ontology#CreditTransferInformation"
+            }
+          ],
+          "label": {
+            "en": "Has payment account identifier"
+          },
+          "name": "epo-inv:hasPaymentAccountIdentifier",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "adms:Identifier",
+              "range_label": {
+                "en": "Identifier"
+              },
+              "range_puri": "http://www.w3.org/ns/adms#Identifier",
+              "range_uri": "http://www.w3.org/ns/adms#Identifier"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG Approval 11/07/2024"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasPaymentAccountIdentifier",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "The name of the account that can send and receive payments to and from a payment service provider."
+          },
+          "domain": [
+            {
+              "name": "epo-inv:CreditTransferInformation",
+              "uri": "http://data.europa.eu/a4g/ontology#CreditTransferInformation"
+            }
+          ],
+          "label": {
+            "en": "Has payment account name"
+          },
+          "name": "epo-inv:hasPaymentAccountName",
+          "propertyOrigin": "internal",
+          "propertyType": "datatype property",
+          "range": [
+            {
+              "range_curie": "rdf:PlainLiteral",
+              "range_label": {
+                "en": "Plain literal"
+              },
+              "range_puri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral",
+              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG Approval 07/11/2024"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasPaymentAccountName",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "An identifier for the payment service provider where a payment account is located."
+          },
+          "domain": [
+            {
+              "name": "epo-inv:CreditTransferInformation",
+              "uri": "http://data.europa.eu/a4g/ontology#CreditTransferInformation"
+            }
+          ],
+          "label": {
+            "en": "Has payment service provider identifier"
+          },
+          "name": "epo-inv:hasPaymentServiceProviderIdentifier",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "adms:Identifier",
+              "range_label": {
+                "en": "Identifier"
+              },
+              "range_puri": "http://www.w3.org/ns/adms#Identifier",
+              "range_uri": "http://www.w3.org/ns/adms#Identifier"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG Approval 11/07/2024"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasPaymentServiceProviderIdentifier",
+          "usage": {}
+        }
+      ],
+      "rawTags": {
+        "class-usage-scope": "main"
+      },
+      "tags": {
+        "epo:status": "implemented",
+        "skos:historyNote": "WG Approval 11/07/2024"
+      },
+      "uri": "http://data.europa.eu/a4g/ontology#CreditTransferInformation",
+      "usage": {
+        "en": "Information about a direct payment of money from one bank account into another."
+      }
+    },
+    {
+      "classType": "definition",
+      "description": {
+        "en": "A commercial Document issued by the Seller to the Buyer to collect payments for the goods or services provided and to state the VAT amount due by the Buyer."
+      },
+      "label": {
+        "en": "Invoice"
+      },
+      "name": "epo-inv:Invoice",
+      "parents": [
+        {
+          "label": {
+            "en": "Post award document"
+          },
+          "name": "epo-cat:PostAwardDocument",
+          "scoped_uri": "http://data.europa.eu/a4g/ontology#PostAwardDocument"
+        }
+      ],
+      "properties": [
+        {
+          "cardinality": "1..*",
+          "description": {
+            "en": "Incorporates Invoice Line."
+          },
+          "domain": [
+            {
+              "name": "epo-inv:Invoice",
+              "uri": "http://data.europa.eu/a4g/ontology#Invoice"
+            }
+          ],
+          "label": {
+            "en": "Comprises invoice line"
+          },
+          "name": "epo-inv:comprisesInvoiceLine",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo-inv:InvoiceLine",
+              "range_label": {
+                "en": "Invoice line"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#InvoiceLine",
+              "range_uri": "http://data.europa.eu/a4g/ontology#InvoiceLine"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#comprisesInvoiceLine",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": ""
+          },
+          "domain": [
+            {
+              "name": "epo-inv:Invoice",
+              "uri": "http://data.europa.eu/a4g/ontology#Invoice"
+            }
+          ],
+          "label": {
+            "en": "Has accounting cost"
+          },
+          "name": "epo-ord:hasAccountingCost",
+          "propertyOrigin": "internal",
+          "propertyType": "datatype property",
+          "range": [
+            {
+              "range_curie": "rdf:PlainLiteral",
+              "range_label": {
+                "en": "Plain literal"
+              },
+              "range_puri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral",
+              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasAccountingCost",
+          "usage": {}
+        },
+        {
+          "cardinality": "1",
+          "description": {
+            "en": "Relation indicating the Monetary Value that has to be paid."
+          },
+          "domain": [
+            {
+              "name": "epo-inv:Invoice",
+              "uri": "http://data.europa.eu/a4g/ontology#Invoice"
+            }
+          ],
+          "label": {
+            "en": "Has amount due for payment"
+          },
+          "name": "epo-ord:hasAmountDueForPayment",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:MonetaryValue",
+              "range_label": {
+                "en": "Monetary value"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#MonetaryValue",
+              "range_uri": "http://data.europa.eu/a4g/ontology#MonetaryValue"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasAmountDueForPayment",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..*",
+          "description": {
+            "en": "Contains Invoice Note."
+          },
+          "domain": [
+            {
+              "name": "epo-inv:Invoice",
+              "uri": "http://data.europa.eu/a4g/ontology#Invoice"
+            }
+          ],
+          "label": {
+            "en": "Has invoice note"
+          },
+          "name": "epo-inv:hasInvoiceNote",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo-inv:InvoiceNote",
+              "range_label": {
+                "en": "Invoice note"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#InvoiceNote",
+              "range_uri": "http://data.europa.eu/a4g/ontology#InvoiceNote"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG Approval 11/07/2024"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasInvoiceNote",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "An identifier for an object on which the invoice is based, given by the Seller."
+          },
+          "domain": [
+            {
+              "name": "epo-inv:Invoice",
+              "uri": "http://data.europa.eu/a4g/ontology#Invoice"
+            }
+          ],
+          "label": {
+            "en": "Has invoiced object identifier"
+          },
+          "name": "epo-inv:hasInvoicedObjectIdentifier",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "adms:Identifier",
+              "range_label": {
+                "en": "Identifier"
+              },
+              "range_puri": "http://www.w3.org/ns/adms#Identifier",
+              "range_uri": "http://www.w3.org/ns/adms#Identifier"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasInvoicedObjectIdentifier",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "Relation indicating the time range for creating, sending, and managing Invoices."
+          },
+          "domain": [
+            {
+              "name": "epo-inv:Invoice",
+              "uri": "http://data.europa.eu/a4g/ontology#Invoice"
+            }
+          ],
+          "label": {
+            "en": "Has invoicing period"
+          },
+          "name": "epo-inv:hasInvoicingPeriod",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "time:Interval",
+              "range_label": {
+                "en": "Interval"
+              },
+              "range_puri": "http://www.w3.org/2006/time#Interval",
+              "range_uri": "http://www.w3.org/2006/time#Interval"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasInvoicingPeriod",
+          "usage": {}
+        },
+        {
+          "cardinality": "1..*",
+          "description": {
+            "en": "Relation indicating the instance of the concept refers to a Lot."
+          },
+          "domain": [
+            {
+              "name": "epo-inv:Invoice",
+              "uri": "http://data.europa.eu/a4g/ontology#Invoice"
+            }
+          ],
+          "label": {
+            "en": "Has lot reference"
+          },
+          "name": "epo:hasLotReference",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:Lot",
+              "range_label": {
+                "en": "Lot"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#Lot",
+              "range_uri": "http://data.europa.eu/a4g/ontology#Lot"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasLotReference",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "Final date until which the Payment can be made."
+          },
+          "domain": [
+            {
+              "name": "epo-inv:Invoice",
+              "uri": "http://data.europa.eu/a4g/ontology#Invoice"
+            }
+          ],
+          "label": {
+            "en": "Has payment due date"
+          },
+          "name": "epo-inv:hasPaymentDueDate",
+          "propertyOrigin": "internal",
+          "propertyType": "datatype property",
+          "range": [
+            {
+              "range_curie": "xsd:date",
+              "range_label": {
+                "en": "Date"
+              },
+              "range_puri": "http://www.w3.org/2001/XMLSchema#date",
+              "range_uri": "http://www.w3.org/2001/XMLSchema#date"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2026"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasPaymentDueDate",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..*",
+          "description": {
+            "en": "Relation indicating the Payment Instruction Information."
+          },
+          "domain": [
+            {
+              "name": "epo-inv:Invoice",
+              "uri": "http://data.europa.eu/a4g/ontology#Invoice"
+            }
+          ],
+          "label": {
+            "en": "Has payment instructions information"
+          },
+          "name": "epo-inv:hasPaymentInstructionsInformation",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo-inv:PaymentInstructionsInformation",
+              "range_label": {
+                "en": "Payment instructions information"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#PaymentInstructionsInformation",
+              "range_uri": "http://data.europa.eu/a4g/ontology#PaymentInstructionsInformation"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasPaymentInstructionsInformation",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "Condition and stipulation of the Payment."
+          },
+          "domain": [
+            {
+              "name": "epo-inv:Invoice",
+              "uri": "http://data.europa.eu/a4g/ontology#Invoice"
+            }
+          ],
+          "label": {
+            "en": "Has payment term"
+          },
+          "name": "epo-ord:hasPaymentTerm",
+          "propertyOrigin": "internal",
+          "propertyType": "datatype property",
+          "range": [
+            {
+              "range_curie": "rdf:PlainLiteral",
+              "range_label": {
+                "en": "Plain literal"
+              },
+              "range_puri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral",
+              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2026"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasPaymentTerm",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..*",
+          "description": {
+            "en": "Relation indicating the Monetary Value that is paid in advance."
+          },
+          "domain": [
+            {
+              "name": "epo-inv:Invoice",
+              "uri": "http://data.europa.eu/a4g/ontology#Invoice"
+            }
+          ],
+          "label": {
+            "en": "Has prepaid amount"
+          },
+          "name": "epo-ord:hasPrepaidAmount",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:MonetaryValue",
+              "range_label": {
+                "en": "Monetary value"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#MonetaryValue",
+              "range_uri": "http://data.europa.eu/a4g/ontology#MonetaryValue"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasPrepaidAmount",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "Relation indicating the adjustment Monetary Value applied to bring calculated total to a convenient value."
+          },
+          "domain": [
+            {
+              "name": "epo-inv:Invoice",
+              "uri": "http://data.europa.eu/a4g/ontology#Invoice"
+            }
+          ],
+          "label": {
+            "en": "Has rounding amount"
+          },
+          "name": "epo-ord:hasRoundingAmount",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:MonetaryValue",
+              "range_label": {
+                "en": "Monetary value"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#MonetaryValue",
+              "range_uri": "http://data.europa.eu/a4g/ontology#MonetaryValue"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasRoundingAmount",
+          "usage": {}
+        },
+        {
+          "cardinality": "1..*",
+          "description": {
+            "en": "Relation indicating the Tax Breakdown Information."
+          },
+          "domain": [
+            {
+              "name": "epo-inv:Invoice",
+              "uri": "http://data.europa.eu/a4g/ontology#Invoice"
+            }
+          ],
+          "label": {
+            "en": "Has tax breakdown information"
+          },
+          "name": "epo-inv:hasTaxBreakdownInformation",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo-inv:TaxBreakdownInformation",
+              "range_label": {
+                "en": "Tax breakdown information"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#TaxBreakdownInformation",
+              "range_uri": "http://data.europa.eu/a4g/ontology#TaxBreakdownInformation"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasTaxBreakdownInformation",
+          "usage": {}
+        },
+        {
+          "cardinality": "1",
+          "description": {
+            "en": "Relation indicating the Tax Information."
+          },
+          "domain": [
+            {
+              "name": "epo-inv:Invoice",
+              "uri": "http://data.europa.eu/a4g/ontology#Invoice"
+            }
+          ],
+          "label": {
+            "en": "Has tax information"
+          },
+          "name": "epo-ord:hasTaxInformation",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo-ord:TaxInformation",
+              "range_label": {
+                "en": "Tax information"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#TaxInformation",
+              "range_uri": "http://data.europa.eu/a4g/ontology#TaxInformation"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasTaxInformation",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "The date when the tax becomes accountable for the Seller and for the Buyer. Additional Information: That date can be determined and differs from the date of issue of the invoice, according to the national implementation of the directive."
+          },
+          "domain": [
+            {
+              "name": "epo-inv:Invoice",
+              "uri": "http://data.europa.eu/a4g/ontology#Invoice"
+            }
+          ],
+          "label": {
+            "en": "Has tax point date"
+          },
+          "name": "epo-inv:hasTaxPointDate",
+          "propertyOrigin": "internal",
+          "propertyType": "datatype property",
+          "range": [
+            {
+              "range_curie": "xsd:date",
+              "range_label": {
+                "en": "Date"
+              },
+              "range_puri": "http://www.w3.org/2001/XMLSchema#date",
+              "range_uri": "http://www.w3.org/2001/XMLSchema#date"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG Approval 11/07/2024"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasTaxPointDate",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "controlled_vocabulary": {
+            "name": "at-voc-new:tax-date",
+            "uri": "http://publications.europa.eu/resource/authority/new/tax-date"
+          },
+          "description": {
+            "en": "Relation indicating the a Tax Date."
+          },
+          "domain": [
+            {
+              "name": "epo-inv:Invoice",
+              "uri": "http://data.europa.eu/a4g/ontology#Invoice"
+            }
+          ],
+          "label": {
+            "en": "Has tax point date code"
+          },
+          "name": "epo-inv:hasTaxPointDateCode",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "skos:Concept",
+              "range_label": {
+                "en": "Concept"
+              },
+              "range_puri": "http://www.w3.org/2004/02/skos/core#Concept",
+              "range_uri": "http://www.w3.org/2004/02/skos/core#Concept"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasTaxPointDateCode",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..*",
+          "description": {
+            "en": "Relation indicating the overall Monetary Value of the Tax applied on the currency in which the financial transactions are recorded at the company level."
+          },
+          "domain": [
+            {
+              "name": "epo-inv:Invoice",
+              "uri": "http://data.europa.eu/a4g/ontology#Invoice"
+            }
+          ],
+          "label": {
+            "en": "Has total accounting currency tax amount"
+          },
+          "name": "epo-inv:hasTotalAccountingCurrencyTaxAmount",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:MonetaryValue",
+              "range_label": {
+                "en": "Monetary value"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#MonetaryValue",
+              "range_uri": "http://data.europa.eu/a4g/ontology#MonetaryValue"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasTotalAccountingCurrencyTaxAmount",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..*",
+          "description": {
+            "en": "Relation indicating the overall Monetary Value of the Allowance."
+          },
+          "domain": [
+            {
+              "name": "epo-inv:Invoice",
+              "uri": "http://data.europa.eu/a4g/ontology#Invoice"
+            }
+          ],
+          "label": {
+            "en": "Has total allowance amount"
+          },
+          "name": "epo-ord:hasTotalAllowanceAmount",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:MonetaryValue",
+              "range_label": {
+                "en": "Monetary value"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#MonetaryValue",
+              "range_uri": "http://data.europa.eu/a4g/ontology#MonetaryValue"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasTotalAllowanceAmount",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..*",
+          "description": {
+            "en": "Relation indicating the overall Monetary Value of the Charge."
+          },
+          "domain": [
+            {
+              "name": "epo-inv:Invoice",
+              "uri": "http://data.europa.eu/a4g/ontology#Invoice"
+            }
+          ],
+          "label": {
+            "en": "Has total charge amount"
+          },
+          "name": "epo-ord:hasTotalChargeAmount",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:MonetaryValue",
+              "range_label": {
+                "en": "Monetary value"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#MonetaryValue",
+              "range_uri": "http://data.europa.eu/a4g/ontology#MonetaryValue"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasTotalChargeAmount",
+          "usage": {}
+        },
+        {
+          "cardinality": "1..*",
+          "description": {
+            "en": "Relation indicating the overall Monetary Value of the Line."
+          },
+          "domain": [
+            {
+              "name": "epo-inv:Invoice",
+              "uri": "http://data.europa.eu/a4g/ontology#Invoice"
+            }
+          ],
+          "label": {
+            "en": "Has total line amount"
+          },
+          "name": "epo-ord:hasTotalLineAmount",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:MonetaryValue",
+              "range_label": {
+                "en": "Monetary value"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#MonetaryValue",
+              "range_uri": "http://data.europa.eu/a4g/ontology#MonetaryValue"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasTotalLineAmount",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..*",
+          "description": {
+            "en": "Relation indicating the overall Monetary Value of the Tax applied."
+          },
+          "domain": [
+            {
+              "name": "epo-inv:Invoice",
+              "uri": "http://data.europa.eu/a4g/ontology#Invoice"
+            }
+          ],
+          "label": {
+            "en": "Has total tax amount"
+          },
+          "name": "epo-inv:hasTotalTaxAmount",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:MonetaryValue",
+              "range_label": {
+                "en": "Monetary value"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#MonetaryValue",
+              "range_uri": "http://data.europa.eu/a4g/ontology#MonetaryValue"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasTotalTaxAmount",
+          "usage": {}
+        },
+        {
+          "cardinality": "1..*",
+          "description": {
+            "en": "Relation indicating the overall Monetary Value without Tax."
+          },
+          "domain": [
+            {
+              "name": "epo-inv:Invoice",
+              "uri": "http://data.europa.eu/a4g/ontology#Invoice"
+            }
+          ],
+          "label": {
+            "en": "Has total tax exclusive amount"
+          },
+          "name": "epo-ord:hasTotalTaxExclusiveAmount",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:MonetaryValue",
+              "range_label": {
+                "en": "Monetary value"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#MonetaryValue",
+              "range_uri": "http://data.europa.eu/a4g/ontology#MonetaryValue"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasTotalTaxExclusiveAmount",
+          "usage": {}
+        },
+        {
+          "cardinality": "1..*",
+          "description": {
+            "en": "Relation indicating the overall Monetary Value with Tax."
+          },
+          "domain": [
+            {
+              "name": "epo-inv:Invoice",
+              "uri": "http://data.europa.eu/a4g/ontology#Invoice"
+            }
+          ],
+          "label": {
+            "en": "Has total tax inclusive amount"
+          },
+          "name": "epo-ord:hasTotalTaxInclusiveAmount",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:MonetaryValue",
+              "range_label": {
+                "en": "Monetary value"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#MonetaryValue",
+              "range_uri": "http://data.europa.eu/a4g/ontology#MonetaryValue"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasTotalTaxInclusiveAmount",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "Reference to a Contract."
+          },
+          "domain": [
+            {
+              "name": "epo-inv:Invoice",
+              "uri": "http://data.europa.eu/a4g/ontology#Invoice"
+            }
+          ],
+          "label": {
+            "en": "Refers to contract"
+          },
+          "name": "epo:refersToContract",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:Contract",
+              "range_label": {
+                "en": "Contract"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#Contract",
+              "range_uri": "http://data.europa.eu/a4g/ontology#Contract"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#refersToContract",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "Reference to a Despatch Advice."
+          },
+          "domain": [
+            {
+              "name": "epo-inv:Invoice",
+              "uri": "http://data.europa.eu/a4g/ontology#Invoice"
+            }
+          ],
+          "label": {
+            "en": "Refers to despatch advice"
+          },
+          "name": "epo-inv:refersToDespatchAdvice",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo-ful:DespatchAdvice",
+              "range_label": {
+                "en": "Despatch advice"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#DespatchAdvice",
+              "range_uri": "http://data.europa.eu/a4g/ontology#DespatchAdvice"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#refersToDespatchAdvice",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "Reference to an Order."
+          },
+          "domain": [
+            {
+              "name": "epo-inv:Invoice",
+              "uri": "http://data.europa.eu/a4g/ontology#Invoice"
+            }
+          ],
+          "label": {
+            "en": "Refers to order"
+          },
+          "name": "epo-ful:refersToOrder",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo-ord:Order",
+              "range_label": {
+                "en": "Order"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#Order",
+              "range_uri": "http://data.europa.eu/a4g/ontology#Order"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#refersToOrder",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "Reference to a Project."
+          },
+          "domain": [
+            {
+              "name": "epo-inv:Invoice",
+              "uri": "http://data.europa.eu/a4g/ontology#Invoice"
+            }
+          ],
+          "label": {
+            "en": "Refers to project"
+          },
+          "name": "epo:refersToProject",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:Project",
+              "range_label": {
+                "en": "Project"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#Project",
+              "range_uri": "http://data.europa.eu/a4g/ontology#Project"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#refersToProject",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "Reference to a Receipt Advice."
+          },
+          "domain": [
+            {
+              "name": "epo-inv:Invoice",
+              "uri": "http://data.europa.eu/a4g/ontology#Invoice"
+            }
+          ],
+          "label": {
+            "en": "Refers to receipt advice"
+          },
+          "name": "epo-inv:refersToReceiptAdvice",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo-ful:ReceiptAdvice",
+              "range_label": {
+                "en": "Receipt advice"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#ReceiptAdvice",
+              "range_uri": "http://data.europa.eu/a4g/ontology#ReceiptAdvice"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#refersToReceiptAdvice",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..*",
+          "description": {
+            "en": "Relation indicating the Allowance Information."
+          },
+          "domain": [
+            {
+              "name": "epo-inv:Invoice",
+              "uri": "http://data.europa.eu/a4g/ontology#Invoice"
+            }
+          ],
+          "label": {
+            "en": "Specifies allowance information"
+          },
+          "name": "epo-ord:specifiesAllowanceInformation",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo-ord:AllowanceInformation",
+              "range_label": {
+                "en": "Allowance information"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#AllowanceInformation",
+              "range_uri": "http://data.europa.eu/a4g/ontology#AllowanceInformation"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#specifiesAllowanceInformation",
+          "usage": {}
+        },
+        {
+          "cardinality": "1",
+          "description": {
+            "en": "Relation indicating that the instance of the concept involves the Buyer."
+          },
+          "domain": [
+            {
+              "name": "epo-inv:Invoice",
+              "uri": "http://data.europa.eu/a4g/ontology#Invoice"
+            }
+          ],
+          "label": {
+            "en": "Specifies buyer"
+          },
+          "name": "epo:specifiesBuyer",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:Buyer",
+              "range_label": {
+                "en": "Buyer"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#Buyer",
+              "range_uri": "http://data.europa.eu/a4g/ontology#Buyer"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#specifiesBuyer",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..*",
+          "description": {
+            "en": "Relation indicating the Charge Information."
+          },
+          "domain": [
+            {
+              "name": "epo-inv:Invoice",
+              "uri": "http://data.europa.eu/a4g/ontology#Invoice"
+            }
+          ],
+          "label": {
+            "en": "Specifies charge information"
+          },
+          "name": "epo-cat:specifiesChargeInformation",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo-cat:ChargeInformation",
+              "range_label": {
+                "en": "Charge information"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#ChargeInformation",
+              "range_uri": "http://data.europa.eu/a4g/ontology#ChargeInformation"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#specifiesChargeInformation",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "Relation indicating the Delivery Information."
+          },
+          "domain": [
+            {
+              "name": "epo-inv:Invoice",
+              "uri": "http://data.europa.eu/a4g/ontology#Invoice"
+            }
+          ],
+          "label": {
+            "en": "Specifies delivery information"
+          },
+          "name": "epo-ord:specifiesDeliveryInformation",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo-ord:DeliveryInformation",
+              "range_label": {
+                "en": "Delivery information"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#DeliveryInformation",
+              "range_uri": "http://data.europa.eu/a4g/ontology#DeliveryInformation"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#specifiesDeliveryInformation",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "Relation indicating that the instance of the concept involves the Payee."
+          },
+          "domain": [
+            {
+              "name": "epo-inv:Invoice",
+              "uri": "http://data.europa.eu/a4g/ontology#Invoice"
+            }
+          ],
+          "label": {
+            "en": "Specifies payee"
+          },
+          "name": "epo-inv:specifiesPayee",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo-inv:Payee",
+              "range_label": {
+                "en": "Payee"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#Payee",
+              "range_uri": "http://data.europa.eu/a4g/ontology#Payee"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#specifiesPayee",
+          "usage": {}
+        },
+        {
+          "cardinality": "1",
+          "description": {
+            "en": "Relation indicating that the instance of the concept involves the Seller."
+          },
+          "domain": [
+            {
+              "name": "epo-inv:Invoice",
+              "uri": "http://data.europa.eu/a4g/ontology#Invoice"
+            }
+          ],
+          "label": {
+            "en": "Specifies seller"
+          },
+          "name": "epo:specifiesSeller",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo-ord:Seller",
+              "range_label": {
+                "en": "Seller"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#Seller",
+              "range_uri": "http://data.europa.eu/a4g/ontology#Seller"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#specifiesSeller",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "Relation indicating that the instance of the concept involves the Seller Tax Representative."
+          },
+          "domain": [
+            {
+              "name": "epo-inv:Invoice",
+              "uri": "http://data.europa.eu/a4g/ontology#Invoice"
+            }
+          ],
+          "label": {
+            "en": "Specifies seller tax representative"
+          },
+          "name": "epo-inv:specifiesSellerTaxRepresentative",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo-inv:SellerTaxRepresentative",
+              "range_label": {
+                "en": "Seller tax representative"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#SellerTaxRepresentative",
+              "range_uri": "http://data.europa.eu/a4g/ontology#SellerTaxRepresentative"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#specifiesSellerTaxRepresentative",
+          "usage": {}
+        }
+      ],
+      "rawTags": {
+        "class-usage-scope": "main"
+      },
+      "tags": {
+        "epo:status": "implemented",
+        "skos:historyNote": "WG Approval 04/07/2024"
+      },
+      "uri": "http://data.europa.eu/a4g/ontology#Invoice",
+      "usage": {
+        "en": "A commercial Document issued by the Seller to the Buyer to collect payments for the goods or services provided and to state the VAT amount due by the Buyer."
+      }
+    },
+    {
+      "classType": "definition",
+      "description": {
+        "en": "Details concerning a given unit of goods, services or works mentioned in the Invoice."
+      },
+      "label": {
+        "en": "Invoice line"
+      },
+      "name": "epo-inv:InvoiceLine",
+      "parents": [
+        {
+          "label": {
+            "en": "Line"
+          },
+          "name": "epo-cat:Line",
+          "scoped_uri": "http://data.europa.eu/a4g/ontology#Line"
+        }
+      ],
+      "properties": [
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "An identifier for an object on which the invoice line is based, given by the Seller. Additional Information: It may be a subscription number, telephone number, meter point etc., as applicable."
+          },
+          "domain": [
+            {
+              "name": "epo-inv:InvoiceLine",
+              "uri": "http://data.europa.eu/a4g/ontology#InvoiceLine"
+            }
+          ],
+          "label": {
+            "en": "Has invoice line object identifier"
+          },
+          "name": "epo-inv:hasInvoiceLineObjectIdentifier",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "adms:Identifier",
+              "range_label": {
+                "en": "Identifier"
+              },
+              "range_puri": "http://www.w3.org/ns/adms#Identifier",
+              "range_uri": "http://www.w3.org/ns/adms#Identifier"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG Approval 26/06/2024"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasInvoiceLineObjectIdentifier",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "Relation indicating the time range of the Invoice Line."
+          },
+          "domain": [
+            {
+              "name": "epo-inv:InvoiceLine",
+              "uri": "http://data.europa.eu/a4g/ontology#InvoiceLine"
+            }
+          ],
+          "label": {
+            "en": "Has invoice line period"
+          },
+          "name": "epo-inv:hasInvoiceLinePeriod",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "time:Interval",
+              "range_label": {
+                "en": "Interval"
+              },
+              "range_puri": "http://www.w3.org/2006/time#Interval",
+              "range_uri": "http://www.w3.org/2006/time#Interval"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasInvoiceLinePeriod",
+          "usage": {}
+        },
+        {
+          "cardinality": "1",
+          "description": {
+            "en": "Relation indicating the Monetary Value exclusive of taxes and after substracting price discounts."
+          },
+          "domain": [
+            {
+              "name": "epo-inv:InvoiceLine",
+              "uri": "http://data.europa.eu/a4g/ontology#InvoiceLine"
+            }
+          ],
+          "label": {
+            "en": "Has net amount"
+          },
+          "name": "epo-inv:hasNetAmount",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:MonetaryValue",
+              "range_label": {
+                "en": "Monetary value"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#MonetaryValue",
+              "range_uri": "http://data.europa.eu/a4g/ontology#MonetaryValue"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasNetAmount",
+          "usage": {}
+        },
+        {
+          "cardinality": "1..*",
+          "description": {
+            "en": "Relation indicating that the instance of the concept has a Price."
+          },
+          "domain": [
+            {
+              "name": "epo-inv:InvoiceLine",
+              "uri": "http://data.europa.eu/a4g/ontology#InvoiceLine"
+            }
+          ],
+          "label": {
+            "en": "Has price"
+          },
+          "name": "epo-cat:hasPrice",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo-cat:Price",
+              "range_label": {
+                "en": "Price"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#Price",
+              "range_uri": "http://data.europa.eu/a4g/ontology#Price"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasPrice",
+          "usage": {}
+        },
+        {
+          "cardinality": "1",
+          "description": {
+            "en": "Relation indicating that the instance of the concept has a Quantity."
+          },
+          "domain": [
+            {
+              "name": "epo-inv:InvoiceLine",
+              "uri": "http://data.europa.eu/a4g/ontology#InvoiceLine"
+            }
+          ],
+          "label": {
+            "en": "Has quantity"
+          },
+          "name": "epo-cat:hasQuantity",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:Quantity",
+              "range_label": {
+                "en": "Quantity"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#Quantity",
+              "range_uri": "http://data.europa.eu/a4g/ontology#Quantity"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasQuantity",
+          "usage": {}
+        },
+        {
+          "cardinality": "1",
+          "description": {
+            "en": "Relation indicating the Tax Information."
+          },
+          "domain": [
+            {
+              "name": "epo-inv:InvoiceLine",
+              "uri": "http://data.europa.eu/a4g/ontology#InvoiceLine"
+            }
+          ],
+          "label": {
+            "en": "Has tax information"
+          },
+          "name": "epo-ord:hasTaxInformation",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo-ord:TaxInformation",
+              "range_label": {
+                "en": "Tax information"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#TaxInformation",
+              "range_uri": "http://data.europa.eu/a4g/ontology#TaxInformation"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasTaxInformation",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "Reference to an Order Line."
+          },
+          "domain": [
+            {
+              "name": "epo-inv:InvoiceLine",
+              "uri": "http://data.europa.eu/a4g/ontology#InvoiceLine"
+            }
+          ],
+          "label": {
+            "en": "Refers to order line"
+          },
+          "name": "epo-inv:refersToOrderLine",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo-ord:OrderLine",
+              "range_label": {
+                "en": "Order line"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#OrderLine",
+              "range_uri": "http://data.europa.eu/a4g/ontology#OrderLine"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#refersToOrderLine",
+          "usage": {}
+        }
+      ],
+      "rawTags": {
+        "class-usage-scope": "main"
+      },
+      "tags": {
+        "epo:status": "implemented",
+        "skos:historyNote": "WG Approval 11/07/2024"
+      },
+      "uri": "http://data.europa.eu/a4g/ontology#InvoiceLine",
+      "usage": {
+        "en": "Details concerning a given unit of goods, services or works mentioned in the Invoice."
+      }
+    },
+    {
+      "classType": "definition",
+      "description": {
+        "en": "Textual note that is relevant to the Invoice as a whole."
+      },
+      "label": {
+        "en": "Invoice note"
+      },
+      "name": "epo-inv:InvoiceNote",
+      "parents": [],
+      "properties": [
+        {
+          "cardinality": "1..1",
+          "description": {
+            "en": "A textual note that gives unstructured information that is relevant to the Invoice as a whole."
+          },
+          "domain": [
+            {
+              "name": "epo-inv:InvoiceNote",
+              "uri": "http://data.europa.eu/a4g/ontology#InvoiceNote"
+            }
+          ],
+          "label": {
+            "en": "Has invoice note description"
+          },
+          "name": "epo-inv:hasInvoiceNoteDescription",
+          "propertyOrigin": "internal",
+          "propertyType": "datatype property",
+          "range": [
+            {
+              "range_curie": "rdf:PlainLiteral",
+              "range_label": {
+                "en": "Plain literal"
+              },
+              "range_puri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral",
+              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG Approval 11/07/2024"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasInvoiceNoteDescription",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "controlled_vocabulary": {
+            "name": "at-voc-new:invoice-note-subject-code",
+            "uri": "http://publications.europa.eu/resource/authority/new/invoice-note-subject-code"
+          },
+          "description": {
+            "en": "Relation indicating the Invoice Note Subject Code."
+          },
+          "domain": [
+            {
+              "name": "epo-inv:InvoiceNote",
+              "uri": "http://data.europa.eu/a4g/ontology#InvoiceNote"
+            }
+          ],
+          "label": {
+            "en": "Has invoice note subject"
+          },
+          "name": "epo-inv:hasInvoiceNoteSubject",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "skos:Concept",
+              "range_label": {
+                "en": "Concept"
+              },
+              "range_puri": "http://www.w3.org/2004/02/skos/core#Concept",
+              "range_uri": "http://www.w3.org/2004/02/skos/core#Concept"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasInvoiceNoteSubject",
+          "usage": {}
+        }
+      ],
+      "rawTags": {
+        "class-usage-scope": "main"
+      },
+      "tags": {
+        "epo:status": "implemented",
+        "skos:historyNote": "WG Approval 11/07/2024"
+      },
+      "uri": "http://data.europa.eu/a4g/ontology#InvoiceNote",
+      "usage": {
+        "en": "Textual note that is relevant to the Invoice as a whole."
+      }
+    },
+    {
+      "classType": "definition",
+      "description": {
+        "en": "A Role of an Agent that receives the payment. Additional Information: The role of Payee may be fulfilled by another party than the Seller, e.g. a factoring service."
+      },
+      "label": {
+        "en": "Payee"
+      },
+      "name": "epo-inv:Payee",
+      "parents": [
+        {
+          "label": {
+            "en": "Offering party"
+          },
+          "name": "epo:OfferingParty",
+          "scoped_uri": "http://data.europa.eu/a4g/ontology#OfferingParty"
+        }
+      ],
+      "properties": [],
+      "rawTags": {
+        "class-usage-scope": "main"
+      },
+      "tags": {
+        "epo:status": "implemented",
+        "skos:historyNote": "WG Approval 11/07/2024"
+      },
+      "uri": "http://data.europa.eu/a4g/ontology#Payee",
+      "usage": {
+        "en": "A Role of an Agent that receives the payment. Additional Information: The role of Payee may be fulfilled by another party than the Seller, e.g. a factoring service."
+      }
+    },
+    {
+      "classType": "definition",
+      "description": {
+        "en": "Information about card used for payment contemporaneous with invoice issuance."
+      },
+      "label": {
+        "en": "Payment card information"
+      },
+      "name": "epo-inv:PaymentCardInformation",
+      "parents": [
+        {
+          "label": {
+            "en": "Information hub"
+          },
+          "name": "epo-cat:InformationHub",
+          "scoped_uri": "http://data.europa.eu/a4g/ontology#InformationHub"
+        }
+      ],
+      "properties": [
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "The name of the account holder of the card used for payment. Additional Information: An account holder is the entity listed or identified as the holder of a Financial Account by the Financial Institution."
+          },
+          "domain": [
+            {
+              "name": "epo-inv:PaymentCardInformation",
+              "uri": "http://data.europa.eu/a4g/ontology#PaymentCardInformation"
+            }
+          ],
+          "label": {
+            "en": "Has payment card holder name"
+          },
+          "name": "epo-inv:hasPaymentCardHolderName",
+          "propertyOrigin": "internal",
+          "propertyType": "datatype property",
+          "range": [
+            {
+              "range_curie": "rdf:PlainLiteral",
+              "range_label": {
+                "en": "Plain literal"
+              },
+              "range_puri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral",
+              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG Approval 11/07/2024"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasPaymentCardHolderName",
+          "usage": {}
+        },
+        {
+          "cardinality": "1..1",
+          "description": {
+            "en": "The series of digits embossed on the front of a card used for payment."
+          },
+          "domain": [
+            {
+              "name": "epo-inv:PaymentCardInformation",
+              "uri": "http://data.europa.eu/a4g/ontology#PaymentCardInformation"
+            }
+          ],
+          "label": {
+            "en": "Has payment card primary account number"
+          },
+          "name": "epo-inv:hasPaymentCardPrimaryAccountNumber",
+          "propertyOrigin": "internal",
+          "propertyType": "datatype property",
+          "range": [
+            {
+              "range_curie": "rdf:PlainLiteral",
+              "range_label": {
+                "en": "Plain literal"
+              },
+              "range_puri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral",
+              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG Approval 11/07/2024"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasPaymentCardPrimaryAccountNumber",
+          "usage": {}
+        }
+      ],
+      "rawTags": {
+        "class-usage-scope": "main"
+      },
+      "tags": {
+        "epo:status": "implemented",
+        "skos:historyNote": "WG Approval 11/07/2024"
+      },
+      "uri": "http://data.europa.eu/a4g/ontology#PaymentCardInformation",
+      "usage": {
+        "en": "Information about card used for payment contemporaneous with invoice issuance."
+      }
+    },
+    {
+      "classType": "definition",
+      "description": {
+        "en": "Information about the payment."
+      },
+      "label": {
+        "en": "Payment instructions information"
+      },
+      "name": "epo-inv:PaymentInstructionsInformation",
+      "parents": [
+        {
+          "label": {
+            "en": "Information hub"
+          },
+          "name": "epo-cat:InformationHub",
+          "scoped_uri": "http://data.europa.eu/a4g/ontology#InformationHub"
+        }
+      ],
+      "properties": [
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "An unique banking reference identifier of the Payee or Seller, assigned by the Payee or Seller bank."
+          },
+          "domain": [
+            {
+              "name": "epo-inv:PaymentInstructionsInformation",
+              "uri": "http://data.europa.eu/a4g/ontology#PaymentInstructionsInformation"
+            }
+          ],
+          "label": {
+            "en": "Has banking identifier"
+          },
+          "name": "epo-inv:hasBankingIdentifier",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "adms:Identifier",
+              "range_label": {
+                "en": "Identifier"
+              },
+              "range_puri": "http://www.w3.org/ns/adms#Identifier",
+              "range_uri": "http://www.w3.org/ns/adms#Identifier"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG Approval 11/07/2024"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasBankingIdentifier",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..*",
+          "description": {
+            "en": "Relation indicating the Credit Transfer Information."
+          },
+          "domain": [
+            {
+              "name": "epo-inv:PaymentInstructionsInformation",
+              "uri": "http://data.europa.eu/a4g/ontology#PaymentInstructionsInformation"
+            }
+          ],
+          "label": {
+            "en": "Has credit transfer information"
+          },
+          "name": "epo-inv:hasCreditTransferInformation",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo-inv:CreditTransferInformation",
+              "range_label": {
+                "en": "Credit transfer information"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#CreditTransferInformation",
+              "range_uri": "http://data.europa.eu/a4g/ontology#CreditTransferInformation"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasCreditTransferInformation",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "An identifier for the account to be debited by the direct debit."
+          },
+          "domain": [
+            {
+              "name": "epo-inv:PaymentInstructionsInformation",
+              "uri": "http://data.europa.eu/a4g/ontology#PaymentInstructionsInformation"
+            }
+          ],
+          "label": {
+            "en": "Has debited account identifier"
+          },
+          "name": "epo-inv:hasDebitedAccountIdentifier",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "adms:Identifier",
+              "range_label": {
+                "en": "Identifier"
+              },
+              "range_puri": "http://www.w3.org/ns/adms#Identifier",
+              "range_uri": "http://www.w3.org/ns/adms#Identifier"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG Approval 11/07/2024"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasDebitedAccountIdentifier",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "An unique identifier for referencing the direct debit mandate, assigned by the Payee."
+          },
+          "domain": [
+            {
+              "name": "epo-inv:PaymentInstructionsInformation",
+              "uri": "http://data.europa.eu/a4g/ontology#PaymentInstructionsInformation"
+            }
+          ],
+          "label": {
+            "en": "Has mandate identifier"
+          },
+          "name": "epo-inv:hasMandateIdentifier",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "adms:Identifier",
+              "range_label": {
+                "en": "Identifier"
+              },
+              "range_puri": "http://www.w3.org/ns/adms#Identifier",
+              "range_uri": "http://www.w3.org/ns/adms#Identifier"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG Approval 11/07/2024"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasMandateIdentifier",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "Relation indicating the Payment Card Information."
+          },
+          "domain": [
+            {
+              "name": "epo-inv:PaymentInstructionsInformation",
+              "uri": "http://data.europa.eu/a4g/ontology#PaymentInstructionsInformation"
+            }
+          ],
+          "label": {
+            "en": "Has payment card information"
+          },
+          "name": "epo-inv:hasPaymentCardInformation",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo-inv:PaymentCardInformation",
+              "range_label": {
+                "en": "Payment card information"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#PaymentCardInformation",
+              "range_uri": "http://data.europa.eu/a4g/ontology#PaymentCardInformation"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasPaymentCardInformation",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "The means for how a payment is expected to be or has been settled, expressed as text."
+          },
+          "domain": [
+            {
+              "name": "epo-inv:PaymentInstructionsInformation",
+              "uri": "http://data.europa.eu/a4g/ontology#PaymentInstructionsInformation"
+            }
+          ],
+          "label": {
+            "en": "Has payment means description"
+          },
+          "name": "epo-inv:hasPaymentMeansDescription",
+          "propertyOrigin": "internal",
+          "propertyType": "datatype property",
+          "range": [
+            {
+              "range_curie": "rdf:PlainLiteral",
+              "range_label": {
+                "en": "Plain literal"
+              },
+              "range_puri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral",
+              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG Approval 11/07/2024"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasPaymentMeansDescription",
+          "usage": {}
+        },
+        {
+          "cardinality": "1",
+          "controlled_vocabulary": {
+            "name": "at-voc-new:payment-means-type",
+            "uri": "http://publications.europa.eu/resource/authority/new/payment-means-type"
+          },
+          "description": {
+            "en": "The means for how a payment is expected to be or has been settled, expressed as code."
+          },
+          "domain": [
+            {
+              "name": "epo-inv:PaymentInstructionsInformation",
+              "uri": "http://data.europa.eu/a4g/ontology#PaymentInstructionsInformation"
+            }
+          ],
+          "label": {
+            "en": "Has payment means type"
+          },
+          "name": "epo-inv:hasPaymentMeansType",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "skos:Concept",
+              "range_label": {
+                "en": "Concept"
+              },
+              "range_puri": "http://www.w3.org/2004/02/skos/core#Concept",
+              "range_uri": "http://www.w3.org/2004/02/skos/core#Concept"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG Approval 11/07/2024"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasPaymentMeansType",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "A textual value used to establish a link between the payment and the Invoice, issued by the Seller."
+          },
+          "domain": [
+            {
+              "name": "epo-inv:PaymentInstructionsInformation",
+              "uri": "http://data.europa.eu/a4g/ontology#PaymentInstructionsInformation"
+            }
+          ],
+          "label": {
+            "en": "Has remittance information"
+          },
+          "name": "epo-inv:hasRemittanceInformation",
+          "propertyOrigin": "internal",
+          "propertyType": "datatype property",
+          "range": [
+            {
+              "range_curie": "rdf:PlainLiteral",
+              "range_label": {
+                "en": "Plain literal"
+              },
+              "range_puri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral",
+              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG Approval 11/07/2024"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasRemittanceInformation",
+          "usage": {}
+        }
+      ],
+      "rawTags": {
+        "class-usage-scope": "main"
+      },
+      "tags": {
+        "epo:status": "implemented",
+        "skos:historyNote": "WG Approval 11/07/2024"
+      },
+      "uri": "http://data.europa.eu/a4g/ontology#PaymentInstructionsInformation",
+      "usage": {
+        "en": "Information about the payment."
+      }
+    },
+    {
+      "classType": "definition",
+      "description": {
+        "en": "A Role of an Agent that can represent an Organization for taxation purposes. Additional Information: The Seller Tax Representative Role is not a Legal Representative."
+      },
+      "label": {
+        "en": "Seller tax representative"
+      },
+      "name": "epo-inv:SellerTaxRepresentative",
+      "parents": [
+        {
+          "label": {
+            "en": "Offering party"
+          },
+          "name": "epo:OfferingParty",
+          "scoped_uri": "http://data.europa.eu/a4g/ontology#OfferingParty"
+        }
+      ],
+      "properties": [],
+      "rawTags": {
+        "class-usage-scope": "main"
+      },
+      "tags": {
+        "epo:status": "implemented",
+        "skos:historyNote": "WG Approval 11/07/2024"
+      },
+      "uri": "http://data.europa.eu/a4g/ontology#SellerTaxRepresentative",
+      "usage": {
+        "en": "A Role of an Agent that can represent an Organization for taxation purposes. Additional Information: The Seller Tax Representative Role is not a Legal Representative."
+      }
+    },
+    {
+      "classType": "definition",
+      "description": {
+        "en": "Information about tax breakdown by different categories, rates and exemption reasons."
+      },
+      "label": {
+        "en": "Tax breakdown information"
+      },
+      "name": "epo-inv:TaxBreakdownInformation",
+      "parents": [],
+      "properties": [
+        {
+          "cardinality": "0..1",
+          "controlled_vocabulary": {
+            "name": "at-voc-new:tax-exemption-reason",
+            "uri": "http://publications.europa.eu/resource/authority/new/tax-exemption-reason"
+          },
+          "description": {
+            "en": "An explanation on why the amount is exempted from tax or why no tax is being charged according to the legislation, expressed as a code."
+          },
+          "domain": [
+            {
+              "name": "epo-inv:TaxBreakdownInformation",
+              "uri": "http://data.europa.eu/a4g/ontology#TaxBreakdownInformation"
+            }
+          ],
+          "label": {
+            "en": "Has tax exemption reason"
+          },
+          "name": "epo-inv:hasTaxExemptionReason",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "skos:Concept",
+              "range_label": {
+                "en": "Concept"
+              },
+              "range_puri": "http://www.w3.org/2004/02/skos/core#Concept",
+              "range_uri": "http://www.w3.org/2004/02/skos/core#Concept"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG Approval 11/07/2024"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasTaxExemptionReason",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "An explanation on why the amount is exempted from tax or why no tax is being charged according to the legislation, expressed as a text."
+          },
+          "domain": [
+            {
+              "name": "epo-inv:TaxBreakdownInformation",
+              "uri": "http://data.europa.eu/a4g/ontology#TaxBreakdownInformation"
+            }
+          ],
+          "label": {
+            "en": "Has tax exemption reason description"
+          },
+          "name": "epo-inv:hasTaxExemptionReasonDescription",
+          "propertyOrigin": "internal",
+          "propertyType": "datatype property",
+          "range": [
+            {
+              "range_curie": "rdf:PlainLiteral",
+              "range_label": {
+                "en": "Plain literal"
+              },
+              "range_puri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral",
+              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG Approval 11/07/2024"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasTaxExemptionReasonDescription",
+          "usage": {}
+        },
+        {
+          "cardinality": "1",
+          "description": {
+            "en": "Relation indicating the Tax Information."
+          },
+          "domain": [
+            {
+              "name": "epo-inv:TaxBreakdownInformation",
+              "uri": "http://data.europa.eu/a4g/ontology#TaxBreakdownInformation"
+            }
+          ],
+          "label": {
+            "en": "Has tax information"
+          },
+          "name": "epo-ord:hasTaxInformation",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo-ord:TaxInformation",
+              "range_label": {
+                "en": "Tax information"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#TaxInformation",
+              "range_uri": "http://data.europa.eu/a4g/ontology#TaxInformation"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasTaxInformation",
+          "usage": {}
+        }
+      ],
+      "rawTags": {
+        "class-usage-scope": "main"
+      },
+      "tags": {
+        "epo:status": "implemented",
+        "skos:historyNote": "WG Approval 11/07/2024"
+      },
+      "uri": "http://data.europa.eu/a4g/ontology#TaxBreakdownInformation",
+      "usage": {
+        "en": "Information about tax breakdown by different categories, rates and exemption reasons."
+      }
+    },
+    {
+      "classType": "reference",
+      "label": {
+        "en": "Remittance advice line"
+      },
+      "name": "epo-pay:RemittanceAdviceLine",
+      "properties": [
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "Reference to an Invoice."
+          },
+          "domain": [
+            {
+              "name": "epo-pay:RemittanceAdviceLine",
+              "uri": "http://data.europa.eu/a4g/ontology#RemittanceAdviceLine"
+            }
+          ],
+          "label": {
+            "en": "Refers to invoice"
+          },
+          "name": "epo-inv:refersToInvoice",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo-inv:Invoice",
+              "range_label": {
+                "en": "Invoice"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#Invoice",
+              "range_uri": "http://data.europa.eu/a4g/ontology#Invoice"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#refersToInvoice",
+          "usage": {}
+        }
+      ],
+      "rawTags": {
+        "class-usage-scope": "main"
+      },
+      "uri": "http://data.europa.eu/a4g/ontology#RemittanceAdviceLine"
+    },
+    {
+      "classType": "reference",
+      "label": {
+        "en": "Charge information"
+      },
+      "name": "epo-cat:ChargeInformation",
+      "properties": [
+        {
+          "cardinality": "0..*",
+          "description": {
+            "en": "Information that is particular to an Invoice Line."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:ChargeInformation",
+              "uri": "http://data.europa.eu/a4g/ontology#ChargeInformation"
+            }
+          ],
+          "label": {
+            "en": "Is specific to invoice line"
+          },
+          "name": "epo-inv:isSpecificToInvoiceLine",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo-inv:InvoiceLine",
+              "range_label": {
+                "en": "Invoice line"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#InvoiceLine",
+              "range_uri": "http://data.europa.eu/a4g/ontology#InvoiceLine"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#isSpecificToInvoiceLine",
+          "usage": {}
+        }
+      ],
+      "rawTags": {
+        "class-usage-scope": "main"
+      },
+      "uri": "http://data.europa.eu/a4g/ontology#ChargeInformation"
+    },
+    {
+      "classType": "reference",
+      "label": {
+        "en": "Allowance information"
+      },
+      "name": "epo-ord:AllowanceInformation",
+      "properties": [
+        {
+          "cardinality": "0..*",
+          "description": {
+            "en": "Information that is particular to an Invoice Line."
+          },
+          "domain": [
+            {
+              "name": "epo-ord:AllowanceInformation",
+              "uri": "http://data.europa.eu/a4g/ontology#AllowanceInformation"
+            }
+          ],
+          "label": {
+            "en": "Is specific to invoice line"
+          },
+          "name": "epo-inv:isSpecificToInvoiceLine",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo-inv:InvoiceLine",
+              "range_label": {
+                "en": "Invoice line"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#InvoiceLine",
+              "range_uri": "http://data.europa.eu/a4g/ontology#InvoiceLine"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#isSpecificToInvoiceLine",
+          "usage": {}
+        }
+      ],
+      "rawTags": {
+        "class-usage-scope": "main"
+      },
+      "uri": "http://data.europa.eu/a4g/ontology#AllowanceInformation"
+    },
+    {
+      "classType": "reference",
+      "label": {
+        "en": "Remittance advice"
+      },
+      "name": "epo-pay:RemittanceAdvice",
+      "properties": [
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "Relation indicating that the instance of the concept involves the Payee."
+          },
+          "domain": [
+            {
+              "name": "epo-pay:RemittanceAdvice",
+              "uri": "http://data.europa.eu/a4g/ontology#RemittanceAdvice"
+            }
+          ],
+          "label": {
+            "en": "Specifies payee"
+          },
+          "name": "epo-inv:specifiesPayee",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo-inv:Payee",
+              "range_label": {
+                "en": "Payee"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#Payee",
+              "range_uri": "http://data.europa.eu/a4g/ontology#Payee"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#specifiesPayee",
+          "usage": {}
+        }
+      ],
+      "rawTags": {
+        "class-usage-scope": "main"
+      },
+      "uri": "http://data.europa.eu/a4g/ontology#RemittanceAdvice"
+    },
+    {
+      "classType": "reference",
+      "label": {
+        "en": "Payment information"
+      },
+      "name": "epo-pay:PaymentInformation",
+      "properties": [
+        {
+          "cardinality": "1",
+          "description": {
+            "en": "Relation indicating the Payment Instruction Information."
+          },
+          "domain": [
+            {
+              "name": "epo-pay:PaymentInformation",
+              "uri": "http://data.europa.eu/a4g/ontology#PaymentInformation"
+            }
+          ],
+          "label": {
+            "en": "Has payment means information"
+          },
+          "name": "epo-pay:hasPaymentMeansInformation",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo-inv:PaymentInstructionsInformation",
+              "range_label": {
+                "en": "Payment instructions information"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#PaymentInstructionsInformation",
+              "range_uri": "http://data.europa.eu/a4g/ontology#PaymentInstructionsInformation"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasPaymentMeansInformation",
+          "usage": {}
+        }
+      ],
+      "rawTags": {
+        "class-usage-scope": "main"
+      },
+      "uri": "http://data.europa.eu/a4g/ontology#PaymentInformation"
+    }
+  ],
+  "datatypes": [
+    {
+      "description": {
+        "en": ""
+      },
+      "label": {
+        "en": "Plain literal"
+      },
+      "scopeduri": "rdf:PlainLiteral",
+      "uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"
+    },
+    {
+      "description": {
+        "en": ""
+      },
+      "label": {
+        "en": "Any URI"
+      },
+      "scopeduri": "xsd:anyURI",
+      "uri": "http://www.w3.org/2001/XMLSchema#anyURI"
+    },
+    {
+      "description": {
+        "en": ""
+      },
+      "label": {
+        "en": "Boolean"
+      },
+      "scopeduri": "xsd:boolean",
+      "uri": "http://www.w3.org/2001/XMLSchema#boolean"
+    },
+    {
+      "description": {
+        "en": ""
+      },
+      "label": {
+        "en": "Date"
+      },
+      "scopeduri": "xsd:date",
+      "uri": "http://www.w3.org/2001/XMLSchema#date"
+    },
+    {
+      "description": {
+        "en": ""
+      },
+      "label": {
+        "en": "Date time"
+      },
+      "scopeduri": "xsd:dateTime",
+      "uri": "http://www.w3.org/2001/XMLSchema#dateTime"
+    },
+    {
+      "description": {
+        "en": ""
+      },
+      "label": {
+        "en": "Decimal"
+      },
+      "scopeduri": "xsd:decimal",
+      "uri": "http://www.w3.org/2001/XMLSchema#decimal"
+    },
+    {
+      "description": {
+        "en": ""
+      },
+      "label": {
+        "en": "Integer"
+      },
+      "scopeduri": "xsd:integer",
+      "uri": "http://www.w3.org/2001/XMLSchema#integer"
+    }
+  ],
+  "prefixes": [
+    {
+      "name": "epo-inv",
+      "uri": "http://data.europa.eu/a4g/ontology#"
+    },
+    {
+      "name": "adms",
+      "uri": "http://www.w3.org/ns/adms#"
+    },
+    {
+      "name": "epo-cat",
+      "uri": "http://data.europa.eu/a4g/ontology#"
+    },
+    {
+      "name": "epo",
+      "uri": "http://data.europa.eu/a4g/ontology#"
+    },
+    {
+      "name": "epo-ord",
+      "uri": "http://data.europa.eu/a4g/ontology#"
+    },
+    {
+      "name": "time",
+      "uri": "http://www.w3.org/2006/time#"
+    },
+    {
+      "name": "epo-ful",
+      "uri": "http://data.europa.eu/a4g/ontology#"
+    },
+    {
+      "name": "at-voc-new",
+      "uri": "http://publications.europa.eu/resource/authority/new/"
+    },
+    {
+      "name": "epo-pay",
+      "uri": "http://data.europa.eu/a4g/ontology#"
+    },
+    {
+      "name": "rdf",
+      "uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    },
+    {
+      "name": "xsd",
+      "uri": "http://www.w3.org/2001/XMLSchema#"
+    }
+  ]
+}

@@ -1,0 +1,243 @@
+
+
+
+
+= Glossary
+
+== Class names and definitions
+
+[options="header"]
+|===
+| Class name | Definition
+
+      
+| epo-eva:EvaluationBoard | Committee set up to evaluate the Tenders submitted. Additional Information: The committee may be a regular board or a jury.
+      
+    
+      
+| epo-eva:EvaluationCriterion | A Criterion used by the Buyer to assess and compare Tenders in order to determine which Offer best meets the objectives of the Procurement Procedure.
+      
+    
+      
+| epo-eva:EvaluationReport | Summary of the Evaluation.
+      
+    
+      
+| epo-eva:Evaluator | A Role of an Agent that asses the Tender submitted for a Lot.
+      
+    
+      
+| epo-eva:ExcludedCandidateList | Record of Candidates prevented from participating in a Procurement because one or more Exclusion Grounds apply.
+      
+    
+      
+| epo-eva:TenderClarification | A Document sent by the Tenderer to the Buyer in response to the Tender Clarification Request. Additional Information: The Tender Clarification may not alter the Tender.
+      
+    
+      
+| epo-eva:TenderClarificationRequest | A demand for elucidation of specific aspects of the Tender. Additional Information: This request and its answer may not alter the Tender.
+      
+    
+|===
+
+== Attributes (datatype properties) names and definitions
+
+[cols="20%,20%,40%,20%", options="header"]
+|===
+| Class name | Attribute name | Definition | Data type / cardinality
+
+
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+| epo-eva:EvaluationCriterion
+| epo-eva:fulfillsProcurementCriterion| 
+  Indicates whether the Procurement Criterion is satisfied.|xsd:boolean [0..1]
+  
+  
+  
+| epo-eva:EvaluationCriterion
+| epo-eva:hasEvaluationJustification| 
+  The motivation behind the Evaluation result.|rdf:PlainLiteral [0..1]
+  
+  
+  
+| epo-eva:EvaluationCriterion
+| epo-eva:hasScorePoint| 
+  The grade value assigned to a Procurement Criterion.|rdf:PlainLiteral [0..1]
+  
+  
+  
+| epo-eva:EvaluationReport
+| epo-eva:hasAwardCriteriaEvaluationScore| 
+  The total number of points obtained while assessing the Award Criteria.|rdf:PlainLiteral [0..1]
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+|===
+
+== Predicates (object properties) and definitions
+
+[cols="20%,50%,30%", options="header"]
+|===
+| Predicate name | Definition | Domain, Range and Cardinality
+
+
+  
+  
+| epo-eva:hasEvaluator| 
+  Relation indicating that the instance of the concept has an Evaluator.|epo-eva:EvaluationBoard → epo-eva:Evaluator [0..&#42;]
+
+  
+
+  
+  
+| epo-eva:hasJuryMember| 
+  An agent involved in an evaluation board.|epo-eva:EvaluationBoard → epo:JuryMember [0..&#42;]
+
+  
+
+  
+  
+| epo-eva:isAppointedBy| 
+  Relation indicating that by whom the instance of the concept is formally assigned.|epo-eva:EvaluationBoard → epo:UniqueResponsibleOfTheProcurement [1]
+
+  
+
+  
+  
+| epo:isAssignedForEvaluationOf| 
+  Relation indicating that the instance of the concept is selected for Evaluation.|epo-eva:EvaluationBoard → epo:Lot [0..&#42;]
+
+  
+
+  
+  
+| epo-eva:requestsClarification| 
+  Asks for more information.|epo-eva:EvaluationBoard → epo-eva:TenderClarificationRequest [0..&#42;]
+
+  
+
+  
+  
+| epo-eva:writesEvaluationReport| 
+  Authors an Evaluation Report.|epo-eva:EvaluationBoard → epo-eva:EvaluationReport [1..&#42;]
+
+  
+
+  
+  
+| epo-eva:evaluatesProcurementCriterion| 
+  Assesses Procurement Criterion.|epo-eva:EvaluationCriterion → epo:ProcurementCriterion [1]
+
+  
+
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+| epo-eva:providesRankToTender| 
+  Makes available the assigned position for the Tender.|epo-eva:EvaluationReport → epo:TenderAwardOutcome [1]
+
+  
+
+  
+  
+| epo-eva:reportsEvaluationCriterion| 
+  Provides an Evaluation Criterion.|epo-eva:EvaluationReport → epo-eva:EvaluationCriterion [1..&#42;]
+
+  
+
+  
+  
+| epo-eva:usesEvaluationFormula| 
+  Applies systematic method for assessment.|epo-eva:EvaluationReport → epo:AwardEvaluationTerm [0..1]
+
+  
+
+  
+  
+| epo:playedBy| 
+  Relation indicating the Agent that fulfills the function of the instance of the concept.|epo-eva:Evaluator → person:Person [0..1]
+
+  
+
+  
+  
+| epo:containsCandidate| 
+  |epo-eva:ExcludedCandidateList → epo:Candidate [0..&#42;]
+
+  
+
+  
+  
+| epo-eva:refersToTenderClarificationRequest| 
+  Reference to a Tender Clarification Request.|epo-eva:TenderClarification → epo-eva:TenderClarificationRequest [1]
+
+  
+
+  
+  
+| epo-eva:concernsEvaluationReport| 
+  Relates to Evaluation Report.|epo-eva:TenderClarificationRequest → epo-eva:EvaluationReport [0..1]
+
+  
+
+  
+
+  
+  
+| epo:specifiesEconomicOperator| 
+  Relation indicating that the instance of the concept involves the Economic Operator.|epo-eva:TenderClarificationRequest → epo:OfferingParty [1]
+
+  
+
+
+|===
+
+
+This document is generated automatically by the link:https://github.com/OP-TED/model2owl[model2owl tool] developed in the context of link:https://interoperable-europe.ec.europa.eu/collection/eprocurement/solution/eprocurement-ontology[the eProcurement Ontology initiative].

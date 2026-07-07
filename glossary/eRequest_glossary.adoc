@@ -1,0 +1,155 @@
+
+
+
+
+= Glossary
+
+== Class names and definitions
+
+[options="header"]
+|===
+| Class name | Definition
+
+      
+| epo-req:RequestForOffer | A Document sent by the Buyer to the Economic Operator, requesting the submission of a commercial proposal to supply goods, services, or works under specified conditions.
+      
+    
+      
+| epo-req:RequestForOfferLine | Details concerning a given unit of goods, services or works mentioned in the Request For Offer.
+      
+    
+|===
+
+== Attributes (datatype properties) names and definitions
+
+[cols="20%,20%,40%,20%", options="header"]
+|===
+| Class name | Attribute name | Definition | Data type / cardinality
+
+
+
+
+  
+  
+  
+  
+  
+  
+| epo-req:RequestForOffer
+| epo-req:hasSubmissionDueDate| 
+  Final date until the Submission is allowed.|xsd:dateTime [0..1]
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+| epo-req:RequestForOfferLine
+| epo-req:isOptional| 
+  Indicates whether the instance of the concept is not required.|xsd:boolean [0..1]
+  
+|===
+
+== Predicates (object properties) and definitions
+
+[cols="20%,50%,30%", options="header"]
+|===
+| Predicate name | Definition | Domain, Range and Cardinality
+
+
+  
+  
+| epo-req:comprisesRequestForOfferLine| 
+  Incorporates Request For Offer Line.|epo-req:RequestForOffer → epo-req:RequestForOfferLine [1..&#42;]
+
+  
+
+  
+  
+| epo:hasDestinationCountryCode| 
+  Relation indicating the Country code of the destination.|epo-req:RequestForOffer → at-voc:country [0..1]
+
+  
+
+  
+  
+  
+
+  
+  
+| epo-cat:refersToCatalogue| 
+  |epo-req:RequestForOffer → epo-cat:Catalogue [0..1]
+
+  
+
+  
+  
+| epo:refersToContract| 
+  Reference to a Contract.|epo-req:RequestForOffer → epo:Contract [0..&#42;]
+
+  
+
+  
+  
+| epo:specifiesBuyer| 
+  Relation indicating that the instance of the concept involves the Buyer.|epo-req:RequestForOffer → epo:Buyer [0..1]
+
+  
+
+  
+  
+| epo:specifiesContractor| 
+  Relation indicating that the instance of the concept involves the Contractor.|epo-req:RequestForOffer → epo:Contractor [1]
+
+  
+
+  
+  
+| epo-ord:specifiesDeliveryInformation| 
+  Relation indicating the Delivery Information.|epo-req:RequestForOffer → epo-ord:DeliveryInformation [0..&#42;]
+
+  
+
+  
+  
+| epo-req:specifiesOfferCurrency| 
+  Relation indicating the Currency for the Offer.|epo-req:RequestForOffer → at-voc:currency [0..1]
+
+  
+
+  
+  
+| epo-req:specifiesOfferValidityPeriod| 
+  Relation indicating the time range in which an Offer is valid.|epo-req:RequestForOffer → time:Interval [0..1]
+
+  
+
+  
+  
+| epo-ful:specifiesOriginator| 
+  Relation indicating that the instance of the concept involves the Originator.|epo-req:RequestForOffer → epo-ord:Originator [0..1]
+
+  
+
+  
+  
+  
+
+
+|===
+
+
+This document is generated automatically by the link:https://github.com/OP-TED/model2owl[model2owl tool] developed in the context of link:https://interoperable-europe.ec.europa.eu/collection/eprocurement/solution/eprocurement-ontology[the eProcurement Ontology initiative].

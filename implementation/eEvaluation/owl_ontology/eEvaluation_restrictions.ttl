@@ -1,0 +1,169 @@
+@prefix : <http://data.europa.eu/a4g/ontology#> .
+@prefix cccev: <http://data.europa.eu/m8g/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix eli: <http://data.europa.eu/eli/ontology#> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix person: <http://www.w3.org/ns/person#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+:containsCandidate rdfs:domain :ExcludedCandidateList ;
+    rdfs:range :Candidate .
+
+:eva-restriction a owl:Ontology ;
+    rdfs:label "eProcurement Ontology - eEvaluation restrictions"@en ;
+    dcterms:created "2021-06-01"^^xsd:date ;
+    dcterms:description "The eProcurement Ontology eEvaluation restrictions provides the restrictions and the inference-related specifications on the concepts and properties in the eProcurement Ontology eEvaluation module."@en ;
+    dcterms:issued "2026-07-07"^^xsd:date ;
+    dcterms:license "CC BY 4.0" ;
+    dcterms:publisher "http://publications.europa.eu/resource/authority/corporate-body/PUBL" ;
+    dcterms:title "eProcurement Ontology - eEvaluation restrictions"@en ;
+    vann:preferredNamespacePrefix "epo-eva" ;
+    vann:preferredNamespaceUri "http://data.europa.eu/a4g/ontology#" ;
+    rdfs:comment """This version is automatically generated from eEvaluation.xml on 
+                2026-07-07""" ;
+    rdfs:seeAlso <https://docs.ted.europa.eu/home/index.html>,
+        <https://github.com/OP-TED/ePO/releases>,
+        <https://joinup.ec.europa.eu/collection/eprocurement/solution/eprocurement-ontology/about>,
+        <https://op.europa.eu/en/web/eu-vocabularies/e-procurement> ;
+    owl:imports :eva,
+        eli:,
+        cccev:,
+        dcterms:,
+        skos:,
+        <http://www.w3.org/2006/time>,
+        <http://www.w3.org/ns/adms>,
+        <http://www.w3.org/ns/locn>,
+        org:,
+        <http://www.w3.org/ns/person> ;
+    owl:incompatibleWith "4.2.0" ;
+    owl:priorVersion "http://data.europa.eu/a4g/ontology#eva-restriction-5.1.0" ;
+    owl:versionIRI :eva-restriction-5.2.0 ;
+    owl:versionInfo "5.2.0" .
+
+:hasEvaluator rdfs:domain :EvaluationBoard ;
+    rdfs:range :Evaluator .
+
+:hasJuryMember rdfs:domain :EvaluationBoard ;
+    rdfs:range :JuryMember .
+
+:isAssignedForEvaluationOf rdfs:domain :EvaluationBoard ;
+    rdfs:range :Lot .
+
+:requestsClarification rdfs:domain :EvaluationBoard ;
+    rdfs:range :TenderClarificationRequest .
+
+:TenderClarification rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass :TenderClarificationRequest ;
+            owl:onProperty :refersToTenderClarificationRequest ;
+            owl:qualifiedCardinality 1 ] .
+
+:concernsEvaluationReport rdfs:domain :TenderClarificationRequest ;
+    rdfs:range :EvaluationReport .
+
+:evaluatesProcurementCriterion a owl:FunctionalProperty ;
+    rdfs:domain :EvaluationCriterion ;
+    rdfs:range :ProcurementCriterion .
+
+:fulfillsProcurementCriterion rdfs:domain :EvaluationCriterion ;
+    rdfs:range xsd:boolean .
+
+:hasAwardCriteriaEvaluationScore rdfs:domain :EvaluationReport ;
+    rdfs:range rdf:PlainLiteral .
+
+:hasEvaluationJustification rdfs:domain :EvaluationCriterion ;
+    rdfs:range rdf:PlainLiteral .
+
+:hasScorePoint rdfs:domain :EvaluationCriterion ;
+    rdfs:range rdf:PlainLiteral .
+
+:isAppointedBy a owl:FunctionalProperty ;
+    rdfs:domain :EvaluationBoard ;
+    rdfs:range :UniqueResponsibleOfTheProcurement .
+
+:playedBy rdfs:domain :Evaluator ;
+    rdfs:range person:Person .
+
+:providesRankToTender a owl:FunctionalProperty ;
+    rdfs:domain :EvaluationReport ;
+    rdfs:range :TenderAwardOutcome .
+
+:refersToTenderClarificationRequest a owl:FunctionalProperty ;
+    rdfs:domain :TenderClarification ;
+    rdfs:range :TenderClarificationRequest .
+
+:reportsEvaluationCriterion rdfs:domain :EvaluationReport ;
+    rdfs:range :EvaluationCriterion .
+
+:specifiesEconomicOperator a owl:FunctionalProperty ;
+    rdfs:domain :TenderClarificationRequest ;
+    rdfs:range :OfferingParty .
+
+:usesEvaluationFormula rdfs:domain :EvaluationReport ;
+    rdfs:range :AwardEvaluationTerm .
+
+:writesEvaluationReport rdfs:domain :EvaluationBoard ;
+    rdfs:range :EvaluationReport .
+
+:Evaluator rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass person:Person ;
+            owl:onProperty :playedBy ] .
+
+:TenderClarificationRequest rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass :EvaluationReport ;
+            owl:onProperty :concernsEvaluationReport ],
+        [ a owl:Restriction ;
+            owl:onClass :OfferingParty ;
+            owl:onProperty :specifiesEconomicOperator ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onProperty cccev:hasRequirement ;
+            owl:someValuesFrom cccev:InformationRequirement ] .
+
+:EvaluationBoard rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty :writesEvaluationReport ;
+            owl:someValuesFrom :EvaluationReport ],
+        [ a owl:Restriction ;
+            owl:onClass :UniqueResponsibleOfTheProcurement ;
+            owl:onProperty :isAppointedBy ;
+            owl:qualifiedCardinality 1 ] .
+
+:EvaluationCriterion rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onDataRange xsd:boolean ;
+            owl:onProperty :fulfillsProcurementCriterion ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onDataRange rdf:PlainLiteral ;
+            owl:onProperty :hasEvaluationJustification ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onDataRange rdf:PlainLiteral ;
+            owl:onProperty :hasScorePoint ],
+        [ a owl:Restriction ;
+            owl:onClass :ProcurementCriterion ;
+            owl:onProperty :evaluatesProcurementCriterion ;
+            owl:qualifiedCardinality 1 ] .
+
+:EvaluationReport rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onDataRange rdf:PlainLiteral ;
+            owl:onProperty :hasAwardCriteriaEvaluationScore ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass :AwardEvaluationTerm ;
+            owl:onProperty :usesEvaluationFormula ],
+        [ a owl:Restriction ;
+            owl:onProperty :reportsEvaluationCriterion ;
+            owl:someValuesFrom :EvaluationCriterion ],
+        [ a owl:Restriction ;
+            owl:onClass :TenderAwardOutcome ;
+            owl:onProperty :providesRankToTender ;
+            owl:qualifiedCardinality 1 ] .
+

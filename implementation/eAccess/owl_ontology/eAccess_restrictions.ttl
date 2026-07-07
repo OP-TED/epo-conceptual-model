@@ -1,0 +1,74 @@
+@prefix : <http://data.europa.eu/a4g/ontology#> .
+@prefix cccev: <http://data.europa.eu/m8g/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix eli: <http://data.europa.eu/eli/ontology#> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+:acc-restriction a owl:Ontology ;
+    rdfs:label "eProcurement Ontology - eAccess restrictions"@en ;
+    dcterms:created "2021-06-01"^^xsd:date ;
+    dcterms:description "The eProcurement Ontology eAccess restrictions provides the restrictions and the inference-related specifications on the concepts and properties in the eProcurement Ontology eAccess module."@en ;
+    dcterms:issued "2026-07-07"^^xsd:date ;
+    dcterms:license "CC BY 4.0" ;
+    dcterms:publisher "http://publications.europa.eu/resource/authority/corporate-body/PUBL" ;
+    dcterms:title "eProcurement Ontology - eAccess restrictions"@en ;
+    vann:preferredNamespacePrefix "epo-acc" ;
+    vann:preferredNamespaceUri "http://data.europa.eu/a4g/ontology#" ;
+    rdfs:comment """This version is automatically generated from eAccess.xml on 
+                2026-07-07""" ;
+    rdfs:seeAlso <https://docs.ted.europa.eu/home/index.html>,
+        <https://github.com/OP-TED/ePO/releases>,
+        <https://joinup.ec.europa.eu/collection/eprocurement/solution/eprocurement-ontology/about>,
+        <https://op.europa.eu/en/web/eu-vocabularies/e-procurement> ;
+    owl:imports :acc,
+        eli:,
+        cccev:,
+        dcterms:,
+        skos:,
+        <http://www.w3.org/2006/time>,
+        <http://www.w3.org/ns/adms>,
+        <http://www.w3.org/ns/locn>,
+        org:,
+        <http://www.w3.org/ns/person> ;
+    owl:incompatibleWith "4.2.0" ;
+    owl:priorVersion "http://data.europa.eu/a4g/ontology#acc-restriction-5.1.0" ;
+    owl:versionIRI :acc-restriction-5.2.0 ;
+    owl:versionInfo "5.2.0" .
+
+:hasResourceType rdfs:domain eli:LegalResource ;
+    rdfs:range skos:Concept .
+
+:hasSubdivision rdfs:domain eli:LegalResourceSubdivision ;
+    rdfs:range skos:Concept .
+
+:refersToNotice rdfs:domain :ESPDRequest ;
+    rdfs:range :Notice .
+
+:ESPD rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass :ESPDRequest ;
+            owl:onProperty :relatesToESPDRequest ] .
+
+:concernsProcedure a owl:FunctionalProperty ;
+    rdfs:domain :ESPDRequest ;
+    rdfs:range :Procedure .
+
+:relatesToESPDRequest rdfs:domain :ESPD ;
+    rdfs:range :ESPDRequest .
+
+:specifiesProcurementCriterion rdfs:domain :ESPDRequest ;
+    rdfs:range :ProcurementCriterion .
+
+:ESPDRequest rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass :Procedure ;
+            owl:onProperty :concernsProcedure ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onProperty :specifiesProcurementCriterion ;
+            owl:someValuesFrom :ProcurementCriterion ] .
+

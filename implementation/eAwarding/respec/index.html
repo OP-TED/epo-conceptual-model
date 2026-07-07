@@ -1,0 +1,1273 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<head>	
+    <meta charset="utf-8" />
+    <title>ePO eAwarding</title>
+    <script src="https://www.w3.org/Tools/respec/respec-w3c" class="remove" defer></script>
+    <script class="remove">
+    // All config options at https://respec.org/docs/
+
+	var myeditors = [
+	
+	
+	
+	
+	    
+	    
+		
+		   {
+		    name: "Alice Example",
+		      
+		    companyURL: "https://acme.example",
+		      
+		      
+		    company: "ACME Labs",
+		      
+		      
+		    mailto: "alice@example.org"
+		      
+		    }
+		
+		
+             
+        
+	
+		]
+
+	var myauthors = [
+	
+	
+	    
+	    
+		
+		   {
+		    name: "John Smith",
+		      
+		    companyURL: "https://acme.example",
+		      
+		      
+		    company: "ACME Labs",
+		      
+		      
+		    mailto: "john@example.org"
+		      
+		    }
+		
+		
+             
+        
+	
+	
+	
+		]
+	
+	function quickreference() {
+		$('#table-quickoverview').DataTable();
+	};
+
+   
+    var respecConfig = {
+      postProcess: [quickreference],
+      edDraftURI: "https://OP-TED.github.io/ePO/releases/5.2.0/",
+      latestVersion: "https://OP-TED.github.io/ePO/releases/5.1.0/",
+      specStatus: "base",
+      publishDate: "2026-07-07",
+      editors: myeditors,
+      authors: myauthors,
+      github: "OP-TED/ePO",
+      shortName: "ePO eAwarding",
+      xref: "web-platform",
+      doJsonLd: true,
+      
+      generatedSubtitle: "",
+      additionalCopyrightHolders: "",
+      
+        localBiblio: {'W3ID': {'href': 'https://w3id.org/', 'title': 'Permanent Identifiers for the Web', 'publisher': 'W3C Permanent Identifier Community Group'}, 'FAIR': {'href': 'https://www.openaire.eu/how-to-make-your-data-fair', 'title': 'How to make your data FAIR', 'publisher': 'OpenAire'}},
+      
+      
+        otherLinks: [
+          
+          {
+            key: "Owners:",
+            data: [
+              
+                {
+                  value: "ACME",
+                  
+                  href: "https://joinup.ec.europa.eu/collection/semic-support-centre"
+                  
+                }, 
+              
+                {
+                  value: "Tom White",
+                  
+                }
+              
+            ]
+          },
+          
+          
+          
+          {
+            key: "Source:",
+            data: [
+                {
+                  value: "https://github.com/OP-TED/ePO",
+                  href: "https://github.com/OP-TED/ePO"
+                }
+            ]
+          },
+          
+          
+          
+          {
+              key: "Related documentation:",
+              data: [{'value': 'Doc1', 'href': 'https://example.com/doc1'}, {'value': 'Doc2'}]
+          }
+          
+        ],
+      
+      
+      
+
+    };
+
+    
+
+    </script>
+    <style>
+      .figure img, .sidefigure img, figure img, .figure object, .sidefigure object, figure object, img, .img {
+      max-width: 100%;
+      margin: auto;
+      height: auto;
+      }
+    </style>
+     
+    <p class="copyright">
+        Copyright © <span id="year"></span>
+    </p>
+    <script>
+        document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="msapplication-TileColor" content="#7ED956" />
+</head>
+<body>
+
+<!-- #################### Beginning of page content ####################### -->
+
+    
+        
+<section id="abstract">
+    <h2>Abstract</h2>
+    <!-- Replace the below paragraph with your text -->
+    <p class="instruction">
+        The abstract should provide a concise overview of the semantic model, summarizing its scope, purpose, and key elements. The final content should explain what the model represents, its intended use, and the core concepts it covers. For instance, it should describe the main classes, relationships, and types of entities addressed, highlighting reusability, extensibility, and integration within a broader data ecosystem.
+    </p>
+</section>
+
+    
+
+    
+        
+<section id="specintro">
+    <h2>Introduction</h2>
+    <p class="instruction">
+        The Introduction should provide context for the vocabulary, including the motivation for its creation, its intended audience, and the problems it aims to address. The section should give readers a high-level understanding of the model, including its scope, design principles, and how it fits within related specifications or standards.
+    </p>
+</section>
+
+    
+
+    
+        
+<section id="specstatus">
+    <h2>Status</h2>
+    <p class="instruction">
+        The Status section should explain the current standing of the specification, including its level of formal recognition, publication date, and any relevant approval or recommendation information. It should also summarize the development process, key decisions, and provide references to changelogs or historical versions.
+        It is recommended to indicate the <a href="https://www.w3.org/2021/Process-20211102/#maturity-levels">maturity levels</a> of the specification.
+    </p>
+    <p>
+        
+            This application profile has the status <i>Draft</i> and has been published on 2026-07-07.
+        
+    </p>
+    <p>
+        History of changes to the project is available in <a href="https://github.com/OP-TED/ePO/releases">Changelog</a>.
+    </p>
+</section>
+
+    
+
+    
+        
+<section id="speclicence">
+    <h2>License</h2>
+    <p class="instruction">
+        The License section should outline the legal terms under which the vocabulary and associated materials may be used, shared, and modified. It should clearly indicate copyright ownership, applicable licenses, exceptions, and any obligations or restrictions for users and contributors.
+    </p>
+    <p>
+        
+            This specification of ePO eAwarding is published under CC BY 4.0.
+        
+    </p>
+</section>
+
+    
+
+    
+        
+<section id="conformance">    
+    <p class="instruction">
+        The Conformance section should define which parts of the specification are normative versus non-normative, and how compliance should be interpreted. It should explain the meaning of key terms such as MUST, MAY, and SHOULD, and it should provide guidance on how these rules should be applied when using or extending the vocabulary.
+    </p>
+</section>
+
+    
+
+    
+        <section id="specterminology">
+            <h2>Terminology</h2>
+            <p>
+                The Terminology section defining the key concepts and terms used in the vocabulary.
+            </p>
+
+
+            
+                
+    <h3>Used Prefixes</h3>
+    <table id="table-namespaces" class="simple">
+        <thead><tr><th>Prefix</th><th>Namespace IRI</th></tr></thead>
+        <tbody>
+        
+        <tr>
+            <td>
+            <code>epo</code>
+            </td>
+            <td>
+            <code>http://data.europa.eu/a4g/ontology#</code>
+            </td>
+        </tr>
+        
+        <tr>
+            <td>
+            <code>epo-awa</code>
+            </td>
+            <td>
+            <code>http://data.europa.eu/a4g/ontology#</code>
+            </td>
+        </tr>
+        
+        <tr>
+            <td>
+            <code>epo-qua</code>
+            </td>
+            <td>
+            <code>http://data.europa.eu/a4g/ontology#</code>
+            </td>
+        </tr>
+        
+        <tr>
+            <td>
+            <code>rdf</code>
+            </td>
+            <td>
+            <code>http://www.w3.org/1999/02/22-rdf-syntax-ns#</code>
+            </td>
+        </tr>
+        
+        <tr>
+            <td>
+            <code>xsd</code>
+            </td>
+            <td>
+            <code>http://www.w3.org/2001/XMLSchema#</code>
+            </td>
+        </tr>
+        
+        </tbody>
+    </table>
+    
+            
+        </section>
+    
+
+    
+        
+<section id="specoverview">
+    <h2>Overview</h2>
+    <div id="overview">
+        
+            
+                    <p>
+                        This document describes the usage of the following main entities for a correct usage of the vocabulary:
+                        <br />
+                        |
+                <a href="#Awarddecisionnotification">Award decision notification</a> |
+                    </p>
+                    <p>
+                        The main entities are supported by:
+                        <br />
+                        |
+                    </p>
+            
+        
+        
+            
+                    <p>
+                        And supported by these datatypes:
+                        <br />
+                        | <a href="#Plainliteral">Plain literal</a> | <a href="#Anyuri">Any URI</a> | <a href="#Boolean">Boolean</a> | <a href="#Date">Date</a> | <a href="#Datetime">Date time</a> | <a href="#Decimal">Decimal</a> | <a href="#Integer">Integer</a> |
+                    </p>
+            
+        
+    </div>
+    <div>
+        <a href="./assets/overview.png"
+           target="_blank">
+            <img src="./assets/overview.png"
+                onerror="this.style.display='none'"/>
+        </a>
+    </div>
+</section>
+
+    
+
+    
+        
+<section>
+    <h2>Main Entities</h2>
+    The main entities are those that form the core of the vocabulary. 
+    Properties of entities are listed in a tabular form.
+
+    
+        
+            
+                
+    <section>
+        <h3 id="Awarddecisionnotification">
+            <a href="http://data.europa.eu/a4g/ontology#AwardDecisionNotification"
+                data-toggle="tooltip"
+                data-content="http://data.europa.eu/a4g/ontology#AwardDecisionNotification"
+                data-placement="right">Award decision notification</a>
+
+        </h3>
+        <span style="float:right;margin-right:10px;">
+        
+        
+        
+        
+        
+            
+            
+        
+
+        <a href="https://github.com/OP-TED/ePO/issues/new?title=Issue%20for%20'Award decision notification'&body=Explain%20your%20issue%20for%20https://OP-TED.github.io/ePO/releases/5.2.0/%23Awarddecisionnotification" target="_blank" rel="noopener noreferrer" >
+            <img src="./assets/img/callout.png" loading="lazy" alt="[o]" title="Report an issue or share feedback" class="feedbackButton"/>
+        </a>
+    
+</span>
+        
+        <dl>
+            <dt>
+                Definition
+            </dt>
+            <dd>
+                A formal communication sent by the Buyer to inform Tenderers of the Award Decision.
+            </dd>
+            
+            
+                <dt>
+                    Subclass of
+                </dt>
+                <dd> <a href="http://data.europa.eu/a4g/ontology#Document">Document</a>
+                    
+                </dd>
+            
+            
+            <dt>
+                Properties
+            </dt>
+            
+                <dd>
+                    For this entity the following properties are defined:
+                        
+                        
+                        <a href="#Awarddecisionnotification.concernsawardoutcome">concerns award outcome</a>,
+                        
+                        
+                        <a href="#Awarddecisionnotification.concernsprocedure">concerns procedure</a>,
+                        
+                        
+                        <a href="#Awarddecisionnotification.hasstandstillperiodenddate">has standstill period end date</a>,
+                        
+                        
+                        <a href="#Awarddecisionnotification.specifiestenderer">specifies tenderer</a>.
+                </dd>
+            
+        </dl>
+        
+            <div class="u-table-overflow">
+                <table class="data-table simple" id="table-mandatory-classes">
+                    <thead>
+                        <tr class="data-table__header">
+                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:12%">
+                                Property
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:12%">
+                                Range
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:6%">
+                                Card
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:30%">
+                                Definition 
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:30%">
+                                Usage
+                            </th>
+                            
+                            
+                                <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:5%">
+                                    Feedback
+                                </th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody class="supertype">
+                        
+                            <tr id="Awarddecisionnotification.concernsawardoutcome"
+                                typeof="rdf:Property"
+                                resource="http://data.europa.eu/a4g/ontology#concernsAwardOutcome"
+                                class="class mandatory">
+                                <td>
+                                        
+                                        
+                                        <a href="http://data.europa.eu/a4g/ontology#concernsAwardOutcome"
+                                        data-toggle="tooltip"
+                                        data-content="http://data.europa.eu/a4g/ontology#concernsAwardOutcome"
+                                        data-placement="right">
+                                        concerns award outcome</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                                <p title="The term 'epo:AwardOutcome' is not defined in this document. Please refer to the appropriate module's documentation.">Award outcome</p>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    1..*
+                                </td>
+                                <td>
+                                    Relates to Award Outcome.
+                                </td>
+                                <td>
+                                    
+                                </td>
+                                
+                                <td>
+                                    
+        
+        
+        
+        
+        
+            
+            
+       
+            
+
+        <a href="https://github.com/OP-TED/ePO/issues/new?title=Issue%20for%20'Concerns award outcome'%20in%20'Award decision notification'&body=Explain%20your%20issue%20for%20https://OP-TED.github.io/ePO/releases/5.2.0/%23Awarddecisionnotification.concernsawardoutcome" target="_blank" rel="noopener noreferrer" >
+            <img src="./assets/img/callout.png" loading="lazy" alt="[o]" title="Report an issue or share feedback" class="feedbackButton"/>
+        </a>
+    
+
+                                </td>
+                            </tr>
+                        
+                            <tr id="Awarddecisionnotification.concernsprocedure"
+                                typeof="rdf:Property"
+                                resource="http://data.europa.eu/a4g/ontology#concernsProcedure"
+                                class="class mandatory">
+                                <td>
+                                        
+                                        
+                                        <a href="http://data.europa.eu/a4g/ontology#concernsProcedure"
+                                        data-toggle="tooltip"
+                                        data-content="http://data.europa.eu/a4g/ontology#concernsProcedure"
+                                        data-placement="right">
+                                        concerns procedure</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                                <p title="The term 'epo:Procedure' is not defined in this document. Please refer to the appropriate module's documentation.">Procedure</p>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    1
+                                </td>
+                                <td>
+                                    Relates to Procedure.
+                                </td>
+                                <td>
+                                    
+                                </td>
+                                
+                                <td>
+                                    
+        
+        
+        
+        
+        
+            
+            
+       
+            
+
+        <a href="https://github.com/OP-TED/ePO/issues/new?title=Issue%20for%20'Concerns procedure'%20in%20'Award decision notification'&body=Explain%20your%20issue%20for%20https://OP-TED.github.io/ePO/releases/5.2.0/%23Awarddecisionnotification.concernsprocedure" target="_blank" rel="noopener noreferrer" >
+            <img src="./assets/img/callout.png" loading="lazy" alt="[o]" title="Report an issue or share feedback" class="feedbackButton"/>
+        </a>
+    
+
+                                </td>
+                            </tr>
+                        
+                            <tr id="Awarddecisionnotification.hasstandstillperiodenddate"
+                                typeof="rdf:Property"
+                                resource="http://data.europa.eu/a4g/ontology#hasStandstillPeriodEndDate"
+                                class="class mandatory">
+                                <td>
+                                        
+                                        
+                                        <a href="http://data.europa.eu/a4g/ontology#hasStandstillPeriodEndDate"
+                                        data-toggle="tooltip"
+                                        data-content="http://data.europa.eu/a4g/ontology#hasStandstillPeriodEndDate"
+                                        data-placement="right">
+                                        has standstill period end date</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            
+                                                <a href="#Date"
+                                                data-toggle="tooltip"
+                                                data-content="http://www.w3.org/2001/XMLSchema#date"
+                                                data-placement="right">Date</a>
+                                            
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..1
+                                </td>
+                                <td>
+                                    The end date for the mandatory minimum time frame between the communication of a contract award decision and the formal conclusion of the contract, during which unsuccessful Tenderers have the opportunity to challenge the award before it becomes legally binding.
+                                </td>
+                                <td>
+                                    
+                                </td>
+                                
+                                <td>
+                                    
+        
+        
+        
+        
+        
+            
+            
+       
+            
+
+        <a href="https://github.com/OP-TED/ePO/issues/new?title=Issue%20for%20'Has standstill period end date'%20in%20'Award decision notification'&body=Explain%20your%20issue%20for%20https://OP-TED.github.io/ePO/releases/5.2.0/%23Awarddecisionnotification.hasstandstillperiodenddate" target="_blank" rel="noopener noreferrer" >
+            <img src="./assets/img/callout.png" loading="lazy" alt="[o]" title="Report an issue or share feedback" class="feedbackButton"/>
+        </a>
+    
+
+                                </td>
+                            </tr>
+                        
+                            <tr id="Awarddecisionnotification.specifiestenderer"
+                                typeof="rdf:Property"
+                                resource="http://data.europa.eu/a4g/ontology#specifiesTenderer"
+                                class="class mandatory">
+                                <td>
+                                        
+                                        
+                                        <a href="http://data.europa.eu/a4g/ontology#specifiesTenderer"
+                                        data-toggle="tooltip"
+                                        data-content="http://data.europa.eu/a4g/ontology#specifiesTenderer"
+                                        data-placement="right">
+                                        specifies tenderer</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                                <p title="The term 'epo:Tenderer' is not defined in this document. Please refer to the appropriate module's documentation.">Tenderer</p>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    1
+                                </td>
+                                <td>
+                                    Relation indicating that the instance of the concept involves the Tenderer.
+                                </td>
+                                <td>
+                                    
+                                </td>
+                                
+                                <td>
+                                    
+        
+        
+        
+        
+        
+            
+            
+       
+            
+
+        <a href="https://github.com/OP-TED/ePO/issues/new?title=Issue%20for%20'Specifies tenderer'%20in%20'Award decision notification'&body=Explain%20your%20issue%20for%20https://OP-TED.github.io/ePO/releases/5.2.0/%23Awarddecisionnotification.specifiestenderer" target="_blank" rel="noopener noreferrer" >
+            <img src="./assets/img/callout.png" loading="lazy" alt="[o]" title="Report an issue or share feedback" class="feedbackButton"/>
+        </a>
+    
+
+                                </td>
+                            </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+        
+    </section>
+
+            
+        
+    
+</section>
+
+    
+
+    
+        
+<section>
+    <h2>Supportive Entities</h2>
+    The supportive entities are supporting the main entities in the vocabulary. They are included in the vocabulary because they form the range of properties.
+
+    
+        
+            
+        
+    
+</section>
+
+    
+
+    
+        
+<section>
+    <h2>Datatypes</h2>
+
+	The following datatypes are used within this specification.
+
+    
+        <table class="data-table simple" id="table-mandatory-classes">
+            <thead>
+                <tr class="data-table__header">
+                    <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:25%">
+                        Class
+                    </th>
+                    <th class="data-table__header-title--sortable" style="width:70%">
+                        Definition
+                    </th>
+                    
+                        <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:5%">
+                            Feedback
+                        </th>
+                    
+                </tr>
+            </thead>
+            <tbody class="supertype">
+                
+                <tr>
+                    <td>
+                        
+                            <div id="Plainliteral">
+                                <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"
+                                    data-toggle="tooltip"
+                                    data-content="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"
+                                    data-placement="right">Plain literal</a>
+                            </div>
+                        
+                    </td>
+                    <td>
+                        
+                    </td>
+                    <td>
+                        
+        
+        
+        
+        
+        
+            
+            
+        
+
+        <a href="https://github.com/OP-TED/ePO/issues/new?title=Issue%20for%20'Plain literal'&body=Explain%20your%20issue%20for%20https://OP-TED.github.io/ePO/releases/5.2.0/%23Plainliteral" target="_blank" rel="noopener noreferrer" >
+            <img src="./assets/img/callout.png" loading="lazy" alt="[o]" title="Report an issue or share feedback" class="feedbackButton"/>
+        </a>
+    
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        
+                            <div id="Anyuri">
+                                <a href="http://www.w3.org/2001/XMLSchema#anyURI"
+                                    data-toggle="tooltip"
+                                    data-content="http://www.w3.org/2001/XMLSchema#anyURI"
+                                    data-placement="right">Any URI</a>
+                            </div>
+                        
+                    </td>
+                    <td>
+                        
+                    </td>
+                    <td>
+                        
+        
+        
+        
+        
+        
+            
+            
+        
+
+        <a href="https://github.com/OP-TED/ePO/issues/new?title=Issue%20for%20'Any URI'&body=Explain%20your%20issue%20for%20https://OP-TED.github.io/ePO/releases/5.2.0/%23Anyuri" target="_blank" rel="noopener noreferrer" >
+            <img src="./assets/img/callout.png" loading="lazy" alt="[o]" title="Report an issue or share feedback" class="feedbackButton"/>
+        </a>
+    
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        
+                            <div id="Boolean">
+                                <a href="http://www.w3.org/2001/XMLSchema#boolean"
+                                    data-toggle="tooltip"
+                                    data-content="http://www.w3.org/2001/XMLSchema#boolean"
+                                    data-placement="right">Boolean</a>
+                            </div>
+                        
+                    </td>
+                    <td>
+                        
+                    </td>
+                    <td>
+                        
+        
+        
+        
+        
+        
+            
+            
+        
+
+        <a href="https://github.com/OP-TED/ePO/issues/new?title=Issue%20for%20'Boolean'&body=Explain%20your%20issue%20for%20https://OP-TED.github.io/ePO/releases/5.2.0/%23Boolean" target="_blank" rel="noopener noreferrer" >
+            <img src="./assets/img/callout.png" loading="lazy" alt="[o]" title="Report an issue or share feedback" class="feedbackButton"/>
+        </a>
+    
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        
+                            <div id="Date">
+                                <a href="http://www.w3.org/2001/XMLSchema#date"
+                                    data-toggle="tooltip"
+                                    data-content="http://www.w3.org/2001/XMLSchema#date"
+                                    data-placement="right">Date</a>
+                            </div>
+                        
+                    </td>
+                    <td>
+                        
+                    </td>
+                    <td>
+                        
+        
+        
+        
+        
+        
+            
+            
+        
+
+        <a href="https://github.com/OP-TED/ePO/issues/new?title=Issue%20for%20'Date'&body=Explain%20your%20issue%20for%20https://OP-TED.github.io/ePO/releases/5.2.0/%23Date" target="_blank" rel="noopener noreferrer" >
+            <img src="./assets/img/callout.png" loading="lazy" alt="[o]" title="Report an issue or share feedback" class="feedbackButton"/>
+        </a>
+    
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        
+                            <div id="Datetime">
+                                <a href="http://www.w3.org/2001/XMLSchema#dateTime"
+                                    data-toggle="tooltip"
+                                    data-content="http://www.w3.org/2001/XMLSchema#dateTime"
+                                    data-placement="right">Date time</a>
+                            </div>
+                        
+                    </td>
+                    <td>
+                        
+                    </td>
+                    <td>
+                        
+        
+        
+        
+        
+        
+            
+            
+        
+
+        <a href="https://github.com/OP-TED/ePO/issues/new?title=Issue%20for%20'Date time'&body=Explain%20your%20issue%20for%20https://OP-TED.github.io/ePO/releases/5.2.0/%23Datetime" target="_blank" rel="noopener noreferrer" >
+            <img src="./assets/img/callout.png" loading="lazy" alt="[o]" title="Report an issue or share feedback" class="feedbackButton"/>
+        </a>
+    
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        
+                            <div id="Decimal">
+                                <a href="http://www.w3.org/2001/XMLSchema#decimal"
+                                    data-toggle="tooltip"
+                                    data-content="http://www.w3.org/2001/XMLSchema#decimal"
+                                    data-placement="right">Decimal</a>
+                            </div>
+                        
+                    </td>
+                    <td>
+                        
+                    </td>
+                    <td>
+                        
+        
+        
+        
+        
+        
+            
+            
+        
+
+        <a href="https://github.com/OP-TED/ePO/issues/new?title=Issue%20for%20'Decimal'&body=Explain%20your%20issue%20for%20https://OP-TED.github.io/ePO/releases/5.2.0/%23Decimal" target="_blank" rel="noopener noreferrer" >
+            <img src="./assets/img/callout.png" loading="lazy" alt="[o]" title="Report an issue or share feedback" class="feedbackButton"/>
+        </a>
+    
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        
+                            <div id="Integer">
+                                <a href="http://www.w3.org/2001/XMLSchema#integer"
+                                    data-toggle="tooltip"
+                                    data-content="http://www.w3.org/2001/XMLSchema#integer"
+                                    data-placement="right">Integer</a>
+                            </div>
+                        
+                    </td>
+                    <td>
+                        
+                    </td>
+                    <td>
+                        
+        
+        
+        
+        
+        
+            
+            
+        
+
+        <a href="https://github.com/OP-TED/ePO/issues/new?title=Issue%20for%20'Integer'&body=Explain%20your%20issue%20for%20https://OP-TED.github.io/ePO/releases/5.2.0/%23Integer" target="_blank" rel="noopener noreferrer" >
+            <img src="./assets/img/callout.png" loading="lazy" alt="[o]" title="Report an issue or share feedback" class="feedbackButton"/>
+        </a>
+    
+
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    
+</section>
+
+    
+
+    
+        <section class="informative">
+            <h2>Usage Guidelines - change </h2>
+            
+            <h3>Basic Usage</h3>
+            <p>To use this vocabulary, follow these guidelines:</p>
+            
+            
+                        <div class="h3 examples" id="example1">Example 1</div>
+            
+        </section>
+     
+
+    
+        <section class="informative">
+            <h2>Governance</h2>
+        </section>
+    
+
+    
+        <section class="informative">
+            <h2>Custom section - TEMPLATE_CUSTOM_2024</h2>
+            <p>A custom section introduced in main template</p>
+        </section>
+        
+        <!-- Include custom template content -->
+        <section class="informative">
+    <h2>Custom section from custom.j2 </h2>
+    <p>A custom section introduced in main template via include</p>
+</section>
+
+    
+
+    
+        
+<section id="quick-reference" class="appendix">
+    <h2>Quick Reference of Classes and Properties</h2>
+
+    This section provides a condensed tabular overview of the mentioned classes and properties in this specification.
+
+    
+        <table id="table-quickoverview" class="simple" style="width:100%; table-layout: fixed; word-wrap:break-word;">
+            <thead>
+                <tr>
+                    <th>Class</th>
+                    <th>Class IRI</th>
+                    <th>Property type</th>
+                    <th>Property</th>
+                    <th>Property IRI</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+                    
+                        
+                            
+                            
+                            <tr>
+                                <td><a href="#Awarddecisionnotification">Award decision notification</a></td>
+                                <td><div class="compact-uri">http://data.europa.eu/a4g/ontology#AwardDecisionNotification</div></td>
+                                <td>
+    
+    
+        
+        
+            Mandatory
+        
+    
+</td>
+                                <td><a href="#Awarddecisionnotification.concernsawardoutcome">concerns award outcome </a></td>
+                                <td><div class="compact-uri">http://data.europa.eu/a4g/ontology#concernsAwardOutcome</div></td>
+                            </tr>
+                        
+                            
+                            
+                            <tr>
+                                <td><a href="#Awarddecisionnotification">Award decision notification</a></td>
+                                <td><div class="compact-uri">http://data.europa.eu/a4g/ontology#AwardDecisionNotification</div></td>
+                                <td>
+    
+    
+        
+        
+            Mandatory
+        
+    
+</td>
+                                <td><a href="#Awarddecisionnotification.concernsprocedure">concerns procedure </a></td>
+                                <td><div class="compact-uri">http://data.europa.eu/a4g/ontology#concernsProcedure</div></td>
+                            </tr>
+                        
+                            
+                            
+                            <tr>
+                                <td><a href="#Awarddecisionnotification">Award decision notification</a></td>
+                                <td><div class="compact-uri">http://data.europa.eu/a4g/ontology#AwardDecisionNotification</div></td>
+                                <td>
+    
+    
+        
+        
+            Optional
+        
+    
+</td>
+                                <td><a href="#Awarddecisionnotification.hasstandstillperiodenddate">has standstill period end date </a></td>
+                                <td><div class="compact-uri">http://data.europa.eu/a4g/ontology#hasStandstillPeriodEndDate</div></td>
+                            </tr>
+                        
+                            
+                            
+                            <tr>
+                                <td><a href="#Awarddecisionnotification">Award decision notification</a></td>
+                                <td><div class="compact-uri">http://data.europa.eu/a4g/ontology#AwardDecisionNotification</div></td>
+                                <td>
+    
+    
+        
+        
+            Mandatory
+        
+    
+</td>
+                                <td><a href="#Awarddecisionnotification.specifiestenderer">specifies tenderer </a></td>
+                                <td><div class="compact-uri">http://data.europa.eu/a4g/ontology#specifiesTenderer</div></td>
+                            </tr>
+                        
+                    
+                
+            <tbody>
+        </table>
+    
+</section>
+
+    
+
+    
+        
+<section id="resources" class="appendix">
+    <h2>Project resources</h2>
+    <p>
+        The following list provides links to semantic data specifications and other resources related to this vocabulary.
+    </p>
+    
+</section>
+
+    
+
+
+
+<!-- ######################## End of page content ######################### -->
+</body>
+
+<!-- This must be at the end of the template, to ensure that the iterator properly works -->
+    <script defer>
+
+      const allPrefixes = [{'name': 'epo-qua', 'uri': 'http://data.europa.eu/a4g/ontology#'}, {'name': 'epo-awa', 'uri': 'http://data.europa.eu/a4g/ontology#'}, {'name': 'epo', 'uri': 'http://data.europa.eu/a4g/ontology#'}, {'name': 'rdf', 'uri': 'http://www.w3.org/1999/02/22-rdf-syntax-ns#'}, {'name': 'xsd', 'uri': 'http://www.w3.org/2001/XMLSchema#'}];
+      var usablePrefixes = [];
+      for (var i = 0; i < allPrefixes.length; i++) {
+        if (allPrefixes[i].uri) {
+          usablePrefixes.push(allPrefixes[i]);
+        } else {
+          console.warn("Prefix missing 'uri' property (or has empty value):", allPrefixes[i]);
+        }
+      }
+
+      function compactUri(uri) {
+          var curie = uri;
+          for (e in usablePrefixes) {
+              var elem = usablePrefixes[e];
+              if (curie.startsWith(elem.uri)) {
+                curie = elem.name + ":" + curie.slice(elem.uri.length);
+                break;
+              }
+          };
+          return curie;
+      };
+
+      var compactUriElems = document.getElementsByClassName("compact-uri");
+      for (k=0;k < compactUriElems.length ; k++){
+          var selem = compactUriElems[k];	
+          selem.innerHTML = compactUri(selem.innerHTML.trim());
+      }
+      
+    </script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.6/codemirror.min.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css"> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.6/codemirror.min.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.6/codemirror.min.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.6/mode/javascript/javascript.min.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.6/mode/turtle/turtle.min.js" ></script>
+    <script src="https://codemirror.net/5/mode/javascript/javascript.js" ></script>
+    <script src="https://unpkg.com/n3@1.14.0/browser/n3.min.js"></script>
+	<script src="https://rdf.js.org/comunica-browser/versions/v4/engines/query-sparql/comunica-browser.js"></script>
+    <script src="./js/example.js" ></script>
+	<script type="text/javascript">
+		function elementInView(elem){
+				goesIn = ($(window).height() + $(window).scrollTop()) > $(elem).offset().top;
+				goesOut = ($(window).scrollTop()) > ($(elem).offset().top + $(elem).height());
+				if (goesIn && !goesOut)
+					return 1;
+				else
+					return 0;
+			};
+
+		$(window).scroll(function(){
+			$('.CodeMirror').each(function(){
+				if (elementInView($(this))){
+					$(this).each(function(i, el){
+						el.CodeMirror.refresh();
+					});
+				}
+			});
+			
+		});
+	</script>
+	<style>
+		.CodeMirror {
+			border: 1px solid #eee;
+			height: auto;
+		}
+		.buttonsample {
+			cursor: pointer;
+			margin-top: 10px;
+			margin-left: 10px;
+			font-weight: 700;
+			border:0 outset buttonface;
+			background: #F5F6F8;
+			background-image: linear-gradient(to bottom,#F5F6F8,#DBDCDE);
+			border-radius:4px;
+			box-shadow:0 1px 3px #666;
+			font-family: Arial;
+			color: grey;
+			font-size: 13px !important;
+			padding: 10px 5px;
+			text-decoration: none;
+			float: right
+		}
+	    .chooseVersion {
+			cursor: pointer;
+			margin-top: 10px;
+			margin-left: 10px;
+			font-weight: 700;
+			border:0 outset buttonface;
+			background: #F5F6F8;
+			background-image: linear-gradient(to bottom,#F5F6F8,#DBDCDE);
+			border-radius:4px;
+			box-shadow:0 1px 3px #666;
+			font-family: Arial;
+			color: grey;
+			font-size: 13px !important;
+			padding: 9px 5px;
+			text-decoration: none;
+			float: right
+		}
+		.infosample {
+			cursor: pointer;
+			margin-top: 10px;
+			font-weight: 700;
+			border:0 outset buttonface;
+			border-radius:4px;
+			font-family: Arial;
+			color: grey;
+			font-size: 14px;
+			padding: 10px 0px;
+			text-decoration: none;
+			float: right
+		}
+		.buttonsample:hover {color:#2a70d3}
+		.tabsstyle {
+			padding: 10px;
+			overflow: hidden;
+		}
+		li.ui-tabs-tab > a:hover {
+			background-color:dodgerblue;
+			color:white;
+		}
+		table.simple {
+			font-size: small;
+			border-spacing:0;
+			border-collapse:collapse;
+			border-bottom:3px solid #005a9c
+		}
+		.simple th{background:#005a9c;color:#fff;padding:3px 5px;text-align:left}
+		.simple th a{color:#fff;padding:3px 5px;text-align:left}
+		.simple th[scope=row]{background:inherit;color:inherit;border-top:1px solid #ddd}
+		.simple td{padding:3px 10px;border-top:1px solid #ddd}
+		.simple tr:nth-child(even){background:#f0f6ff}
+		body.darkmode .simple th{background:#005a9c94;color:#ddd}
+		body.darkmode .simple th a{color:#ddd}
+		body.darkmode .simple tr:nth-child(even){background:#f0f6ff26}
+		body.darkmode :is(h4,h5,h6)+a.self-link::before {
+			color: var(--heading-text);
+		}
+		body.darkmode img {
+			background: none;
+		}
+		body.darkmode section#references :target {
+			background: #04162d;
+		}
+        .instruction { color: gray; font-style: italic; }
+
+        .feedbackButton {
+            width: 20px;
+            height: auto;
+        }
+
+	</style>
+
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/2.2.2/css/dataTables.dataTables.min.css">
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/3.2.2/css/buttons.dataTables.min.css">
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/2.2.2/js/dataTables.min.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/3.2.2/js/dataTables.buttons.min.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/3.2.2/js/buttons.dataTables.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/3.2.0/js/buttons.html5.min.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/3.2.0/js/buttons.print.min.js"></script>
+</html>

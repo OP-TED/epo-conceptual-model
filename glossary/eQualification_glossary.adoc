@@ -1,0 +1,195 @@
+
+
+
+
+= Glossary
+
+== Class names and definitions
+
+[options="header"]
+|===
+| Class name | Definition
+
+      
+| epo-qua:EvidenceOutcome | Result concerning the submitted Evidence.
+      
+    
+      
+| epo-qua:EvidenceReceipt | A Document sent by the Buyer to the Economic Operator confirming the receival of an Evidence Submission.
+      
+    
+      
+| epo-qua:EvidenceRequest | A Document sent by the Buyer to the Economic Operator asking for the submission of an Evidence.
+      
+    
+      
+| epo-qua:EvidenceSubmission | A Document sent by the Economic Operator to the Buyer which contains an Evidence.
+      
+    
+      
+| epo-qua:QualificationDecisionInformation | Information about the aggregated result of the Evidence Outcomes.
+      
+    
+      
+| epo-qua:QualificationReponse | A formal reply from the Buyer to the Economic Operator informing the Economic Operator that it may participate in a procurement.
+      
+    
+|===
+
+== Attributes (datatype properties) names and definitions
+
+[cols="20%,20%,40%,20%", options="header"]
+|===
+| Class name | Attribute name | Definition | Data type / cardinality
+
+
+
+
+  
+  
+| epo-qua:EvidenceOutcome
+| epo-qua:fulfillsRequirement| 
+  Indicates whether the Requirement is satisfied.|xsd:boolean [0..1]
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+| epo-qua:QualificationDecisionInformation
+| epo:hasQualificationDecisionDate| 
+  The official date of the Qualification Decision.|xsd:dateTime [1..1]
+  
+  
+  
+| epo-qua:QualificationDecisionInformation
+| epo:hasRejectionDescription| 
+  Explanatory text about the rejection reason.|rdf:PlainLiteral [0..1]
+  
+  
+  
+| epo-qua:QualificationDecisionInformation
+| epo:isQualified| 
+  Indicates whether the economic operator is eligible.|xsd:boolean [0..1]
+  
+  
+  
+  
+  
+|===
+
+== Predicates (object properties) and definitions
+
+[cols="20%,50%,30%", options="header"]
+|===
+| Predicate name | Definition | Domain, Range and Cardinality
+
+
+  
+  
+  
+
+  
+  
+| epo:specifiesEvidence| 
+  Relation indicating the Evidence.|epo-qua:EvidenceOutcome → cccev:Evidence [1]
+
+  
+
+  
+  
+| epo-qua:refersToEvidenceSubmission| 
+  Reference to an Evidence Submission.|epo-qua:EvidenceReceipt → epo-qua:EvidenceSubmission [1] +
+epo-qua:QualificationReponse → epo-qua:EvidenceSubmission [1]
+
+  
+
+  
+  
+| epo:concernsLot| 
+  Relates to Lot.|epo-qua:EvidenceRequest → epo:Lot [1..&#42;] +
+epo-qua:EvidenceSubmission → epo:Lot [1..&#42;]
+
+  
+
+  
+  
+| epo:concernsProcedure| 
+  Relates to Procedure.|epo-qua:EvidenceRequest → epo:Procedure [1] +
+epo-qua:EvidenceSubmission → epo:Procedure [1]
+
+  
+
+  
+  
+| epo:specifiesEconomicOperator| 
+  Relation indicating that the instance of the concept involves the Economic Operator.|epo-qua:EvidenceRequest → epo:OfferingParty [1] +
+epo-qua:EvidenceSubmission → epo:OfferingParty [1]
+
+  
+
+  
+  
+| epo:providesEvidence| 
+  Makes available the Evidence.|epo-qua:EvidenceSubmission → cccev:Evidence [0..&#42;]
+
+  
+
+  
+  
+| epo-qua:refersToEvidenceRequest| 
+  Reference to an Evidence Request.|epo-qua:EvidenceSubmission → epo-qua:EvidenceRequest [0..1]
+
+  
+
+  
+  
+| epo-qua:comprisesEvidenceOutcome| 
+  Incorporates Evidence Outcome.|epo-qua:QualificationDecisionInformation → epo-qua:EvidenceOutcome [0..&#42;]
+
+  
+
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+| epo-qua:providesDecisionFor| 
+  Makes available the resolution.|epo-qua:QualificationDecisionInformation → epo:Lot [1]
+
+  
+
+  
+  
+| epo-qua:summarisesInformationForQualificationResponse| 
+  Relation indicating the Qualification Response that the information refers to.|epo-qua:QualificationDecisionInformation → epo-qua:QualificationReponse [1]
+
+  
+
+
+|===
+
+
+This document is generated automatically by the link:https://github.com/OP-TED/model2owl[model2owl tool] developed in the context of link:https://interoperable-europe.ec.europa.eu/collection/eprocurement/solution/eprocurement-ontology[the eProcurement Ontology initiative].

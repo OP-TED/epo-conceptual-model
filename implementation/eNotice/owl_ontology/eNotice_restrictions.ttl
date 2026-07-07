@@ -1,0 +1,242 @@
+@prefix : <http://data.europa.eu/a4g/ontology#> .
+@prefix cccev: <http://data.europa.eu/m8g/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix eli: <http://data.europa.eu/eli/ontology#> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+:announcesAwardDecision rdfs:domain [ a owl:Class ;
+            owl:unionOf ( :DirectAwardPrenotificationNotice :ResultNotice ) ] ;
+    rdfs:range :AwardDecision .
+
+:announcesContract rdfs:domain [ a owl:Class ;
+            owl:unionOf ( :DirectAwardPrenotificationNotice :ResultNotice ) ] ;
+    rdfs:range :Contract .
+
+:announcesLotGroup rdfs:domain [ a owl:Class ;
+            owl:unionOf ( :CompetitionNotice :DirectAwardPrenotificationNotice :PlanningNotice ) ] ;
+    rdfs:range :LotGroup .
+
+:announcesLotGroupAwardInformation rdfs:domain [ a owl:Class ;
+            owl:unionOf ( :DirectAwardPrenotificationNotice :ResultNotice ) ] ;
+    rdfs:range :LotGroupAwardInformation .
+
+:announcesPlannedProcurementPart rdfs:domain :PlanningNotice ;
+    rdfs:range :PlannedProcurementPart .
+
+:announcesReviewDecision rdfs:domain :ResultNotice ;
+    rdfs:range :ReviewDecision .
+
+:announcesReviewRequest rdfs:domain :ResultNotice ;
+    rdfs:range :ReviewRequest .
+
+:concernsLotGroup rdfs:domain [ a owl:Class ;
+            owl:unionOf ( :CompletionNotice :ContractModificationNotice :ResultNotice ) ] ;
+    rdfs:range :LotGroup .
+
+:not-restriction a owl:Ontology ;
+    rdfs:label "eProcurement Ontology - eNotice restrictions"@en ;
+    dcterms:created "2021-06-01"^^xsd:date ;
+    dcterms:description "The eProcurement Ontology eNotice restrictions provides the restrictions and the inference-related specifications on the concepts and properties in the eProcurement Ontology eNotice module."@en ;
+    dcterms:issued "2026-07-07"^^xsd:date ;
+    dcterms:license "CC BY 4.0" ;
+    dcterms:publisher "http://publications.europa.eu/resource/authority/corporate-body/PUBL" ;
+    dcterms:title "eProcurement Ontology - eNotice restrictions"@en ;
+    vann:preferredNamespacePrefix "epo-not" ;
+    vann:preferredNamespaceUri "http://data.europa.eu/a4g/ontology#" ;
+    rdfs:comment """This version is automatically generated from eNotice.xml on 
+                2026-07-07""" ;
+    rdfs:seeAlso <https://docs.ted.europa.eu/home/index.html>,
+        <https://github.com/OP-TED/ePO/releases>,
+        <https://joinup.ec.europa.eu/collection/eprocurement/solution/eprocurement-ontology/about>,
+        <https://op.europa.eu/en/web/eu-vocabularies/e-procurement> ;
+    owl:imports :not,
+        eli:,
+        cccev:,
+        dcterms:,
+        skos:,
+        <http://www.w3.org/2006/time>,
+        <http://www.w3.org/ns/adms>,
+        <http://www.w3.org/ns/locn>,
+        org:,
+        <http://www.w3.org/ns/person> ;
+    owl:incompatibleWith "4.2.0" ;
+    owl:priorVersion "http://data.europa.eu/a4g/ontology#not-restriction-5.1.0" ;
+    owl:versionIRI :not-restriction-5.2.0 ;
+    owl:versionInfo "5.2.0" .
+
+:preparesForPotentialProcurementObject rdfs:domain :PreMarketConsultationNotice ;
+    rdfs:range :ProcurementObject .
+
+:refersToAwardDecision rdfs:domain [ a owl:Class ;
+            owl:unionOf ( :CompletionNotice :ContractModificationNotice ) ] ;
+    rdfs:range :AwardDecision .
+
+:refersToLotGroupAwardInformation rdfs:domain [ a owl:Class ;
+            owl:unionOf ( :CompletionNotice :ContractModificationNotice ) ] ;
+    rdfs:range :LotGroupAwardInformation .
+
+:refersToReviewDecision rdfs:domain :CompletionNotice ;
+    rdfs:range :ReviewDecision .
+
+:refersToReviewRequest rdfs:domain :CompletionNotice ;
+    rdfs:range :ReviewRequest .
+
+:announcesCompletionOfContract a owl:FunctionalProperty ;
+    rdfs:domain :CompletionNotice ;
+    rdfs:range :Contract .
+
+:announcesContractAmendment a owl:FunctionalProperty ;
+    rdfs:domain :ContractModificationNotice ;
+    rdfs:range :ContractAmendment .
+
+:announcesPlannedProcurement rdfs:domain :PlanningNotice ;
+    rdfs:range :PlannedProcurement .
+
+:describesDirectAwardPrenotificationNotice rdfs:domain :NoticeAwardInformation ;
+    rdfs:range :DirectAwardPrenotificationNotice .
+
+:describesResultNotice rdfs:domain :NoticeAwardInformation ;
+    rdfs:range :ResultNotice .
+
+:refersToContractToBeModified a owl:FunctionalProperty ;
+    rdfs:domain :ContractModificationNotice ;
+    rdfs:range :Contract .
+
+:refersToRole rdfs:domain [ a owl:Class ;
+            owl:unionOf ( :CompletionNotice :ContractModificationNotice :PreMarketConsultationNotice :ResultNotice ) ] ;
+    rdfs:range :AgentInRole .
+
+:announcesLot rdfs:domain [ a owl:Class ;
+            owl:unionOf ( :CompetitionNotice :DirectAwardPrenotificationNotice :PlanningNotice ) ] ;
+    rdfs:range :Lot .
+
+:announcesNoticeAwardInformation rdfs:domain [ a owl:Class ;
+            owl:unionOf ( :DirectAwardPrenotificationNotice :ResultNotice ) ] ;
+    rdfs:range :NoticeAwardInformation .
+
+:refersToNoticeAwardInformation rdfs:domain [ a owl:Class ;
+            owl:unionOf ( :CompletionNotice :ContractModificationNotice ) ] ;
+    rdfs:range :NoticeAwardInformation .
+
+:announcesProcedure a owl:FunctionalProperty ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( :CompetitionNotice :DirectAwardPrenotificationNotice :PlanningNotice ) ] ;
+    rdfs:range :Procedure .
+
+:announcesRole rdfs:domain [ a owl:Class ;
+            owl:unionOf ( :CompetitionNotice :CompletionNotice :DirectAwardPrenotificationNotice :PlanningNotice :ResultNotice ) ] ;
+    rdfs:range :AgentInRole .
+
+:concernsLot rdfs:domain [ a owl:Class ;
+            owl:unionOf ( :CompletionNotice :ContractModificationNotice :ResultNotice ) ] ;
+    rdfs:range :Lot .
+
+:concernsProcedure a owl:FunctionalProperty ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( :CompletionNotice :ContractModificationNotice :ResultNotice ) ] ;
+    rdfs:range :Procedure .
+
+:CompetitionNotice rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty :announcesRole ;
+            owl:someValuesFrom :AgentInRole ],
+        [ a owl:Restriction ;
+            owl:onProperty :announcesLot ;
+            owl:someValuesFrom :Lot ],
+        [ a owl:Restriction ;
+            owl:onClass :Procedure ;
+            owl:onProperty :announcesProcedure ;
+            owl:qualifiedCardinality 1 ] .
+
+:PlanningNotice rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass :PlannedProcurement ;
+            owl:onProperty :announcesPlannedProcurement ],
+        [ a owl:Restriction ;
+            owl:onProperty :announcesRole ;
+            owl:someValuesFrom :AgentInRole ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass :Procedure ;
+            owl:onProperty :announcesProcedure ] .
+
+:NoticeAwardInformation rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass :DirectAwardPrenotificationNotice ;
+            owl:onProperty :describesDirectAwardPrenotificationNotice ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass :ResultNotice ;
+            owl:onProperty :describesResultNotice ] .
+
+:ContractModificationNotice rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty :concernsLot ;
+            owl:someValuesFrom :Lot ],
+        [ a owl:Restriction ;
+            owl:onClass :ContractAmendment ;
+            owl:onProperty :announcesContractAmendment ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass :Contract ;
+            owl:onProperty :refersToContractToBeModified ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass :Procedure ;
+            owl:onProperty :concernsProcedure ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass :NoticeAwardInformation ;
+            owl:onProperty :refersToNoticeAwardInformation ] .
+
+:DirectAwardPrenotificationNotice rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty :announcesLot ;
+            owl:someValuesFrom :Lot ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass :NoticeAwardInformation ;
+            owl:onProperty :announcesNoticeAwardInformation ],
+        [ a owl:Restriction ;
+            owl:onClass :Procedure ;
+            owl:onProperty :announcesProcedure ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onProperty :announcesRole ;
+            owl:someValuesFrom :AgentInRole ] .
+
+:CompletionNotice rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass :NoticeAwardInformation ;
+            owl:onProperty :refersToNoticeAwardInformation ],
+        [ a owl:Restriction ;
+            owl:onProperty :concernsLot ;
+            owl:someValuesFrom :Lot ],
+        [ a owl:Restriction ;
+            owl:onClass :Procedure ;
+            owl:onProperty :concernsProcedure ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass :Contract ;
+            owl:onProperty :announcesCompletionOfContract ;
+            owl:qualifiedCardinality 1 ] .
+
+:ResultNotice rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty :concernsLot ;
+            owl:someValuesFrom :Lot ],
+        [ a owl:Restriction ;
+            owl:onProperty :refersToRole ;
+            owl:someValuesFrom :AgentInRole ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass :NoticeAwardInformation ;
+            owl:onProperty :announcesNoticeAwardInformation ],
+        [ a owl:Restriction ;
+            owl:onClass :Procedure ;
+            owl:onProperty :concernsProcedure ;
+            owl:qualifiedCardinality 1 ] .
+

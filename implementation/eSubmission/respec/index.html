@@ -1,0 +1,3293 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<head>	
+    <meta charset="utf-8" />
+    <title>ePO eSubmission</title>
+    <script src="https://www.w3.org/Tools/respec/respec-w3c" class="remove" defer></script>
+    <script class="remove">
+    // All config options at https://respec.org/docs/
+
+	var myeditors = [
+	
+	
+	
+	
+	    
+	    
+		
+		   {
+		    name: "Alice Example",
+		      
+		    companyURL: "https://acme.example",
+		      
+		      
+		    company: "ACME Labs",
+		      
+		      
+		    mailto: "alice@example.org"
+		      
+		    }
+		
+		
+             
+        
+	
+		]
+
+	var myauthors = [
+	
+	
+	    
+	    
+		
+		   {
+		    name: "John Smith",
+		      
+		    companyURL: "https://acme.example",
+		      
+		      
+		    company: "ACME Labs",
+		      
+		      
+		    mailto: "john@example.org"
+		      
+		    }
+		
+		
+             
+        
+	
+	
+	
+		]
+	
+	function quickreference() {
+		$('#table-quickoverview').DataTable();
+	};
+
+   
+    var respecConfig = {
+      postProcess: [quickreference],
+      edDraftURI: "https://OP-TED.github.io/ePO/releases/5.2.0/",
+      latestVersion: "https://OP-TED.github.io/ePO/releases/5.1.0/",
+      specStatus: "base",
+      publishDate: "2026-07-07",
+      editors: myeditors,
+      authors: myauthors,
+      github: "OP-TED/ePO",
+      shortName: "ePO eSubmission",
+      xref: "web-platform",
+      doJsonLd: true,
+      
+      generatedSubtitle: "",
+      additionalCopyrightHolders: "",
+      
+        localBiblio: {'W3ID': {'href': 'https://w3id.org/', 'title': 'Permanent Identifiers for the Web', 'publisher': 'W3C Permanent Identifier Community Group'}, 'FAIR': {'href': 'https://www.openaire.eu/how-to-make-your-data-fair', 'title': 'How to make your data FAIR', 'publisher': 'OpenAire'}},
+      
+      
+        otherLinks: [
+          
+          {
+            key: "Owners:",
+            data: [
+              
+                {
+                  value: "ACME",
+                  
+                  href: "https://joinup.ec.europa.eu/collection/semic-support-centre"
+                  
+                }, 
+              
+                {
+                  value: "Tom White",
+                  
+                }
+              
+            ]
+          },
+          
+          
+          
+          {
+            key: "Source:",
+            data: [
+                {
+                  value: "https://github.com/OP-TED/ePO",
+                  href: "https://github.com/OP-TED/ePO"
+                }
+            ]
+          },
+          
+          
+          
+          {
+              key: "Related documentation:",
+              data: [{'value': 'Doc1', 'href': 'https://example.com/doc1'}, {'value': 'Doc2'}]
+          }
+          
+        ],
+      
+      
+      
+
+    };
+
+    
+
+    </script>
+    <style>
+      .figure img, .sidefigure img, figure img, .figure object, .sidefigure object, figure object, img, .img {
+      max-width: 100%;
+      margin: auto;
+      height: auto;
+      }
+    </style>
+     
+    <p class="copyright">
+        Copyright © <span id="year"></span>
+    </p>
+    <script>
+        document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="msapplication-TileColor" content="#7ED956" />
+</head>
+<body>
+
+<!-- #################### Beginning of page content ####################### -->
+
+    
+        
+<section id="abstract">
+    <h2>Abstract</h2>
+    <!-- Replace the below paragraph with your text -->
+    <p class="instruction">
+        The abstract should provide a concise overview of the semantic model, summarizing its scope, purpose, and key elements. The final content should explain what the model represents, its intended use, and the core concepts it covers. For instance, it should describe the main classes, relationships, and types of entities addressed, highlighting reusability, extensibility, and integration within a broader data ecosystem.
+    </p>
+</section>
+
+    
+
+    
+        
+<section id="specintro">
+    <h2>Introduction</h2>
+    <p class="instruction">
+        The Introduction should provide context for the vocabulary, including the motivation for its creation, its intended audience, and the problems it aims to address. The section should give readers a high-level understanding of the model, including its scope, design principles, and how it fits within related specifications or standards.
+    </p>
+</section>
+
+    
+
+    
+        
+<section id="specstatus">
+    <h2>Status</h2>
+    <p class="instruction">
+        The Status section should explain the current standing of the specification, including its level of formal recognition, publication date, and any relevant approval or recommendation information. It should also summarize the development process, key decisions, and provide references to changelogs or historical versions.
+        It is recommended to indicate the <a href="https://www.w3.org/2021/Process-20211102/#maturity-levels">maturity levels</a> of the specification.
+    </p>
+    <p>
+        
+            This application profile has the status <i>Draft</i> and has been published on 2026-07-07.
+        
+    </p>
+    <p>
+        History of changes to the project is available in <a href="https://github.com/OP-TED/ePO/releases">Changelog</a>.
+    </p>
+</section>
+
+    
+
+    
+        
+<section id="speclicence">
+    <h2>License</h2>
+    <p class="instruction">
+        The License section should outline the legal terms under which the vocabulary and associated materials may be used, shared, and modified. It should clearly indicate copyright ownership, applicable licenses, exceptions, and any obligations or restrictions for users and contributors.
+    </p>
+    <p>
+        
+            This specification of ePO eSubmission is published under CC BY 4.0.
+        
+    </p>
+</section>
+
+    
+
+    
+        
+<section id="conformance">    
+    <p class="instruction">
+        The Conformance section should define which parts of the specification are normative versus non-normative, and how compliance should be interpreted. It should explain the meaning of key terms such as MUST, MAY, and SHOULD, and it should provide guidance on how these rules should be applied when using or extending the vocabulary.
+    </p>
+</section>
+
+    
+
+    
+        <section id="specterminology">
+            <h2>Terminology</h2>
+            <p>
+                The Terminology section defining the key concepts and terms used in the vocabulary.
+            </p>
+
+
+            
+                
+    <h3>Used Prefixes</h3>
+    <table id="table-namespaces" class="simple">
+        <thead><tr><th>Prefix</th><th>Namespace IRI</th></tr></thead>
+        <tbody>
+        
+        <tr>
+            <td>
+            <code>at-voc</code>
+            </td>
+            <td>
+            <code>http://publications.europa.eu/resource/authority/</code>
+            </td>
+        </tr>
+        
+        <tr>
+            <td>
+            <code>cccev</code>
+            </td>
+            <td>
+            <code>http://data.europa.eu/m8g/</code>
+            </td>
+        </tr>
+        
+        <tr>
+            <td>
+            <code>dct</code>
+            </td>
+            <td>
+            <code>http://purl.org/dc/terms/</code>
+            </td>
+        </tr>
+        
+        <tr>
+            <td>
+            <code>epo</code>
+            </td>
+            <td>
+            <code>http://data.europa.eu/a4g/ontology#</code>
+            </td>
+        </tr>
+        
+        <tr>
+            <td>
+            <code>epo-acc</code>
+            </td>
+            <td>
+            <code>http://data.europa.eu/a4g/ontology#</code>
+            </td>
+        </tr>
+        
+        <tr>
+            <td>
+            <code>epo-sub</code>
+            </td>
+            <td>
+            <code>http://data.europa.eu/a4g/ontology#</code>
+            </td>
+        </tr>
+        
+        <tr>
+            <td>
+            <code>org</code>
+            </td>
+            <td>
+            <code>http://www.w3.org/ns/org#</code>
+            </td>
+        </tr>
+        
+        <tr>
+            <td>
+            <code>rdf</code>
+            </td>
+            <td>
+            <code>http://www.w3.org/1999/02/22-rdf-syntax-ns#</code>
+            </td>
+        </tr>
+        
+        <tr>
+            <td>
+            <code>time</code>
+            </td>
+            <td>
+            <code>http://www.w3.org/2006/time#</code>
+            </td>
+        </tr>
+        
+        <tr>
+            <td>
+            <code>xsd</code>
+            </td>
+            <td>
+            <code>http://www.w3.org/2001/XMLSchema#</code>
+            </td>
+        </tr>
+        
+        </tbody>
+    </table>
+    
+            
+        </section>
+    
+
+    
+        
+<section id="specoverview">
+    <h2>Overview</h2>
+    <div id="overview">
+        
+            
+                    <p>
+                        This document describes the usage of the following main entities for a correct usage of the vocabulary:
+                        <br />
+                        |
+                <a href="#Documentaryevidence">Documentary evidence</a> |
+                <a href="#Espd">ESPD</a> |
+                <a href="#Evidenceinformation">Evidence information</a> |
+                <a href="#Legalrepresentative">Legal representative</a> |
+                <a href="#Mandate">Mandate</a> |
+                <a href="#Organisationinformationsummary">Organisation information summary</a> |
+                <a href="#Powerofattorney">Power of attorney</a> |
+                <a href="#Response">Response</a> |
+                    </p>
+                    <p>
+                        The main entities are supported by:
+                        <br />
+                        |
+                <a href="#Supportedvalue">Supported value</a> |
+                    </p>
+            
+        
+        
+            
+                    <p>
+                        And supported by these datatypes:
+                        <br />
+                        | <a href="#Plainliteral">Plain literal</a> | <a href="#Anyuri">Any URI</a> | <a href="#Boolean">Boolean</a> | <a href="#Date">Date</a> | <a href="#Datetime">Date time</a> | <a href="#Decimal">Decimal</a> | <a href="#Integer">Integer</a> |
+                    </p>
+            
+        
+    </div>
+    <div>
+        <a href="./assets/overview.png"
+           target="_blank">
+            <img src="./assets/overview.png"
+                onerror="this.style.display='none'"/>
+        </a>
+    </div>
+</section>
+
+    
+
+    
+        
+<section>
+    <h2>Main Entities</h2>
+    The main entities are those that form the core of the vocabulary. 
+    Properties of entities are listed in a tabular form.
+
+    
+        
+            
+                
+    <section>
+        <h3 id="Documentaryevidence">
+            <a href="http://data.europa.eu/a4g/ontology#DocumentaryEvidence"
+                data-toggle="tooltip"
+                data-content="http://data.europa.eu/a4g/ontology#DocumentaryEvidence"
+                data-placement="right">Documentary evidence</a>
+
+        </h3>
+        <span style="float:right;margin-right:10px;">
+        
+        
+        
+        
+        
+            
+            
+        
+
+        <a href="https://github.com/OP-TED/ePO/issues/new?title=Issue%20for%20'Documentary evidence'&body=Explain%20your%20issue%20for%20https://OP-TED.github.io/ePO/releases/5.2.0/%23Documentaryevidence" target="_blank" rel="noopener noreferrer" >
+            <img src="./assets/img/callout.png" loading="lazy" alt="[o]" title="Report an issue or share feedback" class="feedbackButton"/>
+        </a>
+    
+</span>
+        
+        <dl>
+            <dt>
+                Definition
+            </dt>
+            <dd>
+                An Evidence submitted by an Economic Operator to prove compliance with legal, technical or financial requirements, or inapplicability of exclusion grounds in a Procurement Procedure.
+            </dd>
+            
+            
+                <dt>
+                    Subclass of
+                </dt>
+                <dd> <a href="http://data.europa.eu/m8g/Evidence">Evidence</a>
+                    
+                </dd>
+            
+            
+            <dt>
+                Properties
+            </dt>
+            
+                <dd>
+                    This specification does not impose any additional requirements to properties for this entity.
+                </dd>
+            
+        </dl>
+        
+    </section>
+
+            
+        
+            
+                
+    <section>
+        <h3 id="Espd">
+            <a href="http://data.europa.eu/a4g/ontology#ESPD"
+                data-toggle="tooltip"
+                data-content="http://data.europa.eu/a4g/ontology#ESPD"
+                data-placement="right">ESPD</a>
+
+        </h3>
+        <span style="float:right;margin-right:10px;">
+        
+        
+        
+        
+        
+            
+            
+        
+
+        <a href="https://github.com/OP-TED/ePO/issues/new?title=Issue%20for%20'ESPD'&body=Explain%20your%20issue%20for%20https://OP-TED.github.io/ePO/releases/5.2.0/%23Espd" target="_blank" rel="noopener noreferrer" >
+            <img src="./assets/img/callout.png" loading="lazy" alt="[o]" title="Report an issue or share feedback" class="feedbackButton"/>
+        </a>
+    
+</span>
+        
+        <dl>
+            <dt>
+                Definition
+            </dt>
+            <dd>
+                A self-declaration of an economic operator, stating that it does not fall under the Exclusion Grounds and that it meets the Selection Criteria for a specific procurement.
+            </dd>
+            
+            
+                <dt>
+                    Subclass of
+                </dt>
+                <dd> <a href="http://data.europa.eu/a4g/ontology#Document">Document</a>
+                    
+                </dd>
+            
+            
+            <dt>
+                Properties
+            </dt>
+            
+                <dd>
+                    For this entity the following properties are defined:
+                        
+                        
+                        <a href="#Espd.iscontainedintender">is contained in tender</a>,
+                        
+                        
+                        <a href="#Espd.providesinformationon">provides information on</a>,
+                        
+                        
+                        <a href="#Espd.relatestoespdrequest">relates to ESPD request</a>,
+                        
+                        
+                        <a href="#Espd.specifiesresponse">specifies response</a>.
+                </dd>
+            
+        </dl>
+        
+            <div class="u-table-overflow">
+                <table class="data-table simple" id="table-mandatory-classes">
+                    <thead>
+                        <tr class="data-table__header">
+                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:12%">
+                                Property
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:12%">
+                                Range
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:6%">
+                                Card
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:30%">
+                                Definition 
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:30%">
+                                Usage
+                            </th>
+                            
+                            
+                                <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:5%">
+                                    Feedback
+                                </th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody class="supertype">
+                        
+                            <tr id="Espd.iscontainedintender"
+                                typeof="rdf:Property"
+                                resource="http://data.europa.eu/a4g/ontology#isContainedInTender"
+                                class="class mandatory">
+                                <td>
+                                        
+                                        
+                                        <a href="http://data.europa.eu/a4g/ontology#isContainedInTender"
+                                        data-toggle="tooltip"
+                                        data-content="http://data.europa.eu/a4g/ontology#isContainedInTender"
+                                        data-placement="right">
+                                        is contained in tender</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                                <p title="The term 'epo:Tender' is not defined in this document. Please refer to the appropriate module's documentation.">Tender</p>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..*
+                                </td>
+                                <td>
+                                    Relation indicating that the instance of the concept is part of a Tender.
+                                </td>
+                                <td>
+                                    
+                                </td>
+                                
+                                <td>
+                                    
+        
+        
+        
+        
+        
+            
+            
+       
+            
+
+        <a href="https://github.com/OP-TED/ePO/issues/new?title=Issue%20for%20'Is contained in tender'%20in%20'ESPD'&body=Explain%20your%20issue%20for%20https://OP-TED.github.io/ePO/releases/5.2.0/%23Espd.iscontainedintender" target="_blank" rel="noopener noreferrer" >
+            <img src="./assets/img/callout.png" loading="lazy" alt="[o]" title="Report an issue or share feedback" class="feedbackButton"/>
+        </a>
+    
+
+                                </td>
+                            </tr>
+                        
+                            <tr id="Espd.providesinformationon"
+                                typeof="rdf:Property"
+                                resource="http://data.europa.eu/a4g/ontology#providesInformationOn"
+                                class="class mandatory">
+                                <td>
+                                        
+                                        
+                                        <a href="http://data.europa.eu/a4g/ontology#providesInformationOn"
+                                        data-toggle="tooltip"
+                                        data-content="http://data.europa.eu/a4g/ontology#providesInformationOn"
+                                        data-placement="right">
+                                        provides information on</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                                <p title="The term 'org:Organization' is not defined in this document. Please refer to the appropriate module's documentation.">Organization</p>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..*
+                                </td>
+                                <td>
+                                    Offers information about an instance of a concept.
+                                </td>
+                                <td>
+                                    
+                                </td>
+                                
+                                <td>
+                                    
+        
+        
+        
+        
+        
+            
+            
+       
+            
+
+        <a href="https://github.com/OP-TED/ePO/issues/new?title=Issue%20for%20'Provides information on'%20in%20'ESPD'&body=Explain%20your%20issue%20for%20https://OP-TED.github.io/ePO/releases/5.2.0/%23Espd.providesinformationon" target="_blank" rel="noopener noreferrer" >
+            <img src="./assets/img/callout.png" loading="lazy" alt="[o]" title="Report an issue or share feedback" class="feedbackButton"/>
+        </a>
+    
+
+                                </td>
+                            </tr>
+                        
+                            <tr id="Espd.relatestoespdrequest"
+                                typeof="rdf:Property"
+                                resource="http://data.europa.eu/a4g/ontology#relatesToESPDRequest"
+                                class="class mandatory">
+                                <td>
+                                        
+                                        
+                                        <a href="http://data.europa.eu/a4g/ontology#relatesToESPDRequest"
+                                        data-toggle="tooltip"
+                                        data-content="http://data.europa.eu/a4g/ontology#relatesToESPDRequest"
+                                        data-placement="right">
+                                        relates to ESPD request</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                                <p title="The term 'epo-acc:ESPDRequest' is not defined in this document. Please refer to the appropriate module's documentation.">ESPD request</p>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..1
+                                </td>
+                                <td>
+                                    Is about an European Single Procurement Document (ESPD) Request.
+                                </td>
+                                <td>
+                                    
+                                </td>
+                                
+                                <td>
+                                    
+        
+        
+        
+        
+        
+            
+            
+       
+            
+
+        <a href="https://github.com/OP-TED/ePO/issues/new?title=Issue%20for%20'Relates to ESPD request'%20in%20'ESPD'&body=Explain%20your%20issue%20for%20https://OP-TED.github.io/ePO/releases/5.2.0/%23Espd.relatestoespdrequest" target="_blank" rel="noopener noreferrer" >
+            <img src="./assets/img/callout.png" loading="lazy" alt="[o]" title="Report an issue or share feedback" class="feedbackButton"/>
+        </a>
+    
+
+                                </td>
+                            </tr>
+                        
+                            <tr id="Espd.specifiesresponse"
+                                typeof="rdf:Property"
+                                resource="http://data.europa.eu/a4g/ontology#specifiesResponse"
+                                class="class mandatory">
+                                <td>
+                                        
+                                        
+                                        <a href="http://data.europa.eu/a4g/ontology#specifiesResponse"
+                                        data-toggle="tooltip"
+                                        data-content="http://data.europa.eu/a4g/ontology#specifiesResponse"
+                                        data-placement="right">
+                                        specifies response</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            
+                                                <a href="#Response"
+                                                data-toggle="tooltip"
+                                                data-content="http://data.europa.eu/a4g/ontology#Response"
+                                                data-placement="right">Response</a>
+                                            
+                                        
+                                    
+                                </td>
+                                <td>
+                                    1..*
+                                </td>
+                                <td>
+                                    Relation indicating that an ESPD Response contains a Response.
+                                </td>
+                                <td>
+                                    
+                                </td>
+                                
+                                <td>
+                                    
+        
+        
+        
+        
+        
+            
+            
+       
+            
+
+        <a href="https://github.com/OP-TED/ePO/issues/new?title=Issue%20for%20'Specifies response'%20in%20'ESPD'&body=Explain%20your%20issue%20for%20https://OP-TED.github.io/ePO/releases/5.2.0/%23Espd.specifiesresponse" target="_blank" rel="noopener noreferrer" >
+            <img src="./assets/img/callout.png" loading="lazy" alt="[o]" title="Report an issue or share feedback" class="feedbackButton"/>
+        </a>
+    
+
+                                </td>
+                            </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+        
+    </section>
+
+            
+        
+            
+                
+    <section>
+        <h3 id="Evidenceinformation">
+            <a href="http://data.europa.eu/a4g/ontology#EvidenceInformation"
+                data-toggle="tooltip"
+                data-content="http://data.europa.eu/a4g/ontology#EvidenceInformation"
+                data-placement="right">Evidence information</a>
+
+        </h3>
+        <span style="float:right;margin-right:10px;">
+        
+        
+        
+        
+        
+            
+            
+        
+
+        <a href="https://github.com/OP-TED/ePO/issues/new?title=Issue%20for%20'Evidence information'&body=Explain%20your%20issue%20for%20https://OP-TED.github.io/ePO/releases/5.2.0/%23Evidenceinformation" target="_blank" rel="noopener noreferrer" >
+            <img src="./assets/img/callout.png" loading="lazy" alt="[o]" title="Report an issue or share feedback" class="feedbackButton"/>
+        </a>
+    
+</span>
+        
+        <dl>
+            <dt>
+                Definition
+            </dt>
+            <dd>
+                Information about a Certificate.
+            </dd>
+            
+            
+                <dt>
+                    Subclass of
+                </dt>
+                <dd> <a href="http://data.europa.eu/a4g/ontology#ContextDescription">Context description</a>
+                    
+                </dd>
+            
+            
+            <dt>
+                Properties
+            </dt>
+            
+                <dd>
+                    For this entity the following properties are defined:
+                        
+                        
+                        <a href="#Evidenceinformation.coversallselectioncriteria">covers all selection criteria</a>,
+                        
+                        
+                        <a href="#Evidenceinformation.description">description</a>,
+                        
+                        
+                        <a href="#Evidenceinformation.summarisesinformationaboutevidence">summarises information about evidence</a>.
+                </dd>
+            
+        </dl>
+        
+            <div class="u-table-overflow">
+                <table class="data-table simple" id="table-mandatory-classes">
+                    <thead>
+                        <tr class="data-table__header">
+                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:12%">
+                                Property
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:12%">
+                                Range
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:6%">
+                                Card
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:30%">
+                                Definition 
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:30%">
+                                Usage
+                            </th>
+                            
+                            
+                                <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:5%">
+                                    Feedback
+                                </th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody class="supertype">
+                        
+                            <tr id="Evidenceinformation.coversallselectioncriteria"
+                                typeof="rdf:Property"
+                                resource="http://data.europa.eu/a4g/ontology#coversAllSelectionCriteria"
+                                class="class mandatory">
+                                <td>
+                                        
+                                        
+                                        <a href="http://data.europa.eu/a4g/ontology#coversAllSelectionCriteria"
+                                        data-toggle="tooltip"
+                                        data-content="http://data.europa.eu/a4g/ontology#coversAllSelectionCriteria"
+                                        data-placement="right">
+                                        covers all selection criteria</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            
+                                                <a href="#Boolean"
+                                                data-toggle="tooltip"
+                                                data-content="http://www.w3.org/2001/XMLSchema#boolean"
+                                                data-placement="right">Boolean</a>
+                                            
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..1
+                                </td>
+                                <td>
+                                    Indicator that the Certificate proves whether the Organization fulfils all Selection Criteria.
+                                </td>
+                                <td>
+                                    
+                                </td>
+                                
+                                <td>
+                                    
+        
+        
+        
+        
+        
+            
+            
+       
+            
+
+        <a href="https://github.com/OP-TED/ePO/issues/new?title=Issue%20for%20'Covers all selection criteria'%20in%20'Evidence information'&body=Explain%20your%20issue%20for%20https://OP-TED.github.io/ePO/releases/5.2.0/%23Evidenceinformation.coversallselectioncriteria" target="_blank" rel="noopener noreferrer" >
+            <img src="./assets/img/callout.png" loading="lazy" alt="[o]" title="Report an issue or share feedback" class="feedbackButton"/>
+        </a>
+    
+
+                                </td>
+                            </tr>
+                        
+                            <tr id="Evidenceinformation.description"
+                                typeof="rdf:Property"
+                                resource="http://purl.org/dc/terms/description"
+                                class="class mandatory">
+                                <td>
+                                        
+                                        
+                                        <a href="http://purl.org/dc/terms/description"
+                                        data-toggle="tooltip"
+                                        data-content="http://purl.org/dc/terms/description"
+                                        data-placement="right">
+                                        description</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            
+                                                <a href="#Plainliteral"
+                                                data-toggle="tooltip"
+                                                data-content="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"
+                                                data-placement="right">Plain literal</a>
+                                            
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..1
+                                </td>
+                                <td>
+                                    External concept defined by <xref scope="external" href=""https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/description""><foreign otherprops="#0000ff"><u>https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/description</u></foreign></xref>
+                                </td>
+                                <td>
+                                    
+                                </td>
+                                
+                                <td>
+                                    
+        
+        
+        
+        
+        
+            
+            
+       
+            
+
+        <a href="https://github.com/OP-TED/ePO/issues/new?title=Issue%20for%20'Description'%20in%20'Evidence information'&body=Explain%20your%20issue%20for%20https://OP-TED.github.io/ePO/releases/5.2.0/%23Evidenceinformation.description" target="_blank" rel="noopener noreferrer" >
+            <img src="./assets/img/callout.png" loading="lazy" alt="[o]" title="Report an issue or share feedback" class="feedbackButton"/>
+        </a>
+    
+
+                                </td>
+                            </tr>
+                        
+                            <tr id="Evidenceinformation.summarisesinformationaboutevidence"
+                                typeof="rdf:Property"
+                                resource="http://data.europa.eu/a4g/ontology#summarisesInformationAboutEvidence"
+                                class="class mandatory">
+                                <td>
+                                        
+                                        
+                                        <a href="http://data.europa.eu/a4g/ontology#summarisesInformationAboutEvidence"
+                                        data-toggle="tooltip"
+                                        data-content="http://data.europa.eu/a4g/ontology#summarisesInformationAboutEvidence"
+                                        data-placement="right">
+                                        summarises information about evidence</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                                <p title="The term 'cccev:Evidence' is not defined in this document. Please refer to the appropriate module's documentation.">Evidence</p>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    1
+                                </td>
+                                <td>
+                                    Relation indicating the Certificate that the information refers to.
+                                </td>
+                                <td>
+                                    
+                                </td>
+                                
+                                <td>
+                                    
+        
+        
+        
+        
+        
+            
+            
+       
+            
+
+        <a href="https://github.com/OP-TED/ePO/issues/new?title=Issue%20for%20'Summarises information about evidence'%20in%20'Evidence information'&body=Explain%20your%20issue%20for%20https://OP-TED.github.io/ePO/releases/5.2.0/%23Evidenceinformation.summarisesinformationaboutevidence" target="_blank" rel="noopener noreferrer" >
+            <img src="./assets/img/callout.png" loading="lazy" alt="[o]" title="Report an issue or share feedback" class="feedbackButton"/>
+        </a>
+    
+
+                                </td>
+                            </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+        
+    </section>
+
+            
+        
+            
+                
+    <section>
+        <h3 id="Legalrepresentative">
+            <a href="http://data.europa.eu/a4g/ontology#LegalRepresentative"
+                data-toggle="tooltip"
+                data-content="http://data.europa.eu/a4g/ontology#LegalRepresentative"
+                data-placement="right">Legal representative</a>
+
+        </h3>
+        <span style="float:right;margin-right:10px;">
+        
+        
+        
+        
+        
+            
+            
+        
+
+        <a href="https://github.com/OP-TED/ePO/issues/new?title=Issue%20for%20'Legal representative'&body=Explain%20your%20issue%20for%20https://OP-TED.github.io/ePO/releases/5.2.0/%23Legalrepresentative" target="_blank" rel="noopener noreferrer" >
+            <img src="./assets/img/callout.png" loading="lazy" alt="[o]" title="Report an issue or share feedback" class="feedbackButton"/>
+        </a>
+    
+</span>
+        
+        <dl>
+            <dt>
+                Definition
+            </dt>
+            <dd>
+                The Role of an Agent that can represent an Organization.
+            </dd>
+            
+            
+                <dt>
+                    Subclass of
+                </dt>
+                <dd> <a href="http://data.europa.eu/a4g/ontology#AuxiliaryParty">Auxiliary party</a>
+                    
+                </dd>
+            
+            
+            <dt>
+                Properties
+            </dt>
+            
+                <dd>
+                    For this entity the following properties are defined:
+                        
+                        
+                        <a href="#Legalrepresentative.actsonbehalfof">acts on behalf of</a>,
+                        
+                        
+                        <a href="#Legalrepresentative.hasmandate">has mandate</a>,
+                        
+                        
+                        <a href="#Legalrepresentative.haspowerofattorney">has power of attorney</a>.
+                </dd>
+            
+        </dl>
+        
+            <div class="u-table-overflow">
+                <table class="data-table simple" id="table-mandatory-classes">
+                    <thead>
+                        <tr class="data-table__header">
+                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:12%">
+                                Property
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:12%">
+                                Range
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:6%">
+                                Card
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:30%">
+                                Definition 
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:30%">
+                                Usage
+                            </th>
+                            
+                            
+                                <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:5%">
+                                    Feedback
+                                </th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody class="supertype">
+                        
+                            <tr id="Legalrepresentative.actsonbehalfof"
+                                typeof="rdf:Property"
+                                resource="http://data.europa.eu/a4g/ontology#actsOnBehalfOf"
+                                class="class mandatory">
+                                <td>
+                                        
+                                        
+                                        <a href="http://data.europa.eu/a4g/ontology#actsOnBehalfOf"
+                                        data-toggle="tooltip"
+                                        data-content="http://data.europa.eu/a4g/ontology#actsOnBehalfOf"
+                                        data-placement="right">
+                                        acts on behalf of</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                                <p title="The term 'epo:OfferingParty' is not defined in this document. Please refer to the appropriate module's documentation.">Offering party</p>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..1
+                                </td>
+                                <td>
+                                    
+                                </td>
+                                <td>
+                                    
+                                </td>
+                                
+                                <td>
+                                    
+        
+        
+        
+        
+        
+            
+            
+       
+            
+
+        <a href="https://github.com/OP-TED/ePO/issues/new?title=Issue%20for%20'Acts on behalf of'%20in%20'Legal representative'&body=Explain%20your%20issue%20for%20https://OP-TED.github.io/ePO/releases/5.2.0/%23Legalrepresentative.actsonbehalfof" target="_blank" rel="noopener noreferrer" >
+            <img src="./assets/img/callout.png" loading="lazy" alt="[o]" title="Report an issue or share feedback" class="feedbackButton"/>
+        </a>
+    
+
+                                </td>
+                            </tr>
+                        
+                            <tr id="Legalrepresentative.hasmandate"
+                                typeof="rdf:Property"
+                                resource="http://data.europa.eu/a4g/ontology#hasMandate"
+                                class="class mandatory">
+                                <td>
+                                        
+                                        
+                                        <a href="http://data.europa.eu/a4g/ontology#hasMandate"
+                                        data-toggle="tooltip"
+                                        data-content="http://data.europa.eu/a4g/ontology#hasMandate"
+                                        data-placement="right">
+                                        has mandate</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            
+                                                <a href="#Mandate"
+                                                data-toggle="tooltip"
+                                                data-content="http://data.europa.eu/a4g/ontology#Mandate"
+                                                data-placement="right">Mandate</a>
+                                            
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..*
+                                </td>
+                                <td>
+                                    Relation indicating that a Legal Representative has a Mandate.
+                                </td>
+                                <td>
+                                    
+                                </td>
+                                
+                                <td>
+                                    
+        
+        
+        
+        
+        
+            
+            
+       
+            
+
+        <a href="https://github.com/OP-TED/ePO/issues/new?title=Issue%20for%20'Has mandate'%20in%20'Legal representative'&body=Explain%20your%20issue%20for%20https://OP-TED.github.io/ePO/releases/5.2.0/%23Legalrepresentative.hasmandate" target="_blank" rel="noopener noreferrer" >
+            <img src="./assets/img/callout.png" loading="lazy" alt="[o]" title="Report an issue or share feedback" class="feedbackButton"/>
+        </a>
+    
+
+                                </td>
+                            </tr>
+                        
+                            <tr id="Legalrepresentative.haspowerofattorney"
+                                typeof="rdf:Property"
+                                resource="http://data.europa.eu/a4g/ontology#hasPowerOfAttorney"
+                                class="class mandatory">
+                                <td>
+                                        
+                                        
+                                        <a href="http://data.europa.eu/a4g/ontology#hasPowerOfAttorney"
+                                        data-toggle="tooltip"
+                                        data-content="http://data.europa.eu/a4g/ontology#hasPowerOfAttorney"
+                                        data-placement="right">
+                                        has power of attorney</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            
+                                                <a href="#Powerofattorney"
+                                                data-toggle="tooltip"
+                                                data-content="http://data.europa.eu/a4g/ontology#PowerOfAttorney"
+                                                data-placement="right">Power of attorney</a>
+                                            
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..1
+                                </td>
+                                <td>
+                                    Relation indicating that a Legal Representative has a Power of Attorney.
+                                </td>
+                                <td>
+                                    
+                                </td>
+                                
+                                <td>
+                                    
+        
+        
+        
+        
+        
+            
+            
+       
+            
+
+        <a href="https://github.com/OP-TED/ePO/issues/new?title=Issue%20for%20'Has power of attorney'%20in%20'Legal representative'&body=Explain%20your%20issue%20for%20https://OP-TED.github.io/ePO/releases/5.2.0/%23Legalrepresentative.haspowerofattorney" target="_blank" rel="noopener noreferrer" >
+            <img src="./assets/img/callout.png" loading="lazy" alt="[o]" title="Report an issue or share feedback" class="feedbackButton"/>
+        </a>
+    
+
+                                </td>
+                            </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+        
+    </section>
+
+            
+        
+            
+                
+    <section>
+        <h3 id="Mandate">
+            <a href="http://data.europa.eu/a4g/ontology#Mandate"
+                data-toggle="tooltip"
+                data-content="http://data.europa.eu/a4g/ontology#Mandate"
+                data-placement="right">Mandate</a>
+
+        </h3>
+        <span style="float:right;margin-right:10px;">
+        
+        
+        
+        
+        
+            
+            
+        
+
+        <a href="https://github.com/OP-TED/ePO/issues/new?title=Issue%20for%20'Mandate'&body=Explain%20your%20issue%20for%20https://OP-TED.github.io/ePO/releases/5.2.0/%23Mandate" target="_blank" rel="noopener noreferrer" >
+            <img src="./assets/img/callout.png" loading="lazy" alt="[o]" title="Report an issue or share feedback" class="feedbackButton"/>
+        </a>
+    
+</span>
+        
+        <dl>
+            <dt>
+                Definition
+            </dt>
+            <dd>
+                An authorization to act as a representative of an Organization.
+            </dd>
+            
+            
+                <dt>
+                    Subclass of
+                </dt>
+                <dd> <a href="http://data.europa.eu/a4g/ontology#Document">Document</a>
+                    
+                </dd>
+            
+            
+            <dt>
+                Properties
+            </dt>
+            
+                <dd>
+                    This specification does not impose any additional requirements to properties for this entity.
+                </dd>
+            
+        </dl>
+        
+    </section>
+
+            
+        
+            
+                
+    <section>
+        <h3 id="Organisationinformationsummary">
+            <a href="http://data.europa.eu/a4g/ontology#OrganisationInformationSummary"
+                data-toggle="tooltip"
+                data-content="http://data.europa.eu/a4g/ontology#OrganisationInformationSummary"
+                data-placement="right">Organisation information summary</a>
+
+        </h3>
+        <span style="float:right;margin-right:10px;">
+        
+        
+        
+        
+        
+            
+            
+        
+
+        <a href="https://github.com/OP-TED/ePO/issues/new?title=Issue%20for%20'Organisation information summary'&body=Explain%20your%20issue%20for%20https://OP-TED.github.io/ePO/releases/5.2.0/%23Organisationinformationsummary" target="_blank" rel="noopener noreferrer" >
+            <img src="./assets/img/callout.png" loading="lazy" alt="[o]" title="Report an issue or share feedback" class="feedbackButton"/>
+        </a>
+    
+</span>
+        
+        <dl>
+            <dt>
+                Definition
+            </dt>
+            <dd>
+                Information about the specific features or characteristics that qualify an economic operator to take part in a tendering process.
+            </dd>
+            
+            
+                <dt>
+                    Subclass of
+                </dt>
+                <dd> <a href="http://data.europa.eu/a4g/ontology#ContextDescription">Context description</a>
+                    
+                </dd>
+            
+            
+            <dt>
+                Properties
+            </dt>
+            
+                <dd>
+                    For this entity the following properties are defined:
+                        
+                        
+                        <a href="#Organisationinformationsummary.concernsorganisation">concerns organisation</a>,
+                        
+                        
+                        <a href="#Organisationinformationsummary.hasbusinessclassificationdescription">has business classification description</a>,
+                        
+                        
+                        <a href="#Organisationinformationsummary.providesorganisationcompletedtaskdescription">provides organisation completed task description</a>,
+                        
+                        
+                        <a href="#Organisationinformationsummary.providesorganisationemployeequantity">provides organisation employee quantity</a>,
+                        
+                        
+                        <a href="#Organisationinformationsummary.providesorganisationfinancialcapability">provides organisation financial capability</a>.
+                </dd>
+            
+        </dl>
+        
+            <div class="u-table-overflow">
+                <table class="data-table simple" id="table-mandatory-classes">
+                    <thead>
+                        <tr class="data-table__header">
+                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:12%">
+                                Property
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:12%">
+                                Range
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:6%">
+                                Card
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:30%">
+                                Definition 
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:30%">
+                                Usage
+                            </th>
+                            
+                            
+                                <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:5%">
+                                    Feedback
+                                </th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody class="supertype">
+                        
+                            <tr id="Organisationinformationsummary.concernsorganisation"
+                                typeof="rdf:Property"
+                                resource="http://data.europa.eu/a4g/ontology#concernsOrganisation"
+                                class="class mandatory">
+                                <td>
+                                        
+                                        
+                                        <a href="http://data.europa.eu/a4g/ontology#concernsOrganisation"
+                                        data-toggle="tooltip"
+                                        data-content="http://data.europa.eu/a4g/ontology#concernsOrganisation"
+                                        data-placement="right">
+                                        concerns organisation</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                                <p title="The term 'org:Organization' is not defined in this document. Please refer to the appropriate module's documentation.">Organization</p>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    1
+                                </td>
+                                <td>
+                                    Relates to Organization.
+                                </td>
+                                <td>
+                                    
+                                </td>
+                                
+                                <td>
+                                    
+        
+        
+        
+        
+        
+            
+            
+       
+            
+
+        <a href="https://github.com/OP-TED/ePO/issues/new?title=Issue%20for%20'Concerns organisation'%20in%20'Organisation information summary'&body=Explain%20your%20issue%20for%20https://OP-TED.github.io/ePO/releases/5.2.0/%23Organisationinformationsummary.concernsorganisation" target="_blank" rel="noopener noreferrer" >
+            <img src="./assets/img/callout.png" loading="lazy" alt="[o]" title="Report an issue or share feedback" class="feedbackButton"/>
+        </a>
+    
+
+                                </td>
+                            </tr>
+                        
+                            <tr id="Organisationinformationsummary.hasbusinessclassificationdescription"
+                                typeof="rdf:Property"
+                                resource="http://data.europa.eu/a4g/ontology#hasBusinessClassificationDescription"
+                                class="class mandatory">
+                                <td>
+                                        
+                                        
+                                        <a href="http://data.europa.eu/a4g/ontology#hasBusinessClassificationDescription"
+                                        data-toggle="tooltip"
+                                        data-content="http://data.europa.eu/a4g/ontology#hasBusinessClassificationDescription"
+                                        data-placement="right">
+                                        has business classification description</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            
+                                                <a href="#Plainliteral"
+                                                data-toggle="tooltip"
+                                                data-content="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"
+                                                data-placement="right">Plain literal</a>
+                                            
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..*
+                                </td>
+                                <td>
+                                    Explanatory text about the size of the Business. Additional information: The values of this property may come from the recommended codelist: http://publications.europa.eu/resource/authority/economic-operator-size
+                                </td>
+                                <td>
+                                    
+                                </td>
+                                
+                                <td>
+                                    
+        
+        
+        
+        
+        
+            
+            
+       
+            
+
+        <a href="https://github.com/OP-TED/ePO/issues/new?title=Issue%20for%20'Has business classification description'%20in%20'Organisation information summary'&body=Explain%20your%20issue%20for%20https://OP-TED.github.io/ePO/releases/5.2.0/%23Organisationinformationsummary.hasbusinessclassificationdescription" target="_blank" rel="noopener noreferrer" >
+            <img src="./assets/img/callout.png" loading="lazy" alt="[o]" title="Report an issue or share feedback" class="feedbackButton"/>
+        </a>
+    
+
+                                </td>
+                            </tr>
+                        
+                            <tr id="Organisationinformationsummary.providesorganisationcompletedtaskdescription"
+                                typeof="rdf:Property"
+                                resource="http://data.europa.eu/a4g/ontology#providesOrganisationCompletedTaskDescription"
+                                class="class mandatory">
+                                <td>
+                                        
+                                        
+                                        <a href="http://data.europa.eu/a4g/ontology#providesOrganisationCompletedTaskDescription"
+                                        data-toggle="tooltip"
+                                        data-content="http://data.europa.eu/a4g/ontology#providesOrganisationCompletedTaskDescription"
+                                        data-placement="right">
+                                        provides organisation completed task description</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            
+                                                <a href="#Plainliteral"
+                                                data-toggle="tooltip"
+                                                data-content="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"
+                                                data-placement="right">Plain literal</a>
+                                            
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..1
+                                </td>
+                                <td>
+                                    Text describing the works, supplies or services executed, delivered or performed in a procurement project that can be used as an evidence for the classification of the Organization.
+                                </td>
+                                <td>
+                                    
+                                </td>
+                                
+                                <td>
+                                    
+        
+        
+        
+        
+        
+            
+            
+       
+            
+
+        <a href="https://github.com/OP-TED/ePO/issues/new?title=Issue%20for%20'Provides organisation completed task description'%20in%20'Organisation information summary'&body=Explain%20your%20issue%20for%20https://OP-TED.github.io/ePO/releases/5.2.0/%23Organisationinformationsummary.providesorganisationcompletedtaskdescription" target="_blank" rel="noopener noreferrer" >
+            <img src="./assets/img/callout.png" loading="lazy" alt="[o]" title="Report an issue or share feedback" class="feedbackButton"/>
+        </a>
+    
+
+                                </td>
+                            </tr>
+                        
+                            <tr id="Organisationinformationsummary.providesorganisationemployeequantity"
+                                typeof="rdf:Property"
+                                resource="http://data.europa.eu/a4g/ontology#providesOrganisationEmployeeQuantity"
+                                class="class mandatory">
+                                <td>
+                                        
+                                        
+                                        <a href="http://data.europa.eu/a4g/ontology#providesOrganisationEmployeeQuantity"
+                                        data-toggle="tooltip"
+                                        data-content="http://data.europa.eu/a4g/ontology#providesOrganisationEmployeeQuantity"
+                                        data-placement="right">
+                                        provides organisation employee quantity</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                                <p title="The term 'epo:Quantity' is not defined in this document. Please refer to the appropriate module's documentation.">Quantity</p>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..1
+                                </td>
+                                <td>
+                                    The number of people hired by the Organization.
+                                </td>
+                                <td>
+                                    
+                                </td>
+                                
+                                <td>
+                                    
+        
+        
+        
+        
+        
+            
+            
+       
+            
+
+        <a href="https://github.com/OP-TED/ePO/issues/new?title=Issue%20for%20'Provides organisation employee quantity'%20in%20'Organisation information summary'&body=Explain%20your%20issue%20for%20https://OP-TED.github.io/ePO/releases/5.2.0/%23Organisationinformationsummary.providesorganisationemployeequantity" target="_blank" rel="noopener noreferrer" >
+            <img src="./assets/img/callout.png" loading="lazy" alt="[o]" title="Report an issue or share feedback" class="feedbackButton"/>
+        </a>
+    
+
+                                </td>
+                            </tr>
+                        
+                            <tr id="Organisationinformationsummary.providesorganisationfinancialcapability"
+                                typeof="rdf:Property"
+                                resource="http://data.europa.eu/a4g/ontology#providesOrganisationFinancialCapability"
+                                class="class mandatory">
+                                <td>
+                                        
+                                        
+                                        <a href="http://data.europa.eu/a4g/ontology#providesOrganisationFinancialCapability"
+                                        data-toggle="tooltip"
+                                        data-content="http://data.europa.eu/a4g/ontology#providesOrganisationFinancialCapability"
+                                        data-placement="right">
+                                        provides organisation financial capability</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                                <p title="The term 'epo:MonetaryValue' is not defined in this document. Please refer to the appropriate module's documentation.">Monetary value</p>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..1
+                                </td>
+                                <td>
+                                    A monetary amount representing the financial capability of the Organization. Additional information: Used to represent the general Turnover of the Organization (for statistical purposes).
+                                </td>
+                                <td>
+                                    
+                                </td>
+                                
+                                <td>
+                                    
+        
+        
+        
+        
+        
+            
+            
+       
+            
+
+        <a href="https://github.com/OP-TED/ePO/issues/new?title=Issue%20for%20'Provides organisation financial capability'%20in%20'Organisation information summary'&body=Explain%20your%20issue%20for%20https://OP-TED.github.io/ePO/releases/5.2.0/%23Organisationinformationsummary.providesorganisationfinancialcapability" target="_blank" rel="noopener noreferrer" >
+            <img src="./assets/img/callout.png" loading="lazy" alt="[o]" title="Report an issue or share feedback" class="feedbackButton"/>
+        </a>
+    
+
+                                </td>
+                            </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+        
+    </section>
+
+            
+        
+            
+                
+    <section>
+        <h3 id="Powerofattorney">
+            <a href="http://data.europa.eu/a4g/ontology#PowerOfAttorney"
+                data-toggle="tooltip"
+                data-content="http://data.europa.eu/a4g/ontology#PowerOfAttorney"
+                data-placement="right">Power of attorney</a>
+
+        </h3>
+        <span style="float:right;margin-right:10px;">
+        
+        
+        
+        
+        
+            
+            
+        
+
+        <a href="https://github.com/OP-TED/ePO/issues/new?title=Issue%20for%20'Power of attorney'&body=Explain%20your%20issue%20for%20https://OP-TED.github.io/ePO/releases/5.2.0/%23Powerofattorney" target="_blank" rel="noopener noreferrer" >
+            <img src="./assets/img/callout.png" loading="lazy" alt="[o]" title="Report an issue or share feedback" class="feedbackButton"/>
+        </a>
+    
+</span>
+        
+        <dl>
+            <dt>
+                Definition
+            </dt>
+            <dd>
+                A legal document that grants someone the authority to make decisions on behalf of an Organization.
+            </dd>
+            
+            
+                <dt>
+                    Subclass of
+                </dt>
+                <dd> <a href="http://data.europa.eu/a4g/ontology#Document">Document</a>
+                    
+                </dd>
+            
+            
+            <dt>
+                Properties
+            </dt>
+            
+                <dd>
+                    This specification does not impose any additional requirements to properties for this entity.
+                </dd>
+            
+        </dl>
+        
+    </section>
+
+            
+        
+            
+                
+    <section>
+        <h3 id="Response">
+            <a href="http://data.europa.eu/a4g/ontology#Response"
+                data-toggle="tooltip"
+                data-content="http://data.europa.eu/a4g/ontology#Response"
+                data-placement="right">Response</a>
+
+        </h3>
+        <span style="float:right;margin-right:10px;">
+        
+        
+        
+        
+        
+            
+            
+        
+
+        <a href="https://github.com/OP-TED/ePO/issues/new?title=Issue%20for%20'Response'&body=Explain%20your%20issue%20for%20https://OP-TED.github.io/ePO/releases/5.2.0/%23Response" target="_blank" rel="noopener noreferrer" >
+            <img src="./assets/img/callout.png" loading="lazy" alt="[o]" title="Report an issue or share feedback" class="feedbackButton"/>
+        </a>
+    
+</span>
+        
+        <dl>
+            <dt>
+                Definition
+            </dt>
+            <dd>
+                An answer given to a question that is part of an ESPD Request.
+            </dd>
+            
+            
+            
+            <dt>
+                Properties
+            </dt>
+            
+                <dd>
+                    For this entity the following properties are defined:
+                        
+                        
+                        <a href="#Response.answersquestion">answers question</a>,
+                        
+                        
+                        <a href="#Response.confidentialityleveltype">confidentiality level type</a>,
+                        
+                        
+                        <a href="#Response.isreinforcedby">is reinforced by</a>,
+                        
+                        
+                        <a href="#Response.referstoapplicableperiod">refers to applicable period</a>,
+                        
+                        
+                        <a href="#Response.supportsvalue">supports value</a>.
+                </dd>
+            
+        </dl>
+        
+            <div class="u-table-overflow">
+                <table class="data-table simple" id="table-mandatory-classes">
+                    <thead>
+                        <tr class="data-table__header">
+                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:12%">
+                                Property
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:12%">
+                                Range
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:6%">
+                                Card
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:30%">
+                                Definition 
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:30%">
+                                Usage
+                            </th>
+                            
+                            
+                                <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:5%">
+                                    Feedback
+                                </th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody class="supertype">
+                        
+                            <tr id="Response.answersquestion"
+                                typeof="rdf:Property"
+                                resource="http://data.europa.eu/a4g/ontology#answersQuestion"
+                                class="class mandatory">
+                                <td>
+                                        
+                                        
+                                        <a href="http://data.europa.eu/a4g/ontology#answersQuestion"
+                                        data-toggle="tooltip"
+                                        data-content="http://data.europa.eu/a4g/ontology#answersQuestion"
+                                        data-placement="right">
+                                        answers question</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                                <p title="The term 'cccev:InformationRequirement' is not defined in this document. Please refer to the appropriate module's documentation.">Information requirement</p>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..*
+                                </td>
+                                <td>
+                                    Relation indicating that the Response replies to a question.
+                                </td>
+                                <td>
+                                    
+                                </td>
+                                
+                                <td>
+                                    
+        
+        
+        
+        
+        
+            
+            
+       
+            
+
+        <a href="https://github.com/OP-TED/ePO/issues/new?title=Issue%20for%20'Answers question'%20in%20'Response'&body=Explain%20your%20issue%20for%20https://OP-TED.github.io/ePO/releases/5.2.0/%23Response.answersquestion" target="_blank" rel="noopener noreferrer" >
+            <img src="./assets/img/callout.png" loading="lazy" alt="[o]" title="Report an issue or share feedback" class="feedbackButton"/>
+        </a>
+    
+
+                                </td>
+                            </tr>
+                        
+                            <tr id="Response.confidentialityleveltype"
+                                typeof="rdf:Property"
+                                resource="http://data.europa.eu/m8g/confidentialityLevelType"
+                                class="class mandatory">
+                                <td>
+                                        
+                                        
+                                        <a href="http://data.europa.eu/m8g/confidentialityLevelType"
+                                        data-toggle="tooltip"
+                                        data-content="http://data.europa.eu/m8g/confidentialityLevelType"
+                                        data-placement="right">
+                                        confidentiality level type</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                                <p title="The term 'skos:Concept' is not defined in this document. Please refer to the appropriate module's documentation.">Concept</p>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..1
+                                </td>
+                                <td>
+                                    External concept defined by <xref scope="external" href=""http://data.europa.eu/m8g/confidentialityLevelType""><foreign otherprops="#0000ff"><u>http://data.europa.eu/m8g/confidentialityLevelType</u></foreign></xref>
+                                </td>
+                                <td>
+                                    
+                                </td>
+                                
+                                <td>
+                                    
+        
+        
+        
+        
+        
+            
+            
+       
+            
+
+        <a href="https://github.com/OP-TED/ePO/issues/new?title=Issue%20for%20'Confidentiality level type'%20in%20'Response'&body=Explain%20your%20issue%20for%20https://OP-TED.github.io/ePO/releases/5.2.0/%23Response.confidentialityleveltype" target="_blank" rel="noopener noreferrer" >
+            <img src="./assets/img/callout.png" loading="lazy" alt="[o]" title="Report an issue or share feedback" class="feedbackButton"/>
+        </a>
+    
+
+                                </td>
+                            </tr>
+                        
+                            <tr id="Response.isreinforcedby"
+                                typeof="rdf:Property"
+                                resource="http://data.europa.eu/a4g/ontology#isReinforcedBy"
+                                class="class mandatory">
+                                <td>
+                                        
+                                        
+                                        <a href="http://data.europa.eu/a4g/ontology#isReinforcedBy"
+                                        data-toggle="tooltip"
+                                        data-content="http://data.europa.eu/a4g/ontology#isReinforcedBy"
+                                        data-placement="right">
+                                        is reinforced by</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                                <p title="The term 'cccev:Evidence' is not defined in this document. Please refer to the appropriate module's documentation.">Evidence</p>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..*
+                                </td>
+                                <td>
+                                    Relation indicating an Evidence that supports the Response.
+                                </td>
+                                <td>
+                                    
+                                </td>
+                                
+                                <td>
+                                    
+        
+        
+        
+        
+        
+            
+            
+       
+            
+
+        <a href="https://github.com/OP-TED/ePO/issues/new?title=Issue%20for%20'Is reinforced by'%20in%20'Response'&body=Explain%20your%20issue%20for%20https://OP-TED.github.io/ePO/releases/5.2.0/%23Response.isreinforcedby" target="_blank" rel="noopener noreferrer" >
+            <img src="./assets/img/callout.png" loading="lazy" alt="[o]" title="Report an issue or share feedback" class="feedbackButton"/>
+        </a>
+    
+
+                                </td>
+                            </tr>
+                        
+                            <tr id="Response.referstoapplicableperiod"
+                                typeof="rdf:Property"
+                                resource="http://data.europa.eu/a4g/ontology#refersToApplicablePeriod"
+                                class="class mandatory">
+                                <td>
+                                        
+                                        
+                                        <a href="http://data.europa.eu/a4g/ontology#refersToApplicablePeriod"
+                                        data-toggle="tooltip"
+                                        data-content="http://data.europa.eu/a4g/ontology#refersToApplicablePeriod"
+                                        data-placement="right">
+                                        refers to applicable period</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                                <p title="The term 'time:Interval' is not defined in this document. Please refer to the appropriate module's documentation.">Interval</p>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..1
+                                </td>
+                                <td>
+                                    Relation indicating the period to which the Response shall apply.
+                                </td>
+                                <td>
+                                    
+                                </td>
+                                
+                                <td>
+                                    
+        
+        
+        
+        
+        
+            
+            
+       
+            
+
+        <a href="https://github.com/OP-TED/ePO/issues/new?title=Issue%20for%20'Refers to applicable period'%20in%20'Response'&body=Explain%20your%20issue%20for%20https://OP-TED.github.io/ePO/releases/5.2.0/%23Response.referstoapplicableperiod" target="_blank" rel="noopener noreferrer" >
+            <img src="./assets/img/callout.png" loading="lazy" alt="[o]" title="Report an issue or share feedback" class="feedbackButton"/>
+        </a>
+    
+
+                                </td>
+                            </tr>
+                        
+                            <tr id="Response.supportsvalue"
+                                typeof="rdf:Property"
+                                resource="http://data.europa.eu/m8g/supportsValue"
+                                class="class mandatory">
+                                <td>
+                                        
+                                        
+                                        <a href="http://data.europa.eu/m8g/supportsValue"
+                                        data-toggle="tooltip"
+                                        data-content="http://data.europa.eu/m8g/supportsValue"
+                                        data-placement="right">
+                                        supports value</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            
+                                                <a href="#Supportedvalue"
+                                                data-toggle="tooltip"
+                                                data-content="http://data.europa.eu/m8g/SupportedValue"
+                                                data-placement="right">Supported value</a>
+                                            
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..*
+                                </td>
+                                <td>
+                                    External concept defined by <xref scope="external" href=""http://data.europa.eu/m8g/supportsValue""><foreign otherprops="#0000ff"><u>http://data.europa.eu/m8g/supportsValue</u></foreign></xref>
+                                </td>
+                                <td>
+                                    
+                                </td>
+                                
+                                <td>
+                                    
+        
+        
+        
+        
+        
+            
+            
+       
+            
+
+        <a href="https://github.com/OP-TED/ePO/issues/new?title=Issue%20for%20'Supports value'%20in%20'Response'&body=Explain%20your%20issue%20for%20https://OP-TED.github.io/ePO/releases/5.2.0/%23Response.supportsvalue" target="_blank" rel="noopener noreferrer" >
+            <img src="./assets/img/callout.png" loading="lazy" alt="[o]" title="Report an issue or share feedback" class="feedbackButton"/>
+        </a>
+    
+
+                                </td>
+                            </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+        
+    </section>
+
+            
+        
+            
+        
+    
+</section>
+
+    
+
+    
+        
+<section>
+    <h2>Supportive Entities</h2>
+    The supportive entities are supporting the main entities in the vocabulary. They are included in the vocabulary because they form the range of properties.
+
+    
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+                
+    <section>
+        <h3 id="Supportedvalue">
+            <a href="http://data.europa.eu/m8g/SupportedValue"
+                data-toggle="tooltip"
+                data-content="http://data.europa.eu/m8g/SupportedValue"
+                data-placement="right">Supported value</a>
+
+        </h3>
+        <span style="float:right;margin-right:10px;">
+        
+        
+        
+        
+        
+            
+            
+        
+
+        <a href="https://github.com/OP-TED/ePO/issues/new?title=Issue%20for%20'Supported value'&body=Explain%20your%20issue%20for%20https://OP-TED.github.io/ePO/releases/5.2.0/%23Supportedvalue" target="_blank" rel="noopener noreferrer" >
+            <img src="./assets/img/callout.png" loading="lazy" alt="[o]" title="Report an issue or share feedback" class="feedbackButton"/>
+        </a>
+    
+</span>
+        
+        <dl>
+            <dt>
+                Definition
+            </dt>
+            <dd>
+                External concept defined by <xref scope="external" href=""http://data.europa.eu/m8g/SupportedValue""><foreign otherprops="#0000ff"><u>http://data.europa.eu/m8g/SupportedValue</u></foreign></xref>
+            </dd>
+            
+            
+            
+            <dt>
+                Properties
+            </dt>
+            
+                <dd>
+                    For this entity the following properties are defined:
+                        
+                        
+                        <a href="#Supportedvalue.providesvaluefor">provides value for</a>,
+                        
+                        
+                        <a href="#Supportedvalue.value">value</a>.
+                </dd>
+            
+        </dl>
+        
+            <div class="u-table-overflow">
+                <table class="data-table simple" id="table-mandatory-classes">
+                    <thead>
+                        <tr class="data-table__header">
+                            <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:12%">
+                                Property
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:12%">
+                                Range
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:6%">
+                                Card
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:30%">
+                                Definition 
+                            </th>
+                            <th class="data-table__header-title--sortable" style="width:30%">
+                                Usage
+                            </th>
+                            
+                            
+                                <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:5%">
+                                    Feedback
+                                </th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody class="supertype">
+                        
+                            <tr id="Supportedvalue.providesvaluefor"
+                                typeof="rdf:Property"
+                                resource="http://data.europa.eu/m8g/providesValueFor"
+                                class="class mandatory">
+                                <td>
+                                        
+                                        
+                                        <a href="http://data.europa.eu/m8g/providesValueFor"
+                                        data-toggle="tooltip"
+                                        data-content="http://data.europa.eu/m8g/providesValueFor"
+                                        data-placement="right">
+                                        provides value for</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                                <p title="The term 'cccev:InformationConcept' is not defined in this document. Please refer to the appropriate module's documentation.">Information concept</p>
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..*
+                                </td>
+                                <td>
+                                    External concept defined by <xref scope="external" href=""http://data.europa.eu/m8g/providesValueFor""><foreign otherprops="#0000ff"><u>http://data.europa.eu/m8g/providesValueFor</u></foreign></xref>
+                                </td>
+                                <td>
+                                    
+                                </td>
+                                
+                                <td>
+                                    
+        
+        
+        
+        
+        
+            
+            
+       
+            
+
+        <a href="https://github.com/OP-TED/ePO/issues/new?title=Issue%20for%20'Provides value for'%20in%20'Supported value'&body=Explain%20your%20issue%20for%20https://OP-TED.github.io/ePO/releases/5.2.0/%23Supportedvalue.providesvaluefor" target="_blank" rel="noopener noreferrer" >
+            <img src="./assets/img/callout.png" loading="lazy" alt="[o]" title="Report an issue or share feedback" class="feedbackButton"/>
+        </a>
+    
+
+                                </td>
+                            </tr>
+                        
+                            <tr id="Supportedvalue.value"
+                                typeof="rdf:Property"
+                                resource="http://data.europa.eu/m8g/value"
+                                class="class mandatory">
+                                <td>
+                                        
+                                        
+                                        <a href="http://data.europa.eu/m8g/value"
+                                        data-toggle="tooltip"
+                                        data-content="http://data.europa.eu/m8g/value"
+                                        data-placement="right">
+                                        value</a>
+                                </td>
+                                <td>
+                                    
+                                        
+                                            
+                                                <a href="#Plainliteral"
+                                                data-toggle="tooltip"
+                                                data-content="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"
+                                                data-placement="right">Plain literal</a>
+                                            
+                                        
+                                    
+                                </td>
+                                <td>
+                                    0..*
+                                </td>
+                                <td>
+                                    External concept defined by <xref scope="external" href=""http://data.europa.eu/m8g/value""><foreign otherprops="#0000ff"><u>http://data.europa.eu/m8g/value</u></foreign></xref>
+                                </td>
+                                <td>
+                                    
+                                </td>
+                                
+                                <td>
+                                    
+        
+        
+        
+        
+        
+            
+            
+       
+            
+
+        <a href="https://github.com/OP-TED/ePO/issues/new?title=Issue%20for%20'Value'%20in%20'Supported value'&body=Explain%20your%20issue%20for%20https://OP-TED.github.io/ePO/releases/5.2.0/%23Supportedvalue.value" target="_blank" rel="noopener noreferrer" >
+            <img src="./assets/img/callout.png" loading="lazy" alt="[o]" title="Report an issue or share feedback" class="feedbackButton"/>
+        </a>
+    
+
+                                </td>
+                            </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+        
+    </section>
+
+            
+        
+    
+</section>
+
+    
+
+    
+        
+<section>
+    <h2>Datatypes</h2>
+
+	The following datatypes are used within this specification.
+
+    
+        <table class="data-table simple" id="table-mandatory-classes">
+            <thead>
+                <tr class="data-table__header">
+                    <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:25%">
+                        Class
+                    </th>
+                    <th class="data-table__header-title--sortable" style="width:70%">
+                        Definition
+                    </th>
+                    
+                        <th class="data-table__header-title--sortable data-table__header-title--sortable-active" style="width:5%">
+                            Feedback
+                        </th>
+                    
+                </tr>
+            </thead>
+            <tbody class="supertype">
+                
+                <tr>
+                    <td>
+                        
+                            <div id="Plainliteral">
+                                <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"
+                                    data-toggle="tooltip"
+                                    data-content="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"
+                                    data-placement="right">Plain literal</a>
+                            </div>
+                        
+                    </td>
+                    <td>
+                        
+                    </td>
+                    <td>
+                        
+        
+        
+        
+        
+        
+            
+            
+        
+
+        <a href="https://github.com/OP-TED/ePO/issues/new?title=Issue%20for%20'Plain literal'&body=Explain%20your%20issue%20for%20https://OP-TED.github.io/ePO/releases/5.2.0/%23Plainliteral" target="_blank" rel="noopener noreferrer" >
+            <img src="./assets/img/callout.png" loading="lazy" alt="[o]" title="Report an issue or share feedback" class="feedbackButton"/>
+        </a>
+    
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        
+                            <div id="Anyuri">
+                                <a href="http://www.w3.org/2001/XMLSchema#anyURI"
+                                    data-toggle="tooltip"
+                                    data-content="http://www.w3.org/2001/XMLSchema#anyURI"
+                                    data-placement="right">Any URI</a>
+                            </div>
+                        
+                    </td>
+                    <td>
+                        
+                    </td>
+                    <td>
+                        
+        
+        
+        
+        
+        
+            
+            
+        
+
+        <a href="https://github.com/OP-TED/ePO/issues/new?title=Issue%20for%20'Any URI'&body=Explain%20your%20issue%20for%20https://OP-TED.github.io/ePO/releases/5.2.0/%23Anyuri" target="_blank" rel="noopener noreferrer" >
+            <img src="./assets/img/callout.png" loading="lazy" alt="[o]" title="Report an issue or share feedback" class="feedbackButton"/>
+        </a>
+    
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        
+                            <div id="Boolean">
+                                <a href="http://www.w3.org/2001/XMLSchema#boolean"
+                                    data-toggle="tooltip"
+                                    data-content="http://www.w3.org/2001/XMLSchema#boolean"
+                                    data-placement="right">Boolean</a>
+                            </div>
+                        
+                    </td>
+                    <td>
+                        
+                    </td>
+                    <td>
+                        
+        
+        
+        
+        
+        
+            
+            
+        
+
+        <a href="https://github.com/OP-TED/ePO/issues/new?title=Issue%20for%20'Boolean'&body=Explain%20your%20issue%20for%20https://OP-TED.github.io/ePO/releases/5.2.0/%23Boolean" target="_blank" rel="noopener noreferrer" >
+            <img src="./assets/img/callout.png" loading="lazy" alt="[o]" title="Report an issue or share feedback" class="feedbackButton"/>
+        </a>
+    
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        
+                            <div id="Date">
+                                <a href="http://www.w3.org/2001/XMLSchema#date"
+                                    data-toggle="tooltip"
+                                    data-content="http://www.w3.org/2001/XMLSchema#date"
+                                    data-placement="right">Date</a>
+                            </div>
+                        
+                    </td>
+                    <td>
+                        
+                    </td>
+                    <td>
+                        
+        
+        
+        
+        
+        
+            
+            
+        
+
+        <a href="https://github.com/OP-TED/ePO/issues/new?title=Issue%20for%20'Date'&body=Explain%20your%20issue%20for%20https://OP-TED.github.io/ePO/releases/5.2.0/%23Date" target="_blank" rel="noopener noreferrer" >
+            <img src="./assets/img/callout.png" loading="lazy" alt="[o]" title="Report an issue or share feedback" class="feedbackButton"/>
+        </a>
+    
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        
+                            <div id="Datetime">
+                                <a href="http://www.w3.org/2001/XMLSchema#dateTime"
+                                    data-toggle="tooltip"
+                                    data-content="http://www.w3.org/2001/XMLSchema#dateTime"
+                                    data-placement="right">Date time</a>
+                            </div>
+                        
+                    </td>
+                    <td>
+                        
+                    </td>
+                    <td>
+                        
+        
+        
+        
+        
+        
+            
+            
+        
+
+        <a href="https://github.com/OP-TED/ePO/issues/new?title=Issue%20for%20'Date time'&body=Explain%20your%20issue%20for%20https://OP-TED.github.io/ePO/releases/5.2.0/%23Datetime" target="_blank" rel="noopener noreferrer" >
+            <img src="./assets/img/callout.png" loading="lazy" alt="[o]" title="Report an issue or share feedback" class="feedbackButton"/>
+        </a>
+    
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        
+                            <div id="Decimal">
+                                <a href="http://www.w3.org/2001/XMLSchema#decimal"
+                                    data-toggle="tooltip"
+                                    data-content="http://www.w3.org/2001/XMLSchema#decimal"
+                                    data-placement="right">Decimal</a>
+                            </div>
+                        
+                    </td>
+                    <td>
+                        
+                    </td>
+                    <td>
+                        
+        
+        
+        
+        
+        
+            
+            
+        
+
+        <a href="https://github.com/OP-TED/ePO/issues/new?title=Issue%20for%20'Decimal'&body=Explain%20your%20issue%20for%20https://OP-TED.github.io/ePO/releases/5.2.0/%23Decimal" target="_blank" rel="noopener noreferrer" >
+            <img src="./assets/img/callout.png" loading="lazy" alt="[o]" title="Report an issue or share feedback" class="feedbackButton"/>
+        </a>
+    
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        
+                            <div id="Integer">
+                                <a href="http://www.w3.org/2001/XMLSchema#integer"
+                                    data-toggle="tooltip"
+                                    data-content="http://www.w3.org/2001/XMLSchema#integer"
+                                    data-placement="right">Integer</a>
+                            </div>
+                        
+                    </td>
+                    <td>
+                        
+                    </td>
+                    <td>
+                        
+        
+        
+        
+        
+        
+            
+            
+        
+
+        <a href="https://github.com/OP-TED/ePO/issues/new?title=Issue%20for%20'Integer'&body=Explain%20your%20issue%20for%20https://OP-TED.github.io/ePO/releases/5.2.0/%23Integer" target="_blank" rel="noopener noreferrer" >
+            <img src="./assets/img/callout.png" loading="lazy" alt="[o]" title="Report an issue or share feedback" class="feedbackButton"/>
+        </a>
+    
+
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    
+</section>
+
+    
+
+    
+        <section class="informative">
+            <h2>Usage Guidelines - change </h2>
+            
+            <h3>Basic Usage</h3>
+            <p>To use this vocabulary, follow these guidelines:</p>
+            
+            
+                        <div class="h3 examples" id="example1">Example 1</div>
+            
+        </section>
+     
+
+    
+        <section class="informative">
+            <h2>Governance</h2>
+        </section>
+    
+
+    
+        <section class="informative">
+            <h2>Custom section - TEMPLATE_CUSTOM_2024</h2>
+            <p>A custom section introduced in main template</p>
+        </section>
+        
+        <!-- Include custom template content -->
+        <section class="informative">
+    <h2>Custom section from custom.j2 </h2>
+    <p>A custom section introduced in main template via include</p>
+</section>
+
+    
+
+    
+        
+<section id="quick-reference" class="appendix">
+    <h2>Quick Reference of Classes and Properties</h2>
+
+    This section provides a condensed tabular overview of the mentioned classes and properties in this specification.
+
+    
+        <table id="table-quickoverview" class="simple" style="width:100%; table-layout: fixed; word-wrap:break-word;">
+            <thead>
+                <tr>
+                    <th>Class</th>
+                    <th>Class IRI</th>
+                    <th>Property type</th>
+                    <th>Property</th>
+                    <th>Property IRI</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+                    
+                
+                    
+                        
+                            
+                            
+                            <tr>
+                                <td><a href="#Espd">ESPD</a></td>
+                                <td><div class="compact-uri">http://data.europa.eu/a4g/ontology#ESPD</div></td>
+                                <td>
+    
+    
+        
+        
+            Optional
+        
+    
+</td>
+                                <td><a href="#Espd.iscontainedintender">is contained in tender </a></td>
+                                <td><div class="compact-uri">http://data.europa.eu/a4g/ontology#isContainedInTender</div></td>
+                            </tr>
+                        
+                            
+                            
+                            <tr>
+                                <td><a href="#Espd">ESPD</a></td>
+                                <td><div class="compact-uri">http://data.europa.eu/a4g/ontology#ESPD</div></td>
+                                <td>
+    
+    
+        
+        
+            Optional
+        
+    
+</td>
+                                <td><a href="#Espd.providesinformationon">provides information on </a></td>
+                                <td><div class="compact-uri">http://data.europa.eu/a4g/ontology#providesInformationOn</div></td>
+                            </tr>
+                        
+                            
+                            
+                            <tr>
+                                <td><a href="#Espd">ESPD</a></td>
+                                <td><div class="compact-uri">http://data.europa.eu/a4g/ontology#ESPD</div></td>
+                                <td>
+    
+    
+        
+        
+            Optional
+        
+    
+</td>
+                                <td><a href="#Espd.relatestoespdrequest">relates to ESPD request </a></td>
+                                <td><div class="compact-uri">http://data.europa.eu/a4g/ontology#relatesToESPDRequest</div></td>
+                            </tr>
+                        
+                            
+                            
+                            <tr>
+                                <td><a href="#Espd">ESPD</a></td>
+                                <td><div class="compact-uri">http://data.europa.eu/a4g/ontology#ESPD</div></td>
+                                <td>
+    
+    
+        
+        
+            Mandatory
+        
+    
+</td>
+                                <td><a href="#Espd.specifiesresponse">specifies response </a></td>
+                                <td><div class="compact-uri">http://data.europa.eu/a4g/ontology#specifiesResponse</div></td>
+                            </tr>
+                        
+                    
+                
+                    
+                        
+                            
+                            
+                            <tr>
+                                <td><a href="#Evidenceinformation">Evidence information</a></td>
+                                <td><div class="compact-uri">http://data.europa.eu/a4g/ontology#EvidenceInformation</div></td>
+                                <td>
+    
+    
+        
+        
+            Optional
+        
+    
+</td>
+                                <td><a href="#Evidenceinformation.coversallselectioncriteria">covers all selection criteria </a></td>
+                                <td><div class="compact-uri">http://data.europa.eu/a4g/ontology#coversAllSelectionCriteria</div></td>
+                            </tr>
+                        
+                            
+                            
+                            <tr>
+                                <td><a href="#Evidenceinformation">Evidence information</a></td>
+                                <td><div class="compact-uri">http://data.europa.eu/a4g/ontology#EvidenceInformation</div></td>
+                                <td>
+    
+    
+        
+        
+            Optional
+        
+    
+</td>
+                                <td><a href="#Evidenceinformation.description">description </a></td>
+                                <td><div class="compact-uri">http://purl.org/dc/terms/description</div></td>
+                            </tr>
+                        
+                            
+                            
+                            <tr>
+                                <td><a href="#Evidenceinformation">Evidence information</a></td>
+                                <td><div class="compact-uri">http://data.europa.eu/a4g/ontology#EvidenceInformation</div></td>
+                                <td>
+    
+    
+        
+        
+            Mandatory
+        
+    
+</td>
+                                <td><a href="#Evidenceinformation.summarisesinformationaboutevidence">summarises information about evidence </a></td>
+                                <td><div class="compact-uri">http://data.europa.eu/a4g/ontology#summarisesInformationAboutEvidence</div></td>
+                            </tr>
+                        
+                    
+                
+                    
+                        
+                            
+                            
+                            <tr>
+                                <td><a href="#Legalrepresentative">Legal representative</a></td>
+                                <td><div class="compact-uri">http://data.europa.eu/a4g/ontology#LegalRepresentative</div></td>
+                                <td>
+    
+    
+        
+        
+            Optional
+        
+    
+</td>
+                                <td><a href="#Legalrepresentative.actsonbehalfof">acts on behalf of </a></td>
+                                <td><div class="compact-uri">http://data.europa.eu/a4g/ontology#actsOnBehalfOf</div></td>
+                            </tr>
+                        
+                            
+                            
+                            <tr>
+                                <td><a href="#Legalrepresentative">Legal representative</a></td>
+                                <td><div class="compact-uri">http://data.europa.eu/a4g/ontology#LegalRepresentative</div></td>
+                                <td>
+    
+    
+        
+        
+            Optional
+        
+    
+</td>
+                                <td><a href="#Legalrepresentative.hasmandate">has mandate </a></td>
+                                <td><div class="compact-uri">http://data.europa.eu/a4g/ontology#hasMandate</div></td>
+                            </tr>
+                        
+                            
+                            
+                            <tr>
+                                <td><a href="#Legalrepresentative">Legal representative</a></td>
+                                <td><div class="compact-uri">http://data.europa.eu/a4g/ontology#LegalRepresentative</div></td>
+                                <td>
+    
+    
+        
+        
+            Optional
+        
+    
+</td>
+                                <td><a href="#Legalrepresentative.haspowerofattorney">has power of attorney </a></td>
+                                <td><div class="compact-uri">http://data.europa.eu/a4g/ontology#hasPowerOfAttorney</div></td>
+                            </tr>
+                        
+                    
+                
+                    
+                
+                    
+                        
+                            
+                            
+                            <tr>
+                                <td><a href="#Organisationinformationsummary">Organisation information summary</a></td>
+                                <td><div class="compact-uri">http://data.europa.eu/a4g/ontology#OrganisationInformationSummary</div></td>
+                                <td>
+    
+    
+        
+        
+            Mandatory
+        
+    
+</td>
+                                <td><a href="#Organisationinformationsummary.concernsorganisation">concerns organisation </a></td>
+                                <td><div class="compact-uri">http://data.europa.eu/a4g/ontology#concernsOrganisation</div></td>
+                            </tr>
+                        
+                            
+                            
+                            <tr>
+                                <td><a href="#Organisationinformationsummary">Organisation information summary</a></td>
+                                <td><div class="compact-uri">http://data.europa.eu/a4g/ontology#OrganisationInformationSummary</div></td>
+                                <td>
+    
+    
+        
+        
+            Optional
+        
+    
+</td>
+                                <td><a href="#Organisationinformationsummary.hasbusinessclassificationdescription">has business classification description </a></td>
+                                <td><div class="compact-uri">http://data.europa.eu/a4g/ontology#hasBusinessClassificationDescription</div></td>
+                            </tr>
+                        
+                            
+                            
+                            <tr>
+                                <td><a href="#Organisationinformationsummary">Organisation information summary</a></td>
+                                <td><div class="compact-uri">http://data.europa.eu/a4g/ontology#OrganisationInformationSummary</div></td>
+                                <td>
+    
+    
+        
+        
+            Optional
+        
+    
+</td>
+                                <td><a href="#Organisationinformationsummary.providesorganisationcompletedtaskdescription">provides organisation completed task description </a></td>
+                                <td><div class="compact-uri">http://data.europa.eu/a4g/ontology#providesOrganisationCompletedTaskDescription</div></td>
+                            </tr>
+                        
+                            
+                            
+                            <tr>
+                                <td><a href="#Organisationinformationsummary">Organisation information summary</a></td>
+                                <td><div class="compact-uri">http://data.europa.eu/a4g/ontology#OrganisationInformationSummary</div></td>
+                                <td>
+    
+    
+        
+        
+            Optional
+        
+    
+</td>
+                                <td><a href="#Organisationinformationsummary.providesorganisationemployeequantity">provides organisation employee quantity </a></td>
+                                <td><div class="compact-uri">http://data.europa.eu/a4g/ontology#providesOrganisationEmployeeQuantity</div></td>
+                            </tr>
+                        
+                            
+                            
+                            <tr>
+                                <td><a href="#Organisationinformationsummary">Organisation information summary</a></td>
+                                <td><div class="compact-uri">http://data.europa.eu/a4g/ontology#OrganisationInformationSummary</div></td>
+                                <td>
+    
+    
+        
+        
+            Optional
+        
+    
+</td>
+                                <td><a href="#Organisationinformationsummary.providesorganisationfinancialcapability">provides organisation financial capability </a></td>
+                                <td><div class="compact-uri">http://data.europa.eu/a4g/ontology#providesOrganisationFinancialCapability</div></td>
+                            </tr>
+                        
+                    
+                
+                    
+                
+                    
+                        
+                            
+                            
+                            <tr>
+                                <td><a href="#Response">Response</a></td>
+                                <td><div class="compact-uri">http://data.europa.eu/a4g/ontology#Response</div></td>
+                                <td>
+    
+    
+        
+        
+            Optional
+        
+    
+</td>
+                                <td><a href="#Response.answersquestion">answers question </a></td>
+                                <td><div class="compact-uri">http://data.europa.eu/a4g/ontology#answersQuestion</div></td>
+                            </tr>
+                        
+                            
+                            
+                            <tr>
+                                <td><a href="#Response">Response</a></td>
+                                <td><div class="compact-uri">http://data.europa.eu/a4g/ontology#Response</div></td>
+                                <td>
+    
+    
+        
+        
+            Optional
+        
+    
+</td>
+                                <td><a href="#Response.confidentialityleveltype">confidentiality level type </a></td>
+                                <td><div class="compact-uri">http://data.europa.eu/m8g/confidentialityLevelType</div></td>
+                            </tr>
+                        
+                            
+                            
+                            <tr>
+                                <td><a href="#Response">Response</a></td>
+                                <td><div class="compact-uri">http://data.europa.eu/a4g/ontology#Response</div></td>
+                                <td>
+    
+    
+        
+        
+            Optional
+        
+    
+</td>
+                                <td><a href="#Response.isreinforcedby">is reinforced by </a></td>
+                                <td><div class="compact-uri">http://data.europa.eu/a4g/ontology#isReinforcedBy</div></td>
+                            </tr>
+                        
+                            
+                            
+                            <tr>
+                                <td><a href="#Response">Response</a></td>
+                                <td><div class="compact-uri">http://data.europa.eu/a4g/ontology#Response</div></td>
+                                <td>
+    
+    
+        
+        
+            Optional
+        
+    
+</td>
+                                <td><a href="#Response.referstoapplicableperiod">refers to applicable period </a></td>
+                                <td><div class="compact-uri">http://data.europa.eu/a4g/ontology#refersToApplicablePeriod</div></td>
+                            </tr>
+                        
+                            
+                            
+                            <tr>
+                                <td><a href="#Response">Response</a></td>
+                                <td><div class="compact-uri">http://data.europa.eu/a4g/ontology#Response</div></td>
+                                <td>
+    
+    
+        
+        
+            Optional
+        
+    
+</td>
+                                <td><a href="#Response.supportsvalue">supports value </a></td>
+                                <td><div class="compact-uri">http://data.europa.eu/m8g/supportsValue</div></td>
+                            </tr>
+                        
+                    
+                
+                    
+                        
+                            
+                            
+                            <tr>
+                                <td><a href="#Supportedvalue">Supported value</a></td>
+                                <td><div class="compact-uri">http://data.europa.eu/m8g/SupportedValue</div></td>
+                                <td>
+    
+    
+        
+        
+            Optional
+        
+    
+</td>
+                                <td><a href="#Supportedvalue.providesvaluefor">provides value for </a></td>
+                                <td><div class="compact-uri">http://data.europa.eu/m8g/providesValueFor</div></td>
+                            </tr>
+                        
+                            
+                            
+                            <tr>
+                                <td><a href="#Supportedvalue">Supported value</a></td>
+                                <td><div class="compact-uri">http://data.europa.eu/m8g/SupportedValue</div></td>
+                                <td>
+    
+    
+        
+        
+            Optional
+        
+    
+</td>
+                                <td><a href="#Supportedvalue.value">value </a></td>
+                                <td><div class="compact-uri">http://data.europa.eu/m8g/value</div></td>
+                            </tr>
+                        
+                    
+                
+            <tbody>
+        </table>
+    
+</section>
+
+    
+
+    
+        
+<section id="resources" class="appendix">
+    <h2>Project resources</h2>
+    <p>
+        The following list provides links to semantic data specifications and other resources related to this vocabulary.
+    </p>
+    
+</section>
+
+    
+
+
+
+<!-- ######################## End of page content ######################### -->
+</body>
+
+<!-- This must be at the end of the template, to ensure that the iterator properly works -->
+    <script defer>
+
+      const allPrefixes = [{'name': 'cccev', 'uri': 'http://data.europa.eu/m8g/'}, {'name': 'epo-sub', 'uri': 'http://data.europa.eu/a4g/ontology#'}, {'name': 'epo-acc', 'uri': 'http://data.europa.eu/a4g/ontology#'}, {'name': 'epo', 'uri': 'http://data.europa.eu/a4g/ontology#'}, {'name': 'org', 'uri': 'http://www.w3.org/ns/org#'}, {'name': 'at-voc', 'uri': 'http://publications.europa.eu/resource/authority/'}, {'name': 'time', 'uri': 'http://www.w3.org/2006/time#'}, {'name': 'rdf', 'uri': 'http://www.w3.org/1999/02/22-rdf-syntax-ns#'}, {'name': 'xsd', 'uri': 'http://www.w3.org/2001/XMLSchema#'}, {'name': 'dct', 'uri': 'http://purl.org/dc/terms/'}];
+      var usablePrefixes = [];
+      for (var i = 0; i < allPrefixes.length; i++) {
+        if (allPrefixes[i].uri) {
+          usablePrefixes.push(allPrefixes[i]);
+        } else {
+          console.warn("Prefix missing 'uri' property (or has empty value):", allPrefixes[i]);
+        }
+      }
+
+      function compactUri(uri) {
+          var curie = uri;
+          for (e in usablePrefixes) {
+              var elem = usablePrefixes[e];
+              if (curie.startsWith(elem.uri)) {
+                curie = elem.name + ":" + curie.slice(elem.uri.length);
+                break;
+              }
+          };
+          return curie;
+      };
+
+      var compactUriElems = document.getElementsByClassName("compact-uri");
+      for (k=0;k < compactUriElems.length ; k++){
+          var selem = compactUriElems[k];	
+          selem.innerHTML = compactUri(selem.innerHTML.trim());
+      }
+      
+    </script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.6/codemirror.min.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css"> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.6/codemirror.min.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.6/codemirror.min.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.6/mode/javascript/javascript.min.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.6/mode/turtle/turtle.min.js" ></script>
+    <script src="https://codemirror.net/5/mode/javascript/javascript.js" ></script>
+    <script src="https://unpkg.com/n3@1.14.0/browser/n3.min.js"></script>
+	<script src="https://rdf.js.org/comunica-browser/versions/v4/engines/query-sparql/comunica-browser.js"></script>
+    <script src="./js/example.js" ></script>
+	<script type="text/javascript">
+		function elementInView(elem){
+				goesIn = ($(window).height() + $(window).scrollTop()) > $(elem).offset().top;
+				goesOut = ($(window).scrollTop()) > ($(elem).offset().top + $(elem).height());
+				if (goesIn && !goesOut)
+					return 1;
+				else
+					return 0;
+			};
+
+		$(window).scroll(function(){
+			$('.CodeMirror').each(function(){
+				if (elementInView($(this))){
+					$(this).each(function(i, el){
+						el.CodeMirror.refresh();
+					});
+				}
+			});
+			
+		});
+	</script>
+	<style>
+		.CodeMirror {
+			border: 1px solid #eee;
+			height: auto;
+		}
+		.buttonsample {
+			cursor: pointer;
+			margin-top: 10px;
+			margin-left: 10px;
+			font-weight: 700;
+			border:0 outset buttonface;
+			background: #F5F6F8;
+			background-image: linear-gradient(to bottom,#F5F6F8,#DBDCDE);
+			border-radius:4px;
+			box-shadow:0 1px 3px #666;
+			font-family: Arial;
+			color: grey;
+			font-size: 13px !important;
+			padding: 10px 5px;
+			text-decoration: none;
+			float: right
+		}
+	    .chooseVersion {
+			cursor: pointer;
+			margin-top: 10px;
+			margin-left: 10px;
+			font-weight: 700;
+			border:0 outset buttonface;
+			background: #F5F6F8;
+			background-image: linear-gradient(to bottom,#F5F6F8,#DBDCDE);
+			border-radius:4px;
+			box-shadow:0 1px 3px #666;
+			font-family: Arial;
+			color: grey;
+			font-size: 13px !important;
+			padding: 9px 5px;
+			text-decoration: none;
+			float: right
+		}
+		.infosample {
+			cursor: pointer;
+			margin-top: 10px;
+			font-weight: 700;
+			border:0 outset buttonface;
+			border-radius:4px;
+			font-family: Arial;
+			color: grey;
+			font-size: 14px;
+			padding: 10px 0px;
+			text-decoration: none;
+			float: right
+		}
+		.buttonsample:hover {color:#2a70d3}
+		.tabsstyle {
+			padding: 10px;
+			overflow: hidden;
+		}
+		li.ui-tabs-tab > a:hover {
+			background-color:dodgerblue;
+			color:white;
+		}
+		table.simple {
+			font-size: small;
+			border-spacing:0;
+			border-collapse:collapse;
+			border-bottom:3px solid #005a9c
+		}
+		.simple th{background:#005a9c;color:#fff;padding:3px 5px;text-align:left}
+		.simple th a{color:#fff;padding:3px 5px;text-align:left}
+		.simple th[scope=row]{background:inherit;color:inherit;border-top:1px solid #ddd}
+		.simple td{padding:3px 10px;border-top:1px solid #ddd}
+		.simple tr:nth-child(even){background:#f0f6ff}
+		body.darkmode .simple th{background:#005a9c94;color:#ddd}
+		body.darkmode .simple th a{color:#ddd}
+		body.darkmode .simple tr:nth-child(even){background:#f0f6ff26}
+		body.darkmode :is(h4,h5,h6)+a.self-link::before {
+			color: var(--heading-text);
+		}
+		body.darkmode img {
+			background: none;
+		}
+		body.darkmode section#references :target {
+			background: #04162d;
+		}
+        .instruction { color: gray; font-style: italic; }
+
+        .feedbackButton {
+            width: 20px;
+            height: auto;
+        }
+
+	</style>
+
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/2.2.2/css/dataTables.dataTables.min.css">
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/3.2.2/css/buttons.dataTables.min.css">
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/2.2.2/js/dataTables.min.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/3.2.2/js/dataTables.buttons.min.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/3.2.2/js/buttons.dataTables.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/3.2.0/js/buttons.html5.min.js"></script>
+	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/3.2.0/js/buttons.print.min.js"></script>
+</html>

@@ -1,0 +1,1179 @@
+{
+  "classes": [
+    {
+      "classType": "definition",
+      "description": {
+        "en": "An Evidence submitted by an Economic Operator to prove compliance with legal, technical or financial requirements, or inapplicability of exclusion grounds in a Procurement Procedure."
+      },
+      "label": {
+        "en": "Documentary evidence"
+      },
+      "name": "epo-sub:DocumentaryEvidence",
+      "parents": [
+        {
+          "label": {
+            "en": "Evidence"
+          },
+          "name": "cccev:Evidence",
+          "scoped_uri": "http://data.europa.eu/m8g/Evidence"
+        }
+      ],
+      "properties": [],
+      "rawTags": {
+        "class-usage-scope": "main"
+      },
+      "tags": {
+        "epo:status": "implemented",
+        "skos:historyNote": "WG approval 16/09/2025"
+      },
+      "uri": "http://data.europa.eu/a4g/ontology#DocumentaryEvidence",
+      "usage": {
+        "en": "An Evidence submitted by an Economic Operator to prove compliance with legal, technical or financial requirements, or inapplicability of exclusion grounds in a Procurement Procedure."
+      }
+    },
+    {
+      "classType": "definition",
+      "description": {
+        "en": "A self-declaration of an economic operator, stating that it does not fall under the Exclusion Grounds and that it meets the Selection Criteria for a specific procurement."
+      },
+      "label": {
+        "en": "ESPD"
+      },
+      "name": "epo-sub:ESPD",
+      "parents": [
+        {
+          "label": {
+            "en": "Document"
+          },
+          "name": "epo:Document",
+          "scoped_uri": "http://data.europa.eu/a4g/ontology#Document"
+        }
+      ],
+      "properties": [
+        {
+          "cardinality": "0..*",
+          "description": {
+            "en": "Relation indicating that the instance of the concept is part of a Tender."
+          },
+          "domain": [
+            {
+              "name": "epo-sub:ESPD",
+              "uri": "http://data.europa.eu/a4g/ontology#ESPD"
+            }
+          ],
+          "label": {
+            "en": "Is contained in tender"
+          },
+          "name": "epo-sub:isContainedInTender",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:Tender",
+              "range_label": {
+                "en": "Tender"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#Tender",
+              "range_uri": "http://data.europa.eu/a4g/ontology#Tender"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#isContainedInTender",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..*",
+          "description": {
+            "en": "Offers information about an instance of a concept."
+          },
+          "domain": [
+            {
+              "name": "epo-sub:ESPD",
+              "uri": "http://data.europa.eu/a4g/ontology#ESPD"
+            }
+          ],
+          "label": {
+            "en": "Provides information on"
+          },
+          "name": "epo-sub:providesInformationOn",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "org:Organization",
+              "range_label": {
+                "en": "Organization"
+              },
+              "range_puri": "http://www.w3.org/ns/org#Organization",
+              "range_uri": "http://www.w3.org/ns/org#Organization"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG Approval 05/03/2024"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#providesInformationOn",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "Is about an European Single Procurement Document (ESPD) Request."
+          },
+          "domain": [
+            {
+              "name": "epo-sub:ESPD",
+              "uri": "http://data.europa.eu/a4g/ontology#ESPD"
+            }
+          ],
+          "label": {
+            "en": "Relates to ESPD request"
+          },
+          "name": "epo-sub:relatesToESPDRequest",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo-acc:ESPDRequest",
+              "range_label": {
+                "en": "ESPD request"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#ESPDRequest",
+              "range_uri": "http://data.europa.eu/a4g/ontology#ESPDRequest"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG Approval 05/03/2024"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#relatesToESPDRequest",
+          "usage": {}
+        },
+        {
+          "cardinality": "1..*",
+          "description": {
+            "en": "Relation indicating that an ESPD Response contains a Response."
+          },
+          "domain": [
+            {
+              "name": "epo-sub:ESPD",
+              "uri": "http://data.europa.eu/a4g/ontology#ESPD"
+            }
+          ],
+          "label": {
+            "en": "Specifies response"
+          },
+          "name": "epo-sub:specifiesResponse",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo-sub:Response",
+              "range_label": {
+                "en": "Response"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#Response",
+              "range_uri": "http://data.europa.eu/a4g/ontology#Response"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG Approval 12/03/2024"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#specifiesResponse",
+          "usage": {}
+        }
+      ],
+      "rawTags": {
+        "class-usage-scope": "main"
+      },
+      "tags": {
+        "epo:status": "implemented",
+        "skos:historyNote": "WG Approval 05/03/2024"
+      },
+      "uri": "http://data.europa.eu/a4g/ontology#ESPD",
+      "usage": {
+        "en": "A self-declaration of an economic operator, stating that it does not fall under the Exclusion Grounds and that it meets the Selection Criteria for a specific procurement."
+      }
+    },
+    {
+      "classType": "definition",
+      "description": {
+        "en": "Information about a Certificate."
+      },
+      "label": {
+        "en": "Evidence information"
+      },
+      "name": "epo-sub:EvidenceInformation",
+      "parents": [
+        {
+          "label": {
+            "en": "Context description"
+          },
+          "name": "epo:ContextDescription",
+          "scoped_uri": "http://data.europa.eu/a4g/ontology#ContextDescription"
+        }
+      ],
+      "properties": [
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "Indicator that the Certificate proves whether the Organization fulfils all Selection Criteria."
+          },
+          "domain": [
+            {
+              "name": "epo-sub:EvidenceInformation",
+              "uri": "http://data.europa.eu/a4g/ontology#EvidenceInformation"
+            }
+          ],
+          "label": {
+            "en": "Covers all selection criteria"
+          },
+          "name": "epo-sub:coversAllSelectionCriteria",
+          "propertyOrigin": "internal",
+          "propertyType": "datatype property",
+          "range": [
+            {
+              "range_curie": "xsd:boolean",
+              "range_label": {
+                "en": "Boolean"
+              },
+              "range_puri": "http://www.w3.org/2001/XMLSchema#boolean",
+              "range_uri": "http://www.w3.org/2001/XMLSchema#boolean"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG Approval 12/03/2024"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#coversAllSelectionCriteria",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "External concept defined by <xref scope=\"external\" href=\"\"https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/description\"\"><foreign otherprops=\"#0000ff\"><u>https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/description</u></foreign></xref>"
+          },
+          "domain": [
+            {
+              "name": "epo-sub:EvidenceInformation",
+              "uri": "http://data.europa.eu/a4g/ontology#EvidenceInformation"
+            }
+          ],
+          "label": {
+            "en": "Description"
+          },
+          "name": "dct:description",
+          "propertyOrigin": "reused",
+          "propertyType": "datatype property",
+          "range": [
+            {
+              "range_curie": "rdf:PlainLiteral",
+              "range_label": {
+                "en": "Plain literal"
+              },
+              "range_puri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral",
+              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG Approval 30/05/2023"
+          },
+          "uri": "http://purl.org/dc/terms/description",
+          "usage": {}
+        },
+        {
+          "cardinality": "1",
+          "description": {
+            "en": "Relation indicating the Certificate that the information refers to."
+          },
+          "domain": [
+            {
+              "name": "epo-sub:EvidenceInformation",
+              "uri": "http://data.europa.eu/a4g/ontology#EvidenceInformation"
+            }
+          ],
+          "label": {
+            "en": "Summarises information about evidence"
+          },
+          "name": "epo-sub:summarisesInformationAboutEvidence",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "cccev:Evidence",
+              "range_label": {
+                "en": "Evidence"
+              },
+              "range_puri": "http://data.europa.eu/m8g/Evidence",
+              "range_uri": "http://data.europa.eu/m8g/Evidence"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG Approval 12/03/2024"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#summarisesInformationAboutEvidence",
+          "usage": {}
+        }
+      ],
+      "rawTags": {
+        "class-usage-scope": "main"
+      },
+      "tags": {
+        "epo:status": "implemented",
+        "skos:historyNote": "WG Approval 12/03/2024"
+      },
+      "uri": "http://data.europa.eu/a4g/ontology#EvidenceInformation",
+      "usage": {
+        "en": "Information about a Certificate."
+      }
+    },
+    {
+      "classType": "definition",
+      "description": {
+        "en": "The Role of an Agent that can represent an Organization."
+      },
+      "label": {
+        "en": "Legal representative"
+      },
+      "name": "epo-sub:LegalRepresentative",
+      "parents": [
+        {
+          "label": {
+            "en": "Auxiliary party"
+          },
+          "name": "epo:AuxiliaryParty",
+          "scoped_uri": "http://data.europa.eu/a4g/ontology#AuxiliaryParty"
+        }
+      ],
+      "properties": [
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": ""
+          },
+          "domain": [
+            {
+              "name": "epo-sub:LegalRepresentative",
+              "uri": "http://data.europa.eu/a4g/ontology#LegalRepresentative"
+            }
+          ],
+          "label": {
+            "en": "Acts on behalf of"
+          },
+          "name": "epo:actsOnBehalfOf",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:OfferingParty",
+              "range_label": {
+                "en": "Offering party"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#OfferingParty",
+              "range_uri": "http://data.europa.eu/a4g/ontology#OfferingParty"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#actsOnBehalfOf",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..*",
+          "description": {
+            "en": "Relation indicating that a Legal Representative has a Mandate."
+          },
+          "domain": [
+            {
+              "name": "epo-sub:LegalRepresentative",
+              "uri": "http://data.europa.eu/a4g/ontology#LegalRepresentative"
+            }
+          ],
+          "label": {
+            "en": "Has mandate"
+          },
+          "name": "epo-sub:hasMandate",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo-sub:Mandate",
+              "range_label": {
+                "en": "Mandate"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#Mandate",
+              "range_uri": "http://data.europa.eu/a4g/ontology#Mandate"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG Approval 12/03/2024"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasMandate",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "Relation indicating that a Legal Representative has a Power of Attorney."
+          },
+          "domain": [
+            {
+              "name": "epo-sub:LegalRepresentative",
+              "uri": "http://data.europa.eu/a4g/ontology#LegalRepresentative"
+            }
+          ],
+          "label": {
+            "en": "Has power of attorney"
+          },
+          "name": "epo-sub:hasPowerOfAttorney",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo-sub:PowerOfAttorney",
+              "range_label": {
+                "en": "Power of attorney"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#PowerOfAttorney",
+              "range_uri": "http://data.europa.eu/a4g/ontology#PowerOfAttorney"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG Approval 12/03/2024"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasPowerOfAttorney",
+          "usage": {}
+        }
+      ],
+      "rawTags": {
+        "class-usage-scope": "main"
+      },
+      "tags": {
+        "epo:status": "implemented",
+        "skos:historyNote": "WG Approval 05/03/2024"
+      },
+      "uri": "http://data.europa.eu/a4g/ontology#LegalRepresentative",
+      "usage": {
+        "en": "The Role of an Agent that can represent an Organization."
+      }
+    },
+    {
+      "classType": "definition",
+      "description": {
+        "en": "An authorization to act as a representative of an Organization."
+      },
+      "label": {
+        "en": "Mandate"
+      },
+      "name": "epo-sub:Mandate",
+      "parents": [
+        {
+          "label": {
+            "en": "Document"
+          },
+          "name": "epo:Document",
+          "scoped_uri": "http://data.europa.eu/a4g/ontology#Document"
+        }
+      ],
+      "properties": [],
+      "rawTags": {
+        "class-usage-scope": "main"
+      },
+      "tags": {
+        "epo:status": "implemented",
+        "skos:historyNote": "WG Approval 05/03/2024"
+      },
+      "uri": "http://data.europa.eu/a4g/ontology#Mandate",
+      "usage": {
+        "en": "An authorization to act as a representative of an Organization."
+      }
+    },
+    {
+      "classType": "definition",
+      "description": {
+        "en": "Information about the specific features or characteristics that qualify an economic operator to take part in a tendering process."
+      },
+      "label": {
+        "en": "Organisation information summary"
+      },
+      "name": "epo-sub:OrganisationInformationSummary",
+      "parents": [
+        {
+          "label": {
+            "en": "Context description"
+          },
+          "name": "epo:ContextDescription",
+          "scoped_uri": "http://data.europa.eu/a4g/ontology#ContextDescription"
+        }
+      ],
+      "properties": [
+        {
+          "cardinality": "1",
+          "description": {
+            "en": "Relates to Organization."
+          },
+          "domain": [
+            {
+              "name": "epo-sub:OrganisationInformationSummary",
+              "uri": "http://data.europa.eu/a4g/ontology#OrganisationInformationSummary"
+            }
+          ],
+          "label": {
+            "en": "Concerns organisation"
+          },
+          "name": "epo-sub:concernsOrganisation",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "org:Organization",
+              "range_label": {
+                "en": "Organization"
+              },
+              "range_puri": "http://www.w3.org/ns/org#Organization",
+              "range_uri": "http://www.w3.org/ns/org#Organization"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG Approval 05/03/2024"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#concernsOrganisation",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..*",
+          "description": {
+            "en": "Explanatory text about the size of the Business. Additional information: The values of this property may come from the recommended codelist: http://publications.europa.eu/resource/authority/economic-operator-size"
+          },
+          "domain": [
+            {
+              "name": "epo-sub:OrganisationInformationSummary",
+              "uri": "http://data.europa.eu/a4g/ontology#OrganisationInformationSummary"
+            }
+          ],
+          "label": {
+            "en": "Has business classification description"
+          },
+          "name": "epo-sub:hasBusinessClassificationDescription",
+          "propertyOrigin": "internal",
+          "propertyType": "datatype property",
+          "range": [
+            {
+              "range_curie": "rdf:PlainLiteral",
+              "range_label": {
+                "en": "Plain literal"
+              },
+              "range_puri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral",
+              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 09/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasBusinessClassificationDescription",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "Text describing the works, supplies or services executed, delivered or performed in a procurement project that can be used as an evidence for the classification of the Organization."
+          },
+          "domain": [
+            {
+              "name": "epo-sub:OrganisationInformationSummary",
+              "uri": "http://data.europa.eu/a4g/ontology#OrganisationInformationSummary"
+            }
+          ],
+          "label": {
+            "en": "Provides organisation completed task description"
+          },
+          "name": "epo-sub:providesOrganisationCompletedTaskDescription",
+          "propertyOrigin": "internal",
+          "propertyType": "datatype property",
+          "range": [
+            {
+              "range_curie": "rdf:PlainLiteral",
+              "range_label": {
+                "en": "Plain literal"
+              },
+              "range_puri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral",
+              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG Approval 05/03/2024"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#providesOrganisationCompletedTaskDescription",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "The number of people hired by the Organization."
+          },
+          "domain": [
+            {
+              "name": "epo-sub:OrganisationInformationSummary",
+              "uri": "http://data.europa.eu/a4g/ontology#OrganisationInformationSummary"
+            }
+          ],
+          "label": {
+            "en": "Provides organisation employee quantity"
+          },
+          "name": "epo-sub:providesOrganisationEmployeeQuantity",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:Quantity",
+              "range_label": {
+                "en": "Quantity"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#Quantity",
+              "range_uri": "http://data.europa.eu/a4g/ontology#Quantity"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG Approval 05/03/2024"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#providesOrganisationEmployeeQuantity",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "A monetary amount representing the financial capability of the Organization. Additional information: Used to represent the general Turnover of the Organization (for statistical purposes)."
+          },
+          "domain": [
+            {
+              "name": "epo-sub:OrganisationInformationSummary",
+              "uri": "http://data.europa.eu/a4g/ontology#OrganisationInformationSummary"
+            }
+          ],
+          "label": {
+            "en": "Provides organisation financial capability"
+          },
+          "name": "epo-sub:providesOrganisationFinancialCapability",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:MonetaryValue",
+              "range_label": {
+                "en": "Monetary value"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#MonetaryValue",
+              "range_uri": "http://data.europa.eu/a4g/ontology#MonetaryValue"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG Approval 05/03/2024"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#providesOrganisationFinancialCapability",
+          "usage": {}
+        }
+      ],
+      "rawTags": {
+        "class-usage-scope": "main"
+      },
+      "tags": {
+        "epo:status": "implemented",
+        "skos:historyNote": "WG Approval 03/03/2025"
+      },
+      "uri": "http://data.europa.eu/a4g/ontology#OrganisationInformationSummary",
+      "usage": {
+        "en": "Information about the specific features or characteristics that qualify an economic operator to take part in a tendering process."
+      }
+    },
+    {
+      "classType": "definition",
+      "description": {
+        "en": "A legal document that grants someone the authority to make decisions on behalf of an Organization."
+      },
+      "label": {
+        "en": "Power of attorney"
+      },
+      "name": "epo-sub:PowerOfAttorney",
+      "parents": [
+        {
+          "label": {
+            "en": "Document"
+          },
+          "name": "epo:Document",
+          "scoped_uri": "http://data.europa.eu/a4g/ontology#Document"
+        }
+      ],
+      "properties": [],
+      "rawTags": {
+        "class-usage-scope": "main"
+      },
+      "tags": {
+        "epo:status": "implemented",
+        "skos:historyNote": "WG Approval 05/03/2024"
+      },
+      "uri": "http://data.europa.eu/a4g/ontology#PowerOfAttorney",
+      "usage": {
+        "en": "A legal document that grants someone the authority to make decisions on behalf of an Organization."
+      }
+    },
+    {
+      "classType": "definition",
+      "description": {
+        "en": "An answer given to a question that is part of an ESPD Request."
+      },
+      "label": {
+        "en": "Response"
+      },
+      "name": "epo-sub:Response",
+      "parents": [],
+      "properties": [
+        {
+          "cardinality": "0..*",
+          "description": {
+            "en": "Relation indicating that the Response replies to a question."
+          },
+          "domain": [
+            {
+              "name": "epo-sub:Response",
+              "uri": "http://data.europa.eu/a4g/ontology#Response"
+            }
+          ],
+          "label": {
+            "en": "Answers question"
+          },
+          "name": "epo-sub:answersQuestion",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "cccev:InformationRequirement",
+              "range_label": {
+                "en": "Information requirement"
+              },
+              "range_puri": "http://data.europa.eu/m8g/InformationRequirement",
+              "range_uri": "http://data.europa.eu/m8g/InformationRequirement"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG Approval 12/03/2024"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#answersQuestion",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "controlled_vocabulary": {
+            "name": "at-voc:access-rights",
+            "uri": "http://publications.europa.eu/resource/authority/access-rights"
+          },
+          "description": {
+            "en": "External concept defined by <xref scope=\"external\" href=\"\"http://data.europa.eu/m8g/confidentialityLevelType\"\"><foreign otherprops=\"#0000ff\"><u>http://data.europa.eu/m8g/confidentialityLevelType</u></foreign></xref>"
+          },
+          "domain": [
+            {
+              "name": "epo-sub:Response",
+              "uri": "http://data.europa.eu/a4g/ontology#Response"
+            }
+          ],
+          "label": {
+            "en": "Confidentiality level type"
+          },
+          "name": "cccev:confidentialityLevelType",
+          "propertyOrigin": "reused",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "skos:Concept",
+              "range_label": {
+                "en": "Concept"
+              },
+              "range_puri": "http://www.w3.org/2004/02/skos/core#Concept",
+              "range_uri": "http://www.w3.org/2004/02/skos/core#Concept"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented"
+          },
+          "uri": "http://data.europa.eu/m8g/confidentialityLevelType",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..*",
+          "description": {
+            "en": "Relation indicating an Evidence that supports the Response."
+          },
+          "domain": [
+            {
+              "name": "epo-sub:Response",
+              "uri": "http://data.europa.eu/a4g/ontology#Response"
+            }
+          ],
+          "label": {
+            "en": "Is reinforced by"
+          },
+          "name": "epo-sub:isReinforcedBy",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "cccev:Evidence",
+              "range_label": {
+                "en": "Evidence"
+              },
+              "range_puri": "http://data.europa.eu/m8g/Evidence",
+              "range_uri": "http://data.europa.eu/m8g/Evidence"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG Approval 12/03/2024"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#isReinforcedBy",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "Relation indicating the period to which the Response shall apply."
+          },
+          "domain": [
+            {
+              "name": "epo-sub:Response",
+              "uri": "http://data.europa.eu/a4g/ontology#Response"
+            }
+          ],
+          "label": {
+            "en": "Refers to applicable period"
+          },
+          "name": "epo-sub:refersToApplicablePeriod",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "time:Interval",
+              "range_label": {
+                "en": "Interval"
+              },
+              "range_puri": "http://www.w3.org/2006/time#Interval",
+              "range_uri": "http://www.w3.org/2006/time#Interval"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG Approval 12/03/2024"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#refersToApplicablePeriod",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..*",
+          "description": {
+            "en": "External concept defined by <xref scope=\"external\" href=\"\"http://data.europa.eu/m8g/supportsValue\"\"><foreign otherprops=\"#0000ff\"><u>http://data.europa.eu/m8g/supportsValue</u></foreign></xref>"
+          },
+          "domain": [
+            {
+              "name": "epo-sub:Response",
+              "uri": "http://data.europa.eu/a4g/ontology#Response"
+            }
+          ],
+          "label": {
+            "en": "Supports value"
+          },
+          "name": "cccev:supportsValue",
+          "propertyOrigin": "reused",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "cccev:SupportedValue",
+              "range_label": {
+                "en": "Supported value"
+              },
+              "range_puri": "http://data.europa.eu/m8g/SupportedValue",
+              "range_uri": "http://data.europa.eu/m8g/SupportedValue"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented"
+          },
+          "uri": "http://data.europa.eu/m8g/supportsValue",
+          "usage": {}
+        }
+      ],
+      "rawTags": {
+        "class-usage-scope": "main"
+      },
+      "tags": {
+        "epo:status": "implemented",
+        "skos:historyNote": "WG Approval 12/03/2024"
+      },
+      "uri": "http://data.europa.eu/a4g/ontology#Response",
+      "usage": {
+        "en": "An answer given to a question that is part of an ESPD Request."
+      }
+    },
+    {
+      "classType": "definition",
+      "description": {
+        "en": "External concept defined by <xref scope=\"external\" href=\"\"http://data.europa.eu/m8g/SupportedValue\"\"><foreign otherprops=\"#0000ff\"><u>http://data.europa.eu/m8g/SupportedValue</u></foreign></xref>"
+      },
+      "label": {
+        "en": "Supported value"
+      },
+      "name": "cccev:SupportedValue",
+      "parents": [],
+      "properties": [
+        {
+          "cardinality": "0..*",
+          "description": {
+            "en": "External concept defined by <xref scope=\"external\" href=\"\"http://data.europa.eu/m8g/providesValueFor\"\"><foreign otherprops=\"#0000ff\"><u>http://data.europa.eu/m8g/providesValueFor</u></foreign></xref>"
+          },
+          "domain": [
+            {
+              "name": "cccev:SupportedValue",
+              "uri": "http://data.europa.eu/m8g/SupportedValue"
+            }
+          ],
+          "label": {
+            "en": "Provides value for"
+          },
+          "name": "cccev:providesValueFor",
+          "propertyOrigin": "reused",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "cccev:InformationConcept",
+              "range_label": {
+                "en": "Information concept"
+              },
+              "range_puri": "http://data.europa.eu/m8g/InformationConcept",
+              "range_uri": "http://data.europa.eu/m8g/InformationConcept"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented"
+          },
+          "uri": "http://data.europa.eu/m8g/providesValueFor",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..*",
+          "description": {
+            "en": "External concept defined by <xref scope=\"external\" href=\"\"http://data.europa.eu/m8g/value\"\"><foreign otherprops=\"#0000ff\"><u>http://data.europa.eu/m8g/value</u></foreign></xref>"
+          },
+          "domain": [
+            {
+              "name": "cccev:SupportedValue",
+              "uri": "http://data.europa.eu/m8g/SupportedValue"
+            }
+          ],
+          "label": {
+            "en": "Value"
+          },
+          "name": "cccev:value",
+          "propertyOrigin": "reused",
+          "propertyType": "datatype property",
+          "range": [
+            {
+              "range_curie": "rdf:PlainLiteral",
+              "range_label": {
+                "en": "Plain literal"
+              },
+              "range_puri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral",
+              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented"
+          },
+          "uri": "http://data.europa.eu/m8g/value",
+          "usage": {}
+        }
+      ],
+      "rawTags": {
+        "class-usage-scope": "supportive"
+      },
+      "tags": {
+        "epo:status": "implemented"
+      },
+      "uri": "http://data.europa.eu/m8g/SupportedValue",
+      "usage": {
+        "en": "External concept defined by <xref scope=\"external\" href=\"\"http://data.europa.eu/m8g/SupportedValue\"\"><foreign otherprops=\"#0000ff\"><u>http://data.europa.eu/m8g/SupportedValue</u></foreign></xref>"
+      }
+    },
+    {
+      "classType": "reference",
+      "label": {
+        "en": "Evidence"
+      },
+      "name": "cccev:Evidence",
+      "properties": [
+        {
+          "cardinality": "0..*",
+          "description": {
+            "en": "External concept defined by <xref scope=\"external\" href=\"\"http://data.europa.eu/m8g/supportsValue\"\"><foreign otherprops=\"#0000ff\"><u>http://data.europa.eu/m8g/supportsValue</u></foreign></xref>"
+          },
+          "domain": [
+            {
+              "name": "cccev:Evidence",
+              "uri": "http://data.europa.eu/m8g/Evidence"
+            }
+          ],
+          "label": {
+            "en": "Supports value"
+          },
+          "name": "cccev:supportsValue",
+          "propertyOrigin": "reused",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "cccev:SupportedValue",
+              "range_label": {
+                "en": "Supported value"
+              },
+              "range_puri": "http://data.europa.eu/m8g/SupportedValue",
+              "range_uri": "http://data.europa.eu/m8g/SupportedValue"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented"
+          },
+          "uri": "http://data.europa.eu/m8g/supportsValue",
+          "usage": {}
+        }
+      ],
+      "rawTags": {
+        "class-usage-scope": "supportive"
+      },
+      "uri": "http://data.europa.eu/m8g/Evidence"
+    }
+  ],
+  "datatypes": [
+    {
+      "description": {
+        "en": ""
+      },
+      "label": {
+        "en": "Plain literal"
+      },
+      "scopeduri": "rdf:PlainLiteral",
+      "uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"
+    },
+    {
+      "description": {
+        "en": ""
+      },
+      "label": {
+        "en": "Any URI"
+      },
+      "scopeduri": "xsd:anyURI",
+      "uri": "http://www.w3.org/2001/XMLSchema#anyURI"
+    },
+    {
+      "description": {
+        "en": ""
+      },
+      "label": {
+        "en": "Boolean"
+      },
+      "scopeduri": "xsd:boolean",
+      "uri": "http://www.w3.org/2001/XMLSchema#boolean"
+    },
+    {
+      "description": {
+        "en": ""
+      },
+      "label": {
+        "en": "Date"
+      },
+      "scopeduri": "xsd:date",
+      "uri": "http://www.w3.org/2001/XMLSchema#date"
+    },
+    {
+      "description": {
+        "en": ""
+      },
+      "label": {
+        "en": "Date time"
+      },
+      "scopeduri": "xsd:dateTime",
+      "uri": "http://www.w3.org/2001/XMLSchema#dateTime"
+    },
+    {
+      "description": {
+        "en": ""
+      },
+      "label": {
+        "en": "Decimal"
+      },
+      "scopeduri": "xsd:decimal",
+      "uri": "http://www.w3.org/2001/XMLSchema#decimal"
+    },
+    {
+      "description": {
+        "en": ""
+      },
+      "label": {
+        "en": "Integer"
+      },
+      "scopeduri": "xsd:integer",
+      "uri": "http://www.w3.org/2001/XMLSchema#integer"
+    }
+  ],
+  "prefixes": [
+    {
+      "name": "cccev",
+      "uri": "http://data.europa.eu/m8g/"
+    },
+    {
+      "name": "epo-sub",
+      "uri": "http://data.europa.eu/a4g/ontology#"
+    },
+    {
+      "name": "epo-acc",
+      "uri": "http://data.europa.eu/a4g/ontology#"
+    },
+    {
+      "name": "epo",
+      "uri": "http://data.europa.eu/a4g/ontology#"
+    },
+    {
+      "name": "org",
+      "uri": "http://www.w3.org/ns/org#"
+    },
+    {
+      "name": "at-voc",
+      "uri": "http://publications.europa.eu/resource/authority/"
+    },
+    {
+      "name": "time",
+      "uri": "http://www.w3.org/2006/time#"
+    },
+    {
+      "name": "rdf",
+      "uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    },
+    {
+      "name": "xsd",
+      "uri": "http://www.w3.org/2001/XMLSchema#"
+    },
+    {
+      "name": "dct",
+      "uri": "http://purl.org/dc/terms/"
+    }
+  ]
+}

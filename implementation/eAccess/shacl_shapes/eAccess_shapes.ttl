@@ -1,0 +1,111 @@
+@prefix : <http://data.europa.eu/a4g/ontology#> .
+@prefix acc-shape: <http://data.europa.eu/a4g/data-shape#> .
+@prefix cccev: <http://data.europa.eu/m8g/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix eli: <http://data.europa.eu/eli/ontology#> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+acc-shape:eli-LegalResourceShape sh:property acc-shape:eli-LegalResource-epo-hasResourceType .
+
+acc-shape:eli-LegalResourceSubdivisionShape sh:property acc-shape:eli-LegalResourceSubdivision-epo-hasSubdivision .
+
+acc-shape:epo-acc-ESPDRequestShape a sh:NodeShape ;
+    rdfs:label "ESPD Request" ;
+    rdfs:comment "A document issued by a Buyer defining how the Exclusion Grounds and the Selection Criteria should be addressed in an European Single Procurement Document for a specific procurement." ;
+    rdfs:isDefinedBy acc-shape:acc-shape ;
+    sh:property acc-shape:epo-acc-ESPDRequest-epo-acc-refersToNotice,
+        acc-shape:epo-acc-ESPDRequest-epo-concernsProcedure,
+        acc-shape:epo-acc-ESPDRequest-epo-specifiesProcurementCriterion ;
+    sh:targetClass :ESPDRequest .
+
+acc-shape:epo-sub-ESPDShape sh:property acc-shape:epo-sub-ESPD-epo-sub-relatesToESPDRequest .
+
+acc-shape:eli-LegalResource-epo-hasResourceType a sh:PropertyShape ;
+    rdfs:isDefinedBy acc-shape:acc-shape ;
+    sh:description "Relation indicating the Resource Type." ;
+    sh:minCount 1 ;
+    sh:name "Has resource type" ;
+    sh:path :hasResourceType .
+
+acc-shape:eli-LegalResourceSubdivision-epo-hasSubdivision a sh:PropertyShape ;
+    rdfs:isDefinedBy acc-shape:acc-shape ;
+    sh:description "Relation indicating the Subdivision." ;
+    sh:maxCount 1 ;
+    sh:name "Has subdivision" ;
+    sh:path :hasSubdivision .
+
+acc-shape:epo-acc-ESPDRequest-epo-acc-refersToNotice a sh:PropertyShape ;
+    rdfs:isDefinedBy acc-shape:acc-shape ;
+    sh:class :Notice ;
+    sh:description "Reference to a Notice." ;
+    sh:name "Refers to notice" ;
+    sh:path :refersToNotice ;
+    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#refersToNotice> ?that . ?that <http://data.europa.eu/a4g/ontology#refersToNotice> ?this .}" ] .
+
+acc-shape:epo-acc-ESPDRequest-epo-concernsProcedure a sh:PropertyShape ;
+    rdfs:isDefinedBy acc-shape:acc-shape ;
+    sh:class :Procedure ;
+    sh:description "Relates to Procedure.",
+        "The relations epo-acc:concernsProcedure and epo:refersToProcedure have to refer to the same Procedure." ;
+    sh:maxCount 1 ;
+    sh:minCount 1 ;
+    sh:name "Concerns procedure" ;
+    sh:path :concernsProcedure ;
+    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#concernsProcedure> ?that . ?that <http://data.europa.eu/a4g/ontology#concernsProcedure> ?this .}" ] .
+
+acc-shape:epo-acc-ESPDRequest-epo-specifiesProcurementCriterion a sh:PropertyShape ;
+    rdfs:isDefinedBy acc-shape:acc-shape ;
+    sh:class :ProcurementCriterion ;
+    sh:description "Relation indicating the Procurement Criterion to be used." ;
+    sh:minCount 1 ;
+    sh:name "Specifies procurement criterion" ;
+    sh:path :specifiesProcurementCriterion ;
+    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#specifiesProcurementCriterion> ?that . ?that <http://data.europa.eu/a4g/ontology#specifiesProcurementCriterion> ?this .}" ] .
+
+acc-shape:epo-sub-ESPD-epo-sub-relatesToESPDRequest a sh:PropertyShape ;
+    rdfs:isDefinedBy acc-shape:acc-shape ;
+    sh:class :ESPDRequest ;
+    sh:description "Is about an European Single Procurement Document (ESPD) Request." ;
+    sh:maxCount 1 ;
+    sh:name "Relates to ESPD request" ;
+    sh:path :relatesToESPDRequest ;
+    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#relatesToESPDRequest> ?that . ?that <http://data.europa.eu/a4g/ontology#relatesToESPDRequest> ?this .}" ] .
+
+acc-shape:acc-shape a owl:Ontology ;
+    rdfs:label "eProcurement Ontology - eAccess shapes"@en ;
+    dcterms:created "2021-06-01"^^xsd:date ;
+    dcterms:description "The eProcurement Ontology eAccess shapes provides the generic datashape specifications for the eProcurement Ontology eAccess module."@en ;
+    dcterms:issued "2026-07-07"^^xsd:date ;
+    dcterms:license "CC BY 4.0" ;
+    dcterms:publisher "http://publications.europa.eu/resource/authority/corporate-body/PUBL" ;
+    dcterms:title "eProcurement Ontology - eAccess shapes"@en ;
+    vann:preferredNamespacePrefix "epo-acc" ;
+    vann:preferredNamespaceUri "http://data.europa.eu/a4g/ontology#" ;
+    rdfs:comment "This version is automatically generated from eAccess.xml on 2026-07-07" ;
+    rdfs:seeAlso <https://docs.ted.europa.eu/home/index.html>,
+        <https://github.com/OP-TED/ePO/releases>,
+        <https://joinup.ec.europa.eu/collection/eprocurement/solution/eprocurement-ontology/about>,
+        <https://op.europa.eu/en/web/eu-vocabularies/e-procurement> ;
+    owl:imports acc-shape:acc-shape,
+        :acc,
+        :acc-restriction,
+        eli:,
+        cccev:,
+        dcterms:,
+        skos:,
+        <http://www.w3.org/2006/time>,
+        <http://www.w3.org/ns/adms>,
+        <http://www.w3.org/ns/locn>,
+        org:,
+        <http://www.w3.org/ns/person> ;
+    owl:incompatibleWith "4.2.0" ;
+    owl:priorVersion "http://data.europa.eu/a4g/data-shape#acc-shape-5.1.0" ;
+    owl:versionIRI acc-shape:acc-shape-5.2.0 ;
+    owl:versionInfo "5.2.0" .
+

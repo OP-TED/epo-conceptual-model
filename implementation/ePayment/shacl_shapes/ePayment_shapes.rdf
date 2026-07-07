@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+   xmlns:dcterms="http://purl.org/dc/terms/"
+   xmlns:owl="http://www.w3.org/2002/07/owl#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+   xmlns:sh="http://www.w3.org/ns/shacl#"
+   xmlns:vann="http://purl.org/vocab/vann/"
+>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-pay-RemittanceAdviceLineShape">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+    <sh:targetClass rdf:resource="http://data.europa.eu/a4g/ontology#RemittanceAdviceLine"/>
+    <rdfs:label>Remittance Advice Line</rdfs:label>
+    <rdfs:comment>Details concerning a given Invoice from the Remittance Advice.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#pay-shape"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-pay-RemittanceAdviceLine-epo-pay-hasBalanceAmount"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-pay-RemittanceAdviceLine-epo-pay-hasDebitAmount"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-pay-RemittanceAdviceLine-epo-inv-refersToInvoice"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-pay-RemittanceAdviceLine-epo-pay-hasCreditAmount"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-pay-RemittanceAdvice-epo-pay-hasTotalCreditAmount">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#MonetaryValue"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:sparql rdf:nodeID="N38775e5cd053436589db94a42a341b4e"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasTotalCreditAmount"/>
+    <sh:name>Has total credit amount</sh:name>
+    <sh:description>Relation indicating the overall Monetary Value that reduces the amount owed.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#pay-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N7b2d5062625746a4a49b8fac9244315b">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasPaymentMeansInformation&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasPaymentMeansInformation&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-pay-RemittanceAdvice-epo-pay-hasPayerReference">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasPayerReference"/>
+    <sh:name>Has payer reference</sh:name>
+    <sh:description>Reference to the Payer.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#pay-shape"/>
+    <sh:or rdf:nodeID="N71b80b47c1734fc4b936f38552da4cae"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-pay-RemittanceAdvice-epo-specifiesSeller">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#Seller"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
+    <sh:sparql rdf:nodeID="Nc5d06910efdb410baa2077650d9ed55b"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#specifiesSeller"/>
+    <sh:name>Specifies seller</sh:name>
+    <sh:description>Relation indicating that the instance of the concept involves the Seller.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#pay-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N2ee950467e17418c86b3819d96eb51e3">
+    <rdf:first rdf:nodeID="N38ff85bb263b4f42acf0dd6cadcdfbfc"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-pay-PaymentInformationShape">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+    <sh:targetClass rdf:resource="http://data.europa.eu/a4g/ontology#PaymentInformation"/>
+    <rdfs:label>Payment Information</rdfs:label>
+    <rdfs:comment>Information about a remittance.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#pay-shape"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-pay-PaymentInformation-epo-pay-hasPaymentDate"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-pay-PaymentInformation-epo-pay-hasPaymentMeansInformation"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-pay-PaymentInformation-epo-pay-hasPaymentIdentifier"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-pay-RemittanceAdviceLine-epo-inv-refersToInvoice">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#Invoice"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:sparql rdf:nodeID="N41ef1aa4bc114800b1d172519bb5c2c0"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#refersToInvoice"/>
+    <sh:name>Refers to invoice</sh:name>
+    <sh:description>Reference to an Invoice.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#pay-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-pay-RemittanceAdviceShape">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+    <sh:targetClass rdf:resource="http://data.europa.eu/a4g/ontology#RemittanceAdvice"/>
+    <rdfs:label>Remittance Advice</rdfs:label>
+    <rdfs:comment>Document sent by the Buyer to the Seller, informing about the payment made.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#pay-shape"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-pay-RemittanceAdvice-epo-pay-hasPayerReference"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-pay-RemittanceAdvice-epo-pay-hasPaymentOrderReference"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-pay-RemittanceAdvice-epo-pay-hasPaymentInformation"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-pay-RemittanceAdvice-epo-pay-hasTotalDebitAmount"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-pay-RemittanceAdvice-epo-pay-comprisesRemittanceAdviceLine"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-pay-RemittanceAdvice-epo-inv-specifiesPayee"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-pay-RemittanceAdvice-epo-pay-hasTotalPaymentAmount"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-pay-RemittanceAdvice-epo-specifiesBuyer"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-pay-RemittanceAdvice-epo-pay-hasTotalCreditAmount"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-pay-RemittanceAdvice-epo-specifiesSeller"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-pay-RemittanceAdvice-epo-pay-hasTotalPaymentAmount">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#MonetaryValue"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:sparql rdf:nodeID="N16d3a343174c4fbb9bbe8daee0b21572"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasTotalPaymentAmount"/>
+    <sh:name>Has total payment amount</sh:name>
+    <sh:description>Relation indicating the overall paid Monetary Value.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#pay-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-pay-RemittanceAdvice-epo-specifiesBuyer">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#Buyer"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
+    <sh:sparql rdf:nodeID="N38eaf54b93344e15bd6138c420aaea5c"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#specifiesBuyer"/>
+    <sh:name>Specifies buyer</sh:name>
+    <sh:description>Relation indicating that the instance of the concept involves the Buyer.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#pay-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#pay-shape">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
+    <owl:imports rdf:resource="http://purl.org/dc/terms/"/>
+    <owl:imports rdf:resource="http://www.w3.org/ns/org#"/>
+    <owl:imports rdf:resource="http://www.w3.org/2004/02/skos/core#"/>
+    <owl:imports rdf:resource="http://www.w3.org/2006/time"/>
+    <owl:imports rdf:resource="http://www.w3.org/ns/locn"/>
+    <owl:imports rdf:resource="http://data.europa.eu/m8g/"/>
+    <owl:imports rdf:resource="http://www.w3.org/ns/person"/>
+    <owl:imports rdf:resource="http://www.w3.org/ns/adms"/>
+    <owl:imports rdf:resource="http://data.europa.eu/eli/ontology#"/>
+    <owl:imports rdf:resource="http://data.europa.eu/a4g/data-shape#pay-shape"/>
+    <owl:imports rdf:resource="http://data.europa.eu/a4g/ontology#pay"/>
+    <owl:imports rdf:resource="http://data.europa.eu/a4g/ontology#pay-restriction"/>
+    <dcterms:title xml:lang="en">eProcurement Ontology - ePayment shapes</dcterms:title>
+    <rdfs:label xml:lang="en">eProcurement Ontology - ePayment shapes</rdfs:label>
+    <dcterms:publisher>http://publications.europa.eu/resource/authority/corporate-body/PUBL</dcterms:publisher>
+    <dcterms:description xml:lang="en">The eProcurement Ontology ePayment shapes provides the generic datashape specifications for the eProcurement Ontology ePayment module.</dcterms:description>
+    <rdfs:comment>This version is automatically generated from ePayment.xml on 2026-07-07</rdfs:comment>
+    <rdfs:seeAlso rdf:resource="https://github.com/OP-TED/ePO/releases"/>
+    <rdfs:seeAlso rdf:resource="https://joinup.ec.europa.eu/collection/eprocurement/solution/eprocurement-ontology/about"/>
+    <rdfs:seeAlso rdf:resource="https://op.europa.eu/en/web/eu-vocabularies/e-procurement"/>
+    <rdfs:seeAlso rdf:resource="https://docs.ted.europa.eu/home/index.html"/>
+    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-07-07</dcterms:issued>
+    <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2021-06-01</dcterms:created>
+    <owl:versionInfo>5.2.0</owl:versionInfo>
+    <owl:incompatibleWith>4.2.0</owl:incompatibleWith>
+    <owl:versionIRI rdf:resource="http://data.europa.eu/a4g/data-shape#pay-shape-5.2.0"/>
+    <owl:priorVersion>http://data.europa.eu/a4g/data-shape#pay-shape-5.1.0</owl:priorVersion>
+    <vann:preferredNamespaceUri>http://data.europa.eu/a4g/ontology#</vann:preferredNamespaceUri>
+    <vann:preferredNamespacePrefix>epo-pay</vann:preferredNamespacePrefix>
+    <dcterms:license>CC BY 4.0</dcterms:license>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N38775e5cd053436589db94a42a341b4e">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasTotalCreditAmount&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasTotalCreditAmount&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-pay-RemittanceAdvice-epo-pay-hasPaymentOrderReference">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasPaymentOrderReference"/>
+    <sh:name>Has payment order reference</sh:name>
+    <sh:description>Reference to the Payment Order.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#pay-shape"/>
+    <sh:or rdf:nodeID="N259ffac13c104ef080ba254cf650d4a4"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-pay-RemittanceAdvice-epo-pay-hasTotalDebitAmount">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#MonetaryValue"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:sparql rdf:nodeID="N6149a3d62ec847138b413d7d79a5f083"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasTotalDebitAmount"/>
+    <sh:name>Has total debit amount</sh:name>
+    <sh:description>Relation indicating the overall Monetary Value that increases the amount owed.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#pay-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Nc5d06910efdb410baa2077650d9ed55b">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#specifiesSeller&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#specifiesSeller&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N941ec719139a443699199973bab499de">
+    <sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N9d8cc5fe37ae4da18b855c65e15af679">
+    <sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-pay-PaymentInformation-epo-pay-hasPaymentIdentifier">
+    <sh:class rdf:resource="http://www.w3.org/ns/adms#Identifier"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:sparql rdf:nodeID="N27b7f88dd3264e8891d60178941e9bf6"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasPaymentIdentifier"/>
+    <sh:name>Has payment identifier</sh:name>
+    <sh:description>Relation indicating the Identifier of the Payment.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#pay-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-pay-RemittanceAdviceLine-epo-pay-hasCreditAmount">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#MonetaryValue"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:sparql rdf:nodeID="N45f4fcccbce2481a933f1ecc5b3bcba9"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasCreditAmount"/>
+    <sh:name>Has credit amount</sh:name>
+    <sh:description>Relation indicating the Monetary Value that reduces the amount owed.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#pay-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-pay-PaymentInformation-epo-pay-hasPaymentDate">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasPaymentDate"/>
+    <sh:name>Has payment date</sh:name>
+    <sh:description>The date of the Payment.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#pay-shape"/>
+    <sh:or rdf:nodeID="N51f82a524904468a98e37c0958fe0d1d"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-pay-PaymentInformation-epo-pay-hasPaymentMeansInformation">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#PaymentInstructionsInformation"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
+    <sh:sparql rdf:nodeID="N7b2d5062625746a4a49b8fac9244315b"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasPaymentMeansInformation"/>
+    <sh:name>Has payment means information</sh:name>
+    <sh:description>Relation indicating the Payment Instruction Information.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#pay-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N4bf3a89534b04c3ab1a5833a6e326fbc">
+    <sh:datatype rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Ne9f723d38e0a4326a05d4e0986991473">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasPaymentInformation&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasPaymentInformation&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N16d3a343174c4fbb9bbe8daee0b21572">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasTotalPaymentAmount&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasTotalPaymentAmount&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-pay-RemittanceAdvice-epo-pay-hasPaymentInformation">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#PaymentInformation"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:sparql rdf:nodeID="Ne9f723d38e0a4326a05d4e0986991473"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasPaymentInformation"/>
+    <sh:name>Has payment information</sh:name>
+    <sh:description>Relation indicating the Payment Information.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#pay-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-pay-RemittanceAdviceLine-epo-pay-hasDebitAmount">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#MonetaryValue"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:sparql rdf:nodeID="N3463b2a48935409aa692b3573bfede3d"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasDebitAmount"/>
+    <sh:name>Has debit amount</sh:name>
+    <sh:description>Relation indicating the Monetary Value that increases the amount owed.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#pay-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N27b7f88dd3264e8891d60178941e9bf6">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasPaymentIdentifier&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasPaymentIdentifier&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-pay-RemittanceAdvice-epo-pay-comprisesRemittanceAdviceLine">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#RemittanceAdviceLine"/>
+    <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
+    <sh:sparql rdf:nodeID="Ne8af1563ff69490e92d9e2ccea8bd7a0"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#comprisesRemittanceAdviceLine"/>
+    <sh:name>Comprises remittance advice line</sh:name>
+    <sh:description>Incorporates Remittance Advice Line.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#pay-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Ne8af1563ff69490e92d9e2ccea8bd7a0">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#comprisesRemittanceAdviceLine&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#comprisesRemittanceAdviceLine&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Nc8598760e0764a76b514cd18b9920033">
+    <rdf:first rdf:nodeID="N4bf3a89534b04c3ab1a5833a6e326fbc"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-pay-RemittanceAdvice-epo-inv-specifiesPayee">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#Payee"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:sparql rdf:nodeID="N48dfef8913994fee9bfa7b251c31aa54"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#specifiesPayee"/>
+    <sh:name>Specifies payee</sh:name>
+    <sh:description>Relation indicating that the instance of the concept involves the Payee.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#pay-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N38ff85bb263b4f42acf0dd6cadcdfbfc">
+    <sh:datatype rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N38eaf54b93344e15bd6138c420aaea5c">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#specifiesBuyer&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#specifiesBuyer&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-pay-RemittanceAdviceLine-epo-pay-hasBalanceAmount">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#MonetaryValue"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:sparql rdf:nodeID="N2a45fd2a22e64ca4be11fe4117cfdf16"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasBalanceAmount"/>
+    <sh:name>Has balance amount</sh:name>
+    <sh:description>Relation indicating the outstanding amount that remains unpaid or unsettled.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#pay-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N48dfef8913994fee9bfa7b251c31aa54">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#specifiesPayee&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#specifiesPayee&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N45f4fcccbce2481a933f1ecc5b3bcba9">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasCreditAmount&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasCreditAmount&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N6149a3d62ec847138b413d7d79a5f083">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasTotalDebitAmount&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasTotalDebitAmount&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N2a45fd2a22e64ca4be11fe4117cfdf16">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasBalanceAmount&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasBalanceAmount&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N51f82a524904468a98e37c0958fe0d1d">
+    <rdf:first rdf:nodeID="N941ec719139a443699199973bab499de"/>
+    <rdf:rest rdf:nodeID="N2ee950467e17418c86b3819d96eb51e3"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N3463b2a48935409aa692b3573bfede3d">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#hasDebitAmount&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#hasDebitAmount&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N259ffac13c104ef080ba254cf650d4a4">
+    <rdf:first rdf:nodeID="N9d8cc5fe37ae4da18b855c65e15af679"/>
+    <rdf:rest rdf:nodeID="N166a36a0534d47c3872c8bec899c4ded"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N71b80b47c1734fc4b936f38552da4cae">
+    <rdf:first rdf:nodeID="N1495c9653cd14d5eb0810592360f9ac5"/>
+    <rdf:rest rdf:nodeID="Nc8598760e0764a76b514cd18b9920033"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N1495c9653cd14d5eb0810592360f9ac5">
+    <sh:datatype rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N166a36a0534d47c3872c8bec899c4ded">
+    <rdf:first rdf:nodeID="N176793de6d3b456b8c1eb76d06ef3069"/>
+    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N176793de6d3b456b8c1eb76d06ef3069">
+    <sh:datatype rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N41ef1aa4bc114800b1d172519bb5c2c0">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#refersToInvoice&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#refersToInvoice&gt; ?this .}</sh:select>
+  </rdf:Description>
+</rdf:RDF>

@@ -1,0 +1,876 @@
+{
+  "classes": [
+    {
+      "classType": "definition",
+      "description": {
+        "en": "Result concerning the submitted Evidence."
+      },
+      "label": {
+        "en": "Evidence outcome"
+      },
+      "name": "epo-qua:EvidenceOutcome",
+      "parents": [],
+      "properties": [
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "Indicates whether the Requirement is satisfied."
+          },
+          "domain": [
+            {
+              "name": "epo-qua:EvidenceOutcome",
+              "uri": "http://data.europa.eu/a4g/ontology#EvidenceOutcome"
+            }
+          ],
+          "label": {
+            "en": "Fulfills requirement"
+          },
+          "name": "epo-qua:fulfillsRequirement",
+          "propertyOrigin": "internal",
+          "propertyType": "datatype property",
+          "range": [
+            {
+              "range_curie": "xsd:boolean",
+              "range_label": {
+                "en": "Boolean"
+              },
+              "range_puri": "http://www.w3.org/2001/XMLSchema#boolean",
+              "range_uri": "http://www.w3.org/2001/XMLSchema#boolean"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 09/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#fulfillsRequirement",
+          "usage": {}
+        },
+        {
+          "cardinality": "1",
+          "description": {
+            "en": "Relation indicating the Evidence."
+          },
+          "domain": [
+            {
+              "name": "epo-qua:EvidenceOutcome",
+              "uri": "http://data.europa.eu/a4g/ontology#EvidenceOutcome"
+            }
+          ],
+          "label": {
+            "en": "Specifies evidence"
+          },
+          "name": "epo:specifiesEvidence",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "cccev:Evidence",
+              "range_label": {
+                "en": "Evidence"
+              },
+              "range_puri": "http://data.europa.eu/m8g/Evidence",
+              "range_uri": "http://data.europa.eu/m8g/Evidence"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#specifiesEvidence",
+          "usage": {}
+        }
+      ],
+      "rawTags": {
+        "class-usage-scope": "main"
+      },
+      "tags": {
+        "epo:status": "implemented"
+      },
+      "uri": "http://data.europa.eu/a4g/ontology#EvidenceOutcome",
+      "usage": {
+        "en": "Result concerning the submitted Evidence."
+      }
+    },
+    {
+      "classType": "definition",
+      "description": {
+        "en": "A Document sent by the Buyer to the Economic Operator confirming the receival of an Evidence Submission."
+      },
+      "label": {
+        "en": "Evidence receipt"
+      },
+      "name": "epo-qua:EvidenceReceipt",
+      "parents": [
+        {
+          "label": {
+            "en": "Document"
+          },
+          "name": "epo:Document",
+          "scoped_uri": "http://data.europa.eu/a4g/ontology#Document"
+        }
+      ],
+      "properties": [
+        {
+          "cardinality": "1",
+          "description": {
+            "en": "Reference to an Evidence Submission."
+          },
+          "domain": [
+            {
+              "name": "epo-qua:EvidenceReceipt",
+              "uri": "http://data.europa.eu/a4g/ontology#EvidenceReceipt"
+            }
+          ],
+          "label": {
+            "en": "Refers to evidence submission"
+          },
+          "name": "epo-qua:refersToEvidenceSubmission",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo-qua:EvidenceSubmission",
+              "range_label": {
+                "en": "Evidence submission"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#EvidenceSubmission",
+              "range_uri": "http://data.europa.eu/a4g/ontology#EvidenceSubmission"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#refersToEvidenceSubmission",
+          "usage": {}
+        }
+      ],
+      "rawTags": {
+        "class-usage-scope": "main"
+      },
+      "tags": {
+        "epo:status": "implemented"
+      },
+      "uri": "http://data.europa.eu/a4g/ontology#EvidenceReceipt",
+      "usage": {
+        "en": "A Document sent by the Buyer to the Economic Operator confirming the receival of an Evidence Submission."
+      }
+    },
+    {
+      "classType": "definition",
+      "description": {
+        "en": "A Document sent by the Buyer to the Economic Operator asking for the submission of an Evidence."
+      },
+      "label": {
+        "en": "Evidence request"
+      },
+      "name": "epo-qua:EvidenceRequest",
+      "parents": [
+        {
+          "label": {
+            "en": "Document"
+          },
+          "name": "epo:Document",
+          "scoped_uri": "http://data.europa.eu/a4g/ontology#Document"
+        }
+      ],
+      "properties": [
+        {
+          "cardinality": "1..*",
+          "description": {
+            "en": "Relates to Lot."
+          },
+          "domain": [
+            {
+              "name": "epo-qua:EvidenceRequest",
+              "uri": "http://data.europa.eu/a4g/ontology#EvidenceRequest"
+            }
+          ],
+          "label": {
+            "en": "Concerns lot"
+          },
+          "name": "epo:concernsLot",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:Lot",
+              "range_label": {
+                "en": "Lot"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#Lot",
+              "range_uri": "http://data.europa.eu/a4g/ontology#Lot"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#concernsLot",
+          "usage": {}
+        },
+        {
+          "cardinality": "1",
+          "description": {
+            "en": "Relates to Procedure."
+          },
+          "domain": [
+            {
+              "name": "epo-qua:EvidenceRequest",
+              "uri": "http://data.europa.eu/a4g/ontology#EvidenceRequest"
+            }
+          ],
+          "label": {
+            "en": "Concerns procedure"
+          },
+          "name": "epo:concernsProcedure",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:Procedure",
+              "range_label": {
+                "en": "Procedure"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#Procedure",
+              "range_uri": "http://data.europa.eu/a4g/ontology#Procedure"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#concernsProcedure",
+          "usage": {}
+        },
+        {
+          "cardinality": "1",
+          "description": {
+            "en": "Relation indicating that the instance of the concept involves the Economic Operator."
+          },
+          "domain": [
+            {
+              "name": "epo-qua:EvidenceRequest",
+              "uri": "http://data.europa.eu/a4g/ontology#EvidenceRequest"
+            }
+          ],
+          "label": {
+            "en": "Specifies economic operator"
+          },
+          "name": "epo:specifiesEconomicOperator",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:OfferingParty",
+              "range_label": {
+                "en": "Offering party"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#OfferingParty",
+              "range_uri": "http://data.europa.eu/a4g/ontology#OfferingParty"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#specifiesEconomicOperator",
+          "usage": {}
+        }
+      ],
+      "rawTags": {
+        "class-usage-scope": "main"
+      },
+      "tags": {
+        "epo:status": "implemented"
+      },
+      "uri": "http://data.europa.eu/a4g/ontology#EvidenceRequest",
+      "usage": {
+        "en": "A Document sent by the Buyer to the Economic Operator asking for the submission of an Evidence."
+      }
+    },
+    {
+      "classType": "definition",
+      "description": {
+        "en": "A Document sent by the Economic Operator to the Buyer which contains an Evidence."
+      },
+      "label": {
+        "en": "Evidence submission"
+      },
+      "name": "epo-qua:EvidenceSubmission",
+      "parents": [
+        {
+          "label": {
+            "en": "Document"
+          },
+          "name": "epo:Document",
+          "scoped_uri": "http://data.europa.eu/a4g/ontology#Document"
+        }
+      ],
+      "properties": [
+        {
+          "cardinality": "1..*",
+          "description": {
+            "en": "Relates to Lot."
+          },
+          "domain": [
+            {
+              "name": "epo-qua:EvidenceSubmission",
+              "uri": "http://data.europa.eu/a4g/ontology#EvidenceSubmission"
+            }
+          ],
+          "label": {
+            "en": "Concerns lot"
+          },
+          "name": "epo:concernsLot",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:Lot",
+              "range_label": {
+                "en": "Lot"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#Lot",
+              "range_uri": "http://data.europa.eu/a4g/ontology#Lot"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#concernsLot",
+          "usage": {}
+        },
+        {
+          "cardinality": "1",
+          "description": {
+            "en": "Relates to Procedure."
+          },
+          "domain": [
+            {
+              "name": "epo-qua:EvidenceSubmission",
+              "uri": "http://data.europa.eu/a4g/ontology#EvidenceSubmission"
+            }
+          ],
+          "label": {
+            "en": "Concerns procedure"
+          },
+          "name": "epo:concernsProcedure",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:Procedure",
+              "range_label": {
+                "en": "Procedure"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#Procedure",
+              "range_uri": "http://data.europa.eu/a4g/ontology#Procedure"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#concernsProcedure",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..*",
+          "description": {
+            "en": "Makes available the Evidence."
+          },
+          "domain": [
+            {
+              "name": "epo-qua:EvidenceSubmission",
+              "uri": "http://data.europa.eu/a4g/ontology#EvidenceSubmission"
+            }
+          ],
+          "label": {
+            "en": "Provides evidence"
+          },
+          "name": "epo:providesEvidence",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "cccev:Evidence",
+              "range_label": {
+                "en": "Evidence"
+              },
+              "range_puri": "http://data.europa.eu/m8g/Evidence",
+              "range_uri": "http://data.europa.eu/m8g/Evidence"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#providesEvidence",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "Reference to an Evidence Request."
+          },
+          "domain": [
+            {
+              "name": "epo-qua:EvidenceSubmission",
+              "uri": "http://data.europa.eu/a4g/ontology#EvidenceSubmission"
+            }
+          ],
+          "label": {
+            "en": "Refers to evidence request"
+          },
+          "name": "epo-qua:refersToEvidenceRequest",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo-qua:EvidenceRequest",
+              "range_label": {
+                "en": "Evidence request"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#EvidenceRequest",
+              "range_uri": "http://data.europa.eu/a4g/ontology#EvidenceRequest"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#refersToEvidenceRequest",
+          "usage": {}
+        },
+        {
+          "cardinality": "1",
+          "description": {
+            "en": "Relation indicating that the instance of the concept involves the Economic Operator."
+          },
+          "domain": [
+            {
+              "name": "epo-qua:EvidenceSubmission",
+              "uri": "http://data.europa.eu/a4g/ontology#EvidenceSubmission"
+            }
+          ],
+          "label": {
+            "en": "Specifies economic operator"
+          },
+          "name": "epo:specifiesEconomicOperator",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:OfferingParty",
+              "range_label": {
+                "en": "Offering party"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#OfferingParty",
+              "range_uri": "http://data.europa.eu/a4g/ontology#OfferingParty"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#specifiesEconomicOperator",
+          "usage": {}
+        }
+      ],
+      "rawTags": {
+        "class-usage-scope": "main"
+      },
+      "tags": {
+        "epo:status": "implemented"
+      },
+      "uri": "http://data.europa.eu/a4g/ontology#EvidenceSubmission",
+      "usage": {
+        "en": "A Document sent by the Economic Operator to the Buyer which contains an Evidence."
+      }
+    },
+    {
+      "classType": "definition",
+      "description": {
+        "en": "Information about the aggregated result of the Evidence Outcomes."
+      },
+      "label": {
+        "en": "Qualification decision information"
+      },
+      "name": "epo-qua:QualificationDecisionInformation",
+      "parents": [],
+      "properties": [
+        {
+          "cardinality": "0..*",
+          "description": {
+            "en": "Incorporates Evidence Outcome."
+          },
+          "domain": [
+            {
+              "name": "epo-qua:QualificationDecisionInformation",
+              "uri": "http://data.europa.eu/a4g/ontology#QualificationDecisionInformation"
+            }
+          ],
+          "label": {
+            "en": "Comprises evidence outcome"
+          },
+          "name": "epo-qua:comprisesEvidenceOutcome",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo-qua:EvidenceOutcome",
+              "range_label": {
+                "en": "Evidence outcome"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#EvidenceOutcome",
+              "range_uri": "http://data.europa.eu/a4g/ontology#EvidenceOutcome"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#comprisesEvidenceOutcome",
+          "usage": {}
+        },
+        {
+          "cardinality": "1..1",
+          "description": {
+            "en": "The official date of the Qualification Decision."
+          },
+          "domain": [
+            {
+              "name": "epo-qua:QualificationDecisionInformation",
+              "uri": "http://data.europa.eu/a4g/ontology#QualificationDecisionInformation"
+            }
+          ],
+          "label": {
+            "en": "Has qualification decision date"
+          },
+          "name": "epo:hasQualificationDecisionDate",
+          "propertyOrigin": "internal",
+          "propertyType": "datatype property",
+          "range": [
+            {
+              "range_curie": "xsd:dateTime",
+              "range_label": {
+                "en": "Date time"
+              },
+              "range_puri": "http://www.w3.org/2001/XMLSchema#dateTime",
+              "range_uri": "http://www.w3.org/2001/XMLSchema#dateTime"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 09/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasQualificationDecisionDate",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "Explanatory text about the rejection reason."
+          },
+          "domain": [
+            {
+              "name": "epo-qua:QualificationDecisionInformation",
+              "uri": "http://data.europa.eu/a4g/ontology#QualificationDecisionInformation"
+            }
+          ],
+          "label": {
+            "en": "Has rejection description"
+          },
+          "name": "epo:hasRejectionDescription",
+          "propertyOrigin": "internal",
+          "propertyType": "datatype property",
+          "range": [
+            {
+              "range_curie": "rdf:PlainLiteral",
+              "range_label": {
+                "en": "Plain literal"
+              },
+              "range_puri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral",
+              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 09/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasRejectionDescription",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "Indicates whether the economic operator is eligible."
+          },
+          "domain": [
+            {
+              "name": "epo-qua:QualificationDecisionInformation",
+              "uri": "http://data.europa.eu/a4g/ontology#QualificationDecisionInformation"
+            }
+          ],
+          "label": {
+            "en": "Is qualified"
+          },
+          "name": "epo:isQualified",
+          "propertyOrigin": "internal",
+          "propertyType": "datatype property",
+          "range": [
+            {
+              "range_curie": "xsd:boolean",
+              "range_label": {
+                "en": "Boolean"
+              },
+              "range_puri": "http://www.w3.org/2001/XMLSchema#boolean",
+              "range_uri": "http://www.w3.org/2001/XMLSchema#boolean"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 09/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#isQualified",
+          "usage": {}
+        },
+        {
+          "cardinality": "1",
+          "description": {
+            "en": "Makes available the resolution."
+          },
+          "domain": [
+            {
+              "name": "epo-qua:QualificationDecisionInformation",
+              "uri": "http://data.europa.eu/a4g/ontology#QualificationDecisionInformation"
+            }
+          ],
+          "label": {
+            "en": "Provides decision for"
+          },
+          "name": "epo-qua:providesDecisionFor",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:Lot",
+              "range_label": {
+                "en": "Lot"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#Lot",
+              "range_uri": "http://data.europa.eu/a4g/ontology#Lot"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#providesDecisionFor",
+          "usage": {}
+        },
+        {
+          "cardinality": "1",
+          "description": {
+            "en": "Relation indicating the Qualification Response that the information refers to."
+          },
+          "domain": [
+            {
+              "name": "epo-qua:QualificationDecisionInformation",
+              "uri": "http://data.europa.eu/a4g/ontology#QualificationDecisionInformation"
+            }
+          ],
+          "label": {
+            "en": "Summarises information for qualification response"
+          },
+          "name": "epo-qua:summarisesInformationForQualificationResponse",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo-qua:QualificationReponse",
+              "range_label": {
+                "en": "Qualification reponse"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#QualificationReponse",
+              "range_uri": "http://data.europa.eu/a4g/ontology#QualificationReponse"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#summarisesInformationForQualificationResponse",
+          "usage": {}
+        }
+      ],
+      "rawTags": {
+        "class-usage-scope": "main"
+      },
+      "tags": {
+        "epo:status": "implemented"
+      },
+      "uri": "http://data.europa.eu/a4g/ontology#QualificationDecisionInformation",
+      "usage": {
+        "en": "Information about the aggregated result of the Evidence Outcomes."
+      }
+    },
+    {
+      "classType": "definition",
+      "description": {
+        "en": "A formal reply from the Buyer to the Economic Operator informing the Economic Operator that it may participate in a procurement."
+      },
+      "label": {
+        "en": "Qualification reponse"
+      },
+      "name": "epo-qua:QualificationReponse",
+      "parents": [
+        {
+          "label": {
+            "en": "Document"
+          },
+          "name": "epo:Document",
+          "scoped_uri": "http://data.europa.eu/a4g/ontology#Document"
+        }
+      ],
+      "properties": [
+        {
+          "cardinality": "1",
+          "description": {
+            "en": "Reference to an Evidence Submission."
+          },
+          "domain": [
+            {
+              "name": "epo-qua:QualificationReponse",
+              "uri": "http://data.europa.eu/a4g/ontology#QualificationReponse"
+            }
+          ],
+          "label": {
+            "en": "Refers to evidence submission"
+          },
+          "name": "epo-qua:refersToEvidenceSubmission",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo-qua:EvidenceSubmission",
+              "range_label": {
+                "en": "Evidence submission"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#EvidenceSubmission",
+              "range_uri": "http://data.europa.eu/a4g/ontology#EvidenceSubmission"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#refersToEvidenceSubmission",
+          "usage": {}
+        }
+      ],
+      "rawTags": {
+        "class-usage-scope": "main"
+      },
+      "tags": {
+        "epo:status": "implemented"
+      },
+      "uri": "http://data.europa.eu/a4g/ontology#QualificationReponse",
+      "usage": {
+        "en": "A formal reply from the Buyer to the Economic Operator informing the Economic Operator that it may participate in a procurement."
+      }
+    }
+  ],
+  "datatypes": [
+    {
+      "description": {
+        "en": ""
+      },
+      "label": {
+        "en": "Plain literal"
+      },
+      "scopeduri": "rdf:PlainLiteral",
+      "uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"
+    },
+    {
+      "description": {
+        "en": ""
+      },
+      "label": {
+        "en": "Any URI"
+      },
+      "scopeduri": "xsd:anyURI",
+      "uri": "http://www.w3.org/2001/XMLSchema#anyURI"
+    },
+    {
+      "description": {
+        "en": ""
+      },
+      "label": {
+        "en": "Boolean"
+      },
+      "scopeduri": "xsd:boolean",
+      "uri": "http://www.w3.org/2001/XMLSchema#boolean"
+    },
+    {
+      "description": {
+        "en": ""
+      },
+      "label": {
+        "en": "Date"
+      },
+      "scopeduri": "xsd:date",
+      "uri": "http://www.w3.org/2001/XMLSchema#date"
+    },
+    {
+      "description": {
+        "en": ""
+      },
+      "label": {
+        "en": "Date time"
+      },
+      "scopeduri": "xsd:dateTime",
+      "uri": "http://www.w3.org/2001/XMLSchema#dateTime"
+    },
+    {
+      "description": {
+        "en": ""
+      },
+      "label": {
+        "en": "Decimal"
+      },
+      "scopeduri": "xsd:decimal",
+      "uri": "http://www.w3.org/2001/XMLSchema#decimal"
+    },
+    {
+      "description": {
+        "en": ""
+      },
+      "label": {
+        "en": "Integer"
+      },
+      "scopeduri": "xsd:integer",
+      "uri": "http://www.w3.org/2001/XMLSchema#integer"
+    }
+  ],
+  "prefixes": [
+    {
+      "name": "epo-qua",
+      "uri": "http://data.europa.eu/a4g/ontology#"
+    },
+    {
+      "name": "epo",
+      "uri": "http://data.europa.eu/a4g/ontology#"
+    },
+    {
+      "name": "cccev",
+      "uri": "http://data.europa.eu/m8g/"
+    },
+    {
+      "name": "rdf",
+      "uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    },
+    {
+      "name": "xsd",
+      "uri": "http://www.w3.org/2001/XMLSchema#"
+    }
+  ]
+}

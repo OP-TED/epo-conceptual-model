@@ -1,0 +1,5705 @@
+{
+  "classes": [
+    {
+      "classType": "definition",
+      "description": {
+        "en": "Gathering class for the Items, Item Requests and Deliverables. Additional information: The subclasses have in common that they are related to a procurement need."
+      },
+      "label": {
+        "en": "Abstract item"
+      },
+      "name": "epo-cat:AbstractItem",
+      "parents": [],
+      "properties": [
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "External concept defined by <xref scope=\"external\" href=\"\"https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/description\"\"><foreign otherprops=\"#0000ff\"><u>https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/description</u></foreign></xref>"
+          },
+          "domain": [
+            {
+              "name": "epo-cat:AbstractItem",
+              "uri": "http://data.europa.eu/a4g/ontology#AbstractItem"
+            }
+          ],
+          "label": {
+            "en": "Description"
+          },
+          "name": "dct:description",
+          "propertyOrigin": "reused",
+          "propertyType": "datatype property",
+          "range": [
+            {
+              "range_curie": "rdf:PlainLiteral",
+              "range_label": {
+                "en": "Plain literal"
+              },
+              "range_puri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral",
+              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG Approval 30/05/2023"
+          },
+          "uri": "http://purl.org/dc/terms/description",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..*",
+          "description": {
+            "en": "An additional item that can enhance the original item."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:AbstractItem",
+              "uri": "http://data.europa.eu/a4g/ontology#AbstractItem"
+            }
+          ],
+          "label": {
+            "en": "Has accessory item"
+          },
+          "name": "epo-cat:hasAccessoryItem",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo-cat:AbstractItem",
+              "range_label": {
+                "en": "Abstract item"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#AbstractItem",
+              "range_uri": "http://data.europa.eu/a4g/ontology#AbstractItem"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG Approval 30/06/2022"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasAccessoryItem",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "Relation indicating that the instance of the concept has a Brand."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:AbstractItem",
+              "uri": "http://data.europa.eu/a4g/ontology#AbstractItem"
+            }
+          ],
+          "label": {
+            "en": "Has brand"
+          },
+          "name": "epo-cat:hasBrand",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo-cat:Brand",
+              "range_label": {
+                "en": "Brand"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#Brand",
+              "range_uri": "http://data.europa.eu/a4g/ontology#Brand"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasBrand",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "The general identifier assigned to the concept as defined by the Buyer.\u200b"
+          },
+          "domain": [
+            {
+              "name": "epo-cat:AbstractItem",
+              "uri": "http://data.europa.eu/a4g/ontology#AbstractItem"
+            }
+          ],
+          "label": {
+            "en": "Has buyer item ID"
+          },
+          "name": "epo:hasBuyerItemID",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "adms:Identifier",
+              "range_label": {
+                "en": "Identifier"
+              },
+              "range_puri": "http://www.w3.org/ns/adms#Identifier",
+              "range_uri": "http://www.w3.org/ns/adms#Identifier"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG Approval 16/05/2023"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasBuyerItemID",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..*",
+          "description": {
+            "en": "Relation to the proof of conformance."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:AbstractItem",
+              "uri": "http://data.europa.eu/a4g/ontology#AbstractItem"
+            }
+          ],
+          "label": {
+            "en": "Has certification"
+          },
+          "name": "epo:hasCertification",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:Certificate",
+              "range_label": {
+                "en": "Certificate"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#Certificate",
+              "range_uri": "http://data.europa.eu/a4g/ontology#Certificate"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG Approval 30/05/2023"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasCertification",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..*",
+          "description": {
+            "en": "An item that if used with another item provides mutual enhancements to both of them. Additional information: For example, gin and tonic; or smart-phone and smart-watch."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:AbstractItem",
+              "uri": "http://data.europa.eu/a4g/ontology#AbstractItem"
+            }
+          ],
+          "label": {
+            "en": "Has complementary item"
+          },
+          "name": "epo-cat:hasComplementaryItem",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo-cat:AbstractItem",
+              "range_label": {
+                "en": "Abstract item"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#AbstractItem",
+              "range_uri": "http://data.europa.eu/a4g/ontology#AbstractItem"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG Approval 19/05/2022"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasComplementaryItem",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "controlled_vocabulary": {
+            "name": "at-voc:country",
+            "uri": "http://publications.europa.eu/resource/authority/country"
+          },
+          "description": {
+            "en": "The source country of the product or service. Additional Information: The country of origin can be provided by the buyer as a requirement or by the tenderer information of the item to be provided."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:AbstractItem",
+              "uri": "http://data.europa.eu/a4g/ontology#AbstractItem"
+            }
+          ],
+          "label": {
+            "en": "Has country of origin"
+          },
+          "name": "epo-cat:hasCountryOfOrigin",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "skos:Concept",
+              "range_label": {
+                "en": "Concept"
+              },
+              "range_puri": "http://www.w3.org/2004/02/skos/core#Concept",
+              "range_uri": "http://www.w3.org/2004/02/skos/core#Concept"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG Approval 07/01/2020"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasCountryOfOrigin",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "controlled_vocabulary": {
+            "name": "at-voc-new:delivery-item-type",
+            "uri": "http://publications.europa.eu/resource/authority/new/delivery-item-type"
+          },
+          "description": {
+            "en": "Relation indicating the Delivery Item Type."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:AbstractItem",
+              "uri": "http://data.europa.eu/a4g/ontology#AbstractItem"
+            }
+          ],
+          "label": {
+            "en": "Has delivery classification"
+          },
+          "name": "epo-cat:hasDeliveryClassification",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "skos:Concept",
+              "range_label": {
+                "en": "Concept"
+              },
+              "range_puri": "http://www.w3.org/2004/02/skos/core#Concept",
+              "range_uri": "http://www.w3.org/2004/02/skos/core#Concept"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasDeliveryClassification",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..*",
+          "description": {
+            "en": "Specification of the hazardous nature of an item according to a classification schema. Provides detail of the classification and nature of a hazardous item."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:AbstractItem",
+              "uri": "http://data.europa.eu/a4g/ontology#AbstractItem"
+            }
+          ],
+          "label": {
+            "en": "Has hazardous class ID"
+          },
+          "name": "epo-cat:hasHazardousClassID",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "adms:Identifier",
+              "range_label": {
+                "en": "Identifier"
+              },
+              "range_puri": "http://www.w3.org/ns/adms#Identifier",
+              "range_uri": "http://www.w3.org/ns/adms#Identifier"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasHazardousClassID",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..*",
+          "controlled_vocabulary": {
+            "name": "at-voc-new:dangerous-goods-list",
+            "uri": "http://publications.europa.eu/resource/authority/new/dangerous-goods-list"
+          },
+          "description": {
+            "en": "Specification of the hazardous nature of an item according to the UNDG classification schema. Provides detail of the classification and nature of a hazardous item."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:AbstractItem",
+              "uri": "http://data.europa.eu/a4g/ontology#AbstractItem"
+            }
+          ],
+          "label": {
+            "en": "Has hazardous item UNDG code"
+          },
+          "name": "epo-cat:hasHazardousItemUNDGCode",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "skos:Concept",
+              "range_label": {
+                "en": "Concept"
+              },
+              "range_puri": "http://www.w3.org/2004/02/skos/core#Concept",
+              "range_uri": "http://www.w3.org/2004/02/skos/core#Concept"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasHazardousItemUNDGCode",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..*",
+          "controlled_vocabulary": {
+            "name": "at-voc-new:item-classification",
+            "uri": "http://publications.europa.eu/resource/authority/new/item-classification"
+          },
+          "description": {
+            "en": "A classification of this item according to a specific system for classifying products or services. Additional information: Examples of classification schemes are: CPV, UNSPC, eCl@ss, GPC, ..."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:AbstractItem",
+              "uri": "http://data.europa.eu/a4g/ontology#AbstractItem"
+            }
+          ],
+          "label": {
+            "en": "Has item classification"
+          },
+          "name": "epo-cat:hasItemClassification",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "skos:Concept",
+              "range_label": {
+                "en": "Concept"
+              },
+              "range_puri": "http://www.w3.org/2004/02/skos/core#Concept",
+              "range_uri": "http://www.w3.org/2004/02/skos/core#Concept"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG Approval 10/03/2022"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasItemClassification",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..*",
+          "description": {
+            "en": "The Identifier of the Item categorisation."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:AbstractItem",
+              "uri": "http://data.europa.eu/a4g/ontology#AbstractItem"
+            }
+          ],
+          "label": {
+            "en": "Has item classification identifier"
+          },
+          "name": "epo-inv:hasItemClassificationIdentifier",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "adms:Identifier",
+              "range_label": {
+                "en": "Identifier"
+              },
+              "range_puri": "http://www.w3.org/ns/adms#Identifier",
+              "range_uri": "http://www.w3.org/ns/adms#Identifier"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasItemClassificationIdentifier",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..*",
+          "description": {
+            "en": "The general identifier assigned to the concept based on a standard scheme.\u200b Additional information: For example the GTIN scheme (Global Trade Item Number)."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:AbstractItem",
+              "uri": "http://data.europa.eu/a4g/ontology#AbstractItem"
+            }
+          ],
+          "label": {
+            "en": "Has item standard ID"
+          },
+          "name": "epo:hasItemStandardID",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "adms:Identifier",
+              "range_label": {
+                "en": "Identifier"
+              },
+              "range_puri": "http://www.w3.org/ns/adms#Identifier",
+              "range_uri": "http://www.w3.org/ns/adms#Identifier"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG Approval 16/05/2023"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasItemStandardID",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..*",
+          "description": {
+            "en": "List of words (e.g, synonyms) to make the item searchable."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:AbstractItem",
+              "uri": "http://data.europa.eu/a4g/ontology#AbstractItem"
+            }
+          ],
+          "label": {
+            "en": "Has keyword"
+          },
+          "name": "epo-cat:hasKeyword",
+          "propertyOrigin": "internal",
+          "propertyType": "datatype property",
+          "range": [
+            {
+              "range_curie": "rdf:PlainLiteral",
+              "range_label": {
+                "en": "Plain literal"
+              },
+              "range_puri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral",
+              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG Approval 07/04/2022"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasKeyword",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "The product maker or service provider."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:AbstractItem",
+              "uri": "http://data.europa.eu/a4g/ontology#AbstractItem"
+            }
+          ],
+          "label": {
+            "en": "Has manufacturer"
+          },
+          "name": "epo-cat:hasManufacturer",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo-cat:Manufacturer",
+              "range_label": {
+                "en": "Manufacturer"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#Manufacturer",
+              "range_uri": "http://data.europa.eu/a4g/ontology#Manufacturer"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasManufacturer",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "The general identifier assigned to the concept as defined by the Manufacturer. \u200b"
+          },
+          "domain": [
+            {
+              "name": "epo-cat:AbstractItem",
+              "uri": "http://data.europa.eu/a4g/ontology#AbstractItem"
+            }
+          ],
+          "label": {
+            "en": "Has manufacturer item ID"
+          },
+          "name": "epo:hasManufacturerItemID",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "adms:Identifier",
+              "range_label": {
+                "en": "Identifier"
+              },
+              "range_puri": "http://www.w3.org/ns/adms#Identifier",
+              "range_uri": "http://www.w3.org/ns/adms#Identifier"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG Approval 16/05/2023"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasManufacturerItemID",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "Relation indicating that the instance of the concept has an Item Model."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:AbstractItem",
+              "uri": "http://data.europa.eu/a4g/ontology#AbstractItem"
+            }
+          ],
+          "label": {
+            "en": "Has model"
+          },
+          "name": "epo-cat:hasModel",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo-cat:ItemModel",
+              "range_label": {
+                "en": "Item model"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#ItemModel",
+              "range_uri": "http://data.europa.eu/a4g/ontology#ItemModel"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasModel",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "The net quantity of the item that is contained in each consumable unit, excluding any packaging materials."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:AbstractItem",
+              "uri": "http://data.europa.eu/a4g/ontology#AbstractItem"
+            }
+          ],
+          "label": {
+            "en": "Has net quantity"
+          },
+          "name": "epo-cat:hasNetQuantity",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:Quantity",
+              "range_label": {
+                "en": "Quantity"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#Quantity",
+              "range_uri": "http://data.europa.eu/a4g/ontology#Quantity"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasNetQuantity",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..*",
+          "description": {
+            "en": "External concept defined by <xref scope=\"external\" href=\"\"https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/hasPart\"\"><foreign otherprops=\"#0000ff\"><u>https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/hasPart</u></foreign></xref>"
+          },
+          "domain": [
+            {
+              "name": "epo-cat:AbstractItem",
+              "uri": "http://data.europa.eu/a4g/ontology#AbstractItem"
+            }
+          ],
+          "label": {
+            "en": "Has part"
+          },
+          "name": "dct:hasPart",
+          "propertyOrigin": "reused",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo-cat:AbstractItem",
+              "range_label": {
+                "en": "Abstract item"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#AbstractItem",
+              "range_uri": "http://data.europa.eu/a4g/ontology#AbstractItem"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG Approval 30/06/2022"
+          },
+          "uri": "http://purl.org/dc/terms/hasPart",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..*",
+          "description": {
+            "en": "Relation indicating that the instance of the concept has an Item Relation."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:AbstractItem",
+              "uri": "http://data.europa.eu/a4g/ontology#AbstractItem"
+            }
+          ],
+          "label": {
+            "en": "Has qualified item relation"
+          },
+          "name": "epo-cat:hasQualifiedItemRelation",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo-cat:ItemRelation",
+              "range_label": {
+                "en": "Item relation"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#ItemRelation",
+              "range_uri": "http://data.europa.eu/a4g/ontology#ItemRelation"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasQualifiedItemRelation",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "The general identifier assigned to the concept as defined by the Seller.\u200b"
+          },
+          "domain": [
+            {
+              "name": "epo-cat:AbstractItem",
+              "uri": "http://data.europa.eu/a4g/ontology#AbstractItem"
+            }
+          ],
+          "label": {
+            "en": "Has seller item ID"
+          },
+          "name": "epo:hasSellerItemID",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "adms:Identifier",
+              "range_label": {
+                "en": "Identifier"
+              },
+              "range_puri": "http://www.w3.org/ns/adms#Identifier",
+              "range_uri": "http://www.w3.org/ns/adms#Identifier"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG Approval 16/05/2023"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasSellerItemID",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "The identifier assigned to the specific instance of the produced concept."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:AbstractItem",
+              "uri": "http://data.europa.eu/a4g/ontology#AbstractItem"
+            }
+          ],
+          "label": {
+            "en": "Has serial ID"
+          },
+          "name": "epo:hasSerialID",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "adms:Identifier",
+              "range_label": {
+                "en": "Identifier"
+              },
+              "range_puri": "http://www.w3.org/ns/adms#Identifier",
+              "range_uri": "http://www.w3.org/ns/adms#Identifier"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG Approval 16/05/2023"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasSerialID",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..*",
+          "description": {
+            "en": "Relation indicating that the instance of the concept has a Product Specification."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:AbstractItem",
+              "uri": "http://data.europa.eu/a4g/ontology#AbstractItem"
+            }
+          ],
+          "label": {
+            "en": "Has specification"
+          },
+          "name": "epo-cat:hasSpecification",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo-cat:ProductSpecification",
+              "range_label": {
+                "en": "Product specification"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#ProductSpecification",
+              "range_uri": "http://data.europa.eu/a4g/ontology#ProductSpecification"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasSpecification",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..*",
+          "description": {
+            "en": "Relation indicating the Tax Information."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:AbstractItem",
+              "uri": "http://data.europa.eu/a4g/ontology#AbstractItem"
+            }
+          ],
+          "label": {
+            "en": "Has tax information"
+          },
+          "name": "epo-ord:hasTaxInformation",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo-ord:TaxInformation",
+              "range_label": {
+                "en": "Tax information"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#TaxInformation",
+              "range_uri": "http://data.europa.eu/a4g/ontology#TaxInformation"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasTaxInformation",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "Indicator whether an item is in the supplier's stock. If not in stock the supplier has to order the item."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:AbstractItem",
+              "uri": "http://data.europa.eu/a4g/ontology#AbstractItem"
+            }
+          ],
+          "label": {
+            "en": "Is in stock"
+          },
+          "name": "epo-cat:isInStock",
+          "propertyOrigin": "internal",
+          "propertyType": "datatype property",
+          "range": [
+            {
+              "range_curie": "xsd:boolean",
+              "range_label": {
+                "en": "Boolean"
+              },
+              "range_puri": "http://www.w3.org/2001/XMLSchema#boolean",
+              "range_uri": "http://www.w3.org/2001/XMLSchema#boolean"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#isInStock",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..*",
+          "description": {
+            "en": "External concept defined by <xref scope=\"external\" href=\"\"https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/isReplacedBy\"\"><foreign otherprops=\"#0000ff\"><u>https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/isReplacedBy</u></foreign></xref>"
+          },
+          "domain": [
+            {
+              "name": "epo-cat:AbstractItem",
+              "uri": "http://data.europa.eu/a4g/ontology#AbstractItem"
+            }
+          ],
+          "label": {
+            "en": "Is replaced by"
+          },
+          "name": "dct:isReplacedBy",
+          "propertyOrigin": "reused",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo-cat:AbstractItem",
+              "range_label": {
+                "en": "Abstract item"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#AbstractItem",
+              "range_uri": "http://data.europa.eu/a4g/ontology#AbstractItem"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG Approval 30/06/2022"
+          },
+          "uri": "http://purl.org/dc/terms/isReplacedBy",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..*",
+          "description": {
+            "en": "External concept defined by <xref scope=\"external\" href=\"\"https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/isReplacedBy\"\"><foreign otherprops=\"#0000ff\"><u>https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/isReplacedBy</u></foreign></xref>"
+          },
+          "domain": [
+            {
+              "name": "epo-cat:AbstractItem",
+              "uri": "http://data.europa.eu/a4g/ontology#AbstractItem"
+            }
+          ],
+          "label": {
+            "en": "Replaces"
+          },
+          "name": "dct:replaces",
+          "propertyOrigin": "reused",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo-cat:AbstractItem",
+              "range_label": {
+                "en": "Abstract item"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#AbstractItem",
+              "range_uri": "http://data.europa.eu/a4g/ontology#AbstractItem"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG Approval 30/06/2022"
+          },
+          "uri": "http://purl.org/dc/terms/replaces",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..*",
+          "description": {
+            "en": "External concept defined by <xref scope=\"external\" href=\"\"https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/requires\"\"><foreign otherprops=\"#0000ff\"><u>https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/requires</u></foreign></xref>"
+          },
+          "domain": [
+            {
+              "name": "epo-cat:AbstractItem",
+              "uri": "http://data.europa.eu/a4g/ontology#AbstractItem"
+            }
+          ],
+          "label": {
+            "en": "Requires"
+          },
+          "name": "dct:requires",
+          "propertyOrigin": "reused",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo-cat:AbstractItem",
+              "range_label": {
+                "en": "Abstract item"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#AbstractItem",
+              "range_uri": "http://data.europa.eu/a4g/ontology#AbstractItem"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG Approval 30/06/2022"
+          },
+          "uri": "http://purl.org/dc/terms/requires",
+          "usage": {}
+        },
+        {
+          "cardinality": "1..1",
+          "description": {
+            "en": "External concept defined by <xref scope=\"external\" href=\"\"https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/title\"\"><foreign otherprops=\"#0000ff\"><u>https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/title</u></foreign></xref>"
+          },
+          "domain": [
+            {
+              "name": "epo-cat:AbstractItem",
+              "uri": "http://data.europa.eu/a4g/ontology#AbstractItem"
+            }
+          ],
+          "label": {
+            "en": "Title"
+          },
+          "name": "dct:title",
+          "propertyOrigin": "reused",
+          "propertyType": "datatype property",
+          "range": [
+            {
+              "range_curie": "rdf:PlainLiteral",
+              "range_label": {
+                "en": "Plain literal"
+              },
+              "range_puri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral",
+              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG Approval 30/05/2023"
+          },
+          "uri": "http://purl.org/dc/terms/title",
+          "usage": {}
+        }
+      ],
+      "rawTags": {
+        "class-usage-scope": "main"
+      },
+      "tags": {
+        "epo:status": "implemented",
+        "skos:historyNote": "WG approval 09/10/2025"
+      },
+      "uri": "http://data.europa.eu/a4g/ontology#AbstractItem",
+      "usage": {
+        "en": "Gathering class for the Items, Item Requests and Deliverables. Additional information: The subclasses have in common that they are related to a procurement need."
+      }
+    },
+    {
+      "classType": "definition",
+      "description": {
+        "en": "A production lot in which the Item instances were produced."
+      },
+      "label": {
+        "en": "Batch"
+      },
+      "name": "epo-cat:Batch",
+      "parents": [],
+      "properties": [
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "The identifier assigned to a specific batch of the produced Item."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:Batch",
+              "uri": "http://data.europa.eu/a4g/ontology#Batch"
+            }
+          ],
+          "label": {
+            "en": "Has batch ID"
+          },
+          "name": "epo:hasBatchID",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "adms:Identifier",
+              "range_label": {
+                "en": "Identifier"
+              },
+              "range_puri": "http://www.w3.org/ns/adms#Identifier",
+              "range_uri": "http://www.w3.org/ns/adms#Identifier"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG Approval 16/05/2023"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasBatchID",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "The day until which the quality of the item will remain optimal."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:Batch",
+              "uri": "http://data.europa.eu/a4g/ontology#Batch"
+            }
+          ],
+          "label": {
+            "en": "Has best before date"
+          },
+          "name": "epo-cat:hasBestBeforeDate",
+          "propertyOrigin": "internal",
+          "propertyType": "datatype property",
+          "range": [
+            {
+              "range_curie": "xsd:date",
+              "range_label": {
+                "en": "Date"
+              },
+              "range_puri": "http://www.w3.org/2001/XMLSchema#date",
+              "range_uri": "http://www.w3.org/2001/XMLSchema#date"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG Approval 10/03/2021"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasBestBeforeDate",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "The last day until which the item can be used."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:Batch",
+              "uri": "http://data.europa.eu/a4g/ontology#Batch"
+            }
+          ],
+          "label": {
+            "en": "Has expiry date"
+          },
+          "name": "epo-cat:hasExpiryDate",
+          "propertyOrigin": "internal",
+          "propertyType": "datatype property",
+          "range": [
+            {
+              "range_curie": "xsd:date",
+              "range_label": {
+                "en": "Date"
+              },
+              "range_puri": "http://www.w3.org/2001/XMLSchema#date",
+              "range_uri": "http://www.w3.org/2001/XMLSchema#date"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG Approval 10/03/2021"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasExpiryDate",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "The day of production."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:Batch",
+              "uri": "http://data.europa.eu/a4g/ontology#Batch"
+            }
+          ],
+          "label": {
+            "en": "Has manufacture date"
+          },
+          "name": "epo-cat:hasManufactureDate",
+          "propertyOrigin": "internal",
+          "propertyType": "datatype property",
+          "range": [
+            {
+              "range_curie": "xsd:dateTime",
+              "range_label": {
+                "en": "Date time"
+              },
+              "range_puri": "http://www.w3.org/2001/XMLSchema#dateTime",
+              "range_uri": "http://www.w3.org/2001/XMLSchema#dateTime"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasManufactureDate",
+          "usage": {}
+        },
+        {
+          "cardinality": "1",
+          "description": {
+            "en": "Relation indicating the Item that is manufactured."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:Batch",
+              "uri": "http://data.europa.eu/a4g/ontology#Batch"
+            }
+          ],
+          "label": {
+            "en": "Is production of"
+          },
+          "name": "epo-cat:isProductionOf",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo-cat:AbstractItem",
+              "range_label": {
+                "en": "Abstract item"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#AbstractItem",
+              "range_uri": "http://data.europa.eu/a4g/ontology#AbstractItem"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#isProductionOf",
+          "usage": {}
+        }
+      ],
+      "rawTags": {
+        "class-usage-scope": "main"
+      },
+      "tags": {
+        "epo:status": "implemented",
+        "skos:historyNote": "WG Approval 10/03/2022"
+      },
+      "uri": "http://data.europa.eu/a4g/ontology#Batch",
+      "usage": {
+        "en": "A production lot in which the Item instances were produced."
+      }
+    },
+    {
+      "classType": "definition",
+      "description": {
+        "en": "Name given by an organisation to its product or service, or range of products or services. Additional information: Brand name allows economic operators to distinctively describe an item in their eCatalogue. This may be different from the \"item name\"."
+      },
+      "label": {
+        "en": "Brand"
+      },
+      "name": "epo-cat:Brand",
+      "parents": [],
+      "properties": [
+        {
+          "cardinality": "1..1",
+          "description": {
+            "en": "External concept defined by <xref scope=\"external\" href=\"\"https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/title\"\"><foreign otherprops=\"#0000ff\"><u>https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/title</u></foreign></xref>"
+          },
+          "domain": [
+            {
+              "name": "epo-cat:Brand",
+              "uri": "http://data.europa.eu/a4g/ontology#Brand"
+            }
+          ],
+          "label": {
+            "en": "Title"
+          },
+          "name": "dct:title",
+          "propertyOrigin": "reused",
+          "propertyType": "datatype property",
+          "range": [
+            {
+              "range_curie": "rdf:PlainLiteral",
+              "range_label": {
+                "en": "Plain literal"
+              },
+              "range_puri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral",
+              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG Approval 30/05/2023"
+          },
+          "uri": "http://purl.org/dc/terms/title",
+          "usage": {}
+        }
+      ],
+      "rawTags": {
+        "class-usage-scope": "main"
+      },
+      "tags": {
+        "epo:status": "implemented",
+        "skos:historyNote": "WG Approval 10/03/2022"
+      },
+      "uri": "http://data.europa.eu/a4g/ontology#Brand",
+      "usage": {
+        "en": "Name given by an organisation to its product or service, or range of products or services. Additional information: Brand name allows economic operators to distinctively describe an item in their eCatalogue. This may be different from the \"item name\"."
+      }
+    },
+    {
+      "classType": "definition",
+      "description": {
+        "en": "A phase-agnostic Document describing a set of Items offered for purchase that can be processed in an electronic way."
+      },
+      "label": {
+        "en": "Catalogue"
+      },
+      "name": "epo-cat:Catalogue",
+      "parents": [
+        {
+          "label": {
+            "en": "Document"
+          },
+          "name": "epo:Document",
+          "scoped_uri": "http://data.europa.eu/a4g/ontology#Document"
+        }
+      ],
+      "properties": [
+        {
+          "cardinality": "1..*",
+          "description": {
+            "en": "Incorporates Catalogue Line."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:Catalogue",
+              "uri": "http://data.europa.eu/a4g/ontology#Catalogue"
+            }
+          ],
+          "label": {
+            "en": "Comprises catalogue line"
+          },
+          "name": "epo-cat:comprisesCatalogueLine",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo-cat:CatalogueLine",
+              "range_label": {
+                "en": "Catalogue line"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#CatalogueLine",
+              "range_uri": "http://data.europa.eu/a4g/ontology#CatalogueLine"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#comprisesCatalogueLine",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "controlled_vocabulary": {
+            "name": "at-voc-new:activity-code",
+            "uri": "http://publications.europa.eu/resource/authority/new/activity-code"
+          },
+          "description": {
+            "en": "Relation indicating the Activity Code."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:Catalogue",
+              "uri": "http://data.europa.eu/a4g/ontology#Catalogue"
+            }
+          ],
+          "label": {
+            "en": "Has activity code"
+          },
+          "name": "epo-cat:hasActivityCode",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "skos:Concept",
+              "range_label": {
+                "en": "Concept"
+              },
+              "range_puri": "http://www.w3.org/2004/02/skos/core#Concept",
+              "range_uri": "http://www.w3.org/2004/02/skos/core#Concept"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasActivityCode",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "Information about payment conditions applied to all items in the catalogue. Additional information: This property may need to be used together with the payment arrangements provided in the ContractTerms, where such terms exists."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:Catalogue",
+              "uri": "http://data.europa.eu/a4g/ontology#Catalogue"
+            }
+          ],
+          "label": {
+            "en": "Has specific payment arrangement"
+          },
+          "name": "epo-cat:hasSpecificPaymentArrangement",
+          "propertyOrigin": "internal",
+          "propertyType": "datatype property",
+          "range": [
+            {
+              "range_curie": "rdf:PlainLiteral",
+              "range_label": {
+                "en": "Plain literal"
+              },
+              "range_puri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral",
+              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG Approval 30/06/2022"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasSpecificPaymentArrangement",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "The relation indicating until when a given instance of a concept is applicable."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:Catalogue",
+              "uri": "http://data.europa.eu/a4g/ontology#Catalogue"
+            }
+          ],
+          "label": {
+            "en": "Has validity period"
+          },
+          "name": "epo:hasValidityPeriod",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "time:Interval",
+              "range_label": {
+                "en": "Interval"
+              },
+              "range_puri": "http://www.w3.org/2006/time#Interval",
+              "range_uri": "http://www.w3.org/2006/time#Interval"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG Approval 30/05/2023"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasValidityPeriod",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..*",
+          "description": {
+            "en": "Relation indicating that the instance of the concept involves the Buyer."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:Catalogue",
+              "uri": "http://data.europa.eu/a4g/ontology#Catalogue"
+            }
+          ],
+          "label": {
+            "en": "Specifies buyer"
+          },
+          "name": "epo:specifiesBuyer",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:Buyer",
+              "range_label": {
+                "en": "Buyer"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#Buyer",
+              "range_uri": "http://data.europa.eu/a4g/ontology#Buyer"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#specifiesBuyer",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "Relation indicating that the instance of the concept involves the Catalogue Provider."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:Catalogue",
+              "uri": "http://data.europa.eu/a4g/ontology#Catalogue"
+            }
+          ],
+          "label": {
+            "en": "Specifies catalogue provider"
+          },
+          "name": "epo:specifiesCatalogueProvider",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:CatalogueProvider",
+              "range_label": {
+                "en": "Catalogue provider"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#CatalogueProvider",
+              "range_uri": "http://data.europa.eu/a4g/ontology#CatalogueProvider"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#specifiesCatalogueProvider",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "Relation indicating that the instance of the concept involves the Catalogue Receiver."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:Catalogue",
+              "uri": "http://data.europa.eu/a4g/ontology#Catalogue"
+            }
+          ],
+          "label": {
+            "en": "Specifies catalogue receiver"
+          },
+          "name": "epo:specifiesCatalogueReceiver",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:CatalogueReceiver",
+              "range_label": {
+                "en": "Catalogue receiver"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#CatalogueReceiver",
+              "range_uri": "http://data.europa.eu/a4g/ontology#CatalogueReceiver"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#specifiesCatalogueReceiver",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..*",
+          "description": {
+            "en": "Relation indicating that the instance of the concept involves the Seller."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:Catalogue",
+              "uri": "http://data.europa.eu/a4g/ontology#Catalogue"
+            }
+          ],
+          "label": {
+            "en": "Specifies seller"
+          },
+          "name": "epo:specifiesSeller",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo-ord:Seller",
+              "range_label": {
+                "en": "Seller"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#Seller",
+              "range_uri": "http://data.europa.eu/a4g/ontology#Seller"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#specifiesSeller",
+          "usage": {}
+        }
+      ],
+      "rawTags": {
+        "class-usage-scope": "main"
+      },
+      "tags": {
+        "epo:status": "implemented"
+      },
+      "uri": "http://data.europa.eu/a4g/ontology#Catalogue",
+      "usage": {
+        "en": "A phase-agnostic Document describing a set of Items offered for purchase that can be processed in an electronic way."
+      }
+    },
+    {
+      "classType": "definition",
+      "description": {
+        "en": "Aggregated information about the Terms and specifications for procuring an Item. Details about an Item, like Prices, packaging, discounts, special promotions, etc. TC 440: Detailed information of an Item, Price and its composition in a Catalogue. Composition: e.g. information referring to its description, how to order it, what it is made of, properties, delivery conditions, etc."
+      },
+      "label": {
+        "en": "Catalogue line"
+      },
+      "name": "epo-cat:CatalogueLine",
+      "parents": [
+        {
+          "label": {
+            "en": "Line"
+          },
+          "name": "epo-cat:Line",
+          "scoped_uri": "http://data.europa.eu/a4g/ontology#Line"
+        }
+      ],
+      "properties": [
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "Relation indicating that an instance of the concept plans to have a Package."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:CatalogueLine",
+              "uri": "http://data.europa.eu/a4g/ontology#CatalogueLine"
+            }
+          ],
+          "label": {
+            "en": "Foresees package"
+          },
+          "name": "epo-cat:foreseesPackage",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo-ful:Package",
+              "range_label": {
+                "en": "Package"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#Package",
+              "range_uri": "http://data.europa.eu/a4g/ontology#Package"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#foreseesPackage",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "controlled_vocabulary": {
+            "name": "at-voc-new:activity-code",
+            "uri": "http://publications.europa.eu/resource/authority/new/activity-code"
+          },
+          "description": {
+            "en": "Relation indicating the Activity Code."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:CatalogueLine",
+              "uri": "http://data.europa.eu/a4g/ontology#CatalogueLine"
+            }
+          ],
+          "label": {
+            "en": "Has activity code"
+          },
+          "name": "epo-cat:hasActivityCode",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "skos:Concept",
+              "range_label": {
+                "en": "Concept"
+              },
+              "range_puri": "http://www.w3.org/2004/02/skos/core#Concept",
+              "range_uri": "http://www.w3.org/2004/02/skos/core#Concept"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasActivityCode",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "The relation indicating until when a Catalogue Line instance is applicable."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:CatalogueLine",
+              "uri": "http://data.europa.eu/a4g/ontology#CatalogueLine"
+            }
+          ],
+          "label": {
+            "en": "Has catalogue line validity"
+          },
+          "name": "epo-cat:hasCatalogueLineValidity",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "time:Interval",
+              "range_label": {
+                "en": "Interval"
+              },
+              "range_puri": "http://www.w3.org/2006/time#Interval",
+              "range_uri": "http://www.w3.org/2006/time#Interval"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG Approval 21/09/2023"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasCatalogueLineValidity",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..*",
+          "description": {
+            "en": "Relation indicating that the instance of the concept has Charge Information."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:CatalogueLine",
+              "uri": "http://data.europa.eu/a4g/ontology#CatalogueLine"
+            }
+          ],
+          "label": {
+            "en": "Has charge information"
+          },
+          "name": "epo-cat:hasChargeInformation",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo-cat:ChargeInformation",
+              "range_label": {
+                "en": "Charge information"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#ChargeInformation",
+              "range_uri": "http://data.europa.eu/a4g/ontology#ChargeInformation"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasChargeInformation",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "The maximum number of orderable units that can be ordered according to details provided in the catalogue line, such as price."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:CatalogueLine",
+              "uri": "http://data.europa.eu/a4g/ontology#CatalogueLine"
+            }
+          ],
+          "label": {
+            "en": "Has maximum order quantity"
+          },
+          "name": "epo-cat:hasMaximumOrderQuantity",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:Quantity",
+              "range_label": {
+                "en": "Quantity"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#Quantity",
+              "range_uri": "http://data.europa.eu/a4g/ontology#Quantity"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasMaximumOrderQuantity",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "The minimum quantity of an item that is guaranteed by the seller to be delivered."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:CatalogueLine",
+              "uri": "http://data.europa.eu/a4g/ontology#CatalogueLine"
+            }
+          ],
+          "label": {
+            "en": "Has minimum quantity guaranteed for delivery"
+          },
+          "name": "epo-cat:hasMinimumQuantityGuaranteedForDelivery",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:Quantity",
+              "range_label": {
+                "en": "Quantity"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#Quantity",
+              "range_uri": "http://data.europa.eu/a4g/ontology#Quantity"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasMinimumQuantityGuaranteedForDelivery",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "Orderable quantity increment: The increment of Orderable units that can be ordered."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:CatalogueLine",
+              "uri": "http://data.europa.eu/a4g/ontology#CatalogueLine"
+            }
+          ],
+          "label": {
+            "en": "Has orderable quantity increment"
+          },
+          "name": "epo-cat:hasOrderableQuantityIncrement",
+          "propertyOrigin": "internal",
+          "propertyType": "datatype property",
+          "range": [
+            {
+              "range_curie": "xsd:integer",
+              "range_label": {
+                "en": "Integer"
+              },
+              "range_puri": "http://www.w3.org/2001/XMLSchema#integer",
+              "range_uri": "http://www.w3.org/2001/XMLSchema#integer"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasOrderableQuantityIncrement",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "controlled_vocabulary": {
+            "name": "at-voc-new:orderable-unit",
+            "uri": "http://publications.europa.eu/resource/authority/new/orderable-unit"
+          },
+          "description": {
+            "en": "The unit in which the item described in this catalogue line can be ordered."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:CatalogueLine",
+              "uri": "http://data.europa.eu/a4g/ontology#CatalogueLine"
+            }
+          ],
+          "label": {
+            "en": "Has orderable unit"
+          },
+          "name": "epo-cat:hasOrderableUnit",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "skos:Concept",
+              "range_label": {
+                "en": "Concept"
+              },
+              "range_puri": "http://www.w3.org/2004/02/skos/core#Concept",
+              "range_uri": "http://www.w3.org/2004/02/skos/core#Concept"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasOrderableUnit",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "The factor by which the Item net price of an unit of an item can be converted to the orderable unit."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:CatalogueLine",
+              "uri": "http://data.europa.eu/a4g/ontology#CatalogueLine"
+            }
+          ],
+          "label": {
+            "en": "Has orderable unit factor rate"
+          },
+          "name": "epo-cat:hasOrderableUnitFactorRate",
+          "propertyOrigin": "internal",
+          "propertyType": "datatype property",
+          "range": [
+            {
+              "range_curie": "xsd:decimal",
+              "range_label": {
+                "en": "Decimal"
+              },
+              "range_puri": "http://www.w3.org/2001/XMLSchema#decimal",
+              "range_uri": "http://www.w3.org/2001/XMLSchema#decimal"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasOrderableUnitFactorRate",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..*",
+          "description": {
+            "en": "Relation indicating that the instance of the concept has a Price."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:CatalogueLine",
+              "uri": "http://data.europa.eu/a4g/ontology#CatalogueLine"
+            }
+          ],
+          "label": {
+            "en": "Has price"
+          },
+          "name": "epo-cat:hasPrice",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo-cat:Price",
+              "range_label": {
+                "en": "Price"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#Price",
+              "range_uri": "http://data.europa.eu/a4g/ontology#Price"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasPrice",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..*",
+          "description": {
+            "en": "The item price based on a standardised unit. Additional Information: The unit must be indicated in the Quantity, with a quantity value of 1."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:CatalogueLine",
+              "uri": "http://data.europa.eu/a4g/ontology#CatalogueLine"
+            }
+          ],
+          "label": {
+            "en": "Has standardised unit price"
+          },
+          "name": "epo-cat:hasStandardisedUnitPrice",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo-cat:Price",
+              "range_label": {
+                "en": "Price"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#Price",
+              "range_uri": "http://data.europa.eu/a4g/ontology#Price"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasStandardisedUnitPrice",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "Textual description of the specific transaction conditions (purchasing, sales, payment, delivery) for an item."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:CatalogueLine",
+              "uri": "http://data.europa.eu/a4g/ontology#CatalogueLine"
+            }
+          ],
+          "label": {
+            "en": "Has transaction conditions"
+          },
+          "name": "epo-cat:hasTransactionConditions",
+          "propertyOrigin": "internal",
+          "propertyType": "datatype property",
+          "range": [
+            {
+              "range_curie": "rdf:PlainLiteral",
+              "range_label": {
+                "en": "Plain literal"
+              },
+              "range_puri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral",
+              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasTransactionConditions",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "controlled_vocabulary": {
+            "name": "at-voc-new:transaction-conditions",
+            "uri": "http://publications.europa.eu/resource/authority/new/transaction-conditions"
+          },
+          "description": {
+            "en": "Coded description of the specific transaction conditions (purchasing, sales, payment, delivery) for an item."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:CatalogueLine",
+              "uri": "http://data.europa.eu/a4g/ontology#CatalogueLine"
+            }
+          ],
+          "label": {
+            "en": "Has transaction conditions code"
+          },
+          "name": "epo-cat:hasTransactionConditionsCode",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "skos:Concept",
+              "range_label": {
+                "en": "Concept"
+              },
+              "range_puri": "http://www.w3.org/2004/02/skos/core#Concept",
+              "range_uri": "http://www.w3.org/2004/02/skos/core#Concept"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasTransactionConditionsCode",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "Warranty information that applies to the catalogue line item."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:CatalogueLine",
+              "uri": "http://data.europa.eu/a4g/ontology#CatalogueLine"
+            }
+          ],
+          "label": {
+            "en": "Has warranty information"
+          },
+          "name": "epo-cat:hasWarrantyInformation",
+          "propertyOrigin": "internal",
+          "propertyType": "datatype property",
+          "range": [
+            {
+              "range_curie": "rdf:PlainLiteral",
+              "range_label": {
+                "en": "Plain literal"
+              },
+              "range_puri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral",
+              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasWarrantyInformation",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "Indicator if the item is offered in accordance to an existing contract."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:CatalogueLine",
+              "uri": "http://data.europa.eu/a4g/ontology#CatalogueLine"
+            }
+          ],
+          "label": {
+            "en": "Is contracted item"
+          },
+          "name": "epo-cat:isContractedItem",
+          "propertyOrigin": "internal",
+          "propertyType": "datatype property",
+          "range": [
+            {
+              "range_curie": "xsd:boolean",
+              "range_label": {
+                "en": "Boolean"
+              },
+              "range_puri": "http://www.w3.org/2001/XMLSchema#boolean",
+              "range_uri": "http://www.w3.org/2001/XMLSchema#boolean"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#isContractedItem",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "Indicator, if the item is orderable or not, e.g. because it is temporarily out of stock."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:CatalogueLine",
+              "uri": "http://data.europa.eu/a4g/ontology#CatalogueLine"
+            }
+          ],
+          "label": {
+            "en": "Is orderable"
+          },
+          "name": "epo-cat:isOrderable",
+          "propertyOrigin": "internal",
+          "propertyType": "datatype property",
+          "range": [
+            {
+              "range_curie": "xsd:boolean",
+              "range_label": {
+                "en": "Boolean"
+              },
+              "range_puri": "http://www.w3.org/2001/XMLSchema#boolean",
+              "range_uri": "http://www.w3.org/2001/XMLSchema#boolean"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#isOrderable",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": ""
+          },
+          "domain": [
+            {
+              "name": "epo-cat:CatalogueLine",
+              "uri": "http://data.europa.eu/a4g/ontology#CatalogueLine"
+            }
+          ],
+          "label": {
+            "en": "Refersto procurement documents provision line"
+          },
+          "name": "epo-cat:referstoProcurementDocumentsProvisionLine",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:ProcurementDocumentsProvisionLine",
+              "range_label": {
+                "en": "Procurement documents provision line"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#ProcurementDocumentsProvisionLine",
+              "range_uri": "http://data.europa.eu/a4g/ontology#ProcurementDocumentsProvisionLine"
+            }
+          ],
+          "tags": {
+            "epo:status": "proposed"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#referstoProcurementDocumentsProvisionLine",
+          "usage": {}
+        }
+      ],
+      "rawTags": {
+        "class-usage-scope": "main"
+      },
+      "tags": {
+        "epo:status": "implemented"
+      },
+      "uri": "http://data.europa.eu/a4g/ontology#CatalogueLine",
+      "usage": {
+        "en": "Aggregated information about the Terms and specifications for procuring an Item. Details about an Item, like Prices, packaging, discounts, special promotions, etc. TC 440: Detailed information of an Item, Price and its composition in a Catalogue. Composition: e.g. information referring to its description, how to order it, what it is made of, properties, delivery conditions, etc."
+      }
+    },
+    {
+      "classType": "definition",
+      "description": {
+        "en": "A formal reply from the Catalogue Receiver to the Catalogue Provider stating the Catalogue Receiver's ability to apply the catalogue for placing orders. Additional Information: The Catalogue Response is used to inform on the acceptance or rejection of a Catalogue."
+      },
+      "label": {
+        "en": "Catalogue response"
+      },
+      "name": "epo-cat:CatalogueResponse",
+      "parents": [
+        {
+          "label": {
+            "en": "Post award document"
+          },
+          "name": "epo-cat:PostAwardDocument",
+          "scoped_uri": "http://data.europa.eu/a4g/ontology#PostAwardDocument"
+        }
+      ],
+      "properties": [
+        {
+          "cardinality": "0..*",
+          "description": {
+            "en": "Incorporates Catalogue Response Line."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:CatalogueResponse",
+              "uri": "http://data.europa.eu/a4g/ontology#CatalogueResponse"
+            }
+          ],
+          "label": {
+            "en": "Comprises catalogue response line"
+          },
+          "name": "epo-cat:comprisesCatalogueResponseLine",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo-cat:CatalogueResponseLine",
+              "range_label": {
+                "en": "Catalogue response line"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#CatalogueResponseLine",
+              "range_uri": "http://data.europa.eu/a4g/ontology#CatalogueResponseLine"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#comprisesCatalogueResponseLine",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "Explanation of the response."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:CatalogueResponse",
+              "uri": "http://data.europa.eu/a4g/ontology#CatalogueResponse"
+            }
+          ],
+          "label": {
+            "en": "Has response description"
+          },
+          "name": "epo-ord:hasResponseDescription",
+          "propertyOrigin": "internal",
+          "propertyType": "datatype property",
+          "range": [
+            {
+              "range_curie": "rdf:PlainLiteral",
+              "range_label": {
+                "en": "Plain literal"
+              },
+              "range_puri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral",
+              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG Approval 25/03/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasResponseDescription",
+          "usage": {}
+        },
+        {
+          "cardinality": "1",
+          "description": {
+            "en": ""
+          },
+          "domain": [
+            {
+              "name": "epo-cat:CatalogueResponse",
+              "uri": "http://data.europa.eu/a4g/ontology#CatalogueResponse"
+            }
+          ],
+          "label": {
+            "en": "Refers to catalogue"
+          },
+          "name": "epo-cat:refersToCatalogue",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo-cat:PostAwardCatalogue",
+              "range_label": {
+                "en": "Post award catalogue"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#PostAwardCatalogue",
+              "range_uri": "http://data.europa.eu/a4g/ontology#PostAwardCatalogue"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#refersToCatalogue",
+          "usage": {}
+        },
+        {
+          "cardinality": "1",
+          "description": {
+            "en": "Relation indicating that the instance of the concept involves the Catalogue Provider."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:CatalogueResponse",
+              "uri": "http://data.europa.eu/a4g/ontology#CatalogueResponse"
+            }
+          ],
+          "label": {
+            "en": "Specifies catalogue provider"
+          },
+          "name": "epo:specifiesCatalogueProvider",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:CatalogueProvider",
+              "range_label": {
+                "en": "Catalogue provider"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#CatalogueProvider",
+              "range_uri": "http://data.europa.eu/a4g/ontology#CatalogueProvider"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#specifiesCatalogueProvider",
+          "usage": {}
+        },
+        {
+          "cardinality": "1",
+          "description": {
+            "en": "Relation indicating that the instance of the concept involves the Catalogue Receiver."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:CatalogueResponse",
+              "uri": "http://data.europa.eu/a4g/ontology#CatalogueResponse"
+            }
+          ],
+          "label": {
+            "en": "Specifies catalogue receiver"
+          },
+          "name": "epo:specifiesCatalogueReceiver",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:CatalogueReceiver",
+              "range_label": {
+                "en": "Catalogue receiver"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#CatalogueReceiver",
+              "range_uri": "http://data.europa.eu/a4g/ontology#CatalogueReceiver"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#specifiesCatalogueReceiver",
+          "usage": {}
+        },
+        {
+          "cardinality": "1",
+          "description": {
+            "en": "Relation indicating the Catalogue Response Information."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:CatalogueResponse",
+              "uri": "http://data.europa.eu/a4g/ontology#CatalogueResponse"
+            }
+          ],
+          "label": {
+            "en": "Specifies catalogue response information"
+          },
+          "name": "epo-cat:specifiesCatalogueResponseInformation",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo-cat:CatalogueResponseInformation",
+              "range_label": {
+                "en": "Catalogue response information"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#CatalogueResponseInformation",
+              "range_uri": "http://data.europa.eu/a4g/ontology#CatalogueResponseInformation"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#specifiesCatalogueResponseInformation",
+          "usage": {}
+        }
+      ],
+      "rawTags": {
+        "class-usage-scope": "main"
+      },
+      "tags": {
+        "epo:status": "implemented"
+      },
+      "uri": "http://data.europa.eu/a4g/ontology#CatalogueResponse",
+      "usage": {
+        "en": "A formal reply from the Catalogue Receiver to the Catalogue Provider stating the Catalogue Receiver's ability to apply the catalogue for placing orders. Additional Information: The Catalogue Response is used to inform on the acceptance or rejection of a Catalogue."
+      }
+    },
+    {
+      "classType": "definition",
+      "description": {
+        "en": "Information about a Catalogue Response."
+      },
+      "label": {
+        "en": "Catalogue response information"
+      },
+      "name": "epo-cat:CatalogueResponseInformation",
+      "parents": [
+        {
+          "label": {
+            "en": "Information hub"
+          },
+          "name": "epo-cat:InformationHub",
+          "scoped_uri": "http://data.europa.eu/a4g/ontology#InformationHub"
+        }
+      ],
+      "properties": [
+        {
+          "cardinality": "1",
+          "controlled_vocabulary": {
+            "name": "at-voc-new:ResponseStatus",
+            "uri": "http://publications.europa.eu/resource/authority/new/ResponseStatus"
+          },
+          "description": {
+            "en": "Relation indicating the response status."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:CatalogueResponseInformation",
+              "uri": "http://data.europa.eu/a4g/ontology#CatalogueResponseInformation"
+            }
+          ],
+          "label": {
+            "en": "Has response status"
+          },
+          "name": "epo-ord:hasResponseStatus",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "skos:Concept",
+              "range_label": {
+                "en": "Concept"
+              },
+              "range_puri": "http://www.w3.org/2004/02/skos/core#Concept",
+              "range_uri": "http://www.w3.org/2004/02/skos/core#Concept"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasResponseStatus",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "Information that is particular to a Catalogue Response Line."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:CatalogueResponseInformation",
+              "uri": "http://data.europa.eu/a4g/ontology#CatalogueResponseInformation"
+            }
+          ],
+          "label": {
+            "en": "Is specific to catalogue response line"
+          },
+          "name": "epo-cat:isSpecificToCatalogueResponseLine",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo-cat:CatalogueResponseLine",
+              "range_label": {
+                "en": "Catalogue response line"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#CatalogueResponseLine",
+              "range_uri": "http://data.europa.eu/a4g/ontology#CatalogueResponseLine"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#isSpecificToCatalogueResponseLine",
+          "usage": {}
+        }
+      ],
+      "rawTags": {
+        "class-usage-scope": "main"
+      },
+      "tags": {
+        "epo:status": "implemented",
+        "skos:historyNote": "WG approval 11/09/2025"
+      },
+      "uri": "http://data.europa.eu/a4g/ontology#CatalogueResponseInformation",
+      "usage": {
+        "en": "Information about a Catalogue Response."
+      }
+    },
+    {
+      "classType": "definition",
+      "description": {
+        "en": "Details concerning the Catalogue Receiver\u2019s ability to apply a given Catalogue Line for placing orders. Additional information: The Catalogue Response Line is used to inform on the acceptance or rejection of a Catalogue Line."
+      },
+      "label": {
+        "en": "Catalogue response line"
+      },
+      "name": "epo-cat:CatalogueResponseLine",
+      "parents": [
+        {
+          "label": {
+            "en": "Line"
+          },
+          "name": "epo-cat:Line",
+          "scoped_uri": "http://data.europa.eu/a4g/ontology#Line"
+        }
+      ],
+      "properties": [
+        {
+          "cardinality": "1",
+          "description": {
+            "en": "A universally unique identifier for an instance of this document."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:CatalogueResponseLine",
+              "uri": "http://data.europa.eu/a4g/ontology#CatalogueResponseLine"
+            }
+          ],
+          "label": {
+            "en": "Has UUID"
+          },
+          "name": "epo:hasUUID",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "adms:Identifier",
+              "range_label": {
+                "en": "Identifier"
+              },
+              "range_puri": "http://www.w3.org/ns/adms#Identifier",
+              "range_uri": "http://www.w3.org/ns/adms#Identifier"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG Approval 12/05/2020"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasUUID",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "Explanation of the response."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:CatalogueResponseLine",
+              "uri": "http://data.europa.eu/a4g/ontology#CatalogueResponseLine"
+            }
+          ],
+          "label": {
+            "en": "Has response description"
+          },
+          "name": "epo-ord:hasResponseDescription",
+          "propertyOrigin": "internal",
+          "propertyType": "datatype property",
+          "range": [
+            {
+              "range_curie": "rdf:PlainLiteral",
+              "range_label": {
+                "en": "Plain literal"
+              },
+              "range_puri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral",
+              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG Approval 25/03/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasResponseDescription",
+          "usage": {}
+        },
+        {
+          "cardinality": "1",
+          "description": {
+            "en": "Reference to a Catalogue Line."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:CatalogueResponseLine",
+              "uri": "http://data.europa.eu/a4g/ontology#CatalogueResponseLine"
+            }
+          ],
+          "label": {
+            "en": "Refers to catalogue line"
+          },
+          "name": "epo-cat:refersToCatalogueLine",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo-cat:CatalogueLine",
+              "range_label": {
+                "en": "Catalogue line"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#CatalogueLine",
+              "range_uri": "http://data.europa.eu/a4g/ontology#CatalogueLine"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#refersToCatalogueLine",
+          "usage": {}
+        }
+      ],
+      "rawTags": {
+        "class-usage-scope": "main"
+      },
+      "tags": {
+        "epo:status": "implemented"
+      },
+      "uri": "http://data.europa.eu/a4g/ontology#CatalogueResponseLine",
+      "usage": {
+        "en": "Details concerning the Catalogue Receiver\u2019s ability to apply a given Catalogue Line for placing orders. Additional information: The Catalogue Response Line is used to inform on the acceptance or rejection of a Catalogue Line."
+      }
+    },
+    {
+      "classType": "definition",
+      "description": {
+        "en": "Information about fee or duty imposed. Additional Information: Charge category indicates the nature of the duty/fee, for example CAR, etc. Charge category modifier may be used in case different levels, exemptions or other modifications apply. The charge can be fixed or relative to the price."
+      },
+      "label": {
+        "en": "Charge information"
+      },
+      "name": "epo-cat:ChargeInformation",
+      "parents": [
+        {
+          "label": {
+            "en": "Allowance charge information"
+          },
+          "name": "epo-ord:AllowanceChargeInformation",
+          "scoped_uri": "http://data.europa.eu/a4g/ontology#AllowanceChargeInformation"
+        }
+      ],
+      "properties": [
+        {
+          "cardinality": "0..*",
+          "description": {
+            "en": "Information that is particular to an Invoice Line."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:ChargeInformation",
+              "uri": "http://data.europa.eu/a4g/ontology#ChargeInformation"
+            }
+          ],
+          "label": {
+            "en": "Is specific to invoice line"
+          },
+          "name": "epo-inv:isSpecificToInvoiceLine",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo-inv:InvoiceLine",
+              "range_label": {
+                "en": "Invoice line"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#InvoiceLine",
+              "range_uri": "http://data.europa.eu/a4g/ontology#InvoiceLine"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#isSpecificToInvoiceLine",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..*",
+          "description": {
+            "en": "Information that is particular to one or multiple Order Lines."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:ChargeInformation",
+              "uri": "http://data.europa.eu/a4g/ontology#ChargeInformation"
+            }
+          ],
+          "label": {
+            "en": "Is specific to order line"
+          },
+          "name": "epo-ord:isSpecificToOrderLine",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo-ord:OrderLine",
+              "range_label": {
+                "en": "Order line"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#OrderLine",
+              "range_uri": "http://data.europa.eu/a4g/ontology#OrderLine"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#isSpecificToOrderLine",
+          "usage": {}
+        }
+      ],
+      "rawTags": {
+        "class-usage-scope": "main"
+      },
+      "tags": {
+        "epo:status": "implemented",
+        "skos:historyNote": "WG Approval 16/05/2023"
+      },
+      "uri": "http://data.europa.eu/a4g/ontology#ChargeInformation",
+      "usage": {
+        "en": "Information about fee or duty imposed. Additional Information: Charge category indicates the nature of the duty/fee, for example CAR, etc. Charge category modifier may be used in case different levels, exemptions or other modifications apply. The charge can be fixed or relative to the price."
+      }
+    },
+    {
+      "classType": "definition",
+      "description": {
+        "en": "Information about the physical or measurable attributes of the instance of the concept described."
+      },
+      "label": {
+        "en": "Dimension information"
+      },
+      "name": "epo-cat:DimensionInformation",
+      "parents": [],
+      "properties": [
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "Relates to Goods Item."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:DimensionInformation",
+              "uri": "http://data.europa.eu/a4g/ontology#DimensionInformation"
+            }
+          ],
+          "label": {
+            "en": "Concerns goods item"
+          },
+          "name": "epo-ful:concernsGoodsItem",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo-ful:GoodsItem",
+              "range_label": {
+                "en": "Goods item"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#GoodsItem",
+              "range_uri": "http://data.europa.eu/a4g/ontology#GoodsItem"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#concernsGoodsItem",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "Relates to Item."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:DimensionInformation",
+              "uri": "http://data.europa.eu/a4g/ontology#DimensionInformation"
+            }
+          ],
+          "label": {
+            "en": "Concerns item"
+          },
+          "name": "epo-cat:concernsItem",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo-cat:AbstractItem",
+              "range_label": {
+                "en": "Abstract item"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#AbstractItem",
+              "range_uri": "http://data.europa.eu/a4g/ontology#AbstractItem"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#concernsItem",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "Relates to Package."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:DimensionInformation",
+              "uri": "http://data.europa.eu/a4g/ontology#DimensionInformation"
+            }
+          ],
+          "label": {
+            "en": "Concerns package"
+          },
+          "name": "epo-ful:concernsPackage",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo-ful:Package",
+              "range_label": {
+                "en": "Package"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#Package",
+              "range_uri": "http://data.europa.eu/a4g/ontology#Package"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#concernsPackage",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "Relates to Transport Equipment."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:DimensionInformation",
+              "uri": "http://data.europa.eu/a4g/ontology#DimensionInformation"
+            }
+          ],
+          "label": {
+            "en": "Concerns transport equipment"
+          },
+          "name": "epo-ful:concernsTransportEquipment",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo-ful:TransportEquipment",
+              "range_label": {
+                "en": "Transport equipment"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#TransportEquipment",
+              "range_uri": "http://data.europa.eu/a4g/ontology#TransportEquipment"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#concernsTransportEquipment",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "Relates to Transport Means."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:DimensionInformation",
+              "uri": "http://data.europa.eu/a4g/ontology#DimensionInformation"
+            }
+          ],
+          "label": {
+            "en": "Concerns transport means"
+          },
+          "name": "epo-ful:concernsTransportMeans",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo-ful:TransportMeans",
+              "range_label": {
+                "en": "Transport means"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#TransportMeans",
+              "range_uri": "http://data.europa.eu/a4g/ontology#TransportMeans"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#concernsTransportMeans",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "Textual description of the item's dimensions."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:DimensionInformation",
+              "uri": "http://data.europa.eu/a4g/ontology#DimensionInformation"
+            }
+          ],
+          "label": {
+            "en": "Has dimension description"
+          },
+          "name": "epo-cat:hasDimensionDescription",
+          "propertyOrigin": "internal",
+          "propertyType": "datatype property",
+          "range": [
+            {
+              "range_curie": "rdf:PlainLiteral",
+              "range_label": {
+                "en": "Plain literal"
+              },
+              "range_puri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral",
+              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasDimensionDescription",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "Relation indicating the upper limit of the measure."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:DimensionInformation",
+              "uri": "http://data.europa.eu/a4g/ontology#DimensionInformation"
+            }
+          ],
+          "label": {
+            "en": "Has maximum measure"
+          },
+          "name": "epo-cat:hasMaximumMeasure",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:Quantity",
+              "range_label": {
+                "en": "Quantity"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#Quantity",
+              "range_uri": "http://data.europa.eu/a4g/ontology#Quantity"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasMaximumMeasure",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "Relation indicating the unit used for stating the size."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:DimensionInformation",
+              "uri": "http://data.europa.eu/a4g/ontology#DimensionInformation"
+            }
+          ],
+          "label": {
+            "en": "Has measure"
+          },
+          "name": "epo-cat:hasMeasure",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:Quantity",
+              "range_label": {
+                "en": "Quantity"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#Quantity",
+              "range_uri": "http://data.europa.eu/a4g/ontology#Quantity"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasMeasure",
+          "usage": {}
+        },
+        {
+          "cardinality": "1",
+          "controlled_vocabulary": {
+            "name": "at-voc-new:measured-attribute-code",
+            "uri": "http://publications.europa.eu/resource/authority/new/measured-attribute-code"
+          },
+          "description": {
+            "en": "Relation indicating the Measured Attribute Code."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:DimensionInformation",
+              "uri": "http://data.europa.eu/a4g/ontology#DimensionInformation"
+            }
+          ],
+          "label": {
+            "en": "Has measured attribute code"
+          },
+          "name": "epo-cat:hasMeasuredAttributeCode",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "skos:Concept",
+              "range_label": {
+                "en": "Concept"
+              },
+              "range_puri": "http://www.w3.org/2004/02/skos/core#Concept",
+              "range_uri": "http://www.w3.org/2004/02/skos/core#Concept"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasMeasuredAttributeCode",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "Relation indicating the lower limit of the measure."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:DimensionInformation",
+              "uri": "http://data.europa.eu/a4g/ontology#DimensionInformation"
+            }
+          ],
+          "label": {
+            "en": "Has minimum measure"
+          },
+          "name": "epo-cat:hasMinimumMeasure",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:Quantity",
+              "range_label": {
+                "en": "Quantity"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#Quantity",
+              "range_uri": "http://data.europa.eu/a4g/ontology#Quantity"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasMinimumMeasure",
+          "usage": {}
+        }
+      ],
+      "rawTags": {
+        "class-usage-scope": "main"
+      },
+      "tags": {
+        "epo:status": "implemented",
+        "skos:historyNote": "WG approval 11/09/2025"
+      },
+      "uri": "http://data.europa.eu/a4g/ontology#DimensionInformation",
+      "usage": {
+        "en": "Information about the physical or measurable attributes of the instance of the concept described."
+      }
+    },
+    {
+      "classType": "definition",
+      "description": {
+        "en": "Information about the emissions related to a product, work or service that are released into the environment."
+      },
+      "label": {
+        "en": "Environmental emission information"
+      },
+      "name": "epo-cat:EnvironmentalEmissionInformation",
+      "parents": [],
+      "properties": [
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "Relates to Item."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:EnvironmentalEmissionInformation",
+              "uri": "http://data.europa.eu/a4g/ontology#EnvironmentalEmissionInformation"
+            }
+          ],
+          "label": {
+            "en": "Concerns item"
+          },
+          "name": "epo-cat:concernsItem",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo-cat:AbstractItem",
+              "range_label": {
+                "en": "Abstract item"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#AbstractItem",
+              "range_uri": "http://data.europa.eu/a4g/ontology#AbstractItem"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#concernsItem",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "Relates to Transport Means."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:EnvironmentalEmissionInformation",
+              "uri": "http://data.europa.eu/a4g/ontology#EnvironmentalEmissionInformation"
+            }
+          ],
+          "label": {
+            "en": "Concerns transport means"
+          },
+          "name": "epo-ful:concernsTransportMeans",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo-ful:TransportMeans",
+              "range_label": {
+                "en": "Transport means"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#TransportMeans",
+              "range_uri": "http://data.europa.eu/a4g/ontology#TransportMeans"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#concernsTransportMeans",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "Formula for obtaining values. Additional Information: The possible values are monetary values, ranking scores, criterion weighting."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:EnvironmentalEmissionInformation",
+              "uri": "http://data.europa.eu/a4g/ontology#EnvironmentalEmissionInformation"
+            }
+          ],
+          "label": {
+            "en": "Has calculation method"
+          },
+          "name": "epo:hasCalculationMethod",
+          "propertyOrigin": "internal",
+          "propertyType": "datatype property",
+          "range": [
+            {
+              "range_curie": "rdf:PlainLiteral",
+              "range_label": {
+                "en": "Plain literal"
+              },
+              "range_puri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral",
+              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG Approval 25/05/2018"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasCalculationMethod",
+          "usage": {}
+        },
+        {
+          "cardinality": "1",
+          "controlled_vocabulary": {
+            "name": "at-voc-new:environmental-emission-code",
+            "uri": "http://publications.europa.eu/resource/authority/new/environmental-emission-code"
+          },
+          "description": {
+            "en": "Relation indicating the Environmental Emission Code."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:EnvironmentalEmissionInformation",
+              "uri": "http://data.europa.eu/a4g/ontology#EnvironmentalEmissionInformation"
+            }
+          ],
+          "label": {
+            "en": "Has environmental emission code"
+          },
+          "name": "epo-cat:hasEnvironmentalEmissionCode",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "skos:Concept",
+              "range_label": {
+                "en": "Concept"
+              },
+              "range_puri": "http://www.w3.org/2004/02/skos/core#Concept",
+              "range_uri": "http://www.w3.org/2004/02/skos/core#Concept"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasEnvironmentalEmissionCode",
+          "usage": {}
+        },
+        {
+          "cardinality": "1",
+          "description": {
+            "en": "Relation indicating the unit used for stating the size."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:EnvironmentalEmissionInformation",
+              "uri": "http://data.europa.eu/a4g/ontology#EnvironmentalEmissionInformation"
+            }
+          ],
+          "label": {
+            "en": "Has measure"
+          },
+          "name": "epo-cat:hasMeasure",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:Quantity",
+              "range_label": {
+                "en": "Quantity"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#Quantity",
+              "range_uri": "http://data.europa.eu/a4g/ontology#Quantity"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasMeasure",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": ""
+          },
+          "domain": [
+            {
+              "name": "epo-cat:EnvironmentalEmissionInformation",
+              "uri": "http://data.europa.eu/a4g/ontology#EnvironmentalEmissionInformation"
+            }
+          ],
+          "label": {
+            "en": "Title"
+          },
+          "name": "dct:title",
+          "propertyOrigin": "reused",
+          "propertyType": "datatype property",
+          "range": [
+            {
+              "range_curie": "rdf:PlainLiteral",
+              "range_label": {
+                "en": "Plain literal"
+              },
+              "range_puri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral",
+              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented"
+          },
+          "uri": "http://purl.org/dc/terms/title",
+          "usage": {}
+        }
+      ],
+      "rawTags": {
+        "class-usage-scope": "main"
+      },
+      "tags": {
+        "epo:status": "implemented",
+        "skos:historyNote": "WG approval 11/09/2025"
+      },
+      "uri": "http://data.europa.eu/a4g/ontology#EnvironmentalEmissionInformation",
+      "usage": {
+        "en": "Information about the emissions related to a product, work or service that are released into the environment."
+      }
+    },
+    {
+      "classType": "definition",
+      "description": {
+        "en": "Grouping of data that may be associated to various concepts. Additional Information: For example, AllowanceChargeInformation may be associated to the Order or the Catalogue (either at the Line level or at the Document level), amongst others."
+      },
+      "label": {
+        "en": "Information hub"
+      },
+      "name": "epo-cat:InformationHub",
+      "parents": [
+        {
+          "label": {
+            "en": "Context description"
+          },
+          "name": "epo:ContextDescription",
+          "scoped_uri": "http://data.europa.eu/a4g/ontology#ContextDescription"
+        }
+      ],
+      "properties": [
+        {
+          "cardinality": "0..*",
+          "description": {
+            "en": "Information that is particular to a Line."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:InformationHub",
+              "uri": "http://data.europa.eu/a4g/ontology#InformationHub"
+            }
+          ],
+          "label": {
+            "en": "Is specific to line"
+          },
+          "name": "epo-cat:isSpecificToLine",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo-cat:Line",
+              "range_label": {
+                "en": "Line"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#Line",
+              "range_uri": "http://data.europa.eu/a4g/ontology#Line"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#isSpecificToLine",
+          "usage": {}
+        }
+      ],
+      "rawTags": {
+        "class-usage-scope": "main"
+      },
+      "tags": {
+        "epo:status": "implemented",
+        "skos:historyNote": "WG Approval 16/05/2023"
+      },
+      "uri": "http://data.europa.eu/a4g/ontology#InformationHub",
+      "usage": {
+        "en": "Grouping of data that may be associated to various concepts. Additional Information: For example, AllowanceChargeInformation may be associated to the Order or the Catalogue (either at the Line level or at the Document level), amongst others."
+      }
+    },
+    {
+      "classType": "definition",
+      "description": {
+        "en": "A product, work, service or any combination of them. Additional Information: An Item can be an atomic Thing or a composition of things that together are seen as a unit, e.g. a tetrabrik of milk or an indivisible package of six tetrabriks. No distinction is provided between services, goods and works to leave room for innovation. An Item is used to fulfill a need which is described in an Item Request."
+      },
+      "label": {
+        "en": "Item"
+      },
+      "name": "epo-cat:Item",
+      "parents": [
+        {
+          "label": {
+            "en": "Abstract item"
+          },
+          "name": "epo-cat:AbstractItem",
+          "scoped_uri": "http://data.europa.eu/a4g/ontology#AbstractItem"
+        }
+      ],
+      "properties": [],
+      "rawTags": {
+        "class-usage-scope": "main"
+      },
+      "tags": {
+        "epo:status": "implemented",
+        "skos:historyNote": "WG approval 09/10/2025"
+      },
+      "uri": "http://data.europa.eu/a4g/ontology#Item",
+      "usage": {
+        "en": "A product, work, service or any combination of them. Additional Information: An Item can be an atomic Thing or a composition of things that together are seen as a unit, e.g. a tetrabrik of milk or an indivisible package of six tetrabriks. No distinction is provided between services, goods and works to leave room for innovation. An Item is used to fulfill a need which is described in an Item Request."
+      }
+    },
+    {
+      "classType": "definition",
+      "description": {
+        "en": "Combination of two Items where the former enhances the latter."
+      },
+      "label": {
+        "en": "Item accessory relation"
+      },
+      "name": "epo-cat:ItemAccessoryRelation",
+      "parents": [
+        {
+          "label": {
+            "en": "Item relation"
+          },
+          "name": "epo-cat:ItemRelation",
+          "scoped_uri": "http://data.europa.eu/a4g/ontology#ItemRelation"
+        }
+      ],
+      "properties": [],
+      "rawTags": {
+        "class-usage-scope": "main"
+      },
+      "tags": {
+        "epo:status": "implemented",
+        "skos:historyNote": "WG Approval 30/06/2022"
+      },
+      "uri": "http://data.europa.eu/a4g/ontology#ItemAccessoryRelation",
+      "usage": {
+        "en": "Combination of two Items where the former enhances the latter."
+      }
+    },
+    {
+      "classType": "definition",
+      "description": {
+        "en": "Combination of two Items which mutually enhance one another."
+      },
+      "label": {
+        "en": "Item complementary relation"
+      },
+      "name": "epo-cat:ItemComplementaryRelation",
+      "parents": [
+        {
+          "label": {
+            "en": "Item relation"
+          },
+          "name": "epo-cat:ItemRelation",
+          "scoped_uri": "http://data.europa.eu/a4g/ontology#ItemRelation"
+        }
+      ],
+      "properties": [],
+      "rawTags": {
+        "class-usage-scope": "main"
+      },
+      "tags": {
+        "epo:status": "implemented",
+        "skos:historyNote": "WG Approval 30/06/2022"
+      },
+      "uri": "http://data.europa.eu/a4g/ontology#ItemComplementaryRelation",
+      "usage": {
+        "en": "Combination of two Items which mutually enhance one another."
+      }
+    },
+    {
+      "classType": "definition",
+      "description": {
+        "en": "Inclusion of an Item into in the described Item. Additional Information: The Item is provided with its components, however, the component Items may also be provided separately. For example, a bicycle has wheels as components, but they may be provided as spare parts as well. This relation is useful to describe different package levels of an item or hierarchies of Items."
+      },
+      "label": {
+        "en": "Item composition"
+      },
+      "name": "epo-cat:ItemComposition",
+      "parents": [
+        {
+          "label": {
+            "en": "Item relation"
+          },
+          "name": "epo-cat:ItemRelation",
+          "scoped_uri": "http://data.europa.eu/a4g/ontology#ItemRelation"
+        }
+      ],
+      "properties": [],
+      "rawTags": {
+        "class-usage-scope": "main"
+      },
+      "tags": {
+        "epo:status": "implemented",
+        "skos:historyNote": "WG Approval 19/05/2022"
+      },
+      "uri": "http://data.europa.eu/a4g/ontology#ItemComposition",
+      "usage": {
+        "en": "Inclusion of an Item into in the described Item. Additional Information: The Item is provided with its components, however, the component Items may also be provided separately. For example, a bicycle has wheels as components, but they may be provided as spare parts as well. This relation is useful to describe different package levels of an item or hierarchies of Items."
+      }
+    },
+    {
+      "classType": "definition",
+      "description": {
+        "en": "A specific design or version of a product or service. Additional information: This class is meant as a reusable reference to the model name rather than as a set of specifications of an Item of this particular model."
+      },
+      "label": {
+        "en": "Item model"
+      },
+      "name": "epo-cat:ItemModel",
+      "parents": [],
+      "properties": [
+        {
+          "cardinality": "1..1",
+          "description": {
+            "en": "External concept defined by <xref scope=\"external\" href=\"\"https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/title\"\"><foreign otherprops=\"#0000ff\"><u>https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/title</u></foreign></xref>"
+          },
+          "domain": [
+            {
+              "name": "epo-cat:ItemModel",
+              "uri": "http://data.europa.eu/a4g/ontology#ItemModel"
+            }
+          ],
+          "label": {
+            "en": "Title"
+          },
+          "name": "dct:title",
+          "propertyOrigin": "reused",
+          "propertyType": "datatype property",
+          "range": [
+            {
+              "range_curie": "rdf:PlainLiteral",
+              "range_label": {
+                "en": "Plain literal"
+              },
+              "range_puri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral",
+              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG Approval 30/05/2023"
+          },
+          "uri": "http://purl.org/dc/terms/title",
+          "usage": {}
+        }
+      ],
+      "rawTags": {
+        "class-usage-scope": "main"
+      },
+      "tags": {
+        "epo:status": "implemented",
+        "skos:historyNote": "WG Approval 10/03/2022"
+      },
+      "uri": "http://data.europa.eu/a4g/ontology#ItemModel",
+      "usage": {
+        "en": "A specific design or version of a product or service. Additional information: This class is meant as a reusable reference to the model name rather than as a set of specifications of an Item of this particular model."
+      }
+    },
+    {
+      "classType": "definition",
+      "description": {
+        "en": "Construct meant to represent the association between an attribute defined in an external classification scheme and the value ascribed to it."
+      },
+      "label": {
+        "en": "Item property"
+      },
+      "name": "epo-cat:ItemProperty",
+      "parents": [],
+      "properties": [
+        {
+          "cardinality": "1",
+          "description": {
+            "en": "Characterises Item."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:ItemProperty",
+              "uri": "http://data.europa.eu/a4g/ontology#ItemProperty"
+            }
+          ],
+          "label": {
+            "en": "Describes item"
+          },
+          "name": "epo-cat:describesItem",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo-cat:AbstractItem",
+              "range_label": {
+                "en": "Abstract item"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#AbstractItem",
+              "range_uri": "http://data.europa.eu/a4g/ontology#AbstractItem"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#describesItem",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "The property defined in a classification scheme. Additional Information: For example, the following two properties are defined in the ECLASS classification of goods and services: (0173-1#02-AAA026#007) drilling diameter: drilling diameter, (0173-1#02-AAA030#007) flange diameter: flange diameter ."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:ItemProperty",
+              "uri": "http://data.europa.eu/a4g/ontology#ItemProperty"
+            }
+          ],
+          "label": {
+            "en": "Has attribute type"
+          },
+          "name": "epo-cat:hasAttributeType",
+          "propertyOrigin": "internal",
+          "propertyType": "datatype property",
+          "range": [
+            {
+              "range_curie": "rdf:PlainLiteral",
+              "range_label": {
+                "en": "Plain literal"
+              },
+              "range_puri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral",
+              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG Approval 28/07/2022"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasAttributeType",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "The categorization of the instance of the concept expressed as a code."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:ItemProperty",
+              "uri": "http://data.europa.eu/a4g/ontology#ItemProperty"
+            }
+          ],
+          "label": {
+            "en": "Has classification code"
+          },
+          "name": "epo-cat:hasClassificationCode",
+          "propertyOrigin": "internal",
+          "propertyType": "datatype property",
+          "range": [
+            {
+              "range_curie": "rdf:PlainLiteral",
+              "range_label": {
+                "en": "Plain literal"
+              },
+              "range_puri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral",
+              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2026"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasClassificationCode",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "The classification scheme where a property is defined. Additional Information: For example, the following two properties are defined in the ECLASS classification of goods and services: (0173-1#02-AAA026#007) drilling diameter: drilling diameter, (0173-1#02-AAA030#007) flange diameter: flange diameter ."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:ItemProperty",
+              "uri": "http://data.europa.eu/a4g/ontology#ItemProperty"
+            }
+          ],
+          "label": {
+            "en": "Has classification scheme"
+          },
+          "name": "epo-cat:hasClassificationScheme",
+          "propertyOrigin": "internal",
+          "propertyType": "datatype property",
+          "range": [
+            {
+              "range_curie": "rdf:PlainLiteral",
+              "range_label": {
+                "en": "Plain literal"
+              },
+              "range_puri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral",
+              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG Approval 28/07/2022"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasClassificationScheme",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "The significance of the instance of the concept expressed as a code."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:ItemProperty",
+              "uri": "http://data.europa.eu/a4g/ontology#ItemProperty"
+            }
+          ],
+          "label": {
+            "en": "Has importance code"
+          },
+          "name": "epo-cat:hasImportanceCode",
+          "propertyOrigin": "internal",
+          "propertyType": "datatype property",
+          "range": [
+            {
+              "range_curie": "xsd:integer",
+              "range_label": {
+                "en": "Integer"
+              },
+              "range_puri": "http://www.w3.org/2001/XMLSchema#integer",
+              "range_uri": "http://www.w3.org/2001/XMLSchema#integer"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2026"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasImportanceCode",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..*",
+          "description": {
+            "en": "Simple value of the property, which is defined in a classification scheme. Additional Information: For example, the (0173-1#02-AAV139#001) coating 1 of an optical material has value of \"silver\". This simple literal value is for the cases when the property value does not have units, in which case the qualifiedValue shall be used."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:ItemProperty",
+              "uri": "http://data.europa.eu/a4g/ontology#ItemProperty"
+            }
+          ],
+          "label": {
+            "en": "Has literal value"
+          },
+          "name": "epo-cat:hasLiteralValue",
+          "propertyOrigin": "internal",
+          "propertyType": "datatype property",
+          "range": [
+            {
+              "range_curie": "rdf:PlainLiteral",
+              "range_label": {
+                "en": "Plain literal"
+              },
+              "range_puri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral",
+              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG Approval 28/07/2022"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasLiteralValue",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "Relation indicating the upper limit of the numerical quantity."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:ItemProperty",
+              "uri": "http://data.europa.eu/a4g/ontology#ItemProperty"
+            }
+          ],
+          "label": {
+            "en": "Has maximum value"
+          },
+          "name": "epo-cat:hasMaximumValue",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:Quantity",
+              "range_label": {
+                "en": "Quantity"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#Quantity",
+              "range_uri": "http://data.europa.eu/a4g/ontology#Quantity"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasMaximumValue",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "Relation indicating the lower limit of the numerical quantity."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:ItemProperty",
+              "uri": "http://data.europa.eu/a4g/ontology#ItemProperty"
+            }
+          ],
+          "label": {
+            "en": "Has minimum value"
+          },
+          "name": "epo-cat:hasMinimumValue",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:Quantity",
+              "range_label": {
+                "en": "Quantity"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#Quantity",
+              "range_uri": "http://data.europa.eu/a4g/ontology#Quantity"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasMinimumValue",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "Qualified value of the property, which is defined in a classification scheme. Additional Information: For example, the (0173-1#02-AAA026#007) drilling diameter of an item has value of 12 inches."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:ItemProperty",
+              "uri": "http://data.europa.eu/a4g/ontology#ItemProperty"
+            }
+          ],
+          "label": {
+            "en": "Has qualified value"
+          },
+          "name": "epo-cat:hasQualifiedValue",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:Quantity",
+              "range_label": {
+                "en": "Quantity"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#Quantity",
+              "range_uri": "http://data.europa.eu/a4g/ontology#Quantity"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG Approval 28/07/2022"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasQualifiedValue",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": ""
+          },
+          "domain": [
+            {
+              "name": "epo-cat:ItemProperty",
+              "uri": "http://data.europa.eu/a4g/ontology#ItemProperty"
+            }
+          ],
+          "label": {
+            "en": "Identifier"
+          },
+          "name": "adms:identifier",
+          "propertyOrigin": "reused",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "adms:Identifier",
+              "range_label": {
+                "en": "Identifier"
+              },
+              "range_puri": "http://www.w3.org/ns/adms#Identifier",
+              "range_uri": "http://www.w3.org/ns/adms#Identifier"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented"
+          },
+          "uri": "http://www.w3.org/ns/adms#identifier",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "External concept defined by <xref scope=\"external\" href=\"\"https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/title\"\"><foreign otherprops=\"#0000ff\"><u>https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/title</u></foreign></xref>"
+          },
+          "domain": [
+            {
+              "name": "epo-cat:ItemProperty",
+              "uri": "http://data.europa.eu/a4g/ontology#ItemProperty"
+            }
+          ],
+          "label": {
+            "en": "Title"
+          },
+          "name": "dct:title",
+          "propertyOrigin": "reused",
+          "propertyType": "datatype property",
+          "range": [
+            {
+              "range_curie": "rdf:PlainLiteral",
+              "range_label": {
+                "en": "Plain literal"
+              },
+              "range_puri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral",
+              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented"
+          },
+          "uri": "http://purl.org/dc/terms/title",
+          "usage": {}
+        }
+      ],
+      "rawTags": {
+        "class-usage-scope": "main"
+      },
+      "tags": {
+        "epo:status": "implemented",
+        "skos:historyNote": "WG Approval 26/07/2022"
+      },
+      "uri": "http://data.europa.eu/a4g/ontology#ItemProperty",
+      "usage": {
+        "en": "Construct meant to represent the association between an attribute defined in an external classification scheme and the value ascribed to it."
+      }
+    },
+    {
+      "classType": "definition",
+      "description": {
+        "en": "Connection between two Items."
+      },
+      "label": {
+        "en": "Item relation"
+      },
+      "name": "epo-cat:ItemRelation",
+      "parents": [],
+      "properties": [
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "The number or the fraction of a related item."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:ItemRelation",
+              "uri": "http://data.europa.eu/a4g/ontology#ItemRelation"
+            }
+          ],
+          "label": {
+            "en": "Has factor"
+          },
+          "name": "epo-cat:hasFactor",
+          "propertyOrigin": "internal",
+          "propertyType": "datatype property",
+          "range": [
+            {
+              "range_curie": "xsd:decimal",
+              "range_label": {
+                "en": "Decimal"
+              },
+              "range_puri": "http://www.w3.org/2001/XMLSchema#decimal",
+              "range_uri": "http://www.w3.org/2001/XMLSchema#decimal"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasFactor",
+          "usage": {}
+        },
+        {
+          "cardinality": "1",
+          "description": {
+            "en": "Relation indicating the association with an Item."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:ItemRelation",
+              "uri": "http://data.europa.eu/a4g/ontology#ItemRelation"
+            }
+          ],
+          "label": {
+            "en": "Is related to item"
+          },
+          "name": "epo-cat:isRelatedToItem",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo-cat:AbstractItem",
+              "range_label": {
+                "en": "Abstract item"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#AbstractItem",
+              "range_uri": "http://data.europa.eu/a4g/ontology#AbstractItem"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#isRelatedToItem",
+          "usage": {}
+        }
+      ],
+      "rawTags": {
+        "class-usage-scope": "main"
+      },
+      "tags": {
+        "epo:status": "implemented",
+        "skos:historyNote": "WG Approval 30/06/2022"
+      },
+      "uri": "http://data.europa.eu/a4g/ontology#ItemRelation",
+      "usage": {
+        "en": "Connection between two Items."
+      }
+    },
+    {
+      "classType": "definition",
+      "description": {
+        "en": "Supplantment, displacement or suspension of an Item by the described Item."
+      },
+      "label": {
+        "en": "Item replacement"
+      },
+      "name": "epo-cat:ItemReplacement",
+      "parents": [
+        {
+          "label": {
+            "en": "Item relation"
+          },
+          "name": "epo-cat:ItemRelation",
+          "scoped_uri": "http://data.europa.eu/a4g/ontology#ItemRelation"
+        }
+      ],
+      "properties": [],
+      "rawTags": {
+        "class-usage-scope": "main"
+      },
+      "tags": {
+        "epo:status": "implemented",
+        "skos:historyNote": "WG Approval 30/06/2022"
+      },
+      "uri": "http://data.europa.eu/a4g/ontology#ItemReplacement",
+      "usage": {
+        "en": "Supplantment, displacement or suspension of an Item by the described Item."
+      }
+    },
+    {
+      "classType": "definition",
+      "description": {
+        "en": "Necessity of an Item by the described item. Additional Information: The described item is provided without other items that are required for proper functionality. For example, a printer cannot be used without ink cartridge; or a Server cannot be used without its installation."
+      },
+      "label": {
+        "en": "Item requirement"
+      },
+      "name": "epo-cat:ItemRequirement",
+      "parents": [
+        {
+          "label": {
+            "en": "Item relation"
+          },
+          "name": "epo-cat:ItemRelation",
+          "scoped_uri": "http://data.europa.eu/a4g/ontology#ItemRelation"
+        }
+      ],
+      "properties": [],
+      "rawTags": {
+        "class-usage-scope": "main"
+      },
+      "tags": {
+        "epo:status": "implemented",
+        "skos:historyNote": "WG Approval 19/05/2022"
+      },
+      "uri": "http://data.europa.eu/a4g/ontology#ItemRequirement",
+      "usage": {
+        "en": "Necessity of an Item by the described item. Additional Information: The described item is provided without other items that are required for proper functionality. For example, a printer cannot be used without ink cartridge; or a Server cannot be used without its installation."
+      }
+    },
+    {
+      "classType": "definition",
+      "description": {
+        "en": "Component of a document providing specific information."
+      },
+      "label": {
+        "en": "Line"
+      },
+      "name": "epo-cat:Line",
+      "parents": [],
+      "properties": [
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "External concept defined by <xref scope=\"external\" href=\"\"https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/description\"\"><foreign otherprops=\"#0000ff\"><u>https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/description</u></foreign></xref>"
+          },
+          "domain": [
+            {
+              "name": "epo-cat:Line",
+              "uri": "http://data.europa.eu/a4g/ontology#Line"
+            }
+          ],
+          "label": {
+            "en": "Description"
+          },
+          "name": "dct:description",
+          "propertyOrigin": "reused",
+          "propertyType": "datatype property",
+          "range": [
+            {
+              "range_curie": "rdf:PlainLiteral",
+              "range_label": {
+                "en": "Plain literal"
+              },
+              "range_puri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral",
+              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG Approval 30/05/2023"
+          },
+          "uri": "http://purl.org/dc/terms/description",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "Supplementary data about the instance of the concept."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:Line",
+              "uri": "http://data.europa.eu/a4g/ontology#Line"
+            }
+          ],
+          "label": {
+            "en": "Has additional information"
+          },
+          "name": "epo:hasAdditionalInformation",
+          "propertyOrigin": "internal",
+          "propertyType": "datatype property",
+          "range": [
+            {
+              "range_curie": "rdf:PlainLiteral",
+              "range_label": {
+                "en": "Plain literal"
+              },
+              "range_puri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral",
+              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG Approval 15/10/2019"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasAdditionalInformation",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "Is related to a Document."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:Line",
+              "uri": "http://data.europa.eu/a4g/ontology#Line"
+            }
+          ],
+          "label": {
+            "en": "Has associated document"
+          },
+          "name": "epo-ful:hasAssociatedDocument",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:Document",
+              "range_label": {
+                "en": "Document"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#Document",
+              "range_uri": "http://data.europa.eu/a4g/ontology#Document"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG Approval 06/10/2024"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasAssociatedDocument",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "External concept defined by <xref scope=\"external\" href=\"\"https://semiceu.github.io/ADMS/releases/2.00/#identifier\"\"><foreign otherprops=\"#0000ff\"><u>https://semiceu.github.io/ADMS/releases/2.00/#identifier</u></foreign></xref>"
+          },
+          "domain": [
+            {
+              "name": "epo-cat:Line",
+              "uri": "http://data.europa.eu/a4g/ontology#Line"
+            }
+          ],
+          "label": {
+            "en": "Identifier"
+          },
+          "name": "adms:identifier",
+          "propertyOrigin": "reused",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "adms:Identifier",
+              "range_label": {
+                "en": "Identifier"
+              },
+              "range_puri": "http://www.w3.org/ns/adms#Identifier",
+              "range_uri": "http://www.w3.org/ns/adms#Identifier"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented"
+          },
+          "uri": "http://www.w3.org/ns/adms#identifier",
+          "usage": {}
+        },
+        {
+          "cardinality": "1",
+          "description": {
+            "en": "Relation indicating the Item."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:Line",
+              "uri": "http://data.europa.eu/a4g/ontology#Line"
+            }
+          ],
+          "label": {
+            "en": "Specifies item"
+          },
+          "name": "epo-cat:specifiesItem",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo-cat:AbstractItem",
+              "range_label": {
+                "en": "Abstract item"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#AbstractItem",
+              "range_uri": "http://data.europa.eu/a4g/ontology#AbstractItem"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#specifiesItem",
+          "usage": {}
+        }
+      ],
+      "rawTags": {
+        "class-usage-scope": "main"
+      },
+      "tags": {
+        "epo:status": "implemented",
+        "skos:historyNote": "WG approval 11/09/2025"
+      },
+      "uri": "http://data.europa.eu/a4g/ontology#Line",
+      "usage": {
+        "en": "Component of a document providing specific information."
+      }
+    },
+    {
+      "classType": "definition",
+      "description": {
+        "en": "The Producer of goods or provider of services. Additional Information: Also, known as Supplier and Manufacturer. We do not care who provides these service or products we care with whom Business is done. PEPPOL - Invoice: The Supplier is the Legal Person or Organisation who provides a product and/or service. PEPPOL - Order: The supplier is the legal person or organisation who provides a product or service. Examples of supplier roles: seller, despatch party, creditor, economic operator."
+      },
+      "label": {
+        "en": "Manufacturer"
+      },
+      "name": "epo-cat:Manufacturer",
+      "parents": [
+        {
+          "label": {
+            "en": "Offering party"
+          },
+          "name": "epo:OfferingParty",
+          "scoped_uri": "http://data.europa.eu/a4g/ontology#OfferingParty"
+        }
+      ],
+      "properties": [
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "The manufacturer's identifier for the item."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:Manufacturer",
+              "uri": "http://data.europa.eu/a4g/ontology#Manufacturer"
+            }
+          ],
+          "label": {
+            "en": "Has manufacturer ID"
+          },
+          "name": "epo:hasManufacturerID",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "adms:Identifier",
+              "range_label": {
+                "en": "Identifier"
+              },
+              "range_puri": "http://www.w3.org/ns/adms#Identifier",
+              "range_uri": "http://www.w3.org/ns/adms#Identifier"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasManufacturerID",
+          "usage": {}
+        }
+      ],
+      "rawTags": {
+        "class-usage-scope": "main"
+      },
+      "tags": {
+        "epo:status": "implemented"
+      },
+      "uri": "http://data.europa.eu/a4g/ontology#Manufacturer",
+      "usage": {
+        "en": "The Producer of goods or provider of services. Additional Information: Also, known as Supplier and Manufacturer. We do not care who provides these service or products we care with whom Business is done. PEPPOL - Invoice: The Supplier is the Legal Person or Organisation who provides a product and/or service. PEPPOL - Order: The supplier is the legal person or organisation who provides a product or service. Examples of supplier roles: seller, despatch party, creditor, economic operator."
+      }
+    },
+    {
+      "classType": "definition",
+      "description": {
+        "en": "A Document describing a set of Items offered for purchase that can be processed in an electronic way, after a Contract is signed."
+      },
+      "label": {
+        "en": "Post award catalogue"
+      },
+      "name": "epo-cat:PostAwardCatalogue",
+      "parents": [
+        {
+          "label": {
+            "en": "Catalogue"
+          },
+          "name": "epo-cat:Catalogue",
+          "scoped_uri": "http://data.europa.eu/a4g/ontology#Catalogue"
+        }
+      ],
+      "properties": [
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "Relation indicating that the instance of the concept is governed by a specific Contract."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:PostAwardCatalogue",
+              "uri": "http://data.europa.eu/a4g/ontology#PostAwardCatalogue"
+            }
+          ],
+          "label": {
+            "en": "Is subordinated to contract"
+          },
+          "name": "epo-cat:isSubordinatedToContract",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:Contract",
+              "range_label": {
+                "en": "Contract"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#Contract",
+              "range_uri": "http://data.europa.eu/a4g/ontology#Contract"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#isSubordinatedToContract",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": ""
+          },
+          "domain": [
+            {
+              "name": "epo-cat:PostAwardCatalogue",
+              "uri": "http://data.europa.eu/a4g/ontology#PostAwardCatalogue"
+            }
+          ],
+          "label": {
+            "en": "Relates to"
+          },
+          "name": "epo:relatesTo",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo-cat:PreAwardCatalogue",
+              "range_label": {
+                "en": "Pre award catalogue"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#PreAwardCatalogue",
+              "range_uri": "http://data.europa.eu/a4g/ontology#PreAwardCatalogue"
+            }
+          ],
+          "tags": {
+            "epo:status": "proposed"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#relatesTo",
+          "usage": {}
+        }
+      ],
+      "rawTags": {
+        "class-usage-scope": "main"
+      },
+      "tags": {
+        "epo:status": "implemented"
+      },
+      "uri": "http://data.europa.eu/a4g/ontology#PostAwardCatalogue",
+      "usage": {
+        "en": "A Document describing a set of Items offered for purchase that can be processed in an electronic way, after a Contract is signed."
+      }
+    },
+    {
+      "classType": "definition",
+      "description": {
+        "en": "Document created after the award of a Contract during a Procurement Procedure."
+      },
+      "label": {
+        "en": "Post award document"
+      },
+      "name": "epo-cat:PostAwardDocument",
+      "parents": [
+        {
+          "label": {
+            "en": "Document"
+          },
+          "name": "epo:Document",
+          "scoped_uri": "http://data.europa.eu/a4g/ontology#Document"
+        }
+      ],
+      "properties": [
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "An identifier assigned by the Buyer used for internal routing purposes."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:PostAwardDocument",
+              "uri": "http://data.europa.eu/a4g/ontology#PostAwardDocument"
+            }
+          ],
+          "label": {
+            "en": "Has customer reference"
+          },
+          "name": "epo-ord:hasCustomerReference",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "adms:Identifier",
+              "range_label": {
+                "en": "Identifier"
+              },
+              "range_puri": "http://www.w3.org/ns/adms#Identifier",
+              "range_uri": "http://www.w3.org/ns/adms#Identifier"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG Approval 04/03/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasCustomerReference",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "controlled_vocabulary": {
+            "name": "at-voc-new:document-status",
+            "uri": "http://publications.europa.eu/resource/authority/new/document-status"
+          },
+          "description": {
+            "en": "https://test-docs.peppol.eu/logistics/transport-execution/codelist/DocumentStatusCode/"
+          },
+          "domain": [
+            {
+              "name": "epo-cat:PostAwardDocument",
+              "uri": "http://data.europa.eu/a4g/ontology#PostAwardDocument"
+            }
+          ],
+          "label": {
+            "en": "Has document status"
+          },
+          "name": "epo:hasDocumentStatus",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "skos:Concept",
+              "range_label": {
+                "en": "Concept"
+              },
+              "range_puri": "http://www.w3.org/2004/02/skos/core#Concept",
+              "range_uri": "http://www.w3.org/2004/02/skos/core#Concept"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasDocumentStatus",
+          "usage": {}
+        }
+      ],
+      "rawTags": {
+        "class-usage-scope": "main"
+      },
+      "tags": {
+        "epo:status": "implemented",
+        "skos:historyNote": "WG approval 11/09/2025"
+      },
+      "uri": "http://data.europa.eu/a4g/ontology#PostAwardDocument",
+      "usage": {
+        "en": "Document created after the award of a Contract during a Procurement Procedure."
+      }
+    },
+    {
+      "classType": "definition",
+      "description": {
+        "en": "Amount of money required or given in exchange for Items. Additional information: The Price excludes any charges (such as taxes, duties and fees) and discounts."
+      },
+      "label": {
+        "en": "Price"
+      },
+      "name": "epo-cat:Price",
+      "parents": [],
+      "properties": [
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "The quantity at which the net monetary value applies."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:Price",
+              "uri": "http://data.europa.eu/a4g/ontology#Price"
+            }
+          ],
+          "label": {
+            "en": "Has base quantity"
+          },
+          "name": "epo-cat:hasBaseQuantity",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:Quantity",
+              "range_label": {
+                "en": "Quantity"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#Quantity",
+              "range_uri": "http://data.europa.eu/a4g/ontology#Quantity"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasBaseQuantity",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..*",
+          "description": {
+            "en": "Location delivery area where the Item can be ordered to the given price."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:Price",
+              "uri": "http://data.europa.eu/a4g/ontology#Price"
+            }
+          ],
+          "label": {
+            "en": "Has delivery location"
+          },
+          "name": "epo-cat:hasDeliveryLocation",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "dct:Location",
+              "range_label": {
+                "en": "Location"
+              },
+              "range_puri": "http://purl.org/dc/terms/Location",
+              "range_uri": "http://purl.org/dc/terms/Location"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasDeliveryLocation",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "The expected amount of time between the order and delivery of an item."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:Price",
+              "uri": "http://data.europa.eu/a4g/ontology#Price"
+            }
+          ],
+          "label": {
+            "en": "Has expected delivery time"
+          },
+          "name": "epo-cat:hasExpectedDeliveryTime",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "time:Duration",
+              "range_label": {
+                "en": "Duration"
+              },
+              "range_puri": "http://www.w3.org/2006/time#Duration",
+              "range_uri": "http://www.w3.org/2006/time#Duration"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG Approval 26/07/2022"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasExpectedDeliveryTime",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "The Monetary Value before any deductions."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:Price",
+              "uri": "http://data.europa.eu/a4g/ontology#Price"
+            }
+          ],
+          "label": {
+            "en": "Has gross monetary value"
+          },
+          "name": "epo-ord:hasGrossMonetaryValue",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:MonetaryValue",
+              "range_label": {
+                "en": "Monetary value"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#MonetaryValue",
+              "range_uri": "http://data.europa.eu/a4g/ontology#MonetaryValue"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasGrossMonetaryValue",
+          "usage": {}
+        },
+        {
+          "cardinality": "1",
+          "description": {
+            "en": "The price amount of an Item exclusive of taxes and after subtracting price discounts."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:Price",
+              "uri": "http://data.europa.eu/a4g/ontology#Price"
+            }
+          ],
+          "label": {
+            "en": "Has net monetary value"
+          },
+          "name": "epo-cat:hasNetMonetaryValue",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:MonetaryValue",
+              "range_label": {
+                "en": "Monetary value"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#MonetaryValue",
+              "range_uri": "http://data.europa.eu/a4g/ontology#MonetaryValue"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasNetMonetaryValue",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "The factor by which the base unit of the price can be converted to orderable unit. Additional information: This is needed when the base price is provided different than the orderable unit. For example, when selling paper, the price may be set per page, but the orderable unit is a package of 500 pieces. Therefore the price needs to be converted to the orderable unit."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:Price",
+              "uri": "http://data.europa.eu/a4g/ontology#Price"
+            }
+          ],
+          "label": {
+            "en": "Has orderabable unit factor rate"
+          },
+          "name": "epo-cat:hasOrderabableUnitFactorRate",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:Quantity",
+              "range_label": {
+                "en": "Quantity"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#Quantity",
+              "range_uri": "http://data.europa.eu/a4g/ontology#Quantity"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasOrderabableUnitFactorRate",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "Relation indicating the Allowance Information applied on the Price."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:Price",
+              "uri": "http://data.europa.eu/a4g/ontology#Price"
+            }
+          ],
+          "label": {
+            "en": "Has price discount information"
+          },
+          "name": "epo-ord:hasPriceDiscountInformation",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo-ord:AllowanceInformation",
+              "range_label": {
+                "en": "Allowance information"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#AllowanceInformation",
+              "range_uri": "http://data.europa.eu/a4g/ontology#AllowanceInformation"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasPriceDiscountInformation",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "Relation indicating the Charge Information applied on the Price."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:Price",
+              "uri": "http://data.europa.eu/a4g/ontology#Price"
+            }
+          ],
+          "label": {
+            "en": "Has price surcharge information"
+          },
+          "name": "epo:hasPriceSurchargeInformation",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo-cat:ChargeInformation",
+              "range_label": {
+                "en": "Charge information"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#ChargeInformation",
+              "range_uri": "http://data.europa.eu/a4g/ontology#ChargeInformation"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasPriceSurchargeInformation",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "controlled_vocabulary": {
+            "name": "at-voc-new:price-type",
+            "uri": "http://publications.europa.eu/resource/authority/new/price-type"
+          },
+          "description": {
+            "en": "Relation indicating the Price Type."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:Price",
+              "uri": "http://data.europa.eu/a4g/ontology#Price"
+            }
+          ],
+          "label": {
+            "en": "Has price type"
+          },
+          "name": "epo-cat:hasPriceType",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "skos:Concept",
+              "range_label": {
+                "en": "Concept"
+              },
+              "range_puri": "http://www.w3.org/2004/02/skos/core#Concept",
+              "range_uri": "http://www.w3.org/2004/02/skos/core#Concept"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasPriceType",
+          "usage": {}
+        },
+        {
+          "cardinality": "1",
+          "description": {
+            "en": "The period of time when the Item can be ordered to the given price."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:Price",
+              "uri": "http://data.europa.eu/a4g/ontology#Price"
+            }
+          ],
+          "label": {
+            "en": "Has price validity"
+          },
+          "name": "epo-cat:hasPriceValidity",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "time:Interval",
+              "range_label": {
+                "en": "Interval"
+              },
+              "range_puri": "http://www.w3.org/2006/time#Interval",
+              "range_uri": "http://www.w3.org/2006/time#Interval"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasPriceValidity",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "The minimum quantity of the item that can be ordered to the given net monetary value."
+          },
+          "domain": [
+            {
+              "name": "epo-cat:Price",
+              "uri": "http://data.europa.eu/a4g/ontology#Price"
+            }
+          ],
+          "label": {
+            "en": "Has quantity threshold"
+          },
+          "name": "epo-cat:hasQuantityThreshold",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:Quantity",
+              "range_label": {
+                "en": "Quantity"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#Quantity",
+              "range_uri": "http://data.europa.eu/a4g/ontology#Quantity"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasQuantityThreshold",
+          "usage": {}
+        }
+      ],
+      "rawTags": {
+        "class-usage-scope": "main"
+      },
+      "tags": {
+        "epo:status": "implemented",
+        "skos:historyNote": "WG approval 26/07/2022"
+      },
+      "uri": "http://data.europa.eu/a4g/ontology#Price",
+      "usage": {
+        "en": "Amount of money required or given in exchange for Items. Additional information: The Price excludes any charges (such as taxes, duties and fees) and discounts."
+      }
+    },
+    {
+      "classType": "definition",
+      "description": {
+        "en": "Document providing information about an Item."
+      },
+      "label": {
+        "en": "Product specification"
+      },
+      "name": "epo-cat:ProductSpecification",
+      "parents": [
+        {
+          "label": {
+            "en": "Document"
+          },
+          "name": "epo:Document",
+          "scoped_uri": "http://data.europa.eu/a4g/ontology#Document"
+        }
+      ],
+      "properties": [],
+      "rawTags": {
+        "class-usage-scope": "main"
+      },
+      "tags": {
+        "epo:status": "implemented",
+        "skos:historyNote": "WG Approval 07/04/2022"
+      },
+      "uri": "http://data.europa.eu/a4g/ontology#ProductSpecification",
+      "usage": {
+        "en": "Document providing information about an Item."
+      }
+    },
+    {
+      "classType": "reference",
+      "label": {
+        "en": "Request for offer"
+      },
+      "name": "epo-req:RequestForOffer",
+      "properties": [
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": ""
+          },
+          "domain": [
+            {
+              "name": "epo-req:RequestForOffer",
+              "uri": "http://data.europa.eu/a4g/ontology#RequestForOffer"
+            }
+          ],
+          "label": {
+            "en": "Refers to catalogue"
+          },
+          "name": "epo-cat:refersToCatalogue",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo-cat:Catalogue",
+              "range_label": {
+                "en": "Catalogue"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#Catalogue",
+              "range_uri": "http://data.europa.eu/a4g/ontology#Catalogue"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#refersToCatalogue",
+          "usage": {}
+        }
+      ],
+      "rawTags": {
+        "class-usage-scope": "main"
+      },
+      "uri": "http://data.europa.eu/a4g/ontology#RequestForOffer"
+    },
+    {
+      "classType": "reference",
+      "label": {
+        "en": "Invoice"
+      },
+      "name": "epo-inv:Invoice",
+      "properties": [
+        {
+          "cardinality": "0..*",
+          "description": {
+            "en": "Relation indicating the Charge Information."
+          },
+          "domain": [
+            {
+              "name": "epo-inv:Invoice",
+              "uri": "http://data.europa.eu/a4g/ontology#Invoice"
+            }
+          ],
+          "label": {
+            "en": "Specifies charge information"
+          },
+          "name": "epo-cat:specifiesChargeInformation",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo-cat:ChargeInformation",
+              "range_label": {
+                "en": "Charge information"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#ChargeInformation",
+              "range_uri": "http://data.europa.eu/a4g/ontology#ChargeInformation"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#specifiesChargeInformation",
+          "usage": {}
+        }
+      ],
+      "rawTags": {
+        "class-usage-scope": "main"
+      },
+      "uri": "http://data.europa.eu/a4g/ontology#Invoice"
+    },
+    {
+      "classType": "reference",
+      "label": {
+        "en": "Consignment"
+      },
+      "name": "epo-ful:Consignment",
+      "properties": [
+        {
+          "cardinality": "0..*",
+          "description": {
+            "en": "The total cost for moving the goods."
+          },
+          "domain": [
+            {
+              "name": "epo-ful:Consignment",
+              "uri": "http://data.europa.eu/a4g/ontology#Consignment"
+            }
+          ],
+          "label": {
+            "en": "Has freight charge"
+          },
+          "name": "epo-ful:hasFreightCharge",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo-cat:ChargeInformation",
+              "range_label": {
+                "en": "Charge information"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#ChargeInformation",
+              "range_uri": "http://data.europa.eu/a4g/ontology#ChargeInformation"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG Approval 18/06/2024"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasFreightCharge",
+          "usage": {}
+        }
+      ],
+      "rawTags": {
+        "class-usage-scope": "main"
+      },
+      "uri": "http://data.europa.eu/a4g/ontology#Consignment"
+    },
+    {
+      "classType": "reference",
+      "label": {
+        "en": "Order"
+      },
+      "name": "epo-ord:Order",
+      "properties": [
+        {
+          "cardinality": "0..*",
+          "description": {
+            "en": "Additional information: If an order refers to multiple catalogues then all these catalogues ideally are subordinated to the same contract. Some countries however may allow multiple contracts per order (i.e Italy)."
+          },
+          "domain": [
+            {
+              "name": "epo-ord:Order",
+              "uri": "http://data.europa.eu/a4g/ontology#Order"
+            }
+          ],
+          "label": {
+            "en": "Refers to catalogue"
+          },
+          "name": "epo-cat:refersToCatalogue",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo-cat:PostAwardCatalogue",
+              "range_label": {
+                "en": "Post award catalogue"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#PostAwardCatalogue",
+              "range_uri": "http://data.europa.eu/a4g/ontology#PostAwardCatalogue"
+            }
+          ],
+          "tags": {},
+          "uri": "http://data.europa.eu/a4g/ontology#refersToCatalogue",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..*",
+          "description": {
+            "en": "Relation indicating the Charge Information."
+          },
+          "domain": [
+            {
+              "name": "epo-ord:Order",
+              "uri": "http://data.europa.eu/a4g/ontology#Order"
+            }
+          ],
+          "label": {
+            "en": "Specifies charge information"
+          },
+          "name": "epo-cat:specifiesChargeInformation",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo-cat:ChargeInformation",
+              "range_label": {
+                "en": "Charge information"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#ChargeInformation",
+              "range_uri": "http://data.europa.eu/a4g/ontology#ChargeInformation"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#specifiesChargeInformation",
+          "usage": {}
+        }
+      ],
+      "rawTags": {
+        "class-usage-scope": "main"
+      },
+      "uri": "http://data.europa.eu/a4g/ontology#Order"
+    },
+    {
+      "classType": "reference",
+      "label": {
+        "en": "Invoice line"
+      },
+      "name": "epo-inv:InvoiceLine",
+      "properties": [
+        {
+          "cardinality": "1..*",
+          "description": {
+            "en": "Relation indicating that the instance of the concept has a Price."
+          },
+          "domain": [
+            {
+              "name": "epo-inv:InvoiceLine",
+              "uri": "http://data.europa.eu/a4g/ontology#InvoiceLine"
+            }
+          ],
+          "label": {
+            "en": "Has price"
+          },
+          "name": "epo-cat:hasPrice",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo-cat:Price",
+              "range_label": {
+                "en": "Price"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#Price",
+              "range_uri": "http://data.europa.eu/a4g/ontology#Price"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasPrice",
+          "usage": {}
+        }
+      ],
+      "rawTags": {
+        "class-usage-scope": "main"
+      },
+      "uri": "http://data.europa.eu/a4g/ontology#InvoiceLine"
+    },
+    {
+      "classType": "reference",
+      "label": {
+        "en": "Order line"
+      },
+      "name": "epo-ord:OrderLine",
+      "properties": [
+        {
+          "cardinality": "0..*",
+          "description": {
+            "en": "Relation indicating that the instance of the concept has a Price."
+          },
+          "domain": [
+            {
+              "name": "epo-ord:OrderLine",
+              "uri": "http://data.europa.eu/a4g/ontology#OrderLine"
+            }
+          ],
+          "label": {
+            "en": "Has price"
+          },
+          "name": "epo-cat:hasPrice",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo-cat:Price",
+              "range_label": {
+                "en": "Price"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#Price",
+              "range_uri": "http://data.europa.eu/a4g/ontology#Price"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasPrice",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "Additional Information: The reference to the catalogue line is for information only, to trace the source of the information provided in the order line."
+          },
+          "domain": [
+            {
+              "name": "epo-ord:OrderLine",
+              "uri": "http://data.europa.eu/a4g/ontology#OrderLine"
+            }
+          ],
+          "label": {
+            "en": "Refers to catalogue line"
+          },
+          "name": "epo-ord:refersToCatalogueLine",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo-cat:CatalogueLine",
+              "range_label": {
+                "en": "Catalogue line"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#CatalogueLine",
+              "range_uri": "http://data.europa.eu/a4g/ontology#CatalogueLine"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#refersToCatalogueLine",
+          "usage": {}
+        }
+      ],
+      "rawTags": {
+        "class-usage-scope": "main"
+      },
+      "uri": "http://data.europa.eu/a4g/ontology#OrderLine"
+    },
+    {
+      "classType": "reference",
+      "label": {
+        "en": "Pre award catalogue request"
+      },
+      "name": "epo-cat:PreAwardCatalogueRequest",
+      "properties": [
+        {
+          "cardinality": "1..*",
+          "description": {
+            "en": ""
+          },
+          "domain": [
+            {
+              "name": "epo-cat:PreAwardCatalogueRequest",
+              "uri": "http://data.europa.eu/a4g/ontology#PreAwardCatalogueRequest"
+            }
+          ],
+          "label": {
+            "en": "Has pre award catalogue request line"
+          },
+          "name": "epo-cat:hasPreAwardCatalogueRequestLine",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo-cat:CatalogueLine",
+              "range_label": {
+                "en": "Catalogue line"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#CatalogueLine",
+              "range_uri": "http://data.europa.eu/a4g/ontology#CatalogueLine"
+            }
+          ],
+          "tags": {
+            "epo:status": "proposed"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasPreAwardCatalogueRequestLine",
+          "usage": {}
+        }
+      ],
+      "rawTags": {
+        "class-usage-scope": "main"
+      },
+      "uri": "http://data.europa.eu/a4g/ontology#PreAwardCatalogueRequest"
+    },
+    {
+      "classType": "reference",
+      "label": {
+        "en": "Document"
+      },
+      "name": "epo:Document",
+      "properties": [
+        {
+          "cardinality": "0..1",
+          "controlled_vocabulary": {
+            "name": "at-voc-new:document-type",
+            "uri": "http://publications.europa.eu/resource/authority/new/document-type"
+          },
+          "description": {
+            "en": "Relation indicating the Document Type."
+          },
+          "domain": [
+            {
+              "name": "epo:Document",
+              "uri": "http://data.europa.eu/a4g/ontology#Document"
+            }
+          ],
+          "label": {
+            "en": "Has document type"
+          },
+          "name": "epo:hasDocumentType",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "skos:Concept",
+              "range_label": {
+                "en": "Concept"
+              },
+              "range_puri": "http://www.w3.org/2004/02/skos/core#Concept",
+              "range_uri": "http://www.w3.org/2004/02/skos/core#Concept"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasDocumentType",
+          "usage": {}
+        }
+      ],
+      "rawTags": {
+        "class-usage-scope": "main"
+      },
+      "uri": "http://data.europa.eu/a4g/ontology#Document"
+    },
+    {
+      "classType": "reference",
+      "label": {
+        "en": "Tax information"
+      },
+      "name": "epo-ord:TaxInformation",
+      "properties": [
+        {
+          "cardinality": "0..1",
+          "controlled_vocabulary": {
+            "name": "at-voc-new:tax-category",
+            "uri": "http://publications.europa.eu/resource/authority/new/tax-category"
+          },
+          "description": {
+            "en": "Relation indicating the Tax Category."
+          },
+          "domain": [
+            {
+              "name": "epo-ord:TaxInformation",
+              "uri": "http://data.europa.eu/a4g/ontology#TaxInformation"
+            }
+          ],
+          "label": {
+            "en": "Has tax category"
+          },
+          "name": "epo-cat:hasTaxCategory",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "skos:Concept",
+              "range_label": {
+                "en": "Concept"
+              },
+              "range_puri": "http://www.w3.org/2004/02/skos/core#Concept",
+              "range_uri": "http://www.w3.org/2004/02/skos/core#Concept"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasTaxCategory",
+          "usage": {}
+        },
+        {
+          "cardinality": "1",
+          "controlled_vocabulary": {
+            "name": "at-voc-new:tax-scheme",
+            "uri": "http://publications.europa.eu/resource/authority/new/tax-scheme"
+          },
+          "description": {
+            "en": "Relation indicating the Tax Scheme."
+          },
+          "domain": [
+            {
+              "name": "epo-ord:TaxInformation",
+              "uri": "http://data.europa.eu/a4g/ontology#TaxInformation"
+            }
+          ],
+          "label": {
+            "en": "Has tax scheme"
+          },
+          "name": "epo-cat:hasTaxScheme",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "skos:Concept",
+              "range_label": {
+                "en": "Concept"
+              },
+              "range_puri": "http://www.w3.org/2004/02/skos/core#Concept",
+              "range_uri": "http://www.w3.org/2004/02/skos/core#Concept"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasTaxScheme",
+          "usage": {}
+        }
+      ],
+      "rawTags": {
+        "class-usage-scope": "main"
+      },
+      "uri": "http://data.europa.eu/a4g/ontology#TaxInformation"
+    }
+  ],
+  "datatypes": [
+    {
+      "description": {
+        "en": ""
+      },
+      "label": {
+        "en": "Plain literal"
+      },
+      "scopeduri": "rdf:PlainLiteral",
+      "uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"
+    },
+    {
+      "description": {
+        "en": ""
+      },
+      "label": {
+        "en": "Any URI"
+      },
+      "scopeduri": "xsd:anyURI",
+      "uri": "http://www.w3.org/2001/XMLSchema#anyURI"
+    },
+    {
+      "description": {
+        "en": ""
+      },
+      "label": {
+        "en": "Boolean"
+      },
+      "scopeduri": "xsd:boolean",
+      "uri": "http://www.w3.org/2001/XMLSchema#boolean"
+    },
+    {
+      "description": {
+        "en": ""
+      },
+      "label": {
+        "en": "Date"
+      },
+      "scopeduri": "xsd:date",
+      "uri": "http://www.w3.org/2001/XMLSchema#date"
+    },
+    {
+      "description": {
+        "en": ""
+      },
+      "label": {
+        "en": "Date time"
+      },
+      "scopeduri": "xsd:dateTime",
+      "uri": "http://www.w3.org/2001/XMLSchema#dateTime"
+    },
+    {
+      "description": {
+        "en": ""
+      },
+      "label": {
+        "en": "Decimal"
+      },
+      "scopeduri": "xsd:decimal",
+      "uri": "http://www.w3.org/2001/XMLSchema#decimal"
+    },
+    {
+      "description": {
+        "en": ""
+      },
+      "label": {
+        "en": "Integer"
+      },
+      "scopeduri": "xsd:integer",
+      "uri": "http://www.w3.org/2001/XMLSchema#integer"
+    }
+  ],
+  "prefixes": [
+    {
+      "name": "epo-cat",
+      "uri": "http://data.europa.eu/a4g/ontology#"
+    },
+    {
+      "name": "epo",
+      "uri": "http://data.europa.eu/a4g/ontology#"
+    },
+    {
+      "name": "at-voc-new",
+      "uri": "http://publications.europa.eu/resource/authority/new/"
+    },
+    {
+      "name": "epo-ful",
+      "uri": "http://data.europa.eu/a4g/ontology#"
+    },
+    {
+      "name": "epo-ord",
+      "uri": "http://data.europa.eu/a4g/ontology#"
+    },
+    {
+      "name": "time",
+      "uri": "http://www.w3.org/2006/time#"
+    },
+    {
+      "name": "epo-req",
+      "uri": "http://data.europa.eu/a4g/ontology#"
+    },
+    {
+      "name": "epo-inv",
+      "uri": "http://data.europa.eu/a4g/ontology#"
+    },
+    {
+      "name": "adms",
+      "uri": "http://www.w3.org/ns/adms#"
+    },
+    {
+      "name": "dct",
+      "uri": "http://purl.org/dc/terms/"
+    },
+    {
+      "name": "at-voc",
+      "uri": "http://publications.europa.eu/resource/authority/"
+    },
+    {
+      "name": "epo-con",
+      "uri": "http://data.europa.eu/a4g/ontology#"
+    },
+    {
+      "name": "epo-pay",
+      "uri": "http://data.europa.eu/a4g/ontology#"
+    },
+    {
+      "name": "rdf",
+      "uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    },
+    {
+      "name": "xsd",
+      "uri": "http://www.w3.org/2001/XMLSchema#"
+    }
+  ]
+}

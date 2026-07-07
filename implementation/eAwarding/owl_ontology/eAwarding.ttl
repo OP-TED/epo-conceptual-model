@@ -1,0 +1,69 @@
+@prefix : <http://data.europa.eu/a4g/ontology#> .
+@prefix cccev: <http://data.europa.eu/m8g/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix eli: <http://data.europa.eu/eli/ontology#> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+:AwardDecisionNotification a owl:Class ;
+    rdfs:isDefinedBy :awa ;
+    skos:definition "A formal communication sent by the Buyer to inform Tenderers of the Award Decision."@en ;
+    skos:historyNote "WG approval 11/09/2025"@en ;
+    skos:prefLabel "Award Decision Notification"@en .
+
+:concernsAwardOutcome a owl:ObjectProperty ;
+    rdfs:isDefinedBy :awa ;
+    skos:definition "Relates to Award Outcome."@en ;
+    skos:historyNote "WG approval 25/09/2025"@en ;
+    skos:prefLabel "concerns Award Outcome"@en .
+
+:concernsProcedure a owl:ObjectProperty ;
+    rdfs:isDefinedBy :awa ;
+    skos:definition "Relates to Procedure."@en ;
+    skos:prefLabel "concerns Procedure"@en .
+
+:hasStandstillPeriodEndDate a owl:DatatypeProperty ;
+    rdfs:isDefinedBy :awa ;
+    skos:definition "The end date for the mandatory minimum time frame between the communication of a contract award decision and the formal conclusion of the contract, during which unsuccessful Tenderers have the opportunity to challenge the award before it becomes legally binding. (epo-awa:AwardDecisionNotification)"@en ;
+    skos:historyNote "WG approval 25/09/2025"@en ;
+    skos:prefLabel "has Standstill Period End Date"@en .
+
+:specifiesTenderer a owl:ObjectProperty ;
+    rdfs:isDefinedBy :awa ;
+    skos:definition "Relation indicating that the instance of the concept involves the Tenderer."@en ;
+    skos:historyNote "WG approval 25/09/2025"@en ;
+    skos:prefLabel "specifies Tenderer"@en .
+
+:awa a owl:Ontology ;
+    rdfs:label "eProcurement Ontology - eAwarding"@en ;
+    dcterms:created "2021-06-01"^^xsd:date ;
+    dcterms:description "The eProcurement Ontology eAwarding module describes the concepts and properties representing the European Public Procurement Awarding domain. The provision of these semantics offers the basis for a common understanding of the domain for all stakeholders ensuring the quality of data exchange and transparency. The ontology restrictions are published in a separate artefact."@en ;
+    dcterms:issued "2026-07-07"^^xsd:date ;
+    dcterms:license "CC BY 4.0" ;
+    dcterms:publisher "http://publications.europa.eu/resource/authority/corporate-body/PUBL" ;
+    dcterms:title "eProcurement Ontology - eAwarding"@en ;
+    vann:preferredNamespacePrefix "epo-awa" ;
+    vann:preferredNamespaceUri "http://data.europa.eu/a4g/ontology#" ;
+    rdfs:comment "This version is automatically generated from eAwarding.xml on 2026-07-07" ;
+    rdfs:seeAlso <https://docs.ted.europa.eu/home/index.html>,
+        <https://github.com/OP-TED/ePO/releases>,
+        <https://joinup.ec.europa.eu/collection/eprocurement/solution/eprocurement-ontology/about>,
+        <https://op.europa.eu/en/web/eu-vocabularies/e-procurement> ;
+    owl:imports eli:,
+        cccev:,
+        dcterms:,
+        skos:,
+        <http://www.w3.org/2006/time>,
+        <http://www.w3.org/ns/adms>,
+        <http://www.w3.org/ns/locn>,
+        org:,
+        <http://www.w3.org/ns/person> ;
+    owl:incompatibleWith "4.2.0" ;
+    owl:priorVersion "http://data.europa.eu/a4g/ontology#awa-5.1.0" ;
+    owl:versionIRI :awa-5.2.0 ;
+    owl:versionInfo "5.2.0" .
+

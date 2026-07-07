@@ -1,0 +1,781 @@
+{
+  "classes": [
+    {
+      "classType": "definition",
+      "description": {
+        "en": "Information about a remittance."
+      },
+      "label": {
+        "en": "Payment information"
+      },
+      "name": "epo-pay:PaymentInformation",
+      "parents": [
+        {
+          "label": {
+            "en": "Information hub"
+          },
+          "name": "epo-cat:InformationHub",
+          "scoped_uri": "http://data.europa.eu/a4g/ontology#InformationHub"
+        }
+      ],
+      "properties": [
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "The date of the Payment."
+          },
+          "domain": [
+            {
+              "name": "epo-pay:PaymentInformation",
+              "uri": "http://data.europa.eu/a4g/ontology#PaymentInformation"
+            }
+          ],
+          "label": {
+            "en": "Has payment date"
+          },
+          "name": "epo-pay:hasPaymentDate",
+          "propertyOrigin": "internal",
+          "propertyType": "datatype property",
+          "range": [
+            {
+              "range_curie": "rdf:PlainLiteral",
+              "range_label": {
+                "en": "Plain literal"
+              },
+              "range_puri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral",
+              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2026"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasPaymentDate",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "Relation indicating the Identifier of the Payment."
+          },
+          "domain": [
+            {
+              "name": "epo-pay:PaymentInformation",
+              "uri": "http://data.europa.eu/a4g/ontology#PaymentInformation"
+            }
+          ],
+          "label": {
+            "en": "Has payment identifier"
+          },
+          "name": "epo-pay:hasPaymentIdentifier",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "adms:Identifier",
+              "range_label": {
+                "en": "Identifier"
+              },
+              "range_puri": "http://www.w3.org/ns/adms#Identifier",
+              "range_uri": "http://www.w3.org/ns/adms#Identifier"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasPaymentIdentifier",
+          "usage": {}
+        },
+        {
+          "cardinality": "1",
+          "description": {
+            "en": "Relation indicating the Payment Instruction Information."
+          },
+          "domain": [
+            {
+              "name": "epo-pay:PaymentInformation",
+              "uri": "http://data.europa.eu/a4g/ontology#PaymentInformation"
+            }
+          ],
+          "label": {
+            "en": "Has payment means information"
+          },
+          "name": "epo-pay:hasPaymentMeansInformation",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo-inv:PaymentInstructionsInformation",
+              "range_label": {
+                "en": "Payment instructions information"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#PaymentInstructionsInformation",
+              "range_uri": "http://data.europa.eu/a4g/ontology#PaymentInstructionsInformation"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasPaymentMeansInformation",
+          "usage": {}
+        }
+      ],
+      "rawTags": {
+        "class-usage-scope": "main"
+      },
+      "tags": {
+        "epo:status": "implemented"
+      },
+      "uri": "http://data.europa.eu/a4g/ontology#PaymentInformation",
+      "usage": {
+        "en": "Information about a remittance."
+      }
+    },
+    {
+      "classType": "definition",
+      "description": {
+        "en": "Document sent by the Buyer to the Seller, informing about the payment made."
+      },
+      "label": {
+        "en": "Remittance advice"
+      },
+      "name": "epo-pay:RemittanceAdvice",
+      "parents": [
+        {
+          "label": {
+            "en": "Post award document"
+          },
+          "name": "epo-cat:PostAwardDocument",
+          "scoped_uri": "http://data.europa.eu/a4g/ontology#PostAwardDocument"
+        }
+      ],
+      "properties": [
+        {
+          "cardinality": "1..*",
+          "description": {
+            "en": "Incorporates Remittance Advice Line."
+          },
+          "domain": [
+            {
+              "name": "epo-pay:RemittanceAdvice",
+              "uri": "http://data.europa.eu/a4g/ontology#RemittanceAdvice"
+            }
+          ],
+          "label": {
+            "en": "Comprises remittance advice line"
+          },
+          "name": "epo-pay:comprisesRemittanceAdviceLine",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo-pay:RemittanceAdviceLine",
+              "range_label": {
+                "en": "Remittance advice line"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#RemittanceAdviceLine",
+              "range_uri": "http://data.europa.eu/a4g/ontology#RemittanceAdviceLine"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#comprisesRemittanceAdviceLine",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "Reference to the Payer."
+          },
+          "domain": [
+            {
+              "name": "epo-pay:RemittanceAdvice",
+              "uri": "http://data.europa.eu/a4g/ontology#RemittanceAdvice"
+            }
+          ],
+          "label": {
+            "en": "Has payer reference"
+          },
+          "name": "epo-pay:hasPayerReference",
+          "propertyOrigin": "internal",
+          "propertyType": "datatype property",
+          "range": [
+            {
+              "range_curie": "rdf:PlainLiteral",
+              "range_label": {
+                "en": "Plain literal"
+              },
+              "range_puri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral",
+              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2026"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasPayerReference",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "Relation indicating the Payment Information."
+          },
+          "domain": [
+            {
+              "name": "epo-pay:RemittanceAdvice",
+              "uri": "http://data.europa.eu/a4g/ontology#RemittanceAdvice"
+            }
+          ],
+          "label": {
+            "en": "Has payment information"
+          },
+          "name": "epo-pay:hasPaymentInformation",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo-pay:PaymentInformation",
+              "range_label": {
+                "en": "Payment information"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#PaymentInformation",
+              "range_uri": "http://data.europa.eu/a4g/ontology#PaymentInformation"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasPaymentInformation",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "Reference to the Payment Order."
+          },
+          "domain": [
+            {
+              "name": "epo-pay:RemittanceAdvice",
+              "uri": "http://data.europa.eu/a4g/ontology#RemittanceAdvice"
+            }
+          ],
+          "label": {
+            "en": "Has payment order reference"
+          },
+          "name": "epo-pay:hasPaymentOrderReference",
+          "propertyOrigin": "internal",
+          "propertyType": "datatype property",
+          "range": [
+            {
+              "range_curie": "rdf:PlainLiteral",
+              "range_label": {
+                "en": "Plain literal"
+              },
+              "range_puri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral",
+              "range_uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2026"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasPaymentOrderReference",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "Relation indicating the overall Monetary Value that reduces the amount owed."
+          },
+          "domain": [
+            {
+              "name": "epo-pay:RemittanceAdvice",
+              "uri": "http://data.europa.eu/a4g/ontology#RemittanceAdvice"
+            }
+          ],
+          "label": {
+            "en": "Has total credit amount"
+          },
+          "name": "epo-pay:hasTotalCreditAmount",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:MonetaryValue",
+              "range_label": {
+                "en": "Monetary value"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#MonetaryValue",
+              "range_uri": "http://data.europa.eu/a4g/ontology#MonetaryValue"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasTotalCreditAmount",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "Relation indicating the overall Monetary Value that increases the amount owed."
+          },
+          "domain": [
+            {
+              "name": "epo-pay:RemittanceAdvice",
+              "uri": "http://data.europa.eu/a4g/ontology#RemittanceAdvice"
+            }
+          ],
+          "label": {
+            "en": "Has total debit amount"
+          },
+          "name": "epo-pay:hasTotalDebitAmount",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:MonetaryValue",
+              "range_label": {
+                "en": "Monetary value"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#MonetaryValue",
+              "range_uri": "http://data.europa.eu/a4g/ontology#MonetaryValue"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasTotalDebitAmount",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "Relation indicating the overall paid Monetary Value."
+          },
+          "domain": [
+            {
+              "name": "epo-pay:RemittanceAdvice",
+              "uri": "http://data.europa.eu/a4g/ontology#RemittanceAdvice"
+            }
+          ],
+          "label": {
+            "en": "Has total payment amount"
+          },
+          "name": "epo-pay:hasTotalPaymentAmount",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:MonetaryValue",
+              "range_label": {
+                "en": "Monetary value"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#MonetaryValue",
+              "range_uri": "http://data.europa.eu/a4g/ontology#MonetaryValue"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasTotalPaymentAmount",
+          "usage": {}
+        },
+        {
+          "cardinality": "1",
+          "description": {
+            "en": "Relation indicating that the instance of the concept involves the Buyer."
+          },
+          "domain": [
+            {
+              "name": "epo-pay:RemittanceAdvice",
+              "uri": "http://data.europa.eu/a4g/ontology#RemittanceAdvice"
+            }
+          ],
+          "label": {
+            "en": "Specifies buyer"
+          },
+          "name": "epo:specifiesBuyer",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:Buyer",
+              "range_label": {
+                "en": "Buyer"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#Buyer",
+              "range_uri": "http://data.europa.eu/a4g/ontology#Buyer"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#specifiesBuyer",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "Relation indicating that the instance of the concept involves the Payee."
+          },
+          "domain": [
+            {
+              "name": "epo-pay:RemittanceAdvice",
+              "uri": "http://data.europa.eu/a4g/ontology#RemittanceAdvice"
+            }
+          ],
+          "label": {
+            "en": "Specifies payee"
+          },
+          "name": "epo-inv:specifiesPayee",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo-inv:Payee",
+              "range_label": {
+                "en": "Payee"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#Payee",
+              "range_uri": "http://data.europa.eu/a4g/ontology#Payee"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#specifiesPayee",
+          "usage": {}
+        },
+        {
+          "cardinality": "1",
+          "description": {
+            "en": "Relation indicating that the instance of the concept involves the Seller."
+          },
+          "domain": [
+            {
+              "name": "epo-pay:RemittanceAdvice",
+              "uri": "http://data.europa.eu/a4g/ontology#RemittanceAdvice"
+            }
+          ],
+          "label": {
+            "en": "Specifies seller"
+          },
+          "name": "epo:specifiesSeller",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo-ord:Seller",
+              "range_label": {
+                "en": "Seller"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#Seller",
+              "range_uri": "http://data.europa.eu/a4g/ontology#Seller"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#specifiesSeller",
+          "usage": {}
+        }
+      ],
+      "rawTags": {
+        "class-usage-scope": "main"
+      },
+      "tags": {
+        "epo:status": "implemented"
+      },
+      "uri": "http://data.europa.eu/a4g/ontology#RemittanceAdvice",
+      "usage": {
+        "en": "Document sent by the Buyer to the Seller, informing about the payment made."
+      }
+    },
+    {
+      "classType": "definition",
+      "description": {
+        "en": "Details concerning a given Invoice from the Remittance Advice."
+      },
+      "label": {
+        "en": "Remittance advice line"
+      },
+      "name": "epo-pay:RemittanceAdviceLine",
+      "parents": [
+        {
+          "label": {
+            "en": "Line"
+          },
+          "name": "epo-cat:Line",
+          "scoped_uri": "http://data.europa.eu/a4g/ontology#Line"
+        }
+      ],
+      "properties": [
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "Relation indicating the outstanding amount that remains unpaid or unsettled."
+          },
+          "domain": [
+            {
+              "name": "epo-pay:RemittanceAdviceLine",
+              "uri": "http://data.europa.eu/a4g/ontology#RemittanceAdviceLine"
+            }
+          ],
+          "label": {
+            "en": "Has balance amount"
+          },
+          "name": "epo-pay:hasBalanceAmount",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:MonetaryValue",
+              "range_label": {
+                "en": "Monetary value"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#MonetaryValue",
+              "range_uri": "http://data.europa.eu/a4g/ontology#MonetaryValue"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasBalanceAmount",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "Relation indicating the Monetary Value that reduces the amount owed."
+          },
+          "domain": [
+            {
+              "name": "epo-pay:RemittanceAdviceLine",
+              "uri": "http://data.europa.eu/a4g/ontology#RemittanceAdviceLine"
+            }
+          ],
+          "label": {
+            "en": "Has credit amount"
+          },
+          "name": "epo-pay:hasCreditAmount",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:MonetaryValue",
+              "range_label": {
+                "en": "Monetary value"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#MonetaryValue",
+              "range_uri": "http://data.europa.eu/a4g/ontology#MonetaryValue"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasCreditAmount",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "Relation indicating the Monetary Value that increases the amount owed."
+          },
+          "domain": [
+            {
+              "name": "epo-pay:RemittanceAdviceLine",
+              "uri": "http://data.europa.eu/a4g/ontology#RemittanceAdviceLine"
+            }
+          ],
+          "label": {
+            "en": "Has debit amount"
+          },
+          "name": "epo-pay:hasDebitAmount",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:MonetaryValue",
+              "range_label": {
+                "en": "Monetary value"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#MonetaryValue",
+              "range_uri": "http://data.europa.eu/a4g/ontology#MonetaryValue"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasDebitAmount",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "Reference to an Invoice."
+          },
+          "domain": [
+            {
+              "name": "epo-pay:RemittanceAdviceLine",
+              "uri": "http://data.europa.eu/a4g/ontology#RemittanceAdviceLine"
+            }
+          ],
+          "label": {
+            "en": "Refers to invoice"
+          },
+          "name": "epo-inv:refersToInvoice",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo-inv:Invoice",
+              "range_label": {
+                "en": "Invoice"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#Invoice",
+              "range_uri": "http://data.europa.eu/a4g/ontology#Invoice"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#refersToInvoice",
+          "usage": {}
+        }
+      ],
+      "rawTags": {
+        "class-usage-scope": "main"
+      },
+      "tags": {
+        "epo:status": "implemented"
+      },
+      "uri": "http://data.europa.eu/a4g/ontology#RemittanceAdviceLine",
+      "usage": {
+        "en": "Details concerning a given Invoice from the Remittance Advice."
+      }
+    }
+  ],
+  "datatypes": [
+    {
+      "description": {
+        "en": ""
+      },
+      "label": {
+        "en": "Plain literal"
+      },
+      "scopeduri": "rdf:PlainLiteral",
+      "uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"
+    },
+    {
+      "description": {
+        "en": ""
+      },
+      "label": {
+        "en": "Any URI"
+      },
+      "scopeduri": "xsd:anyURI",
+      "uri": "http://www.w3.org/2001/XMLSchema#anyURI"
+    },
+    {
+      "description": {
+        "en": ""
+      },
+      "label": {
+        "en": "Boolean"
+      },
+      "scopeduri": "xsd:boolean",
+      "uri": "http://www.w3.org/2001/XMLSchema#boolean"
+    },
+    {
+      "description": {
+        "en": ""
+      },
+      "label": {
+        "en": "Date"
+      },
+      "scopeduri": "xsd:date",
+      "uri": "http://www.w3.org/2001/XMLSchema#date"
+    },
+    {
+      "description": {
+        "en": ""
+      },
+      "label": {
+        "en": "Date time"
+      },
+      "scopeduri": "xsd:dateTime",
+      "uri": "http://www.w3.org/2001/XMLSchema#dateTime"
+    },
+    {
+      "description": {
+        "en": ""
+      },
+      "label": {
+        "en": "Decimal"
+      },
+      "scopeduri": "xsd:decimal",
+      "uri": "http://www.w3.org/2001/XMLSchema#decimal"
+    },
+    {
+      "description": {
+        "en": ""
+      },
+      "label": {
+        "en": "Integer"
+      },
+      "scopeduri": "xsd:integer",
+      "uri": "http://www.w3.org/2001/XMLSchema#integer"
+    }
+  ],
+  "prefixes": [
+    {
+      "name": "epo-pay",
+      "uri": "http://data.europa.eu/a4g/ontology#"
+    },
+    {
+      "name": "epo-inv",
+      "uri": "http://data.europa.eu/a4g/ontology#"
+    },
+    {
+      "name": "epo-cat",
+      "uri": "http://data.europa.eu/a4g/ontology#"
+    },
+    {
+      "name": "adms",
+      "uri": "http://www.w3.org/ns/adms#"
+    },
+    {
+      "name": "epo",
+      "uri": "http://data.europa.eu/a4g/ontology#"
+    },
+    {
+      "name": "epo-ord",
+      "uri": "http://data.europa.eu/a4g/ontology#"
+    },
+    {
+      "name": "rdf",
+      "uri": "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    },
+    {
+      "name": "xsd",
+      "uri": "http://www.w3.org/2001/XMLSchema#"
+    }
+  ]
+}
