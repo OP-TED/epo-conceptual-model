@@ -1,254 +1,629 @@
-name: transform ePO and ePO modules XMIs
+name: transform UML model
+
 on:
   push:
     branches:
       - "**"
-      - "!demo"
-      - "!develop"
-      - "!main"
-      - "!master"
     paths:
-      - "implementation/ePO_core/xmi_conceptual_model/ePO_core.xml"
-      - "implementation/eCatalogue/xmi_conceptual_model/eCatalogue.xml"
-      - "implementation/eNotice/xmi_conceptual_model/eNotice.xml"
-      - "implementation/eOrdering/xmi_conceptual_model/eOrdering.xml"
-      - "implementation/eFulfilment/xmi_conceptual_model/eFulfilment.xml"
-      - "implementation/eContract/xmi_conceptual_model/eContract.xml"
-      - "implementation/eInvoicing/xmi_conceptual_model/eInvoicing.xml"
-      - "implementation/eAccess/xmi_conceptual_model/eAccess.xml"
-      - "implementation/eSubmission/xmi_conceptual_model/eSubmission.xml"
-      - "implementation/eEvaluation/xmi_conceptual_model/eEvaluation.xml"
-      - "implementation/eAwarding/xmi_conceptual_model/eAwarding.xml"
-      - "implementation/eQualification/xmi_conceptual_model/eQualification.xml"
-      - "implementation/eRequest/xmi_conceptual_model/eRequest.xml"
-      - "implementation/ePayment/xmi_conceptual_model/ePayment.xml"
+      - "implementation/*/xmi_conceptual_model/*.xml"
+      - ".github/workflows/transform_epo.yml"
+      - ".github/workflows/diff_combined.yml"
+      - ".github/workflows/diff-config.env"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+env:
+  IMPL_DIR: implementation  # Update on.push.paths if changed
 
 jobs:
+  # Find which modules have changed and need processing
+  detect_modules:
+    runs-on: ubuntu-latest
+    outputs:
+      modules: ${{ steps.detect.outputs.modules }}
+      count: ${{ steps.detect.outputs.count }}
+      matrix: ${{ steps.detect.outputs.matrix }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+          fetch-depth: 0  # Needed for git diff
+          sparse-checkout: ${{ env.IMPL_DIR }}
+
+      # On push: only process modules with changed XMI files
+      # On manual dispatch or first push: process all modules
+      - name: Determine modules to process
+        id: detect
+        run: |
+          BEFORE="${{ github.event.before }}"
+          # Null SHA means first push to branch, so no diff possible
+          if [ "${{ github.event_name }}" == "push" ] && [ "$BEFORE" != "0000000000000000000000000000000000000000" ]; then
+            MODULES=$(git diff --name-only "$BEFORE" "${{ github.sha }}" \
+              -- "${IMPL_DIR}/*/xmi_conceptual_model/*.xml" | cut -d/ -f2 | sort -u)
+          fi
+
+          if [ -z "$MODULES" ]; then
+            MODULES=$(ls -d ${IMPL_DIR}/*/xmi_conceptual_model | cut -d/ -f2)
+          fi
+
+          MODULES_JSON=$(echo "$MODULES" | jq -Rsc 'split("\n") | map(select(. != ""))')
+          COUNT=$(echo "$MODULES_JSON" | jq length)
+
+          echo "Detected $COUNT module(s): $MODULES_JSON"
+          echo "modules=$MODULES_JSON" >> $GITHUB_OUTPUT
+          echo "count=$COUNT" >> $GITHUB_OUTPUT
+          echo "matrix={\"module\":$MODULES_JSON}" >> $GITHUB_OUTPUT
+
+  # These jobs run in parallel and upload artifacts
   report_and_glossary:
+    needs: detect_modules
     runs-on: ubuntu-latest
     env:
       OUTPUT_GLOSSARY_PATH: glossary/
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@v4
         with:
           ref: ${{ github.ref }}
 
-      - name: get model2owl
+      - name: Clone model2owl
+        run: git clone --branch 3.1.0 https://github.com/OP-TED/model2owl.git
+
+      - name: Setup model2owl
         run: |
-          git clone --branch alt-saxon-source https://github.com/OP-TED/model2owl.git
-          pwd
+          cd model2owl
+          make get-saxon
+          make create-virtual-env
+          make get-jinja
+          make get-jq
 
-
-      - name: get-saxon
-        run: pwd && cd model2owl && make get-saxon
-
-
-      - name: generate convention report and glossary
+      - name: Generate convention report and glossaries
         run: |
-          AVAILABLE_IMPLEMENTATIONS=(eInvoicing eOrdering eFulfilment eCatalogue eNotice eContract eAccess eSubmission ePO_core eAwarding eEvaluation eQualification eRequest ePayment)
+          MODULES_JSON='${{ needs.detect_modules.outputs.modules }}'
+          AVAILABLE_IMPLEMENTATIONS=($(echo $MODULES_JSON | jq -r '.[]'))
+
           for implementation in "${AVAILABLE_IMPLEMENTATIONS[@]}"
           do
             echo "-------------------${implementation}---------------------------------"
-            sed -i "s/test\/ePO-default-config/..\/implementation\/${implementation}\/model2owl-config/g" model2owl/config-proxy.xsl
-            cat model2owl/config-proxy.xsl
+            sed -i "s|test/ePO-default-config|../implementation/${implementation}/model2owl-config|g" model2owl/config-proxy.xsl
 
-
-            CM_FILE_NAME=$(echo "${implementation}.xml")
-            CM_FILE_PATH=$(echo "implementation/$implementation/xmi_conceptual_model/${CM_FILE_NAME}")
+            CM_FILE_PATH="implementation/$implementation/xmi_conceptual_model/${implementation}.xml"
             NS_XML_FILE_PATH="../implementation/${implementation}/model2owl-config/namespaces.xml"
-
-            OUTPUT_CONVENTION_REPORT_PATH=$(echo "implementation/$implementation/conventions_report/")
-            OUTPUT_GLOSSARY_FILE_NAME=$(echo "${implementation}_glossary.html")
-            ls -la implementation/$implementation/xmi_conceptual_model/
-            echo "CM_FILE_PATH is $CM_FILE_PATH"
-            echo "NS_XML_FILE_PATH is $NS_XML_FILE_PATH"
-            echo "OUTPUT_REPORT_PATH is $OUTPUT_CONVENTION_REPORT_PATH"
-            echo "OUTPUT_GLOSSARY_FILE_NAME is $OUTPUT_GLOSSARY_FILE_NAME"
+            OUTPUT_CONVENTION_REPORT_PATH="implementation/$implementation/conventions_report/"
 
             mkdir -p $OUTPUT_CONVENTION_REPORT_PATH
             rm -f $OUTPUT_CONVENTION_REPORT_PATH*.html || true
-            ls -la
+
             cd model2owl
-            ls -la
             make generate-convention-report \
               XMI_INPUT_FILE_PATH=../$CM_FILE_PATH \
               OUTPUT_CONVENTION_REPORT_PATH=../$OUTPUT_CONVENTION_REPORT_PATH \
               NAMESPACES_USER_XML_FILE_PATH=${NS_XML_FILE_PATH}
-            make generate-glossary XMI_INPUT_FILE_PATH=../$CM_FILE_PATH \
+            make generate-glossary \
+              XMI_INPUT_FILE_PATH=../$CM_FILE_PATH \
               OUTPUT_GLOSSARY_PATH=../$OUTPUT_GLOSSARY_PATH \
               NAMESPACES_USER_XML_FILE_PATH=${NS_XML_FILE_PATH}
+            make generate-asciidoc-glossary \
+              XMI_INPUT_FILE_PATH=../$CM_FILE_PATH \
+              OUTPUT_GLOSSARY_PATH=../$OUTPUT_GLOSSARY_PATH \
+              OUTPUT_FOLDER_PATH=$(mktemp -d)
 
-            sed -i "s/..\/implementation\/${implementation}\/model2owl-config/test\/ePO-default-config/g" config-proxy.xsl
+            sed -i "s|../implementation/${implementation}/model2owl-config|test/ePO-default-config|g" config-proxy.xsl
             cd ..
           done
-        shell: bash
 
-      - name: merge implementations xmi files into one
+      - name: Merge XMI files and generate combined glossary
         run: |
-          AVAILABLE_IMPLEMENTATIONS=(eInvoicing eOrdering eFulfilment eCatalogue eNotice eContract eAccess eSubmission ePO_core eAwarding eEvaluation eQualification eRequest ePayment)
+          MODULES_JSON='${{ needs.detect_modules.outputs.modules }}'
+          AVAILABLE_IMPLEMENTATIONS=($(echo $MODULES_JSON | jq -r '.[]'))
+
           cd model2owl
           mkdir -p merge-xmis
           for implementation in "${AVAILABLE_IMPLEMENTATIONS[@]}"
           do
-            cp ../implementation/$implementation/xmi_conceptual_model/e*.xml merge-xmis
+            cp ../implementation/$implementation/xmi_conceptual_model/*.xml merge-xmis/
           done
-          ls merge-xmis
 
-          make merge-xmi FIRST_XMI_TO_BE_MERGED_FILE_PATH=merge-xmis/ePO_core.xml MERGED_XMIS_FILE_NAME=ePO_combined.xmi
+          FIRST_XMI=$(ls merge-xmis/*.xml | head -1)
+          make merge-xmi FIRST_XMI_TO_BE_MERGED_FILE_PATH=${FIRST_XMI}
 
-          echo "merged XMI file"
-          ls output/combined-xmi
-        shell: bash
+          NS_XML_FILE_PATH=$(realpath $(find ../implementation -type f -path '*/model2owl-config/namespaces.xml' | head -1))
 
-      - name: change config to core
-        run: |
-          sed -i "s/test\/ePO-default-config/..\/implementation\/ePO_core\/model2owl-config/g" model2owl/config-proxy.xsl
-          cat model2owl/config-proxy.xsl
+          # use the config file of the chosen module
+          cp config-proxy.xsl config-proxy.xsl.default
+          MODULE_CONFIG_DIR=$(dirname "$NS_XML_FILE_PATH")
+          sed -i "s|test/ePO-default-config|${MODULE_CONFIG_DIR}|g" config-proxy.xsl
 
-      - name: generate combined glossary from the merged xmi
-        run: |
-          # get a namespaces file from an arbitrary module
-          NS_XML_FILE_PATH=$(realpath $(find . -type f -path './implementation/*/model2owl-config/namespaces.xml' | head -1))
-          echo "NS_XML_FILE_PATH is $NS_XML_FILE_PATH"
-          cd model2owl
           make generate-glossary \
-            XMI_INPUT_FILE_PATH=output/combined-xmi/ePO_combined.xmi \
+            XMI_INPUT_FILE_PATH=output/combined-xmi/ontologies-combined.xmi \
             OUTPUT_GLOSSARY_PATH=../$OUTPUT_GLOSSARY_PATH \
             NAMESPACES_USER_XML_FILE_PATH=${NS_XML_FILE_PATH}
+          make generate-asciidoc-glossary \
+            XMI_INPUT_FILE_PATH=output/combined-xmi/ontologies-combined.xmi \
+            OUTPUT_GLOSSARY_PATH=../$OUTPUT_GLOSSARY_PATH \
+            OUTPUT_FOLDER_PATH=$(mktemp -d)
 
-#      - name: generate widoco
-#        run: |
-#          cd model2owl
-#          make generate-html-docs-from-rdf WIDOCO_RDF_INPUT_FILE_PATH=../implementation/ePO/owl_ontology/ePO_CM-core.rdf WIDOCO_OUTPUT_FOLDER_PATH=../implementation/ePO/widoco
-#        shell: bash
+          mv config-proxy.xsl.default config-proxy.xsl
 
-      - name: remove unnecessary files
+      - name: Convert AsciiDoc glossaries to HTML
         run: |
-          sudo rm -rf model2owl
-        shell: bash
+          sudo apt-get update && sudo apt-get install -y asciidoctor
+          for src in $(find "${OUTPUT_GLOSSARY_PATH}" -maxdepth 1 -name '*_glossary.adoc'); do
+            asciidoctor \
+              --attribute source-highlighter=rouge \
+              --attribute toc=left \
+              --attribute toclevels=3 \
+              --out-file "${src}.html" "${src}"
+          done
 
-      - name: commit files
-        id: commit
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "github-actions"
-          git pull
-          git status
-
-          git add .
-          if [ -z "$(git status --porcelain)" ]; then
-          echo "::set-output name=push::false"
-          else
-          git commit -m "Adding convention report and glossary files"
-          echo "::set-output name=push::true"
-          fi
-        shell: bash
-
-      - name: Push changes
-        if: steps.commit.outputs.push == 'true'
-        uses: ad-m/github-push-action@master
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ github.ref }}
+          name: report-glossary-output
+          path: |
+            glossary/
+            implementation/*/conventions_report/
+          retention-days: 1
+
   transform:
-    needs: report_and_glossary
+    needs: detect_modules
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@v4
         with:
           ref: ${{ github.ref }}
 
-      - name: get model2owl
+      - name: Clone model2owl
+        run: git clone --branch 3.1.0 https://github.com/OP-TED/model2owl.git
+
+      - name: Setup model2owl
         run: |
-          git clone --branch alt-saxon-source https://github.com/OP-TED/model2owl.git
-          pwd
+          cd model2owl
+          make get-saxon
+          make create-virtual-env
+          make get-rdflib
 
-      - name: get-saxon
-        run: pwd && cd model2owl && make get-saxon
-
-      - name: get-rdflib
-        run: cd model2owl && make create-virtual-env && make get-rdflib
-
-      - name: transform step
+      - name: Transform XMI to OWL/SHACL
         run: |
-          AVAILABLE_IMPLEMENTATIONS=(eInvoicing eOrdering eFulfilment eCatalogue eNotice eContract eAccess eSubmission ePO_core eAwarding eEvaluation eQualification eRequest ePayment)
+          MODULES_JSON='${{ needs.detect_modules.outputs.modules }}'
+          AVAILABLE_IMPLEMENTATIONS=($(echo $MODULES_JSON | jq -r '.[]'))
+
           for implementation in "${AVAILABLE_IMPLEMENTATIONS[@]}"
           do
             echo "-------------------${implementation} transform---------------------------------"
-            sed -i "s/test\/ePO-default-config/..\/implementation\/${implementation}\/model2owl-config/g" model2owl/config-proxy.xsl
-            cat model2owl/config-proxy.xsl
+            sed -i "s|test/ePO-default-config|../implementation/${implementation}/model2owl-config|g" model2owl/config-proxy.xsl
 
-
-            CM_FILE_NAME=$(echo "${implementation}.xml")
+            CM_FILE_PATH="implementation/$implementation/xmi_conceptual_model/${implementation}.xml"
             NS_XML_FILE_PATH="../implementation/${implementation}/model2owl-config/namespaces.xml"
-            CM_FILE_PATH=$(echo "implementation/$implementation/xmi_conceptual_model/${CM_FILE_NAME}")
-            OUTPUT_PATH_OWL=$(echo "implementation/$implementation/owl_ontology/")
-            OUTPUT_PATH_SHACL=$(echo "implementation/$implementation/shacl_shapes/")
-
-            ls -la implementation/$implementation/xmi_conceptual_model/
-            echo "CM_FILE_PATH is $CM_FILE_PATH"
-            echo "NS_XML_FILE_PATH is $NS_XML_FILE_PATH"
-            echo "OUTPUT_PATH_OWL is $OUTPUT_PATH_OWL"
-            echo "OUTPUT_PATH_SHACL is $OUTPUT_PATH_SHACL"
-
+            OUTPUT_PATH_OWL="implementation/$implementation/owl_ontology/"
+            OUTPUT_PATH_SHACL="implementation/$implementation/shacl_shapes/"
+            MODULE_DIR=$(realpath "implementation/${implementation}")
+            IMPORTS_XML_FILE_PATH="$MODULE_DIR/model2owl-config/imports.xml"
 
             cd model2owl
-            ls -la
-            echo "+++++++++++++++++transform to rdf++++++++++++++++++++++++++++"
             make owl-core \
               XMI_INPUT_FILE_PATH=../$CM_FILE_PATH \
               OUTPUT_FOLDER_PATH=../$OUTPUT_PATH_OWL \
-              NAMESPACES_USER_XML_FILE_PATH=${NS_XML_FILE_PATH}
+              NAMESPACES_USER_XML_FILE_PATH=${NS_XML_FILE_PATH} \
+              IMPORTS_XML_FILE_PATH=${IMPORTS_XML_FILE_PATH}
             make owl-restrictions \
               XMI_INPUT_FILE_PATH=../$CM_FILE_PATH \
               OUTPUT_FOLDER_PATH=../$OUTPUT_PATH_OWL \
-              NAMESPACES_USER_XML_FILE_PATH=${NS_XML_FILE_PATH}
+              NAMESPACES_USER_XML_FILE_PATH=${NS_XML_FILE_PATH} \
+              IMPORTS_XML_FILE_PATH=${IMPORTS_XML_FILE_PATH}
             make shacl \
               XMI_INPUT_FILE_PATH=../$CM_FILE_PATH \
               OUTPUT_FOLDER_PATH=../$OUTPUT_PATH_SHACL \
-              NAMESPACES_USER_XML_FILE_PATH=${NS_XML_FILE_PATH}
+              NAMESPACES_USER_XML_FILE_PATH=${NS_XML_FILE_PATH} \
+              IMPORTS_XML_FILE_PATH=${IMPORTS_XML_FILE_PATH}
 
-            echo "+++++++++++++++++transform to turtle++++++++++++++++++++++++++++"
-            echo $(ls ${OUTPUT_PATH_OWL}*.rdf)
             make convert-rdf-to-turtle \
               ONTOLOGY_FOLDER_PATH=../$OUTPUT_PATH_OWL \
               NAMESPACES_USER_XML_FILE_PATH=${NS_XML_FILE_PATH}
-            echo $(ls ${OUTPUT_PATH_SHACL}*.rdf)
             make convert-rdf-to-turtle \
               ONTOLOGY_FOLDER_PATH=../$OUTPUT_PATH_SHACL \
               NAMESPACES_USER_XML_FILE_PATH=${NS_XML_FILE_PATH}
-            echo "-------------------end transform---------------------------------"
 
-            sed -i "s/..\/implementation\/${implementation}\/model2owl-config/test\/ePO-default-config/g" config-proxy.xsl
+            sed -i "s|../implementation/${implementation}/model2owl-config|test/ePO-default-config|g" config-proxy.xsl
             cd ..
           done
-        shell: bash
 
-      - name: remove unnecessary files
-        run: |
-          sudo rm -rf model2owl
-        shell: bash
-
-      - name: commit files
-        id: commit
-        run: |
-               git config --local user.email "action@github.com"
-               git config --local user.name "github-actions"
-               git pull
-               git status
-
-               git add .
-               if [ -z "$(git status --porcelain)" ]; then
-               echo "::set-output name=push::false"
-               else
-               git commit -m "Adding transformation files"
-               echo "::set-output name=push::true"
-               fi
-        shell: bash
-
-      - name: Push changes
-        if: steps.commit.outputs.push == 'true'
-        uses: ad-m/github-push-action@master
+      - name: Upload OWL artifact
+        uses: actions/upload-artifact@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ github.ref }}
+          name: transform-owl-output
+          path: implementation/*/owl_ontology/
+          retention-days: 1
+
+      - name: Upload SHACL artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: transform-shacl-output
+          path: implementation/*/shacl_shapes/
+          retention-days: 1
+
+  generate_jsonld_context:
+    needs: detect_modules
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+
+      - name: Clone model2owl
+        run: git clone --branch 3.1.0 https://github.com/OP-TED/model2owl.git
+
+      - name: Setup model2owl
+        run: |
+          cd model2owl
+          make get-saxon
+          make create-virtual-env
+          make get-rdflib
+
+      - name: Generate JSON-LD context
+        run: |
+          MODULES_JSON='${{ needs.detect_modules.outputs.modules }}'
+          AVAILABLE_IMPLEMENTATIONS=($(echo $MODULES_JSON | jq -r '.[]'))
+
+          for implementation in "${AVAILABLE_IMPLEMENTATIONS[@]}"
+          do
+            echo "-------------------${implementation} JSON-LD context---------------------------------"
+            sed -i "s|test/ePO-default-config|../implementation/${implementation}/model2owl-config|g" model2owl/config-proxy.xsl
+
+            CM_FILE_PATH="implementation/$implementation/xmi_conceptual_model/${implementation}.xml"
+            NS_XML_FILE_PATH="../implementation/${implementation}/model2owl-config/namespaces.xml"
+            OUTPUT_PATH_JSONLD="implementation/$implementation/jsonld_context/"
+
+            mkdir -p $OUTPUT_PATH_JSONLD
+            cd model2owl
+            make gen-enriched-ns-file \
+              NAMESPACES_USER_XML_FILE_PATH=${NS_XML_FILE_PATH}
+            make generate-jsonld-context \
+              XMI_INPUT_FILE_PATH=../$CM_FILE_PATH \
+              OUTPUT_FOLDER_PATH=../$OUTPUT_PATH_JSONLD \
+              NAMESPACES_USER_XML_FILE_PATH=${NS_XML_FILE_PATH}
+
+            sed -i "s|../implementation/${implementation}/model2owl-config|test/ePO-default-config|g" config-proxy.xsl
+            cd ..
+          done
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: jsonld-output
+          path: implementation/*/jsonld_context/
+          retention-days: 1
+
+  # Needs SHACL files from transform
+  generate_respec:
+    needs: [detect_modules, transform]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+
+      - name: Download SHACL artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: transform-shacl-output
+          path: implementation/
+
+      - name: Clone model2owl
+        run: git clone --branch 3.1.0 https://github.com/OP-TED/model2owl.git
+
+      - name: Setup model2owl
+        run: |
+          cd model2owl
+          make get-saxon
+          make create-virtual-env
+          make get-rdflib
+          make get-jinja
+          make get-jq
+
+      - name: Generate ReSpec documentation
+        run: |
+          MODULES_JSON='${{ needs.detect_modules.outputs.modules }}'
+          AVAILABLE_IMPLEMENTATIONS=($(echo $MODULES_JSON | jq -r '.[]'))
+
+          for implementation in "${AVAILABLE_IMPLEMENTATIONS[@]}"
+          do
+            echo "-------------------${implementation} ReSpec---------------------------------"
+            sed -i "s|test/ePO-default-config|../implementation/${implementation}/model2owl-config|g" model2owl/config-proxy.xsl
+
+            CM_FILE_PATH="implementation/$implementation/xmi_conceptual_model/${implementation}.xml"
+            NS_XML_FILE_PATH="../implementation/${implementation}/model2owl-config/namespaces.xml"
+            OUTPUT_PATH_RESPEC="implementation/$implementation/respec/"
+            RESPEC_ASSETS_PATH="../implementation/${implementation}/respec_resources/assets"
+            MODULE_DIR=$(realpath "implementation/${implementation}")
+            METADATA_JSON_PATH="$MODULE_DIR/model2owl-config/metadata.json"
+
+            ALTERED_METADATA_JSON_PATH=$(mktemp --suffix=".json")
+            jq --arg moduleDir "$MODULE_DIR" '
+              .metadata.projectLocalResources |= map(
+                .path = ($moduleDir + "/" + .path)
+              )
+            ' $METADATA_JSON_PATH > $ALTERED_METADATA_JSON_PATH
+
+            mkdir -p $OUTPUT_PATH_RESPEC
+            cd model2owl
+
+            make gen-enriched-ns-file \
+              NAMESPACES_USER_XML_FILE_PATH=${NS_XML_FILE_PATH}
+            make respec-json \
+              XMI_INPUT_FILE_PATH=../$CM_FILE_PATH \
+              OUTPUT_FOLDER_PATH=../$OUTPUT_PATH_RESPEC \
+              NAMESPACES_USER_XML_FILE_PATH=${NS_XML_FILE_PATH}
+
+            if [ -d "../implementation/${implementation}/respec_resources/templates" ]; then
+              for template_file in "../implementation/${implementation}/respec_resources/templates"/*.j2; do
+                if [ -f "$template_file" ]; then
+                  template_name=$(basename "$template_file")
+                  if [ "$template_name" != "base.j2" ]; then
+                    cp -f "$template_file" "respec-resources/templates/"
+                  fi
+                fi
+              done
+            fi
+
+            rm -rf respec-resources/assets
+            cp -rf "../implementation/${implementation}/respec_resources/assets" respec-resources/
+
+            make generate-respec \
+              XMI_INPUT_FILE_PATH=../$CM_FILE_PATH \
+              RESPEC_OUTPUT_DIR=../$OUTPUT_PATH_RESPEC \
+              OUTPUT_FOLDER_PATH=../$OUTPUT_PATH_RESPEC \
+              RESPEC_INPUT_ASSETS_DIR=${RESPEC_ASSETS_PATH} \
+              RESPEC_DATA_JSON_PATH=../$OUTPUT_PATH_RESPEC/${implementation}_respec.json \
+              RESPEC_METADATA_JSON_PATH=${ALTERED_METADATA_JSON_PATH} \
+              NAMESPACES_USER_XML_FILE_PATH=${NS_XML_FILE_PATH}
+
+            if [ -d "../implementation/${implementation}/respec_resources/js" ]; then
+              rm -rf ../$OUTPUT_PATH_RESPEC/js
+              cp -rf "../implementation/${implementation}/respec_resources/js" ../$OUTPUT_PATH_RESPEC/
+            fi
+
+            mkdir -p ../$OUTPUT_PATH_RESPEC/assets/shacl
+            cp -f ../implementation/$implementation/shacl_shapes/${implementation}_shapes.ttl ../$OUTPUT_PATH_RESPEC/assets/shacl/ontology_shapes.ttl
+            if [ -f "../implementation/$implementation/respec_resources/assets/shacl/context_shapes.jsonld" ]; then
+              cp -f "../implementation/$implementation/respec_resources/assets/shacl/context_shapes.jsonld" ../$OUTPUT_PATH_RESPEC/assets/shacl/
+            fi
+
+            sed -i "s|../implementation/${implementation}/model2owl-config|test/ePO-default-config|g" config-proxy.xsl
+            cd ..
+          done
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: respec-output
+          path: implementation/*/respec/
+          retention-days: 1
+
+  # Collect all artifacts and commit to repo
+  commit_transform:
+    needs: [detect_modules, report_and_glossary, transform, generate_jsonld_context, generate_respec]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+          fetch-depth: 0
+
+      - name: Download all transform artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts/
+
+      - name: Merge artifacts into workspace
+        run: |
+          echo "=== Downloaded artifacts ==="
+          find artifacts -type f | head -50
+
+          if [ -d "artifacts/report-glossary-output" ]; then
+            cp -r artifacts/report-glossary-output/glossary . 2>/dev/null || true
+            cp -r artifacts/report-glossary-output/implementation/* implementation/ 2>/dev/null || true
+          fi
+
+          if [ -d "artifacts/transform-owl-output" ]; then
+            cp -r artifacts/transform-owl-output/* implementation/ 2>/dev/null || true
+          fi
+
+          if [ -d "artifacts/transform-shacl-output" ]; then
+            cp -r artifacts/transform-shacl-output/* implementation/ 2>/dev/null || true
+          fi
+
+          if [ -d "artifacts/jsonld-output" ]; then
+            cp -r artifacts/jsonld-output/* implementation/ 2>/dev/null || true
+          fi
+
+          if [ -d "artifacts/respec-output" ]; then
+            cp -r artifacts/respec-output/* implementation/ 2>/dev/null || true
+          fi
+
+          rm -rf artifacts/
+
+          echo "=== Merged files ==="
+          git status --short | head -30
+
+      - name: Commit and push transform outputs
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git add .
+
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "No changes to commit"
+          else
+            git commit -m "chore(ci): transform ${{ needs.detect_modules.outputs.count }} module(s) #${{ github.run_number }} [skip ci]"
+            git push
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  # Compare new outputs against previous version
+  diff:
+    needs: [detect_modules, commit_transform]
+    uses: ./.github/workflows/diff_combined.yml
+    with:
+      modules: ${{ needs.detect_modules.outputs.modules }}  # Pass all modules
+      from_workflow_artifacts: true  # Use artifacts instead of committed files
+    secrets: inherit
+
+  # Commit diff reports to repo (runs even if some diffs failed)
+  commit_diff:
+    needs: [detect_modules, diff]
+    if: always() && !cancelled()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+          fetch-depth: 0
+
+      - name: Pull latest changes  # commit_transform may have pushed
+        run: git pull origin ${{ github.ref_name }}
+
+      - name: Download diff artifacts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: diff-*
+          path: artifacts/
+
+      - name: Merge diff reports into workspace
+        run: |
+          echo "=== Downloaded diff artifacts ==="
+          find artifacts -type f | head -20
+
+          # Track which modules had successful diff artifacts
+          SUCCESSFUL_MODULES=""
+          mkdir -p diff-reports
+          for diff_dir in artifacts/diff-*/; do
+            if [ -d "$diff_dir" ]; then
+              module_name=$(basename "$diff_dir" | sed 's/diff-//')
+              SUCCESSFUL_MODULES="${SUCCESSFUL_MODULES} ${module_name}"
+              mkdir -p "diff-reports/${module_name}"
+              cp -r "${diff_dir}"* "diff-reports/${module_name}/" 2>/dev/null || true
+            fi
+          done
+          echo "SUCCESSFUL_DIFF_MODULES=${SUCCESSFUL_MODULES}" >> $GITHUB_ENV
+
+          rm -rf artifacts/
+
+          echo "=== Merged diff reports ==="
+          git status --short | head -20
+
+      - name: Commit and push diff reports
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git add diff-reports/
+
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "No diff reports to commit"
+          else
+            git commit -m "chore(ci): diff ${{ needs.detect_modules.outputs.count }} module(s) #${{ github.run_number }} [skip ci]"
+            git push
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Generate workflow summary
+        run: |
+          MODULES_JSON='${{ needs.detect_modules.outputs.modules }}'
+          COUNT='${{ needs.detect_modules.outputs.count }}'
+          REPO_URL="${{ github.server_url }}/${{ github.repository }}"
+
+          cat >> $GITHUB_STEP_SUMMARY << EOF
+          ## ${{ github.workflow }} - Run #${{ github.run_number }}
+
+          **Modules processed:** ${COUNT}
+          EOF
+
+          echo "$MODULES_JSON" | jq -r '.[]' | while read module; do
+            if [[ " ${SUCCESSFUL_DIFF_MODULES} " =~ " ${module} " ]]; then
+              echo "- ${module} → [diff-reports/${module}/](${REPO_URL}/tree/${{ github.ref_name }}/diff-reports/${module})" >> $GITHUB_STEP_SUMMARY
+            else
+              echo "- ${module} — No preexisting files to compare to" >> $GITHUB_STEP_SUMMARY
+            fi
+          done
+
+          cat >> $GITHUB_STEP_SUMMARY << EOF
+
+          **Commits:**
+          - [Transform outputs](${REPO_URL}/commits/${{ github.ref_name }})
+          - [Diff reports](${REPO_URL}/commits/${{ github.ref_name }})
+          EOF
+
+  # # Build and deploy GitHub Pages
+  # build_pages:
+  #   needs: [detect_modules, commit_transform]
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/configure-pages@v4
+
+  #     - name: Download respec artifact
+  #       uses: actions/download-artifact@v4
+  #       with:
+  #         name: respec-output
+  #         path: respec-artifacts/
+
+  #     - name: Prepare Pages content
+  #       run: |
+  #         MODULES_JSON='${{ needs.detect_modules.outputs.modules }}'
+  #         AVAILABLE_IMPLEMENTATIONS=($(echo $MODULES_JSON | jq -r '.[]'))
+
+  #         mkdir -p _site
+  #         FOUND_IMPLEMENTATIONS=()
+
+  #         for implementation in "${AVAILABLE_IMPLEMENTATIONS[@]}"
+  #         do
+  #           if [ -d "respec-artifacts/$implementation/respec" ]; then
+  #             mkdir -p "_site/$implementation"
+  #             cp -r "respec-artifacts/$implementation/respec/"* "_site/$implementation/"
+  #             FOUND_IMPLEMENTATIONS+=("$implementation")
+  #           fi
+  #         done
+
+  #         cat > _site/index.html << 'HTMLEOF'
+  #         <!DOCTYPE html>
+  #         <html lang="en">
+  #         <head>
+  #             <meta charset="UTF-8">
+  #             <title>Ontology Documentation</title>
+  #             <style>
+  #                 body { font-family: sans-serif; margin: 40px; background: #f8f9fa; }
+  #                 .container { max-width: 800px; margin: 0 auto; background: white; padding: 40px; border-radius: 8px; }
+  #                 h1 { color: #2c3e50; }
+  #                 .card { border: 1px solid #ddd; padding: 20px; margin: 10px 0; border-radius: 8px; }
+  #                 a { color: #3498db; text-decoration: none; }
+  #             </style>
+  #         </head>
+  #         <body>
+  #             <div class="container">
+  #                 <h1>Ontology Documentation</h1>
+  #         HTMLEOF
+
+  #         for impl in "${FOUND_IMPLEMENTATIONS[@]}"; do
+  #           echo "        <div class=\"card\"><a href=\"./$impl/\">$impl</a></div>" >> _site/index.html
+  #         done
+
+  #         echo "    </div></body></html>" >> _site/index.html
+
+  #     - uses: actions/upload-pages-artifact@v3
+
+  # deploy_pages:
+  #   needs: build_pages
+  #   environment:
+  #     name: github-pages
+  #     url: ${{ steps.deployment.outputs.page_url }}
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Deploy to GitHub Pages
+  #       id: deployment
+  #       uses: actions/deploy-pages@v4
