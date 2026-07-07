@@ -50,7 +50,7 @@
     <xsl:variable name="generateReusedConceptsOWLrestrictions" select="fn:false()"/>
     <xsl:variable name="generateReusedConceptsGlossary" select="fn:false()"/>
     <xsl:variable name="generateReusedConceptsJSONLDcontext" select="fn:false()"/>
-    <xsl:variable name="commentsGeneration" select="fn:true()"/>
+    <xsl:variable name="commentsGeneration" select="fn:false()"/>
     <xsl:variable name="commentProperty" select="'skos:editorialNote'"/>
     <xsl:variable name="usageNoteTagName" select="'skos:note'"/>
     <xsl:variable name="excludedTagNamesList" select="($statusProperty, $cvConstraintLevelProperty)"/>

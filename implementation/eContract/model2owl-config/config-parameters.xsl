@@ -91,7 +91,7 @@
     <xsl:variable name="generateReusedConceptsJSONLDcontext" select="fn:false()"/>
     
     <!--    This set of variables controls generation of comments and how they will generate in the output -->
-    <xsl:variable name="commentsGeneration" select="fn:true()"/>
+    <xsl:variable name="commentsGeneration" select="fn:false()"/>
     <xsl:variable name="commentProperty" select="'skos:editorialNote'"/>
     
     <!-- Tag name/key that is used to describe a usage note of a class or property-->
