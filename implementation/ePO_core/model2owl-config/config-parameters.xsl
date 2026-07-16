@@ -124,7 +124,7 @@
     <xsl:variable name="statusProperty" select="'epo:status'"/>
     <xsl:variable name="validStatusesList" select="('proposed', 'approved', 'implemented')"/>
     <xsl:variable name="excludedElementStatusesList" select="('proposed', 'approved')"/>
-    <xsl:variable name="unspecifiedStatusInterpretation" select="'proposed'"/>
+    <xsl:variable name="unspecifiedStatusInterpretation" select="'implemented'"/>
     
     <!-- This variable control if Object and Realisation are generated -->
     <xsl:variable name="generateObjectsAndRealisations" select="fn:false()"/>
