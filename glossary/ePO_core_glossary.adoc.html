@@ -2063,6 +2063,12 @@ epo:ProcurementElement</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">xsd:boolean [0..1]</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:ReviewInformation</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:hasElementReference</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Reference to the class instance in the current notice.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">xsd:anyURI [0..&#42;]</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo:ReviewIrregularitySummary</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo:hasReviewIrregularityCount</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The number of requests for a given irregularity.</p></td>
@@ -2479,7 +2485,8 @@ dct:Location → at-voc:nuts [0..1]</p></td>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo:hasCertification</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Relation to the proof of conformance.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">foaf:Agent → epo:Certificate [0..&#42;]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">foaf:Agent → epo:Certificate [0..&#42;]<br>
+epo-cat:AbstractItem → epo:Certificate [0..&#42;]</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo:ownsSystem</p></td>
@@ -2507,7 +2514,9 @@ org:Organization → cv:Channel [0..&#42;]</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating the Agent that fulfills the function of the instance of the concept.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo:AgentInRole → foaf:Agent [1]<br>
 epo:JuryMember → person:Person [0..1]<br>
-epo:UniqueResponsibleOfTheProcurement → person:Person [0..1]</p></td>
+epo:UniqueResponsibleOfTheProcurement → person:Person [0..1]<br>
+epo-ful:TransportMeansOperator → foaf:Person [0..1]<br>
+epo-eva:Evaluator → person:Person [0..1]</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo:providesDocumentation</p></td>
@@ -2604,7 +2613,8 @@ epo:NonPublishedInformation → epo:Notice [1]</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo:relatesToEFormSectionIdentifier</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Is about a specific eForms section.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo:ChangeInformation → adms:Identifier [1..&#42;]<br>
-epo:ReviewInformation → adms:Identifier [0..1]</p></td>
+epo:ReviewInformation → adms:Identifier [0..1]<br>
+epo-con:ContractModificationInformation → adms:Identifier [0..&#42;]</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo:hasEndpointIdentifier</p></td>
@@ -2672,7 +2682,8 @@ epo:FrameworkAgreement → epo:LotAwardOutcome [0..&#42;]</p></td>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo:hasLotReference</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating the instance of the concept refers to a Lot.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">epo:Contract → epo:Lot [0..&#42;]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:Contract → epo:Lot [0..&#42;]<br>
+epo-inv:Invoice → epo:Lot [1..&#42;]</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo:hasPurpose</p></td>
@@ -2724,13 +2735,21 @@ epo:ProcurementElement → epo:Term [0..&#42;]</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo:ContractLotCompletionInformation → epo:Lot [0..1]<br>
 cccev:InformationRequirement → epo:Lot [0..&#42;]<br>
 epo:LotAwardOutcome → epo:Lot [1]<br>
-epo:ProcurementProcessInformation → epo:Lot [0..1]</p></td>
+epo:ProcurementProcessInformation → epo:Lot [0..1]<br>
+epo-not:CompletionNotice → epo:Lot [1..&#42;]<br>
+epo-not:ContractModificationNotice → epo:Lot [1..&#42;]<br>
+epo-not:ResultNotice → epo:Lot [1..&#42;]<br>
+epo-qua:EvidenceRequest → epo:Lot [1..&#42;]<br>
+epo-qua:EvidenceSubmission → epo:Lot [1..&#42;]</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo:concernsLotGroup</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Relates to Lot Group.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo:ContractLotCompletionInformation → epo:LotGroup [0..1]<br>
-cccev:InformationRequirement → epo:LotGroup [0..&#42;]</p></td>
+cccev:InformationRequirement → epo:LotGroup [0..&#42;]<br>
+epo-not:CompletionNotice → epo:LotGroup [0..&#42;]<br>
+epo-not:ContractModificationNotice → epo:LotGroup [0..&#42;]<br>
+epo-not:ResultNotice → epo:LotGroup [0..&#42;]</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo:providesContractTotalPaymentValue</p></td>
@@ -2745,7 +2764,9 @@ cccev:InformationRequirement → epo:LotGroup [0..&#42;]</p></td>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo:refersToContract</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Reference to a Contract.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">epo:ContractLotCompletionInformation → epo:Contract [1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:ContractLotCompletionInformation → epo:Contract [1]<br>
+epo-inv:Invoice → epo:Contract [0..1]<br>
+epo-req:RequestForOffer → epo:Contract [0..&#42;]</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo:definesContractDuration</p></td>
@@ -2845,6 +2866,11 @@ org:Organization → epo:Subcontractor [0..&#42;]</p></td>
 epo:ProcedureTerm → epo:Prize [0..&#42;]</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:hasDirectAwardJustification</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">List of reasons for using a procedure which allows awarding contracts directly without publishing a notice.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:DirectAwardTerm → at-voc:direct-award-justification [0..1]</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo:refersToPreviousProcedure</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Reference to a previous procedure. Additional Information: In the case of Direct Award Terms, this property points to a previous Procedure justifying the use of Direct Award without a prior publication.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo:DirectAwardTerm → epo:Procedure [0..1]</p></td>
@@ -2862,7 +2888,8 @@ epo:ProcedureTerm → epo:Prize [0..&#42;]</p></td>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo:hasUUID</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A universally unique identifier for an instance of this document.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">epo:Document → adms:Identifier [0..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:Document → adms:Identifier [0..1]<br>
+epo-cat:CatalogueResponseLine → adms:Identifier [1]</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo:hasDocumentType</p></td>
@@ -2938,7 +2965,9 @@ epo:ProcedureTerm → epo:Prize [0..&#42;]</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo:hasValidityPeriod</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The relation indicating until when a given instance of a concept is applicable.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">cccev:Evidence → time:Interval [0..1]<br>
-epo:Technique → time:Interval [0..1]</p></td>
+epo:Technique → time:Interval [0..1]<br>
+epo-ord:Order → time:Interval [0..1]<br>
+epo-cat:Catalogue → time:Interval [0..1]</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo:hasExclusionGroundType</p></td>
@@ -2950,7 +2979,16 @@ epo:Technique → time:Interval [0..1]</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Relates to Procedure.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo:ExpressionOfInterest → epo:Procedure [1]<br>
 cccev:InformationRequirement → epo:Procedure [0..&#42;]<br>
-epo:ProcurementProcessInformation → epo:Procedure [0..1]</p></td>
+epo:ProcurementProcessInformation → epo:Procedure [0..1]<br>
+epo-not:CompletionNotice → epo:Procedure [1]<br>
+epo-not:ContractModificationNotice → epo:Procedure [1]<br>
+epo-not:ResultNotice → epo:Procedure [1]<br>
+epo-qua:EvidenceRequest → epo:Procedure [1]<br>
+epo-qua:EvidenceSubmission → epo:Procedure [1]<br>
+epo:InformationRequest → epo:Procedure [0..&#42;]<br>
+epo-awa:AwardDecisionNotification → epo:Procedure [1]<br>
+epo-acc:InvitationToTender → epo:Procedure [1]<br>
+epo-acc:ESPDRequest → epo:Procedure [1]</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo:hasPreferredLanguageForProcurementDocument</p></td>
@@ -2960,7 +2998,10 @@ epo:ProcurementProcessInformation → epo:Procedure [0..1]</p></td>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo:specifiesEconomicOperator</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating that the instance of the concept involves the Economic Operator.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">epo:ExpressionOfInterest → epo:OfferingParty [0..&#42;]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:ExpressionOfInterest → epo:OfferingParty [0..&#42;]<br>
+epo-qua:EvidenceRequest → epo:OfferingParty [1]<br>
+epo-qua:EvidenceSubmission → epo:OfferingParty [1]<br>
+epo-eva:TenderClarificationRequest → epo:OfferingParty [1]</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo:hasFrameworkAgreementType</p></td>
@@ -3056,7 +3097,8 @@ epo:ProcurementElement → epo:MonetaryValue [0..1]</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo:specifiesProcurementCriterion</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating the Procurement Criterion to be used.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo:LotGroup → epo:ProcurementCriterion [0..&#42;]<br>
-epo:ProcurementElement → epo:ProcurementCriterion [0..&#42;]</p></td>
+epo:ProcurementElement → epo:ProcurementCriterion [0..&#42;]<br>
+epo-acc:ESPDRequest → epo:ProcurementCriterion [1..&#42;]</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo:describesLotGroup</p></td>
@@ -3166,7 +3208,8 @@ epo:ProcurementElement → epo:ProcurementCriterion [0..&#42;]</p></td>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo:providesEvidence</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Makes available the Evidence.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">epo:Offer → cccev:Evidence [1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:Offer → cccev:Evidence [1]<br>
+epo-qua:EvidenceSubmission → cccev:Evidence [0..&#42;]</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo:distributesOffer</p></td>
@@ -3368,7 +3411,8 @@ epo:Tender → epo:ConcessionEstimate [0..1]</p></td>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo:actsOnBehalfOf</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Represents.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">epo:ProcurementServiceProvider → epo:Buyer [1..&#42;]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:ProcurementServiceProvider → epo:Buyer [1..&#42;]<br>
+epo-sub:LegalRepresentative → epo:OfferingParty [0..1]</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo:followsRulesSetBy</p></td>
@@ -3515,7 +3559,8 @@ epo:ReviewRequest → epo:Reviewer [0..1]</p></td>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo:containsCandidate</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Includes Candidate.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">epo:SelectedCandidateList → epo:Candidate [0..&#42;]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:SelectedCandidateList → epo:Candidate [0..&#42;]<br>
+epo-eva:ExcludedCandidateList → epo:Candidate [0..&#42;]</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo:hasStartDate</p></td>
@@ -3648,6 +3693,11 @@ epo:ReviewRequest → epo:Reviewer [0..1]</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo:Tender → epo:MonetaryValue [0..1]</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:hasItemCountryOfOrigin</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The source country of the product or service. Additional Information: The country of origin can be provided by the buyer as a requirement or by the tenderer information of the item to be provided. The codelist to be used is at-voc:country which is available at <a href="http://publications.europa.eu/resource/dataset/country" class="bare">http://publications.europa.eu/resource/dataset/country</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:Tender → at-voc:country [0..&#42;]</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo:hasSubcontracting</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating whether the Tender is subject to Subcontracting or not.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo:Tender → at-voc:applicability [0..1]</p></td>
@@ -3695,7 +3745,8 @@ epo:ReviewRequest → epo:Reviewer [0..1]</p></td>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo:hasTotalValue</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating the overall Monetary Value.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">epo:TenderGroup → epo:MonetaryValue [0..1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:TenderGroup → epo:MonetaryValue [0..1]<br>
+epo-con:Deliverable → epo:MonetaryValue [0..1]</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo:isSubmittedForLotGroup</p></td>
@@ -3717,6 +3768,812 @@ epo:ReviewRequest → epo:Reviewer [0..1]</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The Winner must be a Tenderer.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo:Winner → epo:Tenderer [0..1]</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:announcesLot</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating the formal communication of a Lot.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-not:PlanningNotice → epo:Lot [0..&#42;]<br>
+epo-not:DirectAwardPrenotificationNotice → epo:Lot [1..&#42;]<br>
+epo-not:CompetitionNotice → epo:Lot [1..&#42;]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:announcesLotGroup</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating the formal communication of a Lot Group.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-not:PlanningNotice → epo:LotGroup [0..&#42;]<br>
+epo-not:DirectAwardPrenotificationNotice → epo:LotGroup [0..&#42;]<br>
+epo-not:CompetitionNotice → epo:LotGroup [0..&#42;]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:announcesPlannedProcurement</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating the formal communication of a Planned Procurement.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-not:PlanningNotice → epo:PlannedProcurement [0..1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:announcesPlannedProcurementPart</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating the formal communication of a Planned Procurement Part.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-not:PlanningNotice → epo:PlannedProcurementPart [0..&#42;]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:announcesProcedure</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating the formal communication of a Procedure.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-not:PlanningNotice → epo:Procedure [0..1]<br>
+epo-not:DirectAwardPrenotificationNotice → epo:Procedure [1]<br>
+epo-not:CompetitionNotice → epo:Procedure [1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:announcesRole</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating the formal communication of a Role.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-not:PlanningNotice → epo:AgentInRole [1..&#42;]<br>
+epo-not:CompletionNotice → epo:AgentInRole [0..&#42;]<br>
+epo-not:DirectAwardPrenotificationNotice → epo:AgentInRole [1..&#42;]<br>
+epo-not:CompetitionNotice → epo:AgentInRole [1..&#42;]<br>
+epo-not:ResultNotice → epo:AgentInRole [0..&#42;]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ord:hasAmountDueForPayment</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating the Monetary Value that has to be paid.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ord:Order → epo:MonetaryValue [1]<br>
+epo-inv:Invoice → epo:MonetaryValue [1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ord:hasPrepaidAmount</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating the Monetary Value that is paid in advance.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ord:Order → epo:MonetaryValue [0..1]<br>
+epo-inv:Invoice → epo:MonetaryValue [0..&#42;]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ord:hasRoundingAmount</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating the adjustment Monetary Value applied to bring calculated total to a convenient value.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ord:Order → epo:MonetaryValue [0..1]<br>
+epo-inv:Invoice → epo:MonetaryValue [0..1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ord:hasSellerOrderID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The identifier of the Order given by the Seller. Additional Information: This identifier is different than the identifier of the Order given by the Buyer and it is useful for internal purposes.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ord:Order → adms:Identifier [0..1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ord:hasTotalAllowanceAmount</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating the overall Monetary Value of the Allowance.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ord:Order → epo:MonetaryValue [0..1]<br>
+epo-inv:Invoice → epo:MonetaryValue [0..&#42;]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ord:hasTotalChargeAmount</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating the overall Monetary Value of the Charge.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ord:Order → epo:MonetaryValue [0..1]<br>
+epo-inv:Invoice → epo:MonetaryValue [0..&#42;]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ord:hasTotalLineAmount</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating the overall Monetary Value of the Line.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ord:Order → epo:MonetaryValue [1]<br>
+epo-inv:Invoice → epo:MonetaryValue [1..&#42;]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ord:hasTotalTaxExclusiveAmount</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating the overall Monetary Value without Tax.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ord:Order → epo:MonetaryValue [0..1]<br>
+epo-inv:Invoice → epo:MonetaryValue [1..&#42;]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ord:hasTotalTaxInclusiveAmount</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating the overall Monetary Value with Tax.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ord:Order → epo:MonetaryValue [0..1]<br>
+epo-inv:Invoice → epo:MonetaryValue [1..&#42;]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:refersToProject</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Reference to a Project.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ord:Order → epo:Project [0..1]<br>
+epo-inv:Invoice → epo:Project [0..1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:specifiesBuyer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating that the instance of the concept involves the Buyer.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ord:Order → epo:Buyer [1]<br>
+epo-inv:Invoice → epo:Buyer [1]<br>
+epo-ful:ReceiptAdvice → epo:Buyer [0..1]<br>
+epo-ord:OrderChangeRejection → epo:Buyer [1]<br>
+epo-ord:OrderCancellationRejection → epo:Buyer [1]<br>
+epo-req:RequestForOffer → epo:Buyer [0..1]<br>
+epo-ord:OrderCancellation → epo:Buyer [1]<br>
+epo-ord:OrderCancellationConfirmation → epo:Buyer [1]<br>
+epo-ord:OrderChangeConfirmation → epo:Buyer [1]<br>
+epo-cat:Catalogue → epo:Buyer [0..&#42;]<br>
+epo-pay:RemittanceAdvice → epo:Buyer [1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-inv:hasInvoicedObjectIdentifier</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">An identifier for an object on which the invoice is based, given by the Seller.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-inv:Invoice → adms:Identifier [0..1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-inv:hasInvoicingPeriod</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating the time range for creating, sending, and managing Invoices.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-inv:Invoice → time:Interval [0..1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-inv:hasTotalAccountingCurrencyTaxAmount</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating the overall Monetary Value of the Tax applied on the currency in which the financial transactions are recorded at the company level.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-inv:Invoice → epo:MonetaryValue [0..&#42;]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-inv:hasTotalTaxAmount</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating the overall Monetary Value of the Tax applied.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-inv:Invoice → epo:MonetaryValue [0..&#42;]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:preparesForPotentialProcurementObject</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Gathers information for a possible Procurement Object.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-not:PreMarketConsultationNotice → epo:ProcurementObject [0..&#42;]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:refersToRole</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Reference to a Role.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-not:PreMarketConsultationNotice → epo:AgentInRole [0..&#42;]<br>
+epo-not:CompletionNotice → epo:AgentInRole [0..&#42;]<br>
+epo-not:ContractModificationNotice → epo:AgentInRole [0..&#42;]<br>
+epo-not:ResultNotice → epo:AgentInRole [1..&#42;]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-qua:providesDecisionFor</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Makes available the resolution.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-qua:QualificationDecisionInformation → epo:Lot [1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:announcesCompletionOfContract</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating the formal communication of the Completion of a Contract.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-not:CompletionNotice → epo:Contract [1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:refersToAwardDecision</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Reference to an Award Decision.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-not:CompletionNotice → epo:AwardDecision [0..&#42;]<br>
+epo-not:ContractModificationNotice → epo:AwardDecision [0..&#42;]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:refersToLotGroupAwardInformation</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Reference to a Lot Group Award Information.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-not:CompletionNotice → epo:LotGroupAwardInformation [0..&#42;]<br>
+epo-not:ContractModificationNotice → epo:LotGroupAwardInformation [0..&#42;]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:refersToNoticeAwardInformation</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Reference to a Notice Award Information.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-not:CompletionNotice → epo:NoticeAwardInformation [0..1]<br>
+epo-not:ContractModificationNotice → epo:NoticeAwardInformation [0..1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:refersToReviewDecision</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Reference to a Review Decision.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-not:CompletionNotice → epo:ReviewDecision [0..&#42;]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:refersToReviewRequest</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Reference to a Review Request.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-not:CompletionNotice → epo:ReviewRequest [0..&#42;]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:announcesAwardDecision</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating the formal communication of an Award Decision.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-not:DirectAwardPrenotificationNotice → epo:AwardDecision [0..&#42;]<br>
+epo-not:ResultNotice → epo:AwardDecision [0..&#42;]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:announcesContract</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating the formal communication of a Contract.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-not:DirectAwardPrenotificationNotice → epo:Contract [0..&#42;]<br>
+epo-not:ResultNotice → epo:Contract [0..&#42;]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:announcesLotGroupAwardInformation</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating the formal communication of a Lot Group Award Information.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-not:DirectAwardPrenotificationNotice → epo:LotGroupAwardInformation [0..&#42;]<br>
+epo-not:ResultNotice → epo:LotGroupAwardInformation [0..&#42;]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:announcesNoticeAwardInformation</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating the formal communication of a Notice Award Information.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-not:DirectAwardPrenotificationNotice → epo:NoticeAwardInformation [0..1]<br>
+epo-not:ResultNotice → epo:NoticeAwardInformation [0..1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-eva:hasJuryMember</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">An agent involved in an evaluation board.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-eva:EvaluationBoard → epo:JuryMember [0..&#42;]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-eva:isAppointedBy</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating that by whom the instance of the concept is formally assigned.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-eva:EvaluationBoard → epo:UniqueResponsibleOfTheProcurement [1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:isAssignedForEvaluationOf</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating that the instance of the concept is selected for Evaluation.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-eva:EvaluationBoard → epo:Lot [0..&#42;]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:refersToContractToBeModified</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Reference to a Contract which is altered.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-not:ContractModificationNotice → epo:Contract [1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:announcesReviewDecision</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating the formal communication of a Review Decision.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-not:ResultNotice → epo:ReviewDecision [0..&#42;]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:announcesReviewRequest</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating the formal communication of a Review Request.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-not:ResultNotice → epo:ReviewRequest [0..&#42;]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:concernsAwardOutcome</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relates to Award Outcome.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-awa:AwardDecisionNotification → epo:AwardOutcome [1..&#42;]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:specifiesTenderer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating that the instance of the concept involves the Tenderer.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-awa:AwardDecisionNotification → epo:Tenderer [1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-acc:containsProvidedProcurementDocument</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-acc:InvitationToTender → epo:ProcurementDocument []</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-acc:refersToNotice</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Reference to a Notice.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-acc:ESPDRequest → epo:Notice [0..&#42;]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-sub:concernsOrganisation</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relates to Organization.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-sub:OrganisationInformationSummary → org:Organization [1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-sub:providesOrganisationEmployeeQuantity</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The number of people hired by the Organization.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-sub:OrganisationInformationSummary → epo:Quantity [0..1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-sub:providesOrganisationFinancialCapability</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A monetary amount representing the financial capability of the Organization. Additional information: Used to represent the general Turnover of the Organization (for statistical purposes).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-sub:OrganisationInformationSummary → epo:MonetaryValue [0..1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-sub:isContainedInTender</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating that the instance of the concept is part of a Tender.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-sub:ESPD → epo:Tender [0..&#42;]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-sub:providesInformationOn</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Offers information about an instance of a concept.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-sub:ESPD → org:Organization [0..&#42;]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:hasDestinationCountryCode</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating the Country code of the destination.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-req:RequestForOffer → at-voc:country [0..1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:specifiesContractor</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating that the instance of the concept involves the Contractor.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-req:RequestForOffer → epo:Contractor [1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-req:specifiesOfferCurrency</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating the Currency for the Offer.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-req:RequestForOffer → at-voc:currency [0..1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-req:specifiesOfferValidityPeriod</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating the time range in which an Offer is valid.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-req:RequestForOffer → time:Interval [0..1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ful:agreedByBuyer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Accepted by Buyer.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ful:ShipmentAgreement → epo:Buyer [1..&#42;]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:specifiesCatalogueProvider</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating that the instance of the concept involves the Catalogue Provider.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-cat:Catalogue → epo:CatalogueProvider [0..1]<br>
+epo-cat:CatalogueResponse → epo:CatalogueProvider [1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:specifiesCatalogueReceiver</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating that the instance of the concept involves the Catalogue Receiver.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-cat:Catalogue → epo:CatalogueReceiver [0..1]<br>
+epo-cat:CatalogueResponse → epo:CatalogueReceiver [1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-pay:hasTotalCreditAmount</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating the overall Monetary Value that reduces the amount owed.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-pay:RemittanceAdvice → epo:MonetaryValue [0..1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-pay:hasTotalDebitAmount</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating the overall Monetary Value that increases the amount owed.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-pay:RemittanceAdvice → epo:MonetaryValue [0..1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-pay:hasTotalPaymentAmount</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating the overall paid Monetary Value.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-pay:RemittanceAdvice → epo:MonetaryValue [0..1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ord:specifiesDeliveryAgreementLocation</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating the Location from the Delivery Agreement.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ord:DeliveryAgreement → dct:Location [0..1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ord:hasDeliveryPeriod</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating the time range for the delivery.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ord:DeliveryInformation → time:Interval [0..1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ord:hasRequestedDeliveryPeriod</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating the sought time range for the delivery.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ord:DeliveryInformation → time:Interval [0..1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ful:hasTrackingID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating that thedelivery has an identifier for traceability purposes.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ord:DeliveryInformation → adms:Identifier [0..1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ord:specifiesPlaceOfDelivery</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating the Location of the despatch.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ord:DeliveryInformation → dct:Location [0..1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-cat:hasBaseQuantity</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The quantity at which the net monetary value applies.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-cat:Price → epo:Quantity [0..1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-cat:hasDeliveryLocation</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Location delivery area where the Item can be ordered to the given price.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-cat:Price → dct:Location [0..&#42;]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-cat:hasExpectedDeliveryTime</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The expected amount of time between the order and delivery of an item.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-cat:Price → time:Duration [0..1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ord:hasGrossMonetaryValue</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The Monetary Value before any deductions.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-cat:Price → epo:MonetaryValue [0..1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-cat:hasNetMonetaryValue</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The price amount of an Item exclusive of taxes and after subtracting price discounts.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-cat:Price → epo:MonetaryValue [1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-cat:hasOrderabableUnitFactorRate</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The factor by which the base unit of the price can be converted to orderable unit. Additional information: This is needed when the base price is provided different than the orderable unit. For example, when selling paper, the price may be set per page, but the orderable unit is a package of 500 pieces. Therefore the price needs to be converted to the orderable unit.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-cat:Price → epo:Quantity [0..1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-cat:hasPriceValidity</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The period of time when the Item can be ordered to the given price.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-cat:Price → time:Interval [1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-cat:hasQuantityThreshold</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The minimum quantity of the item that can be ordered to the given net monetary value.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-cat:Price → epo:Quantity [0..1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ful:hasDespatchPeriod</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The time period when the Despatcher picks-up the Goods Items to be delivered.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ful:ShipmentInformation → time:Interval [0..1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ful:hasEstimatedDeliveryPeriod</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The forecasted time period given by the Despatcher to provide the goods and services.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ful:ShipmentInformation → time:Interval [0..1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ful:specifiesPlaceOfDespatch</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating the Location of the Despatch of the Goods Items to be delivered.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ful:ShipmentInformation → dct:Location [0..1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-eva:providesRankToTender</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Makes available the assigned position for the Tender.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-eva:EvaluationReport → epo:TenderAwardOutcome [1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-eva:usesEvaluationFormula</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Applies systematic method for assessment.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-eva:EvaluationReport → epo:AwardEvaluationTerm [0..1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-sub:answersQuestion</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating that the Response replies to a question.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-sub:Response → cccev:InformationRequirement [0..&#42;]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-sub:isReinforcedBy</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating an Evidence that supports the Response.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-sub:Response → cccev:Evidence [0..&#42;]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-sub:refersToApplicablePeriod</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating the period to which the Response shall apply.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-sub:Response → time:Interval [0..1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:specifiesEvidence</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating the Evidence.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-qua:EvidenceOutcome → cccev:Evidence [1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-sub:summarisesInformationAboutEvidence</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating the Certificate that the information refers to.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-sub:EvidenceInformation → cccev:Evidence [1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-eva:evaluatesProcurementCriterion</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Assesses Procurement Criterion.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-eva:EvaluationCriterion → epo:ProcurementCriterion [1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:hasBuyerItemID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The general identifier assigned to the concept as defined by the Buyer.​</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-cat:AbstractItem → adms:Identifier [0..1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-cat:hasCountryOfOrigin</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The source country of the product or service. Additional Information: The country of origin can be provided by the buyer as a requirement or by the tenderer information of the item to be provided.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-cat:AbstractItem → at-voc:country [0..1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-cat:hasHazardousClassID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specification of the hazardous nature of an item according to a classification schema. Provides detail of the classification and nature of a hazardous item.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-cat:AbstractItem → adms:Identifier [0..&#42;]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-inv:hasItemClassificationIdentifier</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The Identifier of the Item categorisation.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-cat:AbstractItem → adms:Identifier [0..&#42;]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:hasItemStandardID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The general identifier assigned to the concept based on a standard scheme.​ Additional information: For example the GTIN scheme (Global Trade Item Number).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-cat:AbstractItem → adms:Identifier [0..&#42;]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:hasManufacturerItemID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The general identifier assigned to the concept as defined by the Manufacturer. ​</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-cat:AbstractItem → adms:Identifier [0..1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-cat:hasNetQuantity</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The net quantity of the item that is contained in each consumable unit, excluding any packaging materials.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-cat:AbstractItem → epo:Quantity [0..1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:hasSellerItemID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The general identifier assigned to the concept as defined by the Seller.​</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-cat:AbstractItem → adms:Identifier [0..1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:hasSerialID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The identifier assigned to the specific instance of the produced concept.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-cat:AbstractItem → adms:Identifier [0..1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ful:hasAssociatedDocument</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Is related to a Document.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-cat:Line → epo:Document [0..1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ord:concernsOriginatorRequest</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relates to Originator Request.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ord:OriginatorInformation → epo:OriginatorRequest [0..1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:amendsContract</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Modifies or changes the terms of an existing Contract.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-con:ContractAmendment → epo:Contract [1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:updatesContractValue</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Changes the Contract Monetary Value.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-con:ContractAmendment → epo:MonetaryValue [0..1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ord:concernsContract</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relates to Contractor.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ord:ContractInformation → epo:Contract [1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-cat:isSubordinatedToContract</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating that the instance of the concept is governed by a specific Contract.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-cat:PostAwardCatalogue → epo:Contract [0..1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-inv:hasPaymentAccountIdentifier</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A unique identifier of the financial payment account, at a payment service provider, to which payment should be made.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-inv:CreditTransferInformation → adms:Identifier [1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-inv:hasPaymentServiceProviderIdentifier</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">An identifier for the payment service provider where a payment account is located.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-inv:CreditTransferInformation → adms:Identifier [0..1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ful:hasConsigneeConsignmentID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The identifier of the the Consignment given by the Consignee.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ful:Consignment → adms:Identifier [0..1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ful:hasDeclaredStatisticalValue</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The Monetary Value declared for statistical purposes.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ful:Consignment → epo:MonetaryValue [0..1]<br>
+epo-ful:GoodsItem → epo:MonetaryValue [0..&#42;]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ful:hasDespatcherConsignmentID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The identifier of the the Consignment given by the Despatcher.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ful:Consignment → adms:Identifier [0..1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ful:hasGrossVolume</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The amount of space that is required including the packaging.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ful:Consignment → epo:Quantity [0..1]<br>
+epo-ful:AbstractContainer → epo:Quantity [0..1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ful:hasGrossWeight</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The total mass of goods including the packaging.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ful:Consignment → epo:Quantity [0..1]<br>
+epo-ful:AbstractContainer → epo:Quantity [0..1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ful:hasLoadingMeter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The area of the Consignment in meters divided by the width of the truck, which is considered to be 2.4 meters.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ful:Consignment → epo:Quantity [0..1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ful:hasNetWeight</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The total mass of goods without the packaging.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ful:Consignment → epo:Quantity [0..1]<br>
+epo-ful:AbstractContainer → epo:Quantity [0..1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ful:hasTotalGoodsItemQuantity</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating the number of the Goods Items.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ful:Consignment → epo:Quantity [0..1]<br>
+epo-ful:AbstractContainer → epo:Quantity [0..1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ful:hasTransportHandlingUnitQuantity</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating the number of the Transport Handling Unit.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ful:Consignment → epo:Quantity [0..1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:hasManufacturerID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The manufacturer&#8217;s identifier for the item.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-cat:Manufacturer → adms:Identifier [0..1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-inv:hasBankingIdentifier</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">An unique banking reference identifier of the Payee or Seller, assigned by the Payee or Seller bank.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-inv:PaymentInstructionsInformation → adms:Identifier [0..1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-inv:hasDebitedAccountIdentifier</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">An identifier for the account to be debited by the direct debit.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-inv:PaymentInstructionsInformation → adms:Identifier [0..1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-inv:hasMandateIdentifier</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">An unique identifier for referencing the direct debit mandate, assigned by the Payee.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-inv:PaymentInstructionsInformation → adms:Identifier [0..1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ful:hasTraceID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The identifier used for tracking the Goods Item. Additional information: An example is the EPC number used in RFID.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ful:GoodsItem → adms:Identifier [0..1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:hasModificationJustification</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Explanation of why a contract was modified. The codelist to be used is at-voc:modification-justification which is available at <a href="http://publications.europa.eu/resource/dataset/modification-justification" class="bare">http://publications.europa.eu/resource/dataset/modification-justification</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-con:ContractModificationInformation → at-voc:modification-justification [1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ful:hasVehicleID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The identifier of the Transport Means.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ful:TransportMeans → adms:Identifier [1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ful:hasVehicleSegmentID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The identifier of a part of the Transport Means.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ful:TransportMeans → adms:Identifier [0..1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-cat:hasMaximumValue</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating the upper limit of the numerical quantity.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-cat:ItemProperty → epo:Quantity [0..1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-cat:hasMinimumValue</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating the lower limit of the numerical quantity.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-cat:ItemProperty → epo:Quantity [0..1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-cat:hasQualifiedValue</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Qualified value of the property, which is defined in a classification scheme. Additional Information: For example, the (0173-1#02-AAA026#007) drilling diameter of an item has value of 12 inches.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-cat:ItemProperty → epo:Quantity [0..1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ord:hasCustomerReference</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">An identifier assigned by the Buyer used for internal routing purposes.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-cat:PostAwardDocument → adms:Identifier [0..1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-inv:hasInvoiceLineObjectIdentifier</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">An identifier for an object on which the invoice line is based, given by the Seller. Additional Information: It may be a subscription number, telephone number, meter point etc., as applicable.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-inv:InvoiceLine → adms:Identifier [0..1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-inv:hasInvoiceLinePeriod</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating the time range of the Invoice Line.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-inv:InvoiceLine → time:Interval [0..1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-inv:hasNetAmount</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating the Monetary Value exclusive of taxes and after substracting price discounts.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-inv:InvoiceLine → epo:MonetaryValue [1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-cat:hasQuantity</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating that the instance of the concept has a Quantity.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-inv:InvoiceLine → epo:Quantity [1]<br>
+epo-con:Deliverable → epo:Quantity [0..1]<br>
+epo-ord:OrderLine → epo:Quantity [1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:hasBatchID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The identifier assigned to a specific batch of the produced Item.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-cat:Batch → adms:Identifier [0..1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-pay:hasPaymentIdentifier</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating the Identifier of the Payment.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-pay:PaymentInformation → adms:Identifier [0..1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ful:hasHeight</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The vertical measurement.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ful:AbstractContainer → epo:Quantity [0..1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ful:hasLength</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The horizontal measurement. Additional Information: The length is the longer side between the length and the width.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ful:AbstractContainer → epo:Quantity [0..1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ful:hasNetVolume</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The amount of space that is required without the packaging.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ful:AbstractContainer → epo:Quantity [0..1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ful:hasWidth</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The measurement of the depth. Additional Information: The width is the shorter side between the length and the width.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ful:AbstractContainer → epo:Quantity [0..1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-pay:hasBalanceAmount</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating the outstanding amount that remains unpaid or unsettled.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-pay:RemittanceAdviceLine → epo:MonetaryValue [0..1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-pay:hasCreditAmount</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating the Monetary Value that reduces the amount owed.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-pay:RemittanceAdviceLine → epo:MonetaryValue [0..1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-pay:hasDebitAmount</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating the Monetary Value that increases the amount owed.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-pay:RemittanceAdviceLine → epo:MonetaryValue [0..1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-cat:hasAmount</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The predetermined monetary value charged in addition to the price.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ord:AllowanceChargeInformation → epo:MonetaryValue [0..1]<br>
+epo-ord:TaxInformation → epo:MonetaryValue [0..1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:isCalculatedOn</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The monetary amount to which the multiplier factor is applied in calculating the amount of this allowance, charge or tax.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ord:AllowanceChargeInformation → epo:MonetaryValue [0..1]<br>
+epo-ord:TaxInformation → epo:MonetaryValue [0..1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-cat:hasMaximumMeasure</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating the upper limit of the measure.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-cat:DimensionInformation → epo:Quantity [0..1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-cat:hasMeasure</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating the unit used for stating the size.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-cat:DimensionInformation → epo:Quantity [0..1]<br>
+epo-cat:EnvironmentalEmissionInformation → epo:Quantity [1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-cat:hasMinimumMeasure</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating the lower limit of the measure.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-cat:DimensionInformation → epo:Quantity [0..1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ord:hasBackorderQuantity</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating the number of Items that cannot be fulfilled immediately.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ord:OrderResponseLine → epo:Quantity [0..1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ful:hasOversupplyQuantity</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating the Quantity surplus.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ful:ReceiptAdviceLine → epo:Quantity [0..1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ful:hasReceivedQuantity</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating the delivered Quantity.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ful:ReceiptAdviceLine → epo:Quantity [0..1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ful:hasRejectedQuantity</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating the non-accepted Quantity.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ful:ReceiptAdviceLine → epo:Quantity [0..1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ful:hasShortQuantity</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating the Quantity deficit.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ful:ReceiptAdviceLine → epo:Quantity [0..1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ful:hasDespatchedQuantity</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The Quantity that has been sent.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ful:DespatchLine → epo:Quantity [1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ful:hasOutstandingQuantity</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The Quantity of non-despatched Goods Items.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ful:DespatchLine → epo:Quantity [0..1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ful:hasMaximumTemperature</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The highest tolerated temperature.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ful:TemperatureSpecification → epo:Quantity [0..1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ful:hasMinimumTemperature</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The lowest tolerated temperature.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-ful:TemperatureSpecification → epo:Quantity [0..1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-cat:hasCatalogueLineValidity</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The relation indicating until when a Catalogue Line instance is applicable.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-cat:CatalogueLine → time:Interval [0..1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-cat:hasMaximumOrderQuantity</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The maximum number of orderable units that can be ordered according to details provided in the catalogue line, such as price.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-cat:CatalogueLine → epo:Quantity [0..1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-cat:hasMinimumQuantityGuaranteedForDelivery</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The minimum quantity of an item that is guaranteed by the seller to be delivered.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-cat:CatalogueLine → epo:Quantity [0..1]</p></td>
+</tr>
 </tbody>
 </table>
 <div class="paragraph">
@@ -3727,7 +4584,7 @@ epo:ReviewRequest → epo:Reviewer [0..1]</p></td>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2026-07-16 09:44:02 UTC
+Last updated 2026-07-16 09:55:21 UTC
 </div>
 </div>
 </body>

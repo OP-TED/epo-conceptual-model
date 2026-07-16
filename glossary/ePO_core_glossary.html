@@ -1495,6 +1495,12 @@
                         <td>xsd:integer [0..1]</td>
                      </tr>
                      <tr>
+                        <td>epo:ReviewInformation</td>
+                        <td>epo:hasElementReference</td>
+                        <td>Reference to the class instance in the current notice.</td>
+                        <td>xsd:anyURI [0..*]</td>
+                     </tr>
+                     <tr>
                         <td>epo:Contract</td>
                         <td>epo:hasEntryIntoForceDate</td>
                         <td>The date on which the contract enters into force.
@@ -3654,6 +3660,13 @@
                         <td>epo-req:RequestForOffer -&gt; at-voc:country [0..1]</td>
                      </tr>
                      <tr>
+                        <td>epo:hasDirectAwardJustification</td>
+                        <td>List of reasons for using a procedure which allows awarding contracts directly without
+                           publishing a notice. 
+                           </td>
+                        <td>epo:DirectAwardTerm -&gt; at-voc:direct-award-justification [0..1]</td>
+                     </tr>
+                     <tr>
                         <td>epo:hasDocumentRestrictionJustification</td>
                         <td>An explanation about the reasons why some procurement documents are restricted.
                            </td>
@@ -3867,6 +3880,17 @@
                         <td>epo:hasItemConsumptionSavings</td>
                         <td>Relation indicating the amount of resources an Item saves.</td>
                         <td>epo:EnergyEfficiencyInformation -&gt; epo:Quantity [0..1]</td>
+                     </tr>
+                     <tr>
+                        <td>epo:hasItemCountryOfOrigin</td>
+                        <td>The source country of the product or service.
+                           
+                           Additional Information:
+                           The country of origin can be provided by the buyer as a requirement or by the tenderer
+                           information of the item to be provided.
+                           
+                           The codelist to be used is at-voc:country which is available at http://publications.europa.eu/resource/dataset/country</td>
+                        <td>epo:Tender -&gt; at-voc:country [0..*]</td>
                      </tr>
                      <tr>
                         <td>epo:hasItemStandardID</td>
@@ -4839,6 +4863,11 @@
                         <td>epo:usesTechnique</td>
                         <td>Relation indicating that a Technique is being applied.</td>
                         <td>epo:ProcurementObject -&gt; epo:Technique [0..*]</td>
+                     </tr>
+                     <tr>
+                        <td>epo-acc:containsProvidedProcurementDocument</td>
+                        <td> </td>
+                        <td>epo-acc:InvitationToTender -&gt; epo:ProcurementDocument []<br>epo-acc:ProcurementDocumentsProvision -&gt; epo:ProcurementDocument [0..*]<br></td>
                      </tr>
                      <tr>
                         <td>epo-acc:refersToNotice</td>

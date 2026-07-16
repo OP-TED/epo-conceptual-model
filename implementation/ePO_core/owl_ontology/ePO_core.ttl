@@ -1131,6 +1131,10 @@
     skos:historyNote "WG Approval 14/05/2024"@en ;
     skos:prefLabel "contains Candidate"@en .
 
+:containsProvidedProcurementDocument a owl:ObjectProperty ;
+    rdfs:isDefinedBy :core ;
+    skos:prefLabel "contains Provided Procurement Document"@en .
+
 :contextualisedBy a owl:ObjectProperty ;
     rdfs:isDefinedBy :core ;
     skos:definition "The place of the AgentInRole in the procurement is expressed by a ProcurementObject."@en ;
@@ -1876,6 +1880,11 @@
     skos:definition "Relation indicating the Country code of the destination."@en ;
     skos:prefLabel "has Destination Country Code"@en .
 
+:hasDirectAwardJustification a owl:ObjectProperty ;
+    rdfs:isDefinedBy :core ;
+    skos:definition "List of reasons for using a procedure which allows awarding contracts directly without publishing a notice."@en ;
+    skos:prefLabel "has Direct Award Justification"@en .
+
 :hasDispatchDate a owl:DatatypeProperty ;
     rdfs:isDefinedBy :core ;
     skos:definition "Date and time of transmission of a record to an Organization. (epo:Document)"@en ;
@@ -1983,6 +1992,12 @@
     skos:definition "Electronic Tender Lots received. (epo:SubmissionStatisticalInformation)"@en ;
     skos:historyNote "WG Approval 28/07/2020"@en ;
     skos:prefLabel "has Electronic Tenders"@en .
+
+:hasElementReference a owl:DatatypeProperty ;
+    rdfs:isDefinedBy :core ;
+    skos:definition "Reference to the class instance in the current notice. (epo:ReviewInformation)"@en ;
+    skos:editorialNote "Used by eForms BT-13716, eForms BT-786, eForms BT-1501"@en ;
+    skos:prefLabel "has Element Reference"@en .
 
 :hasEndpointIdentifier a owl:ObjectProperty ;
     rdfs:isDefinedBy :core ;
@@ -2296,6 +2311,11 @@
     skos:definition "Relation indicating the amount of resources an Item saves."@en ;
     skos:historyNote "WG approval 25/09/2025"@en ;
     skos:prefLabel "has Item Consumption Savings"@en .
+
+:hasItemCountryOfOrigin a owl:ObjectProperty ;
+    rdfs:isDefinedBy :core ;
+    skos:definition "The source country of the product or service. Additional Information: The country of origin can be provided by the buyer as a requirement or by the tenderer information of the item to be provided. The codelist to be used is at-voc:country which is available at http://publications.europa.eu/resource/dataset/country"@en ;
+    skos:prefLabel "has Item Country Of Origin"@en .
 
 :hasItemStandardID a owl:ObjectProperty ;
     rdfs:isDefinedBy :core ;
@@ -4469,6 +4489,7 @@
 
 :ProcurementCriteriaSummary a owl:Class ;
     rdfs:isDefinedBy :core ;
+    rdfs:subClassOf cccev:Requirement ;
     skos:definition "Overview of the Procurement Criteria."@en ;
     skos:historyNote "WG approval 19/03/2024"@en ;
     skos:prefLabel "Procurement Criteria Summary"@en .
@@ -4551,13 +4572,13 @@
     rdfs:label "eProcurement Ontology - core"@en ;
     dcterms:created "2021-06-01"^^xsd:date ;
     dcterms:description "The eProcurement Ontology core describes the concepts and properties representing the European Public Procurement domain. The provision of these semantics offers the basis for a common understanding of the domain for all stakeholders ensuring the quality of data exchange and transparency. The ontology restrictions are published in a separate artefact."@en ;
-    dcterms:issued "2026-07-07"^^xsd:date ;
+    dcterms:issued "2026-07-16"^^xsd:date ;
     dcterms:license "© European Union, 2014. Unless otherwise noted, the reuse of the Ontology is authorised under the European Union Public Licence v1.2 (https://eupl.eu/)." ;
     dcterms:publisher "http://publications.europa.eu/resource/authority/corporate-body/PUBL" ;
     dcterms:title "eProcurement Ontology - core"@en ;
     vann:preferredNamespacePrefix "epo" ;
     vann:preferredNamespaceUri "http://data.europa.eu/a4g/ontology#" ;
-    rdfs:comment "This version is automatically generated from ePO_core.xml on 2026-07-07" ;
+    rdfs:comment "This version is automatically generated from ePO_core.xml on 2026-07-16" ;
     rdfs:seeAlso <https://docs.ted.europa.eu/home/index.html>,
         <https://github.com/OP-TED/ePO/releases>,
         <https://joinup.ec.europa.eu/collection/eprocurement/solution/eprocurement-ontology/about>,
