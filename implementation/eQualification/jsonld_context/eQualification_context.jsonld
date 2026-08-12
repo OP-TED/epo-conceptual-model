@@ -5,24 +5,75 @@
         "fulfillsRequirement": {
           "@id": "http://data.europa.eu/a4g/ontology#fulfillsRequirement",
           "@type": "http://www.w3.org/2001/XMLSchema#boolean"
+        },
+        "specifiesEvidence": {
+          "@id": "http://data.europa.eu/a4g/ontology#specifiesEvidence",
+          "@type": "@id"
         }
       },
       "@id": "http://data.europa.eu/a4g/ontology#EvidenceOutcome"
     },
     "EvidenceReceipt": {
-      "@context": {},
+      "@context": {
+        "refersToEvidenceSubmission": {
+          "@id": "http://data.europa.eu/a4g/ontology#refersToEvidenceSubmission",
+          "@type": "@id"
+        }
+      },
       "@id": "http://data.europa.eu/a4g/ontology#EvidenceReceipt"
     },
     "EvidenceRequest": {
-      "@context": {},
+      "@context": {
+        "concernsLot": {
+          "@container": "@set",
+          "@id": "http://data.europa.eu/a4g/ontology#concernsLot",
+          "@type": "@id"
+        },
+        "concernsProcedure": {
+          "@id": "http://data.europa.eu/a4g/ontology#concernsProcedure",
+          "@type": "@id"
+        },
+        "specifiesEconomicOperator": {
+          "@id": "http://data.europa.eu/a4g/ontology#specifiesEconomicOperator",
+          "@type": "@id"
+        }
+      },
       "@id": "http://data.europa.eu/a4g/ontology#EvidenceRequest"
     },
     "EvidenceSubmission": {
-      "@context": {},
+      "@context": {
+        "concernsLot": {
+          "@container": "@set",
+          "@id": "http://data.europa.eu/a4g/ontology#concernsLot",
+          "@type": "@id"
+        },
+        "concernsProcedure": {
+          "@id": "http://data.europa.eu/a4g/ontology#concernsProcedure",
+          "@type": "@id"
+        },
+        "providesEvidence": {
+          "@container": "@set",
+          "@id": "http://data.europa.eu/a4g/ontology#providesEvidence",
+          "@type": "@id"
+        },
+        "refersToEvidenceRequest": {
+          "@id": "http://data.europa.eu/a4g/ontology#refersToEvidenceRequest",
+          "@type": "@id"
+        },
+        "specifiesEconomicOperator": {
+          "@id": "http://data.europa.eu/a4g/ontology#specifiesEconomicOperator",
+          "@type": "@id"
+        }
+      },
       "@id": "http://data.europa.eu/a4g/ontology#EvidenceSubmission"
     },
     "QualificationDecisionInformation": {
       "@context": {
+        "comprisesEvidenceOutcome": {
+          "@container": "@set",
+          "@id": "http://data.europa.eu/a4g/ontology#comprisesEvidenceOutcome",
+          "@type": "@id"
+        },
         "hasQualificationDecisionDate": {
           "@id": "http://data.europa.eu/a4g/ontology#hasQualificationDecisionDate",
           "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
@@ -34,12 +85,25 @@
         "isQualified": {
           "@id": "http://data.europa.eu/a4g/ontology#isQualified",
           "@type": "http://www.w3.org/2001/XMLSchema#boolean"
+        },
+        "providesDecisionFor": {
+          "@id": "http://data.europa.eu/a4g/ontology#providesDecisionFor",
+          "@type": "@id"
+        },
+        "summarisesInformationForQualificationResponse": {
+          "@id": "http://data.europa.eu/a4g/ontology#summarisesInformationForQualificationResponse",
+          "@type": "@id"
         }
       },
       "@id": "http://data.europa.eu/a4g/ontology#QualificationDecisionInformation"
     },
     "QualificationReponse": {
-      "@context": {},
+      "@context": {
+        "refersToEvidenceSubmission": {
+          "@id": "http://data.europa.eu/a4g/ontology#refersToEvidenceSubmission",
+          "@type": "@id"
+        }
+      },
       "@id": "http://data.europa.eu/a4g/ontology#QualificationReponse"
     },
     "adms": "http://www.w3.org/ns/adms#",

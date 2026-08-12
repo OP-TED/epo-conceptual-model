@@ -14,6 +14,44 @@
 | epo-acc:ESPDRequest | A document issued by a Buyer defining how the Exclusion Grounds and the Selection Criteria should be addressed in an European Single Procurement Document for a specific procurement.
       
     
+      
+| epo:InformationRequest | 
+      
+    
+      
+| epo:InformationResponse | 
+      
+    
+      
+| epo-acc:InvitationToTender | 
+      
+    
+      
+| epo-acc:ProcurementDocumentsProvision | The provision by the Buyer to the Economic Operator of the Procurement Documents.
+      
+    
+      
+| epo-acc:ProcurementDocumentsRequest | The request by the Economic Operator to the Buyer to receive the latest version of all the Procurement Documents.
+      
+    
+      
+| epo-acc:ProcurementQuestion | 
+      
+    
+      
+| epo-acc:ProcurementQuestionReply | 
+      
+    
+      
+| epo-acc:UnsubscribeFromProcedure | 
+      
+    
+      
+| epo-acc:UnsubscribeFromProcedureResponse | 
+      
+    
+      
+    
 |===
 
 == Attributes (datatype properties) names and definitions
@@ -25,6 +63,30 @@
 
 
 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
   
   
@@ -59,7 +121,12 @@
   
   
 | epo:concernsProcedure| 
-  Relates to Procedure.|epo-acc:ESPDRequest → epo:Procedure [1]
+  Relates to Procedure.|epo-acc:ESPDRequest → epo:Procedure [1] +
+epo:InformationRequest → epo:Procedure [0..&#42;] +
+epo-acc:InvitationToTender → epo:Procedure [1] +
+epo-acc:ProcurementDocumentsProvision → epo:Procedure [1] +
+epo-acc:ProcurementDocumentsRequest → epo:Procedure [1] +
+epo-acc:UnsubscribeFromProcedure → epo:Procedure [1]
 
   
 
@@ -82,6 +149,48 @@
   
 
   
+
+  
+
+  
+
+  
+  
+| epo:concernsLot| 
+  Relates to Lot.|epo:InformationRequest → epo:Lot [0..&#42;]
+
+  
+
+  
+  
+| epo:concernsLotGroup| 
+  Relates to Lot Group.|epo:InformationRequest → epo:LotGroup [0..&#42;]
+
+  
+
+  
+  
+| epo-sub:answersQuestion| 
+  Relation indicating that the Response replies to a question.|epo:InformationResponse → epo:InformationRequest [1]
+
+  
+
+  
+  
+| epo-acc:containsProvidedProcurementDocument| 
+  Includes the supplied Procurement Document.|epo-acc:InvitationToTender → epo:ProcurementDocument [] +
+epo-acc:ProcurementDocumentsProvision → epo:ProcurementDocument [0..&#42;]
+
+  
+
+  
+  
+| epo:specifiesEconomicOperator| 
+  Relation indicating that the instance of the concept involves the Economic Operator.|epo-acc:InvitationToTender → epo:OfferingParty [1] +
+epo-acc:ProcurementDocumentsProvision → epo:OfferingParty [1] +
+epo-acc:ProcurementDocumentsRequest → epo:OfferingParty [1] +
+epo-acc:ProcurementQuestion → epo:OfferingParty [1] +
+epo-acc:UnsubscribeFromProcedure → epo:OfferingParty [1]
 
   
 
@@ -112,6 +221,47 @@
   Relation indicating the Subdivision.|eli:LegalResourceSubdivision → at-voc:subdivision [0..1]
 
   
+
+  
+  
+| epo:refersToProcurementDocumentsRequest| 
+  |epo-acc:ProcurementDocumentsProvision → epo-acc:ProcurementDocumentsRequest [0..1]
+
+  
+
+  
+  
+| epo:containsInformationRequest| 
+  Includes Information Request.|epo-acc:ProcurementQuestion → epo:InformationRequest [1..&#42;]
+
+  
+
+  
+  
+| epo:containsInformationReponse| 
+  Includes Information Response.|epo-acc:ProcurementQuestionReply → epo:InformationResponse [1..&#42;]
+
+  
+
+  
+  
+| epo-acc:refersToUnsubscribeFromProcedure| 
+  |epo-acc:UnsubscribeFromProcedureResponse → epo-acc:UnsubscribeFromProcedure [1]
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+| epo-sub:relatesToESPDRequest| 
+  Is about an European Single Procurement Document (ESPD) Request.|epo-sub:ESPD → epo-acc:ESPDRequest [0..1]
 
   
 

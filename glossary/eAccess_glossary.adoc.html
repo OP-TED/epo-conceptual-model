@@ -465,6 +465,42 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo-acc:ESPDRequest</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A document issued by a Buyer defining how the Exclusion Grounds and the Selection Criteria should be addressed in an European Single Procurement Document for a specific procurement.</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:InformationRequest</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:InformationResponse</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-acc:InvitationToTender</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-acc:ProcurementDocumentsProvision</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The provision by the Buyer to the Economic Operator of the Procurement Documents.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-acc:ProcurementDocumentsRequest</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The request by the Economic Operator to the Buyer to receive the latest version of all the Procurement Documents.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-acc:ProcurementQuestion</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-acc:ProcurementQuestionReply</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-acc:UnsubscribeFromProcedure</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-acc:UnsubscribeFromProcedureResponse</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -510,7 +546,12 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo:concernsProcedure</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Relates to Procedure.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">epo-acc:ESPDRequest → epo:Procedure [1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-acc:ESPDRequest → epo:Procedure [1]<br>
+epo:InformationRequest → epo:Procedure [0..&#42;]<br>
+epo-acc:InvitationToTender → epo:Procedure [1]<br>
+epo-acc:ProcurementDocumentsProvision → epo:Procedure [1]<br>
+epo-acc:ProcurementDocumentsRequest → epo:Procedure [1]<br>
+epo-acc:UnsubscribeFromProcedure → epo:Procedure [1]</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo-acc:refersToNotice</p></td>
@@ -523,6 +564,36 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo-acc:ESPDRequest → epo:ProcurementCriterion [1..&#42;]</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:concernsLot</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relates to Lot.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:InformationRequest → epo:Lot [0..&#42;]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:concernsLotGroup</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relates to Lot Group.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:InformationRequest → epo:LotGroup [0..&#42;]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-sub:answersQuestion</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating that the Response replies to a question.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:InformationResponse → epo:InformationRequest [1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-acc:containsProvidedProcurementDocument</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Includes the supplied Procurement Document.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-acc:InvitationToTender → epo:ProcurementDocument []<br>
+epo-acc:ProcurementDocumentsProvision → epo:ProcurementDocument [0..&#42;]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:specifiesEconomicOperator</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating that the instance of the concept involves the Economic Operator.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-acc:InvitationToTender → epo:OfferingParty [1]<br>
+epo-acc:ProcurementDocumentsProvision → epo:OfferingParty [1]<br>
+epo-acc:ProcurementDocumentsRequest → epo:OfferingParty [1]<br>
+epo-acc:ProcurementQuestion → epo:OfferingParty [1]<br>
+epo-acc:UnsubscribeFromProcedure → epo:OfferingParty [1]</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo:hasResourceType</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating the Resource Type.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">eli:LegalResource → at-voc:resource-type [1..&#42;]</p></td>
@@ -531,6 +602,31 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo:hasSubdivision</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating the Subdivision.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">eli:LegalResourceSubdivision → at-voc:subdivision [0..1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:refersToProcurementDocumentsRequest</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-acc:ProcurementDocumentsProvision → epo-acc:ProcurementDocumentsRequest [0..1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:containsInformationRequest</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Includes Information Request.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-acc:ProcurementQuestion → epo:InformationRequest [1..&#42;]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:containsInformationReponse</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Includes Information Response.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-acc:ProcurementQuestionReply → epo:InformationResponse [1..&#42;]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-acc:refersToUnsubscribeFromProcedure</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-acc:UnsubscribeFromProcedureResponse → epo-acc:UnsubscribeFromProcedure [1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-sub:relatesToESPDRequest</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Is about an European Single Procurement Document (ESPD) Request.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-sub:ESPD → epo-acc:ESPDRequest [0..1]</p></td>
 </tr>
 </tbody>
 </table>
@@ -542,7 +638,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2026-07-16 09:54:51 UTC
+Last updated 2026-08-12 13:07:38 UTC
 </div>
 </div>
 </body>

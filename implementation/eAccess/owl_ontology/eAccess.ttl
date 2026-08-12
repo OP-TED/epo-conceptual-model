@@ -11,16 +11,92 @@
 
 :ESPDRequest a owl:Class ;
     rdfs:isDefinedBy :acc ;
+    rdfs:subClassOf :ProcurementDocument ;
     skos:definition "A document issued by a Buyer defining how the Exclusion Grounds and the Selection Criteria should be addressed in an European Single Procurement Document for a specific procurement."@en ;
     skos:historyNote "WG Approval 05/03/2024"@en ;
     skos:prefLabel "ESPD Request"@en .
 
+:InformationRequest a owl:Class ;
+    rdfs:isDefinedBy :acc ;
+    skos:prefLabel "Information Request"@en .
+
+:InformationResponse a owl:Class ;
+    rdfs:isDefinedBy :acc ;
+    skos:prefLabel "Information Response"@en .
+
+:InvitationToTender a owl:Class ;
+    rdfs:isDefinedBy :acc ;
+    rdfs:subClassOf :Document ;
+    skos:prefLabel "Invitation To Tender"@en .
+
+:ProcurementDocumentsProvision a owl:Class ;
+    rdfs:isDefinedBy :acc ;
+    rdfs:subClassOf :Document ;
+    skos:definition "The provision by the Buyer to the Economic Operator of the Procurement Documents."@en ;
+    skos:prefLabel "Procurement Documents Provision"@en .
+
+:ProcurementDocumentsRequest a owl:Class ;
+    rdfs:isDefinedBy :acc ;
+    rdfs:subClassOf :Document ;
+    skos:definition "The request by the Economic Operator to the Buyer to receive the latest version of all the Procurement Documents."@en ;
+    skos:prefLabel "Procurement Documents Request"@en .
+
+:ProcurementQuestion a owl:Class ;
+    rdfs:isDefinedBy :acc ;
+    rdfs:subClassOf :Document ;
+    skos:prefLabel "Procurement Question"@en .
+
+:ProcurementQuestionReply a owl:Class ;
+    rdfs:isDefinedBy :acc ;
+    rdfs:subClassOf :ProcurementDocument ;
+    skos:prefLabel "Procurement Question Reply"@en .
+
+:UnsubscribeFromProcedure a owl:Class ;
+    rdfs:isDefinedBy :acc ;
+    rdfs:subClassOf :Document ;
+    skos:prefLabel "Unsubscribe From Procedure"@en .
+
+:UnsubscribeFromProcedureResponse a owl:Class ;
+    rdfs:isDefinedBy :acc ;
+    rdfs:subClassOf :Document ;
+    skos:prefLabel "Unsubscribe From Procedure Response"@en .
+
+:answersQuestion a owl:ObjectProperty ;
+    rdfs:isDefinedBy :acc ;
+    skos:definition "Relation indicating that the Response replies to a question."@en ;
+    skos:prefLabel "answers Question"@en .
+
+:concernsLot a owl:ObjectProperty ;
+    rdfs:isDefinedBy :acc ;
+    skos:definition "Relates to Lot."@en ;
+    skos:prefLabel "concerns Lot"@en .
+
+:concernsLotGroup a owl:ObjectProperty ;
+    rdfs:isDefinedBy :acc ;
+    skos:definition "Relates to Lot Group."@en ;
+    skos:historyNote "WG approval 25/09/2025"@en ;
+    skos:prefLabel "concerns Lot Group"@en .
+
 :concernsProcedure a owl:ObjectProperty ;
     rdfs:isDefinedBy :acc ;
     skos:definition "Relates to Procedure."@en ;
-    skos:editorialNote "The relations epo-acc:concernsProcedure and epo:refersToProcedure have to refer to the same Procedure."@en ;
     skos:historyNote "WG Approval 05/03/2024"@en ;
     skos:prefLabel "concerns Procedure"@en .
+
+:containsInformationReponse a owl:ObjectProperty ;
+    rdfs:isDefinedBy :acc ;
+    skos:definition "Includes Information Response."@en ;
+    skos:prefLabel "contains Information Reponse"@en .
+
+:containsInformationRequest a owl:ObjectProperty ;
+    rdfs:isDefinedBy :acc ;
+    skos:definition "Includes Information Request."@en ;
+    skos:prefLabel "contains Information Request"@en .
+
+:containsProvidedProcurementDocument a owl:ObjectProperty ;
+    rdfs:isDefinedBy :acc ;
+    skos:definition "Includes the supplied Procurement Document."@en ;
+    skos:prefLabel "contains Provided Procurement Document"@en .
 
 :hasResourceType a owl:ObjectProperty ;
     rdfs:isDefinedBy :acc ;
@@ -38,11 +114,25 @@
     skos:historyNote "WG approval 12/03/2024"@en ;
     skos:prefLabel "refers To Notice"@en .
 
+:refersToProcurementDocumentsRequest a owl:ObjectProperty ;
+    rdfs:isDefinedBy :acc ;
+    skos:prefLabel "refers To Procurement Documents Request"@en .
+
+:refersToUnsubscribeFromProcedure a owl:ObjectProperty ;
+    rdfs:isDefinedBy :acc ;
+    skos:prefLabel "refers To Unsubscribe From Procedure"@en .
+
 :relatesToESPDRequest a owl:ObjectProperty ;
     rdfs:isDefinedBy :acc ;
     skos:definition "Is about an European Single Procurement Document (ESPD) Request."@en ;
     skos:historyNote "WG Approval 05/03/2024"@en ;
     skos:prefLabel "relates To ESPD Request"@en .
+
+:specifiesEconomicOperator a owl:ObjectProperty ;
+    rdfs:isDefinedBy :acc ;
+    skos:definition "Relation indicating that the instance of the concept involves the Economic Operator."@en ;
+    skos:historyNote "WG approval 25/09/2025"@en ;
+    skos:prefLabel "specifies Economic Operator"@en .
 
 :specifiesProcurementCriterion a owl:ObjectProperty ;
     rdfs:isDefinedBy :acc ;
@@ -54,13 +144,13 @@
     rdfs:label "eProcurement Ontology - eAccess"@en ;
     dcterms:created "2021-06-01"^^xsd:date ;
     dcterms:description "The eProcurement Ontology eAccess module describes the concepts and properties representing the Electronic Access to procurement documents domain. The provision of these semantics offers the basis for a common understanding of the domain for all stakeholders ensuring the quality of data exchange and transparency. The ontology restrictions are published in a separate artefact."@en ;
-    dcterms:issued "2026-07-07"^^xsd:date ;
-    dcterms:license "CC BY 4.0" ;
+    dcterms:issued "2026-08-12"^^xsd:date ;
+    dcterms:license "© European Union, 2014. Unless otherwise noted, the reuse of the Ontology is authorised under the European Union Public Licence v1.2 (https://eupl.eu/)." ;
     dcterms:publisher "http://publications.europa.eu/resource/authority/corporate-body/PUBL" ;
     dcterms:title "eProcurement Ontology - eAccess"@en ;
     vann:preferredNamespacePrefix "epo-acc" ;
     vann:preferredNamespaceUri "http://data.europa.eu/a4g/ontology#" ;
-    rdfs:comment "This version is automatically generated from eAccess.xml on 2026-07-07" ;
+    rdfs:comment "This version is automatically generated from eAccess.xml on 2026-08-12" ;
     rdfs:seeAlso <https://docs.ted.europa.eu/home/index.html>,
         <https://github.com/OP-TED/ePO/releases>,
         <https://joinup.ec.europa.eu/collection/eprocurement/solution/eprocurement-ontology/about>,

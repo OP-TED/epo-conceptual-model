@@ -11,9 +11,31 @@
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
+acc-shape:eli-LegalExpression-eli-jurisdiction a sh:PropertyShape ;
+    sh:class skos:Concept ;
+    sh:path eli:jurisdiction .
+
+acc-shape:eli-LegalResource-eli-jurisdiction a sh:PropertyShape ;
+    sh:class skos:Concept ;
+    sh:path eli:jurisdiction .
+
 acc-shape:eli-LegalResourceShape sh:property acc-shape:eli-LegalResource-epo-hasResourceType .
 
 acc-shape:eli-LegalResourceSubdivisionShape sh:property acc-shape:eli-LegalResourceSubdivision-epo-hasSubdivision .
+
+acc-shape:epo-InformationRequestShape a sh:NodeShape ;
+    rdfs:label "Information Request" ;
+    rdfs:isDefinedBy acc-shape:acc-shape ;
+    sh:property acc-shape:epo-InformationRequest-epo-concernsLot,
+        acc-shape:epo-InformationRequest-epo-concernsLotGroup,
+        acc-shape:epo-InformationRequest-epo-concernsProcedure ;
+    sh:targetClass :InformationRequest .
+
+acc-shape:epo-InformationResponseShape a sh:NodeShape ;
+    rdfs:label "Information Response" ;
+    rdfs:isDefinedBy acc-shape:acc-shape ;
+    sh:property acc-shape:epo-InformationResponse-epo-sub-answersQuestion ;
+    sh:targetClass :InformationResponse .
 
 acc-shape:epo-acc-ESPDRequestShape a sh:NodeShape ;
     rdfs:label "ESPD Request" ;
@@ -24,10 +46,63 @@ acc-shape:epo-acc-ESPDRequestShape a sh:NodeShape ;
         acc-shape:epo-acc-ESPDRequest-epo-specifiesProcurementCriterion ;
     sh:targetClass :ESPDRequest .
 
+acc-shape:epo-acc-InvitationToTenderShape a sh:NodeShape ;
+    rdfs:label "Invitation To Tender" ;
+    rdfs:isDefinedBy acc-shape:acc-shape ;
+    sh:property acc-shape:epo-acc-InvitationToTender-epo-acc-containsProvidedProcurementDocument,
+        acc-shape:epo-acc-InvitationToTender-epo-concernsProcedure,
+        acc-shape:epo-acc-InvitationToTender-epo-specifiesEconomicOperator ;
+    sh:targetClass :InvitationToTender .
+
+acc-shape:epo-acc-ProcurementDocumentsProvisionShape a sh:NodeShape ;
+    rdfs:label "Procurement Documents Provision" ;
+    rdfs:comment "The provision by the Buyer to the Economic Operator of the Procurement Documents." ;
+    rdfs:isDefinedBy acc-shape:acc-shape ;
+    sh:property acc-shape:epo-acc-ProcurementDocumentsProvision-epo-acc-containsProvidedProcurementDocument,
+        acc-shape:epo-acc-ProcurementDocumentsProvision-epo-concernsProcedure,
+        acc-shape:epo-acc-ProcurementDocumentsProvision-epo-refersToProcurementDocumentsRequest,
+        acc-shape:epo-acc-ProcurementDocumentsProvision-epo-specifiesEconomicOperator ;
+    sh:targetClass :ProcurementDocumentsProvision .
+
+acc-shape:epo-acc-ProcurementDocumentsRequestShape a sh:NodeShape ;
+    rdfs:label "Procurement Documents Request" ;
+    rdfs:comment "The request by the Economic Operator to the Buyer to receive the latest version of all the Procurement Documents." ;
+    rdfs:isDefinedBy acc-shape:acc-shape ;
+    sh:property acc-shape:epo-acc-ProcurementDocumentsRequest-epo-concernsProcedure,
+        acc-shape:epo-acc-ProcurementDocumentsRequest-epo-specifiesEconomicOperator ;
+    sh:targetClass :ProcurementDocumentsRequest .
+
+acc-shape:epo-acc-ProcurementQuestionReplyShape a sh:NodeShape ;
+    rdfs:label "Procurement Question Reply" ;
+    rdfs:isDefinedBy acc-shape:acc-shape ;
+    sh:property acc-shape:epo-acc-ProcurementQuestionReply-epo-containsInformationReponse ;
+    sh:targetClass :ProcurementQuestionReply .
+
+acc-shape:epo-acc-ProcurementQuestionShape a sh:NodeShape ;
+    rdfs:label "Procurement Question" ;
+    rdfs:isDefinedBy acc-shape:acc-shape ;
+    sh:property acc-shape:epo-acc-ProcurementQuestion-epo-containsInformationRequest,
+        acc-shape:epo-acc-ProcurementQuestion-epo-specifiesEconomicOperator ;
+    sh:targetClass :ProcurementQuestion .
+
+acc-shape:epo-acc-UnsubscribeFromProcedureResponseShape a sh:NodeShape ;
+    rdfs:label "Unsubscribe From Procedure Response" ;
+    rdfs:isDefinedBy acc-shape:acc-shape ;
+    sh:property acc-shape:epo-acc-UnsubscribeFromProcedureResponse-epo-acc-refersToUnsubscribeFromProcedure ;
+    sh:targetClass :UnsubscribeFromProcedureResponse .
+
+acc-shape:epo-acc-UnsubscribeFromProcedureShape a sh:NodeShape ;
+    rdfs:label "Unsubscribe From Procedure" ;
+    rdfs:isDefinedBy acc-shape:acc-shape ;
+    sh:property acc-shape:epo-acc-UnsubscribeFromProcedure-epo-concernsProcedure,
+        acc-shape:epo-acc-UnsubscribeFromProcedure-epo-specifiesEconomicOperator ;
+    sh:targetClass :UnsubscribeFromProcedure .
+
 acc-shape:epo-sub-ESPDShape sh:property acc-shape:epo-sub-ESPD-epo-sub-relatesToESPDRequest .
 
 acc-shape:eli-LegalResource-epo-hasResourceType a sh:PropertyShape ;
     rdfs:isDefinedBy acc-shape:acc-shape ;
+    sh:class skos:Concept ;
     sh:description "Relation indicating the Resource Type." ;
     sh:minCount 1 ;
     sh:name "Has resource type" ;
@@ -35,10 +110,45 @@ acc-shape:eli-LegalResource-epo-hasResourceType a sh:PropertyShape ;
 
 acc-shape:eli-LegalResourceSubdivision-epo-hasSubdivision a sh:PropertyShape ;
     rdfs:isDefinedBy acc-shape:acc-shape ;
+    sh:class skos:Concept ;
     sh:description "Relation indicating the Subdivision." ;
     sh:maxCount 1 ;
     sh:name "Has subdivision" ;
     sh:path :hasSubdivision .
+
+acc-shape:epo-InformationRequest-epo-concernsLot a sh:PropertyShape ;
+    rdfs:isDefinedBy acc-shape:acc-shape ;
+    sh:class :Lot ;
+    sh:description "Relates to Lot." ;
+    sh:name "Concerns lot" ;
+    sh:path :concernsLot ;
+    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#concernsLot> ?that . ?that <http://data.europa.eu/a4g/ontology#concernsLot> ?this .}" ] .
+
+acc-shape:epo-InformationRequest-epo-concernsLotGroup a sh:PropertyShape ;
+    rdfs:isDefinedBy acc-shape:acc-shape ;
+    sh:class :LotGroup ;
+    sh:description "Relates to Lot Group." ;
+    sh:name "Concerns lot group" ;
+    sh:path :concernsLotGroup ;
+    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#concernsLotGroup> ?that . ?that <http://data.europa.eu/a4g/ontology#concernsLotGroup> ?this .}" ] .
+
+acc-shape:epo-InformationRequest-epo-concernsProcedure a sh:PropertyShape ;
+    rdfs:isDefinedBy acc-shape:acc-shape ;
+    sh:class :Procedure ;
+    sh:description "Relates to Procedure." ;
+    sh:name "Concerns procedure" ;
+    sh:path :concernsProcedure ;
+    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#concernsProcedure> ?that . ?that <http://data.europa.eu/a4g/ontology#concernsProcedure> ?this .}" ] .
+
+acc-shape:epo-InformationResponse-epo-sub-answersQuestion a sh:PropertyShape ;
+    rdfs:isDefinedBy acc-shape:acc-shape ;
+    sh:class :InformationRequest ;
+    sh:description "Relation indicating that the Response replies to a question." ;
+    sh:maxCount 1 ;
+    sh:minCount 1 ;
+    sh:name "Answers question" ;
+    sh:path :answersQuestion ;
+    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#answersQuestion> ?that . ?that <http://data.europa.eu/a4g/ontology#answersQuestion> ?this .}" ] .
 
 acc-shape:epo-acc-ESPDRequest-epo-acc-refersToNotice a sh:PropertyShape ;
     rdfs:isDefinedBy acc-shape:acc-shape ;
@@ -51,8 +161,7 @@ acc-shape:epo-acc-ESPDRequest-epo-acc-refersToNotice a sh:PropertyShape ;
 acc-shape:epo-acc-ESPDRequest-epo-concernsProcedure a sh:PropertyShape ;
     rdfs:isDefinedBy acc-shape:acc-shape ;
     sh:class :Procedure ;
-    sh:description "Relates to Procedure.",
-        "The relations epo-acc:concernsProcedure and epo:refersToProcedure have to refer to the same Procedure." ;
+    sh:description "Relates to Procedure." ;
     sh:maxCount 1 ;
     sh:minCount 1 ;
     sh:name "Concerns procedure" ;
@@ -68,6 +177,146 @@ acc-shape:epo-acc-ESPDRequest-epo-specifiesProcurementCriterion a sh:PropertySha
     sh:path :specifiesProcurementCriterion ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#specifiesProcurementCriterion> ?that . ?that <http://data.europa.eu/a4g/ontology#specifiesProcurementCriterion> ?this .}" ] .
 
+acc-shape:epo-acc-InvitationToTender-epo-acc-containsProvidedProcurementDocument a sh:PropertyShape ;
+    rdfs:isDefinedBy acc-shape:acc-shape ;
+    sh:class :ProcurementDocument ;
+    sh:name "Contains provided procurement document" ;
+    sh:path :containsProvidedProcurementDocument ;
+    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#containsProvidedProcurementDocument> ?that . ?that <http://data.europa.eu/a4g/ontology#containsProvidedProcurementDocument> ?this .}" ] .
+
+acc-shape:epo-acc-InvitationToTender-epo-concernsProcedure a sh:PropertyShape ;
+    rdfs:isDefinedBy acc-shape:acc-shape ;
+    sh:class :Procedure ;
+    sh:description "Relates to Procedure." ;
+    sh:maxCount 1 ;
+    sh:minCount 1 ;
+    sh:name "Concerns procedure" ;
+    sh:path :concernsProcedure ;
+    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#concernsProcedure> ?that . ?that <http://data.europa.eu/a4g/ontology#concernsProcedure> ?this .}" ] .
+
+acc-shape:epo-acc-InvitationToTender-epo-specifiesEconomicOperator a sh:PropertyShape ;
+    rdfs:isDefinedBy acc-shape:acc-shape ;
+    sh:class :OfferingParty ;
+    sh:description "Relation indicating that the instance of the concept involves the Economic Operator." ;
+    sh:maxCount 1 ;
+    sh:minCount 1 ;
+    sh:name "Specifies economic operator" ;
+    sh:path :specifiesEconomicOperator ;
+    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#specifiesEconomicOperator> ?that . ?that <http://data.europa.eu/a4g/ontology#specifiesEconomicOperator> ?this .}" ] .
+
+acc-shape:epo-acc-ProcurementDocumentsProvision-epo-acc-containsProvidedProcurementDocument a sh:PropertyShape ;
+    rdfs:isDefinedBy acc-shape:acc-shape ;
+    sh:class :ProcurementDocument ;
+    sh:description "Includes the supplied Procurement Document." ;
+    sh:name "Contains provided procurement document" ;
+    sh:path :containsProvidedProcurementDocument ;
+    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#containsProvidedProcurementDocument> ?that . ?that <http://data.europa.eu/a4g/ontology#containsProvidedProcurementDocument> ?this .}" ] .
+
+acc-shape:epo-acc-ProcurementDocumentsProvision-epo-concernsProcedure a sh:PropertyShape ;
+    rdfs:isDefinedBy acc-shape:acc-shape ;
+    sh:class :Procedure ;
+    sh:description "Relates to Procedure." ;
+    sh:maxCount 1 ;
+    sh:minCount 1 ;
+    sh:name "Concerns procedure" ;
+    sh:path :concernsProcedure ;
+    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#concernsProcedure> ?that . ?that <http://data.europa.eu/a4g/ontology#concernsProcedure> ?this .}" ] .
+
+acc-shape:epo-acc-ProcurementDocumentsProvision-epo-refersToProcurementDocumentsRequest a sh:PropertyShape ;
+    rdfs:isDefinedBy acc-shape:acc-shape ;
+    sh:class :ProcurementDocumentsRequest ;
+    sh:maxCount 1 ;
+    sh:name "Refers to procurement documents request" ;
+    sh:path :refersToProcurementDocumentsRequest ;
+    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#refersToProcurementDocumentsRequest> ?that . ?that <http://data.europa.eu/a4g/ontology#refersToProcurementDocumentsRequest> ?this .}" ] .
+
+acc-shape:epo-acc-ProcurementDocumentsProvision-epo-specifiesEconomicOperator a sh:PropertyShape ;
+    rdfs:isDefinedBy acc-shape:acc-shape ;
+    sh:class :OfferingParty ;
+    sh:description "Relation indicating that the instance of the concept involves the Economic Operator." ;
+    sh:maxCount 1 ;
+    sh:minCount 1 ;
+    sh:name "Specifies economic operator" ;
+    sh:path :specifiesEconomicOperator ;
+    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#specifiesEconomicOperator> ?that . ?that <http://data.europa.eu/a4g/ontology#specifiesEconomicOperator> ?this .}" ] .
+
+acc-shape:epo-acc-ProcurementDocumentsRequest-epo-concernsProcedure a sh:PropertyShape ;
+    rdfs:isDefinedBy acc-shape:acc-shape ;
+    sh:class :Procedure ;
+    sh:description "Relates to Procedure." ;
+    sh:maxCount 1 ;
+    sh:minCount 1 ;
+    sh:name "Concerns procedure" ;
+    sh:path :concernsProcedure ;
+    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#concernsProcedure> ?that . ?that <http://data.europa.eu/a4g/ontology#concernsProcedure> ?this .}" ] .
+
+acc-shape:epo-acc-ProcurementDocumentsRequest-epo-specifiesEconomicOperator a sh:PropertyShape ;
+    rdfs:isDefinedBy acc-shape:acc-shape ;
+    sh:class :OfferingParty ;
+    sh:description "Relation indicating that the instance of the concept involves the Economic Operator." ;
+    sh:maxCount 1 ;
+    sh:minCount 1 ;
+    sh:name "Specifies economic operator" ;
+    sh:path :specifiesEconomicOperator ;
+    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#specifiesEconomicOperator> ?that . ?that <http://data.europa.eu/a4g/ontology#specifiesEconomicOperator> ?this .}" ] .
+
+acc-shape:epo-acc-ProcurementQuestion-epo-containsInformationRequest a sh:PropertyShape ;
+    rdfs:isDefinedBy acc-shape:acc-shape ;
+    sh:class :InformationRequest ;
+    sh:description "Includes Information Request." ;
+    sh:minCount 1 ;
+    sh:name "Contains information request" ;
+    sh:path :containsInformationRequest ;
+    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#containsInformationRequest> ?that . ?that <http://data.europa.eu/a4g/ontology#containsInformationRequest> ?this .}" ] .
+
+acc-shape:epo-acc-ProcurementQuestion-epo-specifiesEconomicOperator a sh:PropertyShape ;
+    rdfs:isDefinedBy acc-shape:acc-shape ;
+    sh:class :OfferingParty ;
+    sh:description "Relation indicating that the instance of the concept involves the Economic Operator." ;
+    sh:maxCount 1 ;
+    sh:minCount 1 ;
+    sh:name "Specifies economic operator" ;
+    sh:path :specifiesEconomicOperator ;
+    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#specifiesEconomicOperator> ?that . ?that <http://data.europa.eu/a4g/ontology#specifiesEconomicOperator> ?this .}" ] .
+
+acc-shape:epo-acc-ProcurementQuestionReply-epo-containsInformationReponse a sh:PropertyShape ;
+    rdfs:isDefinedBy acc-shape:acc-shape ;
+    sh:class :InformationResponse ;
+    sh:description "Includes Information Response." ;
+    sh:minCount 1 ;
+    sh:name "Contains information reponse" ;
+    sh:path :containsInformationReponse ;
+    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#containsInformationReponse> ?that . ?that <http://data.europa.eu/a4g/ontology#containsInformationReponse> ?this .}" ] .
+
+acc-shape:epo-acc-UnsubscribeFromProcedure-epo-concernsProcedure a sh:PropertyShape ;
+    rdfs:isDefinedBy acc-shape:acc-shape ;
+    sh:class :Procedure ;
+    sh:description "Relates to Procedure." ;
+    sh:maxCount 1 ;
+    sh:minCount 1 ;
+    sh:name "Concerns procedure" ;
+    sh:path :concernsProcedure ;
+    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#concernsProcedure> ?that . ?that <http://data.europa.eu/a4g/ontology#concernsProcedure> ?this .}" ] .
+
+acc-shape:epo-acc-UnsubscribeFromProcedure-epo-specifiesEconomicOperator a sh:PropertyShape ;
+    rdfs:isDefinedBy acc-shape:acc-shape ;
+    sh:class :OfferingParty ;
+    sh:description "Relation indicating that the instance of the concept involves the Economic Operator." ;
+    sh:maxCount 1 ;
+    sh:minCount 1 ;
+    sh:name "Specifies economic operator" ;
+    sh:path :specifiesEconomicOperator ;
+    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#specifiesEconomicOperator> ?that . ?that <http://data.europa.eu/a4g/ontology#specifiesEconomicOperator> ?this .}" ] .
+
+acc-shape:epo-acc-UnsubscribeFromProcedureResponse-epo-acc-refersToUnsubscribeFromProcedure a sh:PropertyShape ;
+    rdfs:isDefinedBy acc-shape:acc-shape ;
+    sh:class :UnsubscribeFromProcedure ;
+    sh:maxCount 1 ;
+    sh:minCount 1 ;
+    sh:name "Refers to unsubscribe from procedure" ;
+    sh:path :refersToUnsubscribeFromProcedure ;
+    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#refersToUnsubscribeFromProcedure> ?that . ?that <http://data.europa.eu/a4g/ontology#refersToUnsubscribeFromProcedure> ?this .}" ] .
+
 acc-shape:epo-sub-ESPD-epo-sub-relatesToESPDRequest a sh:PropertyShape ;
     rdfs:isDefinedBy acc-shape:acc-shape ;
     sh:class :ESPDRequest ;
@@ -81,13 +330,13 @@ acc-shape:acc-shape a owl:Ontology ;
     rdfs:label "eProcurement Ontology - eAccess shapes"@en ;
     dcterms:created "2021-06-01"^^xsd:date ;
     dcterms:description "The eProcurement Ontology eAccess shapes provides the generic datashape specifications for the eProcurement Ontology eAccess module."@en ;
-    dcterms:issued "2026-07-07"^^xsd:date ;
-    dcterms:license "CC BY 4.0" ;
+    dcterms:issued "2026-08-12"^^xsd:date ;
+    dcterms:license "© European Union, 2014. Unless otherwise noted, the reuse of the Ontology is authorised under the European Union Public Licence v1.2 (https://eupl.eu/)." ;
     dcterms:publisher "http://publications.europa.eu/resource/authority/corporate-body/PUBL" ;
     dcterms:title "eProcurement Ontology - eAccess shapes"@en ;
     vann:preferredNamespacePrefix "epo-acc" ;
     vann:preferredNamespaceUri "http://data.europa.eu/a4g/ontology#" ;
-    rdfs:comment "This version is automatically generated from eAccess.xml on 2026-07-07" ;
+    rdfs:comment "This version is automatically generated from eAccess.xml on 2026-08-12" ;
     rdfs:seeAlso <https://docs.ted.europa.eu/home/index.html>,
         <https://github.com/OP-TED/ePO/releases>,
         <https://joinup.ec.europa.eu/collection/eprocurement/solution/eprocurement-ontology/about>,

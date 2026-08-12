@@ -11,42 +11,49 @@
 
 :DocumentaryEvidence a owl:Class ;
     rdfs:isDefinedBy :sub ;
+    rdfs:subClassOf cccev:Evidence ;
     skos:definition "An Evidence submitted by an Economic Operator to prove compliance with legal, technical or financial requirements, or inapplicability of exclusion grounds in a Procurement Procedure."@en ;
     skos:historyNote "WG approval 16/09/2025"@en ;
     skos:prefLabel "Documentary Evidence"@en .
 
 :ESPD a owl:Class ;
     rdfs:isDefinedBy :sub ;
+    rdfs:subClassOf :Document ;
     skos:definition "A self-declaration of an economic operator, stating that it does not fall under the Exclusion Grounds and that it meets the Selection Criteria for a specific procurement."@en ;
     skos:historyNote "WG Approval 05/03/2024"@en ;
     skos:prefLabel "ESPD"@en .
 
 :EvidenceInformation a owl:Class ;
     rdfs:isDefinedBy :sub ;
+    rdfs:subClassOf :ContextDescription ;
     skos:definition "Information about a Certificate."@en ;
     skos:historyNote "WG Approval 12/03/2024"@en ;
     skos:prefLabel "Evidence Information"@en .
 
 :LegalRepresentative a owl:Class ;
     rdfs:isDefinedBy :sub ;
+    rdfs:subClassOf :AuxiliaryParty ;
     skos:definition "The Role of an Agent that can represent an Organization."@en ;
     skos:historyNote "WG Approval 05/03/2024"@en ;
     skos:prefLabel "Legal Representative"@en .
 
 :Mandate a owl:Class ;
     rdfs:isDefinedBy :sub ;
+    rdfs:subClassOf :Document ;
     skos:definition "An authorization to act as a representative of an Organization."@en ;
     skos:historyNote "WG Approval 05/03/2024"@en ;
     skos:prefLabel "Mandate"@en .
 
 :OrganisationInformationSummary a owl:Class ;
     rdfs:isDefinedBy :sub ;
+    rdfs:subClassOf :ContextDescription ;
     skos:definition "Information about the specific features or characteristics that qualify an economic operator to take part in a tendering process."@en ;
     skos:historyNote "WG Approval 03/03/2025"@en ;
     skos:prefLabel "Organisation Information Summary"@en .
 
 :PowerOfAttorney a owl:Class ;
     rdfs:isDefinedBy :sub ;
+    rdfs:subClassOf :Document ;
     skos:definition "A legal document that grants someone the authority to make decisions on behalf of an Organization."@en ;
     skos:historyNote "WG Approval 05/03/2024"@en ;
     skos:prefLabel "Power Of Attorney"@en .
@@ -56,6 +63,16 @@
     skos:definition "An answer given to a question that is part of an ESPD Request."@en ;
     skos:historyNote "WG Approval 12/03/2024"@en ;
     skos:prefLabel "Response"@en .
+
+:TenderWithdrawalReceipt a owl:Class ;
+    rdfs:isDefinedBy :sub ;
+    rdfs:subClassOf :Document ;
+    skos:prefLabel "Tender Withdrawal Receipt"@en .
+
+:TenderWithdrawalRequest a owl:Class ;
+    rdfs:isDefinedBy :sub ;
+    rdfs:subClassOf :Document ;
+    skos:prefLabel "Tender Withdrawal Request"@en .
 
 :actsOnBehalfOf a owl:ObjectProperty ;
     rdfs:isDefinedBy :sub ;
@@ -139,6 +156,14 @@
     skos:historyNote "WG Approval 12/03/2024"@en ;
     skos:prefLabel "refers To Applicable Period"@en .
 
+:refersToTender a owl:ObjectProperty ;
+    rdfs:isDefinedBy :sub ;
+    skos:prefLabel "refers To Tender"@en .
+
+:refersToTenderReceipt a owl:ObjectProperty ;
+    rdfs:isDefinedBy :sub ;
+    skos:prefLabel "refers To Tender Receipt"@en .
+
 :relatesToESPDRequest a owl:ObjectProperty ;
     rdfs:isDefinedBy :sub ;
     skos:definition "Is about an European Single Procurement Document (ESPD) Request."@en ;
@@ -161,13 +186,13 @@
     rdfs:label "eProcurement Ontology - eSubmission"@en ;
     dcterms:created "2021-06-01"^^xsd:date ;
     dcterms:description "The eProcurement Ontology eSubmission module describes the concepts and properties representing the Electronic Submission domain. The provision of these semantics offers the basis for a common understanding of the domain for all stakeholders ensuring the quality of data exchange and transparency. The ontology restrictions are published in a separate artefact."@en ;
-    dcterms:issued "2026-07-07"^^xsd:date ;
-    dcterms:license "CC BY 4.0" ;
+    dcterms:issued "2026-08-12"^^xsd:date ;
+    dcterms:license "© European Union, 2014. Unless otherwise noted, the reuse of the Ontology is authorised under the European Union Public Licence v1.2 (https://eupl.eu/)." ;
     dcterms:publisher "http://publications.europa.eu/resource/authority/corporate-body/PUBL" ;
     dcterms:title "eProcurement Ontology - eSubmission"@en ;
     vann:preferredNamespacePrefix "epo-sub" ;
     vann:preferredNamespaceUri "http://data.europa.eu/a4g/ontology#" ;
-    rdfs:comment "This version is automatically generated from eSubmission.xml on 2026-07-07" ;
+    rdfs:comment "This version is automatically generated from eSubmission.xml on 2026-08-12" ;
     rdfs:seeAlso <https://docs.ted.europa.eu/home/index.html>,
         <https://github.com/OP-TED/ePO/releases>,
         <https://joinup.ec.europa.eu/collection/eprocurement/solution/eprocurement-ontology/about>,

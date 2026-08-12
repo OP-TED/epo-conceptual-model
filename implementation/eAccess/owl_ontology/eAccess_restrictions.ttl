@@ -4,6 +4,7 @@
 @prefix eli: <http://data.europa.eu/eli/ontology#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix vann: <http://purl.org/vocab/vann/> .
@@ -13,14 +14,14 @@
     rdfs:label "eProcurement Ontology - eAccess restrictions"@en ;
     dcterms:created "2021-06-01"^^xsd:date ;
     dcterms:description "The eProcurement Ontology eAccess restrictions provides the restrictions and the inference-related specifications on the concepts and properties in the eProcurement Ontology eAccess module."@en ;
-    dcterms:issued "2026-07-07"^^xsd:date ;
-    dcterms:license "CC BY 4.0" ;
+    dcterms:issued "2026-08-12"^^xsd:date ;
+    dcterms:license "© European Union, 2014. Unless otherwise noted, the reuse of the Ontology is authorised under the European Union Public Licence v1.2 (https://eupl.eu/)." ;
     dcterms:publisher "http://publications.europa.eu/resource/authority/corporate-body/PUBL" ;
     dcterms:title "eProcurement Ontology - eAccess restrictions"@en ;
     vann:preferredNamespacePrefix "epo-acc" ;
     vann:preferredNamespaceUri "http://data.europa.eu/a4g/ontology#" ;
     rdfs:comment """This version is automatically generated from eAccess.xml on 
-                2026-07-07""" ;
+                2026-08-12""" ;
     rdfs:seeAlso <https://docs.ted.europa.eu/home/index.html>,
         <https://github.com/OP-TED/ePO/releases>,
         <https://joinup.ec.europa.eu/collection/eprocurement/solution/eprocurement-ontology/about>,
@@ -40,6 +41,16 @@
     owl:versionIRI :acc-restriction-5.2.0 ;
     owl:versionInfo "5.2.0" .
 
+:concernsLot rdfs:domain :InformationRequest ;
+    rdfs:range :Lot .
+
+:concernsLotGroup rdfs:domain :InformationRequest ;
+    rdfs:range :LotGroup .
+
+:containsProvidedProcurementDocument rdfs:domain [ a owl:Class ;
+            owl:unionOf ( :InvitationToTender :ProcurementDocumentsProvision ) ] ;
+    rdfs:range :ProcurementDocument .
+
 :hasResourceType rdfs:domain eli:LegalResource ;
     rdfs:range skos:Concept .
 
@@ -54,15 +65,90 @@
             owl:onClass :ESPDRequest ;
             owl:onProperty :relatesToESPDRequest ] .
 
-:concernsProcedure a owl:FunctionalProperty ;
-    rdfs:domain :ESPDRequest ;
-    rdfs:range :Procedure .
+:ProcurementQuestionReply rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty :containsInformationReponse ;
+            owl:someValuesFrom :InformationResponse ] .
+
+:UnsubscribeFromProcedureResponse rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass :UnsubscribeFromProcedure ;
+            owl:onProperty :refersToUnsubscribeFromProcedure ;
+            owl:qualifiedCardinality 1 ] .
+
+:answersQuestion a owl:FunctionalProperty ;
+    rdfs:domain :InformationResponse ;
+    rdfs:range :InformationRequest .
+
+:containsInformationReponse rdfs:domain :ProcurementQuestionReply ;
+    rdfs:range :InformationResponse .
+
+:containsInformationRequest rdfs:domain :ProcurementQuestion ;
+    rdfs:range :InformationRequest .
+
+:refersToProcurementDocumentsRequest rdfs:domain :ProcurementDocumentsProvision ;
+    rdfs:range :ProcurementDocumentsRequest .
+
+:refersToUnsubscribeFromProcedure a owl:FunctionalProperty ;
+    rdfs:domain :UnsubscribeFromProcedureResponse ;
+    rdfs:range :UnsubscribeFromProcedure .
 
 :relatesToESPDRequest rdfs:domain :ESPD ;
     rdfs:range :ESPDRequest .
 
 :specifiesProcurementCriterion rdfs:domain :ESPDRequest ;
     rdfs:range :ProcurementCriterion .
+
+:ProcurementQuestion rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty :containsInformationRequest ;
+            owl:someValuesFrom :InformationRequest ],
+        [ a owl:Restriction ;
+            owl:onClass :OfferingParty ;
+            owl:onProperty :specifiesEconomicOperator ;
+            owl:qualifiedCardinality 1 ] .
+
+:InformationResponse rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass :InformationRequest ;
+            owl:onProperty :answersQuestion ;
+            owl:qualifiedCardinality 1 ] .
+
+:InvitationToTender rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass :OfferingParty ;
+            owl:onProperty :specifiesEconomicOperator ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass :Procedure ;
+            owl:onProperty :concernsProcedure ;
+            owl:qualifiedCardinality 1 ] .
+
+:ProcurementDocumentsProvision rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass :OfferingParty ;
+            owl:onProperty :specifiesEconomicOperator ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass :Procedure ;
+            owl:onProperty :concernsProcedure ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass :ProcurementDocumentsRequest ;
+            owl:onProperty :refersToProcurementDocumentsRequest ] .
+
+:ProcurementDocumentsRequest rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass :Procedure ;
+            owl:onProperty :concernsProcedure ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass :OfferingParty ;
+            owl:onProperty :specifiesEconomicOperator ;
+            owl:qualifiedCardinality 1 ] .
+
+:UnsubscribeFromProcedure rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass :OfferingParty ;
+            owl:onProperty :specifiesEconomicOperator ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass :Procedure ;
+            owl:onProperty :concernsProcedure ;
+            owl:qualifiedCardinality 1 ] .
 
 :ESPDRequest rdfs:subClassOf [ a owl:Restriction ;
             owl:onClass :Procedure ;
@@ -71,4 +157,14 @@
         [ a owl:Restriction ;
             owl:onProperty :specifiesProcurementCriterion ;
             owl:someValuesFrom :ProcurementCriterion ] .
+
+:concernsProcedure a owl:FunctionalProperty ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( :ESPDRequest :InvitationToTender :InformationRequest :ProcurementDocumentsProvision :ProcurementDocumentsRequest :UnsubscribeFromProcedure ) ] ;
+    rdfs:range :Procedure .
+
+:specifiesEconomicOperator a owl:FunctionalProperty ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( :InvitationToTender :ProcurementDocumentsProvision :ProcurementDocumentsRequest :ProcurementQuestion :UnsubscribeFromProcedure ) ] ;
+    rdfs:range :OfferingParty .
 

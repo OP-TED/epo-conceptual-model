@@ -25,12 +25,12 @@
     <rdfs:label xml:lang="en">eProcurement Ontology - eAccess shapes</rdfs:label>
     <dcterms:publisher>http://publications.europa.eu/resource/authority/corporate-body/PUBL</dcterms:publisher>
     <dcterms:description xml:lang="en">The eProcurement Ontology eAccess shapes provides the generic datashape specifications for the eProcurement Ontology eAccess module.</dcterms:description>
-    <rdfs:comment>This version is automatically generated from eAccess.xml on 2026-07-07</rdfs:comment>
+    <rdfs:comment>This version is automatically generated from eAccess.xml on 2026-08-12</rdfs:comment>
     <rdfs:seeAlso rdf:resource="https://github.com/OP-TED/ePO/releases"/>
     <rdfs:seeAlso rdf:resource="https://joinup.ec.europa.eu/collection/eprocurement/solution/eprocurement-ontology/about"/>
     <rdfs:seeAlso rdf:resource="https://op.europa.eu/en/web/eu-vocabularies/e-procurement"/>
     <rdfs:seeAlso rdf:resource="https://docs.ted.europa.eu/home/index.html"/>
-    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-07-07</dcterms:issued>
+    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2026-08-12</dcterms:issued>
     <dcterms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2021-06-01</dcterms:created>
     <owl:versionInfo>5.2.0</owl:versionInfo>
     <owl:incompatibleWith>4.2.0</owl:incompatibleWith>
@@ -38,7 +38,178 @@
     <owl:priorVersion>http://data.europa.eu/a4g/data-shape#acc-shape-5.1.0</owl:priorVersion>
     <vann:preferredNamespaceUri>http://data.europa.eu/a4g/ontology#</vann:preferredNamespaceUri>
     <vann:preferredNamespacePrefix>epo-acc</vann:preferredNamespacePrefix>
-    <dcterms:license>CC BY 4.0</dcterms:license>
+    <dcterms:license>© European Union, 2014. Unless otherwise noted, the reuse of the Ontology is authorised under the European Union Public Licence v1.2 (https://eupl.eu/).</dcterms:license>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-InformationRequest-epo-concernsLot">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#Lot"/>
+    <sh:sparql rdf:nodeID="N4d0b10886f5940f18fb01078303484f6"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#concernsLot"/>
+    <sh:name>Concerns lot</sh:name>
+    <sh:description>Relates to Lot.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#acc-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-acc-ProcurementQuestion-epo-containsInformationRequest">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#InformationRequest"/>
+    <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
+    <sh:sparql rdf:nodeID="N42f67f4244404741a1c54d18c7624826"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#containsInformationRequest"/>
+    <sh:name>Contains information request</sh:name>
+    <sh:description>Includes Information Request.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#acc-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-InformationResponseShape">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+    <sh:targetClass rdf:resource="http://data.europa.eu/a4g/ontology#InformationResponse"/>
+    <rdfs:label>Information Response</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#acc-shape"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-InformationResponse-epo-sub-answersQuestion"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-acc-ESPDRequest-epo-acc-refersToNotice">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#Notice"/>
+    <sh:sparql rdf:nodeID="N67ff42acb8164a978428df5478c9563f"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#refersToNotice"/>
+    <sh:name>Refers to notice</sh:name>
+    <sh:description>Reference to a Notice.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#acc-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-acc-ProcurementQuestionReply-epo-containsInformationReponse">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#InformationResponse"/>
+    <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
+    <sh:sparql rdf:nodeID="Nfe73e716f831431bb6b0a8104db1c137"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#containsInformationReponse"/>
+    <sh:name>Contains information reponse</sh:name>
+    <sh:description>Includes Information Response.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#acc-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-acc-ESPDRequest-epo-specifiesProcurementCriterion">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#ProcurementCriterion"/>
+    <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
+    <sh:sparql rdf:nodeID="N60fd3a4f87614f2ab42c89231f9026e2"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#specifiesProcurementCriterion"/>
+    <sh:name>Specifies procurement criterion</sh:name>
+    <sh:description>Relation indicating the Procurement Criterion to be used.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#acc-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-acc-ProcurementDocumentsRequestShape">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+    <sh:targetClass rdf:resource="http://data.europa.eu/a4g/ontology#ProcurementDocumentsRequest"/>
+    <rdfs:label>Procurement Documents Request</rdfs:label>
+    <rdfs:comment>The request by the Economic Operator to the Buyer to receive the latest version of all the Procurement Documents.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#acc-shape"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-acc-ProcurementDocumentsRequest-epo-specifiesEconomicOperator"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-acc-ProcurementDocumentsRequest-epo-concernsProcedure"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-acc-ProcurementDocumentsRequest-epo-concernsProcedure">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#Procedure"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
+    <sh:sparql rdf:nodeID="N217543010bbd49b3a0ffaf9d9d1c7cfe"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#concernsProcedure"/>
+    <sh:name>Concerns procedure</sh:name>
+    <sh:description>Relates to Procedure.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#acc-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-acc-ProcurementQuestionShape">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+    <sh:targetClass rdf:resource="http://data.europa.eu/a4g/ontology#ProcurementQuestion"/>
+    <rdfs:label>Procurement Question</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#acc-shape"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-acc-ProcurementQuestion-epo-containsInformationRequest"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-acc-ProcurementQuestion-epo-specifiesEconomicOperator"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-InformationRequestShape">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+    <sh:targetClass rdf:resource="http://data.europa.eu/a4g/ontology#InformationRequest"/>
+    <rdfs:label>Information Request</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#acc-shape"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-InformationRequest-epo-concernsLotGroup"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-InformationRequest-epo-concernsProcedure"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-InformationRequest-epo-concernsLot"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-acc-InvitationToTender-epo-specifiesEconomicOperator">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#OfferingParty"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
+    <sh:sparql rdf:nodeID="Nf43e53071476433b913870e56b31decb"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#specifiesEconomicOperator"/>
+    <sh:name>Specifies economic operator</sh:name>
+    <sh:description>Relation indicating that the instance of the concept involves the Economic Operator.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#acc-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Nfe73e716f831431bb6b0a8104db1c137">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#containsInformationReponse&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#containsInformationReponse&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#eli-LegalResourceSubdivision-epo-hasSubdivision">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasSubdivision"/>
+    <sh:class rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:name>Has subdivision</sh:name>
+    <sh:description>Relation indicating the Subdivision.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#acc-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#eli-LegalResource-eli-jurisdiction">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/eli/ontology#jurisdiction"/>
+    <sh:class rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-sub-ESPD-epo-sub-relatesToESPDRequest">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#ESPDRequest"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:sparql rdf:nodeID="N571061abe3a44bc1a355f3615e0ddabb"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#relatesToESPDRequest"/>
+    <sh:name>Relates to ESPD request</sh:name>
+    <sh:description>Is about an European Single Procurement Document (ESPD) Request.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#acc-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-acc-ESPDRequest-epo-concernsProcedure">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#Procedure"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
+    <sh:sparql rdf:nodeID="Nae5b23be30044dc6a98d50f262cb20e6"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#concernsProcedure"/>
+    <sh:name>Concerns procedure</sh:name>
+    <sh:description>Relates to Procedure.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#acc-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-acc-InvitationToTenderShape">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+    <sh:targetClass rdf:resource="http://data.europa.eu/a4g/ontology#InvitationToTender"/>
+    <rdfs:label>Invitation To Tender</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#acc-shape"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-acc-InvitationToTender-epo-concernsProcedure"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-acc-InvitationToTender-epo-acc-containsProvidedProcurementDocument"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-acc-InvitationToTender-epo-specifiesEconomicOperator"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-acc-UnsubscribeFromProcedureResponseShape">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+    <sh:targetClass rdf:resource="http://data.europa.eu/a4g/ontology#UnsubscribeFromProcedureResponse"/>
+    <rdfs:label>Unsubscribe From Procedure Response</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#acc-shape"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-acc-UnsubscribeFromProcedureResponse-epo-acc-refersToUnsubscribeFromProcedure"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N67ff42acb8164a978428df5478c9563f">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#refersToNotice&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#refersToNotice&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-acc-InvitationToTender-epo-concernsProcedure">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#Procedure"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
+    <sh:sparql rdf:nodeID="N2c50efde661a42c083c573f4846aa60b"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#concernsProcedure"/>
+    <sh:name>Concerns procedure</sh:name>
+    <sh:description>Relates to Procedure.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#acc-shape"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-acc-ESPDRequestShape">
     <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
@@ -50,82 +221,247 @@
     <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-acc-ESPDRequest-epo-acc-refersToNotice"/>
     <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-acc-ESPDRequest-epo-concernsProcedure"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-acc-ESPDRequest-epo-concernsProcedure">
-    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#Procedure"/>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-acc-ProcurementDocumentsRequest-epo-specifiesEconomicOperator">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#OfferingParty"/>
     <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
     <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
-    <sh:sparql rdf:nodeID="Nbd3486fe3b5941b6b350586f2fe507c9"/>
+    <sh:sparql rdf:nodeID="N1f18188e5a7640e39dc94049076fc549"/>
     <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#concernsProcedure"/>
-    <sh:name>Concerns procedure</sh:name>
-    <sh:description>Relates to Procedure.</sh:description>
-    <sh:description>The relations epo-acc:concernsProcedure and epo:refersToProcedure have to refer to the same Procedure.</sh:description>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#specifiesEconomicOperator"/>
+    <sh:name>Specifies economic operator</sh:name>
+    <sh:description>Relation indicating that the instance of the concept involves the Economic Operator.</sh:description>
     <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#acc-shape"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="N2eda961a8af643b487de2de890945197">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#specifiesProcurementCriterion&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#specifiesProcurementCriterion&gt; ?this .}</sh:select>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-acc-ProcurementDocumentsProvision-epo-refersToProcurementDocumentsRequest">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#ProcurementDocumentsRequest"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:sparql rdf:nodeID="Nfeca899150254480ab1d66478aa6d6a9"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#refersToProcurementDocumentsRequest"/>
+    <sh:name>Refers to procurement documents request</sh:name>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#acc-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-acc-ProcurementQuestion-epo-specifiesEconomicOperator">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#OfferingParty"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
+    <sh:sparql rdf:nodeID="N304313c90b484315b447ea5581ecd220"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#specifiesEconomicOperator"/>
+    <sh:name>Specifies economic operator</sh:name>
+    <sh:description>Relation indicating that the instance of the concept involves the Economic Operator.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#acc-shape"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#eli-LegalResource-epo-hasResourceType">
-    <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
     <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
     <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasResourceType"/>
+    <sh:class rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+    <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
     <sh:name>Has resource type</sh:name>
     <sh:description>Relation indicating the Resource Type.</sh:description>
     <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#acc-shape"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="Ncee1dd75161b44d0a4848d6e90e415a5">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#relatesToESPDRequest&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#relatesToESPDRequest&gt; ?this .}</sh:select>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-InformationRequest-epo-concernsProcedure">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#Procedure"/>
+    <sh:sparql rdf:nodeID="N7797fafea1c64346bc1c94eb5e4527dc"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#concernsProcedure"/>
+    <sh:name>Concerns procedure</sh:name>
+    <sh:description>Relates to Procedure.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#acc-shape"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-acc-ESPDRequest-epo-specifiesProcurementCriterion">
-    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#ProcurementCriterion"/>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-acc-UnsubscribeFromProcedure-epo-specifiesEconomicOperator">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#OfferingParty"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
     <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
-    <sh:sparql rdf:nodeID="N2eda961a8af643b487de2de890945197"/>
+    <sh:sparql rdf:nodeID="Naec1953d6f3e4f83a97a80198e736902"/>
     <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#specifiesProcurementCriterion"/>
-    <sh:name>Specifies procurement criterion</sh:name>
-    <sh:description>Relation indicating the Procurement Criterion to be used.</sh:description>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#specifiesEconomicOperator"/>
+    <sh:name>Specifies economic operator</sh:name>
+    <sh:description>Relation indicating that the instance of the concept involves the Economic Operator.</sh:description>
     <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#acc-shape"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-acc-ESPDRequest-epo-acc-refersToNotice">
-    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#Notice"/>
-    <sh:sparql rdf:nodeID="N6500ed2bf56b4d309ca61e5fc2e96604"/>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-acc-ProcurementDocumentsProvision-epo-acc-containsProvidedProcurementDocument">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#ProcurementDocument"/>
+    <sh:sparql rdf:nodeID="Na39ae670e1164a39ad6132f333e90af2"/>
     <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#refersToNotice"/>
-    <sh:name>Refers to notice</sh:name>
-    <sh:description>Reference to a Notice.</sh:description>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#containsProvidedProcurementDocument"/>
+    <sh:name>Contains provided procurement document</sh:name>
+    <sh:description>Includes the supplied Procurement Document.</sh:description>
     <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#acc-shape"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="Nbd3486fe3b5941b6b350586f2fe507c9">
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-acc-ProcurementDocumentsProvision-epo-concernsProcedure">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#Procedure"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
+    <sh:sparql rdf:nodeID="Nb87820ab462f404eac7ba964bb1990c5"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#concernsProcedure"/>
+    <sh:name>Concerns procedure</sh:name>
+    <sh:description>Relates to Procedure.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#acc-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-InformationResponse-epo-sub-answersQuestion">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#InformationRequest"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
+    <sh:sparql rdf:nodeID="N4a5297de2381437c8d1b7dcd5fc055d9"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#answersQuestion"/>
+    <sh:name>Answers question</sh:name>
+    <sh:description>Relation indicating that the Response replies to a question.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#acc-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-acc-UnsubscribeFromProcedureResponse-epo-acc-refersToUnsubscribeFromProcedure">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#UnsubscribeFromProcedure"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
+    <sh:sparql rdf:nodeID="N137bb05583a44f328a092c9f059f7d3d"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#refersToUnsubscribeFromProcedure"/>
+    <sh:name>Refers to unsubscribe from procedure</sh:name>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#acc-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-acc-ProcurementDocumentsProvision-epo-specifiesEconomicOperator">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#OfferingParty"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
+    <sh:sparql rdf:nodeID="N147c16471c77406c9f2237edcda9bd65"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#specifiesEconomicOperator"/>
+    <sh:name>Specifies economic operator</sh:name>
+    <sh:description>Relation indicating that the instance of the concept involves the Economic Operator.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#acc-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-acc-ProcurementDocumentsProvisionShape">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+    <sh:targetClass rdf:resource="http://data.europa.eu/a4g/ontology#ProcurementDocumentsProvision"/>
+    <rdfs:label>Procurement Documents Provision</rdfs:label>
+    <rdfs:comment>The provision by the Buyer to the Economic Operator of the Procurement Documents.</rdfs:comment>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#acc-shape"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-acc-ProcurementDocumentsProvision-epo-refersToProcurementDocumentsRequest"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-acc-ProcurementDocumentsProvision-epo-concernsProcedure"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-acc-ProcurementDocumentsProvision-epo-specifiesEconomicOperator"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-acc-ProcurementDocumentsProvision-epo-acc-containsProvidedProcurementDocument"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Nfeca899150254480ab1d66478aa6d6a9">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#refersToProcurementDocumentsRequest&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#refersToProcurementDocumentsRequest&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-acc-InvitationToTender-epo-acc-containsProvidedProcurementDocument">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#ProcurementDocument"/>
+    <sh:sparql rdf:nodeID="N1aeadcab6dfc41059d8945f413703f32"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#containsProvidedProcurementDocument"/>
+    <sh:name>Contains provided procurement document</sh:name>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#acc-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N4389ae083cff47f791180e94bf2774a8">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#concernsLotGroup&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#concernsLotGroup&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-acc-UnsubscribeFromProcedure-epo-concernsProcedure">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#Procedure"/>
+    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
+    <sh:minCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:minCount>
+    <sh:sparql rdf:nodeID="N5298ec5d953d4f76b8601addbdac9d41"/>
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#concernsProcedure"/>
+    <sh:name>Concerns procedure</sh:name>
+    <sh:description>Relates to Procedure.</sh:description>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#acc-shape"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Nb87820ab462f404eac7ba964bb1990c5">
     <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#concernsProcedure&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#concernsProcedure&gt; ?this .}</sh:select>
   </rdf:Description>
-  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-sub-ESPD-epo-sub-relatesToESPDRequest">
-    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#ESPDRequest"/>
-    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
-    <sh:sparql rdf:nodeID="Ncee1dd75161b44d0a4848d6e90e415a5"/>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-InformationRequest-epo-concernsLotGroup">
+    <sh:class rdf:resource="http://data.europa.eu/a4g/ontology#LotGroup"/>
+    <sh:sparql rdf:nodeID="N4389ae083cff47f791180e94bf2774a8"/>
     <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#relatesToESPDRequest"/>
-    <sh:name>Relates to ESPD request</sh:name>
-    <sh:description>Is about an European Single Procurement Document (ESPD) Request.</sh:description>
+    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#concernsLotGroup"/>
+    <sh:name>Concerns lot group</sh:name>
+    <sh:description>Relates to Lot Group.</sh:description>
     <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#acc-shape"/>
   </rdf:Description>
-  <rdf:Description rdf:nodeID="N6500ed2bf56b4d309ca61e5fc2e96604">
-    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#refersToNotice&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#refersToNotice&gt; ?this .}</sh:select>
+  <rdf:Description rdf:nodeID="Naec1953d6f3e4f83a97a80198e736902">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#specifiesEconomicOperator&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#specifiesEconomicOperator&gt; ?this .}</sh:select>
   </rdf:Description>
-  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-sub-ESPDShape">
-    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-sub-ESPD-epo-sub-relatesToESPDRequest"/>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#eli-LegalExpression-eli-jurisdiction">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
+    <sh:path rdf:resource="http://data.europa.eu/eli/ontology#jurisdiction"/>
+    <sh:class rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Na39ae670e1164a39ad6132f333e90af2">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#containsProvidedProcurementDocument&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#containsProvidedProcurementDocument&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Nae5b23be30044dc6a98d50f262cb20e6">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#concernsProcedure&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#concernsProcedure&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N304313c90b484315b447ea5581ecd220">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#specifiesEconomicOperator&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#specifiesEconomicOperator&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N137bb05583a44f328a092c9f059f7d3d">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#refersToUnsubscribeFromProcedure&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#refersToUnsubscribeFromProcedure&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N60fd3a4f87614f2ab42c89231f9026e2">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#specifiesProcurementCriterion&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#specifiesProcurementCriterion&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-acc-UnsubscribeFromProcedureShape">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+    <sh:targetClass rdf:resource="http://data.europa.eu/a4g/ontology#UnsubscribeFromProcedure"/>
+    <rdfs:label>Unsubscribe From Procedure</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#acc-shape"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-acc-UnsubscribeFromProcedure-epo-specifiesEconomicOperator"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-acc-UnsubscribeFromProcedure-epo-concernsProcedure"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-acc-ProcurementQuestionReplyShape">
+    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#NodeShape"/>
+    <sh:targetClass rdf:resource="http://data.europa.eu/a4g/ontology#ProcurementQuestionReply"/>
+    <rdfs:label>Procurement Question Reply</rdfs:label>
+    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#acc-shape"/>
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-acc-ProcurementQuestionReply-epo-containsInformationReponse"/>
   </rdf:Description>
   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#eli-LegalResourceShape">
     <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#eli-LegalResource-epo-hasResourceType"/>
   </rdf:Description>
-  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#eli-LegalResourceSubdivision-epo-hasSubdivision">
-    <sh:maxCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</sh:maxCount>
-    <rdf:type rdf:resource="http://www.w3.org/ns/shacl#PropertyShape"/>
-    <sh:path rdf:resource="http://data.europa.eu/a4g/ontology#hasSubdivision"/>
-    <sh:name>Has subdivision</sh:name>
-    <sh:description>Relation indicating the Subdivision.</sh:description>
-    <rdfs:isDefinedBy rdf:resource="http://data.europa.eu/a4g/data-shape#acc-shape"/>
+  <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#epo-sub-ESPDShape">
+    <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#epo-sub-ESPD-epo-sub-relatesToESPDRequest"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N1aeadcab6dfc41059d8945f413703f32">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#containsProvidedProcurementDocument&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#containsProvidedProcurementDocument&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N2c50efde661a42c083c573f4846aa60b">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#concernsProcedure&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#concernsProcedure&gt; ?this .}</sh:select>
   </rdf:Description>
   <rdf:Description rdf:about="http://data.europa.eu/a4g/data-shape#eli-LegalResourceSubdivisionShape">
     <sh:property rdf:resource="http://data.europa.eu/a4g/data-shape#eli-LegalResourceSubdivision-epo-hasSubdivision"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N1f18188e5a7640e39dc94049076fc549">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#specifiesEconomicOperator&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#specifiesEconomicOperator&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N571061abe3a44bc1a355f3615e0ddabb">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#relatesToESPDRequest&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#relatesToESPDRequest&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N42f67f4244404741a1c54d18c7624826">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#containsInformationRequest&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#containsInformationRequest&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N5298ec5d953d4f76b8601addbdac9d41">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#concernsProcedure&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#concernsProcedure&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Nf43e53071476433b913870e56b31decb">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#specifiesEconomicOperator&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#specifiesEconomicOperator&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N4a5297de2381437c8d1b7dcd5fc055d9">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#answersQuestion&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#answersQuestion&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N7797fafea1c64346bc1c94eb5e4527dc">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#concernsProcedure&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#concernsProcedure&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N217543010bbd49b3a0ffaf9d9d1c7cfe">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#concernsProcedure&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#concernsProcedure&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N4d0b10886f5940f18fb01078303484f6">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#concernsLot&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#concernsLot&gt; ?this .}</sh:select>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N147c16471c77406c9f2237edcda9bd65">
+    <sh:select>SELECT ?this ?that WHERE { ?this &lt;http://data.europa.eu/a4g/ontology#specifiesEconomicOperator&gt; ?that . ?that &lt;http://data.europa.eu/a4g/ontology#specifiesEconomicOperator&gt; ?this .}</sh:select>
   </rdf:Description>
 </rdf:RDF>

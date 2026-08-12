@@ -148,7 +148,7 @@
 :CleanVehicleDirectiveInformation a owl:Class ;
     rdfs:isDefinedBy :core ;
     rdfs:subClassOf :ContextDescription ;
-    skos:definition "Information related to clean vehicles legislation. Additional information: In the European Union, the legislation concerned is the European Parliament and Council 2009/33/EC (Clean Vehicles Directive ï¿½ CVD)."@en ;
+    skos:definition "Information related to clean vehicles legislation. Additional information: In the European Union, the legislation concerned is the European Parliament and Council 2009/33/EC (Clean Vehicles Directive – CVD)."@en ;
     skos:historyNote "WG approval 07/05/2024"@en ;
     skos:prefLabel "Clean Vehicle Directive Information"@en .
 
@@ -295,6 +295,10 @@
     skos:historyNote "WG approval 13/04/2021"@en ;
     skos:prefLabel "Expression Of Interest"@en .
 
+:ExpressionOfInterestResponse a owl:Class ;
+    rdfs:isDefinedBy :core ;
+    skos:prefLabel "Expression Of Interest Response"@en .
+
 :FrameworkAgreement a owl:Class ;
     rdfs:isDefinedBy :core ;
     rdfs:subClassOf :Contract ;
@@ -330,7 +334,7 @@
 :InnovativeProcurement a owl:Class ;
     rdfs:isDefinedBy :core ;
     rdfs:subClassOf :StrategicProcurement ;
-    skos:definition "Approach whereby Buyers seek to procure an innovative work, supply or service. Additional Information: ï¿½innovationï¿½ means the implementation of a new or significantly improved product, service or process, including but not limited to production, building or construction processes, a new marketing method, or a new organizational method in business practices, workplace Organisation or external relations inter alia with the purpose of helping to solve societal challenges or to support the Europe 2020 strategy for smart, sustainable and inclusive growth; See: Directive 2014/24 Articles: 2, 26 (3), 31, 67 (2.a)"@en ;
+    skos:definition "Approach whereby Buyers seek to procure an innovative work, supply or service. Additional Information: ‘innovation’ means the implementation of a new or significantly improved product, service or process, including but not limited to production, building or construction processes, a new marketing method, or a new organizational method in business practices, workplace Organisation or external relations inter alia with the purpose of helping to solve societal challenges or to support the Europe 2020 strategy for smart, sustainable and inclusive growth; See: Directive 2014/24 Articles: 2, 26 (3), 31, 67 (2.a)"@en ;
     skos:prefLabel "Innovative Procurement"@en .
 
 :InternationalProcurementInstrumentMeasuresInformation a owl:Class ;
@@ -718,7 +722,7 @@
 """@en ;
     rdfs:isDefinedBy :core ;
     rdfs:subClassOf :StrategicProcurement ;
-    skos:definition "Approach whereby Buyers seek to procure by fulfilling social objectives. Additional Information: Socially Responsible Public Procurement (SRPP) - ï¿½SRPPï¿½ means Procurement Operations that take into account one or more of the following social considerations: employment opportunities, decent work, compliance with social and labour rights, social inclusion (including persons with disabilities), equal opportunities, accessibility design for all, taking account of sustainability criteria, including ethical trade issues and wider voluntary compliance with corporate social responsibility (CSR), while observing the principles enshrined in the Treaty for the European Union (TFEU) and the Procurement Directives. See Article 18 and Annex X Directive 2014/24."@en ;
+    skos:definition "Approach whereby Buyers seek to procure by fulfilling social objectives. Additional Information: Socially Responsible Public Procurement (SRPP) - ‘SRPP’ means Procurement Operations that take into account one or more of the following social considerations: employment opportunities, decent work, compliance with social and labour rights, social inclusion (including persons with disabilities), equal opportunities, accessibility design for all, taking account of sustainability criteria, including ethical trade issues and wider voluntary compliance with corporate social responsibility (CSR), while observing the principles enshrined in the Treaty for the European Union (TFEU) and the Procurement Directives. See Article 18 and Annex X Directive 2014/24."@en ;
     skos:prefLabel "Social Procurement"@en .
 
 :SpecificationInformation a owl:Class ;
@@ -748,6 +752,11 @@
     skos:definition "A Role of an Agent that has an agreement to perform part or all of the obligations of another Agents's Contract. Additional information For some Procedures, the Subcontractor signs as well the Contract between the Buyer and the Contractor. At tendering time, entities relied upon by the Economic Operators can be Subcontractors or not. When modelling ESPD we will analyze whether we need or not a Role named \"relied upon\"."@en ;
     skos:historyNote "WG approval 05/08/2021"@en ;
     skos:prefLabel "Subcontractor"@en .
+
+:SubmissionChecklist a owl:Class ;
+    rdfs:isDefinedBy :core ;
+    skos:definition "Document listing all the documents to be submitted by the Economic Operator to participate in a Procurement Procedure."@en ;
+    skos:prefLabel "Submission Checklist"@en .
 
 :SubmissionStatisticalInformation a owl:Class ;
     rdfs:isDefinedBy :core ;
@@ -820,6 +829,10 @@
     rdfs:subClassOf :AcquiringParty ;
     skos:definition "A Role of an Agent responsible for processing Tenders."@en ;
     skos:prefLabel "Tender Processor"@en .
+
+:TenderReceipt a owl:Class ;
+    rdfs:isDefinedBy :core ;
+    skos:prefLabel "Tender Receipt"@en .
 
 :TenderReceiver a owl:Class ;
     rdfs:isDefinedBy :core ;
@@ -1084,6 +1097,12 @@
     skos:historyNote "WG approval 25/09/2025"@en ;
     skos:prefLabel "concerns Originator Request"@en .
 
+:concernsProcedure a owl:ObjectProperty ;
+    rdfs:isDefinedBy :core ;
+    skos:definition "Relates to Procedure."@en ;
+    skos:historyNote "WG Approval 05/03/2024"@en ;
+    skos:prefLabel "concerns Procedure"@en .
+
 :concernsProcurementElement a owl:ObjectProperty ;
     rdfs:isDefinedBy :core ;
     skos:definition "Relates to Procurement Element."@en ;
@@ -1133,6 +1152,7 @@
 
 :containsProvidedProcurementDocument a owl:ObjectProperty ;
     rdfs:isDefinedBy :core ;
+    skos:definition "Includes the supplied Procurement Document."@en ;
     skos:prefLabel "contains Provided Procurement Document"@en .
 
 :contextualisedBy a owl:ObjectProperty ;
@@ -2345,6 +2365,10 @@
     skos:definition "Language in which the submitted information is to be expressed."@en ;
     skos:prefLabel "has Language"@en .
 
+:hasLanguageOfProcurementDocument a owl:ObjectProperty ;
+    rdfs:isDefinedBy :core ;
+    skos:prefLabel "has Language Of Procurement Document"@en .
+
 :hasLateSubmissionInformationDescription a owl:DatatypeProperty ;
     rdfs:isDefinedBy :core ;
     skos:definition "A narrative text explaining the content of the economic operator information that can be submitted late. Additional Information This does not apply to requests for clarifications. (epo:SubmissionTerm)"@en ;
@@ -3383,6 +3407,10 @@
     skos:historyNote "WG Approval 09/11/2021"@en ;
     skos:prefLabel "has Subject Matter"@en .
 
+:hasSubmissionMethod a owl:ObjectProperty ;
+    rdfs:isDefinedBy :core ;
+    skos:prefLabel "has Submission Method"@en .
+
 :hasSubmissionURL a owl:DatatypeProperty ;
     rdfs:isDefinedBy :core ;
     skos:definition "The identifier of a resource used for Submission. (epo:SubmissionTerm)"@en ;
@@ -4127,6 +4155,10 @@
     skos:historyNote "WG approval 25/09/2025"@en ;
     skos:prefLabel "refers To Contract To Be Modified"@en .
 
+:refersToExpressionOfInterest a owl:ObjectProperty ;
+    rdfs:isDefinedBy :core ;
+    skos:prefLabel "refers To Expression Of Interest"@en .
+
 :refersToLot a owl:ObjectProperty ;
     rdfs:isDefinedBy :core ;
     skos:definition "Reference to a Lot."@en ;
@@ -4212,6 +4244,14 @@
     skos:definition "Reference to a Role."@en ;
     skos:historyNote "WG approval 25/09/2025"@en ;
     skos:prefLabel "refers To Role"@en .
+
+:refersToTender a owl:ObjectProperty ;
+    rdfs:isDefinedBy :core ;
+    skos:prefLabel "refers To Tender"@en .
+
+:refersToTenderReceipt a owl:ObjectProperty ;
+    rdfs:isDefinedBy :core ;
+    skos:prefLabel "refers To Tender Receipt"@en .
 
 :relatesToEFormSectionIdentifier a owl:ObjectProperty ;
     rdfs:isDefinedBy :core ;
@@ -4305,6 +4345,12 @@
     skos:definition "Relation indicating the Location from the Delivery Agreement."@en ;
     skos:historyNote "WG approval 25/09/2025"@en ;
     skos:prefLabel "specifies Delivery Agreement Location"@en .
+
+:specifiesEconomicOperator a owl:ObjectProperty ;
+    rdfs:isDefinedBy :core ;
+    skos:definition "Relation indicating that the instance of the concept involves the Economic Operator."@en ;
+    skos:historyNote "WG approval 25/09/2025"@en ;
+    skos:prefLabel "specifies Economic Operator"@en .
 
 :specifiesEvidence a owl:ObjectProperty ;
     rdfs:isDefinedBy :core ;
@@ -4402,7 +4448,7 @@
 
 :usesCleanVehicleDirective a owl:DatatypeProperty ;
     rdfs:isDefinedBy :core ;
-    skos:definition "The procurement falls within the scope of the European Parliament and Council 2009/33/EC (Clean Vehicles Directive ï¿½ CVD). (epo:GreenProcurement)"@en ;
+    skos:definition "The procurement falls within the scope of the European Parliament and Council 2009/33/EC (Clean Vehicles Directive – CVD). (epo:GreenProcurement)"@en ;
     skos:prefLabel "uses Clean Vehicle Directive"@en .
 
 :usesEvaluationFormula a owl:ObjectProperty ;
@@ -4543,7 +4589,7 @@
 :OfferingParty a owl:Class ;
     rdfs:isDefinedBy :core ;
     rdfs:subClassOf :AgentInRole ;
-    skos:definition "The Role of an Agent that acts on the Economic Operator side during a Procurement Process. Additional information: As per the European Procurement Directives the notion of ï¿½Economic Operatorsï¿½ should be interpreted in a broad manner so as to include any Persons and/or Entities which offer the execution of works, the supply of products or the provision of services on the market, irrespective of the legal form under which they have chosen to operate. Thus, firms, branches, subsidiaries, partnerships, cooperative societies, limited companies, universities, public or private, and other forms of entities than natural Persons should all fall within the notion of Economic Operator, whether or not they are ï¿½Legal Personsï¿½ in all circumstances."@en ;
+    skos:definition "The Role of an Agent that acts on the Economic Operator side during a Procurement Process. Additional information: As per the European Procurement Directives the notion of ‘Economic Operators’ should be interpreted in a broad manner so as to include any Persons and/or Entities which offer the execution of works, the supply of products or the provision of services on the market, irrespective of the legal form under which they have chosen to operate. Thus, firms, branches, subsidiaries, partnerships, cooperative societies, limited companies, universities, public or private, and other forms of entities than natural Persons should all fall within the notion of Economic Operator, whether or not they are ‘Legal Persons’ in all circumstances."@en ;
     skos:prefLabel "Offering Party"@en .
 
 :ContextDescription a owl:Class ;
@@ -4572,13 +4618,13 @@
     rdfs:label "eProcurement Ontology - core"@en ;
     dcterms:created "2021-06-01"^^xsd:date ;
     dcterms:description "The eProcurement Ontology core describes the concepts and properties representing the European Public Procurement domain. The provision of these semantics offers the basis for a common understanding of the domain for all stakeholders ensuring the quality of data exchange and transparency. The ontology restrictions are published in a separate artefact."@en ;
-    dcterms:issued "2026-07-16"^^xsd:date ;
+    dcterms:issued "2026-08-12"^^xsd:date ;
     dcterms:license "© European Union, 2014. Unless otherwise noted, the reuse of the Ontology is authorised under the European Union Public Licence v1.2 (https://eupl.eu/)." ;
     dcterms:publisher "http://publications.europa.eu/resource/authority/corporate-body/PUBL" ;
     dcterms:title "eProcurement Ontology - core"@en ;
     vann:preferredNamespacePrefix "epo" ;
     vann:preferredNamespaceUri "http://data.europa.eu/a4g/ontology#" ;
-    rdfs:comment "This version is automatically generated from ePO_core.xml on 2026-07-16" ;
+    rdfs:comment "This version is automatically generated from ePO_core.xml on 2026-08-12" ;
     rdfs:seeAlso <https://docs.ted.europa.eu/home/index.html>,
         <https://github.com/OP-TED/ePO/releases>,
         <https://joinup.ec.europa.eu/collection/eprocurement/solution/eprocurement-ontology/about>,

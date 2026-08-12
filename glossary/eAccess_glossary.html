@@ -36,10 +36,47 @@
                   </thead>
                   <tbody>
                      <tr>
+                        <td>epo:InformationRequest</td>
+                        <td></td>
+                     </tr>
+                     <tr>
+                        <td>epo:InformationResponse</td>
+                        <td></td>
+                     </tr>
+                     <tr>
                         <td>epo-acc:ESPDRequest</td>
                         <td>A document issued by a Buyer defining how the Exclusion Grounds and the Selection
                            Criteria should be addressed in an European Single Procurement Document for a specific
                            procurement.</td>
+                     </tr>
+                     <tr>
+                        <td>epo-acc:InvitationToTender</td>
+                        <td></td>
+                     </tr>
+                     <tr>
+                        <td>epo-acc:ProcurementDocumentsProvision</td>
+                        <td>The provision by the Buyer to the Economic Operator of the Procurement Documents.</td>
+                     </tr>
+                     <tr>
+                        <td>epo-acc:ProcurementDocumentsRequest</td>
+                        <td>The request by the Economic Operator to the Buyer to receive the latest version of
+                           all the Procurement Documents.</td>
+                     </tr>
+                     <tr>
+                        <td>epo-acc:ProcurementQuestion</td>
+                        <td></td>
+                     </tr>
+                     <tr>
+                        <td>epo-acc:ProcurementQuestionReply</td>
+                        <td></td>
+                     </tr>
+                     <tr>
+                        <td>epo-acc:UnsubscribeFromProcedure</td>
+                        <td></td>
+                     </tr>
+                     <tr>
+                        <td>epo-acc:UnsubscribeFromProcedureResponse</td>
+                        <td></td>
                      </tr>
                   </tbody>
                </table>
@@ -66,10 +103,32 @@
                   </thead>
                   <tbody>
                      <tr>
+                        <td>epo:concernsLot</td>
+                        <td>Relates to Lot.
+                           </td>
+                        <td>epo:InformationRequest -&gt; epo:Lot [0..*]</td>
+                     </tr>
+                     <tr>
+                        <td>epo:concernsLotGroup</td>
+                        <td>Relates to Lot Group.
+                           </td>
+                        <td>epo:InformationRequest -&gt; epo:LotGroup [0..*]</td>
+                     </tr>
+                     <tr>
                         <td>epo:concernsProcedure</td>
                         <td>Relates to Procedure.
-                           </td>
-                        <td>epo-acc:ESPDRequest -&gt; epo:Procedure [1]</td>
+                            Relates to Procedure. Relates to Procedure. Relates to Procedure. Relates to Procedure. Relates to Procedure.</td>
+                        <td>epo-acc:ESPDRequest -&gt; epo:Procedure [1]<br>epo-acc:InvitationToTender -&gt; epo:Procedure [1]<br>epo:InformationRequest -&gt; epo:Procedure [0..*]<br>epo-acc:ProcurementDocumentsProvision -&gt; epo:Procedure [1]<br>epo-acc:ProcurementDocumentsRequest -&gt; epo:Procedure [1]<br>epo-acc:UnsubscribeFromProcedure -&gt; epo:Procedure [1]<br></td>
+                     </tr>
+                     <tr>
+                        <td>epo:containsInformationReponse</td>
+                        <td>Includes Information Response.</td>
+                        <td>epo-acc:ProcurementQuestionReply -&gt; epo:InformationResponse [1..*]</td>
+                     </tr>
+                     <tr>
+                        <td>epo:containsInformationRequest</td>
+                        <td>Includes Information Request.</td>
+                        <td>epo-acc:ProcurementQuestion -&gt; epo:InformationRequest [1..*]</td>
                      </tr>
                      <tr>
                         <td>epo:hasResourceType</td>
@@ -82,14 +141,40 @@
                         <td>eli:LegalResourceSubdivision -&gt; at-voc:subdivision [0..1]</td>
                      </tr>
                      <tr>
+                        <td>epo:refersToProcurementDocumentsRequest</td>
+                        <td></td>
+                        <td>epo-acc:ProcurementDocumentsProvision -&gt; epo-acc:ProcurementDocumentsRequest [0..1]</td>
+                     </tr>
+                     <tr>
+                        <td>epo:specifiesEconomicOperator</td>
+                        <td>Relation indicating that the instance of the concept involves the Economic Operator.
+                            Relation indicating that the instance of the concept involves the Economic Operator. Relation indicating that the instance of the concept involves the Economic Operator. Relation indicating that the instance of the concept involves the Economic Operator. Relation indicating that the instance of the concept involves the Economic Operator.</td>
+                        <td>epo-acc:InvitationToTender -&gt; epo:OfferingParty [1]<br>epo-acc:ProcurementDocumentsProvision -&gt; epo:OfferingParty [1]<br>epo-acc:ProcurementDocumentsRequest -&gt; epo:OfferingParty [1]<br>epo-acc:ProcurementQuestion -&gt; epo:OfferingParty [1]<br>epo-acc:UnsubscribeFromProcedure -&gt; epo:OfferingParty [1]<br></td>
+                     </tr>
+                     <tr>
                         <td>epo:specifiesProcurementCriterion</td>
                         <td>Relation indicating the Procurement Criterion to be used.</td>
                         <td>epo-acc:ESPDRequest -&gt; epo:ProcurementCriterion [1..*]</td>
                      </tr>
                      <tr>
+                        <td>epo-acc:containsProvidedProcurementDocument</td>
+                        <td> Includes the supplied Procurement Document.</td>
+                        <td>epo-acc:InvitationToTender -&gt; epo:ProcurementDocument []<br>epo-acc:ProcurementDocumentsProvision -&gt; epo:ProcurementDocument [0..*]<br></td>
+                     </tr>
+                     <tr>
                         <td>epo-acc:refersToNotice</td>
                         <td>Reference to a Notice.</td>
                         <td>epo-acc:ESPDRequest -&gt; epo:Notice [0..*]</td>
+                     </tr>
+                     <tr>
+                        <td>epo-acc:refersToUnsubscribeFromProcedure</td>
+                        <td></td>
+                        <td>epo-acc:UnsubscribeFromProcedureResponse -&gt; epo-acc:UnsubscribeFromProcedure [1]</td>
+                     </tr>
+                     <tr>
+                        <td>epo-sub:answersQuestion</td>
+                        <td>Relation indicating that the Response replies to a question.</td>
+                        <td>epo:InformationResponse -&gt; epo:InformationRequest [1]</td>
                      </tr>
                      <tr>
                         <td>epo-sub:relatesToESPDRequest</td>

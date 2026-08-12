@@ -33,14 +33,14 @@
     rdfs:label "eProcurement Ontology - eSubmission restrictions"@en ;
     dcterms:created "2021-06-01"^^xsd:date ;
     dcterms:description "The eProcurement Ontology eSubmission restrictions provides the restrictions and the inference-related specifications on the concepts and properties in the eProcurement Ontology eSubmission module."@en ;
-    dcterms:issued "2026-07-07"^^xsd:date ;
-    dcterms:license "CC BY 4.0" ;
+    dcterms:issued "2026-08-12"^^xsd:date ;
+    dcterms:license "© European Union, 2014. Unless otherwise noted, the reuse of the Ontology is authorised under the European Union Public Licence v1.2 (https://eupl.eu/)." ;
     dcterms:publisher "http://publications.europa.eu/resource/authority/corporate-body/PUBL" ;
     dcterms:title "eProcurement Ontology - eSubmission restrictions"@en ;
     vann:preferredNamespacePrefix "epo-sub" ;
     vann:preferredNamespaceUri "http://data.europa.eu/a4g/ontology#" ;
     rdfs:comment """This version is automatically generated from eSubmission.xml on 
-                2026-07-07""" ;
+                2026-08-12""" ;
     rdfs:seeAlso <https://docs.ted.europa.eu/home/index.html>,
         <https://github.com/OP-TED/ePO/releases>,
         <https://joinup.ec.europa.eu/collection/eprocurement/solution/eprocurement-ontology/about>,
@@ -59,6 +59,16 @@
     owl:priorVersion "http://data.europa.eu/a4g/ontology#sub-restriction-5.1.0" ;
     owl:versionIRI :sub-restriction-5.2.0 ;
     owl:versionInfo "5.2.0" .
+
+:TenderWithdrawalReceipt rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass :Tender ;
+            owl:onProperty :refersToTender ;
+            owl:qualifiedCardinality 1 ] .
+
+:TenderWithdrawalRequest rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass :TenderReceipt ;
+            owl:onProperty :refersToTenderReceipt ;
+            owl:qualifiedCardinality 1 ] .
 
 :actsOnBehalfOf rdfs:domain :LegalRepresentative ;
     rdfs:range :OfferingParty .
@@ -85,6 +95,14 @@
 :refersToApplicablePeriod rdfs:domain :Response ;
     rdfs:range time:Interval .
 
+:refersToTender a owl:FunctionalProperty ;
+    rdfs:domain :TenderWithdrawalReceipt ;
+    rdfs:range :Tender .
+
+:refersToTenderReceipt a owl:FunctionalProperty ;
+    rdfs:domain :TenderWithdrawalRequest ;
+    rdfs:range :TenderReceipt .
+
 :relatesToESPDRequest rdfs:domain :ESPD ;
     rdfs:range :ESPDRequest .
 
@@ -96,17 +114,17 @@
     rdfs:range cccev:Evidence .
 
 :EvidenceInformation rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onDataRange rdf:PlainLiteral ;
+            owl:onProperty dcterms:description ],
+        [ a owl:Restriction ;
             owl:onClass cccev:Evidence ;
             owl:onProperty :summarisesInformationAboutEvidence ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onDataRange xsd:boolean ;
-            owl:onProperty :coversAllSelectionCriteria ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onDataRange rdf:PlainLiteral ;
-            owl:onProperty dcterms:description ] .
+            owl:onProperty :coversAllSelectionCriteria ] .
 
 :LegalRepresentative rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
@@ -126,21 +144,21 @@
             owl:onProperty :relatesToESPDRequest ] .
 
 :OrganisationInformationSummary rdfs:subClassOf [ a owl:Restriction ;
-            owl:onClass org:Organization ;
-            owl:onProperty :concernsOrganisation ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass :MonetaryValue ;
-            owl:onProperty :providesOrganisationFinancialCapability ],
-        [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass :Quantity ;
             owl:onProperty :providesOrganisationEmployeeQuantity ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onDataRange rdf:PlainLiteral ;
-            owl:onProperty :providesOrganisationCompletedTaskDescription ] .
+            owl:onProperty :providesOrganisationCompletedTaskDescription ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass :MonetaryValue ;
+            owl:onProperty :providesOrganisationFinancialCapability ],
+        [ a owl:Restriction ;
+            owl:onClass org:Organization ;
+            owl:onProperty :concernsOrganisation ;
+            owl:qualifiedCardinality 1 ] .
 
 :Response rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;

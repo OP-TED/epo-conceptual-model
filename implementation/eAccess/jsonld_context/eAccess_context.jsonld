@@ -1,8 +1,130 @@
 {
   "@context": {
     "ESPDRequest": {
-      "@context": {},
+      "@context": {
+        "concernsProcedure": {
+          "@id": "http://data.europa.eu/a4g/ontology#concernsProcedure",
+          "@type": "@id"
+        },
+        "refersToNotice": {
+          "@container": "@set",
+          "@id": "http://data.europa.eu/a4g/ontology#refersToNotice",
+          "@type": "@id"
+        },
+        "specifiesProcurementCriterion": {
+          "@container": "@set",
+          "@id": "http://data.europa.eu/a4g/ontology#specifiesProcurementCriterion",
+          "@type": "@id"
+        }
+      },
       "@id": "http://data.europa.eu/a4g/ontology#ESPDRequest"
+    },
+    "InvitationToTender": {
+      "@context": {
+        "concernsProcedure": {
+          "@id": "http://data.europa.eu/a4g/ontology#concernsProcedure",
+          "@type": "@id"
+        },
+        "containsProvidedProcurementDocument": {
+          "@id": "http://data.europa.eu/a4g/ontology#containsProvidedProcurementDocument",
+          "@type": "@id"
+        },
+        "specifiesEconomicOperator": {
+          "@id": "http://data.europa.eu/a4g/ontology#specifiesEconomicOperator",
+          "@type": "@id"
+        }
+      },
+      "@id": "http://data.europa.eu/a4g/ontology#InvitationToTender"
+    },
+    "ProcurementDocumentsProvision": {
+      "@context": {
+        "comprisesProcurementDocumentsProvisionLine": {
+          "@container": "@set",
+          "@id": "http://data.europa.eu/a4g/ontology#comprisesProcurementDocumentsProvisionLine",
+          "@type": "@id"
+        },
+        "concernsProcedure": {
+          "@id": "http://data.europa.eu/a4g/ontology#concernsProcedure",
+          "@type": "@id"
+        },
+        "containsProvidedProcurementDocument": {
+          "@container": "@set",
+          "@id": "http://data.europa.eu/a4g/ontology#containsProvidedProcurementDocument",
+          "@type": "@id"
+        },
+        "isSupportedBy": {
+          "@id": "http://data.europa.eu/a4g/ontology#isSupportedBy",
+          "@type": "@id"
+        },
+        "refersToProcurementDocumentsRequest": {
+          "@id": "http://data.europa.eu/a4g/ontology#refersToProcurementDocumentsRequest",
+          "@type": "@id"
+        },
+        "specifiesEconomicOperator": {
+          "@id": "http://data.europa.eu/a4g/ontology#specifiesEconomicOperator",
+          "@type": "@id"
+        }
+      },
+      "@id": "http://data.europa.eu/a4g/ontology#ProcurementDocumentsProvision"
+    },
+    "ProcurementDocumentsRequest": {
+      "@context": {
+        "concernsProcedure": {
+          "@id": "http://data.europa.eu/a4g/ontology#concernsProcedure",
+          "@type": "@id"
+        },
+        "specifiesEconomicOperator": {
+          "@id": "http://data.europa.eu/a4g/ontology#specifiesEconomicOperator",
+          "@type": "@id"
+        }
+      },
+      "@id": "http://data.europa.eu/a4g/ontology#ProcurementDocumentsRequest"
+    },
+    "ProcurementQuestion": {
+      "@context": {
+        "containsInformationRequest": {
+          "@container": "@set",
+          "@id": "http://data.europa.eu/a4g/ontology#containsInformationRequest",
+          "@type": "@id"
+        },
+        "specifiesEconomicOperator": {
+          "@id": "http://data.europa.eu/a4g/ontology#specifiesEconomicOperator",
+          "@type": "@id"
+        }
+      },
+      "@id": "http://data.europa.eu/a4g/ontology#ProcurementQuestion"
+    },
+    "ProcurementQuestionReply": {
+      "@context": {
+        "containsInformationReponse": {
+          "@container": "@set",
+          "@id": "http://data.europa.eu/a4g/ontology#containsInformationReponse",
+          "@type": "@id"
+        }
+      },
+      "@id": "http://data.europa.eu/a4g/ontology#ProcurementQuestionReply"
+    },
+    "UnsubscribeFromProcedure": {
+      "@context": {
+        "concernsProcedure": {
+          "@id": "http://data.europa.eu/a4g/ontology#concernsProcedure",
+          "@type": "@id"
+        },
+        "specifiesEconomicOperator": {
+          "@id": "http://data.europa.eu/a4g/ontology#specifiesEconomicOperator",
+          "@type": "@id"
+        }
+      },
+      "@id": "http://data.europa.eu/a4g/ontology#UnsubscribeFromProcedure"
+    },
+    "UnsubscribeFromProcedureResponse": {
+      "@context": {
+        "refersToUnsubscribeFromProcedure": {
+          "@id": "http://data.europa.eu/a4g/ontology#refersToUnsubscribeFromProcedure",
+          "@type": "@id"
+        }
+      },
+      "@id": "http://data.europa.eu/a4g/ontology#UnsubscribeFromProcedureResponse"
     },
     "acc-res": "http://data.europa.eu/a4g/ontology#",
     "acc-shape": "http://data.europa.eu/a4g/data-shape#",
@@ -32,6 +154,35 @@
     "epo-qua": "http://data.europa.eu/a4g/ontology#",
     "epo-req": "http://data.europa.eu/a4g/ontology#",
     "epo-sub": "http://data.europa.eu/a4g/ontology#",
+    "epo:InformationRequest": {
+      "@context": {
+        "concernsLot": {
+          "@container": "@set",
+          "@id": "http://data.europa.eu/a4g/ontology#concernsLot",
+          "@type": "@id"
+        },
+        "concernsLotGroup": {
+          "@container": "@set",
+          "@id": "http://data.europa.eu/a4g/ontology#concernsLotGroup",
+          "@type": "@id"
+        },
+        "concernsProcedure": {
+          "@container": "@set",
+          "@id": "http://data.europa.eu/a4g/ontology#concernsProcedure",
+          "@type": "@id"
+        }
+      },
+      "@id": "http://data.europa.eu/a4g/ontology#InformationRequest"
+    },
+    "epo:InformationResponse": {
+      "@context": {
+        "answersQuestion": {
+          "@id": "http://data.europa.eu/a4g/ontology#answersQuestion",
+          "@type": "@id"
+        }
+      },
+      "@id": "http://data.europa.eu/a4g/ontology#InformationResponse"
+    },
     "espd": "https://github.com/ESPD/ESPD-EDM/",
     "foaf": "http://xmlns.com/foaf/0.1/",
     "geosparql": "http://www.opengis.net/ont/geosparql#",

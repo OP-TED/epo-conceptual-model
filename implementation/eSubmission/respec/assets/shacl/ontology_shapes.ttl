@@ -78,6 +78,18 @@ sub-shape:epo-sub-ResponseShape a sh:NodeShape ;
         sub-shape:epo-sub-Response-epo-sub-refersToApplicablePeriod ;
     sh:targetClass :Response .
 
+sub-shape:epo-sub-TenderWithdrawalReceiptShape a sh:NodeShape ;
+    rdfs:label "Tender Withdrawal Receipt" ;
+    rdfs:isDefinedBy sub-shape:sub-shape ;
+    sh:property sub-shape:epo-sub-TenderWithdrawalReceipt-epo-refersToTender ;
+    sh:targetClass :TenderWithdrawalReceipt .
+
+sub-shape:epo-sub-TenderWithdrawalRequestShape a sh:NodeShape ;
+    rdfs:label "Tender Withdrawal Request" ;
+    rdfs:isDefinedBy sub-shape:sub-shape ;
+    sh:property sub-shape:epo-sub-TenderWithdrawalRequest-epo-sub-refersToTenderReceipt ;
+    sh:targetClass :TenderWithdrawalRequest .
+
 sub-shape:epo-sub-ESPD-epo-sub-isContainedInTender a sh:PropertyShape ;
     rdfs:isDefinedBy sub-shape:sub-shape ;
     sh:class :Tender ;
@@ -223,17 +235,35 @@ sub-shape:epo-sub-Response-epo-sub-refersToApplicablePeriod a sh:PropertyShape ;
     sh:path :refersToApplicablePeriod ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#refersToApplicablePeriod> ?that . ?that <http://data.europa.eu/a4g/ontology#refersToApplicablePeriod> ?this .}" ] .
 
+sub-shape:epo-sub-TenderWithdrawalReceipt-epo-refersToTender a sh:PropertyShape ;
+    rdfs:isDefinedBy sub-shape:sub-shape ;
+    sh:class :Tender ;
+    sh:maxCount 1 ;
+    sh:minCount 1 ;
+    sh:name "Refers to tender" ;
+    sh:path :refersToTender ;
+    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#refersToTender> ?that . ?that <http://data.europa.eu/a4g/ontology#refersToTender> ?this .}" ] .
+
+sub-shape:epo-sub-TenderWithdrawalRequest-epo-sub-refersToTenderReceipt a sh:PropertyShape ;
+    rdfs:isDefinedBy sub-shape:sub-shape ;
+    sh:class :TenderReceipt ;
+    sh:maxCount 1 ;
+    sh:minCount 1 ;
+    sh:name "Refers to tender receipt" ;
+    sh:path :refersToTenderReceipt ;
+    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#refersToTenderReceipt> ?that . ?that <http://data.europa.eu/a4g/ontology#refersToTenderReceipt> ?this .}" ] .
+
 sub-shape:sub-shape a owl:Ontology ;
     rdfs:label "eProcurement Ontology - eSubmission shapes"@en ;
     dcterms:created "2021-06-01"^^xsd:date ;
     dcterms:description "The eProcurement Ontology eSubmission shapes provides the generic datashape specifications for the eProcurement Ontology eSubmission module."@en ;
-    dcterms:issued "2026-07-07"^^xsd:date ;
-    dcterms:license "CC BY 4.0" ;
+    dcterms:issued "2026-08-12"^^xsd:date ;
+    dcterms:license "© European Union, 2014. Unless otherwise noted, the reuse of the Ontology is authorised under the European Union Public Licence v1.2 (https://eupl.eu/)." ;
     dcterms:publisher "http://publications.europa.eu/resource/authority/corporate-body/PUBL" ;
     dcterms:title "eProcurement Ontology - eSubmission shapes"@en ;
     vann:preferredNamespacePrefix "epo-sub" ;
     vann:preferredNamespaceUri "http://data.europa.eu/a4g/ontology#" ;
-    rdfs:comment "This version is automatically generated from eSubmission.xml on 2026-07-07" ;
+    rdfs:comment "This version is automatically generated from eSubmission.xml on 2026-08-12" ;
     rdfs:seeAlso <https://docs.ted.europa.eu/home/index.html>,
         <https://github.com/OP-TED/ePO/releases>,
         <https://joinup.ec.europa.eu/collection/eprocurement/solution/eprocurement-ontology/about>,

@@ -263,7 +263,7 @@ core-shape:epo-ChangeInformationShape a sh:NodeShape ;
 
 core-shape:epo-CleanVehicleDirectiveInformationShape a sh:NodeShape ;
     rdfs:label "Clean Vehicle Directive Information" ;
-    rdfs:comment "Information related to clean vehicles legislation. Additional information: In the European Union, the legislation concerned is the European Parliament and Council 2009/33/EC (Clean Vehicles Directive ï¿½ CVD)." ;
+    rdfs:comment "Information related to clean vehicles legislation. Additional information: In the European Union, the legislation concerned is the European Parliament and Council 2009/33/EC (Clean Vehicles Directive – CVD)." ;
     rdfs:isDefinedBy core-shape:core-shape ;
     sh:property core-shape:epo-CleanVehicleDirectiveInformation-epo-concernsGreenProcurement,
         core-shape:epo-CleanVehicleDirectiveInformation-epo-hasCleanVehicles,
@@ -534,9 +534,12 @@ core-shape:epo-ExclusionGroundsSummaryShape a sh:NodeShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
     sh:targetClass :ExclusionGroundsSummary .
 
-core-shape:epo-ExpressionOfInterestResponse-epo-hasLanguageOfProcurementDocument a sh:PropertyShape ;
-    sh:class skos:Concept ;
-    sh:path :hasLanguageOfProcurementDocument .
+core-shape:epo-ExpressionOfInterestResponseShape a sh:NodeShape ;
+    rdfs:label "Expression Of Interest Response" ;
+    rdfs:isDefinedBy core-shape:core-shape ;
+    sh:property core-shape:epo-ExpressionOfInterestResponse-epo-hasLanguageOfProcurementDocument,
+        core-shape:epo-ExpressionOfInterestResponse-epo-refersToExpressionOfInterest ;
+    sh:targetClass :ExpressionOfInterestResponse .
 
 core-shape:epo-ExpressionOfInterestShape a sh:NodeShape ;
     rdfs:label "Expression Of Interest" ;
@@ -586,11 +589,13 @@ core-shape:epo-GreenProcurementShape a sh:NodeShape ;
         core-shape:epo-GreenProcurement-epo-usesCleanVehicleDirective ;
     sh:targetClass :GreenProcurement .
 
-core-shape:epo-InformationRequestShape sh:property core-shape:epo-InformationRequest-epo-concernsProcedure .
+core-shape:epo-InformationRequestShape sh:property core-shape:epo-InformationRequest-epo-concernsLot,
+        core-shape:epo-InformationRequest-epo-concernsLotGroup,
+        core-shape:epo-InformationRequest-epo-concernsProcedure .
 
 core-shape:epo-InnovativeProcurementShape a sh:NodeShape ;
     rdfs:label "Innovative Procurement" ;
-    rdfs:comment "Approach whereby Buyers seek to procure an innovative work, supply or service. Additional Information: ï¿½innovationï¿½ means the implementation of a new or significantly improved product, service or process, including but not limited to production, building or construction processes, a new marketing method, or a new organizational method in business practices, workplace Organisation or external relations inter alia with the purpose of helping to solve societal challenges or to support the Europe 2020 strategy for smart, sustainable and inclusive growth; See: Directive 2014/24 Articles: 2, 26 (3), 31, 67 (2.a)" ;
+    rdfs:comment "Approach whereby Buyers seek to procure an innovative work, supply or service. Additional Information: ‘innovation’ means the implementation of a new or significantly improved product, service or process, including but not limited to production, building or construction processes, a new marketing method, or a new organizational method in business practices, workplace Organisation or external relations inter alia with the purpose of helping to solve societal challenges or to support the Europe 2020 strategy for smart, sustainable and inclusive growth; See: Directive 2014/24 Articles: 2, 26 (3), 31, 67 (2.a)" ;
     rdfs:isDefinedBy core-shape:core-shape ;
     sh:property core-shape:epo-InnovativeProcurement-epo-fulfillsRequirement ;
     sh:targetClass :InnovativeProcurement .
@@ -776,7 +781,7 @@ core-shape:epo-OfferShape a sh:NodeShape ;
 
 core-shape:epo-OfferingPartyShape a sh:NodeShape ;
     rdfs:label "Offering Party" ;
-    rdfs:comment "The Role of an Agent that acts on the Economic Operator side during a Procurement Process. Additional information: As per the European Procurement Directives the notion of ï¿½Economic Operatorsï¿½ should be interpreted in a broad manner so as to include any Persons and/or Entities which offer the execution of works, the supply of products or the provision of services on the market, irrespective of the legal form under which they have chosen to operate. Thus, firms, branches, subsidiaries, partnerships, cooperative societies, limited companies, universities, public or private, and other forms of entities than natural Persons should all fall within the notion of Economic Operator, whether or not they are ï¿½Legal Personsï¿½ in all circumstances." ;
+    rdfs:comment "The Role of an Agent that acts on the Economic Operator side during a Procurement Process. Additional information: As per the European Procurement Directives the notion of ‘Economic Operators’ should be interpreted in a broad manner so as to include any Persons and/or Entities which offer the execution of works, the supply of products or the provision of services on the market, irrespective of the legal form under which they have chosen to operate. Thus, firms, branches, subsidiaries, partnerships, cooperative societies, limited companies, universities, public or private, and other forms of entities than natural Persons should all fall within the notion of Economic Operator, whether or not they are ‘Legal Persons’ in all circumstances." ;
     rdfs:isDefinedBy core-shape:core-shape ;
     sh:targetClass :OfferingParty .
 
@@ -1205,7 +1210,7 @@ core-shape:epo-SelectionEvaluationTermShape a sh:NodeShape ;
 
 core-shape:epo-SocialProcurementShape a sh:NodeShape ;
     rdfs:label "Social Procurement" ;
-    rdfs:comment "Approach whereby Buyers seek to procure by fulfilling social objectives. Additional Information: Socially Responsible Public Procurement (SRPP) - ï¿½SRPPï¿½ means Procurement Operations that take into account one or more of the following social considerations: employment opportunities, decent work, compliance with social and labour rights, social inclusion (including persons with disabilities), equal opportunities, accessibility design for all, taking account of sustainability criteria, including ethical trade issues and wider voluntary compliance with corporate social responsibility (CSR), while observing the principles enshrined in the Treaty for the European Union (TFEU) and the Procurement Directives. See Article 18 and Annex X Directive 2014/24." ;
+    rdfs:comment "Approach whereby Buyers seek to procure by fulfilling social objectives. Additional Information: Socially Responsible Public Procurement (SRPP) - ‘SRPP’ means Procurement Operations that take into account one or more of the following social considerations: employment opportunities, decent work, compliance with social and labour rights, social inclusion (including persons with disabilities), equal opportunities, accessibility design for all, taking account of sustainability criteria, including ethical trade issues and wider voluntary compliance with corporate social responsibility (CSR), while observing the principles enshrined in the Treaty for the European Union (TFEU) and the Procurement Directives. See Article 18 and Annex X Directive 2014/24." ;
     rdfs:isDefinedBy core-shape:core-shape ;
     sh:property core-shape:epo-SocialProcurement-epo-fulfillsRequirement,
         core-shape:epo-SocialProcurement-epo-hasNonAccessibilityCriterionJustification,
@@ -1263,6 +1268,12 @@ core-shape:epo-SubcontractorShape a sh:NodeShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
     sh:targetClass :Subcontractor .
 
+core-shape:epo-SubmissionChecklistShape a sh:NodeShape ;
+    rdfs:label "Submission Checklist" ;
+    rdfs:comment "Document listing all the documents to be submitted by the Economic Operator to participate in a Procurement Procedure." ;
+    rdfs:isDefinedBy core-shape:core-shape ;
+    sh:targetClass :SubmissionChecklist .
+
 core-shape:epo-SubmissionStatisticalInformationShape a sh:NodeShape ;
     rdfs:label "Submission Statistical Information" ;
     rdfs:comment "Statistical information about submissions on a given competition, either at Lot level or Mini-Competition level." ;
@@ -1310,6 +1321,7 @@ core-shape:epo-SubmissionTermShape a sh:NodeShape ;
         core-shape:epo-SubmissionTerm-epo-hasReceiptParticipationRequestDeadline,
         core-shape:epo-SubmissionTerm-epo-hasReceiptPreliminaryMarketConsultationDeadline,
         core-shape:epo-SubmissionTerm-epo-hasReceiptTenderDeadline,
+        core-shape:epo-SubmissionTerm-epo-hasSubmissionMethod,
         core-shape:epo-SubmissionTerm-epo-hasSubmissionURL,
         core-shape:epo-SubmissionTerm-epo-hasTenderSubcontractingInformation,
         core-shape:epo-SubmissionTerm-epo-hasTenderValidityDuration,
@@ -1384,6 +1396,12 @@ core-shape:epo-TenderProcessorShape a sh:NodeShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
     sh:targetClass :TenderProcessor .
 
+core-shape:epo-TenderReceiptShape a sh:NodeShape ;
+    rdfs:label "Tender Receipt" ;
+    rdfs:isDefinedBy core-shape:core-shape ;
+    sh:property core-shape:epo-TenderReceipt-epo-refersToTender ;
+    sh:targetClass :TenderReceipt .
+
 core-shape:epo-TenderReceiverShape a sh:NodeShape ;
     rdfs:label "Tender Receiver" ;
     rdfs:comment "A Role of an Agent responsible for receiving Tenders." ;
@@ -1440,7 +1458,20 @@ core-shape:epo-acc-ESPDRequestShape sh:property core-shape:epo-acc-ESPDRequest-e
         core-shape:epo-acc-ESPDRequest-epo-specifiesProcurementCriterion .
 
 core-shape:epo-acc-InvitationToTenderShape sh:property core-shape:epo-acc-InvitationToTender-epo-acc-containsProvidedProcurementDocument,
-        core-shape:epo-acc-InvitationToTender-epo-concernsProcedure .
+        core-shape:epo-acc-InvitationToTender-epo-concernsProcedure,
+        core-shape:epo-acc-InvitationToTender-epo-specifiesEconomicOperator .
+
+core-shape:epo-acc-ProcurementDocumentsProvisionShape sh:property core-shape:epo-acc-ProcurementDocumentsProvision-epo-acc-containsProvidedProcurementDocument,
+        core-shape:epo-acc-ProcurementDocumentsProvision-epo-concernsProcedure,
+        core-shape:epo-acc-ProcurementDocumentsProvision-epo-specifiesEconomicOperator .
+
+core-shape:epo-acc-ProcurementDocumentsRequestShape sh:property core-shape:epo-acc-ProcurementDocumentsRequest-epo-concernsProcedure,
+        core-shape:epo-acc-ProcurementDocumentsRequest-epo-specifiesEconomicOperator .
+
+core-shape:epo-acc-ProcurementQuestionShape sh:property core-shape:epo-acc-ProcurementQuestion-epo-specifiesEconomicOperator .
+
+core-shape:epo-acc-UnsubscribeFromProcedureShape sh:property core-shape:epo-acc-UnsubscribeFromProcedure-epo-concernsProcedure,
+        core-shape:epo-acc-UnsubscribeFromProcedure-epo-specifiesEconomicOperator .
 
 core-shape:epo-awa-AwardDecisionNotificationShape sh:property core-shape:epo-awa-AwardDecisionNotification-epo-concernsAwardOutcome,
         core-shape:epo-awa-AwardDecisionNotification-epo-concernsProcedure,
@@ -1749,6 +1780,10 @@ core-shape:epo-sub-Response-cccev-confidentialityLevelType a sh:PropertyShape ;
 core-shape:epo-sub-ResponseShape sh:property core-shape:epo-sub-Response-epo-sub-answersQuestion,
         core-shape:epo-sub-Response-epo-sub-isReinforcedBy,
         core-shape:epo-sub-Response-epo-sub-refersToApplicablePeriod .
+
+core-shape:epo-sub-TenderWithdrawalReceiptShape sh:property core-shape:epo-sub-TenderWithdrawalReceipt-epo-refersToTender .
+
+core-shape:epo-sub-TenderWithdrawalRequestShape sh:property core-shape:epo-sub-TenderWithdrawalRequest-epo-sub-refersToTenderReceipt .
 
 core-shape:foaf-AgentShape sh:property core-shape:foaf-Agent-epo-hasAlias,
         core-shape:foaf-Agent-epo-hasCertification,
@@ -3320,6 +3355,21 @@ core-shape:epo-ExpressionOfInterest-epo-specifiesEconomicOperator a sh:PropertyS
     sh:path :specifiesEconomicOperator ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#specifiesEconomicOperator> ?that . ?that <http://data.europa.eu/a4g/ontology#specifiesEconomicOperator> ?this .}" ] .
 
+core-shape:epo-ExpressionOfInterestResponse-epo-hasLanguageOfProcurementDocument a sh:PropertyShape ;
+    rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class skos:Concept ;
+    sh:name "Has language of procurement document" ;
+    sh:path :hasLanguageOfProcurementDocument .
+
+core-shape:epo-ExpressionOfInterestResponse-epo-refersToExpressionOfInterest a sh:PropertyShape ;
+    rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class :ExpressionOfInterest ;
+    sh:maxCount 1 ;
+    sh:minCount 1 ;
+    sh:name "Refers to expression of interest" ;
+    sh:path :refersToExpressionOfInterest ;
+    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#refersToExpressionOfInterest> ?that . ?that <http://data.europa.eu/a4g/ontology#refersToExpressionOfInterest> ?this .}" ] .
+
 core-shape:epo-FrameworkAgreement-epo-resultsFromLotAwardOutcome a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
     sh:class :LotAwardOutcome ;
@@ -3386,10 +3436,26 @@ core-shape:epo-GreenProcurement-epo-fulfillsRequirement a sh:PropertyShape ;
 core-shape:epo-GreenProcurement-epo-usesCleanVehicleDirective a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
     sh:datatype xsd:boolean ;
-    sh:description "The procurement falls within the scope of the European Parliament and Council 2009/33/EC (Clean Vehicles Directive ï¿½ CVD)." ;
+    sh:description "The procurement falls within the scope of the European Parliament and Council 2009/33/EC (Clean Vehicles Directive – CVD)." ;
     sh:maxCount 1 ;
     sh:name "Uses clean vehicle directive" ;
     sh:path :usesCleanVehicleDirective .
+
+core-shape:epo-InformationRequest-epo-concernsLot a sh:PropertyShape ;
+    rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class :Lot ;
+    sh:description "Relates to Lot." ;
+    sh:name "Concerns lot" ;
+    sh:path :concernsLot ;
+    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#concernsLot> ?that . ?that <http://data.europa.eu/a4g/ontology#concernsLot> ?this .}" ] .
+
+core-shape:epo-InformationRequest-epo-concernsLotGroup a sh:PropertyShape ;
+    rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class :LotGroup ;
+    sh:description "Relates to Lot Group." ;
+    sh:name "Concerns lot group" ;
+    sh:path :concernsLotGroup ;
+    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#concernsLotGroup> ?that . ?that <http://data.europa.eu/a4g/ontology#concernsLotGroup> ?this .}" ] .
 
 core-shape:epo-InformationRequest-epo-concernsProcedure a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
@@ -5539,6 +5605,13 @@ core-shape:epo-SubmissionTerm-epo-hasReceiptTenderDeadline a sh:PropertyShape ;
     sh:name "Has receipt tender deadline" ;
     sh:path :hasReceiptTenderDeadline .
 
+core-shape:epo-SubmissionTerm-epo-hasSubmissionMethod a sh:PropertyShape ;
+    rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class skos:Concept ;
+    sh:maxCount 1 ;
+    sh:name "Has submission method" ;
+    sh:path :hasSubmissionMethod .
+
 core-shape:epo-SubmissionTerm-epo-hasSubmissionURL a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
     sh:datatype xsd:anyURI ;
@@ -5786,6 +5859,15 @@ core-shape:epo-TenderGroup-epo-isSubmittedForLotGroup a sh:PropertyShape ;
     sh:path :isSubmittedForLotGroup ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#isSubmittedForLotGroup> ?that . ?that <http://data.europa.eu/a4g/ontology#isSubmittedForLotGroup> ?this .}" ] .
 
+core-shape:epo-TenderReceipt-epo-refersToTender a sh:PropertyShape ;
+    rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class :Tender ;
+    sh:maxCount 1 ;
+    sh:minCount 1 ;
+    sh:name "Refers to tender" ;
+    sh:path :refersToTender ;
+    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#refersToTender> ?that . ?that <http://data.europa.eu/a4g/ontology#refersToTender> ?this .}" ] .
+
 core-shape:epo-Tenderer-epo-substantiatesExclusionGround a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
     sh:class :ExclusionGround ;
@@ -5864,6 +5946,94 @@ core-shape:epo-acc-InvitationToTender-epo-concernsProcedure a sh:PropertyShape ;
     sh:name "Concerns procedure" ;
     sh:path :concernsProcedure ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#concernsProcedure> ?that . ?that <http://data.europa.eu/a4g/ontology#concernsProcedure> ?this .}" ] .
+
+core-shape:epo-acc-InvitationToTender-epo-specifiesEconomicOperator a sh:PropertyShape ;
+    rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class :OfferingParty ;
+    sh:description "Relation indicating that the instance of the concept involves the Economic Operator." ;
+    sh:maxCount 1 ;
+    sh:minCount 1 ;
+    sh:name "Specifies economic operator" ;
+    sh:path :specifiesEconomicOperator ;
+    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#specifiesEconomicOperator> ?that . ?that <http://data.europa.eu/a4g/ontology#specifiesEconomicOperator> ?this .}" ] .
+
+core-shape:epo-acc-ProcurementDocumentsProvision-epo-acc-containsProvidedProcurementDocument a sh:PropertyShape ;
+    rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class :ProcurementDocument ;
+    sh:description "Includes the supplied Procurement Document." ;
+    sh:name "Contains provided procurement document" ;
+    sh:path :containsProvidedProcurementDocument ;
+    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#containsProvidedProcurementDocument> ?that . ?that <http://data.europa.eu/a4g/ontology#containsProvidedProcurementDocument> ?this .}" ] .
+
+core-shape:epo-acc-ProcurementDocumentsProvision-epo-concernsProcedure a sh:PropertyShape ;
+    rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class :Procedure ;
+    sh:description "Relates to Procedure." ;
+    sh:maxCount 1 ;
+    sh:minCount 1 ;
+    sh:name "Concerns procedure" ;
+    sh:path :concernsProcedure ;
+    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#concernsProcedure> ?that . ?that <http://data.europa.eu/a4g/ontology#concernsProcedure> ?this .}" ] .
+
+core-shape:epo-acc-ProcurementDocumentsProvision-epo-specifiesEconomicOperator a sh:PropertyShape ;
+    rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class :OfferingParty ;
+    sh:description "Relation indicating that the instance of the concept involves the Economic Operator." ;
+    sh:maxCount 1 ;
+    sh:minCount 1 ;
+    sh:name "Specifies economic operator" ;
+    sh:path :specifiesEconomicOperator ;
+    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#specifiesEconomicOperator> ?that . ?that <http://data.europa.eu/a4g/ontology#specifiesEconomicOperator> ?this .}" ] .
+
+core-shape:epo-acc-ProcurementDocumentsRequest-epo-concernsProcedure a sh:PropertyShape ;
+    rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class :Procedure ;
+    sh:description "Relates to Procedure." ;
+    sh:maxCount 1 ;
+    sh:minCount 1 ;
+    sh:name "Concerns procedure" ;
+    sh:path :concernsProcedure ;
+    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#concernsProcedure> ?that . ?that <http://data.europa.eu/a4g/ontology#concernsProcedure> ?this .}" ] .
+
+core-shape:epo-acc-ProcurementDocumentsRequest-epo-specifiesEconomicOperator a sh:PropertyShape ;
+    rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class :OfferingParty ;
+    sh:description "Relation indicating that the instance of the concept involves the Economic Operator." ;
+    sh:maxCount 1 ;
+    sh:minCount 1 ;
+    sh:name "Specifies economic operator" ;
+    sh:path :specifiesEconomicOperator ;
+    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#specifiesEconomicOperator> ?that . ?that <http://data.europa.eu/a4g/ontology#specifiesEconomicOperator> ?this .}" ] .
+
+core-shape:epo-acc-ProcurementQuestion-epo-specifiesEconomicOperator a sh:PropertyShape ;
+    rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class :OfferingParty ;
+    sh:description "Relation indicating that the instance of the concept involves the Economic Operator." ;
+    sh:maxCount 1 ;
+    sh:minCount 1 ;
+    sh:name "Specifies economic operator" ;
+    sh:path :specifiesEconomicOperator ;
+    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#specifiesEconomicOperator> ?that . ?that <http://data.europa.eu/a4g/ontology#specifiesEconomicOperator> ?this .}" ] .
+
+core-shape:epo-acc-UnsubscribeFromProcedure-epo-concernsProcedure a sh:PropertyShape ;
+    rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class :Procedure ;
+    sh:description "Relates to Procedure." ;
+    sh:maxCount 1 ;
+    sh:minCount 1 ;
+    sh:name "Concerns procedure" ;
+    sh:path :concernsProcedure ;
+    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#concernsProcedure> ?that . ?that <http://data.europa.eu/a4g/ontology#concernsProcedure> ?this .}" ] .
+
+core-shape:epo-acc-UnsubscribeFromProcedure-epo-specifiesEconomicOperator a sh:PropertyShape ;
+    rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class :OfferingParty ;
+    sh:description "Relation indicating that the instance of the concept involves the Economic Operator." ;
+    sh:maxCount 1 ;
+    sh:minCount 1 ;
+    sh:name "Specifies economic operator" ;
+    sh:path :specifiesEconomicOperator ;
+    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#specifiesEconomicOperator> ?that . ?that <http://data.europa.eu/a4g/ontology#specifiesEconomicOperator> ?this .}" ] .
 
 core-shape:epo-awa-AwardDecisionNotification-epo-concernsAwardOutcome a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
@@ -7934,6 +8104,24 @@ core-shape:epo-sub-Response-epo-sub-refersToApplicablePeriod a sh:PropertyShape 
     sh:path :refersToApplicablePeriod ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#refersToApplicablePeriod> ?that . ?that <http://data.europa.eu/a4g/ontology#refersToApplicablePeriod> ?this .}" ] .
 
+core-shape:epo-sub-TenderWithdrawalReceipt-epo-refersToTender a sh:PropertyShape ;
+    rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class :Tender ;
+    sh:maxCount 1 ;
+    sh:minCount 1 ;
+    sh:name "Refers to tender" ;
+    sh:path :refersToTender ;
+    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#refersToTender> ?that . ?that <http://data.europa.eu/a4g/ontology#refersToTender> ?this .}" ] .
+
+core-shape:epo-sub-TenderWithdrawalRequest-epo-sub-refersToTenderReceipt a sh:PropertyShape ;
+    rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class :TenderReceipt ;
+    sh:maxCount 1 ;
+    sh:minCount 1 ;
+    sh:name "Refers to tender receipt" ;
+    sh:path :refersToTenderReceipt ;
+    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#refersToTenderReceipt> ?that . ?that <http://data.europa.eu/a4g/ontology#refersToTenderReceipt> ?this .}" ] .
+
 core-shape:foaf-Agent-epo-hasAlias a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
     sh:description "Acronym or alternative name of the Agent." ;
@@ -8118,13 +8306,13 @@ core-shape:core-shape a owl:Ontology ;
     rdfs:label "eProcurement Ontology - core shapes"@en ;
     dcterms:created "2021-06-01"^^xsd:date ;
     dcterms:description "The eProcurement Ontology core shapes provides the generic datashape specifications for the eProcurement Ontology core."@en ;
-    dcterms:issued "2026-07-16"^^xsd:date ;
+    dcterms:issued "2026-08-12"^^xsd:date ;
     dcterms:license "© European Union, 2014. Unless otherwise noted, the reuse of the Ontology is authorised under the European Union Public Licence v1.2 (https://eupl.eu/)." ;
     dcterms:publisher "http://publications.europa.eu/resource/authority/corporate-body/PUBL" ;
     dcterms:title "eProcurement Ontology - core shapes"@en ;
     vann:preferredNamespacePrefix "epo" ;
     vann:preferredNamespaceUri "http://data.europa.eu/a4g/ontology#" ;
-    rdfs:comment "This version is automatically generated from ePO_core.xml on 2026-07-16" ;
+    rdfs:comment "This version is automatically generated from ePO_core.xml on 2026-08-12" ;
     rdfs:seeAlso <https://docs.ted.europa.eu/home/index.html>,
         <https://github.com/OP-TED/ePO/releases>,
         <https://joinup.ec.europa.eu/collection/eprocurement/solution/eprocurement-ontology/about>,

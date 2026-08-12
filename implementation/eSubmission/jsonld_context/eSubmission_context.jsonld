@@ -2,7 +2,27 @@
   "@context": {
     "DocumentaryEvidence": "http://data.europa.eu/a4g/ontology#DocumentaryEvidence",
     "ESPD": {
-      "@context": {},
+      "@context": {
+        "isContainedInTender": {
+          "@container": "@set",
+          "@id": "http://data.europa.eu/a4g/ontology#isContainedInTender",
+          "@type": "@id"
+        },
+        "providesInformationOn": {
+          "@container": "@set",
+          "@id": "http://data.europa.eu/a4g/ontology#providesInformationOn",
+          "@type": "@id"
+        },
+        "relatesToESPDRequest": {
+          "@id": "http://data.europa.eu/a4g/ontology#relatesToESPDRequest",
+          "@type": "@id"
+        },
+        "specifiesResponse": {
+          "@container": "@set",
+          "@id": "http://data.europa.eu/a4g/ontology#specifiesResponse",
+          "@type": "@id"
+        }
+      },
       "@id": "http://data.europa.eu/a4g/ontology#ESPD"
     },
     "EvidenceInformation": {
@@ -10,17 +30,39 @@
         "coversAllSelectionCriteria": {
           "@id": "http://data.europa.eu/a4g/ontology#coversAllSelectionCriteria",
           "@type": "http://www.w3.org/2001/XMLSchema#boolean"
+        },
+        "summarisesInformationAboutEvidence": {
+          "@id": "http://data.europa.eu/a4g/ontology#summarisesInformationAboutEvidence",
+          "@type": "@id"
         }
       },
       "@id": "http://data.europa.eu/a4g/ontology#EvidenceInformation"
     },
     "LegalRepresentative": {
-      "@context": {},
+      "@context": {
+        "actsOnBehalfOf": {
+          "@id": "http://data.europa.eu/a4g/ontology#actsOnBehalfOf",
+          "@type": "@id"
+        },
+        "hasMandate": {
+          "@container": "@set",
+          "@id": "http://data.europa.eu/a4g/ontology#hasMandate",
+          "@type": "@id"
+        },
+        "hasPowerOfAttorney": {
+          "@id": "http://data.europa.eu/a4g/ontology#hasPowerOfAttorney",
+          "@type": "@id"
+        }
+      },
       "@id": "http://data.europa.eu/a4g/ontology#LegalRepresentative"
     },
     "Mandate": "http://data.europa.eu/a4g/ontology#Mandate",
     "OrganisationInformationSummary": {
       "@context": {
+        "concernsOrganisation": {
+          "@id": "http://data.europa.eu/a4g/ontology#concernsOrganisation",
+          "@type": "@id"
+        },
         "hasBusinessClassificationDescription": {
           "@container": "@set",
           "@id": "http://data.europa.eu/a4g/ontology#hasBusinessClassificationDescription",
@@ -29,14 +71,55 @@
         "providesOrganisationCompletedTaskDescription": {
           "@id": "http://data.europa.eu/a4g/ontology#providesOrganisationCompletedTaskDescription",
           "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"
+        },
+        "providesOrganisationEmployeeQuantity": {
+          "@id": "http://data.europa.eu/a4g/ontology#providesOrganisationEmployeeQuantity",
+          "@type": "@id"
+        },
+        "providesOrganisationFinancialCapability": {
+          "@id": "http://data.europa.eu/a4g/ontology#providesOrganisationFinancialCapability",
+          "@type": "@id"
         }
       },
       "@id": "http://data.europa.eu/a4g/ontology#OrganisationInformationSummary"
     },
     "PowerOfAttorney": "http://data.europa.eu/a4g/ontology#PowerOfAttorney",
     "Response": {
-      "@context": {},
+      "@context": {
+        "answersQuestion": {
+          "@container": "@set",
+          "@id": "http://data.europa.eu/a4g/ontology#answersQuestion",
+          "@type": "@id"
+        },
+        "isReinforcedBy": {
+          "@container": "@set",
+          "@id": "http://data.europa.eu/a4g/ontology#isReinforcedBy",
+          "@type": "@id"
+        },
+        "refersToApplicablePeriod": {
+          "@id": "http://data.europa.eu/a4g/ontology#refersToApplicablePeriod",
+          "@type": "@id"
+        }
+      },
       "@id": "http://data.europa.eu/a4g/ontology#Response"
+    },
+    "TenderWithdrawalReceipt": {
+      "@context": {
+        "refersToTender": {
+          "@id": "http://data.europa.eu/a4g/ontology#refersToTender",
+          "@type": "@id"
+        }
+      },
+      "@id": "http://data.europa.eu/a4g/ontology#TenderWithdrawalReceipt"
+    },
+    "TenderWithdrawalRequest": {
+      "@context": {
+        "refersToTenderReceipt": {
+          "@id": "http://data.europa.eu/a4g/ontology#refersToTenderReceipt",
+          "@type": "@id"
+        }
+      },
+      "@id": "http://data.europa.eu/a4g/ontology#TenderWithdrawalRequest"
     },
     "adms": "http://www.w3.org/ns/adms#",
     "at-voc": "http://publications.europa.eu/resource/authority/",
