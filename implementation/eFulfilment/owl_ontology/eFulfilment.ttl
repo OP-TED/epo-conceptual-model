@@ -1,5 +1,4 @@
 @prefix : <http://data.europa.eu/a4g/ontology#> .
-@prefix at-voc-new: <http://publications.europa.eu/resource/authority/new/> .
 @prefix cccev: <http://data.europa.eu/m8g/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix eli: <http://data.europa.eu/eli/ontology#> .
@@ -10,14 +9,9 @@
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-:AbstractContainer a owl:Class ;
-    rdfs:isDefinedBy :ful ;
-    skos:definition "Gathering class for Packages and Transport Handling Units."@en ;
-    skos:historyNote "WG Approval 14/05/2024"@en ;
-    skos:prefLabel "Abstract Container"@en .
-
 :Carrier a owl:Class ;
     rdfs:isDefinedBy :ful ;
+    rdfs:subClassOf :AuxiliaryParty ;
     skos:definition "The Role of an Agent who handles the physical Delivery/Transportation of the (Despatched) Shipment. Additional Information: This Role is often referred to as the deliverer."@en ;
     skos:historyNote "WG Approval 14/05/2024"@en ;
     skos:prefLabel "Carrier"@en .
@@ -30,27 +24,35 @@
 
 :DespatchAdvice a owl:Class ;
     rdfs:isDefinedBy :ful ;
+    rdfs:subClassOf :PostAwardDocument ;
     skos:definition "A document notifying the sending of goods or the execution of works or services."@en ;
     skos:historyNote "WG Approval 14/05/2024"@en ;
     skos:prefLabel "Despatch Advice"@en .
 
 :DespatchLine a owl:Class ;
     rdfs:isDefinedBy :ful ;
+    rdfs:subClassOf :Line ;
     skos:definition "Details concerning the fulfilment of an Order Line."@en ;
     skos:historyNote "WG Approval 21/05/2024"@en ;
     skos:prefLabel "Despatch Line"@en .
 
 :Despatcher a owl:Class ;
     rdfs:isDefinedBy :ful ;
+    rdfs:subClassOf :OfferingParty ;
     skos:definition "The Role of an Agent who sends the goods or notifies of the service or works execution. Additional Information: The Role is carried out by the Supplier or on behalf of the Supplier. This Role is often referred to as the Despatch Party, Consignor or Deliverer."@en ;
     skos:historyNote "WG Approval 02/07/2024"@en ;
     skos:prefLabel "Despatcher"@en .
 
 :FreightForwarder a owl:Class ;
     rdfs:isDefinedBy :ful ;
+    rdfs:subClassOf :AuxiliaryParty ;
     skos:definition "The Role of an Agent who organise the logistic operations need for a fulfilment."@en ;
     skos:historyNote "WG Approval 21/05/2024"@en ;
     skos:prefLabel "Freight Forwarder"@en .
+
+:FuelConsumptionInformation a owl:Class ;
+    rdfs:isDefinedBy :ful ;
+    skos:prefLabel "Fuel Consumption Information"@en .
 
 :GoodsItem a owl:Class ;
     rdfs:isDefinedBy :ful ;
@@ -60,25 +62,28 @@
 
 :NotificationReceiver a owl:Class ;
     rdfs:isDefinedBy :ful ;
+    rdfs:subClassOf :AuxiliaryParty ;
     skos:definition "The Role of an Agent that is informed about the arrival of a Shipment at a destination. Additional information: This could be for example customs and excise."@en ;
-    skos:editorialNote "The class epo-ful:Notifier was wrongly named and has been replaced by epo-ful:NotificationReceiver. It will be removed in the next major release."@en ;
     skos:historyNote "WG Approval 21/05/2024"@en ;
     skos:prefLabel "Notification Receiver"@en .
 
-:Package a owl:Class ;
-    rdfs:isDefinedBy :ful ;
-    skos:definition "Container used for transportation."@en ;
-    skos:historyNote "WG Approval 14/05/2024"@en ;
-    skos:prefLabel "Package"@en .
-
 :ReceiptAdvice a owl:Class ;
     rdfs:isDefinedBy :ful ;
-    skos:definition "A formal reply from the Buyer to the Seller acknowledging the physical or electronic receipt of goods or services delivered under a Procurement Contract."@en ;
+    rdfs:subClassOf :PostAwardDocument ;
+    skos:definition "A formal reply from the Buyer to the Seller acknowledging the physical or electronic reception of goods or services delivered under a Procurement Contract."@en ;
     skos:historyNote "WG approval 16/09/2025"@en ;
     skos:prefLabel "Receipt Advice"@en .
 
+:ReceiptAdviceInformation a owl:Class ;
+    rdfs:isDefinedBy :ful ;
+    rdfs:subClassOf :InformationHub ;
+    skos:definition "Information about the Receipt Advice."@en ;
+    skos:historyNote "WG approval 16/09/2025"@en ;
+    skos:prefLabel "Receipt Advice Information"@en .
+
 :ReceiptAdviceLine a owl:Class ;
     rdfs:isDefinedBy :ful ;
+    rdfs:subClassOf :Line ;
     skos:definition "Details concerning the Fulfilment of a Despatch Line."@en ;
     skos:historyNote "WG approval 16/09/2025"@en ;
     skos:prefLabel "Receipt Advice Line"@en .
@@ -91,6 +96,7 @@
 
 :ShipmentInformation a owl:Class ;
     rdfs:isDefinedBy :ful ;
+    rdfs:subClassOf :InformationHub ;
     skos:definition "Information about the transportation of an identifiable collection of Goods Items from the Despatcher to the Consignee."@en ;
     skos:historyNote "WG Approval 21/05/2024"@en ;
     skos:prefLabel "Shipment Information"@en .
@@ -121,6 +127,7 @@
 
 :TransportHandlingUnit a owl:Class ;
     rdfs:isDefinedBy :ful ;
+    rdfs:subClassOf :Package ;
     skos:definition "The outermost Package that the Carrier is handling."@en ;
     skos:historyNote "WG Approval 14/05/2024"@en ;
     skos:prefLabel "Transport Handling Unit"@en .
@@ -133,6 +140,7 @@
 
 :TransportMeansOperator a owl:Class ;
     rdfs:isDefinedBy :ful ;
+    rdfs:subClassOf :AuxiliaryParty ;
     skos:definition "The Role of an Agent who is responsible for controlling the Transport Means."@en ;
     skos:historyNote "WG Approval 21/05/2024"@en ;
     skos:prefLabel "Transport Means Operator"@en .
@@ -172,6 +180,10 @@
     skos:definition "Relates to Package."@en ;
     skos:historyNote "WG approval 25/09/2025"@en ;
     skos:prefLabel "concerns Package"@en .
+
+:concernsShipmentStage a owl:ObjectProperty ;
+    rdfs:isDefinedBy :ful ;
+    skos:prefLabel "concerns Shipment Stage"@en .
 
 :concernsTransportEquipment a owl:ObjectProperty ;
     rdfs:isDefinedBy :ful ;
@@ -237,6 +249,14 @@
     skos:historyNote "WG Approval 10/06/2024"@en ;
     skos:prefLabel "has Consignee Consignment ID"@en .
 
+:hasConsumption a owl:ObjectProperty ;
+    rdfs:isDefinedBy :ful ;
+    skos:prefLabel "has Consumption"@en .
+
+:hasDamageStatusProof a owl:ObjectProperty ;
+    rdfs:isDefinedBy :ful ;
+    skos:prefLabel "has Damage Status Proof"@en .
+
 :hasDeclaredStatisticalValue a owl:ObjectProperty ;
     rdfs:isDefinedBy :ful ;
     skos:definition "The Monetary Value declared for statistical purposes."@en ;
@@ -300,6 +320,14 @@
     skos:definition "The total cost for moving the goods."@en ;
     skos:historyNote "WG Approval 18/06/2024"@en ;
     skos:prefLabel "has Freight Charge"@en .
+
+:hasFuelType a owl:ObjectProperty ;
+    rdfs:isDefinedBy :ful ;
+    skos:prefLabel "has Fuel Type"@en .
+
+:hasFuelTypeDescription a owl:DatatypeProperty ;
+    rdfs:isDefinedBy :ful ;
+    skos:prefLabel "has Fuel Type Description"@en .
 
 :hasGrossVolume a owl:ObjectProperty ;
     rdfs:isDefinedBy :ful ;
@@ -528,7 +556,6 @@
 :hasVehicleSegmentID a owl:ObjectProperty ;
     rdfs:isDefinedBy :ful ;
     skos:definition "The identifier of a part of the Transport Means."@en ;
-    skos:editorialNote "used for rail car identifier."@en ;
     skos:historyNote "WG Approval 25/06/2024"@en ;
     skos:prefLabel "has Vehicle Segment ID"@en .
 
@@ -718,26 +745,38 @@
     skos:historyNote "WG Approval 02/07/2024"@en ;
     skos:prefLabel "uses Transport Means"@en .
 
-at-voc-new:packaging-status skos:editorialNote "STATUS REASON CODELIST: 1 Split Separated into multiple units. 2 Missing Absent or lacking. 3 Wrong_identification The actual identification is different from the given identification. 4 Damaged In a damaged state. 5 Good_condition In a state of good condition. 6 Incorrect_labelling The Transport Handling Unit was labelled incorrectly. 7 On_hold Held, awaiting further action."@en .
+:AbstractContainer a owl:Class ;
+    rdfs:isDefinedBy :ful ;
+    skos:definition "Gathering class for Packages and Transport Handling Units."@en ;
+    skos:historyNote "WG Approval 14/05/2024"@en ;
+    skos:prefLabel "Abstract Container"@en .
 
-at-voc-new:reject-reason skos:editorialNote "Parts broken Quality problems on delivered parts. 3 Wrong items delivered. 4 Wrong item version delivered. 5 Parts incorrectly labelled. 6 Incorrect price. 7 Incorrect packaging. 8 Incorrect packaging AND Damaged packaging. 99 Other."@en .
+:Package a owl:Class ;
+    rdfs:isDefinedBy :ful ;
+    rdfs:subClassOf :AbstractContainer ;
+    skos:definition "Container used for transportation."@en ;
+    skos:historyNote "WG Approval 14/05/2024"@en ;
+    skos:prefLabel "Package"@en .
 
 :ful a owl:Ontology ;
-    rdfs:label "eProcurement Ontology - eFulfilment"@en ;
+    rdfs:label "eProcurement Ontology Fulfilment - core"@en ;
     dcterms:created "2021-06-01"^^xsd:date ;
-    dcterms:description "The eProcurement Ontology eFulfilment module describes the concepts and properties representing the Electronic Fulfilment domain. The provision of these semantics offers the basis for a common understanding of the domain for all stakeholders ensuring the quality of data exchange and transparency. The ontology restrictions are published in a separate artefact."@en ;
-    dcterms:issued "2026-07-07"^^xsd:date ;
-    dcterms:license "CC BY 4.0" ;
+    dcterms:description "The eProcurement Ontology Fulfilment core describes the concepts and properties representing the European Public Procurement Fulfilment domain. The provision of these semantics offers the basis for a common understanding of the domain for all stakeholders ensuring the quality of data exchange and transparency. The ontology restrictions are published in a separate artefact."@en ;
+    dcterms:issued "2026-09-03"^^xsd:date ;
+    dcterms:license "© European Union, 2014. Unless otherwise noted, the reuse of the Ontology is authorised under the European Union Public Licence v1.2 (https://eupl.eu/)." ;
     dcterms:publisher "http://publications.europa.eu/resource/authority/corporate-body/PUBL" ;
-    dcterms:title "eProcurement Ontology - eFulfilment"@en ;
-    vann:preferredNamespacePrefix "epo-ful" ;
+    dcterms:title "eProcurement Ontology Fulfilment - core"@en ;
+    vann:preferredNamespacePrefix "epo" ;
     vann:preferredNamespaceUri "http://data.europa.eu/a4g/ontology#" ;
-    rdfs:comment "This version is automatically generated from eFulfilment.xml on 2026-07-07" ;
+    rdfs:comment "This version is automatically generated from eFulfilment.xml on 2026-09-03" ;
     rdfs:seeAlso <https://docs.ted.europa.eu/home/index.html>,
         <https://github.com/OP-TED/ePO/releases>,
         <https://joinup.ec.europa.eu/collection/eprocurement/solution/eprocurement-ontology/about>,
         <https://op.europa.eu/en/web/eu-vocabularies/e-procurement> ;
-    owl:imports eli:,
+    owl:imports :cat,
+        :core,
+        :ord,
+        eli:,
         cccev:,
         dcterms:,
         skos:,
@@ -747,7 +786,7 @@ at-voc-new:reject-reason skos:editorialNote "Parts broken Quality problems on de
         org:,
         <http://www.w3.org/ns/person> ;
     owl:incompatibleWith "4.2.0" ;
-    owl:priorVersion "http://data.europa.eu/a4g/ontology#ful-5.1.0" ;
-    owl:versionIRI :ful-5.2.0 ;
-    owl:versionInfo "5.2.0" .
+    owl:priorVersion "http://data.europa.eu/a4g/ontology#ful-5.2.0" ;
+    owl:versionIRI :ful-5.3.0 ;
+    owl:versionInfo "5.3.0" .
 

@@ -15,10 +15,6 @@
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-ful-shape:at-voc-new-packaging-statusShape rdfs:comment "STATUS REASON CODELIST: 1 Split Separated into multiple units. 2 Missing Absent or lacking. 3 Wrong_identification The actual identification is different from the given identification. 4 Damaged In a damaged state. 5 Good_condition In a state of good condition. 6 Incorrect_labelling The Transport Handling Unit was labelled incorrectly. 7 On_hold Held, awaiting further action." .
-
-ful-shape:at-voc-new-reject-reasonShape rdfs:comment "Parts broken Quality problems on delivered parts. 3 Wrong items delivered. 4 Wrong item version delivered. 5 Parts incorrectly labelled. 6 Incorrect price. 7 Incorrect packaging. 8 Incorrect packaging AND Damaged packaging. 99 Other." .
-
 ful-shape:epo-cat-CatalogueLineShape sh:property ful-shape:epo-cat-CatalogueLine-epo-cat-foreseesPackage .
 
 ful-shape:epo-cat-DimensionInformationShape sh:property ful-shape:epo-cat-DimensionInformation-epo-ful-concernsGoodsItem,
@@ -26,7 +22,8 @@ ful-shape:epo-cat-DimensionInformationShape sh:property ful-shape:epo-cat-Dimens
         ful-shape:epo-cat-DimensionInformation-epo-ful-concernsTransportEquipment,
         ful-shape:epo-cat-DimensionInformation-epo-ful-concernsTransportMeans .
 
-ful-shape:epo-cat-EnvironmentalEmissionInformationShape sh:property ful-shape:epo-cat-EnvironmentalEmissionInformation-epo-ful-concernsTransportMeans .
+ful-shape:epo-cat-EnvironmentalEmissionInformationShape sh:property ful-shape:epo-cat-EnvironmentalEmissionInformation-epo-ful-concernsShipmentStage,
+        ful-shape:epo-cat-EnvironmentalEmissionInformation-epo-ful-concernsTransportMeans .
 
 ful-shape:epo-cat-PostAwardDocumentShape sh:property ful-shape:epo-cat-PostAwardDocument-epo-hasDocumentStatus .
 
@@ -116,6 +113,15 @@ ful-shape:epo-ful-FreightForwarderShape a sh:NodeShape ;
     rdfs:isDefinedBy ful-shape:ful-shape ;
     sh:targetClass :FreightForwarder .
 
+ful-shape:epo-ful-FuelConsumptionInformationShape a sh:NodeShape ;
+    rdfs:label "Fuel Consumption Information" ;
+    rdfs:isDefinedBy ful-shape:ful-shape ;
+    sh:property ful-shape:epo-ful-FuelConsumptionInformation-epo-ful-concernsShipmentStage,
+        ful-shape:epo-ful-FuelConsumptionInformation-epo-ful-hasConsumption,
+        ful-shape:epo-ful-FuelConsumptionInformation-epo-ful-hasFuelType,
+        ful-shape:epo-ful-FuelConsumptionInformation-epo-ful-hasFuelTypeDescription ;
+    sh:targetClass :FuelConsumptionInformation .
+
 ful-shape:epo-ful-GoodsItemShape a sh:NodeShape ;
     rdfs:label "Goods Item" ;
     rdfs:comment "An Item including its initial packaging during transportation. Additional information: For example, the Item being bought is the computer. The weight of the computer is X. The weight of the Goods Item is the weight of the computer plus the weight of the initial packaging. During transportation you have for example trace ID which is applied to the GoodsItem, rather than on the Item itself. The declared statistical value can only apply once you have a GoodsItem." ;
@@ -127,8 +133,7 @@ ful-shape:epo-ful-GoodsItemShape a sh:NodeShape ;
 
 ful-shape:epo-ful-NotificationReceiverShape a sh:NodeShape ;
     rdfs:label "Notification Receiver" ;
-    rdfs:comment "The Role of an Agent that is informed about the arrival of a Shipment at a destination. Additional information: This could be for example customs and excise.",
-        "The class epo-ful:Notifier was wrongly named and has been replaced by epo-ful:NotificationReceiver. It will be removed in the next major release." ;
+    rdfs:comment "The Role of an Agent that is informed about the arrival of a Shipment at a destination. Additional information: This could be for example customs and excise." ;
     rdfs:isDefinedBy ful-shape:ful-shape ;
     sh:targetClass :NotificationReceiver .
 
@@ -138,18 +143,24 @@ ful-shape:epo-ful-PackageShape a sh:NodeShape ;
     rdfs:isDefinedBy ful-shape:ful-shape ;
     sh:property ful-shape:epo-ful-Package-epo-ful-containsGoodsItem,
         ful-shape:epo-ful-Package-epo-ful-containsPackage,
+        ful-shape:epo-ful-Package-epo-ful-hasDamageStatusProof,
         ful-shape:epo-ful-Package-epo-ful-hasPackagingStatus,
         ful-shape:epo-ful-Package-epo-ful-hasPackagingStatusDescription,
         ful-shape:epo-ful-Package-epo-ful-hasPackagingType,
         ful-shape:epo-ful-Package-epo-ful-hasPackagingTypeDescription ;
     sh:targetClass :Package .
 
-ful-shape:epo-ful-ReceiptAdviceInformationShape sh:property ful-shape:epo-ful-ReceiptAdviceInformation-epo-ful-hasRejectAction,
+ful-shape:epo-ful-ReceiptAdviceInformationShape a sh:NodeShape ;
+    rdfs:label "Receipt Advice Information" ;
+    rdfs:comment "Information about the Receipt Advice." ;
+    rdfs:isDefinedBy ful-shape:ful-shape ;
+    sh:property ful-shape:epo-ful-ReceiptAdviceInformation-epo-ful-hasRejectAction,
         ful-shape:epo-ful-ReceiptAdviceInformation-epo-ful-hasRejectReason,
         ful-shape:epo-ful-ReceiptAdviceInformation-epo-ful-hasRejectReasonDescription,
         ful-shape:epo-ful-ReceiptAdviceInformation-epo-ful-hasShortageAction,
         ful-shape:epo-ful-ReceiptAdviceInformation-epo-ful-isSpecificToReceiptAdviceLine,
-        ful-shape:epo-ful-ReceiptAdviceInformation-epo-ord-hasAcceptanceStatus .
+        ful-shape:epo-ful-ReceiptAdviceInformation-epo-ord-hasAcceptanceStatus ;
+    sh:targetClass :ReceiptAdviceInformation .
 
 ful-shape:epo-ful-ReceiptAdviceLineShape a sh:NodeShape ;
     rdfs:label "Receipt Advice Line" ;
@@ -164,7 +175,7 @@ ful-shape:epo-ful-ReceiptAdviceLineShape a sh:NodeShape ;
 
 ful-shape:epo-ful-ReceiptAdviceShape a sh:NodeShape ;
     rdfs:label "Receipt Advice" ;
-    rdfs:comment "A formal reply from the Buyer to the Seller acknowledging the physical or electronic receipt of goods or services delivered under a Procurement Contract." ;
+    rdfs:comment "A formal reply from the Buyer to the Seller acknowledging the physical or electronic reception of goods or services delivered under a Procurement Contract." ;
     rdfs:isDefinedBy ful-shape:ful-shape ;
     sh:property ful-shape:epo-ful-ReceiptAdvice-epo-ful-comprisesReceiptAdviceLine,
         ful-shape:epo-ful-ReceiptAdvice-epo-ful-isSubmittedForDespatchAdvice,
@@ -311,6 +322,14 @@ ful-shape:epo-cat-DimensionInformation-epo-ful-concernsTransportMeans a sh:Prope
     sh:path :concernsTransportMeans ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#concernsTransportMeans> ?that . ?that <http://data.europa.eu/a4g/ontology#concernsTransportMeans> ?this .}" ] .
 
+ful-shape:epo-cat-EnvironmentalEmissionInformation-epo-ful-concernsShipmentStage a sh:PropertyShape ;
+    rdfs:isDefinedBy ful-shape:ful-shape ;
+    sh:class :ShipmentStage ;
+    sh:maxCount 1 ;
+    sh:name "Concerns shipment stage" ;
+    sh:path :concernsShipmentStage ;
+    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#concernsShipmentStage> ?that . ?that <http://data.europa.eu/a4g/ontology#concernsShipmentStage> ?this .}" ] .
+
 ful-shape:epo-cat-EnvironmentalEmissionInformation-epo-ful-concernsTransportMeans a sh:PropertyShape ;
     rdfs:isDefinedBy ful-shape:ful-shape ;
     sh:class :TransportMeans ;
@@ -322,6 +341,7 @@ ful-shape:epo-cat-EnvironmentalEmissionInformation-epo-ful-concernsTransportMean
 
 ful-shape:epo-cat-PostAwardDocument-epo-hasDocumentStatus a sh:PropertyShape ;
     rdfs:isDefinedBy ful-shape:ful-shape ;
+    sh:class skos:Concept ;
     sh:description "https://test-docs.peppol.eu/logistics/transport-execution/codelist/DocumentStatusCode/" ;
     sh:maxCount 1 ;
     sh:name "Has document status" ;
@@ -519,6 +539,7 @@ ful-shape:epo-ful-Consignment-epo-ful-hasHandlingInstruction a sh:PropertyShape 
 
 ful-shape:epo-ful-Consignment-epo-ful-hasHandlingInstructionCode a sh:PropertyShape ;
     rdfs:isDefinedBy ful-shape:ful-shape ;
+    sh:class skos:Concept ;
     sh:description "Instruction on how to handle the Goods Items during transportation, expressed as a code." ;
     sh:maxCount 1 ;
     sh:name "Has handling instruction code" ;
@@ -612,6 +633,7 @@ ful-shape:epo-ful-DespatchAdvice-epo-ful-comprisesDespatchLine a sh:PropertyShap
 
 ful-shape:epo-ful-DespatchAdvice-epo-ful-hasDespatchAdviceType a sh:PropertyShape ;
     rdfs:isDefinedBy ful-shape:ful-shape ;
+    sh:class skos:Concept ;
     sh:description "Classification of a Despatch Advice." ;
     sh:maxCount 1 ;
     sh:name "Has despatch advice type" ;
@@ -708,6 +730,36 @@ ful-shape:epo-ful-DespatchLine-epo-ful-refersToOrderLine a sh:PropertyShape ;
     sh:path :refersToOrderLine ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#refersToOrderLine> ?that . ?that <http://data.europa.eu/a4g/ontology#refersToOrderLine> ?this .}" ] .
 
+ful-shape:epo-ful-FuelConsumptionInformation-epo-ful-concernsShipmentStage a sh:PropertyShape ;
+    rdfs:isDefinedBy ful-shape:ful-shape ;
+    sh:class :ShipmentStage ;
+    sh:maxCount 1 ;
+    sh:name "Concerns shipment stage" ;
+    sh:path :concernsShipmentStage ;
+    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#concernsShipmentStage> ?that . ?that <http://data.europa.eu/a4g/ontology#concernsShipmentStage> ?this .}" ] .
+
+ful-shape:epo-ful-FuelConsumptionInformation-epo-ful-hasConsumption a sh:PropertyShape ;
+    rdfs:isDefinedBy ful-shape:ful-shape ;
+    sh:class :Quantity ;
+    sh:maxCount 1 ;
+    sh:name "Has consumption" ;
+    sh:path :hasConsumption ;
+    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#hasConsumption> ?that . ?that <http://data.europa.eu/a4g/ontology#hasConsumption> ?this .}" ] .
+
+ful-shape:epo-ful-FuelConsumptionInformation-epo-ful-hasFuelType a sh:PropertyShape ;
+    rdfs:isDefinedBy ful-shape:ful-shape ;
+    sh:class skos:Concept ;
+    sh:maxCount 1 ;
+    sh:name "Has fuel type" ;
+    sh:path :hasFuelType .
+
+ful-shape:epo-ful-FuelConsumptionInformation-epo-ful-hasFuelTypeDescription a sh:PropertyShape ;
+    rdfs:isDefinedBy ful-shape:ful-shape ;
+    sh:maxCount 1 ;
+    sh:name "Has fuel type description" ;
+    sh:or ( [ sh:datatype xsd:string ] [ sh:datatype rdf:langString ] ) ;
+    sh:path :hasFuelTypeDescription .
+
 ful-shape:epo-ful-GoodsItem-epo-ful-hasDeclaredStatisticalValue a sh:PropertyShape ;
     rdfs:isDefinedBy ful-shape:ful-shape ;
     sh:class :MonetaryValue ;
@@ -750,8 +802,16 @@ ful-shape:epo-ful-Package-epo-ful-containsPackage a sh:PropertyShape ;
     sh:path :containsPackage ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#containsPackage> ?that . ?that <http://data.europa.eu/a4g/ontology#containsPackage> ?this .}" ] .
 
+ful-shape:epo-ful-Package-epo-ful-hasDamageStatusProof a sh:PropertyShape ;
+    rdfs:isDefinedBy ful-shape:ful-shape ;
+    sh:class :Document ;
+    sh:name "Has damage status proof" ;
+    sh:path :hasDamageStatusProof ;
+    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#hasDamageStatusProof> ?that . ?that <http://data.europa.eu/a4g/ontology#hasDamageStatusProof> ?this .}" ] .
+
 ful-shape:epo-ful-Package-epo-ful-hasPackagingStatus a sh:PropertyShape ;
     rdfs:isDefinedBy ful-shape:ful-shape ;
+    sh:class skos:Concept ;
     sh:description "Relation indicating the Packaging Status." ;
     sh:maxCount 1 ;
     sh:name "Has packaging status" ;
@@ -767,6 +827,7 @@ ful-shape:epo-ful-Package-epo-ful-hasPackagingStatusDescription a sh:PropertySha
 
 ful-shape:epo-ful-Package-epo-ful-hasPackagingType a sh:PropertyShape ;
     rdfs:isDefinedBy ful-shape:ful-shape ;
+    sh:class skos:Concept ;
     sh:description "The kind of Package." ;
     sh:maxCount 1 ;
     sh:name "Has packaging type" ;
@@ -851,6 +912,7 @@ ful-shape:epo-ful-ReceiptAdvice-epo-specifiesSeller a sh:PropertyShape ;
 
 ful-shape:epo-ful-ReceiptAdviceInformation-epo-ful-hasRejectAction a sh:PropertyShape ;
     rdfs:isDefinedBy ful-shape:ful-shape ;
+    sh:class skos:Concept ;
     sh:description "Relation indicating the Action Code for non-acceptance." ;
     sh:maxCount 1 ;
     sh:name "Has reject action" ;
@@ -858,6 +920,7 @@ ful-shape:epo-ful-ReceiptAdviceInformation-epo-ful-hasRejectAction a sh:Property
 
 ful-shape:epo-ful-ReceiptAdviceInformation-epo-ful-hasRejectReason a sh:PropertyShape ;
     rdfs:isDefinedBy ful-shape:ful-shape ;
+    sh:class skos:Concept ;
     sh:description "Relation indicating the reason for non-acceptance." ;
     sh:maxCount 1 ;
     sh:name "Has reject reason" ;
@@ -873,6 +936,7 @@ ful-shape:epo-ful-ReceiptAdviceInformation-epo-ful-hasRejectReasonDescription a 
 
 ful-shape:epo-ful-ReceiptAdviceInformation-epo-ful-hasShortageAction a sh:PropertyShape ;
     rdfs:isDefinedBy ful-shape:ful-shape ;
+    sh:class skos:Concept ;
     sh:description "Relation indicating the Action code for Quantity deficiency." ;
     sh:maxCount 1 ;
     sh:name "Has shortage action" ;
@@ -1065,6 +1129,7 @@ ful-shape:epo-ful-TemperatureSpecification-epo-ful-hasMinimumTemperature a sh:Pr
 
 ful-shape:epo-ful-TransportEquipment-epo-ful-hasSizeType a sh:PropertyShape ;
     rdfs:isDefinedBy ful-shape:ful-shape ;
+    sh:class skos:Concept ;
     sh:description "An extension classification specifying the measurement of the Transport Equipment. Additional Information: This codelist should be used only in the case of a container." ;
     sh:name "Has size type" ;
     sh:path :hasSizeType .
@@ -1079,6 +1144,7 @@ ful-shape:epo-ful-TransportEquipment-epo-ful-hasTransportEquipmentSeal a sh:Prop
 
 ful-shape:epo-ful-TransportEquipment-epo-ful-hasTransportEquipmentType a sh:PropertyShape ;
     rdfs:isDefinedBy ful-shape:ful-shape ;
+    sh:class skos:Concept ;
     sh:description "The kind of Transport Equipment." ;
     sh:name "Has transport equipment type" ;
     sh:path :hasTransportEquipmentType .
@@ -1108,6 +1174,7 @@ ful-shape:epo-ful-TransportHandlingUnit-epo-ful-hasHandlingInstruction a sh:Prop
 
 ful-shape:epo-ful-TransportHandlingUnit-epo-ful-hasHandlingInstructionCode a sh:PropertyShape ;
     rdfs:isDefinedBy ful-shape:ful-shape ;
+    sh:class skos:Concept ;
     sh:description "Instruction on how to handle the Goods Items during transportation, expressed as a code." ;
     sh:maxCount 1 ;
     sh:name "Has handling instruction code" ;
@@ -1130,6 +1197,7 @@ ful-shape:epo-ful-TransportHandlingUnit-epo-ord-hasShippingMark a sh:PropertySha
 
 ful-shape:epo-ful-TransportMeans-epo-ful-hasTransportMeansType a sh:PropertyShape ;
     rdfs:isDefinedBy ful-shape:ful-shape ;
+    sh:class skos:Concept ;
     sh:description "The kind of Transport Means." ;
     sh:maxCount 1 ;
     sh:name "Has transport means type" ;
@@ -1137,6 +1205,7 @@ ful-shape:epo-ful-TransportMeans-epo-ful-hasTransportMeansType a sh:PropertyShap
 
 ful-shape:epo-ful-TransportMeans-epo-ful-hasTransportMode a sh:PropertyShape ;
     rdfs:isDefinedBy ful-shape:ful-shape ;
+    sh:class skos:Concept ;
     sh:description "The type of the transport used." ;
     sh:maxCount 1 ;
     sh:minCount 1 ;
@@ -1156,8 +1225,7 @@ ful-shape:epo-ful-TransportMeans-epo-ful-hasVehicleID a sh:PropertyShape ;
 ful-shape:epo-ful-TransportMeans-epo-ful-hasVehicleSegmentID a sh:PropertyShape ;
     rdfs:isDefinedBy ful-shape:ful-shape ;
     sh:class adms:Identifier ;
-    sh:description "The identifier of a part of the Transport Means.",
-        "used for rail car identifier." ;
+    sh:description "The identifier of a part of the Transport Means." ;
     sh:maxCount 1 ;
     sh:name "Has vehicle segment ID" ;
     sh:path :hasVehicleSegmentID ;
@@ -1201,6 +1269,7 @@ ful-shape:epo-inv-Invoice-epo-inv-refersToReceiptAdvice a sh:PropertyShape ;
 
 ful-shape:epo-ord-AllowanceChargeInformation-epo-ful-hasAllowanceChargeReason a sh:PropertyShape ;
     rdfs:isDefinedBy ful-shape:ful-shape ;
+    sh:class skos:Concept ;
     sh:description "The justification for using the Allowance or the Charge." ;
     sh:maxCount 1 ;
     sh:name "Has allowance charge reason" ;
@@ -1216,23 +1285,25 @@ ful-shape:epo-ord-Order-epo-ful-specifiesDespatcher a sh:PropertyShape ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#specifiesDespatcher> ?that . ?that <http://data.europa.eu/a4g/ontology#specifiesDespatcher> ?this .}" ] .
 
 ful-shape:ful-shape a owl:Ontology ;
-    rdfs:label "eProcurement Ontology - eFulfilment shapes"@en ;
+    rdfs:label "eProcurement Ontology Fulfilment - core shapes"@en ;
     dcterms:created "2021-06-01"^^xsd:date ;
-    dcterms:description "The eProcurement Ontology eFulfilment shapes provides the generic datashape specifications for the eProcurement Ontology eFulfilment module."@en ;
-    dcterms:issued "2026-07-07"^^xsd:date ;
-    dcterms:license "CC BY 4.0" ;
+    dcterms:description "The eProcurement Ontology Fulfilment core shapes provides the generic datashape specifications for the eProcurement Ontology Fulfilment core."@en ;
+    dcterms:issued "2026-09-03"^^xsd:date ;
+    dcterms:license "© European Union, 2014. Unless otherwise noted, the reuse of the Ontology is authorised under the European Union Public Licence v1.2 (https://eupl.eu/)." ;
     dcterms:publisher "http://publications.europa.eu/resource/authority/corporate-body/PUBL" ;
-    dcterms:title "eProcurement Ontology - eFulfilment shapes"@en ;
-    vann:preferredNamespacePrefix "epo-ful" ;
+    dcterms:title "eProcurement Ontology Fulfilment - core shapes"@en ;
+    vann:preferredNamespacePrefix "epo" ;
     vann:preferredNamespaceUri "http://data.europa.eu/a4g/ontology#" ;
-    rdfs:comment "This version is automatically generated from eFulfilment.xml on 2026-07-07" ;
+    rdfs:comment "This version is automatically generated from eFulfilment.xml on 2026-09-03" ;
     rdfs:seeAlso <https://docs.ted.europa.eu/home/index.html>,
         <https://github.com/OP-TED/ePO/releases>,
         <https://joinup.ec.europa.eu/collection/eprocurement/solution/eprocurement-ontology/about>,
         <https://op.europa.eu/en/web/eu-vocabularies/e-procurement> ;
-    owl:imports ful-shape:ful-shape,
+    owl:imports :cat,
+        :core,
         :ful,
         :ful-restriction,
+        :ord,
         eli:,
         cccev:,
         dcterms:,
@@ -1243,7 +1314,7 @@ ful-shape:ful-shape a owl:Ontology ;
         org:,
         <http://www.w3.org/ns/person> ;
     owl:incompatibleWith "4.2.0" ;
-    owl:priorVersion "http://data.europa.eu/a4g/data-shape#ful-shape-5.1.0" ;
-    owl:versionIRI ful-shape:ful-shape-5.2.0 ;
-    owl:versionInfo "5.2.0" .
+    owl:priorVersion "http://data.europa.eu/a4g/data-shape#ful-shape-5.2.0" ;
+    owl:versionIRI ful-shape:ful-shape-5.3.0 ;
+    owl:versionInfo "5.3.0" .
 
