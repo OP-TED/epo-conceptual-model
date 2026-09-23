@@ -11,12 +11,14 @@
 
 :RequestForOffer a owl:Class ;
     rdfs:isDefinedBy :req ;
+    rdfs:subClassOf :Document ;
     skos:definition "A Document sent by the Buyer to the Economic Operator, requesting the submission of a commercial proposal to supply goods, services, or works under specified conditions."@en ;
     skos:historyNote "WG approval 16/09/2025"@en ;
     skos:prefLabel "Request For Offer"@en .
 
 :RequestForOfferLine a owl:Class ;
     rdfs:isDefinedBy :req ;
+    rdfs:subClassOf :Line ;
     skos:definition "Details concerning a given unit of goods, services or works mentioned in the Request For Offer."@en ;
     skos:historyNote "WG approval 16/09/2025"@en ;
     skos:prefLabel "Request For Offer Line"@en .
@@ -96,21 +98,25 @@
     skos:prefLabel "specifies Originator"@en .
 
 :req a owl:Ontology ;
-    rdfs:label "eProcurement Ontology - eRequest"@en ;
+    rdfs:label "eProcurement Ontology Request - core"@en ;
     dcterms:created "2021-06-01"^^xsd:date ;
-    dcterms:description "The eProcurement Ontology eRequest module describes the concepts and properties representing the Electronic Request domain. The provision of these semantics offers the basis for a common understanding of the domain for all stakeholders ensuring the quality of data exchange and transparency. The ontology restrictions are published in a separate artefact."@en ;
-    dcterms:issued "2026-07-07"^^xsd:date ;
-    dcterms:license "CC BY 4.0" ;
+    dcterms:description "The eProcurement Ontology Request core describes the concepts and properties representing the European Public Procurement Request domain. The provision of these semantics offers the basis for a common understanding of the domain for all stakeholders ensuring the quality of data exchange and transparency. The ontology restrictions are published in a separate artefact."@en ;
+    dcterms:issued "2026-09-23"^^xsd:date ;
+    dcterms:license "© European Union, 2014. Unless otherwise noted, the reuse of the Ontology is authorised under the European Union Public Licence v1.2 (https://eupl.eu/)." ;
     dcterms:publisher "http://publications.europa.eu/resource/authority/corporate-body/PUBL" ;
-    dcterms:title "eProcurement Ontology - eRequest"@en ;
-    vann:preferredNamespacePrefix "epo-req" ;
+    dcterms:title "eProcurement Ontology Request - core"@en ;
+    vann:preferredNamespacePrefix "epo" ;
     vann:preferredNamespaceUri "http://data.europa.eu/a4g/ontology#" ;
-    rdfs:comment "This version is automatically generated from eRequest.xml on 2026-07-07" ;
+    rdfs:comment "This version is automatically generated from eRequest.xml on 2026-09-23" ;
     rdfs:seeAlso <https://docs.ted.europa.eu/home/index.html>,
         <https://github.com/OP-TED/ePO/releases>,
         <https://joinup.ec.europa.eu/collection/eprocurement/solution/eprocurement-ontology/about>,
         <https://op.europa.eu/en/web/eu-vocabularies/e-procurement> ;
-    owl:imports eli:,
+    owl:imports :cat,
+        :core,
+        :ful,
+        :ord,
+        eli:,
         cccev:,
         dcterms:,
         skos:,
@@ -120,7 +126,7 @@
         org:,
         <http://www.w3.org/ns/person> ;
     owl:incompatibleWith "4.2.0" ;
-    owl:priorVersion "http://data.europa.eu/a4g/ontology#req-5.1.0" ;
-    owl:versionIRI :req-5.2.0 ;
-    owl:versionInfo "5.2.0" .
+    owl:priorVersion "http://data.europa.eu/a4g/ontology#req-5.2.0" ;
+    owl:versionIRI :req-5.3.0 ;
+    owl:versionInfo "5.3.0" .
 

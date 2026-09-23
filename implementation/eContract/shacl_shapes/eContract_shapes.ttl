@@ -65,8 +65,7 @@ con-shape:epo-con-ContractAmendment-epo-amendsContract a sh:PropertyShape ;
 con-shape:epo-con-ContractAmendment-epo-updatesContractValue a sh:PropertyShape ;
     rdfs:isDefinedBy con-shape:con-shape ;
     sh:class :MonetaryValue ;
-    sh:description "Changes the Contract Monetary Value.",
-        "only to be used in the last section of standard form 20" ;
+    sh:description "Changes the Contract Monetary Value." ;
     sh:maxCount 1 ;
     sh:name "Updates contract value" ;
     sh:path :updatesContractValue ;
@@ -143,23 +142,25 @@ con-shape:epo-not-ContractModificationNotice-epo-announcesContractAmendment a sh
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#announcesContractAmendment> ?that . ?that <http://data.europa.eu/a4g/ontology#announcesContractAmendment> ?this .}" ] .
 
 con-shape:con-shape a owl:Ontology ;
-    rdfs:label "eProcurement Ontology - eContract shapes"@en ;
+    rdfs:label "eProcurement Ontology Contract - core shapes"@en ;
     dcterms:created "2021-06-01"^^xsd:date ;
-    dcterms:description "The eProcurement Ontology eContract shapes provides the generic datashape specifications for the eProcurement Ontology eContract module."@en ;
-    dcterms:issued "2026-07-07"^^xsd:date ;
-    dcterms:license "CC BY 4.0" ;
+    dcterms:description "The eProcurement Ontology Contract core shapes provides the generic datashape specifications for the eProcurement Ontology Contract core."@en ;
+    dcterms:issued "2026-09-23"^^xsd:date ;
+    dcterms:license "© European Union, 2014. Unless otherwise noted, the reuse of the Ontology is authorised under the European Union Public Licence v1.2 (https://eupl.eu/)." ;
     dcterms:publisher "http://publications.europa.eu/resource/authority/corporate-body/PUBL" ;
-    dcterms:title "eProcurement Ontology - eContract shapes"@en ;
-    vann:preferredNamespacePrefix "epo-con" ;
+    dcterms:title "eProcurement Ontology Contract - core shapes"@en ;
+    vann:preferredNamespacePrefix "epo" ;
     vann:preferredNamespaceUri "http://data.europa.eu/a4g/ontology#" ;
-    rdfs:comment "This version is automatically generated from eContract.xml on 2026-07-07" ;
+    rdfs:comment "This version is automatically generated from eContract.xml on 2026-09-23" ;
     rdfs:seeAlso <https://docs.ted.europa.eu/home/index.html>,
         <https://github.com/OP-TED/ePO/releases>,
         <https://joinup.ec.europa.eu/collection/eprocurement/solution/eprocurement-ontology/about>,
         <https://op.europa.eu/en/web/eu-vocabularies/e-procurement> ;
-    owl:imports con-shape:con-shape,
+    owl:imports :cat,
         :con,
         :con-restriction,
+        :core,
+        :not,
         eli:,
         cccev:,
         dcterms:,
@@ -170,7 +171,7 @@ con-shape:con-shape a owl:Ontology ;
         org:,
         <http://www.w3.org/ns/person> ;
     owl:incompatibleWith "4.2.0" ;
-    owl:priorVersion "http://data.europa.eu/a4g/data-shape#con-shape-5.1.0" ;
-    owl:versionIRI con-shape:con-shape-5.2.0 ;
-    owl:versionInfo "5.2.0" .
+    owl:priorVersion "http://data.europa.eu/a4g/data-shape#con-shape-5.2.0" ;
+    owl:versionIRI con-shape:con-shape-5.3.0 ;
+    owl:versionInfo "5.3.0" .
 

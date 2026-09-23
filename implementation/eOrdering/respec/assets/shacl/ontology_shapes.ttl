@@ -78,8 +78,7 @@ ord-shape:epo-ord-AllowanceInformationShape a sh:NodeShape ;
 
 ord-shape:epo-ord-ConsigneeShape a sh:NodeShape ;
     rdfs:label "Consignee" ;
-    rdfs:comment "A Role of an Agent that receives the Shipment of the Procurement (service, goods or works) and who is taking possession. Additional information: The Role is carried out by the Customer or on behalf of the Customer. The possession of the goods does not necessary imply ownership. The Consignee may be the end-user or the beneficiary. (Consignee) Definition from PEPPOL Despatch: The Consignee is the person or Organisation to which the products will be shipped and who is taking possession. The Role is carried out by the Customer or on behalf of the Customer.",
-        "Context: Ordering, Despatch" ;
+    rdfs:comment "A Role of an Agent that receives the Shipment of the Procurement (service, goods or works) and who is taking possession. Additional information: The Role is carried out by the Customer or on behalf of the Customer. The possession of the goods does not necessary imply ownership. The Consignee may be the end-user or the beneficiary. (Consignee) Definition from PEPPOL Despatch: The Consignee is the person or Organisation to which the products will be shipped and who is taking possession. The Role is carried out by the Customer or on behalf of the Customer." ;
     rdfs:isDefinedBy ord-shape:ord-shape ;
     sh:targetClass :Consignee .
 
@@ -229,8 +228,7 @@ ord-shape:epo-ord-OrderResponseLineShape a sh:NodeShape ;
 
 ord-shape:epo-ord-OrderResponseShape a sh:NodeShape ;
     rdfs:label "Order Response" ;
-    rdfs:comment "A formal reply from the Seller to the Buyer stating the Seller's ability to fulfil the order. Additional Information: The Order Response is used to inform on the acceptance or rejection of an Order or to make a counter-offer.",
-        "If contractually agreed, the Seller also may respond to the order, changing details that are acceptable by the Buyer. -- If an order is accepted with change, the buyer and seller need to have an agreement between them regarding the processing of the changed order, i.e. when is a contract concluded and when can the items be shipped. Proposal: If the order response is \"Change\" then the Buyer will create (instantiate) a new order implementing the changes and superseding the previously sent order." ;
+    rdfs:comment "A formal reply from the Seller to the Buyer stating the Seller's ability to fulfil the order. Additional Information: The Order Response is used to inform on the acceptance or rejection of an Order or to make a counter-offer." ;
     rdfs:isDefinedBy ord-shape:ord-shape ;
     sh:property ord-shape:epo-ord-OrderResponse-epo-ord-comprisesOrderResponseLine,
         ord-shape:epo-ord-OrderResponse-epo-ord-hasResponseDescription,
@@ -242,7 +240,8 @@ ord-shape:epo-ord-OrderShape a sh:NodeShape ;
     rdfs:label "Order" ;
     rdfs:comment "A formal request of the Buyer to the Seller specifying the goods, services or works to be delivered. Additional Information: A Buyer submits an Order for delivery of goods, services or works to a Seller." ;
     rdfs:isDefinedBy ord-shape:ord-shape ;
-    sh:property ord-shape:epo-ord-Order-epo-cat-specifiesChargeInformation,
+    sh:property ord-shape:epo-ord-Order-epo-cat-refersToCatalogue,
+        ord-shape:epo-ord-Order-epo-cat-specifiesChargeInformation,
         ord-shape:epo-ord-Order-epo-ful-specifiesDespatcher,
         ord-shape:epo-ord-Order-epo-hasValidityPeriod,
         ord-shape:epo-ord-Order-epo-ord-comprisesOrderLine,
@@ -278,15 +277,13 @@ ord-shape:epo-ord-OriginatorInformationShape a sh:NodeShape ;
 
 ord-shape:epo-ord-OriginatorShape a sh:NodeShape ;
     rdfs:label "Originator" ;
-    rdfs:comment "A Role of an Agent that expresses the needs to trigger the Procurement. Additional Information: The Originator is often the end-user or the Beneficiary.",
-        "Context: Expressing Needs" ;
+    rdfs:comment "A Role of an Agent that expresses the needs to trigger the Procurement. Additional Information: The Originator is often the end-user or the Beneficiary." ;
     rdfs:isDefinedBy ord-shape:ord-shape ;
     sh:targetClass :Originator .
 
 ord-shape:epo-ord-SellerShape a sh:NodeShape ;
     rdfs:label "Seller" ;
-    rdfs:comment "A Role of an Agent who transfers the ownership of the Procurement results (goods, services or works) to the Buyer. Additional information: A Role of an Agent that sells a Procurement Result (goods, services or work) to a Buyer. The Seller is bound by a Contract i.e. it has legal responsibility. The Seller may or may not be the same as the Supplier. The Seller may or may not issue the Invoice. The Seller may or may not be the owner of the credit owed by the Buyer.",
-        "Note: Supplier is out of discussion. It is a third party. We do not care who provides these service or products we care with whom business is done. PEPPOL - Invoice: The supplier is the legal person or organization who provides a product and/or service. PEPPOL - Order: The supplier is the legal person or organisation who provides a product or service. Examples of supplier roles: seller, despatch party, creditor, economic operator." ;
+    rdfs:comment "A Role of an Agent who transfers the ownership of the Procurement results (goods, services or works) to the Buyer. Additional information: A Role of an Agent that sells a Procurement Result (goods, services or work) to a Buyer. The Seller is bound by a Contract i.e. it has legal responsibility. The Seller may or may not be the same as the Supplier. The Seller may or may not issue the Invoice. The Seller may or may not be the owner of the credit owed by the Buyer." ;
     rdfs:isDefinedBy ord-shape:ord-shape ;
     sh:targetClass :Seller .
 
@@ -333,6 +330,7 @@ ord-shape:epo-cat-Catalogue-epo-specifiesSeller a sh:PropertyShape ;
 
 ord-shape:epo-cat-CatalogueResponseInformation-epo-ord-hasResponseStatus a sh:PropertyShape ;
     rdfs:isDefinedBy ord-shape:ord-shape ;
+    sh:class skos:Concept ;
     sh:description "Relation indicating the response status." ;
     sh:maxCount 1 ;
     sh:minCount 1 ;
@@ -358,6 +356,7 @@ ord-shape:epo-cat-Price-epo-ord-hasPriceDiscountInformation a sh:PropertyShape ;
 
 ord-shape:epo-ful-AbstractContainer-epo-ord-hasAcceptanceStatus a sh:PropertyShape ;
     rdfs:isDefinedBy ord-shape:ord-shape ;
+    sh:class skos:Concept ;
     sh:description "Relation indicating the acceptance status." ;
     sh:maxCount 1 ;
     sh:name "Has acceptance status" ;
@@ -418,6 +417,7 @@ ord-shape:epo-ful-ReceiptAdvice-epo-specifiesSeller a sh:PropertyShape ;
 
 ord-shape:epo-ful-ReceiptAdviceInformation-epo-ord-hasAcceptanceStatus a sh:PropertyShape ;
     rdfs:isDefinedBy ord-shape:ord-shape ;
+    sh:class skos:Concept ;
     sh:description "Relation indicating the acceptance status." ;
     sh:maxCount 1 ;
     sh:name "Has acceptance status" ;
@@ -763,6 +763,14 @@ ord-shape:epo-ord-DeliveryInformation-epo-ord-specifiesPlaceOfDelivery a sh:Prop
     sh:name "Specifies place of delivery" ;
     sh:path :specifiesPlaceOfDelivery ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#specifiesPlaceOfDelivery> ?that . ?that <http://data.europa.eu/a4g/ontology#specifiesPlaceOfDelivery> ?this .}" ] .
+
+ord-shape:epo-ord-Order-epo-cat-refersToCatalogue a sh:PropertyShape ;
+    rdfs:isDefinedBy ord-shape:ord-shape ;
+    sh:class :PostAwardCatalogue ;
+    sh:description "Additional information: If an order refers to multiple catalogues then all these catalogues ideally are subordinated to the same contract. Some countries however may allow multiple contracts per order (i.e Italy)." ;
+    sh:name "Refers to catalogue" ;
+    sh:path :refersToCatalogue ;
+    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#refersToCatalogue> ?that . ?that <http://data.europa.eu/a4g/ontology#refersToCatalogue> ?this .}" ] .
 
 ord-shape:epo-ord-Order-epo-cat-specifiesChargeInformation a sh:PropertyShape ;
     rdfs:isDefinedBy ord-shape:ord-shape ;
@@ -1113,6 +1121,7 @@ ord-shape:epo-ord-OrderChangeConfirmation-epo-specifiesSeller a sh:PropertyShape
 
 ord-shape:epo-ord-OrderChangeLine-epo-ord-hasStatus a sh:PropertyShape ;
     rdfs:isDefinedBy ord-shape:ord-shape ;
+    sh:class skos:Concept ;
     sh:description "Relation indicating the status." ;
     sh:maxCount 1 ;
     sh:name "Has status" ;
@@ -1229,6 +1238,7 @@ ord-shape:epo-ord-OrderResponse-epo-ord-specifiesOrderResponseInformation a sh:P
 
 ord-shape:epo-ord-OrderResponseInformation-epo-ord-hasStatus a sh:PropertyShape ;
     rdfs:isDefinedBy ord-shape:ord-shape ;
+    sh:class skos:Concept ;
     sh:description "Relation indicating the status." ;
     sh:maxCount 1 ;
     sh:minCount 1 ;
@@ -1361,19 +1371,19 @@ ord-shape:ord-shape a owl:Ontology ;
     rdfs:label "eProcurement Ontology Ordering - core shapes"@en ;
     dcterms:created "2021-06-01"^^xsd:date ;
     dcterms:description "The eProcurement Ontology Ordering core shapes provides the generic datashape specifications for the eProcurement Ontology Ordering core."@en ;
-    dcterms:issued "2026-07-07"^^xsd:date ;
-    dcterms:license "CC BY 4.0" ;
+    dcterms:issued "2026-09-23"^^xsd:date ;
+    dcterms:license "© European Union, 2014. Unless otherwise noted, the reuse of the Ontology is authorised under the European Union Public Licence v1.2 (https://eupl.eu/)." ;
     dcterms:publisher "http://publications.europa.eu/resource/authority/corporate-body/PUBL" ;
     dcterms:title "eProcurement Ontology Ordering - core shapes"@en ;
     vann:preferredNamespacePrefix "epo" ;
     vann:preferredNamespaceUri "http://data.europa.eu/a4g/ontology#" ;
-    rdfs:comment "This version is automatically generated from eOrdering.xml on 2026-07-07" ;
+    rdfs:comment "This version is automatically generated from eOrdering.xml on 2026-09-23" ;
     rdfs:seeAlso <https://docs.ted.europa.eu/home/index.html>,
         <https://github.com/OP-TED/ePO/releases>,
         <https://joinup.ec.europa.eu/collection/eprocurement/solution/eprocurement-ontology/about>,
         <https://op.europa.eu/en/web/eu-vocabularies/e-procurement> ;
-    owl:imports ord-shape:ord-shape,
-        :cat,
+    owl:imports :cat,
+        :core,
         :ful,
         :ord,
         :ord-restriction,
@@ -1387,7 +1397,7 @@ ord-shape:ord-shape a owl:Ontology ;
         org:,
         <http://www.w3.org/ns/person> ;
     owl:incompatibleWith "4.2.0" ;
-    owl:priorVersion "http://data.europa.eu/a4g/data-shape#ord-shape-5.1.0" ;
-    owl:versionIRI ord-shape:ord-shape-5.2.0 ;
-    owl:versionInfo "5.2.0" .
+    owl:priorVersion "http://data.europa.eu/a4g/data-shape#ord-shape-5.2.0" ;
+    owl:versionIRI ord-shape:ord-shape-5.3.0 ;
+    owl:versionInfo "5.3.0" .
 

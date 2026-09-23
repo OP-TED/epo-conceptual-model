@@ -11,17 +11,20 @@
 
 :ContractAmendment a owl:Class ;
     rdfs:isDefinedBy :con ;
+    rdfs:subClassOf :Contract ;
     skos:definition "A change to an existing Contract that is agreed by the contracting parties."@en ;
     skos:prefLabel "Contract Amendment"@en .
 
 :ContractModificationInformation a owl:Class ;
     rdfs:isDefinedBy :con ;
+    rdfs:subClassOf :ContextDescription ;
     skos:definition "Information about a Contract Amendment."@en ;
     skos:historyNote "WG approval 11/09/2025"@en ;
     skos:prefLabel "Contract Modification Information"@en .
 
 :Deliverable a owl:Class ;
     rdfs:isDefinedBy :con ;
+    rdfs:subClassOf :AbstractItem ;
     skos:definition "Item that the supplier is obligated to provide under a contract."@en ;
     skos:historyNote "WG approval 11/09/2025"@en ;
     skos:prefLabel "Deliverable"@en .
@@ -90,26 +93,28 @@
 :updatesContractValue a owl:ObjectProperty ;
     rdfs:isDefinedBy :con ;
     skos:definition "Changes the Contract Monetary Value."@en ;
-    skos:editorialNote "only to be used in the last section of standard form 20"@en ;
     skos:historyNote "WG approval 25/09/2025"@en ;
     skos:prefLabel "updates Contract Value"@en .
 
 :con a owl:Ontology ;
-    rdfs:label "eProcurement Ontology - eContract"@en ;
+    rdfs:label "eProcurement Ontology Contract - core"@en ;
     dcterms:created "2021-06-01"^^xsd:date ;
-    dcterms:description "The eProcurement Ontology eContract module describes the concepts and properties representing the Electronic Contract domain. The provision of these semantics offers the basis for a common understanding of the domain for all stakeholders ensuring the quality of data exchange and transparency. The ontology restrictions are published in a separate artefact."@en ;
-    dcterms:issued "2026-07-07"^^xsd:date ;
-    dcterms:license "CC BY 4.0" ;
+    dcterms:description "The eProcurement Ontology Contract core describes the concepts and properties representing the European Public Procurement Contract domain. The provision of these semantics offers the basis for a common understanding of the domain for all stakeholders ensuring the quality of data exchange and transparency. The ontology restrictions are published in a separate artefact."@en ;
+    dcterms:issued "2026-09-23"^^xsd:date ;
+    dcterms:license "© European Union, 2014. Unless otherwise noted, the reuse of the Ontology is authorised under the European Union Public Licence v1.2 (https://eupl.eu/)." ;
     dcterms:publisher "http://publications.europa.eu/resource/authority/corporate-body/PUBL" ;
-    dcterms:title "eProcurement Ontology - eContract"@en ;
-    vann:preferredNamespacePrefix "epo-con" ;
+    dcterms:title "eProcurement Ontology Contract - core"@en ;
+    vann:preferredNamespacePrefix "epo" ;
     vann:preferredNamespaceUri "http://data.europa.eu/a4g/ontology#" ;
-    rdfs:comment "This version is automatically generated from eContract.xml on 2026-07-07" ;
+    rdfs:comment "This version is automatically generated from eContract.xml on 2026-09-23" ;
     rdfs:seeAlso <https://docs.ted.europa.eu/home/index.html>,
         <https://github.com/OP-TED/ePO/releases>,
         <https://joinup.ec.europa.eu/collection/eprocurement/solution/eprocurement-ontology/about>,
         <https://op.europa.eu/en/web/eu-vocabularies/e-procurement> ;
-    owl:imports eli:,
+    owl:imports :cat,
+        :core,
+        :not,
+        eli:,
         cccev:,
         dcterms:,
         skos:,
@@ -119,7 +124,7 @@
         org:,
         <http://www.w3.org/ns/person> ;
     owl:incompatibleWith "4.2.0" ;
-    owl:priorVersion "http://data.europa.eu/a4g/ontology#con-5.1.0" ;
-    owl:versionIRI :con-5.2.0 ;
-    owl:versionInfo "5.2.0" .
+    owl:priorVersion "http://data.europa.eu/a4g/ontology#con-5.2.0" ;
+    owl:versionIRI :con-5.3.0 ;
+    owl:versionInfo "5.3.0" .
 

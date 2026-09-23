@@ -27,14 +27,14 @@
     rdfs:label "eProcurement Ontology Fulfilment - core restrictions"@en ;
     dcterms:created "2021-06-01"^^xsd:date ;
     dcterms:description "The eProcurement Ontology Fulfilment core restrictions provides the restrictions and the inference-related specifications on the concepts and properties in the eProcurement Ontology Fulfilment core."@en ;
-    dcterms:issued "2026-09-03"^^xsd:date ;
+    dcterms:issued "2026-09-23"^^xsd:date ;
     dcterms:license "© European Union, 2014. Unless otherwise noted, the reuse of the Ontology is authorised under the European Union Public Licence v1.2 (https://eupl.eu/)." ;
     dcterms:publisher "http://publications.europa.eu/resource/authority/corporate-body/PUBL" ;
     dcterms:title "eProcurement Ontology Fulfilment - core restrictions"@en ;
     vann:preferredNamespacePrefix "epo" ;
     vann:preferredNamespaceUri "http://data.europa.eu/a4g/ontology#" ;
     rdfs:comment """This version is automatically generated from eFulfilment.xml on 
-                2026-09-03""" ;
+                2026-09-23""" ;
     rdfs:seeAlso <https://docs.ted.europa.eu/home/index.html>,
         <https://github.com/OP-TED/ePO/releases>,
         <https://joinup.ec.europa.eu/collection/eprocurement/solution/eprocurement-ontology/about>,
@@ -358,21 +358,21 @@
 
 :EnvironmentalEmissionInformation rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass :ShipmentStage ;
-            owl:onProperty :concernsShipmentStage ],
+            owl:onClass :TransportMeans ;
+            owl:onProperty :concernsTransportMeans ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass :TransportMeans ;
-            owl:onProperty :concernsTransportMeans ] .
+            owl:onClass :ShipmentStage ;
+            owl:onProperty :concernsShipmentStage ] .
 
 :Invoice rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass :DespatchAdvice ;
-            owl:onProperty :refersToDespatchAdvice ],
+            owl:onClass :ReceiptAdvice ;
+            owl:onProperty :refersToReceiptAdvice ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass :ReceiptAdvice ;
-            owl:onProperty :refersToReceiptAdvice ] .
+            owl:onClass :DespatchAdvice ;
+            owl:onProperty :refersToDespatchAdvice ] .
 
 :concernsShipmentStage rdfs:domain [ a owl:Class ;
             owl:unionOf ( :FuelConsumptionInformation :EnvironmentalEmissionInformation ) ] ;
@@ -423,6 +423,10 @@
 
 :DimensionInformation rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
+            owl:onClass :Package ;
+            owl:onProperty :concernsPackage ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
             owl:onClass :TransportMeans ;
             owl:onProperty :concernsTransportMeans ],
         [ a owl:Restriction ;
@@ -431,25 +435,21 @@
             owl:onProperty :concernsGoodsItem ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass :Package ;
-            owl:onProperty :concernsPackage ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
             owl:onClass :TransportEquipment ;
             owl:onProperty :concernsTransportEquipment ] .
 
 :FuelConsumptionInformation rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass :Quantity ;
-            owl:onProperty :hasConsumption ],
-        [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onDataRange rdf:PlainLiteral ;
             owl:onProperty :hasFuelTypeDescription ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass :ShipmentStage ;
-            owl:onProperty :concernsShipmentStage ] .
+            owl:onProperty :concernsShipmentStage ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass :Quantity ;
+            owl:onProperty :hasConsumption ] .
 
 :ShipmentAgreement rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty :agreedByBuyer ;
@@ -460,25 +460,25 @@
 
 :TemperatureSpecification rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onDataRange rdf:PlainLiteral ;
-            owl:onProperty dcterms:description ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
             owl:onClass :Quantity ;
             owl:onProperty :hasMinimumTemperature ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass :Quantity ;
-            owl:onProperty :hasMaximumTemperature ] .
+            owl:onProperty :hasMaximumTemperature ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onDataRange rdf:PlainLiteral ;
+            owl:onProperty dcterms:description ] .
 
 :GoodsItem rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass adms:Identifier ;
-            owl:onProperty :hasTraceID ],
-        [ a owl:Restriction ;
             owl:onClass :DespatchLine ;
             owl:onProperty :refersToDespatchLine ;
-            owl:qualifiedCardinality 1 ] .
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass adms:Identifier ;
+            owl:onProperty :hasTraceID ] .
 
 :ReceiptAdviceInformation rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
@@ -490,13 +490,13 @@
             owl:onClass :Quantity ;
             owl:onProperty :hasOversupplyQuantity ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass :Quantity ;
-            owl:onProperty :hasRejectedQuantity ],
-        [ a owl:Restriction ;
             owl:onClass :DespatchLine ;
             owl:onProperty :isSubmittedForDespatchLine ;
             owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass :Quantity ;
+            owl:onProperty :hasRejectedQuantity ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass :Quantity ;
@@ -509,37 +509,29 @@
 :TransportEquipment rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onDataRange xsd:boolean ;
+            owl:onProperty :isPowerIndicated ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onDataRange xsd:boolean ;
             owl:onProperty :isRefrigerated ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass adms:Identifier ;
-            owl:onProperty adms:identifier ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onDataRange xsd:boolean ;
-            owl:onProperty :isPowerIndicated ] .
+            owl:onProperty adms:identifier ] .
 
 :ShipmentStage rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty :usesTransportMeans ;
             owl:someValuesFrom :TransportMeans ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass adms:Identifier ;
-            owl:onProperty adms:identifier ],
+            owl:onClass :Carrier ;
+            owl:onProperty :specifiesCarrier ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass :Carrier ;
-            owl:onProperty :specifiesCarrier ] .
+            owl:onClass adms:Identifier ;
+            owl:onProperty adms:identifier ] .
 
 :ReceiptAdvice rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass :Buyer ;
-            owl:onProperty :specifiesBuyer ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass :ShipmentInformation ;
-            owl:onProperty :isSubmittedForShipment ],
-        [ a owl:Restriction ;
             owl:onProperty :specifiesConsignee ;
             owl:someValuesFrom :Consignee ],
         [ a owl:Restriction ;
@@ -547,49 +539,61 @@
             owl:onClass :Seller ;
             owl:onProperty :specifiesSeller ],
         [ a owl:Restriction ;
+            owl:onClass :Despatcher ;
+            owl:onProperty :specifiesDespatcher ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass :DespatchAdvice ;
             owl:onProperty :isSubmittedForDespatchAdvice ],
         [ a owl:Restriction ;
-            owl:onClass :Despatcher ;
-            owl:onProperty :specifiesDespatcher ;
-            owl:qualifiedCardinality 1 ] .
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass :Buyer ;
+            owl:onProperty :specifiesBuyer ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass :ShipmentInformation ;
+            owl:onProperty :isSubmittedForShipment ] .
 
 :TransportMeans rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass adms:Identifier ;
-            owl:onProperty :hasVehicleSegmentID ],
-        [ a owl:Restriction ;
             owl:onClass adms:Identifier ;
             owl:onProperty :hasVehicleID ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:onProperty :hasDriverPerson ;
-            owl:someValuesFrom :TransportMeansOperator ] .
-
-:DespatchAdvice rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty :specifiesConsignee ;
-            owl:someValuesFrom :Consignee ],
+            owl:someValuesFrom :TransportMeansOperator ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass :ShipmentAgreement ;
-            owl:onProperty :refersToShipmentAgreement ],
+            owl:onClass adms:Identifier ;
+            owl:onProperty :hasVehicleSegmentID ] .
+
+:DespatchAdvice rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass :Order ;
+            owl:onProperty :refersToOrder ],
         [ a owl:Restriction ;
-            owl:onProperty :comprisesDespatchLine ;
-            owl:someValuesFrom :DespatchLine ],
+            owl:onProperty :specifiesConsignee ;
+            owl:someValuesFrom :Consignee ],
         [ a owl:Restriction ;
             owl:onClass :Consignment ;
             owl:onProperty :refersToConsignment ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
+            owl:onProperty :comprisesDespatchLine ;
+            owl:someValuesFrom :DespatchLine ],
+        [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass :Order ;
-            owl:onProperty :refersToOrder ],
+            owl:onClass :ShipmentAgreement ;
+            owl:onProperty :refersToShipmentAgreement ],
         [ a owl:Restriction ;
             owl:onProperty :specifiesDespatcher ;
             owl:someValuesFrom :Despatcher ] .
 
 :DespatchLine rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass :OrderLine ;
+            owl:onProperty :refersToOrderLine ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onDataRange rdf:PlainLiteral ;
             owl:onProperty :hasOutstandingQuantityReason ],
@@ -600,74 +604,66 @@
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass :Quantity ;
-            owl:onProperty :hasOutstandingQuantity ],
-        [ a owl:Restriction ;
-            owl:onClass :OrderLine ;
-            owl:onProperty :refersToOrderLine ;
-            owl:qualifiedCardinality 1 ] .
+            owl:onProperty :hasOutstandingQuantity ] .
 
 :Package rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onDataRange rdf:PlainLiteral ;
-            owl:onProperty :hasPackagingStatusDescription ],
+            owl:onProperty :hasPackagingTypeDescription ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onDataRange rdf:PlainLiteral ;
-            owl:onProperty :hasPackagingTypeDescription ] .
+            owl:onProperty :hasPackagingStatusDescription ] .
 
 :ShipmentInformation rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass time:Interval ;
-            owl:onProperty :hasEstimatedDeliveryPeriod ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass time:Interval ;
             owl:onProperty :hasDespatchPeriod ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass dcterms:Location ;
-            owl:onProperty :specifiesPlaceOfDespatch ],
         [ a owl:Restriction ;
             owl:onClass :DeliveryInformation ;
             owl:onProperty :refersToDeliveryInformation ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
+            owl:onClass dcterms:Location ;
+            owl:onProperty :specifiesPlaceOfDespatch ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass time:Interval ;
+            owl:onProperty :hasEstimatedDeliveryPeriod ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
             owl:onClass adms:Identifier ;
             owl:onProperty adms:identifier ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass :DespatchLine ;
-            owl:onProperty :isSpecificToDespatchLine ],
+            owl:onDataRange xsd:dateTime ;
+            owl:onProperty :hasDespatchDate ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onDataRange xsd:dateTime ;
-            owl:onProperty :hasDespatchDate ] .
+            owl:onClass :DespatchLine ;
+            owl:onProperty :isSpecificToDespatchLine ] .
 
 :AbstractContainer rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass :Quantity ;
-            owl:onProperty :hasWidth ],
+            owl:onProperty :hasHeight ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass :Quantity ;
-            owl:onProperty :hasGrossVolume ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass :Quantity ;
-            owl:onProperty :hasTotalGoodsItemQuantity ],
+            owl:onClass adms:Identifier ;
+            owl:onProperty adms:identifier ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass :Quantity ;
             owl:onProperty :hasGrossWeight ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onDataRange xsd:boolean ;
-            owl:onProperty :isHazardousRisk ],
+            owl:onDataRange rdf:PlainLiteral ;
+            owl:onProperty :hasPackingMaterialDescription ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass :TemperatureSpecification ;
-            owl:onProperty :hasTemperatureSpecification ],
+            owl:onClass :Quantity ;
+            owl:onProperty :hasWidth ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass :Quantity ;
@@ -675,68 +671,36 @@
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass :Quantity ;
+            owl:onProperty :hasGrossVolume ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass :TemperatureSpecification ;
+            owl:onProperty :hasTemperatureSpecification ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass :Quantity ;
+            owl:onProperty :hasLength ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass :Quantity ;
+            owl:onProperty :hasTotalGoodsItemQuantity ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass :Quantity ;
             owl:onProperty :hasNetWeight ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass :Quantity ;
-            owl:onProperty :hasHeight ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onDataRange rdf:PlainLiteral ;
-            owl:onProperty :hasPackingMaterialDescription ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onDataRange xsd:boolean ;
-            owl:onProperty :isReturnableMaterial ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass adms:Identifier ;
-            owl:onProperty adms:identifier ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass :Quantity ;
-            owl:onProperty :hasLength ] .
-
-:Consignment rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onDataRange xsd:boolean ;
             owl:onProperty :isHazardousRisk ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass :Quantity ;
-            owl:onProperty :hasNetWeight ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass :ShipmentStage ;
-            owl:onProperty :hasCarriageShipmentStage ],
-        [ a owl:Restriction ;
+            owl:onDataRange xsd:boolean ;
+            owl:onProperty :isReturnableMaterial ] .
+
+:Consignment rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass :Quantity ;
-            owl:onProperty :hasGrossWeight ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass adms:Identifier ;
-            owl:onProperty :hasDespatcherConsignmentID ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass :Quantity ;
-            owl:onProperty :hasGrossVolume ],
-        [ a owl:Restriction ;
-            owl:onClass :ShipmentInformation ;
-            owl:onProperty :hasRequestedPickUpInformation ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass adms:Identifier ;
-            owl:onProperty :hasConsigneeConsignmentID ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass :Quantity ;
-            owl:onProperty :hasTransportHandlingUnitQuantity ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass :MonetaryValue ;
-            owl:onProperty :hasDeclaredStatisticalValue ],
+            owl:onProperty :hasLoadingMeter ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass :Quantity ;
@@ -745,11 +709,47 @@
             owl:onProperty :containsTransportHandlingUnit ;
             owl:someValuesFrom :TransportHandlingUnit ],
         [ a owl:Restriction ;
+            owl:onClass :ShipmentInformation ;
+            owl:onProperty :hasRequestedPickUpInformation ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onDataRange xsd:boolean ;
+            owl:onProperty :isHazardousRisk ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass :MonetaryValue ;
+            owl:onProperty :hasDeclaredStatisticalValue ],
+        [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass :Quantity ;
-            owl:onProperty :hasLoadingMeter ],
+            owl:onProperty :hasGrossWeight ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass :ShipmentStage ;
+            owl:onProperty :hasCarriageShipmentStage ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass :Quantity ;
+            owl:onProperty :hasNetWeight ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass :Quantity ;
+            owl:onProperty :hasGrossVolume ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass adms:Identifier ;
-            owl:onProperty adms:identifier ] .
+            owl:onProperty adms:identifier ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass :Quantity ;
+            owl:onProperty :hasTransportHandlingUnitQuantity ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass adms:Identifier ;
+            owl:onProperty :hasConsigneeConsignmentID ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass adms:Identifier ;
+            owl:onProperty :hasDespatcherConsignmentID ] .
 

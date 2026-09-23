@@ -1,31 +1,5 @@
 {
   "@context": {
-    "PaymentInformation": {
-      "@context": {
-        "hasPaymentDate": {
-          "@id": "http://data.europa.eu/a4g/ontology#hasPaymentDate",
-          "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"
-        }
-      },
-      "@id": "http://data.europa.eu/a4g/ontology#PaymentInformation"
-    },
-    "RemittanceAdvice": {
-      "@context": {
-        "hasPayerReference": {
-          "@id": "http://data.europa.eu/a4g/ontology#hasPayerReference",
-          "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"
-        },
-        "hasPaymentOrderReference": {
-          "@id": "http://data.europa.eu/a4g/ontology#hasPaymentOrderReference",
-          "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"
-        }
-      },
-      "@id": "http://data.europa.eu/a4g/ontology#RemittanceAdvice"
-    },
-    "RemittanceAdviceLine": {
-      "@context": {},
-      "@id": "http://data.europa.eu/a4g/ontology#RemittanceAdviceLine"
-    },
     "adms": "http://www.w3.org/ns/adms#",
     "at-voc": "http://publications.europa.eu/resource/authority/",
     "at-voc-new": "http://publications.europa.eu/resource/authority/new/",
@@ -49,6 +23,90 @@
     "epo-not": "http://data.europa.eu/a4g/ontology#",
     "epo-ord": "http://data.europa.eu/a4g/ontology#",
     "epo-pay": "http://data.europa.eu/a4g/ontology#",
+    "epo-pay:PaymentInformation": {
+      "@context": {
+        "hasPaymentDate": {
+          "@id": "http://data.europa.eu/a4g/ontology#hasPaymentDate",
+          "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"
+        },
+        "hasPaymentIdentifier": {
+          "@id": "http://data.europa.eu/a4g/ontology#hasPaymentIdentifier",
+          "@type": "@id"
+        },
+        "hasPaymentMeansInformation": {
+          "@id": "http://data.europa.eu/a4g/ontology#hasPaymentMeansInformation",
+          "@type": "@id"
+        }
+      },
+      "@id": "http://data.europa.eu/a4g/ontology#PaymentInformation"
+    },
+    "epo-pay:RemittanceAdvice": {
+      "@context": {
+        "comprisesRemittanceAdviceLine": {
+          "@container": "@set",
+          "@id": "http://data.europa.eu/a4g/ontology#comprisesRemittanceAdviceLine",
+          "@type": "@id"
+        },
+        "hasPayerReference": {
+          "@id": "http://data.europa.eu/a4g/ontology#hasPayerReference",
+          "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"
+        },
+        "hasPaymentInformation": {
+          "@id": "http://data.europa.eu/a4g/ontology#hasPaymentInformation",
+          "@type": "@id"
+        },
+        "hasPaymentOrderReference": {
+          "@id": "http://data.europa.eu/a4g/ontology#hasPaymentOrderReference",
+          "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"
+        },
+        "hasTotalCreditAmount": {
+          "@id": "http://data.europa.eu/a4g/ontology#hasTotalCreditAmount",
+          "@type": "@id"
+        },
+        "hasTotalDebitAmount": {
+          "@id": "http://data.europa.eu/a4g/ontology#hasTotalDebitAmount",
+          "@type": "@id"
+        },
+        "hasTotalPaymentAmount": {
+          "@id": "http://data.europa.eu/a4g/ontology#hasTotalPaymentAmount",
+          "@type": "@id"
+        },
+        "specifiesBuyer": {
+          "@id": "http://data.europa.eu/a4g/ontology#specifiesBuyer",
+          "@type": "@id"
+        },
+        "specifiesPayee": {
+          "@id": "http://data.europa.eu/a4g/ontology#specifiesPayee",
+          "@type": "@id"
+        },
+        "specifiesSeller": {
+          "@id": "http://data.europa.eu/a4g/ontology#specifiesSeller",
+          "@type": "@id"
+        }
+      },
+      "@id": "http://data.europa.eu/a4g/ontology#RemittanceAdvice"
+    },
+    "epo-pay:RemittanceAdviceLine": {
+      "@context": {
+        "hasBalanceAmount": {
+          "@id": "http://data.europa.eu/a4g/ontology#hasBalanceAmount",
+          "@type": "@id"
+        },
+        "hasCreditAmount": {
+          "@id": "http://data.europa.eu/a4g/ontology#hasCreditAmount",
+          "@type": "@id"
+        },
+        "hasDebitAmount": {
+          "@id": "http://data.europa.eu/a4g/ontology#hasDebitAmount",
+          "@type": "@id"
+        },
+        "refersToInvoice": {
+          "@id": "http://data.europa.eu/a4g/ontology#refersToInvoice",
+          "@type": "@id"
+        }
+      },
+      "@id": "http://data.europa.eu/a4g/ontology#RemittanceAdviceLine"
+    },
     "epo-qua": "http://data.europa.eu/a4g/ontology#",
     "epo-req": "http://data.europa.eu/a4g/ontology#",
     "epo-sub": "http://data.europa.eu/a4g/ontology#",

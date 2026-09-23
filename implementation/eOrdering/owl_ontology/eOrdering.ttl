@@ -9,27 +9,23 @@
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-:AllowanceChargeInformation a owl:Class ;
-    rdfs:isDefinedBy :ord ;
-    skos:definition "Information about discounts, taxes, duties and fees imposed."@en ;
-    skos:historyNote "WG Approval 16/05/2023"@en ;
-    skos:prefLabel "Allowance Charge Information"@en .
-
 :AllowanceInformation a owl:Class ;
     rdfs:isDefinedBy :ord ;
+    rdfs:subClassOf :AllowanceChargeInformation ;
     skos:definition "Information about the discounts imposed."@en ;
     skos:historyNote "WG Approval 16/05/2023"@en ;
     skos:prefLabel "Allowance Information"@en .
 
 :Consignee a owl:Class ;
     rdfs:isDefinedBy :ord ;
+    rdfs:subClassOf :AcquiringParty ;
     skos:definition "A Role of an Agent that receives the Shipment of the Procurement (service, goods or works) and who is taking possession. Additional information: The Role is carried out by the Customer or on behalf of the Customer. The possession of the goods does not necessary imply ownership. The Consignee may be the end-user or the beneficiary. (Consignee) Definition from PEPPOL Despatch: The Consignee is the person or Organisation to which the products will be shipped and who is taking possession. The Role is carried out by the Customer or on behalf of the Customer."@en ;
-    skos:editorialNote "Context: Ordering, Despatch"@en ;
     skos:historyNote "WG Approval 21/02/2023"@en ;
     skos:prefLabel "Consignee"@en .
 
 :ContractInformation a owl:Class ;
     rdfs:isDefinedBy :ord ;
+    rdfs:subClassOf :InformationHub ;
     skos:definition "Information about the Contract."@en ;
     skos:historyNote "WG Approval 20/04/2023"@en ;
     skos:prefLabel "Contract Information"@en .
@@ -42,123 +38,126 @@
 
 :DeliveryInformation a owl:Class ;
     rdfs:isDefinedBy :ord ;
+    rdfs:subClassOf :InformationHub ;
     skos:definition "Information about the timing, the delivery destination, the delivery agreement and the involved parties."@en ;
     skos:historyNote "WG Approval 16/05/2023"@en ;
     skos:prefLabel "Delivery Information"@en .
 
 :Invoicee a owl:Class ;
     rdfs:isDefinedBy :ord ;
+    rdfs:subClassOf :AcquiringParty ;
     skos:definition "The Role of an Agent who receives and processes the Invoices."@en ;
     skos:historyNote "WG Approval 03/04/2025"@en ;
     skos:prefLabel "Invoicee"@en .
 
-:Order a owl:Class ;
-    rdfs:isDefinedBy :ord ;
-    skos:definition "A formal request of the Buyer to the Seller specifying the goods, services or works to be delivered. Additional Information: A Buyer submits an Order for delivery of goods, services or works to a Seller."@en ;
-    skos:historyNote "WG Approval 23/04/2023"@en ;
-    skos:prefLabel "Order"@en .
-
 :OrderAgreement a owl:Class ;
     rdfs:isDefinedBy :ord ;
+    rdfs:subClassOf :Order ;
     skos:definition "A Document sent from the Seller to Buyer specifying the goods, services or works to be delivered concerning a specific Order."@en ;
     skos:historyNote "WG approval 16/09/2025"@en ;
     skos:prefLabel "Order Agreement"@en .
 
 :OrderAgreementLine a owl:Class ;
     rdfs:isDefinedBy :ord ;
+    rdfs:subClassOf :OrderLine ;
     skos:definition "Details concerning a given unit of goods, services or works mentioned in the Order Agreement."@en ;
     skos:historyNote "WG approval 16/09/2025"@en ;
     skos:prefLabel "Order Agreement Line"@en .
 
 :OrderCancellation a owl:Class ;
     rdfs:isDefinedBy :ord ;
+    rdfs:subClassOf :PostAwardDocument ;
     skos:definition "A Document providing information on the formal response from the Buyer to the Seller to cancel a previous Order or Order Change."@en ;
     skos:historyNote "WG approval 16/09/2025"@en ;
     skos:prefLabel "Order Cancellation"@en .
 
 :OrderCancellationConfirmation a owl:Class ;
     rdfs:isDefinedBy :ord ;
+    rdfs:subClassOf :PostAwardDocument ;
     skos:definition "A Document providing information on the acknowledgment of the Order Cancellation."@en ;
     skos:historyNote "WG approval 16/09/2025"@en ;
     skos:prefLabel "Order Cancellation Confirmation"@en .
 
 :OrderCancellationRejection a owl:Class ;
     rdfs:isDefinedBy :ord ;
+    rdfs:subClassOf :PostAwardDocument ;
     skos:definition "A Document providing information on the non-acceptance of the Order Cancellation."@en ;
     skos:historyNote "WG approval 16/09/2025"@en ;
     skos:prefLabel "Order Cancellation Rejection"@en .
 
 :OrderChange a owl:Class ;
     rdfs:isDefinedBy :ord ;
+    rdfs:subClassOf :Order ;
     skos:definition "A Document providing information on the formal request from the Buyer to the Seller specifying the requested change in goods, services or works to be delivered in respect to a previous Order."@en ;
     skos:historyNote "WG approval 16/09/2025"@en ;
     skos:prefLabel "Order Change"@en .
 
 :OrderChangeConfirmation a owl:Class ;
     rdfs:isDefinedBy :ord ;
+    rdfs:subClassOf :PostAwardDocument ;
     skos:definition "A Document providing information on the acknowledgment of the Order Change."@en ;
     skos:historyNote "WG approval 16/09/2025"@en ;
     skos:prefLabel "Order Change Confirmation"@en .
 
 :OrderChangeLine a owl:Class ;
     rdfs:isDefinedBy :ord ;
+    rdfs:subClassOf :OrderLine ;
     skos:definition "Details concerning a given unit of goods, services or works requested in the Order Change."@en ;
     skos:historyNote "WG approval 16/09/2025"@en ;
     skos:prefLabel "Order Change Line"@en .
 
 :OrderChangeRejection a owl:Class ;
     rdfs:isDefinedBy :ord ;
+    rdfs:subClassOf :PostAwardDocument ;
     skos:definition "A Document providing information on the non-acceptance of the Order Change."@en ;
     skos:historyNote "WG approval 16/09/2025"@en ;
     skos:prefLabel "Order Change Rejection"@en .
 
-:OrderLine a owl:Class ;
-    rdfs:isDefinedBy :ord ;
-    skos:definition "Details concerning a given unit of goods, services or works requested in the Order. Additional information: In general, an Order Line contains the Quantity and Price of the goods, services and goods requested in the Order. However, in certain cases, the Price may not be known, as the Price may fluctuate from one day to the other."@en ;
-    skos:historyNote "WG Approval 20/04/2023"@en ;
-    skos:prefLabel "Order Line"@en .
-
 :OrderResponse a owl:Class ;
     rdfs:isDefinedBy :ord ;
+    rdfs:subClassOf :Order ;
     skos:definition "A formal reply from the Seller to the Buyer stating the Seller's ability to fulfil the order. Additional Information: The Order Response is used to inform on the acceptance or rejection of an Order or to make a counter-offer."@en ;
-    skos:editorialNote "If contractually agreed, the Seller also may respond to the order, changing details that are acceptable by the Buyer. -- If an order is accepted with change, the buyer and seller need to have an agreement between them regarding the processing of the changed order, i.e. when is a contract concluded and when can the items be shipped. Proposal: If the order response is \"Change\" then the Buyer will create (instantiate) a new order implementing the changes and superseding the previously sent order."@en ;
     skos:historyNote "WG Approval 20/04/2023"@en ;
     skos:prefLabel "Order Response"@en .
 
 :OrderResponseInformation a owl:Class ;
     rdfs:isDefinedBy :ord ;
+    rdfs:subClassOf :InformationHub ;
     skos:definition "Information about an Order Response."@en ;
     skos:historyNote "WG approval 16/09/2025"@en ;
     skos:prefLabel "Order Response Information"@en .
 
 :OrderResponseLine a owl:Class ;
     rdfs:isDefinedBy :ord ;
+    rdfs:subClassOf :OrderLine ;
     skos:definition "Details concerning the Seller's ability to fulfil a given Order Line. Additional Information: The Order Response Line is used to inform on the acceptance or rejection of an Order Line or to make a counter-offer."@en ;
     skos:historyNote "WG Approval 20/04/2023"@en ;
     skos:prefLabel "Order Response Line"@en .
 
 :Originator a owl:Class ;
     rdfs:isDefinedBy :ord ;
+    rdfs:subClassOf :AcquiringParty ;
     skos:definition "A Role of an Agent that expresses the needs to trigger the Procurement. Additional Information: The Originator is often the end-user or the Beneficiary."@en ;
-    skos:editorialNote "Context: Expressing Needs"@en ;
     skos:historyNote "WG Approval 20/10/2022"@en ;
     skos:prefLabel "Originator"@en .
 
 :OriginatorInformation a owl:Class ;
     rdfs:isDefinedBy :ord ;
+    rdfs:subClassOf :InformationHub ;
     skos:definition "Information about the Originator of the Order."@en ;
     skos:historyNote "WG Approval 20/03/2023"@en ;
     skos:prefLabel "Originator Information"@en .
 
 :Seller a owl:Class ;
     rdfs:isDefinedBy :ord ;
+    rdfs:subClassOf :OfferingParty ;
     skos:definition "A Role of an Agent who transfers the ownership of the Procurement results (goods, services or works) to the Buyer. Additional information: A Role of an Agent that sells a Procurement Result (goods, services or work) to a Buyer. The Seller is bound by a Contract i.e. it has legal responsibility. The Seller may or may not be the same as the Supplier. The Seller may or may not issue the Invoice. The Seller may or may not be the owner of the credit owed by the Buyer."@en ;
-    skos:editorialNote "Note: Supplier is out of discussion. It is a third party. We do not care who provides these service or products we care with whom business is done. PEPPOL - Invoice: The supplier is the legal person or organization who provides a product and/or service. PEPPOL - Order: The supplier is the legal person or organisation who provides a product or service. Examples of supplier roles: seller, despatch party, creditor, economic operator."@en ;
     skos:historyNote "WG Approval 08/09/2022"@en ;
     skos:prefLabel "Seller"@en .
 
 :TaxInformation a owl:Class ;
     rdfs:isDefinedBy :ord ;
+    rdfs:subClassOf :InformationHub ;
     skos:definition "Information about the imposition of mandatory levies required by law."@en ;
     skos:historyNote "WG Approval 25/04/2023"@en ;
     skos:prefLabel "Tax Information"@en .
@@ -495,6 +494,11 @@
     skos:historyNote "WG approval 25/09/2025"@en ;
     skos:prefLabel "is Submitted For Order Line"@en .
 
+:refersToCatalogue a owl:ObjectProperty ;
+    rdfs:isDefinedBy :ord ;
+    skos:definition "Additional information: If an order refers to multiple catalogues then all these catalogues ideally are subordinated to the same contract. Some countries however may allow multiple contracts per order (i.e Italy)."@en ;
+    skos:prefLabel "refers To Catalogue"@en .
+
 :refersToCatalogueLine a owl:ObjectProperty ;
     rdfs:isDefinedBy :ord ;
     skos:definition "Additional Information: The reference to the catalogue line is for information only, to trace the source of the information provided in the order line."@en ;
@@ -627,22 +631,44 @@
     skos:historyNote "WG approval 25/09/2025"@en ;
     skos:prefLabel "specifies Seller"@en .
 
+:AllowanceChargeInformation a owl:Class ;
+    rdfs:isDefinedBy :ord ;
+    rdfs:subClassOf :InformationHub ;
+    skos:definition "Information about discounts, taxes, duties and fees imposed."@en ;
+    skos:historyNote "WG Approval 16/05/2023"@en ;
+    skos:prefLabel "Allowance Charge Information"@en .
+
+:Order a owl:Class ;
+    rdfs:isDefinedBy :ord ;
+    rdfs:subClassOf :PostAwardDocument ;
+    skos:definition "A formal request of the Buyer to the Seller specifying the goods, services or works to be delivered. Additional Information: A Buyer submits an Order for delivery of goods, services or works to a Seller."@en ;
+    skos:historyNote "WG Approval 23/04/2023"@en ;
+    skos:prefLabel "Order"@en .
+
+:OrderLine a owl:Class ;
+    rdfs:isDefinedBy :ord ;
+    rdfs:subClassOf :Line ;
+    skos:definition "Details concerning a given unit of goods, services or works requested in the Order. Additional information: In general, an Order Line contains the Quantity and Price of the goods, services and goods requested in the Order. However, in certain cases, the Price may not be known, as the Price may fluctuate from one day to the other."@en ;
+    skos:historyNote "WG Approval 20/04/2023"@en ;
+    skos:prefLabel "Order Line"@en .
+
 :ord a owl:Ontology ;
     rdfs:label "eProcurement Ontology Ordering - core"@en ;
     dcterms:created "2021-06-01"^^xsd:date ;
     dcterms:description "The eProcurement Ontology Ordering core describes the concepts and properties representing the European Public Procurement domain. The provision of these semantics offers the basis for a common understanding of the domain for all stakeholders ensuring the quality of data exchange and transparency. The ontology restrictions are published in a separate artefact."@en ;
-    dcterms:issued "2026-07-07"^^xsd:date ;
-    dcterms:license "CC BY 4.0" ;
+    dcterms:issued "2026-09-23"^^xsd:date ;
+    dcterms:license "© European Union, 2014. Unless otherwise noted, the reuse of the Ontology is authorised under the European Union Public Licence v1.2 (https://eupl.eu/)." ;
     dcterms:publisher "http://publications.europa.eu/resource/authority/corporate-body/PUBL" ;
     dcterms:title "eProcurement Ontology Ordering - core"@en ;
     vann:preferredNamespacePrefix "epo" ;
     vann:preferredNamespaceUri "http://data.europa.eu/a4g/ontology#" ;
-    rdfs:comment "This version is automatically generated from eOrdering.xml on 2026-07-07" ;
+    rdfs:comment "This version is automatically generated from eOrdering.xml on 2026-09-23" ;
     rdfs:seeAlso <https://docs.ted.europa.eu/home/index.html>,
         <https://github.com/OP-TED/ePO/releases>,
         <https://joinup.ec.europa.eu/collection/eprocurement/solution/eprocurement-ontology/about>,
         <https://op.europa.eu/en/web/eu-vocabularies/e-procurement> ;
     owl:imports :cat,
+        :core,
         :ful,
         eli:,
         cccev:,
@@ -654,7 +680,7 @@
         org:,
         <http://www.w3.org/ns/person> ;
     owl:incompatibleWith "4.2.0" ;
-    owl:priorVersion "http://data.europa.eu/a4g/ontology#ord-5.1.0" ;
-    owl:versionIRI :ord-5.2.0 ;
-    owl:versionInfo "5.2.0" .
+    owl:priorVersion "http://data.europa.eu/a4g/ontology#ord-5.2.0" ;
+    owl:versionIRI :ord-5.3.0 ;
+    owl:versionInfo "5.3.0" .
 

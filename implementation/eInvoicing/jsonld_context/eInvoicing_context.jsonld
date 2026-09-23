@@ -1,93 +1,5 @@
 {
   "@context": {
-    "CreditNote": {
-      "@context": {},
-      "@id": "http://data.europa.eu/a4g/ontology#CreditNote"
-    },
-    "CreditNoteLine": {
-      "@context": {},
-      "@id": "http://data.europa.eu/a4g/ontology#CreditNoteLine"
-    },
-    "CreditTransferInformation": {
-      "@context": {
-        "hasPaymentAccountName": {
-          "@id": "http://data.europa.eu/a4g/ontology#hasPaymentAccountName",
-          "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"
-        }
-      },
-      "@id": "http://data.europa.eu/a4g/ontology#CreditTransferInformation"
-    },
-    "Invoice": {
-      "@context": {
-        "hasAccountingCost": {
-          "@id": "http://data.europa.eu/a4g/ontology#hasAccountingCost",
-          "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"
-        },
-        "hasPaymentDueDate": {
-          "@id": "http://data.europa.eu/a4g/ontology#hasPaymentDueDate",
-          "@type": "http://www.w3.org/2001/XMLSchema#date"
-        },
-        "hasPaymentTerm": {
-          "@id": "http://data.europa.eu/a4g/ontology#hasPaymentTerm",
-          "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"
-        },
-        "hasTaxPointDate": {
-          "@id": "http://data.europa.eu/a4g/ontology#hasTaxPointDate",
-          "@type": "http://www.w3.org/2001/XMLSchema#date"
-        }
-      },
-      "@id": "http://data.europa.eu/a4g/ontology#Invoice"
-    },
-    "InvoiceLine": {
-      "@context": {},
-      "@id": "http://data.europa.eu/a4g/ontology#InvoiceLine"
-    },
-    "InvoiceNote": {
-      "@context": {
-        "hasInvoiceNoteDescription": {
-          "@id": "http://data.europa.eu/a4g/ontology#hasInvoiceNoteDescription",
-          "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"
-        }
-      },
-      "@id": "http://data.europa.eu/a4g/ontology#InvoiceNote"
-    },
-    "Payee": "http://data.europa.eu/a4g/ontology#Payee",
-    "PaymentCardInformation": {
-      "@context": {
-        "hasPaymentCardHolderName": {
-          "@id": "http://data.europa.eu/a4g/ontology#hasPaymentCardHolderName",
-          "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"
-        },
-        "hasPaymentCardPrimaryAccountNumber": {
-          "@id": "http://data.europa.eu/a4g/ontology#hasPaymentCardPrimaryAccountNumber",
-          "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"
-        }
-      },
-      "@id": "http://data.europa.eu/a4g/ontology#PaymentCardInformation"
-    },
-    "PaymentInstructionsInformation": {
-      "@context": {
-        "hasPaymentMeansDescription": {
-          "@id": "http://data.europa.eu/a4g/ontology#hasPaymentMeansDescription",
-          "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"
-        },
-        "hasRemittanceInformation": {
-          "@id": "http://data.europa.eu/a4g/ontology#hasRemittanceInformation",
-          "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"
-        }
-      },
-      "@id": "http://data.europa.eu/a4g/ontology#PaymentInstructionsInformation"
-    },
-    "SellerTaxRepresentative": "http://data.europa.eu/a4g/ontology#SellerTaxRepresentative",
-    "TaxBreakdownInformation": {
-      "@context": {
-        "hasTaxExemptionReasonDescription": {
-          "@id": "http://data.europa.eu/a4g/ontology#hasTaxExemptionReasonDescription",
-          "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"
-        }
-      },
-      "@id": "http://data.europa.eu/a4g/ontology#TaxBreakdownInformation"
-    },
     "adms": "http://www.w3.org/ns/adms#",
     "at-voc": "http://publications.europa.eu/resource/authority/",
     "at-voc-new": "http://publications.europa.eu/resource/authority/new/",
@@ -108,6 +20,323 @@
     "epo-eva": "http://data.europa.eu/a4g/ontology#",
     "epo-ful": "http://data.europa.eu/a4g/ontology#",
     "epo-inv": "http://data.europa.eu/a4g/ontology#",
+    "epo-inv:CreditNote": {
+      "@context": {
+        "comprisesCreditNoteLine": {
+          "@container": "@set",
+          "@id": "http://data.europa.eu/a4g/ontology#comprisesCreditNoteLine",
+          "@type": "@id"
+        },
+        "refersToInvoice": {
+          "@id": "http://data.europa.eu/a4g/ontology#refersToInvoice",
+          "@type": "@id"
+        }
+      },
+      "@id": "http://data.europa.eu/a4g/ontology#CreditNote"
+    },
+    "epo-inv:CreditNoteLine": {
+      "@context": {
+        "isSubmittedForInvoiceLine": {
+          "@id": "http://data.europa.eu/a4g/ontology#isSubmittedForInvoiceLine",
+          "@type": "@id"
+        }
+      },
+      "@id": "http://data.europa.eu/a4g/ontology#CreditNoteLine"
+    },
+    "epo-inv:CreditTransferInformation": {
+      "@context": {
+        "hasPaymentAccountIdentifier": {
+          "@id": "http://data.europa.eu/a4g/ontology#hasPaymentAccountIdentifier",
+          "@type": "@id"
+        },
+        "hasPaymentAccountName": {
+          "@id": "http://data.europa.eu/a4g/ontology#hasPaymentAccountName",
+          "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"
+        },
+        "hasPaymentServiceProviderIdentifier": {
+          "@id": "http://data.europa.eu/a4g/ontology#hasPaymentServiceProviderIdentifier",
+          "@type": "@id"
+        }
+      },
+      "@id": "http://data.europa.eu/a4g/ontology#CreditTransferInformation"
+    },
+    "epo-inv:Invoice": {
+      "@context": {
+        "comprisesInvoiceLine": {
+          "@container": "@set",
+          "@id": "http://data.europa.eu/a4g/ontology#comprisesInvoiceLine",
+          "@type": "@id"
+        },
+        "hasAccountingCost": {
+          "@id": "http://data.europa.eu/a4g/ontology#hasAccountingCost",
+          "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"
+        },
+        "hasAmountDueForPayment": {
+          "@id": "http://data.europa.eu/a4g/ontology#hasAmountDueForPayment",
+          "@type": "@id"
+        },
+        "hasInvoiceNote": {
+          "@container": "@set",
+          "@id": "http://data.europa.eu/a4g/ontology#hasInvoiceNote",
+          "@type": "@id"
+        },
+        "hasInvoicedObjectIdentifier": {
+          "@id": "http://data.europa.eu/a4g/ontology#hasInvoicedObjectIdentifier",
+          "@type": "@id"
+        },
+        "hasInvoicingPeriod": {
+          "@id": "http://data.europa.eu/a4g/ontology#hasInvoicingPeriod",
+          "@type": "@id"
+        },
+        "hasLotReference": {
+          "@container": "@set",
+          "@id": "http://data.europa.eu/a4g/ontology#hasLotReference",
+          "@type": "@id"
+        },
+        "hasPaymentDueDate": {
+          "@id": "http://data.europa.eu/a4g/ontology#hasPaymentDueDate",
+          "@type": "http://www.w3.org/2001/XMLSchema#date"
+        },
+        "hasPaymentInstructionsInformation": {
+          "@container": "@set",
+          "@id": "http://data.europa.eu/a4g/ontology#hasPaymentInstructionsInformation",
+          "@type": "@id"
+        },
+        "hasPaymentTerm": {
+          "@id": "http://data.europa.eu/a4g/ontology#hasPaymentTerm",
+          "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"
+        },
+        "hasPrepaidAmount": {
+          "@container": "@set",
+          "@id": "http://data.europa.eu/a4g/ontology#hasPrepaidAmount",
+          "@type": "@id"
+        },
+        "hasRoundingAmount": {
+          "@id": "http://data.europa.eu/a4g/ontology#hasRoundingAmount",
+          "@type": "@id"
+        },
+        "hasTaxBreakdownInformation": {
+          "@container": "@set",
+          "@id": "http://data.europa.eu/a4g/ontology#hasTaxBreakdownInformation",
+          "@type": "@id"
+        },
+        "hasTaxInformation": {
+          "@id": "http://data.europa.eu/a4g/ontology#hasTaxInformation",
+          "@type": "@id"
+        },
+        "hasTaxPointDate": {
+          "@id": "http://data.europa.eu/a4g/ontology#hasTaxPointDate",
+          "@type": "http://www.w3.org/2001/XMLSchema#date"
+        },
+        "hasTaxPointDateCode": {
+          "@id": "http://data.europa.eu/a4g/ontology#hasTaxPointDateCode",
+          "@type": "@id"
+        },
+        "hasTotalAccountingCurrencyTaxAmount": {
+          "@container": "@set",
+          "@id": "http://data.europa.eu/a4g/ontology#hasTotalAccountingCurrencyTaxAmount",
+          "@type": "@id"
+        },
+        "hasTotalAllowanceAmount": {
+          "@container": "@set",
+          "@id": "http://data.europa.eu/a4g/ontology#hasTotalAllowanceAmount",
+          "@type": "@id"
+        },
+        "hasTotalChargeAmount": {
+          "@container": "@set",
+          "@id": "http://data.europa.eu/a4g/ontology#hasTotalChargeAmount",
+          "@type": "@id"
+        },
+        "hasTotalLineAmount": {
+          "@container": "@set",
+          "@id": "http://data.europa.eu/a4g/ontology#hasTotalLineAmount",
+          "@type": "@id"
+        },
+        "hasTotalTaxAmount": {
+          "@container": "@set",
+          "@id": "http://data.europa.eu/a4g/ontology#hasTotalTaxAmount",
+          "@type": "@id"
+        },
+        "hasTotalTaxExclusiveAmount": {
+          "@container": "@set",
+          "@id": "http://data.europa.eu/a4g/ontology#hasTotalTaxExclusiveAmount",
+          "@type": "@id"
+        },
+        "hasTotalTaxInclusiveAmount": {
+          "@container": "@set",
+          "@id": "http://data.europa.eu/a4g/ontology#hasTotalTaxInclusiveAmount",
+          "@type": "@id"
+        },
+        "refersToContract": {
+          "@id": "http://data.europa.eu/a4g/ontology#refersToContract",
+          "@type": "@id"
+        },
+        "refersToDespatchAdvice": {
+          "@id": "http://data.europa.eu/a4g/ontology#refersToDespatchAdvice",
+          "@type": "@id"
+        },
+        "refersToOrder": {
+          "@id": "http://data.europa.eu/a4g/ontology#refersToOrder",
+          "@type": "@id"
+        },
+        "refersToProject": {
+          "@id": "http://data.europa.eu/a4g/ontology#refersToProject",
+          "@type": "@id"
+        },
+        "refersToReceiptAdvice": {
+          "@id": "http://data.europa.eu/a4g/ontology#refersToReceiptAdvice",
+          "@type": "@id"
+        },
+        "specifiesAllowanceInformation": {
+          "@container": "@set",
+          "@id": "http://data.europa.eu/a4g/ontology#specifiesAllowanceInformation",
+          "@type": "@id"
+        },
+        "specifiesBuyer": {
+          "@id": "http://data.europa.eu/a4g/ontology#specifiesBuyer",
+          "@type": "@id"
+        },
+        "specifiesChargeInformation": {
+          "@container": "@set",
+          "@id": "http://data.europa.eu/a4g/ontology#specifiesChargeInformation",
+          "@type": "@id"
+        },
+        "specifiesDeliveryInformation": {
+          "@id": "http://data.europa.eu/a4g/ontology#specifiesDeliveryInformation",
+          "@type": "@id"
+        },
+        "specifiesPayee": {
+          "@id": "http://data.europa.eu/a4g/ontology#specifiesPayee",
+          "@type": "@id"
+        },
+        "specifiesSeller": {
+          "@id": "http://data.europa.eu/a4g/ontology#specifiesSeller",
+          "@type": "@id"
+        },
+        "specifiesSellerTaxRepresentative": {
+          "@id": "http://data.europa.eu/a4g/ontology#specifiesSellerTaxRepresentative",
+          "@type": "@id"
+        }
+      },
+      "@id": "http://data.europa.eu/a4g/ontology#Invoice"
+    },
+    "epo-inv:InvoiceLine": {
+      "@context": {
+        "hasInvoiceLineObjectIdentifier": {
+          "@id": "http://data.europa.eu/a4g/ontology#hasInvoiceLineObjectIdentifier",
+          "@type": "@id"
+        },
+        "hasInvoiceLinePeriod": {
+          "@id": "http://data.europa.eu/a4g/ontology#hasInvoiceLinePeriod",
+          "@type": "@id"
+        },
+        "hasNetAmount": {
+          "@id": "http://data.europa.eu/a4g/ontology#hasNetAmount",
+          "@type": "@id"
+        },
+        "hasPrice": {
+          "@container": "@set",
+          "@id": "http://data.europa.eu/a4g/ontology#hasPrice",
+          "@type": "@id"
+        },
+        "hasQuantity": {
+          "@id": "http://data.europa.eu/a4g/ontology#hasQuantity",
+          "@type": "@id"
+        },
+        "hasTaxInformation": {
+          "@id": "http://data.europa.eu/a4g/ontology#hasTaxInformation",
+          "@type": "@id"
+        },
+        "refersToOrderLine": {
+          "@id": "http://data.europa.eu/a4g/ontology#refersToOrderLine",
+          "@type": "@id"
+        }
+      },
+      "@id": "http://data.europa.eu/a4g/ontology#InvoiceLine"
+    },
+    "epo-inv:InvoiceNote": {
+      "@context": {
+        "hasInvoiceNoteDescription": {
+          "@id": "http://data.europa.eu/a4g/ontology#hasInvoiceNoteDescription",
+          "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"
+        },
+        "hasInvoiceNoteSubject": {
+          "@id": "http://data.europa.eu/a4g/ontology#hasInvoiceNoteSubject",
+          "@type": "@id"
+        }
+      },
+      "@id": "http://data.europa.eu/a4g/ontology#InvoiceNote"
+    },
+    "epo-inv:Payee": "http://data.europa.eu/a4g/ontology#Payee",
+    "epo-inv:PaymentCardInformation": {
+      "@context": {
+        "hasPaymentCardHolderName": {
+          "@id": "http://data.europa.eu/a4g/ontology#hasPaymentCardHolderName",
+          "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"
+        },
+        "hasPaymentCardPrimaryAccountNumber": {
+          "@id": "http://data.europa.eu/a4g/ontology#hasPaymentCardPrimaryAccountNumber",
+          "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"
+        }
+      },
+      "@id": "http://data.europa.eu/a4g/ontology#PaymentCardInformation"
+    },
+    "epo-inv:PaymentInstructionsInformation": {
+      "@context": {
+        "hasBankingIdentifier": {
+          "@id": "http://data.europa.eu/a4g/ontology#hasBankingIdentifier",
+          "@type": "@id"
+        },
+        "hasCreditTransferInformation": {
+          "@container": "@set",
+          "@id": "http://data.europa.eu/a4g/ontology#hasCreditTransferInformation",
+          "@type": "@id"
+        },
+        "hasDebitedAccountIdentifier": {
+          "@id": "http://data.europa.eu/a4g/ontology#hasDebitedAccountIdentifier",
+          "@type": "@id"
+        },
+        "hasMandateIdentifier": {
+          "@id": "http://data.europa.eu/a4g/ontology#hasMandateIdentifier",
+          "@type": "@id"
+        },
+        "hasPaymentCardInformation": {
+          "@id": "http://data.europa.eu/a4g/ontology#hasPaymentCardInformation",
+          "@type": "@id"
+        },
+        "hasPaymentMeansDescription": {
+          "@id": "http://data.europa.eu/a4g/ontology#hasPaymentMeansDescription",
+          "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"
+        },
+        "hasPaymentMeansType": {
+          "@id": "http://data.europa.eu/a4g/ontology#hasPaymentMeansType",
+          "@type": "@id"
+        },
+        "hasRemittanceInformation": {
+          "@id": "http://data.europa.eu/a4g/ontology#hasRemittanceInformation",
+          "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"
+        }
+      },
+      "@id": "http://data.europa.eu/a4g/ontology#PaymentInstructionsInformation"
+    },
+    "epo-inv:SellerTaxRepresentative": "http://data.europa.eu/a4g/ontology#SellerTaxRepresentative",
+    "epo-inv:TaxBreakdownInformation": {
+      "@context": {
+        "hasTaxExemptionReason": {
+          "@id": "http://data.europa.eu/a4g/ontology#hasTaxExemptionReason",
+          "@type": "@id"
+        },
+        "hasTaxExemptionReasonDescription": {
+          "@id": "http://data.europa.eu/a4g/ontology#hasTaxExemptionReasonDescription",
+          "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"
+        },
+        "hasTaxInformation": {
+          "@id": "http://data.europa.eu/a4g/ontology#hasTaxInformation",
+          "@type": "@id"
+        }
+      },
+      "@id": "http://data.europa.eu/a4g/ontology#TaxBreakdownInformation"
+    },
     "epo-not": "http://data.europa.eu/a4g/ontology#",
     "epo-ord": "http://data.europa.eu/a4g/ontology#",
     "epo-pay": "http://data.europa.eu/a4g/ontology#",

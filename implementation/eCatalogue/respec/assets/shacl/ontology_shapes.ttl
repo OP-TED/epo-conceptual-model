@@ -158,6 +158,7 @@ cat-shape:epo-cat-EnvironmentalEmissionInformationShape a sh:NodeShape ;
     sh:property cat-shape:epo-cat-EnvironmentalEmissionInformation-epo-cat-concernsItem,
         cat-shape:epo-cat-EnvironmentalEmissionInformation-epo-cat-hasEnvironmentalEmissionCode,
         cat-shape:epo-cat-EnvironmentalEmissionInformation-epo-cat-hasMeasure,
+        cat-shape:epo-cat-EnvironmentalEmissionInformation-epo-ful-concernsShipmentStage,
         cat-shape:epo-cat-EnvironmentalEmissionInformation-epo-ful-concernsTransportMeans,
         cat-shape:epo-cat-EnvironmentalEmissionInformation-epo-hasCalculationMethod ;
     sh:targetClass :EnvironmentalEmissionInformation .
@@ -297,7 +298,8 @@ cat-shape:epo-inv-InvoiceShape sh:property cat-shape:epo-inv-Invoice-epo-cat-spe
 cat-shape:epo-ord-OrderLineShape sh:property cat-shape:epo-ord-OrderLine-epo-cat-hasPrice,
         cat-shape:epo-ord-OrderLine-epo-ord-refersToCatalogueLine .
 
-cat-shape:epo-ord-OrderShape sh:property cat-shape:epo-ord-Order-epo-cat-specifiesChargeInformation .
+cat-shape:epo-ord-OrderShape sh:property cat-shape:epo-ord-Order-epo-cat-refersToCatalogue,
+        cat-shape:epo-ord-Order-epo-cat-specifiesChargeInformation .
 
 cat-shape:epo-ord-TaxInformationShape sh:property cat-shape:epo-ord-TaxInformation-epo-cat-hasTaxCategory,
         cat-shape:epo-ord-TaxInformation-epo-cat-hasTaxScheme .
@@ -306,6 +308,7 @@ cat-shape:epo-req-RequestForOfferShape sh:property cat-shape:epo-req-RequestForO
 
 cat-shape:epo-Document-epo-hasDocumentType a sh:PropertyShape ;
     rdfs:isDefinedBy cat-shape:cat-shape ;
+    sh:class skos:Concept ;
     sh:description "Relation indicating the Document Type." ;
     sh:maxCount 1 ;
     sh:name "Has document type" ;
@@ -345,6 +348,7 @@ cat-shape:epo-cat-AbstractItem-epo-cat-hasCountryOfOrigin a sh:PropertyShape ;
 
 cat-shape:epo-cat-AbstractItem-epo-cat-hasDeliveryClassification a sh:PropertyShape ;
     rdfs:isDefinedBy cat-shape:cat-shape ;
+    sh:class skos:Concept ;
     sh:description "Relation indicating the Delivery Item Type." ;
     sh:maxCount 1 ;
     sh:name "Has delivery classification" ;
@@ -360,12 +364,14 @@ cat-shape:epo-cat-AbstractItem-epo-cat-hasHazardousClassID a sh:PropertyShape ;
 
 cat-shape:epo-cat-AbstractItem-epo-cat-hasHazardousItemUNDGCode a sh:PropertyShape ;
     rdfs:isDefinedBy cat-shape:cat-shape ;
+    sh:class skos:Concept ;
     sh:description "Specification of the hazardous nature of an item according to the UNDG classification schema. Provides detail of the classification and nature of a hazardous item." ;
     sh:name "Has hazardous item UNDG code" ;
     sh:path :hasHazardousItemUNDGCode .
 
 cat-shape:epo-cat-AbstractItem-epo-cat-hasItemClassification a sh:PropertyShape ;
     rdfs:isDefinedBy cat-shape:cat-shape ;
+    sh:class skos:Concept ;
     sh:description "A classification of this item according to a specific system for classifying products or services. Additional information: Examples of classification schemes are: CPV, UNSPC, eCl@ss, GPC, ..." ;
     sh:name "Has item classification" ;
     sh:path :hasItemClassification .
@@ -550,6 +556,7 @@ cat-shape:epo-cat-Catalogue-epo-cat-comprisesCatalogueLine a sh:PropertyShape ;
 
 cat-shape:epo-cat-Catalogue-epo-cat-hasActivityCode a sh:PropertyShape ;
     rdfs:isDefinedBy cat-shape:cat-shape ;
+    sh:class skos:Concept ;
     sh:description "Relation indicating the Activity Code." ;
     sh:maxCount 1 ;
     sh:name "Has activity code" ;
@@ -617,6 +624,7 @@ cat-shape:epo-cat-CatalogueLine-epo-cat-foreseesPackage a sh:PropertyShape ;
 
 cat-shape:epo-cat-CatalogueLine-epo-cat-hasActivityCode a sh:PropertyShape ;
     rdfs:isDefinedBy cat-shape:cat-shape ;
+    sh:class skos:Concept ;
     sh:description "Relation indicating the Activity Code." ;
     sh:maxCount 1 ;
     sh:name "Has activity code" ;
@@ -667,6 +675,7 @@ cat-shape:epo-cat-CatalogueLine-epo-cat-hasOrderableQuantityIncrement a sh:Prope
 
 cat-shape:epo-cat-CatalogueLine-epo-cat-hasOrderableUnit a sh:PropertyShape ;
     rdfs:isDefinedBy cat-shape:cat-shape ;
+    sh:class skos:Concept ;
     sh:description "The unit in which the item described in this catalogue line can be ordered." ;
     sh:maxCount 1 ;
     sh:name "Has orderable unit" ;
@@ -706,6 +715,7 @@ cat-shape:epo-cat-CatalogueLine-epo-cat-hasTransactionConditions a sh:PropertySh
 
 cat-shape:epo-cat-CatalogueLine-epo-cat-hasTransactionConditionsCode a sh:PropertyShape ;
     rdfs:isDefinedBy cat-shape:cat-shape ;
+    sh:class skos:Concept ;
     sh:description "Coded description of the specific transaction conditions (purchasing, sales, payment, delivery) for an item." ;
     sh:maxCount 1 ;
     sh:name "Has transaction conditions code" ;
@@ -888,6 +898,7 @@ cat-shape:epo-cat-DimensionInformation-epo-cat-hasMeasure a sh:PropertyShape ;
 
 cat-shape:epo-cat-DimensionInformation-epo-cat-hasMeasuredAttributeCode a sh:PropertyShape ;
     rdfs:isDefinedBy cat-shape:cat-shape ;
+    sh:class skos:Concept ;
     sh:description "Relation indicating the Measured Attribute Code." ;
     sh:maxCount 1 ;
     sh:minCount 1 ;
@@ -950,6 +961,7 @@ cat-shape:epo-cat-EnvironmentalEmissionInformation-epo-cat-concernsItem a sh:Pro
 
 cat-shape:epo-cat-EnvironmentalEmissionInformation-epo-cat-hasEnvironmentalEmissionCode a sh:PropertyShape ;
     rdfs:isDefinedBy cat-shape:cat-shape ;
+    sh:class skos:Concept ;
     sh:description "Relation indicating the Environmental Emission Code." ;
     sh:maxCount 1 ;
     sh:minCount 1 ;
@@ -965,6 +977,14 @@ cat-shape:epo-cat-EnvironmentalEmissionInformation-epo-cat-hasMeasure a sh:Prope
     sh:name "Has measure" ;
     sh:path :hasMeasure ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#hasMeasure> ?that . ?that <http://data.europa.eu/a4g/ontology#hasMeasure> ?this .}" ] .
+
+cat-shape:epo-cat-EnvironmentalEmissionInformation-epo-ful-concernsShipmentStage a sh:PropertyShape ;
+    rdfs:isDefinedBy cat-shape:cat-shape ;
+    sh:class :ShipmentStage ;
+    sh:maxCount 1 ;
+    sh:name "Concerns shipment stage" ;
+    sh:path :concernsShipmentStage ;
+    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#concernsShipmentStage> ?that . ?that <http://data.europa.eu/a4g/ontology#concernsShipmentStage> ?this .}" ] .
 
 cat-shape:epo-cat-EnvironmentalEmissionInformation-epo-ful-concernsTransportMeans a sh:PropertyShape ;
     rdfs:isDefinedBy cat-shape:cat-shape ;
@@ -1193,6 +1213,7 @@ cat-shape:epo-cat-Price-epo-cat-hasOrderabableUnitFactorRate a sh:PropertyShape 
 
 cat-shape:epo-cat-Price-epo-cat-hasPriceType a sh:PropertyShape ;
     rdfs:isDefinedBy cat-shape:cat-shape ;
+    sh:class skos:Concept ;
     sh:description "Relation indicating the Price Type." ;
     sh:maxCount 1 ;
     sh:name "Has price type" ;
@@ -1269,6 +1290,14 @@ cat-shape:epo-inv-InvoiceLine-epo-cat-hasPrice a sh:PropertyShape ;
     sh:path :hasPrice ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#hasPrice> ?that . ?that <http://data.europa.eu/a4g/ontology#hasPrice> ?this .}" ] .
 
+cat-shape:epo-ord-Order-epo-cat-refersToCatalogue a sh:PropertyShape ;
+    rdfs:isDefinedBy cat-shape:cat-shape ;
+    sh:class :PostAwardCatalogue ;
+    sh:description "Additional information: If an order refers to multiple catalogues then all these catalogues ideally are subordinated to the same contract. Some countries however may allow multiple contracts per order (i.e Italy)." ;
+    sh:name "Refers to catalogue" ;
+    sh:path :refersToCatalogue ;
+    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#refersToCatalogue> ?that . ?that <http://data.europa.eu/a4g/ontology#refersToCatalogue> ?this .}" ] .
+
 cat-shape:epo-ord-Order-epo-cat-specifiesChargeInformation a sh:PropertyShape ;
     rdfs:isDefinedBy cat-shape:cat-shape ;
     sh:class :ChargeInformation ;
@@ -1296,6 +1325,7 @@ cat-shape:epo-ord-OrderLine-epo-ord-refersToCatalogueLine a sh:PropertyShape ;
 
 cat-shape:epo-ord-TaxInformation-epo-cat-hasTaxCategory a sh:PropertyShape ;
     rdfs:isDefinedBy cat-shape:cat-shape ;
+    sh:class skos:Concept ;
     sh:description "Relation indicating the Tax Category." ;
     sh:maxCount 1 ;
     sh:name "Has tax category" ;
@@ -1303,6 +1333,7 @@ cat-shape:epo-ord-TaxInformation-epo-cat-hasTaxCategory a sh:PropertyShape ;
 
 cat-shape:epo-ord-TaxInformation-epo-cat-hasTaxScheme a sh:PropertyShape ;
     rdfs:isDefinedBy cat-shape:cat-shape ;
+    sh:class skos:Concept ;
     sh:description "Relation indicating the Tax Scheme." ;
     sh:maxCount 1 ;
     sh:minCount 1 ;
@@ -1318,23 +1349,26 @@ cat-shape:epo-req-RequestForOffer-epo-cat-refersToCatalogue a sh:PropertyShape ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#refersToCatalogue> ?that . ?that <http://data.europa.eu/a4g/ontology#refersToCatalogue> ?this .}" ] .
 
 cat-shape:cat-shape a owl:Ontology ;
-    rdfs:label "eProcurement Ontology - eCatalogue shapes"@en ;
+    rdfs:label "eProcurement Ontology Catalogue - core shapes"@en ;
     dcterms:created "2021-06-01"^^xsd:date ;
-    dcterms:description "The eProcurement Ontology eCatalogue shapes provides the generic datashape specifications for the eProcurement Ontology eCatalogue module."@en ;
-    dcterms:issued "2026-07-07"^^xsd:date ;
-    dcterms:license "CC BY 4.0" ;
+    dcterms:description "The eProcurement Ontology Catalogue core shapes provides the generic datashape specifications for the eProcurement Ontology Catalogue core."@en ;
+    dcterms:issued "2026-09-23"^^xsd:date ;
+    dcterms:license "© European Union, 2014. Unless otherwise noted, the reuse of the Ontology is authorised under the European Union Public Licence v1.2 (https://eupl.eu/)." ;
     dcterms:publisher "http://publications.europa.eu/resource/authority/corporate-body/PUBL" ;
-    dcterms:title "eProcurement Ontology - eCatalogue shapes"@en ;
-    vann:preferredNamespacePrefix "epo-cat" ;
+    dcterms:title "eProcurement Ontology Catalogue - core shapes"@en ;
+    vann:preferredNamespacePrefix "epo" ;
     vann:preferredNamespaceUri "http://data.europa.eu/a4g/ontology#" ;
-    rdfs:comment "This version is automatically generated from eCatalogue.xml on 2026-07-07" ;
+    rdfs:comment "This version is automatically generated from eCatalogue.xml on 2026-09-23" ;
     rdfs:seeAlso <https://docs.ted.europa.eu/home/index.html>,
         <https://github.com/OP-TED/ePO/releases>,
         <https://joinup.ec.europa.eu/collection/eprocurement/solution/eprocurement-ontology/about>,
         <https://op.europa.eu/en/web/eu-vocabularies/e-procurement> ;
-    owl:imports cat-shape:cat-shape,
-        :cat,
+    owl:imports :cat,
         :cat-restriction,
+        :core,
+        :ful,
+        :inv,
+        :ord,
         eli:,
         cccev:,
         dcterms:,
@@ -1345,7 +1379,7 @@ cat-shape:cat-shape a owl:Ontology ;
         org:,
         <http://www.w3.org/ns/person> ;
     owl:incompatibleWith "4.2.0" ;
-    owl:priorVersion "http://data.europa.eu/a4g/data-shape#cat-shape-5.1.0" ;
-    owl:versionIRI cat-shape:cat-shape-5.2.0 ;
-    owl:versionInfo "5.2.0" .
+    owl:priorVersion "http://data.europa.eu/a4g/data-shape#cat-shape-5.2.0" ;
+    owl:versionIRI cat-shape:cat-shape-5.3.0 ;
+    owl:versionInfo "5.3.0" .
 

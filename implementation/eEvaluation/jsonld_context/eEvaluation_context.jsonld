@@ -1,51 +1,5 @@
 {
   "@context": {
-    "EvaluationBoard": {
-      "@context": {},
-      "@id": "http://data.europa.eu/a4g/ontology#EvaluationBoard"
-    },
-    "EvaluationCriterion": {
-      "@context": {
-        "fulfillsProcurementCriterion": {
-          "@id": "http://data.europa.eu/a4g/ontology#fulfillsProcurementCriterion",
-          "@type": "http://www.w3.org/2001/XMLSchema#boolean"
-        },
-        "hasEvaluationJustification": {
-          "@id": "http://data.europa.eu/a4g/ontology#hasEvaluationJustification",
-          "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"
-        },
-        "hasScorePoint": {
-          "@id": "http://data.europa.eu/a4g/ontology#hasScorePoint",
-          "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"
-        }
-      },
-      "@id": "http://data.europa.eu/a4g/ontology#EvaluationCriterion"
-    },
-    "EvaluationReport": {
-      "@context": {
-        "hasAwardCriteriaEvaluationScore": {
-          "@id": "http://data.europa.eu/a4g/ontology#hasAwardCriteriaEvaluationScore",
-          "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"
-        }
-      },
-      "@id": "http://data.europa.eu/a4g/ontology#EvaluationReport"
-    },
-    "Evaluator": {
-      "@context": {},
-      "@id": "http://data.europa.eu/a4g/ontology#Evaluator"
-    },
-    "ExcludedCandidateList": {
-      "@context": {},
-      "@id": "http://data.europa.eu/a4g/ontology#ExcludedCandidateList"
-    },
-    "TenderClarification": {
-      "@context": {},
-      "@id": "http://data.europa.eu/a4g/ontology#TenderClarification"
-    },
-    "TenderClarificationRequest": {
-      "@context": {},
-      "@id": "http://data.europa.eu/a4g/ontology#TenderClarificationRequest"
-    },
     "adms": "http://www.w3.org/ns/adms#",
     "at-voc": "http://publications.europa.eu/resource/authority/",
     "at-voc-new": "http://publications.europa.eu/resource/authority/new/",
@@ -64,6 +18,124 @@
     "epo-cat": "http://data.europa.eu/a4g/ontology#",
     "epo-con": "http://data.europa.eu/a4g/ontology#",
     "epo-eva": "http://data.europa.eu/a4g/ontology#",
+    "epo-eva:EvaluationBoard": {
+      "@context": {
+        "hasEvaluator": {
+          "@container": "@set",
+          "@id": "http://data.europa.eu/a4g/ontology#hasEvaluator",
+          "@type": "@id"
+        },
+        "hasJuryMember": {
+          "@container": "@set",
+          "@id": "http://data.europa.eu/a4g/ontology#hasJuryMember",
+          "@type": "@id"
+        },
+        "isAppointedBy": {
+          "@id": "http://data.europa.eu/a4g/ontology#isAppointedBy",
+          "@type": "@id"
+        },
+        "isAssignedForEvaluationOf": {
+          "@container": "@set",
+          "@id": "http://data.europa.eu/a4g/ontology#isAssignedForEvaluationOf",
+          "@type": "@id"
+        },
+        "requestsClarification": {
+          "@container": "@set",
+          "@id": "http://data.europa.eu/a4g/ontology#requestsClarification",
+          "@type": "@id"
+        },
+        "writesEvaluationReport": {
+          "@container": "@set",
+          "@id": "http://data.europa.eu/a4g/ontology#writesEvaluationReport",
+          "@type": "@id"
+        }
+      },
+      "@id": "http://data.europa.eu/a4g/ontology#EvaluationBoard"
+    },
+    "epo-eva:EvaluationCriterion": {
+      "@context": {
+        "evaluatesProcurementCriterion": {
+          "@id": "http://data.europa.eu/a4g/ontology#evaluatesProcurementCriterion",
+          "@type": "@id"
+        },
+        "fulfillsProcurementCriterion": {
+          "@id": "http://data.europa.eu/a4g/ontology#fulfillsProcurementCriterion",
+          "@type": "http://www.w3.org/2001/XMLSchema#boolean"
+        },
+        "hasEvaluationJustification": {
+          "@id": "http://data.europa.eu/a4g/ontology#hasEvaluationJustification",
+          "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"
+        },
+        "hasScorePoint": {
+          "@id": "http://data.europa.eu/a4g/ontology#hasScorePoint",
+          "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"
+        }
+      },
+      "@id": "http://data.europa.eu/a4g/ontology#EvaluationCriterion"
+    },
+    "epo-eva:EvaluationReport": {
+      "@context": {
+        "hasAwardCriteriaEvaluationScore": {
+          "@id": "http://data.europa.eu/a4g/ontology#hasAwardCriteriaEvaluationScore",
+          "@type": "http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral"
+        },
+        "providesRankToTender": {
+          "@id": "http://data.europa.eu/a4g/ontology#providesRankToTender",
+          "@type": "@id"
+        },
+        "reportsEvaluationCriterion": {
+          "@container": "@set",
+          "@id": "http://data.europa.eu/a4g/ontology#reportsEvaluationCriterion",
+          "@type": "@id"
+        },
+        "usesEvaluationFormula": {
+          "@id": "http://data.europa.eu/a4g/ontology#usesEvaluationFormula",
+          "@type": "@id"
+        }
+      },
+      "@id": "http://data.europa.eu/a4g/ontology#EvaluationReport"
+    },
+    "epo-eva:Evaluator": {
+      "@context": {
+        "playedBy": {
+          "@id": "http://data.europa.eu/a4g/ontology#playedBy",
+          "@type": "@id"
+        }
+      },
+      "@id": "http://data.europa.eu/a4g/ontology#Evaluator"
+    },
+    "epo-eva:ExcludedCandidateList": {
+      "@context": {
+        "containsCandidate": {
+          "@container": "@set",
+          "@id": "http://data.europa.eu/a4g/ontology#containsCandidate",
+          "@type": "@id"
+        }
+      },
+      "@id": "http://data.europa.eu/a4g/ontology#ExcludedCandidateList"
+    },
+    "epo-eva:TenderClarification": {
+      "@context": {
+        "refersToTenderClarificationRequest": {
+          "@id": "http://data.europa.eu/a4g/ontology#refersToTenderClarificationRequest",
+          "@type": "@id"
+        }
+      },
+      "@id": "http://data.europa.eu/a4g/ontology#TenderClarification"
+    },
+    "epo-eva:TenderClarificationRequest": {
+      "@context": {
+        "concernsEvaluationReport": {
+          "@id": "http://data.europa.eu/a4g/ontology#concernsEvaluationReport",
+          "@type": "@id"
+        },
+        "specifiesEconomicOperator": {
+          "@id": "http://data.europa.eu/a4g/ontology#specifiesEconomicOperator",
+          "@type": "@id"
+        }
+      },
+      "@id": "http://data.europa.eu/a4g/ontology#TenderClarificationRequest"
+    },
     "epo-ful": "http://data.europa.eu/a4g/ontology#",
     "epo-inv": "http://data.europa.eu/a4g/ontology#",
     "epo-not": "http://data.europa.eu/a4g/ontology#",
