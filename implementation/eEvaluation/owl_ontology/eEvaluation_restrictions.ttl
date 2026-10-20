@@ -18,14 +18,14 @@
     rdfs:label "eProcurement Ontology Evaluation - core restrictions"@en ;
     dcterms:created "2021-06-01"^^xsd:date ;
     dcterms:description "The eProcurement Ontology Evaluation core restrictions provides the restrictions and the inference-related specifications on the concepts and properties in the eProcurement Ontology Evaluation core."@en ;
-    dcterms:issued "2026-09-23"^^xsd:date ;
+    dcterms:issued "2026-10-20"^^xsd:date ;
     dcterms:license "© European Union, 2014. Unless otherwise noted, the reuse of the Ontology is authorised under the European Union Public Licence v1.2 (https://eupl.eu/)." ;
     dcterms:publisher "http://publications.europa.eu/resource/authority/corporate-body/PUBL" ;
     dcterms:title "eProcurement Ontology Evaluation - core restrictions"@en ;
     vann:preferredNamespacePrefix "epo" ;
     vann:preferredNamespaceUri "http://data.europa.eu/a4g/ontology#" ;
     rdfs:comment """This version is automatically generated from eEvaluation.xml on 
-                2026-09-23""" ;
+                2026-10-20""" ;
     rdfs:seeAlso <https://docs.ted.europa.eu/home/index.html>,
         <https://github.com/OP-TED/ePO/releases>,
         <https://joinup.ec.europa.eu/collection/eprocurement/solution/eprocurement-ontology/about>,
@@ -119,13 +119,13 @@
             owl:onProperty cccev:hasRequirement ;
             owl:someValuesFrom cccev:InformationRequirement ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass :EvaluationReport ;
-            owl:onProperty :concernsEvaluationReport ],
-        [ a owl:Restriction ;
             owl:onClass :OfferingParty ;
             owl:onProperty :specifiesEconomicOperator ;
-            owl:qualifiedCardinality 1 ] .
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass :EvaluationReport ;
+            owl:onProperty :concernsEvaluationReport ] .
 
 :EvaluationBoard rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty :writesEvaluationReport ;
@@ -137,6 +137,10 @@
 
 :EvaluationCriterion rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
+            owl:onDataRange rdf:PlainLiteral ;
+            owl:onProperty :hasEvaluationJustification ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
             owl:onDataRange xsd:boolean ;
             owl:onProperty :fulfillsProcurementCriterion ],
         [ a owl:Restriction ;
@@ -146,11 +150,7 @@
         [ a owl:Restriction ;
             owl:onClass :ProcurementCriterion ;
             owl:onProperty :evaluatesProcurementCriterion ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onDataRange rdf:PlainLiteral ;
-            owl:onProperty :hasEvaluationJustification ] .
+            owl:qualifiedCardinality 1 ] .
 
 :EvaluationReport rdfs:subClassOf [ a owl:Restriction ;
             owl:onProperty :reportsEvaluationCriterion ;

@@ -1782,7 +1782,7 @@
     {
       "classType": "definition",
       "description": {
-        "en": ""
+        "en": "Information about the expenditure of the combustible."
       },
       "label": {
         "en": "Fuel consumption information"
@@ -1793,7 +1793,7 @@
         {
           "cardinality": "0..1",
           "description": {
-            "en": ""
+            "en": "Relates to Shipment Stage."
           },
           "domain": [
             {
@@ -1818,7 +1818,8 @@
             }
           ],
           "tags": {
-            "epo:status": "implemented"
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 24/09/2026"
           },
           "uri": "http://data.europa.eu/a4g/ontology#concernsShipmentStage",
           "usage": {}
@@ -1826,7 +1827,7 @@
         {
           "cardinality": "0..1",
           "description": {
-            "en": ""
+            "en": "Relation indicating the amount of the expended resource."
           },
           "domain": [
             {
@@ -1851,7 +1852,8 @@
             }
           ],
           "tags": {
-            "epo:status": "implemented"
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 24/09/2026"
           },
           "uri": "http://data.europa.eu/a4g/ontology#hasConsumption",
           "usage": {}
@@ -1863,7 +1865,7 @@
             "uri": "http://publications.europa.eu/resource/authority/new/fuel-type"
           },
           "description": {
-            "en": ""
+            "en": "Relation indicating the classification of the combustible."
           },
           "domain": [
             {
@@ -1888,7 +1890,8 @@
             }
           ],
           "tags": {
-            "epo:status": "implemented"
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 24/09/2026"
           },
           "uri": "http://data.europa.eu/a4g/ontology#hasFuelType",
           "usage": {}
@@ -1896,7 +1899,7 @@
         {
           "cardinality": "0..1",
           "description": {
-            "en": ""
+            "en": "Explanatory text about the classification of the combustible."
           },
           "domain": [
             {
@@ -1921,7 +1924,8 @@
             }
           ],
           "tags": {
-            "epo:status": "implemented"
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 24/09/2026"
           },
           "uri": "http://data.europa.eu/a4g/ontology#hasFuelTypeDescription",
           "usage": {}
@@ -1931,11 +1935,12 @@
         "class-usage-scope": "main"
       },
       "tags": {
-        "epo:status": "implemented"
+        "epo:status": "implemented",
+        "skos:historyNote": "WG approval 24/09/2026"
       },
       "uri": "http://data.europa.eu/a4g/ontology#FuelConsumptionInformation",
       "usage": {
-        "en": ""
+        "en": "Information about the expenditure of the combustible."
       }
     },
     {
@@ -2184,7 +2189,7 @@
         {
           "cardinality": "0..*",
           "description": {
-            "en": ""
+            "en": "Relation indicating the evidence of the damage."
           },
           "domain": [
             {
@@ -2209,7 +2214,8 @@
             }
           ],
           "tags": {
-            "epo:status": "implemented"
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 24/09/2026"
           },
           "uri": "http://data.europa.eu/a4g/ontology#hasDamageStatusProof",
           "usage": {}
@@ -4609,130 +4615,53 @@
     {
       "classType": "reference",
       "label": {
-        "en": "Invoice"
+        "en": "Allowance charge information"
       },
-      "name": "epo-inv:Invoice",
+      "name": "epo-ord:AllowanceChargeInformation",
       "properties": [
         {
           "cardinality": "0..1",
+          "controlled_vocabulary": {
+            "name": "at-voc-new:allowance-charge-reason",
+            "uri": "http://publications.europa.eu/resource/authority/new/allowance-charge-reason"
+          },
           "description": {
-            "en": "Reference to a Despatch Advice."
+            "en": "The justification for using the Allowance or the Charge."
           },
           "domain": [
             {
-              "name": "epo-inv:Invoice",
-              "uri": "http://data.europa.eu/a4g/ontology#Invoice"
+              "name": "epo-ord:AllowanceChargeInformation",
+              "uri": "http://data.europa.eu/a4g/ontology#AllowanceChargeInformation"
             }
           ],
           "label": {
-            "en": "Refers to despatch advice"
+            "en": "Has allowance charge reason"
           },
-          "name": "epo-inv:refersToDespatchAdvice",
+          "name": "epo-ful:hasAllowanceChargeReason",
           "propertyOrigin": "internal",
           "propertyType": "object property",
           "range": [
             {
-              "range_curie": "epo-ful:DespatchAdvice",
+              "range_curie": "skos:Concept",
               "range_label": {
-                "en": "Despatch advice"
+                "en": "Concept"
               },
-              "range_puri": "http://data.europa.eu/a4g/ontology#DespatchAdvice",
-              "range_uri": "http://data.europa.eu/a4g/ontology#DespatchAdvice"
+              "range_puri": "http://www.w3.org/2004/02/skos/core#Concept",
+              "range_uri": "http://www.w3.org/2004/02/skos/core#Concept"
             }
           ],
           "tags": {
             "epo:status": "implemented",
-            "skos:historyNote": "WG approval 25/09/2025"
+            "skos:historyNote": "WG approval 10/06/2024"
           },
-          "uri": "http://data.europa.eu/a4g/ontology#refersToDespatchAdvice",
-          "usage": {}
-        },
-        {
-          "cardinality": "0..1",
-          "description": {
-            "en": "Reference to a Receipt Advice."
-          },
-          "domain": [
-            {
-              "name": "epo-inv:Invoice",
-              "uri": "http://data.europa.eu/a4g/ontology#Invoice"
-            }
-          ],
-          "label": {
-            "en": "Refers to receipt advice"
-          },
-          "name": "epo-inv:refersToReceiptAdvice",
-          "propertyOrigin": "internal",
-          "propertyType": "object property",
-          "range": [
-            {
-              "range_curie": "epo-ful:ReceiptAdvice",
-              "range_label": {
-                "en": "Receipt advice"
-              },
-              "range_puri": "http://data.europa.eu/a4g/ontology#ReceiptAdvice",
-              "range_uri": "http://data.europa.eu/a4g/ontology#ReceiptAdvice"
-            }
-          ],
-          "tags": {
-            "epo:status": "implemented",
-            "skos:historyNote": "WG approval 25/09/2025"
-          },
-          "uri": "http://data.europa.eu/a4g/ontology#refersToReceiptAdvice",
+          "uri": "http://data.europa.eu/a4g/ontology#hasAllowanceChargeReason",
           "usage": {}
         }
       ],
       "rawTags": {
         "class-usage-scope": "main"
       },
-      "uri": "http://data.europa.eu/a4g/ontology#Invoice"
-    },
-    {
-      "classType": "reference",
-      "label": {
-        "en": "Order"
-      },
-      "name": "epo-ord:Order",
-      "properties": [
-        {
-          "cardinality": "0..1",
-          "description": {
-            "en": "Relation indicating that the instance of the concept involves the Despatcher."
-          },
-          "domain": [
-            {
-              "name": "epo-ord:Order",
-              "uri": "http://data.europa.eu/a4g/ontology#Order"
-            }
-          ],
-          "label": {
-            "en": "Specifies despatcher"
-          },
-          "name": "epo-ful:specifiesDespatcher",
-          "propertyOrigin": "internal",
-          "propertyType": "object property",
-          "range": [
-            {
-              "range_curie": "epo-ful:Despatcher",
-              "range_label": {
-                "en": "Despatcher"
-              },
-              "range_puri": "http://data.europa.eu/a4g/ontology#Despatcher",
-              "range_uri": "http://data.europa.eu/a4g/ontology#Despatcher"
-            }
-          ],
-          "tags": {
-            "epo:status": "implemented",
-            "skos:historyNote": "WG Approval 25/06/2024"
-          },
-          "uri": "http://data.europa.eu/a4g/ontology#specifiesDespatcher",
-          "usage": {}
-        }
-      ],
-      "rawTags": {
-        "class-usage-scope": "main"
-      },
-      "uri": "http://data.europa.eu/a4g/ontology#Order"
+      "uri": "http://data.europa.eu/a4g/ontology#AllowanceChargeInformation"
     },
     {
       "classType": "reference",
@@ -4886,53 +4815,6 @@
     {
       "classType": "reference",
       "label": {
-        "en": "Catalogue line"
-      },
-      "name": "epo-cat:CatalogueLine",
-      "properties": [
-        {
-          "cardinality": "0..1",
-          "description": {
-            "en": "Relation indicating that an instance of the concept plans to have a Package."
-          },
-          "domain": [
-            {
-              "name": "epo-cat:CatalogueLine",
-              "uri": "http://data.europa.eu/a4g/ontology#CatalogueLine"
-            }
-          ],
-          "label": {
-            "en": "Foresees package"
-          },
-          "name": "epo-cat:foreseesPackage",
-          "propertyOrigin": "internal",
-          "propertyType": "object property",
-          "range": [
-            {
-              "range_curie": "epo-ful:Package",
-              "range_label": {
-                "en": "Package"
-              },
-              "range_puri": "http://data.europa.eu/a4g/ontology#Package",
-              "range_uri": "http://data.europa.eu/a4g/ontology#Package"
-            }
-          ],
-          "tags": {
-            "epo:status": "implemented",
-            "skos:historyNote": "WG approval 25/09/2025"
-          },
-          "uri": "http://data.europa.eu/a4g/ontology#foreseesPackage",
-          "usage": {}
-        }
-      ],
-      "rawTags": {
-        "class-usage-scope": "main"
-      },
-      "uri": "http://data.europa.eu/a4g/ontology#CatalogueLine"
-    },
-    {
-      "classType": "reference",
-      "label": {
         "en": "Environmental emission information"
       },
       "name": "epo-cat:EnvironmentalEmissionInformation",
@@ -4940,7 +4822,7 @@
         {
           "cardinality": "0..1",
           "description": {
-            "en": ""
+            "en": "Relates to Shipment Stage."
           },
           "domain": [
             {
@@ -4965,7 +4847,8 @@
             }
           ],
           "tags": {
-            "epo:status": "implemented"
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 24/09/2026"
           },
           "uri": "http://data.europa.eu/a4g/ontology#concernsShipmentStage",
           "usage": {}
@@ -5013,53 +4896,177 @@
     {
       "classType": "reference",
       "label": {
-        "en": "Allowance charge information"
+        "en": "Catalogue line"
       },
-      "name": "epo-ord:AllowanceChargeInformation",
+      "name": "epo-cat:CatalogueLine",
       "properties": [
         {
           "cardinality": "0..1",
-          "controlled_vocabulary": {
-            "name": "at-voc-new:allowance-charge-reason",
-            "uri": "http://publications.europa.eu/resource/authority/new/allowance-charge-reason"
-          },
           "description": {
-            "en": "The justification for using the Allowance or the Charge."
+            "en": "Relation indicating that an instance of the concept plans to have a Package."
           },
           "domain": [
             {
-              "name": "epo-ord:AllowanceChargeInformation",
-              "uri": "http://data.europa.eu/a4g/ontology#AllowanceChargeInformation"
+              "name": "epo-cat:CatalogueLine",
+              "uri": "http://data.europa.eu/a4g/ontology#CatalogueLine"
             }
           ],
           "label": {
-            "en": "Has allowance charge reason"
+            "en": "Foresees package"
           },
-          "name": "epo-ful:hasAllowanceChargeReason",
+          "name": "epo-cat:foreseesPackage",
           "propertyOrigin": "internal",
           "propertyType": "object property",
           "range": [
             {
-              "range_curie": "skos:Concept",
+              "range_curie": "epo-ful:Package",
               "range_label": {
-                "en": "Concept"
+                "en": "Package"
               },
-              "range_puri": "http://www.w3.org/2004/02/skos/core#Concept",
-              "range_uri": "http://www.w3.org/2004/02/skos/core#Concept"
+              "range_puri": "http://data.europa.eu/a4g/ontology#Package",
+              "range_uri": "http://data.europa.eu/a4g/ontology#Package"
             }
           ],
           "tags": {
             "epo:status": "implemented",
-            "skos:historyNote": "WG approval 10/06/2024"
+            "skos:historyNote": "WG approval 25/09/2025"
           },
-          "uri": "http://data.europa.eu/a4g/ontology#hasAllowanceChargeReason",
+          "uri": "http://data.europa.eu/a4g/ontology#foreseesPackage",
           "usage": {}
         }
       ],
       "rawTags": {
         "class-usage-scope": "main"
       },
-      "uri": "http://data.europa.eu/a4g/ontology#AllowanceChargeInformation"
+      "uri": "http://data.europa.eu/a4g/ontology#CatalogueLine"
+    },
+    {
+      "classType": "reference",
+      "label": {
+        "en": "Order"
+      },
+      "name": "epo-ord:Order",
+      "properties": [
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "Relation indicating that the instance of the concept involves the Despatcher."
+          },
+          "domain": [
+            {
+              "name": "epo-ord:Order",
+              "uri": "http://data.europa.eu/a4g/ontology#Order"
+            }
+          ],
+          "label": {
+            "en": "Specifies despatcher"
+          },
+          "name": "epo-ful:specifiesDespatcher",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo-ful:Despatcher",
+              "range_label": {
+                "en": "Despatcher"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#Despatcher",
+              "range_uri": "http://data.europa.eu/a4g/ontology#Despatcher"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG Approval 25/06/2024"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#specifiesDespatcher",
+          "usage": {}
+        }
+      ],
+      "rawTags": {
+        "class-usage-scope": "main"
+      },
+      "uri": "http://data.europa.eu/a4g/ontology#Order"
+    },
+    {
+      "classType": "reference",
+      "label": {
+        "en": "Invoice"
+      },
+      "name": "epo-inv:Invoice",
+      "properties": [
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "Reference to a Despatch Advice."
+          },
+          "domain": [
+            {
+              "name": "epo-inv:Invoice",
+              "uri": "http://data.europa.eu/a4g/ontology#Invoice"
+            }
+          ],
+          "label": {
+            "en": "Refers to despatch advice"
+          },
+          "name": "epo-inv:refersToDespatchAdvice",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo-ful:DespatchAdvice",
+              "range_label": {
+                "en": "Despatch advice"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#DespatchAdvice",
+              "range_uri": "http://data.europa.eu/a4g/ontology#DespatchAdvice"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#refersToDespatchAdvice",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "Reference to a Receipt Advice."
+          },
+          "domain": [
+            {
+              "name": "epo-inv:Invoice",
+              "uri": "http://data.europa.eu/a4g/ontology#Invoice"
+            }
+          ],
+          "label": {
+            "en": "Refers to receipt advice"
+          },
+          "name": "epo-inv:refersToReceiptAdvice",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo-ful:ReceiptAdvice",
+              "range_label": {
+                "en": "Receipt advice"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#ReceiptAdvice",
+              "range_uri": "http://data.europa.eu/a4g/ontology#ReceiptAdvice"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#refersToReceiptAdvice",
+          "usage": {}
+        }
+      ],
+      "rawTags": {
+        "class-usage-scope": "main"
+      },
+      "uri": "http://data.europa.eu/a4g/ontology#Invoice"
     },
     {
       "classType": "reference",
@@ -5186,12 +5193,12 @@
   ],
   "prefixes": [
     {
-      "name": "at-voc-new",
-      "uri": "http://publications.europa.eu/resource/authority/new/"
-    },
-    {
       "name": "epo-ful",
       "uri": "http://data.europa.eu/a4g/ontology#"
+    },
+    {
+      "name": "at-voc-new",
+      "uri": "http://publications.europa.eu/resource/authority/new/"
     },
     {
       "name": "epo",
@@ -5206,11 +5213,11 @@
       "uri": "http://www.w3.org/ns/adms#"
     },
     {
-      "name": "epo-cat",
-      "uri": "http://data.europa.eu/a4g/ontology#"
+      "name": "foaf",
+      "uri": "http://xmlns.com/foaf/0.1/"
     },
     {
-      "name": "epo-inv",
+      "name": "epo-cat",
       "uri": "http://data.europa.eu/a4g/ontology#"
     },
     {
@@ -5222,8 +5229,8 @@
       "uri": "http://purl.org/dc/terms/"
     },
     {
-      "name": "foaf",
-      "uri": "http://xmlns.com/foaf/0.1/"
+      "name": "epo-inv",
+      "uri": "http://data.europa.eu/a4g/ontology#"
     },
     {
       "name": "rdf",
