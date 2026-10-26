@@ -1817,6 +1817,7 @@ core-shape:org-OrganizationShape sh:property core-shape:org-Organization-epo-can
 
 core-shape:person-PersonShape sh:property core-shape:person-Person-epo-hasCountryOfBirth,
         core-shape:person-Person-epo-hasNationality,
+        core-shape:person-Person-epo-hasPrimaryContactPoint,
         core-shape:person-Person-epo-isBeneficialOwnerOf .
 
 core-shape:time-Duration-time-unitType a sh:PropertyShape ;
@@ -3380,6 +3381,7 @@ core-shape:epo-ExpressionOfInterestResponse-epo-hasLanguageOfProcurementDocument
 core-shape:epo-ExpressionOfInterestResponse-epo-refersToExpressionOfInterest a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
     sh:class :ExpressionOfInterest ;
+    sh:description "Reference to an Expression Of Interest." ;
     sh:maxCount 1 ;
     sh:minCount 1 ;
     sh:name "Refers to expression of interest" ;
@@ -5855,6 +5857,7 @@ core-shape:epo-TenderGroup-epo-isSubmittedForLotGroup a sh:PropertyShape ;
 core-shape:epo-TenderReceipt-epo-refersToTender a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
     sh:class :Tender ;
+    sh:description "Reference to a Tender." ;
     sh:maxCount 1 ;
     sh:minCount 1 ;
     sh:name "Refers to tender" ;
@@ -6749,6 +6752,7 @@ core-shape:epo-ful-DespatchLine-epo-ful-hasOutstandingQuantity a sh:PropertyShap
 core-shape:epo-ful-FuelConsumptionInformation-epo-ful-hasConsumption a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
     sh:class :Quantity ;
+    sh:description "Relation indicating the amount of the expended resource." ;
     sh:maxCount 1 ;
     sh:name "Has consumption" ;
     sh:path :hasConsumption ;
@@ -6773,6 +6777,7 @@ core-shape:epo-ful-GoodsItem-epo-ful-hasTraceID a sh:PropertyShape ;
 core-shape:epo-ful-Package-epo-ful-hasDamageStatusProof a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
     sh:class :Document ;
+    sh:description "Relation indicating the evidence of the damage." ;
     sh:name "Has damage status proof" ;
     sh:path :hasDamageStatusProof ;
     sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#hasDamageStatusProof> ?that . ?that <http://data.europa.eu/a4g/ontology#hasDamageStatusProof> ?this .}" ] .
@@ -8138,6 +8143,7 @@ core-shape:epo-sub-Response-epo-sub-refersToApplicablePeriod a sh:PropertyShape 
 core-shape:epo-sub-TenderWithdrawalReceipt-epo-refersToTender a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
     sh:class :Tender ;
+    sh:description "Reference to a Tender." ;
     sh:maxCount 1 ;
     sh:minCount 1 ;
     sh:name "Refers to tender" ;
@@ -8147,6 +8153,7 @@ core-shape:epo-sub-TenderWithdrawalReceipt-epo-refersToTender a sh:PropertyShape
 core-shape:epo-sub-TenderWithdrawalRequest-epo-sub-refersToTenderReceipt a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
     sh:class :TenderReceipt ;
+    sh:description "Reference to a Tender Receipt." ;
     sh:maxCount 1 ;
     sh:minCount 1 ;
     sh:name "Refers to tender receipt" ;
@@ -8325,6 +8332,15 @@ core-shape:person-Person-epo-hasNationality a sh:PropertyShape ;
     sh:name "Has nationality" ;
     sh:path :hasNationality .
 
+core-shape:person-Person-epo-hasPrimaryContactPoint a sh:PropertyShape ;
+    rdfs:isDefinedBy core-shape:core-shape ;
+    sh:class cccev:ContactPoint ;
+    sh:description "Relation indicating the main Contact Point." ;
+    sh:maxCount 1 ;
+    sh:name "Has primary contact point" ;
+    sh:path :hasPrimaryContactPoint ;
+    sh:sparql [ sh:select "SELECT ?this ?that WHERE { ?this <http://data.europa.eu/a4g/ontology#hasPrimaryContactPoint> ?that . ?that <http://data.europa.eu/a4g/ontology#hasPrimaryContactPoint> ?this .}" ] .
+
 core-shape:person-Person-epo-isBeneficialOwnerOf a sh:PropertyShape ;
     rdfs:isDefinedBy core-shape:core-shape ;
     sh:class :Business ;
@@ -8337,13 +8353,13 @@ core-shape:core-shape a owl:Ontology ;
     rdfs:label "eProcurement Ontology - core shapes"@en ;
     dcterms:created "2021-06-01"^^xsd:date ;
     dcterms:description "The eProcurement Ontology core shapes provides the generic datashape specifications for the eProcurement Ontology core."@en ;
-    dcterms:issued "2026-09-23"^^xsd:date ;
+    dcterms:issued "2026-10-26"^^xsd:date ;
     dcterms:license "© European Union, 2014. Unless otherwise noted, the reuse of the Ontology is authorised under the European Union Public Licence v1.2 (https://eupl.eu/)." ;
     dcterms:publisher "http://publications.europa.eu/resource/authority/corporate-body/PUBL" ;
     dcterms:title "eProcurement Ontology - core shapes"@en ;
     vann:preferredNamespacePrefix "epo" ;
     vann:preferredNamespaceUri "http://data.europa.eu/a4g/ontology#" ;
-    rdfs:comment "This version is automatically generated from ePO_core.xml on 2026-09-23" ;
+    rdfs:comment "This version is automatically generated from ePO_core.xml on 2026-10-26" ;
     rdfs:seeAlso <https://docs.ted.europa.eu/home/index.html>,
         <https://github.com/OP-TED/ePO/releases>,
         <https://joinup.ec.europa.eu/collection/eprocurement/solution/eprocurement-ontology/about>,

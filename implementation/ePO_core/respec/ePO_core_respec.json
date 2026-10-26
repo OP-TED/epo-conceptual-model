@@ -4273,7 +4273,15 @@
         "en": "Contact point"
       },
       "name": "cpov:ContactPoint",
-      "parents": [],
+      "parents": [
+        {
+          "label": {
+            "en": "Maskable object"
+          },
+          "name": "epo:MaskableObject",
+          "scoped_uri": "http://data.europa.eu/a4g/ontology#MaskableObject"
+        }
+      ],
       "properties": [
         {
           "cardinality": "0..1",
@@ -9686,7 +9694,7 @@
         {
           "cardinality": "1",
           "description": {
-            "en": ""
+            "en": "Reference to an Expression Of Interest."
           },
           "domain": [
             {
@@ -9711,7 +9719,8 @@
             }
           ],
           "tags": {
-            "epo:status": "implemented"
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 24/09/2026"
           },
           "uri": "http://data.europa.eu/a4g/ontology#refersToExpressionOfInterest",
           "usage": {}
@@ -14807,6 +14816,13 @@
           },
           "name": "foaf:Agent",
           "scoped_uri": "http://xmlns.com/foaf/0.1/Agent"
+        },
+        {
+          "label": {
+            "en": "Maskable object"
+          },
+          "name": "epo:MaskableObject",
+          "scoped_uri": "http://data.europa.eu/a4g/ontology#MaskableObject"
         }
       ],
       "properties": [
@@ -15983,6 +15999,13 @@
           },
           "name": "foaf:Person",
           "scoped_uri": "http://xmlns.com/foaf/0.1/Person"
+        },
+        {
+          "label": {
+            "en": "Maskable object"
+          },
+          "name": "epo:MaskableObject",
+          "scoped_uri": "http://data.europa.eu/a4g/ontology#MaskableObject"
         }
       ],
       "properties": [
@@ -16226,6 +16249,40 @@
             "skos:historyNote": "WG approval 25/09/2025"
           },
           "uri": "http://data.europa.eu/a4g/ontology#hasNationality",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "Relation indicating the main Contact Point."
+          },
+          "domain": [
+            {
+              "name": "person:Person",
+              "uri": "http://www.w3.org/ns/person#Person"
+            }
+          ],
+          "label": {
+            "en": "Has primary contact point"
+          },
+          "name": "epo:hasPrimaryContactPoint",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "cpov:ContactPoint",
+              "range_label": {
+                "en": "Contact point"
+              },
+              "range_puri": "http://data.europa.eu/m8g/ContactPoint",
+              "range_uri": "http://data.europa.eu/m8g/ContactPoint"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasPrimaryContactPoint",
           "usage": {}
         },
         {
@@ -23349,7 +23406,9 @@
       "rawTags": {
         "class-usage-scope": "main"
       },
-      "tags": {},
+      "tags": {
+        "epo:status": "implemented"
+      },
       "uri": "http://data.europa.eu/a4g/ontology#SubmissionChecklist",
       "usage": {
         "en": "Document listing all the documents to be submitted by the Economic Operator to participate in a Procurement Procedure."
@@ -26446,7 +26505,7 @@
         {
           "cardinality": "1",
           "description": {
-            "en": ""
+            "en": "Reference to a Tender."
           },
           "domain": [
             {
@@ -26471,7 +26530,8 @@
             }
           ],
           "tags": {
-            "epo:status": "implemented"
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 24/09/2026"
           },
           "uri": "http://data.europa.eu/a4g/ontology#refersToTender",
           "usage": {}
@@ -26535,6 +26595,13 @@
           },
           "name": "epo:OfferingParty",
           "scoped_uri": "http://data.europa.eu/a4g/ontology#OfferingParty"
+        },
+        {
+          "label": {
+            "en": "Maskable object"
+          },
+          "name": "epo:MaskableObject",
+          "scoped_uri": "http://data.europa.eu/a4g/ontology#MaskableObject"
         }
       ],
       "properties": [
@@ -28049,25 +28116,138 @@
     {
       "classType": "reference",
       "label": {
-        "en": "Qualification decision information"
+        "en": "Procurement documents provision"
       },
-      "name": "epo-qua:QualificationDecisionInformation",
+      "name": "epo-acc:ProcurementDocumentsProvision",
       "properties": [
         {
           "cardinality": "1",
           "description": {
-            "en": "Makes available the resolution."
+            "en": "Relates to Procedure."
           },
           "domain": [
             {
-              "name": "epo-qua:QualificationDecisionInformation",
-              "uri": "http://data.europa.eu/a4g/ontology#QualificationDecisionInformation"
+              "name": "epo-acc:ProcurementDocumentsProvision",
+              "uri": "http://data.europa.eu/a4g/ontology#ProcurementDocumentsProvision"
             }
           ],
           "label": {
-            "en": "Provides decision for"
+            "en": "Concerns procedure"
           },
-          "name": "epo-qua:providesDecisionFor",
+          "name": "epo:concernsProcedure",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:Procedure",
+              "range_label": {
+                "en": "Procedure"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#Procedure",
+              "range_uri": "http://data.europa.eu/a4g/ontology#Procedure"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#concernsProcedure",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..*",
+          "description": {
+            "en": "Includes the supplied Procurement Document."
+          },
+          "domain": [
+            {
+              "name": "epo-acc:ProcurementDocumentsProvision",
+              "uri": "http://data.europa.eu/a4g/ontology#ProcurementDocumentsProvision"
+            }
+          ],
+          "label": {
+            "en": "Contains provided procurement document"
+          },
+          "name": "epo-acc:containsProvidedProcurementDocument",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:ProcurementDocument",
+              "range_label": {
+                "en": "Procurement document"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#ProcurementDocument",
+              "range_uri": "http://data.europa.eu/a4g/ontology#ProcurementDocument"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#containsProvidedProcurementDocument",
+          "usage": {}
+        },
+        {
+          "cardinality": "1",
+          "description": {
+            "en": "Relation indicating that the instance of the concept involves the Economic Operator."
+          },
+          "domain": [
+            {
+              "name": "epo-acc:ProcurementDocumentsProvision",
+              "uri": "http://data.europa.eu/a4g/ontology#ProcurementDocumentsProvision"
+            }
+          ],
+          "label": {
+            "en": "Specifies economic operator"
+          },
+          "name": "epo:specifiesEconomicOperator",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:OfferingParty",
+              "range_label": {
+                "en": "Offering party"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#OfferingParty",
+              "range_uri": "http://data.europa.eu/a4g/ontology#OfferingParty"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#specifiesEconomicOperator",
+          "usage": {}
+        }
+      ],
+      "rawTags": {
+        "class-usage-scope": "main"
+      },
+      "uri": "http://data.europa.eu/a4g/ontology#ProcurementDocumentsProvision"
+    },
+    {
+      "classType": "reference",
+      "label": {
+        "en": "Evidence submission"
+      },
+      "name": "epo-qua:EvidenceSubmission",
+      "properties": [
+        {
+          "cardinality": "1..*",
+          "description": {
+            "en": "Relates to Lot."
+          },
+          "domain": [
+            {
+              "name": "epo-qua:EvidenceSubmission",
+              "uri": "http://data.europa.eu/a4g/ontology#EvidenceSubmission"
+            }
+          ],
+          "label": {
+            "en": "Concerns lot"
+          },
+          "name": "epo:concernsLot",
           "propertyOrigin": "internal",
           "propertyType": "object property",
           "range": [
@@ -28081,93 +28261,352 @@
             }
           ],
           "tags": {
+            "epo:status": "implemented"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#concernsLot",
+          "usage": {}
+        },
+        {
+          "cardinality": "1",
+          "description": {
+            "en": "Relates to Procedure."
+          },
+          "domain": [
+            {
+              "name": "epo-qua:EvidenceSubmission",
+              "uri": "http://data.europa.eu/a4g/ontology#EvidenceSubmission"
+            }
+          ],
+          "label": {
+            "en": "Concerns procedure"
+          },
+          "name": "epo:concernsProcedure",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:Procedure",
+              "range_label": {
+                "en": "Procedure"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#Procedure",
+              "range_uri": "http://data.europa.eu/a4g/ontology#Procedure"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#concernsProcedure",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..*",
+          "description": {
+            "en": "Makes available the Evidence."
+          },
+          "domain": [
+            {
+              "name": "epo-qua:EvidenceSubmission",
+              "uri": "http://data.europa.eu/a4g/ontology#EvidenceSubmission"
+            }
+          ],
+          "label": {
+            "en": "Provides evidence"
+          },
+          "name": "epo:providesEvidence",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "cccev:Evidence",
+              "range_label": {
+                "en": "Evidence"
+              },
+              "range_puri": "http://data.europa.eu/m8g/Evidence",
+              "range_uri": "http://data.europa.eu/m8g/Evidence"
+            }
+          ],
+          "tags": {
             "epo:status": "implemented",
             "skos:historyNote": "WG approval 25/09/2025"
           },
-          "uri": "http://data.europa.eu/a4g/ontology#providesDecisionFor",
+          "uri": "http://data.europa.eu/a4g/ontology#providesEvidence",
+          "usage": {}
+        },
+        {
+          "cardinality": "1",
+          "description": {
+            "en": "Relation indicating that the instance of the concept involves the Economic Operator."
+          },
+          "domain": [
+            {
+              "name": "epo-qua:EvidenceSubmission",
+              "uri": "http://data.europa.eu/a4g/ontology#EvidenceSubmission"
+            }
+          ],
+          "label": {
+            "en": "Specifies economic operator"
+          },
+          "name": "epo:specifiesEconomicOperator",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:OfferingParty",
+              "range_label": {
+                "en": "Offering party"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#OfferingParty",
+              "range_uri": "http://data.europa.eu/a4g/ontology#OfferingParty"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#specifiesEconomicOperator",
           "usage": {}
         }
       ],
       "rawTags": {
         "class-usage-scope": "main"
       },
-      "uri": "http://data.europa.eu/a4g/ontology#QualificationDecisionInformation"
+      "uri": "http://data.europa.eu/a4g/ontology#EvidenceSubmission"
     },
     {
       "classType": "reference",
       "label": {
-        "en": "Completion notice"
+        "en": "Award decision notification"
       },
-      "name": "epo-not:CompletionNotice",
+      "name": "epo-awa:AwardDecisionNotification",
       "properties": [
         {
-          "cardinality": "1",
+          "cardinality": "1..*",
           "description": {
-            "en": "Relation indicating the formal communication of the Completion of a Contract."
+            "en": "Relates to Award Outcome."
           },
           "domain": [
             {
-              "name": "epo-not:CompletionNotice",
-              "uri": "http://data.europa.eu/a4g/ontology#CompletionNotice"
+              "name": "epo-awa:AwardDecisionNotification",
+              "uri": "http://data.europa.eu/a4g/ontology#AwardDecisionNotification"
             }
           ],
           "label": {
-            "en": "Announces completion of contract"
+            "en": "Concerns award outcome"
           },
-          "name": "epo:announcesCompletionOfContract",
+          "name": "epo:concernsAwardOutcome",
           "propertyOrigin": "internal",
           "propertyType": "object property",
           "range": [
             {
-              "range_curie": "epo:Contract",
+              "range_curie": "epo:AwardOutcome",
               "range_label": {
-                "en": "Contract"
+                "en": "Award outcome"
               },
-              "range_puri": "http://data.europa.eu/a4g/ontology#Contract",
-              "range_uri": "http://data.europa.eu/a4g/ontology#Contract"
+              "range_puri": "http://data.europa.eu/a4g/ontology#AwardOutcome",
+              "range_uri": "http://data.europa.eu/a4g/ontology#AwardOutcome"
             }
           ],
           "tags": {
             "epo:status": "implemented",
             "skos:historyNote": "WG approval 25/09/2025"
           },
-          "uri": "http://data.europa.eu/a4g/ontology#announcesCompletionOfContract",
+          "uri": "http://data.europa.eu/a4g/ontology#concernsAwardOutcome",
+          "usage": {}
+        },
+        {
+          "cardinality": "1",
+          "description": {
+            "en": "Relates to Procedure."
+          },
+          "domain": [
+            {
+              "name": "epo-awa:AwardDecisionNotification",
+              "uri": "http://data.europa.eu/a4g/ontology#AwardDecisionNotification"
+            }
+          ],
+          "label": {
+            "en": "Concerns procedure"
+          },
+          "name": "epo:concernsProcedure",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:Procedure",
+              "range_label": {
+                "en": "Procedure"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#Procedure",
+              "range_uri": "http://data.europa.eu/a4g/ontology#Procedure"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#concernsProcedure",
+          "usage": {}
+        },
+        {
+          "cardinality": "1",
+          "description": {
+            "en": "Relation indicating that the instance of the concept involves the Tenderer."
+          },
+          "domain": [
+            {
+              "name": "epo-awa:AwardDecisionNotification",
+              "uri": "http://data.europa.eu/a4g/ontology#AwardDecisionNotification"
+            }
+          ],
+          "label": {
+            "en": "Specifies tenderer"
+          },
+          "name": "epo:specifiesTenderer",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:Tenderer",
+              "range_label": {
+                "en": "Tenderer"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#Tenderer",
+              "range_uri": "http://data.europa.eu/a4g/ontology#Tenderer"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#specifiesTenderer",
+          "usage": {}
+        }
+      ],
+      "rawTags": {
+        "class-usage-scope": "main"
+      },
+      "uri": "http://data.europa.eu/a4g/ontology#AwardDecisionNotification"
+    },
+    {
+      "classType": "reference",
+      "label": {
+        "en": "Invitation to tender"
+      },
+      "name": "epo-acc:InvitationToTender",
+      "properties": [
+        {
+          "cardinality": "1",
+          "description": {
+            "en": "Relates to Procedure."
+          },
+          "domain": [
+            {
+              "name": "epo-acc:InvitationToTender",
+              "uri": "http://data.europa.eu/a4g/ontology#InvitationToTender"
+            }
+          ],
+          "label": {
+            "en": "Concerns procedure"
+          },
+          "name": "epo:concernsProcedure",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:Procedure",
+              "range_label": {
+                "en": "Procedure"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#Procedure",
+              "range_uri": "http://data.europa.eu/a4g/ontology#Procedure"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#concernsProcedure",
           "usage": {}
         },
         {
           "cardinality": "0..*",
           "description": {
-            "en": "Relation indicating the formal communication of a Role."
+            "en": ""
           },
           "domain": [
             {
-              "name": "epo-not:CompletionNotice",
-              "uri": "http://data.europa.eu/a4g/ontology#CompletionNotice"
+              "name": "epo-acc:InvitationToTender",
+              "uri": "http://data.europa.eu/a4g/ontology#InvitationToTender"
             }
           ],
           "label": {
-            "en": "Announces role"
+            "en": "Contains provided procurement document"
           },
-          "name": "epo:announcesRole",
+          "name": "epo-acc:containsProvidedProcurementDocument",
           "propertyOrigin": "internal",
           "propertyType": "object property",
           "range": [
             {
-              "range_curie": "epo:AgentInRole",
+              "range_curie": "epo:ProcurementDocument",
               "range_label": {
-                "en": "Agent in role"
+                "en": "Procurement document"
               },
-              "range_puri": "http://data.europa.eu/a4g/ontology#AgentInRole",
-              "range_uri": "http://data.europa.eu/a4g/ontology#AgentInRole"
+              "range_puri": "http://data.europa.eu/a4g/ontology#ProcurementDocument",
+              "range_uri": "http://data.europa.eu/a4g/ontology#ProcurementDocument"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#containsProvidedProcurementDocument",
+          "usage": {}
+        },
+        {
+          "cardinality": "1",
+          "description": {
+            "en": "Relation indicating that the instance of the concept involves the Economic Operator."
+          },
+          "domain": [
+            {
+              "name": "epo-acc:InvitationToTender",
+              "uri": "http://data.europa.eu/a4g/ontology#InvitationToTender"
+            }
+          ],
+          "label": {
+            "en": "Specifies economic operator"
+          },
+          "name": "epo:specifiesEconomicOperator",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:OfferingParty",
+              "range_label": {
+                "en": "Offering party"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#OfferingParty",
+              "range_uri": "http://data.europa.eu/a4g/ontology#OfferingParty"
             }
           ],
           "tags": {
             "epo:status": "implemented",
             "skos:historyNote": "WG approval 25/09/2025"
           },
-          "uri": "http://data.europa.eu/a4g/ontology#announcesRole",
+          "uri": "http://data.europa.eu/a4g/ontology#specifiesEconomicOperator",
           "usage": {}
-        },
+        }
+      ],
+      "rawTags": {
+        "class-usage-scope": "main"
+      },
+      "uri": "http://data.europa.eu/a4g/ontology#InvitationToTender"
+    },
+    {
+      "classType": "reference",
+      "label": {
+        "en": "Evidence request"
+      },
+      "name": "epo-qua:EvidenceRequest",
+      "properties": [
         {
           "cardinality": "1..*",
           "description": {
@@ -28175,8 +28614,121 @@
           },
           "domain": [
             {
-              "name": "epo-not:CompletionNotice",
-              "uri": "http://data.europa.eu/a4g/ontology#CompletionNotice"
+              "name": "epo-qua:EvidenceRequest",
+              "uri": "http://data.europa.eu/a4g/ontology#EvidenceRequest"
+            }
+          ],
+          "label": {
+            "en": "Concerns lot"
+          },
+          "name": "epo:concernsLot",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:Lot",
+              "range_label": {
+                "en": "Lot"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#Lot",
+              "range_uri": "http://data.europa.eu/a4g/ontology#Lot"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#concernsLot",
+          "usage": {}
+        },
+        {
+          "cardinality": "1",
+          "description": {
+            "en": "Relates to Procedure."
+          },
+          "domain": [
+            {
+              "name": "epo-qua:EvidenceRequest",
+              "uri": "http://data.europa.eu/a4g/ontology#EvidenceRequest"
+            }
+          ],
+          "label": {
+            "en": "Concerns procedure"
+          },
+          "name": "epo:concernsProcedure",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:Procedure",
+              "range_label": {
+                "en": "Procedure"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#Procedure",
+              "range_uri": "http://data.europa.eu/a4g/ontology#Procedure"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#concernsProcedure",
+          "usage": {}
+        },
+        {
+          "cardinality": "1",
+          "description": {
+            "en": "Relation indicating that the instance of the concept involves the Economic Operator."
+          },
+          "domain": [
+            {
+              "name": "epo-qua:EvidenceRequest",
+              "uri": "http://data.europa.eu/a4g/ontology#EvidenceRequest"
+            }
+          ],
+          "label": {
+            "en": "Specifies economic operator"
+          },
+          "name": "epo:specifiesEconomicOperator",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:OfferingParty",
+              "range_label": {
+                "en": "Offering party"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#OfferingParty",
+              "range_uri": "http://data.europa.eu/a4g/ontology#OfferingParty"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#specifiesEconomicOperator",
+          "usage": {}
+        }
+      ],
+      "rawTags": {
+        "class-usage-scope": "main"
+      },
+      "uri": "http://data.europa.eu/a4g/ontology#EvidenceRequest"
+    },
+    {
+      "classType": "reference",
+      "label": {
+        "en": "Information request"
+      },
+      "name": "epo-acc:InformationRequest",
+      "properties": [
+        {
+          "cardinality": "0..*",
+          "description": {
+            "en": "Relates to Lot."
+          },
+          "domain": [
+            {
+              "name": "epo-acc:InformationRequest",
+              "uri": "http://data.europa.eu/a4g/ontology#InformationRequest"
             }
           ],
           "label": {
@@ -28208,8 +28760,8 @@
           },
           "domain": [
             {
-              "name": "epo-not:CompletionNotice",
-              "uri": "http://data.europa.eu/a4g/ontology#CompletionNotice"
+              "name": "epo-acc:InformationRequest",
+              "uri": "http://data.europa.eu/a4g/ontology#InformationRequest"
             }
           ],
           "label": {
@@ -28236,14 +28788,14 @@
           "usage": {}
         },
         {
-          "cardinality": "1",
+          "cardinality": "0..*",
           "description": {
             "en": "Relates to Procedure."
           },
           "domain": [
             {
-              "name": "epo-not:CompletionNotice",
-              "uri": "http://data.europa.eu/a4g/ontology#CompletionNotice"
+              "name": "epo-acc:InformationRequest",
+              "uri": "http://data.europa.eu/a4g/ontology#InformationRequest"
             }
           ],
           "label": {
@@ -28267,1047 +28819,12 @@
           },
           "uri": "http://data.europa.eu/a4g/ontology#concernsProcedure",
           "usage": {}
-        },
-        {
-          "cardinality": "0..*",
-          "description": {
-            "en": "Reference to an Award Decision."
-          },
-          "domain": [
-            {
-              "name": "epo-not:CompletionNotice",
-              "uri": "http://data.europa.eu/a4g/ontology#CompletionNotice"
-            }
-          ],
-          "label": {
-            "en": "Refers to award decision"
-          },
-          "name": "epo:refersToAwardDecision",
-          "propertyOrigin": "internal",
-          "propertyType": "object property",
-          "range": [
-            {
-              "range_curie": "epo:AwardDecision",
-              "range_label": {
-                "en": "Award decision"
-              },
-              "range_puri": "http://data.europa.eu/a4g/ontology#AwardDecision",
-              "range_uri": "http://data.europa.eu/a4g/ontology#AwardDecision"
-            }
-          ],
-          "tags": {
-            "epo:status": "implemented",
-            "skos:historyNote": "WG approval 25/09/2025"
-          },
-          "uri": "http://data.europa.eu/a4g/ontology#refersToAwardDecision",
-          "usage": {}
-        },
-        {
-          "cardinality": "0..*",
-          "description": {
-            "en": "Reference to a Lot Group Award Information."
-          },
-          "domain": [
-            {
-              "name": "epo-not:CompletionNotice",
-              "uri": "http://data.europa.eu/a4g/ontology#CompletionNotice"
-            }
-          ],
-          "label": {
-            "en": "Refers to lot group award information"
-          },
-          "name": "epo:refersToLotGroupAwardInformation",
-          "propertyOrigin": "internal",
-          "propertyType": "object property",
-          "range": [
-            {
-              "range_curie": "epo:LotGroupAwardInformation",
-              "range_label": {
-                "en": "Lot group award information"
-              },
-              "range_puri": "http://data.europa.eu/a4g/ontology#LotGroupAwardInformation",
-              "range_uri": "http://data.europa.eu/a4g/ontology#LotGroupAwardInformation"
-            }
-          ],
-          "tags": {
-            "epo:status": "implemented",
-            "skos:historyNote": "WG approval 25/09/2025"
-          },
-          "uri": "http://data.europa.eu/a4g/ontology#refersToLotGroupAwardInformation",
-          "usage": {}
-        },
-        {
-          "cardinality": "0..1",
-          "description": {
-            "en": "Reference to a Notice Award Information."
-          },
-          "domain": [
-            {
-              "name": "epo-not:CompletionNotice",
-              "uri": "http://data.europa.eu/a4g/ontology#CompletionNotice"
-            }
-          ],
-          "label": {
-            "en": "Refers to notice award information"
-          },
-          "name": "epo:refersToNoticeAwardInformation",
-          "propertyOrigin": "internal",
-          "propertyType": "object property",
-          "range": [
-            {
-              "range_curie": "epo:NoticeAwardInformation",
-              "range_label": {
-                "en": "Notice award information"
-              },
-              "range_puri": "http://data.europa.eu/a4g/ontology#NoticeAwardInformation",
-              "range_uri": "http://data.europa.eu/a4g/ontology#NoticeAwardInformation"
-            }
-          ],
-          "tags": {
-            "epo:status": "implemented",
-            "skos:historyNote": "WG approval 25/09/2025"
-          },
-          "uri": "http://data.europa.eu/a4g/ontology#refersToNoticeAwardInformation",
-          "usage": {}
-        },
-        {
-          "cardinality": "0..*",
-          "description": {
-            "en": "Reference to a Review Decision."
-          },
-          "domain": [
-            {
-              "name": "epo-not:CompletionNotice",
-              "uri": "http://data.europa.eu/a4g/ontology#CompletionNotice"
-            }
-          ],
-          "label": {
-            "en": "Refers to review decision"
-          },
-          "name": "epo:refersToReviewDecision",
-          "propertyOrigin": "internal",
-          "propertyType": "object property",
-          "range": [
-            {
-              "range_curie": "epo:ReviewDecision",
-              "range_label": {
-                "en": "Review decision"
-              },
-              "range_puri": "http://data.europa.eu/a4g/ontology#ReviewDecision",
-              "range_uri": "http://data.europa.eu/a4g/ontology#ReviewDecision"
-            }
-          ],
-          "tags": {
-            "epo:status": "implemented"
-          },
-          "uri": "http://data.europa.eu/a4g/ontology#refersToReviewDecision",
-          "usage": {}
-        },
-        {
-          "cardinality": "0..*",
-          "description": {
-            "en": "Reference to a Review Request."
-          },
-          "domain": [
-            {
-              "name": "epo-not:CompletionNotice",
-              "uri": "http://data.europa.eu/a4g/ontology#CompletionNotice"
-            }
-          ],
-          "label": {
-            "en": "Refers to review request"
-          },
-          "name": "epo:refersToReviewRequest",
-          "propertyOrigin": "internal",
-          "propertyType": "object property",
-          "range": [
-            {
-              "range_curie": "epo:ReviewRequest",
-              "range_label": {
-                "en": "Review request"
-              },
-              "range_puri": "http://data.europa.eu/a4g/ontology#ReviewRequest",
-              "range_uri": "http://data.europa.eu/a4g/ontology#ReviewRequest"
-            }
-          ],
-          "tags": {
-            "epo:status": "implemented",
-            "skos:historyNote": "WG approval 25/09/2025"
-          },
-          "uri": "http://data.europa.eu/a4g/ontology#refersToReviewRequest",
-          "usage": {}
-        },
-        {
-          "cardinality": "0..*",
-          "description": {
-            "en": "Reference to a Role."
-          },
-          "domain": [
-            {
-              "name": "epo-not:CompletionNotice",
-              "uri": "http://data.europa.eu/a4g/ontology#CompletionNotice"
-            }
-          ],
-          "label": {
-            "en": "Refers to role"
-          },
-          "name": "epo:refersToRole",
-          "propertyOrigin": "internal",
-          "propertyType": "object property",
-          "range": [
-            {
-              "range_curie": "epo:AgentInRole",
-              "range_label": {
-                "en": "Agent in role"
-              },
-              "range_puri": "http://data.europa.eu/a4g/ontology#AgentInRole",
-              "range_uri": "http://data.europa.eu/a4g/ontology#AgentInRole"
-            }
-          ],
-          "tags": {
-            "epo:status": "implemented",
-            "skos:historyNote": "WG approval 25/09/2025"
-          },
-          "uri": "http://data.europa.eu/a4g/ontology#refersToRole",
-          "usage": {}
         }
       ],
       "rawTags": {
         "class-usage-scope": "main"
       },
-      "uri": "http://data.europa.eu/a4g/ontology#CompletionNotice"
-    },
-    {
-      "classType": "reference",
-      "label": {
-        "en": "Direct award prenotification notice"
-      },
-      "name": "epo-not:DirectAwardPrenotificationNotice",
-      "properties": [
-        {
-          "cardinality": "0..*",
-          "description": {
-            "en": "Relation indicating the formal communication of an Award Decision."
-          },
-          "domain": [
-            {
-              "name": "epo-not:DirectAwardPrenotificationNotice",
-              "uri": "http://data.europa.eu/a4g/ontology#DirectAwardPrenotificationNotice"
-            }
-          ],
-          "label": {
-            "en": "Announces award decision"
-          },
-          "name": "epo:announcesAwardDecision",
-          "propertyOrigin": "internal",
-          "propertyType": "object property",
-          "range": [
-            {
-              "range_curie": "epo:AwardDecision",
-              "range_label": {
-                "en": "Award decision"
-              },
-              "range_puri": "http://data.europa.eu/a4g/ontology#AwardDecision",
-              "range_uri": "http://data.europa.eu/a4g/ontology#AwardDecision"
-            }
-          ],
-          "tags": {
-            "epo:status": "implemented",
-            "skos:historyNote": "WG approval 25/09/2025"
-          },
-          "uri": "http://data.europa.eu/a4g/ontology#announcesAwardDecision",
-          "usage": {}
-        },
-        {
-          "cardinality": "0..*",
-          "description": {
-            "en": "Relation indicating the formal communication of a Contract."
-          },
-          "domain": [
-            {
-              "name": "epo-not:DirectAwardPrenotificationNotice",
-              "uri": "http://data.europa.eu/a4g/ontology#DirectAwardPrenotificationNotice"
-            }
-          ],
-          "label": {
-            "en": "Announces contract"
-          },
-          "name": "epo:announcesContract",
-          "propertyOrigin": "internal",
-          "propertyType": "object property",
-          "range": [
-            {
-              "range_curie": "epo:Contract",
-              "range_label": {
-                "en": "Contract"
-              },
-              "range_puri": "http://data.europa.eu/a4g/ontology#Contract",
-              "range_uri": "http://data.europa.eu/a4g/ontology#Contract"
-            }
-          ],
-          "tags": {
-            "epo:status": "implemented",
-            "skos:historyNote": "WG approval 25/09/2025"
-          },
-          "uri": "http://data.europa.eu/a4g/ontology#announcesContract",
-          "usage": {}
-        },
-        {
-          "cardinality": "1..*",
-          "description": {
-            "en": "Relation indicating the formal communication of a Lot."
-          },
-          "domain": [
-            {
-              "name": "epo-not:DirectAwardPrenotificationNotice",
-              "uri": "http://data.europa.eu/a4g/ontology#DirectAwardPrenotificationNotice"
-            }
-          ],
-          "label": {
-            "en": "Announces lot"
-          },
-          "name": "epo:announcesLot",
-          "propertyOrigin": "internal",
-          "propertyType": "object property",
-          "range": [
-            {
-              "range_curie": "epo:Lot",
-              "range_label": {
-                "en": "Lot"
-              },
-              "range_puri": "http://data.europa.eu/a4g/ontology#Lot",
-              "range_uri": "http://data.europa.eu/a4g/ontology#Lot"
-            }
-          ],
-          "tags": {
-            "epo:status": "implemented",
-            "skos:historyNote": "WG approval 25/09/2025"
-          },
-          "uri": "http://data.europa.eu/a4g/ontology#announcesLot",
-          "usage": {}
-        },
-        {
-          "cardinality": "0..*",
-          "description": {
-            "en": "Relation indicating the formal communication of a Lot Group."
-          },
-          "domain": [
-            {
-              "name": "epo-not:DirectAwardPrenotificationNotice",
-              "uri": "http://data.europa.eu/a4g/ontology#DirectAwardPrenotificationNotice"
-            }
-          ],
-          "label": {
-            "en": "Announces lot group"
-          },
-          "name": "epo:announcesLotGroup",
-          "propertyOrigin": "internal",
-          "propertyType": "object property",
-          "range": [
-            {
-              "range_curie": "epo:LotGroup",
-              "range_label": {
-                "en": "Lot group"
-              },
-              "range_puri": "http://data.europa.eu/a4g/ontology#LotGroup",
-              "range_uri": "http://data.europa.eu/a4g/ontology#LotGroup"
-            }
-          ],
-          "tags": {
-            "epo:status": "implemented",
-            "skos:historyNote": "WG approval 25/09/2025"
-          },
-          "uri": "http://data.europa.eu/a4g/ontology#announcesLotGroup",
-          "usage": {}
-        },
-        {
-          "cardinality": "0..*",
-          "description": {
-            "en": "Relation indicating the formal communication of a Lot Group Award Information."
-          },
-          "domain": [
-            {
-              "name": "epo-not:DirectAwardPrenotificationNotice",
-              "uri": "http://data.europa.eu/a4g/ontology#DirectAwardPrenotificationNotice"
-            }
-          ],
-          "label": {
-            "en": "Announces lot group award information"
-          },
-          "name": "epo:announcesLotGroupAwardInformation",
-          "propertyOrigin": "internal",
-          "propertyType": "object property",
-          "range": [
-            {
-              "range_curie": "epo:LotGroupAwardInformation",
-              "range_label": {
-                "en": "Lot group award information"
-              },
-              "range_puri": "http://data.europa.eu/a4g/ontology#LotGroupAwardInformation",
-              "range_uri": "http://data.europa.eu/a4g/ontology#LotGroupAwardInformation"
-            }
-          ],
-          "tags": {
-            "epo:status": "implemented",
-            "skos:historyNote": "WG approval 25/09/2025"
-          },
-          "uri": "http://data.europa.eu/a4g/ontology#announcesLotGroupAwardInformation",
-          "usage": {}
-        },
-        {
-          "cardinality": "0..1",
-          "description": {
-            "en": "Relation indicating the formal communication of a Notice Award Information."
-          },
-          "domain": [
-            {
-              "name": "epo-not:DirectAwardPrenotificationNotice",
-              "uri": "http://data.europa.eu/a4g/ontology#DirectAwardPrenotificationNotice"
-            }
-          ],
-          "label": {
-            "en": "Announces notice award information"
-          },
-          "name": "epo:announcesNoticeAwardInformation",
-          "propertyOrigin": "internal",
-          "propertyType": "object property",
-          "range": [
-            {
-              "range_curie": "epo:NoticeAwardInformation",
-              "range_label": {
-                "en": "Notice award information"
-              },
-              "range_puri": "http://data.europa.eu/a4g/ontology#NoticeAwardInformation",
-              "range_uri": "http://data.europa.eu/a4g/ontology#NoticeAwardInformation"
-            }
-          ],
-          "tags": {
-            "epo:status": "implemented",
-            "skos:historyNote": "WG approval 25/09/2025"
-          },
-          "uri": "http://data.europa.eu/a4g/ontology#announcesNoticeAwardInformation",
-          "usage": {}
-        },
-        {
-          "cardinality": "1",
-          "description": {
-            "en": "Relation indicating the formal communication of a Procedure."
-          },
-          "domain": [
-            {
-              "name": "epo-not:DirectAwardPrenotificationNotice",
-              "uri": "http://data.europa.eu/a4g/ontology#DirectAwardPrenotificationNotice"
-            }
-          ],
-          "label": {
-            "en": "Announces procedure"
-          },
-          "name": "epo:announcesProcedure",
-          "propertyOrigin": "internal",
-          "propertyType": "object property",
-          "range": [
-            {
-              "range_curie": "epo:Procedure",
-              "range_label": {
-                "en": "Procedure"
-              },
-              "range_puri": "http://data.europa.eu/a4g/ontology#Procedure",
-              "range_uri": "http://data.europa.eu/a4g/ontology#Procedure"
-            }
-          ],
-          "tags": {
-            "epo:status": "implemented",
-            "skos:historyNote": "WG approval 25/09/2025"
-          },
-          "uri": "http://data.europa.eu/a4g/ontology#announcesProcedure",
-          "usage": {}
-        },
-        {
-          "cardinality": "1..*",
-          "description": {
-            "en": "Relation indicating the formal communication of a Role."
-          },
-          "domain": [
-            {
-              "name": "epo-not:DirectAwardPrenotificationNotice",
-              "uri": "http://data.europa.eu/a4g/ontology#DirectAwardPrenotificationNotice"
-            }
-          ],
-          "label": {
-            "en": "Announces role"
-          },
-          "name": "epo:announcesRole",
-          "propertyOrigin": "internal",
-          "propertyType": "object property",
-          "range": [
-            {
-              "range_curie": "epo:AgentInRole",
-              "range_label": {
-                "en": "Agent in role"
-              },
-              "range_puri": "http://data.europa.eu/a4g/ontology#AgentInRole",
-              "range_uri": "http://data.europa.eu/a4g/ontology#AgentInRole"
-            }
-          ],
-          "tags": {
-            "epo:status": "implemented",
-            "skos:historyNote": "WG approval 25/09/2025"
-          },
-          "uri": "http://data.europa.eu/a4g/ontology#announcesRole",
-          "usage": {}
-        }
-      ],
-      "rawTags": {
-        "class-usage-scope": "main"
-      },
-      "uri": "http://data.europa.eu/a4g/ontology#DirectAwardPrenotificationNotice"
-    },
-    {
-      "classType": "reference",
-      "label": {
-        "en": "Evaluation board"
-      },
-      "name": "epo-eva:EvaluationBoard",
-      "properties": [
-        {
-          "cardinality": "0..*",
-          "description": {
-            "en": "An agent involved in an evaluation board."
-          },
-          "domain": [
-            {
-              "name": "epo-eva:EvaluationBoard",
-              "uri": "http://data.europa.eu/a4g/ontology#EvaluationBoard"
-            }
-          ],
-          "label": {
-            "en": "Has jury member"
-          },
-          "name": "epo-eva:hasJuryMember",
-          "propertyOrigin": "internal",
-          "propertyType": "object property",
-          "range": [
-            {
-              "range_curie": "epo:JuryMember",
-              "range_label": {
-                "en": "Jury member"
-              },
-              "range_puri": "http://data.europa.eu/a4g/ontology#JuryMember",
-              "range_uri": "http://data.europa.eu/a4g/ontology#JuryMember"
-            }
-          ],
-          "tags": {
-            "epo:status": "implemented",
-            "skos:historyNote": "WG Approval 14/09/2021"
-          },
-          "uri": "http://data.europa.eu/a4g/ontology#hasJuryMember",
-          "usage": {}
-        },
-        {
-          "cardinality": "1",
-          "description": {
-            "en": "Relation indicating that by whom the instance of the concept is formally assigned."
-          },
-          "domain": [
-            {
-              "name": "epo-eva:EvaluationBoard",
-              "uri": "http://data.europa.eu/a4g/ontology#EvaluationBoard"
-            }
-          ],
-          "label": {
-            "en": "Is appointed by"
-          },
-          "name": "epo-eva:isAppointedBy",
-          "propertyOrigin": "internal",
-          "propertyType": "object property",
-          "range": [
-            {
-              "range_curie": "epo:UniqueResponsibleOfTheProcurement",
-              "range_label": {
-                "en": "Unique responsible of the procurement"
-              },
-              "range_puri": "http://data.europa.eu/a4g/ontology#UniqueResponsibleOfTheProcurement",
-              "range_uri": "http://data.europa.eu/a4g/ontology#UniqueResponsibleOfTheProcurement"
-            }
-          ],
-          "tags": {
-            "epo:status": "implemented",
-            "skos:historyNote": "WG approval 25/09/2025"
-          },
-          "uri": "http://data.europa.eu/a4g/ontology#isAppointedBy",
-          "usage": {}
-        },
-        {
-          "cardinality": "0..*",
-          "description": {
-            "en": "Relation indicating that the instance of the concept is selected for Evaluation."
-          },
-          "domain": [
-            {
-              "name": "epo-eva:EvaluationBoard",
-              "uri": "http://data.europa.eu/a4g/ontology#EvaluationBoard"
-            }
-          ],
-          "label": {
-            "en": "Is assigned for evaluation of"
-          },
-          "name": "epo:isAssignedForEvaluationOf",
-          "propertyOrigin": "internal",
-          "propertyType": "object property",
-          "range": [
-            {
-              "range_curie": "epo:Lot",
-              "range_label": {
-                "en": "Lot"
-              },
-              "range_puri": "http://data.europa.eu/a4g/ontology#Lot",
-              "range_uri": "http://data.europa.eu/a4g/ontology#Lot"
-            }
-          ],
-          "tags": {
-            "epo:status": "implemented",
-            "skos:historyNote": "WG approval 25/09/2025"
-          },
-          "uri": "http://data.europa.eu/a4g/ontology#isAssignedForEvaluationOf",
-          "usage": {}
-        }
-      ],
-      "rawTags": {
-        "class-usage-scope": "main"
-      },
-      "uri": "http://data.europa.eu/a4g/ontology#EvaluationBoard"
-    },
-    {
-      "classType": "reference",
-      "label": {
-        "en": "Contract modification notice"
-      },
-      "name": "epo-not:ContractModificationNotice",
-      "properties": [
-        {
-          "cardinality": "1..*",
-          "description": {
-            "en": "Relates to Lot."
-          },
-          "domain": [
-            {
-              "name": "epo-not:ContractModificationNotice",
-              "uri": "http://data.europa.eu/a4g/ontology#ContractModificationNotice"
-            }
-          ],
-          "label": {
-            "en": "Concerns lot"
-          },
-          "name": "epo:concernsLot",
-          "propertyOrigin": "internal",
-          "propertyType": "object property",
-          "range": [
-            {
-              "range_curie": "epo:Lot",
-              "range_label": {
-                "en": "Lot"
-              },
-              "range_puri": "http://data.europa.eu/a4g/ontology#Lot",
-              "range_uri": "http://data.europa.eu/a4g/ontology#Lot"
-            }
-          ],
-          "tags": {
-            "epo:status": "implemented"
-          },
-          "uri": "http://data.europa.eu/a4g/ontology#concernsLot",
-          "usage": {}
-        },
-        {
-          "cardinality": "0..*",
-          "description": {
-            "en": "Relates to Lot Group."
-          },
-          "domain": [
-            {
-              "name": "epo-not:ContractModificationNotice",
-              "uri": "http://data.europa.eu/a4g/ontology#ContractModificationNotice"
-            }
-          ],
-          "label": {
-            "en": "Concerns lot group"
-          },
-          "name": "epo:concernsLotGroup",
-          "propertyOrigin": "internal",
-          "propertyType": "object property",
-          "range": [
-            {
-              "range_curie": "epo:LotGroup",
-              "range_label": {
-                "en": "Lot group"
-              },
-              "range_puri": "http://data.europa.eu/a4g/ontology#LotGroup",
-              "range_uri": "http://data.europa.eu/a4g/ontology#LotGroup"
-            }
-          ],
-          "tags": {
-            "epo:status": "implemented",
-            "skos:historyNote": "WG approval 25/09/2025"
-          },
-          "uri": "http://data.europa.eu/a4g/ontology#concernsLotGroup",
-          "usage": {}
-        },
-        {
-          "cardinality": "1",
-          "description": {
-            "en": "Relates to Procedure."
-          },
-          "domain": [
-            {
-              "name": "epo-not:ContractModificationNotice",
-              "uri": "http://data.europa.eu/a4g/ontology#ContractModificationNotice"
-            }
-          ],
-          "label": {
-            "en": "Concerns procedure"
-          },
-          "name": "epo:concernsProcedure",
-          "propertyOrigin": "internal",
-          "propertyType": "object property",
-          "range": [
-            {
-              "range_curie": "epo:Procedure",
-              "range_label": {
-                "en": "Procedure"
-              },
-              "range_puri": "http://data.europa.eu/a4g/ontology#Procedure",
-              "range_uri": "http://data.europa.eu/a4g/ontology#Procedure"
-            }
-          ],
-          "tags": {
-            "epo:status": "implemented"
-          },
-          "uri": "http://data.europa.eu/a4g/ontology#concernsProcedure",
-          "usage": {}
-        },
-        {
-          "cardinality": "0..*",
-          "description": {
-            "en": "Reference to an Award Decision."
-          },
-          "domain": [
-            {
-              "name": "epo-not:ContractModificationNotice",
-              "uri": "http://data.europa.eu/a4g/ontology#ContractModificationNotice"
-            }
-          ],
-          "label": {
-            "en": "Refers to award decision"
-          },
-          "name": "epo:refersToAwardDecision",
-          "propertyOrigin": "internal",
-          "propertyType": "object property",
-          "range": [
-            {
-              "range_curie": "epo:AwardDecision",
-              "range_label": {
-                "en": "Award decision"
-              },
-              "range_puri": "http://data.europa.eu/a4g/ontology#AwardDecision",
-              "range_uri": "http://data.europa.eu/a4g/ontology#AwardDecision"
-            }
-          ],
-          "tags": {
-            "epo:status": "implemented",
-            "skos:historyNote": "WG approval 25/09/2025"
-          },
-          "uri": "http://data.europa.eu/a4g/ontology#refersToAwardDecision",
-          "usage": {}
-        },
-        {
-          "cardinality": "1",
-          "description": {
-            "en": "Reference to a Contract which is altered."
-          },
-          "domain": [
-            {
-              "name": "epo-not:ContractModificationNotice",
-              "uri": "http://data.europa.eu/a4g/ontology#ContractModificationNotice"
-            }
-          ],
-          "label": {
-            "en": "Refers to contract to be modified"
-          },
-          "name": "epo:refersToContractToBeModified",
-          "propertyOrigin": "internal",
-          "propertyType": "object property",
-          "range": [
-            {
-              "range_curie": "epo:Contract",
-              "range_label": {
-                "en": "Contract"
-              },
-              "range_puri": "http://data.europa.eu/a4g/ontology#Contract",
-              "range_uri": "http://data.europa.eu/a4g/ontology#Contract"
-            }
-          ],
-          "tags": {
-            "epo:status": "implemented",
-            "skos:historyNote": "WG approval 25/09/2025"
-          },
-          "uri": "http://data.europa.eu/a4g/ontology#refersToContractToBeModified",
-          "usage": {}
-        },
-        {
-          "cardinality": "0..*",
-          "description": {
-            "en": "Reference to a Lot Group Award Information."
-          },
-          "domain": [
-            {
-              "name": "epo-not:ContractModificationNotice",
-              "uri": "http://data.europa.eu/a4g/ontology#ContractModificationNotice"
-            }
-          ],
-          "label": {
-            "en": "Refers to lot group award information"
-          },
-          "name": "epo:refersToLotGroupAwardInformation",
-          "propertyOrigin": "internal",
-          "propertyType": "object property",
-          "range": [
-            {
-              "range_curie": "epo:LotGroupAwardInformation",
-              "range_label": {
-                "en": "Lot group award information"
-              },
-              "range_puri": "http://data.europa.eu/a4g/ontology#LotGroupAwardInformation",
-              "range_uri": "http://data.europa.eu/a4g/ontology#LotGroupAwardInformation"
-            }
-          ],
-          "tags": {
-            "epo:status": "implemented",
-            "skos:historyNote": "WG approval 25/09/2025"
-          },
-          "uri": "http://data.europa.eu/a4g/ontology#refersToLotGroupAwardInformation",
-          "usage": {}
-        },
-        {
-          "cardinality": "0..1",
-          "description": {
-            "en": "Reference to a Notice Award Information."
-          },
-          "domain": [
-            {
-              "name": "epo-not:ContractModificationNotice",
-              "uri": "http://data.europa.eu/a4g/ontology#ContractModificationNotice"
-            }
-          ],
-          "label": {
-            "en": "Refers to notice award information"
-          },
-          "name": "epo:refersToNoticeAwardInformation",
-          "propertyOrigin": "internal",
-          "propertyType": "object property",
-          "range": [
-            {
-              "range_curie": "epo:NoticeAwardInformation",
-              "range_label": {
-                "en": "Notice award information"
-              },
-              "range_puri": "http://data.europa.eu/a4g/ontology#NoticeAwardInformation",
-              "range_uri": "http://data.europa.eu/a4g/ontology#NoticeAwardInformation"
-            }
-          ],
-          "tags": {
-            "epo:status": "implemented",
-            "skos:historyNote": "WG approval 25/09/2025"
-          },
-          "uri": "http://data.europa.eu/a4g/ontology#refersToNoticeAwardInformation",
-          "usage": {}
-        },
-        {
-          "cardinality": "0..*",
-          "description": {
-            "en": "Reference to a Role."
-          },
-          "domain": [
-            {
-              "name": "epo-not:ContractModificationNotice",
-              "uri": "http://data.europa.eu/a4g/ontology#ContractModificationNotice"
-            }
-          ],
-          "label": {
-            "en": "Refers to role"
-          },
-          "name": "epo:refersToRole",
-          "propertyOrigin": "internal",
-          "propertyType": "object property",
-          "range": [
-            {
-              "range_curie": "epo:AgentInRole",
-              "range_label": {
-                "en": "Agent in role"
-              },
-              "range_puri": "http://data.europa.eu/a4g/ontology#AgentInRole",
-              "range_uri": "http://data.europa.eu/a4g/ontology#AgentInRole"
-            }
-          ],
-          "tags": {
-            "epo:status": "implemented",
-            "skos:historyNote": "WG approval 25/09/2025"
-          },
-          "uri": "http://data.europa.eu/a4g/ontology#refersToRole",
-          "usage": {}
-        }
-      ],
-      "rawTags": {
-        "class-usage-scope": "main"
-      },
-      "uri": "http://data.europa.eu/a4g/ontology#ContractModificationNotice"
-    },
-    {
-      "classType": "reference",
-      "label": {
-        "en": "Competition notice"
-      },
-      "name": "epo-not:CompetitionNotice",
-      "properties": [
-        {
-          "cardinality": "1..*",
-          "description": {
-            "en": "Relation indicating the formal communication of a Lot."
-          },
-          "domain": [
-            {
-              "name": "epo-not:CompetitionNotice",
-              "uri": "http://data.europa.eu/a4g/ontology#CompetitionNotice"
-            }
-          ],
-          "label": {
-            "en": "Announces lot"
-          },
-          "name": "epo:announcesLot",
-          "propertyOrigin": "internal",
-          "propertyType": "object property",
-          "range": [
-            {
-              "range_curie": "epo:Lot",
-              "range_label": {
-                "en": "Lot"
-              },
-              "range_puri": "http://data.europa.eu/a4g/ontology#Lot",
-              "range_uri": "http://data.europa.eu/a4g/ontology#Lot"
-            }
-          ],
-          "tags": {
-            "epo:status": "implemented",
-            "skos:historyNote": "WG approval 25/09/2025"
-          },
-          "uri": "http://data.europa.eu/a4g/ontology#announcesLot",
-          "usage": {}
-        },
-        {
-          "cardinality": "0..*",
-          "description": {
-            "en": "Relation indicating the formal communication of a Lot Group."
-          },
-          "domain": [
-            {
-              "name": "epo-not:CompetitionNotice",
-              "uri": "http://data.europa.eu/a4g/ontology#CompetitionNotice"
-            }
-          ],
-          "label": {
-            "en": "Announces lot group"
-          },
-          "name": "epo:announcesLotGroup",
-          "propertyOrigin": "internal",
-          "propertyType": "object property",
-          "range": [
-            {
-              "range_curie": "epo:LotGroup",
-              "range_label": {
-                "en": "Lot group"
-              },
-              "range_puri": "http://data.europa.eu/a4g/ontology#LotGroup",
-              "range_uri": "http://data.europa.eu/a4g/ontology#LotGroup"
-            }
-          ],
-          "tags": {
-            "epo:status": "implemented",
-            "skos:historyNote": "WG approval 25/09/2025"
-          },
-          "uri": "http://data.europa.eu/a4g/ontology#announcesLotGroup",
-          "usage": {}
-        },
-        {
-          "cardinality": "1",
-          "description": {
-            "en": "Relation indicating the formal communication of a Procedure."
-          },
-          "domain": [
-            {
-              "name": "epo-not:CompetitionNotice",
-              "uri": "http://data.europa.eu/a4g/ontology#CompetitionNotice"
-            }
-          ],
-          "label": {
-            "en": "Announces procedure"
-          },
-          "name": "epo:announcesProcedure",
-          "propertyOrigin": "internal",
-          "propertyType": "object property",
-          "range": [
-            {
-              "range_curie": "epo:Procedure",
-              "range_label": {
-                "en": "Procedure"
-              },
-              "range_puri": "http://data.europa.eu/a4g/ontology#Procedure",
-              "range_uri": "http://data.europa.eu/a4g/ontology#Procedure"
-            }
-          ],
-          "tags": {
-            "epo:status": "implemented",
-            "skos:historyNote": "WG approval 25/09/2025"
-          },
-          "uri": "http://data.europa.eu/a4g/ontology#announcesProcedure",
-          "usage": {}
-        },
-        {
-          "cardinality": "1..*",
-          "description": {
-            "en": "Relation indicating the formal communication of a Role."
-          },
-          "domain": [
-            {
-              "name": "epo-not:CompetitionNotice",
-              "uri": "http://data.europa.eu/a4g/ontology#CompetitionNotice"
-            }
-          ],
-          "label": {
-            "en": "Announces role"
-          },
-          "name": "epo:announcesRole",
-          "propertyOrigin": "internal",
-          "propertyType": "object property",
-          "range": [
-            {
-              "range_curie": "epo:AgentInRole",
-              "range_label": {
-                "en": "Agent in role"
-              },
-              "range_puri": "http://data.europa.eu/a4g/ontology#AgentInRole",
-              "range_uri": "http://data.europa.eu/a4g/ontology#AgentInRole"
-            }
-          ],
-          "tags": {
-            "epo:status": "implemented",
-            "skos:historyNote": "WG approval 25/09/2025"
-          },
-          "uri": "http://data.europa.eu/a4g/ontology#announcesRole",
-          "usage": {}
-        }
-      ],
-      "rawTags": {
-        "class-usage-scope": "main"
-      },
-      "uri": "http://data.europa.eu/a4g/ontology#CompetitionNotice"
+      "uri": "http://data.europa.eu/a4g/ontology#InformationRequest"
     },
     {
       "classType": "reference",
@@ -29696,9 +29213,9 @@
     {
       "classType": "reference",
       "label": {
-        "en": "Evidence request"
+        "en": "Contract modification notice"
       },
-      "name": "epo-qua:EvidenceRequest",
+      "name": "epo-not:ContractModificationNotice",
       "properties": [
         {
           "cardinality": "1..*",
@@ -29707,268 +29224,8 @@
           },
           "domain": [
             {
-              "name": "epo-qua:EvidenceRequest",
-              "uri": "http://data.europa.eu/a4g/ontology#EvidenceRequest"
-            }
-          ],
-          "label": {
-            "en": "Concerns lot"
-          },
-          "name": "epo:concernsLot",
-          "propertyOrigin": "internal",
-          "propertyType": "object property",
-          "range": [
-            {
-              "range_curie": "epo:Lot",
-              "range_label": {
-                "en": "Lot"
-              },
-              "range_puri": "http://data.europa.eu/a4g/ontology#Lot",
-              "range_uri": "http://data.europa.eu/a4g/ontology#Lot"
-            }
-          ],
-          "tags": {
-            "epo:status": "implemented"
-          },
-          "uri": "http://data.europa.eu/a4g/ontology#concernsLot",
-          "usage": {}
-        },
-        {
-          "cardinality": "1",
-          "description": {
-            "en": "Relates to Procedure."
-          },
-          "domain": [
-            {
-              "name": "epo-qua:EvidenceRequest",
-              "uri": "http://data.europa.eu/a4g/ontology#EvidenceRequest"
-            }
-          ],
-          "label": {
-            "en": "Concerns procedure"
-          },
-          "name": "epo:concernsProcedure",
-          "propertyOrigin": "internal",
-          "propertyType": "object property",
-          "range": [
-            {
-              "range_curie": "epo:Procedure",
-              "range_label": {
-                "en": "Procedure"
-              },
-              "range_puri": "http://data.europa.eu/a4g/ontology#Procedure",
-              "range_uri": "http://data.europa.eu/a4g/ontology#Procedure"
-            }
-          ],
-          "tags": {
-            "epo:status": "implemented"
-          },
-          "uri": "http://data.europa.eu/a4g/ontology#concernsProcedure",
-          "usage": {}
-        },
-        {
-          "cardinality": "1",
-          "description": {
-            "en": "Relation indicating that the instance of the concept involves the Economic Operator."
-          },
-          "domain": [
-            {
-              "name": "epo-qua:EvidenceRequest",
-              "uri": "http://data.europa.eu/a4g/ontology#EvidenceRequest"
-            }
-          ],
-          "label": {
-            "en": "Specifies economic operator"
-          },
-          "name": "epo:specifiesEconomicOperator",
-          "propertyOrigin": "internal",
-          "propertyType": "object property",
-          "range": [
-            {
-              "range_curie": "epo:OfferingParty",
-              "range_label": {
-                "en": "Offering party"
-              },
-              "range_puri": "http://data.europa.eu/a4g/ontology#OfferingParty",
-              "range_uri": "http://data.europa.eu/a4g/ontology#OfferingParty"
-            }
-          ],
-          "tags": {
-            "epo:status": "implemented",
-            "skos:historyNote": "WG approval 25/09/2025"
-          },
-          "uri": "http://data.europa.eu/a4g/ontology#specifiesEconomicOperator",
-          "usage": {}
-        }
-      ],
-      "rawTags": {
-        "class-usage-scope": "main"
-      },
-      "uri": "http://data.europa.eu/a4g/ontology#EvidenceRequest"
-    },
-    {
-      "classType": "reference",
-      "label": {
-        "en": "Evidence submission"
-      },
-      "name": "epo-qua:EvidenceSubmission",
-      "properties": [
-        {
-          "cardinality": "1..*",
-          "description": {
-            "en": "Relates to Lot."
-          },
-          "domain": [
-            {
-              "name": "epo-qua:EvidenceSubmission",
-              "uri": "http://data.europa.eu/a4g/ontology#EvidenceSubmission"
-            }
-          ],
-          "label": {
-            "en": "Concerns lot"
-          },
-          "name": "epo:concernsLot",
-          "propertyOrigin": "internal",
-          "propertyType": "object property",
-          "range": [
-            {
-              "range_curie": "epo:Lot",
-              "range_label": {
-                "en": "Lot"
-              },
-              "range_puri": "http://data.europa.eu/a4g/ontology#Lot",
-              "range_uri": "http://data.europa.eu/a4g/ontology#Lot"
-            }
-          ],
-          "tags": {
-            "epo:status": "implemented"
-          },
-          "uri": "http://data.europa.eu/a4g/ontology#concernsLot",
-          "usage": {}
-        },
-        {
-          "cardinality": "1",
-          "description": {
-            "en": "Relates to Procedure."
-          },
-          "domain": [
-            {
-              "name": "epo-qua:EvidenceSubmission",
-              "uri": "http://data.europa.eu/a4g/ontology#EvidenceSubmission"
-            }
-          ],
-          "label": {
-            "en": "Concerns procedure"
-          },
-          "name": "epo:concernsProcedure",
-          "propertyOrigin": "internal",
-          "propertyType": "object property",
-          "range": [
-            {
-              "range_curie": "epo:Procedure",
-              "range_label": {
-                "en": "Procedure"
-              },
-              "range_puri": "http://data.europa.eu/a4g/ontology#Procedure",
-              "range_uri": "http://data.europa.eu/a4g/ontology#Procedure"
-            }
-          ],
-          "tags": {
-            "epo:status": "implemented"
-          },
-          "uri": "http://data.europa.eu/a4g/ontology#concernsProcedure",
-          "usage": {}
-        },
-        {
-          "cardinality": "0..*",
-          "description": {
-            "en": "Makes available the Evidence."
-          },
-          "domain": [
-            {
-              "name": "epo-qua:EvidenceSubmission",
-              "uri": "http://data.europa.eu/a4g/ontology#EvidenceSubmission"
-            }
-          ],
-          "label": {
-            "en": "Provides evidence"
-          },
-          "name": "epo:providesEvidence",
-          "propertyOrigin": "internal",
-          "propertyType": "object property",
-          "range": [
-            {
-              "range_curie": "cccev:Evidence",
-              "range_label": {
-                "en": "Evidence"
-              },
-              "range_puri": "http://data.europa.eu/m8g/Evidence",
-              "range_uri": "http://data.europa.eu/m8g/Evidence"
-            }
-          ],
-          "tags": {
-            "epo:status": "implemented",
-            "skos:historyNote": "WG approval 25/09/2025"
-          },
-          "uri": "http://data.europa.eu/a4g/ontology#providesEvidence",
-          "usage": {}
-        },
-        {
-          "cardinality": "1",
-          "description": {
-            "en": "Relation indicating that the instance of the concept involves the Economic Operator."
-          },
-          "domain": [
-            {
-              "name": "epo-qua:EvidenceSubmission",
-              "uri": "http://data.europa.eu/a4g/ontology#EvidenceSubmission"
-            }
-          ],
-          "label": {
-            "en": "Specifies economic operator"
-          },
-          "name": "epo:specifiesEconomicOperator",
-          "propertyOrigin": "internal",
-          "propertyType": "object property",
-          "range": [
-            {
-              "range_curie": "epo:OfferingParty",
-              "range_label": {
-                "en": "Offering party"
-              },
-              "range_puri": "http://data.europa.eu/a4g/ontology#OfferingParty",
-              "range_uri": "http://data.europa.eu/a4g/ontology#OfferingParty"
-            }
-          ],
-          "tags": {
-            "epo:status": "implemented",
-            "skos:historyNote": "WG approval 25/09/2025"
-          },
-          "uri": "http://data.europa.eu/a4g/ontology#specifiesEconomicOperator",
-          "usage": {}
-        }
-      ],
-      "rawTags": {
-        "class-usage-scope": "main"
-      },
-      "uri": "http://data.europa.eu/a4g/ontology#EvidenceSubmission"
-    },
-    {
-      "classType": "reference",
-      "label": {
-        "en": "Information request"
-      },
-      "name": "epo-acc:InformationRequest",
-      "properties": [
-        {
-          "cardinality": "0..*",
-          "description": {
-            "en": "Relates to Lot."
-          },
-          "domain": [
-            {
-              "name": "epo-acc:InformationRequest",
-              "uri": "http://data.europa.eu/a4g/ontology#InformationRequest"
+              "name": "epo-not:ContractModificationNotice",
+              "uri": "http://data.europa.eu/a4g/ontology#ContractModificationNotice"
             }
           ],
           "label": {
@@ -30000,8 +29257,8 @@
           },
           "domain": [
             {
-              "name": "epo-acc:InformationRequest",
-              "uri": "http://data.europa.eu/a4g/ontology#InformationRequest"
+              "name": "epo-not:ContractModificationNotice",
+              "uri": "http://data.europa.eu/a4g/ontology#ContractModificationNotice"
             }
           ],
           "label": {
@@ -30028,60 +29285,14 @@
           "usage": {}
         },
         {
-          "cardinality": "0..*",
-          "description": {
-            "en": "Relates to Procedure."
-          },
-          "domain": [
-            {
-              "name": "epo-acc:InformationRequest",
-              "uri": "http://data.europa.eu/a4g/ontology#InformationRequest"
-            }
-          ],
-          "label": {
-            "en": "Concerns procedure"
-          },
-          "name": "epo:concernsProcedure",
-          "propertyOrigin": "internal",
-          "propertyType": "object property",
-          "range": [
-            {
-              "range_curie": "epo:Procedure",
-              "range_label": {
-                "en": "Procedure"
-              },
-              "range_puri": "http://data.europa.eu/a4g/ontology#Procedure",
-              "range_uri": "http://data.europa.eu/a4g/ontology#Procedure"
-            }
-          ],
-          "tags": {
-            "epo:status": "implemented"
-          },
-          "uri": "http://data.europa.eu/a4g/ontology#concernsProcedure",
-          "usage": {}
-        }
-      ],
-      "rawTags": {
-        "class-usage-scope": "main"
-      },
-      "uri": "http://data.europa.eu/a4g/ontology#InformationRequest"
-    },
-    {
-      "classType": "reference",
-      "label": {
-        "en": "Procurement documents provision"
-      },
-      "name": "epo-acc:ProcurementDocumentsProvision",
-      "properties": [
-        {
           "cardinality": "1",
           "description": {
             "en": "Relates to Procedure."
           },
           "domain": [
             {
-              "name": "epo-acc:ProcurementDocumentsProvision",
-              "uri": "http://data.europa.eu/a4g/ontology#ProcurementDocumentsProvision"
+              "name": "epo-not:ContractModificationNotice",
+              "uri": "http://data.europa.eu/a4g/ontology#ContractModificationNotice"
             }
           ],
           "label": {
@@ -30109,302 +29320,463 @@
         {
           "cardinality": "0..*",
           "description": {
-            "en": "Includes the supplied Procurement Document."
+            "en": "Reference to an Award Decision."
           },
           "domain": [
             {
-              "name": "epo-acc:ProcurementDocumentsProvision",
-              "uri": "http://data.europa.eu/a4g/ontology#ProcurementDocumentsProvision"
+              "name": "epo-not:ContractModificationNotice",
+              "uri": "http://data.europa.eu/a4g/ontology#ContractModificationNotice"
             }
           ],
           "label": {
-            "en": "Contains provided procurement document"
+            "en": "Refers to award decision"
           },
-          "name": "epo-acc:containsProvidedProcurementDocument",
+          "name": "epo:refersToAwardDecision",
           "propertyOrigin": "internal",
           "propertyType": "object property",
           "range": [
             {
-              "range_curie": "epo:ProcurementDocument",
+              "range_curie": "epo:AwardDecision",
               "range_label": {
-                "en": "Procurement document"
+                "en": "Award decision"
               },
-              "range_puri": "http://data.europa.eu/a4g/ontology#ProcurementDocument",
-              "range_uri": "http://data.europa.eu/a4g/ontology#ProcurementDocument"
-            }
-          ],
-          "tags": {
-            "epo:status": "implemented"
-          },
-          "uri": "http://data.europa.eu/a4g/ontology#containsProvidedProcurementDocument",
-          "usage": {}
-        },
-        {
-          "cardinality": "1",
-          "description": {
-            "en": "Relation indicating that the instance of the concept involves the Economic Operator."
-          },
-          "domain": [
-            {
-              "name": "epo-acc:ProcurementDocumentsProvision",
-              "uri": "http://data.europa.eu/a4g/ontology#ProcurementDocumentsProvision"
-            }
-          ],
-          "label": {
-            "en": "Specifies economic operator"
-          },
-          "name": "epo:specifiesEconomicOperator",
-          "propertyOrigin": "internal",
-          "propertyType": "object property",
-          "range": [
-            {
-              "range_curie": "epo:OfferingParty",
-              "range_label": {
-                "en": "Offering party"
-              },
-              "range_puri": "http://data.europa.eu/a4g/ontology#OfferingParty",
-              "range_uri": "http://data.europa.eu/a4g/ontology#OfferingParty"
+              "range_puri": "http://data.europa.eu/a4g/ontology#AwardDecision",
+              "range_uri": "http://data.europa.eu/a4g/ontology#AwardDecision"
             }
           ],
           "tags": {
             "epo:status": "implemented",
             "skos:historyNote": "WG approval 25/09/2025"
           },
-          "uri": "http://data.europa.eu/a4g/ontology#specifiesEconomicOperator",
+          "uri": "http://data.europa.eu/a4g/ontology#refersToAwardDecision",
+          "usage": {}
+        },
+        {
+          "cardinality": "1",
+          "description": {
+            "en": "Reference to a Contract which is altered."
+          },
+          "domain": [
+            {
+              "name": "epo-not:ContractModificationNotice",
+              "uri": "http://data.europa.eu/a4g/ontology#ContractModificationNotice"
+            }
+          ],
+          "label": {
+            "en": "Refers to contract to be modified"
+          },
+          "name": "epo:refersToContractToBeModified",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:Contract",
+              "range_label": {
+                "en": "Contract"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#Contract",
+              "range_uri": "http://data.europa.eu/a4g/ontology#Contract"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#refersToContractToBeModified",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..*",
+          "description": {
+            "en": "Reference to a Lot Group Award Information."
+          },
+          "domain": [
+            {
+              "name": "epo-not:ContractModificationNotice",
+              "uri": "http://data.europa.eu/a4g/ontology#ContractModificationNotice"
+            }
+          ],
+          "label": {
+            "en": "Refers to lot group award information"
+          },
+          "name": "epo:refersToLotGroupAwardInformation",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:LotGroupAwardInformation",
+              "range_label": {
+                "en": "Lot group award information"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#LotGroupAwardInformation",
+              "range_uri": "http://data.europa.eu/a4g/ontology#LotGroupAwardInformation"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#refersToLotGroupAwardInformation",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "Reference to a Notice Award Information."
+          },
+          "domain": [
+            {
+              "name": "epo-not:ContractModificationNotice",
+              "uri": "http://data.europa.eu/a4g/ontology#ContractModificationNotice"
+            }
+          ],
+          "label": {
+            "en": "Refers to notice award information"
+          },
+          "name": "epo:refersToNoticeAwardInformation",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:NoticeAwardInformation",
+              "range_label": {
+                "en": "Notice award information"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#NoticeAwardInformation",
+              "range_uri": "http://data.europa.eu/a4g/ontology#NoticeAwardInformation"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#refersToNoticeAwardInformation",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..*",
+          "description": {
+            "en": "Reference to a Role."
+          },
+          "domain": [
+            {
+              "name": "epo-not:ContractModificationNotice",
+              "uri": "http://data.europa.eu/a4g/ontology#ContractModificationNotice"
+            }
+          ],
+          "label": {
+            "en": "Refers to role"
+          },
+          "name": "epo:refersToRole",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:AgentInRole",
+              "range_label": {
+                "en": "Agent in role"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#AgentInRole",
+              "range_uri": "http://data.europa.eu/a4g/ontology#AgentInRole"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#refersToRole",
           "usage": {}
         }
       ],
       "rawTags": {
         "class-usage-scope": "main"
       },
-      "uri": "http://data.europa.eu/a4g/ontology#ProcurementDocumentsProvision"
+      "uri": "http://data.europa.eu/a4g/ontology#ContractModificationNotice"
     },
     {
       "classType": "reference",
       "label": {
-        "en": "Award decision notification"
+        "en": "Direct award prenotification notice"
       },
-      "name": "epo-awa:AwardDecisionNotification",
+      "name": "epo-not:DirectAwardPrenotificationNotice",
       "properties": [
+        {
+          "cardinality": "0..*",
+          "description": {
+            "en": "Relation indicating the formal communication of an Award Decision."
+          },
+          "domain": [
+            {
+              "name": "epo-not:DirectAwardPrenotificationNotice",
+              "uri": "http://data.europa.eu/a4g/ontology#DirectAwardPrenotificationNotice"
+            }
+          ],
+          "label": {
+            "en": "Announces award decision"
+          },
+          "name": "epo:announcesAwardDecision",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:AwardDecision",
+              "range_label": {
+                "en": "Award decision"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#AwardDecision",
+              "range_uri": "http://data.europa.eu/a4g/ontology#AwardDecision"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#announcesAwardDecision",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..*",
+          "description": {
+            "en": "Relation indicating the formal communication of a Contract."
+          },
+          "domain": [
+            {
+              "name": "epo-not:DirectAwardPrenotificationNotice",
+              "uri": "http://data.europa.eu/a4g/ontology#DirectAwardPrenotificationNotice"
+            }
+          ],
+          "label": {
+            "en": "Announces contract"
+          },
+          "name": "epo:announcesContract",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:Contract",
+              "range_label": {
+                "en": "Contract"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#Contract",
+              "range_uri": "http://data.europa.eu/a4g/ontology#Contract"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#announcesContract",
+          "usage": {}
+        },
         {
           "cardinality": "1..*",
           "description": {
-            "en": "Relates to Award Outcome."
+            "en": "Relation indicating the formal communication of a Lot."
           },
           "domain": [
             {
-              "name": "epo-awa:AwardDecisionNotification",
-              "uri": "http://data.europa.eu/a4g/ontology#AwardDecisionNotification"
+              "name": "epo-not:DirectAwardPrenotificationNotice",
+              "uri": "http://data.europa.eu/a4g/ontology#DirectAwardPrenotificationNotice"
             }
           ],
           "label": {
-            "en": "Concerns award outcome"
+            "en": "Announces lot"
           },
-          "name": "epo:concernsAwardOutcome",
+          "name": "epo:announcesLot",
           "propertyOrigin": "internal",
           "propertyType": "object property",
           "range": [
             {
-              "range_curie": "epo:AwardOutcome",
+              "range_curie": "epo:Lot",
               "range_label": {
-                "en": "Award outcome"
+                "en": "Lot"
               },
-              "range_puri": "http://data.europa.eu/a4g/ontology#AwardOutcome",
-              "range_uri": "http://data.europa.eu/a4g/ontology#AwardOutcome"
+              "range_puri": "http://data.europa.eu/a4g/ontology#Lot",
+              "range_uri": "http://data.europa.eu/a4g/ontology#Lot"
             }
           ],
           "tags": {
             "epo:status": "implemented",
             "skos:historyNote": "WG approval 25/09/2025"
           },
-          "uri": "http://data.europa.eu/a4g/ontology#concernsAwardOutcome",
-          "usage": {}
-        },
-        {
-          "cardinality": "1",
-          "description": {
-            "en": "Relates to Procedure."
-          },
-          "domain": [
-            {
-              "name": "epo-awa:AwardDecisionNotification",
-              "uri": "http://data.europa.eu/a4g/ontology#AwardDecisionNotification"
-            }
-          ],
-          "label": {
-            "en": "Concerns procedure"
-          },
-          "name": "epo:concernsProcedure",
-          "propertyOrigin": "internal",
-          "propertyType": "object property",
-          "range": [
-            {
-              "range_curie": "epo:Procedure",
-              "range_label": {
-                "en": "Procedure"
-              },
-              "range_puri": "http://data.europa.eu/a4g/ontology#Procedure",
-              "range_uri": "http://data.europa.eu/a4g/ontology#Procedure"
-            }
-          ],
-          "tags": {
-            "epo:status": "implemented"
-          },
-          "uri": "http://data.europa.eu/a4g/ontology#concernsProcedure",
-          "usage": {}
-        },
-        {
-          "cardinality": "1",
-          "description": {
-            "en": "Relation indicating that the instance of the concept involves the Tenderer."
-          },
-          "domain": [
-            {
-              "name": "epo-awa:AwardDecisionNotification",
-              "uri": "http://data.europa.eu/a4g/ontology#AwardDecisionNotification"
-            }
-          ],
-          "label": {
-            "en": "Specifies tenderer"
-          },
-          "name": "epo:specifiesTenderer",
-          "propertyOrigin": "internal",
-          "propertyType": "object property",
-          "range": [
-            {
-              "range_curie": "epo:Tenderer",
-              "range_label": {
-                "en": "Tenderer"
-              },
-              "range_puri": "http://data.europa.eu/a4g/ontology#Tenderer",
-              "range_uri": "http://data.europa.eu/a4g/ontology#Tenderer"
-            }
-          ],
-          "tags": {
-            "epo:status": "implemented",
-            "skos:historyNote": "WG approval 25/09/2025"
-          },
-          "uri": "http://data.europa.eu/a4g/ontology#specifiesTenderer",
-          "usage": {}
-        }
-      ],
-      "rawTags": {
-        "class-usage-scope": "main"
-      },
-      "uri": "http://data.europa.eu/a4g/ontology#AwardDecisionNotification"
-    },
-    {
-      "classType": "reference",
-      "label": {
-        "en": "Invitation to tender"
-      },
-      "name": "epo-acc:InvitationToTender",
-      "properties": [
-        {
-          "cardinality": "1",
-          "description": {
-            "en": "Relates to Procedure."
-          },
-          "domain": [
-            {
-              "name": "epo-acc:InvitationToTender",
-              "uri": "http://data.europa.eu/a4g/ontology#InvitationToTender"
-            }
-          ],
-          "label": {
-            "en": "Concerns procedure"
-          },
-          "name": "epo:concernsProcedure",
-          "propertyOrigin": "internal",
-          "propertyType": "object property",
-          "range": [
-            {
-              "range_curie": "epo:Procedure",
-              "range_label": {
-                "en": "Procedure"
-              },
-              "range_puri": "http://data.europa.eu/a4g/ontology#Procedure",
-              "range_uri": "http://data.europa.eu/a4g/ontology#Procedure"
-            }
-          ],
-          "tags": {
-            "epo:status": "implemented"
-          },
-          "uri": "http://data.europa.eu/a4g/ontology#concernsProcedure",
+          "uri": "http://data.europa.eu/a4g/ontology#announcesLot",
           "usage": {}
         },
         {
           "cardinality": "0..*",
           "description": {
-            "en": ""
+            "en": "Relation indicating the formal communication of a Lot Group."
           },
           "domain": [
             {
-              "name": "epo-acc:InvitationToTender",
-              "uri": "http://data.europa.eu/a4g/ontology#InvitationToTender"
+              "name": "epo-not:DirectAwardPrenotificationNotice",
+              "uri": "http://data.europa.eu/a4g/ontology#DirectAwardPrenotificationNotice"
             }
           ],
           "label": {
-            "en": "Contains provided procurement document"
+            "en": "Announces lot group"
           },
-          "name": "epo-acc:containsProvidedProcurementDocument",
+          "name": "epo:announcesLotGroup",
           "propertyOrigin": "internal",
           "propertyType": "object property",
           "range": [
             {
-              "range_curie": "epo:ProcurementDocument",
+              "range_curie": "epo:LotGroup",
               "range_label": {
-                "en": "Procurement document"
+                "en": "Lot group"
               },
-              "range_puri": "http://data.europa.eu/a4g/ontology#ProcurementDocument",
-              "range_uri": "http://data.europa.eu/a4g/ontology#ProcurementDocument"
-            }
-          ],
-          "tags": {
-            "epo:status": "implemented"
-          },
-          "uri": "http://data.europa.eu/a4g/ontology#containsProvidedProcurementDocument",
-          "usage": {}
-        },
-        {
-          "cardinality": "1",
-          "description": {
-            "en": "Relation indicating that the instance of the concept involves the Economic Operator."
-          },
-          "domain": [
-            {
-              "name": "epo-acc:InvitationToTender",
-              "uri": "http://data.europa.eu/a4g/ontology#InvitationToTender"
-            }
-          ],
-          "label": {
-            "en": "Specifies economic operator"
-          },
-          "name": "epo:specifiesEconomicOperator",
-          "propertyOrigin": "internal",
-          "propertyType": "object property",
-          "range": [
-            {
-              "range_curie": "epo:OfferingParty",
-              "range_label": {
-                "en": "Offering party"
-              },
-              "range_puri": "http://data.europa.eu/a4g/ontology#OfferingParty",
-              "range_uri": "http://data.europa.eu/a4g/ontology#OfferingParty"
+              "range_puri": "http://data.europa.eu/a4g/ontology#LotGroup",
+              "range_uri": "http://data.europa.eu/a4g/ontology#LotGroup"
             }
           ],
           "tags": {
             "epo:status": "implemented",
             "skos:historyNote": "WG approval 25/09/2025"
           },
-          "uri": "http://data.europa.eu/a4g/ontology#specifiesEconomicOperator",
+          "uri": "http://data.europa.eu/a4g/ontology#announcesLotGroup",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..*",
+          "description": {
+            "en": "Relation indicating the formal communication of a Lot Group Award Information."
+          },
+          "domain": [
+            {
+              "name": "epo-not:DirectAwardPrenotificationNotice",
+              "uri": "http://data.europa.eu/a4g/ontology#DirectAwardPrenotificationNotice"
+            }
+          ],
+          "label": {
+            "en": "Announces lot group award information"
+          },
+          "name": "epo:announcesLotGroupAwardInformation",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:LotGroupAwardInformation",
+              "range_label": {
+                "en": "Lot group award information"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#LotGroupAwardInformation",
+              "range_uri": "http://data.europa.eu/a4g/ontology#LotGroupAwardInformation"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#announcesLotGroupAwardInformation",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "Relation indicating the formal communication of a Notice Award Information."
+          },
+          "domain": [
+            {
+              "name": "epo-not:DirectAwardPrenotificationNotice",
+              "uri": "http://data.europa.eu/a4g/ontology#DirectAwardPrenotificationNotice"
+            }
+          ],
+          "label": {
+            "en": "Announces notice award information"
+          },
+          "name": "epo:announcesNoticeAwardInformation",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:NoticeAwardInformation",
+              "range_label": {
+                "en": "Notice award information"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#NoticeAwardInformation",
+              "range_uri": "http://data.europa.eu/a4g/ontology#NoticeAwardInformation"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#announcesNoticeAwardInformation",
+          "usage": {}
+        },
+        {
+          "cardinality": "1",
+          "description": {
+            "en": "Relation indicating the formal communication of a Procedure."
+          },
+          "domain": [
+            {
+              "name": "epo-not:DirectAwardPrenotificationNotice",
+              "uri": "http://data.europa.eu/a4g/ontology#DirectAwardPrenotificationNotice"
+            }
+          ],
+          "label": {
+            "en": "Announces procedure"
+          },
+          "name": "epo:announcesProcedure",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:Procedure",
+              "range_label": {
+                "en": "Procedure"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#Procedure",
+              "range_uri": "http://data.europa.eu/a4g/ontology#Procedure"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#announcesProcedure",
+          "usage": {}
+        },
+        {
+          "cardinality": "1..*",
+          "description": {
+            "en": "Relation indicating the formal communication of a Role."
+          },
+          "domain": [
+            {
+              "name": "epo-not:DirectAwardPrenotificationNotice",
+              "uri": "http://data.europa.eu/a4g/ontology#DirectAwardPrenotificationNotice"
+            }
+          ],
+          "label": {
+            "en": "Announces role"
+          },
+          "name": "epo:announcesRole",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:AgentInRole",
+              "range_label": {
+                "en": "Agent in role"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#AgentInRole",
+              "range_uri": "http://data.europa.eu/a4g/ontology#AgentInRole"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#announcesRole",
           "usage": {}
         }
       ],
       "rawTags": {
         "class-usage-scope": "main"
       },
-      "uri": "http://data.europa.eu/a4g/ontology#InvitationToTender"
+      "uri": "http://data.europa.eu/a4g/ontology#DirectAwardPrenotificationNotice"
     },
     {
       "classType": "reference",
@@ -30604,6 +29976,539 @@
     {
       "classType": "reference",
       "label": {
+        "en": "Competition notice"
+      },
+      "name": "epo-not:CompetitionNotice",
+      "properties": [
+        {
+          "cardinality": "1..*",
+          "description": {
+            "en": "Relation indicating the formal communication of a Lot."
+          },
+          "domain": [
+            {
+              "name": "epo-not:CompetitionNotice",
+              "uri": "http://data.europa.eu/a4g/ontology#CompetitionNotice"
+            }
+          ],
+          "label": {
+            "en": "Announces lot"
+          },
+          "name": "epo:announcesLot",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:Lot",
+              "range_label": {
+                "en": "Lot"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#Lot",
+              "range_uri": "http://data.europa.eu/a4g/ontology#Lot"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#announcesLot",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..*",
+          "description": {
+            "en": "Relation indicating the formal communication of a Lot Group."
+          },
+          "domain": [
+            {
+              "name": "epo-not:CompetitionNotice",
+              "uri": "http://data.europa.eu/a4g/ontology#CompetitionNotice"
+            }
+          ],
+          "label": {
+            "en": "Announces lot group"
+          },
+          "name": "epo:announcesLotGroup",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:LotGroup",
+              "range_label": {
+                "en": "Lot group"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#LotGroup",
+              "range_uri": "http://data.europa.eu/a4g/ontology#LotGroup"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#announcesLotGroup",
+          "usage": {}
+        },
+        {
+          "cardinality": "1",
+          "description": {
+            "en": "Relation indicating the formal communication of a Procedure."
+          },
+          "domain": [
+            {
+              "name": "epo-not:CompetitionNotice",
+              "uri": "http://data.europa.eu/a4g/ontology#CompetitionNotice"
+            }
+          ],
+          "label": {
+            "en": "Announces procedure"
+          },
+          "name": "epo:announcesProcedure",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:Procedure",
+              "range_label": {
+                "en": "Procedure"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#Procedure",
+              "range_uri": "http://data.europa.eu/a4g/ontology#Procedure"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#announcesProcedure",
+          "usage": {}
+        },
+        {
+          "cardinality": "1..*",
+          "description": {
+            "en": "Relation indicating the formal communication of a Role."
+          },
+          "domain": [
+            {
+              "name": "epo-not:CompetitionNotice",
+              "uri": "http://data.europa.eu/a4g/ontology#CompetitionNotice"
+            }
+          ],
+          "label": {
+            "en": "Announces role"
+          },
+          "name": "epo:announcesRole",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:AgentInRole",
+              "range_label": {
+                "en": "Agent in role"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#AgentInRole",
+              "range_uri": "http://data.europa.eu/a4g/ontology#AgentInRole"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#announcesRole",
+          "usage": {}
+        }
+      ],
+      "rawTags": {
+        "class-usage-scope": "main"
+      },
+      "uri": "http://data.europa.eu/a4g/ontology#CompetitionNotice"
+    },
+    {
+      "classType": "reference",
+      "label": {
+        "en": "Completion notice"
+      },
+      "name": "epo-not:CompletionNotice",
+      "properties": [
+        {
+          "cardinality": "1",
+          "description": {
+            "en": "Relation indicating the formal communication of the Completion of a Contract."
+          },
+          "domain": [
+            {
+              "name": "epo-not:CompletionNotice",
+              "uri": "http://data.europa.eu/a4g/ontology#CompletionNotice"
+            }
+          ],
+          "label": {
+            "en": "Announces completion of contract"
+          },
+          "name": "epo:announcesCompletionOfContract",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:Contract",
+              "range_label": {
+                "en": "Contract"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#Contract",
+              "range_uri": "http://data.europa.eu/a4g/ontology#Contract"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#announcesCompletionOfContract",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..*",
+          "description": {
+            "en": "Relation indicating the formal communication of a Role."
+          },
+          "domain": [
+            {
+              "name": "epo-not:CompletionNotice",
+              "uri": "http://data.europa.eu/a4g/ontology#CompletionNotice"
+            }
+          ],
+          "label": {
+            "en": "Announces role"
+          },
+          "name": "epo:announcesRole",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:AgentInRole",
+              "range_label": {
+                "en": "Agent in role"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#AgentInRole",
+              "range_uri": "http://data.europa.eu/a4g/ontology#AgentInRole"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#announcesRole",
+          "usage": {}
+        },
+        {
+          "cardinality": "1..*",
+          "description": {
+            "en": "Relates to Lot."
+          },
+          "domain": [
+            {
+              "name": "epo-not:CompletionNotice",
+              "uri": "http://data.europa.eu/a4g/ontology#CompletionNotice"
+            }
+          ],
+          "label": {
+            "en": "Concerns lot"
+          },
+          "name": "epo:concernsLot",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:Lot",
+              "range_label": {
+                "en": "Lot"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#Lot",
+              "range_uri": "http://data.europa.eu/a4g/ontology#Lot"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#concernsLot",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..*",
+          "description": {
+            "en": "Relates to Lot Group."
+          },
+          "domain": [
+            {
+              "name": "epo-not:CompletionNotice",
+              "uri": "http://data.europa.eu/a4g/ontology#CompletionNotice"
+            }
+          ],
+          "label": {
+            "en": "Concerns lot group"
+          },
+          "name": "epo:concernsLotGroup",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:LotGroup",
+              "range_label": {
+                "en": "Lot group"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#LotGroup",
+              "range_uri": "http://data.europa.eu/a4g/ontology#LotGroup"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#concernsLotGroup",
+          "usage": {}
+        },
+        {
+          "cardinality": "1",
+          "description": {
+            "en": "Relates to Procedure."
+          },
+          "domain": [
+            {
+              "name": "epo-not:CompletionNotice",
+              "uri": "http://data.europa.eu/a4g/ontology#CompletionNotice"
+            }
+          ],
+          "label": {
+            "en": "Concerns procedure"
+          },
+          "name": "epo:concernsProcedure",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:Procedure",
+              "range_label": {
+                "en": "Procedure"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#Procedure",
+              "range_uri": "http://data.europa.eu/a4g/ontology#Procedure"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#concernsProcedure",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..*",
+          "description": {
+            "en": "Reference to an Award Decision."
+          },
+          "domain": [
+            {
+              "name": "epo-not:CompletionNotice",
+              "uri": "http://data.europa.eu/a4g/ontology#CompletionNotice"
+            }
+          ],
+          "label": {
+            "en": "Refers to award decision"
+          },
+          "name": "epo:refersToAwardDecision",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:AwardDecision",
+              "range_label": {
+                "en": "Award decision"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#AwardDecision",
+              "range_uri": "http://data.europa.eu/a4g/ontology#AwardDecision"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#refersToAwardDecision",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..*",
+          "description": {
+            "en": "Reference to a Lot Group Award Information."
+          },
+          "domain": [
+            {
+              "name": "epo-not:CompletionNotice",
+              "uri": "http://data.europa.eu/a4g/ontology#CompletionNotice"
+            }
+          ],
+          "label": {
+            "en": "Refers to lot group award information"
+          },
+          "name": "epo:refersToLotGroupAwardInformation",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:LotGroupAwardInformation",
+              "range_label": {
+                "en": "Lot group award information"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#LotGroupAwardInformation",
+              "range_uri": "http://data.europa.eu/a4g/ontology#LotGroupAwardInformation"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#refersToLotGroupAwardInformation",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "Reference to a Notice Award Information."
+          },
+          "domain": [
+            {
+              "name": "epo-not:CompletionNotice",
+              "uri": "http://data.europa.eu/a4g/ontology#CompletionNotice"
+            }
+          ],
+          "label": {
+            "en": "Refers to notice award information"
+          },
+          "name": "epo:refersToNoticeAwardInformation",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:NoticeAwardInformation",
+              "range_label": {
+                "en": "Notice award information"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#NoticeAwardInformation",
+              "range_uri": "http://data.europa.eu/a4g/ontology#NoticeAwardInformation"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#refersToNoticeAwardInformation",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..*",
+          "description": {
+            "en": "Reference to a Review Decision."
+          },
+          "domain": [
+            {
+              "name": "epo-not:CompletionNotice",
+              "uri": "http://data.europa.eu/a4g/ontology#CompletionNotice"
+            }
+          ],
+          "label": {
+            "en": "Refers to review decision"
+          },
+          "name": "epo:refersToReviewDecision",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:ReviewDecision",
+              "range_label": {
+                "en": "Review decision"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#ReviewDecision",
+              "range_uri": "http://data.europa.eu/a4g/ontology#ReviewDecision"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#refersToReviewDecision",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..*",
+          "description": {
+            "en": "Reference to a Review Request."
+          },
+          "domain": [
+            {
+              "name": "epo-not:CompletionNotice",
+              "uri": "http://data.europa.eu/a4g/ontology#CompletionNotice"
+            }
+          ],
+          "label": {
+            "en": "Refers to review request"
+          },
+          "name": "epo:refersToReviewRequest",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:ReviewRequest",
+              "range_label": {
+                "en": "Review request"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#ReviewRequest",
+              "range_uri": "http://data.europa.eu/a4g/ontology#ReviewRequest"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#refersToReviewRequest",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..*",
+          "description": {
+            "en": "Reference to a Role."
+          },
+          "domain": [
+            {
+              "name": "epo-not:CompletionNotice",
+              "uri": "http://data.europa.eu/a4g/ontology#CompletionNotice"
+            }
+          ],
+          "label": {
+            "en": "Refers to role"
+          },
+          "name": "epo:refersToRole",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:AgentInRole",
+              "range_label": {
+                "en": "Agent in role"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#AgentInRole",
+              "range_uri": "http://data.europa.eu/a4g/ontology#AgentInRole"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#refersToRole",
+          "usage": {}
+        }
+      ],
+      "rawTags": {
+        "class-usage-scope": "main"
+      },
+      "uri": "http://data.europa.eu/a4g/ontology#CompletionNotice"
+    },
+    {
+      "classType": "reference",
+      "label": {
         "en": "Unsubscribe from procedure"
       },
       "name": "epo-acc:UnsubscribeFromProcedure",
@@ -30680,6 +30585,168 @@
         "class-usage-scope": "main"
       },
       "uri": "http://data.europa.eu/a4g/ontology#UnsubscribeFromProcedure"
+    },
+    {
+      "classType": "reference",
+      "label": {
+        "en": "Qualification decision information"
+      },
+      "name": "epo-qua:QualificationDecisionInformation",
+      "properties": [
+        {
+          "cardinality": "1",
+          "description": {
+            "en": "Makes available the resolution."
+          },
+          "domain": [
+            {
+              "name": "epo-qua:QualificationDecisionInformation",
+              "uri": "http://data.europa.eu/a4g/ontology#QualificationDecisionInformation"
+            }
+          ],
+          "label": {
+            "en": "Provides decision for"
+          },
+          "name": "epo-qua:providesDecisionFor",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:Lot",
+              "range_label": {
+                "en": "Lot"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#Lot",
+              "range_uri": "http://data.europa.eu/a4g/ontology#Lot"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#providesDecisionFor",
+          "usage": {}
+        }
+      ],
+      "rawTags": {
+        "class-usage-scope": "main"
+      },
+      "uri": "http://data.europa.eu/a4g/ontology#QualificationDecisionInformation"
+    },
+    {
+      "classType": "reference",
+      "label": {
+        "en": "Evaluation board"
+      },
+      "name": "epo-eva:EvaluationBoard",
+      "properties": [
+        {
+          "cardinality": "0..*",
+          "description": {
+            "en": "An agent involved in an evaluation board."
+          },
+          "domain": [
+            {
+              "name": "epo-eva:EvaluationBoard",
+              "uri": "http://data.europa.eu/a4g/ontology#EvaluationBoard"
+            }
+          ],
+          "label": {
+            "en": "Has jury member"
+          },
+          "name": "epo-eva:hasJuryMember",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:JuryMember",
+              "range_label": {
+                "en": "Jury member"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#JuryMember",
+              "range_uri": "http://data.europa.eu/a4g/ontology#JuryMember"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG Approval 14/09/2021"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasJuryMember",
+          "usage": {}
+        },
+        {
+          "cardinality": "1",
+          "description": {
+            "en": "Relation indicating that by whom the instance of the concept is formally assigned."
+          },
+          "domain": [
+            {
+              "name": "epo-eva:EvaluationBoard",
+              "uri": "http://data.europa.eu/a4g/ontology#EvaluationBoard"
+            }
+          ],
+          "label": {
+            "en": "Is appointed by"
+          },
+          "name": "epo-eva:isAppointedBy",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:UniqueResponsibleOfTheProcurement",
+              "range_label": {
+                "en": "Unique responsible of the procurement"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#UniqueResponsibleOfTheProcurement",
+              "range_uri": "http://data.europa.eu/a4g/ontology#UniqueResponsibleOfTheProcurement"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#isAppointedBy",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..*",
+          "description": {
+            "en": "Relation indicating that the instance of the concept is selected for Evaluation."
+          },
+          "domain": [
+            {
+              "name": "epo-eva:EvaluationBoard",
+              "uri": "http://data.europa.eu/a4g/ontology#EvaluationBoard"
+            }
+          ],
+          "label": {
+            "en": "Is assigned for evaluation of"
+          },
+          "name": "epo:isAssignedForEvaluationOf",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:Lot",
+              "range_label": {
+                "en": "Lot"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#Lot",
+              "range_uri": "http://data.europa.eu/a4g/ontology#Lot"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#isAssignedForEvaluationOf",
+          "usage": {}
+        }
+      ],
+      "rawTags": {
+        "class-usage-scope": "main"
+      },
+      "uri": "http://data.europa.eu/a4g/ontology#EvaluationBoard"
     },
     {
       "classType": "reference",
@@ -30974,556 +31041,127 @@
     {
       "classType": "reference",
       "label": {
-        "en": "Receipt advice"
+        "en": "Excluded candidate list"
       },
-      "name": "epo-ful:ReceiptAdvice",
+      "name": "epo-eva:ExcludedCandidateList",
       "properties": [
-        {
-          "cardinality": "0..1",
-          "description": {
-            "en": "Relation indicating that the instance of the concept involves the Buyer."
-          },
-          "domain": [
-            {
-              "name": "epo-ful:ReceiptAdvice",
-              "uri": "http://data.europa.eu/a4g/ontology#ReceiptAdvice"
-            }
-          ],
-          "label": {
-            "en": "Specifies buyer"
-          },
-          "name": "epo:specifiesBuyer",
-          "propertyOrigin": "internal",
-          "propertyType": "object property",
-          "range": [
-            {
-              "range_curie": "epo:Buyer",
-              "range_label": {
-                "en": "Buyer"
-              },
-              "range_puri": "http://data.europa.eu/a4g/ontology#Buyer",
-              "range_uri": "http://data.europa.eu/a4g/ontology#Buyer"
-            }
-          ],
-          "tags": {
-            "epo:status": "implemented",
-            "skos:historyNote": "WG approval 25/09/2025"
-          },
-          "uri": "http://data.europa.eu/a4g/ontology#specifiesBuyer",
-          "usage": {}
-        }
-      ],
-      "rawTags": {
-        "class-usage-scope": "main"
-      },
-      "uri": "http://data.europa.eu/a4g/ontology#ReceiptAdvice"
-    },
-    {
-      "classType": "reference",
-      "label": {
-        "en": "Order change rejection"
-      },
-      "name": "epo-ord:OrderChangeRejection",
-      "properties": [
-        {
-          "cardinality": "1",
-          "description": {
-            "en": "Relation indicating that the instance of the concept involves the Buyer."
-          },
-          "domain": [
-            {
-              "name": "epo-ord:OrderChangeRejection",
-              "uri": "http://data.europa.eu/a4g/ontology#OrderChangeRejection"
-            }
-          ],
-          "label": {
-            "en": "Specifies buyer"
-          },
-          "name": "epo:specifiesBuyer",
-          "propertyOrigin": "internal",
-          "propertyType": "object property",
-          "range": [
-            {
-              "range_curie": "epo:Buyer",
-              "range_label": {
-                "en": "Buyer"
-              },
-              "range_puri": "http://data.europa.eu/a4g/ontology#Buyer",
-              "range_uri": "http://data.europa.eu/a4g/ontology#Buyer"
-            }
-          ],
-          "tags": {
-            "epo:status": "implemented",
-            "skos:historyNote": "WG approval 25/09/2025"
-          },
-          "uri": "http://data.europa.eu/a4g/ontology#specifiesBuyer",
-          "usage": {}
-        }
-      ],
-      "rawTags": {
-        "class-usage-scope": "main"
-      },
-      "uri": "http://data.europa.eu/a4g/ontology#OrderChangeRejection"
-    },
-    {
-      "classType": "reference",
-      "label": {
-        "en": "Order cancellation rejection"
-      },
-      "name": "epo-ord:OrderCancellationRejection",
-      "properties": [
-        {
-          "cardinality": "1",
-          "description": {
-            "en": "Relation indicating that the instance of the concept involves the Buyer."
-          },
-          "domain": [
-            {
-              "name": "epo-ord:OrderCancellationRejection",
-              "uri": "http://data.europa.eu/a4g/ontology#OrderCancellationRejection"
-            }
-          ],
-          "label": {
-            "en": "Specifies buyer"
-          },
-          "name": "epo:specifiesBuyer",
-          "propertyOrigin": "internal",
-          "propertyType": "object property",
-          "range": [
-            {
-              "range_curie": "epo:Buyer",
-              "range_label": {
-                "en": "Buyer"
-              },
-              "range_puri": "http://data.europa.eu/a4g/ontology#Buyer",
-              "range_uri": "http://data.europa.eu/a4g/ontology#Buyer"
-            }
-          ],
-          "tags": {
-            "epo:status": "implemented",
-            "skos:historyNote": "WG approval 25/09/2025"
-          },
-          "uri": "http://data.europa.eu/a4g/ontology#specifiesBuyer",
-          "usage": {}
-        }
-      ],
-      "rawTags": {
-        "class-usage-scope": "main"
-      },
-      "uri": "http://data.europa.eu/a4g/ontology#OrderCancellationRejection"
-    },
-    {
-      "classType": "reference",
-      "label": {
-        "en": "Request for offer"
-      },
-      "name": "epo-req:RequestForOffer",
-      "properties": [
-        {
-          "cardinality": "0..1",
-          "controlled_vocabulary": {
-            "name": "at-voc:country",
-            "uri": "http://publications.europa.eu/resource/authority/country"
-          },
-          "description": {
-            "en": "Relation indicating the Country code of the destination."
-          },
-          "domain": [
-            {
-              "name": "epo-req:RequestForOffer",
-              "uri": "http://data.europa.eu/a4g/ontology#RequestForOffer"
-            }
-          ],
-          "label": {
-            "en": "Has destination country code"
-          },
-          "name": "epo:hasDestinationCountryCode",
-          "propertyOrigin": "internal",
-          "propertyType": "object property",
-          "range": [
-            {
-              "range_curie": "skos:Concept",
-              "range_label": {
-                "en": "Concept"
-              },
-              "range_puri": "http://www.w3.org/2004/02/skos/core#Concept",
-              "range_uri": "http://www.w3.org/2004/02/skos/core#Concept"
-            }
-          ],
-          "tags": {
-            "epo:status": "implemented",
-            "skos:historyNote": "WG approval 25/09/2025"
-          },
-          "uri": "http://data.europa.eu/a4g/ontology#hasDestinationCountryCode",
-          "usage": {}
-        },
         {
           "cardinality": "0..*",
           "description": {
-            "en": "Reference to a Contract."
+            "en": ""
           },
           "domain": [
             {
-              "name": "epo-req:RequestForOffer",
-              "uri": "http://data.europa.eu/a4g/ontology#RequestForOffer"
+              "name": "epo-eva:ExcludedCandidateList",
+              "uri": "http://data.europa.eu/a4g/ontology#ExcludedCandidateList"
             }
           ],
           "label": {
-            "en": "Refers to contract"
+            "en": "Contains candidate"
           },
-          "name": "epo:refersToContract",
+          "name": "epo:containsCandidate",
           "propertyOrigin": "internal",
           "propertyType": "object property",
           "range": [
             {
-              "range_curie": "epo:Contract",
+              "range_curie": "epo:Candidate",
               "range_label": {
-                "en": "Contract"
+                "en": "Candidate"
               },
-              "range_puri": "http://data.europa.eu/a4g/ontology#Contract",
-              "range_uri": "http://data.europa.eu/a4g/ontology#Contract"
+              "range_puri": "http://data.europa.eu/a4g/ontology#Candidate",
+              "range_uri": "http://data.europa.eu/a4g/ontology#Candidate"
             }
           ],
           "tags": {
-            "epo:status": "implemented",
-            "skos:historyNote": "WG approval 25/09/2025"
+            "epo:status": "implemented"
           },
-          "uri": "http://data.europa.eu/a4g/ontology#refersToContract",
+          "uri": "http://data.europa.eu/a4g/ontology#containsCandidate",
           "usage": {}
-        },
+        }
+      ],
+      "rawTags": {
+        "class-usage-scope": "main"
+      },
+      "uri": "http://data.europa.eu/a4g/ontology#ExcludedCandidateList"
+    },
+    {
+      "classType": "reference",
+      "label": {
+        "en": "Pre award catalogue request"
+      },
+      "name": "epo-cat:PreAwardCatalogueRequest",
+      "properties": [
         {
-          "cardinality": "0..1",
+          "cardinality": "1",
           "description": {
-            "en": "Relation indicating that the instance of the concept involves the Buyer."
+            "en": ""
           },
           "domain": [
             {
-              "name": "epo-req:RequestForOffer",
-              "uri": "http://data.europa.eu/a4g/ontology#RequestForOffer"
+              "name": "epo-cat:PreAwardCatalogueRequest",
+              "uri": "http://data.europa.eu/a4g/ontology#PreAwardCatalogueRequest"
             }
           ],
           "label": {
-            "en": "Specifies buyer"
+            "en": "Specifies catalogue provider"
           },
-          "name": "epo:specifiesBuyer",
+          "name": "epo:specifiesCatalogueProvider",
           "propertyOrigin": "internal",
           "propertyType": "object property",
           "range": [
             {
-              "range_curie": "epo:Buyer",
+              "range_curie": "epo:CatalogueProvider",
               "range_label": {
-                "en": "Buyer"
+                "en": "Catalogue provider"
               },
-              "range_puri": "http://data.europa.eu/a4g/ontology#Buyer",
-              "range_uri": "http://data.europa.eu/a4g/ontology#Buyer"
+              "range_puri": "http://data.europa.eu/a4g/ontology#CatalogueProvider",
+              "range_uri": "http://data.europa.eu/a4g/ontology#CatalogueProvider"
             }
           ],
           "tags": {
-            "epo:status": "implemented",
-            "skos:historyNote": "WG approval 25/09/2025"
+            "epo:status": "proposed"
           },
-          "uri": "http://data.europa.eu/a4g/ontology#specifiesBuyer",
+          "uri": "http://data.europa.eu/a4g/ontology#specifiesCatalogueProvider",
           "usage": {}
         },
         {
           "cardinality": "1",
           "description": {
-            "en": "Relation indicating that the instance of the concept involves the Contractor."
+            "en": ""
           },
           "domain": [
             {
-              "name": "epo-req:RequestForOffer",
-              "uri": "http://data.europa.eu/a4g/ontology#RequestForOffer"
+              "name": "epo-cat:PreAwardCatalogueRequest",
+              "uri": "http://data.europa.eu/a4g/ontology#PreAwardCatalogueRequest"
             }
           ],
           "label": {
-            "en": "Specifies contractor"
+            "en": "Specifies catalogue receiver"
           },
-          "name": "epo:specifiesContractor",
+          "name": "epo:specifiesCatalogueReceiver",
           "propertyOrigin": "internal",
           "propertyType": "object property",
           "range": [
             {
-              "range_curie": "epo:Contractor",
+              "range_curie": "epo:CatalogueReceiver",
               "range_label": {
-                "en": "Contractor"
+                "en": "Catalogue receiver"
               },
-              "range_puri": "http://data.europa.eu/a4g/ontology#Contractor",
-              "range_uri": "http://data.europa.eu/a4g/ontology#Contractor"
+              "range_puri": "http://data.europa.eu/a4g/ontology#CatalogueReceiver",
+              "range_uri": "http://data.europa.eu/a4g/ontology#CatalogueReceiver"
             }
           ],
           "tags": {
-            "epo:status": "implemented",
-            "skos:historyNote": "WG approval 25/09/2025"
+            "epo:status": "proposed"
           },
-          "uri": "http://data.europa.eu/a4g/ontology#specifiesContractor",
-          "usage": {}
-        },
-        {
-          "cardinality": "0..1",
-          "controlled_vocabulary": {
-            "name": "at-voc:currency",
-            "uri": "http://publications.europa.eu/resource/authority/currency"
-          },
-          "description": {
-            "en": "Relation indicating the Currency for the Offer."
-          },
-          "domain": [
-            {
-              "name": "epo-req:RequestForOffer",
-              "uri": "http://data.europa.eu/a4g/ontology#RequestForOffer"
-            }
-          ],
-          "label": {
-            "en": "Specifies offer currency"
-          },
-          "name": "epo-req:specifiesOfferCurrency",
-          "propertyOrigin": "internal",
-          "propertyType": "object property",
-          "range": [
-            {
-              "range_curie": "skos:Concept",
-              "range_label": {
-                "en": "Concept"
-              },
-              "range_puri": "http://www.w3.org/2004/02/skos/core#Concept",
-              "range_uri": "http://www.w3.org/2004/02/skos/core#Concept"
-            }
-          ],
-          "tags": {
-            "epo:status": "implemented",
-            "skos:historyNote": "WG approval 25/09/2025"
-          },
-          "uri": "http://data.europa.eu/a4g/ontology#specifiesOfferCurrency",
-          "usage": {}
-        },
-        {
-          "cardinality": "0..1",
-          "description": {
-            "en": "Relation indicating the time range in which an Offer is valid."
-          },
-          "domain": [
-            {
-              "name": "epo-req:RequestForOffer",
-              "uri": "http://data.europa.eu/a4g/ontology#RequestForOffer"
-            }
-          ],
-          "label": {
-            "en": "Specifies offer validity period"
-          },
-          "name": "epo-req:specifiesOfferValidityPeriod",
-          "propertyOrigin": "internal",
-          "propertyType": "object property",
-          "range": [
-            {
-              "range_curie": "time:Interval",
-              "range_label": {
-                "en": "Interval"
-              },
-              "range_puri": "http://www.w3.org/2006/time#Interval",
-              "range_uri": "http://www.w3.org/2006/time#Interval"
-            }
-          ],
-          "tags": {
-            "epo:status": "implemented",
-            "skos:historyNote": "WG approval 25/09/2025"
-          },
-          "uri": "http://data.europa.eu/a4g/ontology#specifiesOfferValidityPeriod",
+          "uri": "http://data.europa.eu/a4g/ontology#specifiesCatalogueReceiver",
           "usage": {}
         }
       ],
       "rawTags": {
         "class-usage-scope": "main"
       },
-      "uri": "http://data.europa.eu/a4g/ontology#RequestForOffer"
-    },
-    {
-      "classType": "reference",
-      "label": {
-        "en": "Shipment agreement"
-      },
-      "name": "epo-ful:ShipmentAgreement",
-      "properties": [
-        {
-          "cardinality": "1..*",
-          "description": {
-            "en": "Accepted by Buyer."
-          },
-          "domain": [
-            {
-              "name": "epo-ful:ShipmentAgreement",
-              "uri": "http://data.europa.eu/a4g/ontology#ShipmentAgreement"
-            }
-          ],
-          "label": {
-            "en": "Agreed by buyer"
-          },
-          "name": "epo-ful:agreedByBuyer",
-          "propertyOrigin": "internal",
-          "propertyType": "object property",
-          "range": [
-            {
-              "range_curie": "epo:Buyer",
-              "range_label": {
-                "en": "Buyer"
-              },
-              "range_puri": "http://data.europa.eu/a4g/ontology#Buyer",
-              "range_uri": "http://data.europa.eu/a4g/ontology#Buyer"
-            }
-          ],
-          "tags": {
-            "epo:status": "implemented",
-            "skos:historyNote": "WG Approval 10/06/2024"
-          },
-          "uri": "http://data.europa.eu/a4g/ontology#agreedByBuyer",
-          "usage": {}
-        }
-      ],
-      "rawTags": {
-        "class-usage-scope": "main"
-      },
-      "uri": "http://data.europa.eu/a4g/ontology#ShipmentAgreement"
-    },
-    {
-      "classType": "reference",
-      "label": {
-        "en": "Order cancellation"
-      },
-      "name": "epo-ord:OrderCancellation",
-      "properties": [
-        {
-          "cardinality": "1",
-          "description": {
-            "en": "Relation indicating that the instance of the concept involves the Buyer."
-          },
-          "domain": [
-            {
-              "name": "epo-ord:OrderCancellation",
-              "uri": "http://data.europa.eu/a4g/ontology#OrderCancellation"
-            }
-          ],
-          "label": {
-            "en": "Specifies buyer"
-          },
-          "name": "epo:specifiesBuyer",
-          "propertyOrigin": "internal",
-          "propertyType": "object property",
-          "range": [
-            {
-              "range_curie": "epo:Buyer",
-              "range_label": {
-                "en": "Buyer"
-              },
-              "range_puri": "http://data.europa.eu/a4g/ontology#Buyer",
-              "range_uri": "http://data.europa.eu/a4g/ontology#Buyer"
-            }
-          ],
-          "tags": {
-            "epo:status": "implemented",
-            "skos:historyNote": "WG approval 25/09/2025"
-          },
-          "uri": "http://data.europa.eu/a4g/ontology#specifiesBuyer",
-          "usage": {}
-        }
-      ],
-      "rawTags": {
-        "class-usage-scope": "main"
-      },
-      "uri": "http://data.europa.eu/a4g/ontology#OrderCancellation"
-    },
-    {
-      "classType": "reference",
-      "label": {
-        "en": "Order cancellation confirmation"
-      },
-      "name": "epo-ord:OrderCancellationConfirmation",
-      "properties": [
-        {
-          "cardinality": "1",
-          "description": {
-            "en": "Relation indicating that the instance of the concept involves the Buyer."
-          },
-          "domain": [
-            {
-              "name": "epo-ord:OrderCancellationConfirmation",
-              "uri": "http://data.europa.eu/a4g/ontology#OrderCancellationConfirmation"
-            }
-          ],
-          "label": {
-            "en": "Specifies buyer"
-          },
-          "name": "epo:specifiesBuyer",
-          "propertyOrigin": "internal",
-          "propertyType": "object property",
-          "range": [
-            {
-              "range_curie": "epo:Buyer",
-              "range_label": {
-                "en": "Buyer"
-              },
-              "range_puri": "http://data.europa.eu/a4g/ontology#Buyer",
-              "range_uri": "http://data.europa.eu/a4g/ontology#Buyer"
-            }
-          ],
-          "tags": {
-            "epo:status": "implemented",
-            "skos:historyNote": "WG approval 25/09/2025"
-          },
-          "uri": "http://data.europa.eu/a4g/ontology#specifiesBuyer",
-          "usage": {}
-        }
-      ],
-      "rawTags": {
-        "class-usage-scope": "main"
-      },
-      "uri": "http://data.europa.eu/a4g/ontology#OrderCancellationConfirmation"
-    },
-    {
-      "classType": "reference",
-      "label": {
-        "en": "Order change confirmation"
-      },
-      "name": "epo-ord:OrderChangeConfirmation",
-      "properties": [
-        {
-          "cardinality": "1",
-          "description": {
-            "en": "Relation indicating that the instance of the concept involves the Buyer."
-          },
-          "domain": [
-            {
-              "name": "epo-ord:OrderChangeConfirmation",
-              "uri": "http://data.europa.eu/a4g/ontology#OrderChangeConfirmation"
-            }
-          ],
-          "label": {
-            "en": "Specifies buyer"
-          },
-          "name": "epo:specifiesBuyer",
-          "propertyOrigin": "internal",
-          "propertyType": "object property",
-          "range": [
-            {
-              "range_curie": "epo:Buyer",
-              "range_label": {
-                "en": "Buyer"
-              },
-              "range_puri": "http://data.europa.eu/a4g/ontology#Buyer",
-              "range_uri": "http://data.europa.eu/a4g/ontology#Buyer"
-            }
-          ],
-          "tags": {
-            "epo:status": "implemented",
-            "skos:historyNote": "WG approval 25/09/2025"
-          },
-          "uri": "http://data.europa.eu/a4g/ontology#specifiesBuyer",
-          "usage": {}
-        }
-      ],
-      "rawTags": {
-        "class-usage-scope": "main"
-      },
-      "uri": "http://data.europa.eu/a4g/ontology#OrderChangeConfirmation"
+      "uri": "http://data.europa.eu/a4g/ontology#PreAwardCatalogueRequest"
     },
     {
       "classType": "reference",
@@ -31673,280 +31311,6 @@
         "class-usage-scope": "main"
       },
       "uri": "http://data.europa.eu/a4g/ontology#Catalogue"
-    },
-    {
-      "classType": "reference",
-      "label": {
-        "en": "Remittance advice"
-      },
-      "name": "epo-pay:RemittanceAdvice",
-      "properties": [
-        {
-          "cardinality": "0..1",
-          "description": {
-            "en": "Relation indicating the overall Monetary Value that reduces the amount owed."
-          },
-          "domain": [
-            {
-              "name": "epo-pay:RemittanceAdvice",
-              "uri": "http://data.europa.eu/a4g/ontology#RemittanceAdvice"
-            }
-          ],
-          "label": {
-            "en": "Has total credit amount"
-          },
-          "name": "epo-pay:hasTotalCreditAmount",
-          "propertyOrigin": "internal",
-          "propertyType": "object property",
-          "range": [
-            {
-              "range_curie": "epo:MonetaryValue",
-              "range_label": {
-                "en": "Monetary value"
-              },
-              "range_puri": "http://data.europa.eu/a4g/ontology#MonetaryValue",
-              "range_uri": "http://data.europa.eu/a4g/ontology#MonetaryValue"
-            }
-          ],
-          "tags": {
-            "epo:status": "implemented",
-            "skos:historyNote": "WG approval 25/09/2025"
-          },
-          "uri": "http://data.europa.eu/a4g/ontology#hasTotalCreditAmount",
-          "usage": {}
-        },
-        {
-          "cardinality": "0..1",
-          "description": {
-            "en": "Relation indicating the overall Monetary Value that increases the amount owed."
-          },
-          "domain": [
-            {
-              "name": "epo-pay:RemittanceAdvice",
-              "uri": "http://data.europa.eu/a4g/ontology#RemittanceAdvice"
-            }
-          ],
-          "label": {
-            "en": "Has total debit amount"
-          },
-          "name": "epo-pay:hasTotalDebitAmount",
-          "propertyOrigin": "internal",
-          "propertyType": "object property",
-          "range": [
-            {
-              "range_curie": "epo:MonetaryValue",
-              "range_label": {
-                "en": "Monetary value"
-              },
-              "range_puri": "http://data.europa.eu/a4g/ontology#MonetaryValue",
-              "range_uri": "http://data.europa.eu/a4g/ontology#MonetaryValue"
-            }
-          ],
-          "tags": {
-            "epo:status": "implemented",
-            "skos:historyNote": "WG approval 25/09/2025"
-          },
-          "uri": "http://data.europa.eu/a4g/ontology#hasTotalDebitAmount",
-          "usage": {}
-        },
-        {
-          "cardinality": "0..1",
-          "description": {
-            "en": "Relation indicating the overall paid Monetary Value."
-          },
-          "domain": [
-            {
-              "name": "epo-pay:RemittanceAdvice",
-              "uri": "http://data.europa.eu/a4g/ontology#RemittanceAdvice"
-            }
-          ],
-          "label": {
-            "en": "Has total payment amount"
-          },
-          "name": "epo-pay:hasTotalPaymentAmount",
-          "propertyOrigin": "internal",
-          "propertyType": "object property",
-          "range": [
-            {
-              "range_curie": "epo:MonetaryValue",
-              "range_label": {
-                "en": "Monetary value"
-              },
-              "range_puri": "http://data.europa.eu/a4g/ontology#MonetaryValue",
-              "range_uri": "http://data.europa.eu/a4g/ontology#MonetaryValue"
-            }
-          ],
-          "tags": {
-            "epo:status": "implemented",
-            "skos:historyNote": "WG approval 25/09/2025"
-          },
-          "uri": "http://data.europa.eu/a4g/ontology#hasTotalPaymentAmount",
-          "usage": {}
-        },
-        {
-          "cardinality": "1",
-          "description": {
-            "en": "Relation indicating that the instance of the concept involves the Buyer."
-          },
-          "domain": [
-            {
-              "name": "epo-pay:RemittanceAdvice",
-              "uri": "http://data.europa.eu/a4g/ontology#RemittanceAdvice"
-            }
-          ],
-          "label": {
-            "en": "Specifies buyer"
-          },
-          "name": "epo:specifiesBuyer",
-          "propertyOrigin": "internal",
-          "propertyType": "object property",
-          "range": [
-            {
-              "range_curie": "epo:Buyer",
-              "range_label": {
-                "en": "Buyer"
-              },
-              "range_puri": "http://data.europa.eu/a4g/ontology#Buyer",
-              "range_uri": "http://data.europa.eu/a4g/ontology#Buyer"
-            }
-          ],
-          "tags": {
-            "epo:status": "implemented",
-            "skos:historyNote": "WG approval 25/09/2025"
-          },
-          "uri": "http://data.europa.eu/a4g/ontology#specifiesBuyer",
-          "usage": {}
-        }
-      ],
-      "rawTags": {
-        "class-usage-scope": "main"
-      },
-      "uri": "http://data.europa.eu/a4g/ontology#RemittanceAdvice"
-    },
-    {
-      "classType": "reference",
-      "label": {
-        "en": "Excluded candidate list"
-      },
-      "name": "epo-eva:ExcludedCandidateList",
-      "properties": [
-        {
-          "cardinality": "0..*",
-          "description": {
-            "en": ""
-          },
-          "domain": [
-            {
-              "name": "epo-eva:ExcludedCandidateList",
-              "uri": "http://data.europa.eu/a4g/ontology#ExcludedCandidateList"
-            }
-          ],
-          "label": {
-            "en": "Contains candidate"
-          },
-          "name": "epo:containsCandidate",
-          "propertyOrigin": "internal",
-          "propertyType": "object property",
-          "range": [
-            {
-              "range_curie": "epo:Candidate",
-              "range_label": {
-                "en": "Candidate"
-              },
-              "range_puri": "http://data.europa.eu/a4g/ontology#Candidate",
-              "range_uri": "http://data.europa.eu/a4g/ontology#Candidate"
-            }
-          ],
-          "tags": {
-            "epo:status": "implemented"
-          },
-          "uri": "http://data.europa.eu/a4g/ontology#containsCandidate",
-          "usage": {}
-        }
-      ],
-      "rawTags": {
-        "class-usage-scope": "main"
-      },
-      "uri": "http://data.europa.eu/a4g/ontology#ExcludedCandidateList"
-    },
-    {
-      "classType": "reference",
-      "label": {
-        "en": "Pre award catalogue request"
-      },
-      "name": "epo-cat:PreAwardCatalogueRequest",
-      "properties": [
-        {
-          "cardinality": "1",
-          "description": {
-            "en": ""
-          },
-          "domain": [
-            {
-              "name": "epo-cat:PreAwardCatalogueRequest",
-              "uri": "http://data.europa.eu/a4g/ontology#PreAwardCatalogueRequest"
-            }
-          ],
-          "label": {
-            "en": "Specifies catalogue provider"
-          },
-          "name": "epo:specifiesCatalogueProvider",
-          "propertyOrigin": "internal",
-          "propertyType": "object property",
-          "range": [
-            {
-              "range_curie": "epo:CatalogueProvider",
-              "range_label": {
-                "en": "Catalogue provider"
-              },
-              "range_puri": "http://data.europa.eu/a4g/ontology#CatalogueProvider",
-              "range_uri": "http://data.europa.eu/a4g/ontology#CatalogueProvider"
-            }
-          ],
-          "tags": {
-            "epo:status": "proposed"
-          },
-          "uri": "http://data.europa.eu/a4g/ontology#specifiesCatalogueProvider",
-          "usage": {}
-        },
-        {
-          "cardinality": "1",
-          "description": {
-            "en": ""
-          },
-          "domain": [
-            {
-              "name": "epo-cat:PreAwardCatalogueRequest",
-              "uri": "http://data.europa.eu/a4g/ontology#PreAwardCatalogueRequest"
-            }
-          ],
-          "label": {
-            "en": "Specifies catalogue receiver"
-          },
-          "name": "epo:specifiesCatalogueReceiver",
-          "propertyOrigin": "internal",
-          "propertyType": "object property",
-          "range": [
-            {
-              "range_curie": "epo:CatalogueReceiver",
-              "range_label": {
-                "en": "Catalogue receiver"
-              },
-              "range_puri": "http://data.europa.eu/a4g/ontology#CatalogueReceiver",
-              "range_uri": "http://data.europa.eu/a4g/ontology#CatalogueReceiver"
-            }
-          ],
-          "tags": {
-            "epo:status": "proposed"
-          },
-          "uri": "http://data.europa.eu/a4g/ontology#specifiesCatalogueReceiver",
-          "usage": {}
-        }
-      ],
-      "rawTags": {
-        "class-usage-scope": "main"
-      },
-      "uri": "http://data.europa.eu/a4g/ontology#PreAwardCatalogueRequest"
     },
     {
       "classType": "reference",
@@ -32201,6 +31565,709 @@
         "class-usage-scope": "main"
       },
       "uri": "http://data.europa.eu/a4g/ontology#ProcurementQuestion"
+    },
+    {
+      "classType": "reference",
+      "label": {
+        "en": "Request for offer"
+      },
+      "name": "epo-req:RequestForOffer",
+      "properties": [
+        {
+          "cardinality": "0..1",
+          "controlled_vocabulary": {
+            "name": "at-voc:country",
+            "uri": "http://publications.europa.eu/resource/authority/country"
+          },
+          "description": {
+            "en": "Relation indicating the Country code of the destination."
+          },
+          "domain": [
+            {
+              "name": "epo-req:RequestForOffer",
+              "uri": "http://data.europa.eu/a4g/ontology#RequestForOffer"
+            }
+          ],
+          "label": {
+            "en": "Has destination country code"
+          },
+          "name": "epo:hasDestinationCountryCode",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "skos:Concept",
+              "range_label": {
+                "en": "Concept"
+              },
+              "range_puri": "http://www.w3.org/2004/02/skos/core#Concept",
+              "range_uri": "http://www.w3.org/2004/02/skos/core#Concept"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasDestinationCountryCode",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..*",
+          "description": {
+            "en": "Reference to a Contract."
+          },
+          "domain": [
+            {
+              "name": "epo-req:RequestForOffer",
+              "uri": "http://data.europa.eu/a4g/ontology#RequestForOffer"
+            }
+          ],
+          "label": {
+            "en": "Refers to contract"
+          },
+          "name": "epo:refersToContract",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:Contract",
+              "range_label": {
+                "en": "Contract"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#Contract",
+              "range_uri": "http://data.europa.eu/a4g/ontology#Contract"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#refersToContract",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "Relation indicating that the instance of the concept involves the Buyer."
+          },
+          "domain": [
+            {
+              "name": "epo-req:RequestForOffer",
+              "uri": "http://data.europa.eu/a4g/ontology#RequestForOffer"
+            }
+          ],
+          "label": {
+            "en": "Specifies buyer"
+          },
+          "name": "epo:specifiesBuyer",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:Buyer",
+              "range_label": {
+                "en": "Buyer"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#Buyer",
+              "range_uri": "http://data.europa.eu/a4g/ontology#Buyer"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#specifiesBuyer",
+          "usage": {}
+        },
+        {
+          "cardinality": "1",
+          "description": {
+            "en": "Relation indicating that the instance of the concept involves the Contractor."
+          },
+          "domain": [
+            {
+              "name": "epo-req:RequestForOffer",
+              "uri": "http://data.europa.eu/a4g/ontology#RequestForOffer"
+            }
+          ],
+          "label": {
+            "en": "Specifies contractor"
+          },
+          "name": "epo:specifiesContractor",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:Contractor",
+              "range_label": {
+                "en": "Contractor"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#Contractor",
+              "range_uri": "http://data.europa.eu/a4g/ontology#Contractor"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#specifiesContractor",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "controlled_vocabulary": {
+            "name": "at-voc:currency",
+            "uri": "http://publications.europa.eu/resource/authority/currency"
+          },
+          "description": {
+            "en": "Relation indicating the Currency for the Offer."
+          },
+          "domain": [
+            {
+              "name": "epo-req:RequestForOffer",
+              "uri": "http://data.europa.eu/a4g/ontology#RequestForOffer"
+            }
+          ],
+          "label": {
+            "en": "Specifies offer currency"
+          },
+          "name": "epo-req:specifiesOfferCurrency",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "skos:Concept",
+              "range_label": {
+                "en": "Concept"
+              },
+              "range_puri": "http://www.w3.org/2004/02/skos/core#Concept",
+              "range_uri": "http://www.w3.org/2004/02/skos/core#Concept"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#specifiesOfferCurrency",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "Relation indicating the time range in which an Offer is valid."
+          },
+          "domain": [
+            {
+              "name": "epo-req:RequestForOffer",
+              "uri": "http://data.europa.eu/a4g/ontology#RequestForOffer"
+            }
+          ],
+          "label": {
+            "en": "Specifies offer validity period"
+          },
+          "name": "epo-req:specifiesOfferValidityPeriod",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "time:Interval",
+              "range_label": {
+                "en": "Interval"
+              },
+              "range_puri": "http://www.w3.org/2006/time#Interval",
+              "range_uri": "http://www.w3.org/2006/time#Interval"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#specifiesOfferValidityPeriod",
+          "usage": {}
+        }
+      ],
+      "rawTags": {
+        "class-usage-scope": "main"
+      },
+      "uri": "http://data.europa.eu/a4g/ontology#RequestForOffer"
+    },
+    {
+      "classType": "reference",
+      "label": {
+        "en": "Receipt advice"
+      },
+      "name": "epo-ful:ReceiptAdvice",
+      "properties": [
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "Relation indicating that the instance of the concept involves the Buyer."
+          },
+          "domain": [
+            {
+              "name": "epo-ful:ReceiptAdvice",
+              "uri": "http://data.europa.eu/a4g/ontology#ReceiptAdvice"
+            }
+          ],
+          "label": {
+            "en": "Specifies buyer"
+          },
+          "name": "epo:specifiesBuyer",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:Buyer",
+              "range_label": {
+                "en": "Buyer"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#Buyer",
+              "range_uri": "http://data.europa.eu/a4g/ontology#Buyer"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#specifiesBuyer",
+          "usage": {}
+        }
+      ],
+      "rawTags": {
+        "class-usage-scope": "main"
+      },
+      "uri": "http://data.europa.eu/a4g/ontology#ReceiptAdvice"
+    },
+    {
+      "classType": "reference",
+      "label": {
+        "en": "Order change rejection"
+      },
+      "name": "epo-ord:OrderChangeRejection",
+      "properties": [
+        {
+          "cardinality": "1",
+          "description": {
+            "en": "Relation indicating that the instance of the concept involves the Buyer."
+          },
+          "domain": [
+            {
+              "name": "epo-ord:OrderChangeRejection",
+              "uri": "http://data.europa.eu/a4g/ontology#OrderChangeRejection"
+            }
+          ],
+          "label": {
+            "en": "Specifies buyer"
+          },
+          "name": "epo:specifiesBuyer",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:Buyer",
+              "range_label": {
+                "en": "Buyer"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#Buyer",
+              "range_uri": "http://data.europa.eu/a4g/ontology#Buyer"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#specifiesBuyer",
+          "usage": {}
+        }
+      ],
+      "rawTags": {
+        "class-usage-scope": "main"
+      },
+      "uri": "http://data.europa.eu/a4g/ontology#OrderChangeRejection"
+    },
+    {
+      "classType": "reference",
+      "label": {
+        "en": "Order cancellation rejection"
+      },
+      "name": "epo-ord:OrderCancellationRejection",
+      "properties": [
+        {
+          "cardinality": "1",
+          "description": {
+            "en": "Relation indicating that the instance of the concept involves the Buyer."
+          },
+          "domain": [
+            {
+              "name": "epo-ord:OrderCancellationRejection",
+              "uri": "http://data.europa.eu/a4g/ontology#OrderCancellationRejection"
+            }
+          ],
+          "label": {
+            "en": "Specifies buyer"
+          },
+          "name": "epo:specifiesBuyer",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:Buyer",
+              "range_label": {
+                "en": "Buyer"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#Buyer",
+              "range_uri": "http://data.europa.eu/a4g/ontology#Buyer"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#specifiesBuyer",
+          "usage": {}
+        }
+      ],
+      "rawTags": {
+        "class-usage-scope": "main"
+      },
+      "uri": "http://data.europa.eu/a4g/ontology#OrderCancellationRejection"
+    },
+    {
+      "classType": "reference",
+      "label": {
+        "en": "Shipment agreement"
+      },
+      "name": "epo-ful:ShipmentAgreement",
+      "properties": [
+        {
+          "cardinality": "1..*",
+          "description": {
+            "en": "Accepted by Buyer."
+          },
+          "domain": [
+            {
+              "name": "epo-ful:ShipmentAgreement",
+              "uri": "http://data.europa.eu/a4g/ontology#ShipmentAgreement"
+            }
+          ],
+          "label": {
+            "en": "Agreed by buyer"
+          },
+          "name": "epo-ful:agreedByBuyer",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:Buyer",
+              "range_label": {
+                "en": "Buyer"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#Buyer",
+              "range_uri": "http://data.europa.eu/a4g/ontology#Buyer"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG Approval 10/06/2024"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#agreedByBuyer",
+          "usage": {}
+        }
+      ],
+      "rawTags": {
+        "class-usage-scope": "main"
+      },
+      "uri": "http://data.europa.eu/a4g/ontology#ShipmentAgreement"
+    },
+    {
+      "classType": "reference",
+      "label": {
+        "en": "Order cancellation"
+      },
+      "name": "epo-ord:OrderCancellation",
+      "properties": [
+        {
+          "cardinality": "1",
+          "description": {
+            "en": "Relation indicating that the instance of the concept involves the Buyer."
+          },
+          "domain": [
+            {
+              "name": "epo-ord:OrderCancellation",
+              "uri": "http://data.europa.eu/a4g/ontology#OrderCancellation"
+            }
+          ],
+          "label": {
+            "en": "Specifies buyer"
+          },
+          "name": "epo:specifiesBuyer",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:Buyer",
+              "range_label": {
+                "en": "Buyer"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#Buyer",
+              "range_uri": "http://data.europa.eu/a4g/ontology#Buyer"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#specifiesBuyer",
+          "usage": {}
+        }
+      ],
+      "rawTags": {
+        "class-usage-scope": "main"
+      },
+      "uri": "http://data.europa.eu/a4g/ontology#OrderCancellation"
+    },
+    {
+      "classType": "reference",
+      "label": {
+        "en": "Order cancellation confirmation"
+      },
+      "name": "epo-ord:OrderCancellationConfirmation",
+      "properties": [
+        {
+          "cardinality": "1",
+          "description": {
+            "en": "Relation indicating that the instance of the concept involves the Buyer."
+          },
+          "domain": [
+            {
+              "name": "epo-ord:OrderCancellationConfirmation",
+              "uri": "http://data.europa.eu/a4g/ontology#OrderCancellationConfirmation"
+            }
+          ],
+          "label": {
+            "en": "Specifies buyer"
+          },
+          "name": "epo:specifiesBuyer",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:Buyer",
+              "range_label": {
+                "en": "Buyer"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#Buyer",
+              "range_uri": "http://data.europa.eu/a4g/ontology#Buyer"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#specifiesBuyer",
+          "usage": {}
+        }
+      ],
+      "rawTags": {
+        "class-usage-scope": "main"
+      },
+      "uri": "http://data.europa.eu/a4g/ontology#OrderCancellationConfirmation"
+    },
+    {
+      "classType": "reference",
+      "label": {
+        "en": "Order change confirmation"
+      },
+      "name": "epo-ord:OrderChangeConfirmation",
+      "properties": [
+        {
+          "cardinality": "1",
+          "description": {
+            "en": "Relation indicating that the instance of the concept involves the Buyer."
+          },
+          "domain": [
+            {
+              "name": "epo-ord:OrderChangeConfirmation",
+              "uri": "http://data.europa.eu/a4g/ontology#OrderChangeConfirmation"
+            }
+          ],
+          "label": {
+            "en": "Specifies buyer"
+          },
+          "name": "epo:specifiesBuyer",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:Buyer",
+              "range_label": {
+                "en": "Buyer"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#Buyer",
+              "range_uri": "http://data.europa.eu/a4g/ontology#Buyer"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#specifiesBuyer",
+          "usage": {}
+        }
+      ],
+      "rawTags": {
+        "class-usage-scope": "main"
+      },
+      "uri": "http://data.europa.eu/a4g/ontology#OrderChangeConfirmation"
+    },
+    {
+      "classType": "reference",
+      "label": {
+        "en": "Remittance advice"
+      },
+      "name": "epo-pay:RemittanceAdvice",
+      "properties": [
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "Relation indicating the overall Monetary Value that reduces the amount owed."
+          },
+          "domain": [
+            {
+              "name": "epo-pay:RemittanceAdvice",
+              "uri": "http://data.europa.eu/a4g/ontology#RemittanceAdvice"
+            }
+          ],
+          "label": {
+            "en": "Has total credit amount"
+          },
+          "name": "epo-pay:hasTotalCreditAmount",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:MonetaryValue",
+              "range_label": {
+                "en": "Monetary value"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#MonetaryValue",
+              "range_uri": "http://data.europa.eu/a4g/ontology#MonetaryValue"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasTotalCreditAmount",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "Relation indicating the overall Monetary Value that increases the amount owed."
+          },
+          "domain": [
+            {
+              "name": "epo-pay:RemittanceAdvice",
+              "uri": "http://data.europa.eu/a4g/ontology#RemittanceAdvice"
+            }
+          ],
+          "label": {
+            "en": "Has total debit amount"
+          },
+          "name": "epo-pay:hasTotalDebitAmount",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:MonetaryValue",
+              "range_label": {
+                "en": "Monetary value"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#MonetaryValue",
+              "range_uri": "http://data.europa.eu/a4g/ontology#MonetaryValue"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasTotalDebitAmount",
+          "usage": {}
+        },
+        {
+          "cardinality": "0..1",
+          "description": {
+            "en": "Relation indicating the overall paid Monetary Value."
+          },
+          "domain": [
+            {
+              "name": "epo-pay:RemittanceAdvice",
+              "uri": "http://data.europa.eu/a4g/ontology#RemittanceAdvice"
+            }
+          ],
+          "label": {
+            "en": "Has total payment amount"
+          },
+          "name": "epo-pay:hasTotalPaymentAmount",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:MonetaryValue",
+              "range_label": {
+                "en": "Monetary value"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#MonetaryValue",
+              "range_uri": "http://data.europa.eu/a4g/ontology#MonetaryValue"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#hasTotalPaymentAmount",
+          "usage": {}
+        },
+        {
+          "cardinality": "1",
+          "description": {
+            "en": "Relation indicating that the instance of the concept involves the Buyer."
+          },
+          "domain": [
+            {
+              "name": "epo-pay:RemittanceAdvice",
+              "uri": "http://data.europa.eu/a4g/ontology#RemittanceAdvice"
+            }
+          ],
+          "label": {
+            "en": "Specifies buyer"
+          },
+          "name": "epo:specifiesBuyer",
+          "propertyOrigin": "internal",
+          "propertyType": "object property",
+          "range": [
+            {
+              "range_curie": "epo:Buyer",
+              "range_label": {
+                "en": "Buyer"
+              },
+              "range_puri": "http://data.europa.eu/a4g/ontology#Buyer",
+              "range_uri": "http://data.europa.eu/a4g/ontology#Buyer"
+            }
+          ],
+          "tags": {
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 25/09/2025"
+          },
+          "uri": "http://data.europa.eu/a4g/ontology#specifiesBuyer",
+          "usage": {}
+        }
+      ],
+      "rawTags": {
+        "class-usage-scope": "main"
+      },
+      "uri": "http://data.europa.eu/a4g/ontology#RemittanceAdvice"
     },
     {
       "classType": "reference",
@@ -33881,7 +33948,7 @@
         {
           "cardinality": "0..*",
           "description": {
-            "en": ""
+            "en": "Relation indicating the evidence of the damage."
           },
           "domain": [
             {
@@ -33906,7 +33973,8 @@
             }
           ],
           "tags": {
-            "epo:status": "implemented"
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 24/09/2026"
           },
           "uri": "http://data.europa.eu/a4g/ontology#hasDamageStatusProof",
           "usage": {}
@@ -33974,7 +34042,7 @@
         {
           "cardinality": "1",
           "description": {
-            "en": ""
+            "en": "Reference to a Tender."
           },
           "domain": [
             {
@@ -33999,7 +34067,8 @@
             }
           ],
           "tags": {
-            "epo:status": "implemented"
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 24/09/2026"
           },
           "uri": "http://data.europa.eu/a4g/ontology#refersToTender",
           "usage": {}
@@ -34020,7 +34089,7 @@
         {
           "cardinality": "1",
           "description": {
-            "en": ""
+            "en": "Reference to a Tender Receipt."
           },
           "domain": [
             {
@@ -34045,7 +34114,8 @@
             }
           ],
           "tags": {
-            "epo:status": "implemented"
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 24/09/2026"
           },
           "uri": "http://data.europa.eu/a4g/ontology#refersToTenderReceipt",
           "usage": {}
@@ -37072,7 +37142,7 @@
         {
           "cardinality": "0..1",
           "description": {
-            "en": ""
+            "en": "Relation indicating the amount of the expended resource."
           },
           "domain": [
             {
@@ -37097,7 +37167,8 @@
             }
           ],
           "tags": {
-            "epo:status": "implemented"
+            "epo:status": "implemented",
+            "skos:historyNote": "WG approval 24/09/2026"
           },
           "uri": "http://data.europa.eu/a4g/ontology#hasConsumption",
           "usage": {}
@@ -37494,15 +37565,7 @@
       "uri": "http://data.europa.eu/a4g/ontology#"
     },
     {
-      "name": "epo-qua",
-      "uri": "http://data.europa.eu/a4g/ontology#"
-    },
-    {
-      "name": "epo-eva",
-      "uri": "http://data.europa.eu/a4g/ontology#"
-    },
-    {
-      "name": "cccev",
+      "name": "cv",
       "uri": "http://data.europa.eu/m8g/"
     },
     {
@@ -37510,16 +37573,24 @@
       "uri": "http://data.europa.eu/a4g/ontology#"
     },
     {
-      "name": "time",
-      "uri": "http://www.w3.org/2006/time#"
+      "name": "epo-qua",
+      "uri": "http://data.europa.eu/a4g/ontology#"
     },
     {
       "name": "epo-awa",
       "uri": "http://data.europa.eu/a4g/ontology#"
     },
     {
-      "name": "cv",
+      "name": "cccev",
       "uri": "http://data.europa.eu/m8g/"
+    },
+    {
+      "name": "time",
+      "uri": "http://www.w3.org/2006/time#"
+    },
+    {
+      "name": "epo-eva",
+      "uri": "http://data.europa.eu/a4g/ontology#"
     },
     {
       "name": "cpov",
@@ -37550,11 +37621,11 @@
       "uri": "http://data.europa.eu/a4g/ontology#"
     },
     {
-      "name": "epo-req",
+      "name": "epo-cat",
       "uri": "http://data.europa.eu/a4g/ontology#"
     },
     {
-      "name": "epo-cat",
+      "name": "epo-req",
       "uri": "http://data.europa.eu/a4g/ontology#"
     },
     {
