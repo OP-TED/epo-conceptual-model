@@ -946,70 +946,25 @@
 				<ownedComment xmi:type="uml:Comment" xmi:id="EAID_D7E32546_10E8_48f1_BCFD_D9808F73B52B" body="If contractually agreed, the Seller also may respond to the order, changing details that are acceptable by the Buyer.&#xA;-- If an order is accepted with change, the buyer and seller need to have an agreement between them regarding the processing of the changed order, i.e. when is a contract concluded and when can the items be shipped.&#xA;&#xA;Proposal: &#xA;If the order  response is &quot;Change&quot; then the Buyer will create (instantiate) a new order implementing the changes and superseding the previously sent order. ">
 					<annotatedElement xmi:idref="EAID_96EED922_55C7_4a0c_BE58_68CD6D875556"/>
 				</ownedComment>
-				<packagedElement xmi:type="uml:Class" xmi:id="EAID_96EED922_55C7_4a0c_BE58_68CD6D875556" name="epo-ord:OrderResponse">
-					<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_4B7CCAB3_628F_41fd_A787_5AF33D50812B" name="epo-ord:hasResponseDescription">
-						<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000131_628F_41fd_A787_5AF33D50812B" value="0"/>
-						<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EAID_LI000132_628F_41fd_A787_5AF33D50812B" value="1"/>
-						<type xmi:idref="EAJava_rdf_PlainLiteral"/>
-					</ownedAttribute>
-					<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_dst9D0DA8_2814_41df_86FF_1839F851ACD1" name="epo-ord:comprisesOrderResponseLine" association="EAID_7D9D0DA8_2814_41df_86FF_1839F851ACD1">
-						<type xmi:idref="EAID_F655321A_F106_46f3_933E_53ADDFD9113B"/>
-						<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000133__2814_41df_86FF_1839F851ACD1" value="0"/>
-						<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EAID_LI000134__2814_41df_86FF_1839F851ACD1" value="*"/>
-					</ownedAttribute>
-					<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_dstC00307_2C3C_43a2_91E7_AA8247B7CEDD" name="epo-ord:isSubmittedForOrder" association="EAID_AFC00307_2C3C_43a2_91E7_AA8247B7CEDD">
-						<type xmi:idref="EAID_E79A87A0_F565_4e88_B82D_D1167BEF6A0C"/>
-						<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000135__2C3C_43a2_91E7_AA8247B7CEDD" value="1"/>
-						<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EAID_LI000136__2C3C_43a2_91E7_AA8247B7CEDD" value="1"/>
-					</ownedAttribute>
-					<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_dstF97AE3_C138_47de_9B92_F1BE4B376642" name="epo-ord:specifiesOrderResponseInformation" association="EAID_ECF97AE3_C138_47de_9B92_F1BE4B376642">
-						<type xmi:idref="EAID_109E936B_4B55_43d3_98A8_802C2264F5DB"/>
-						<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000137__C138_47de_9B92_F1BE4B376642" value="0"/>
-						<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EAID_LI000138__C138_47de_9B92_F1BE4B376642" value="*"/>
-					</ownedAttribute>
-					<generalization xmi:type="uml:Generalization" xmi:id="EAID_F3DC6C10_C71E_4d6a_8E54_05CFB346E654" general="EAID_E79A87A0_F565_4e88_B82D_D1167BEF6A0C"/>
+				<packagedElement xmi:type="uml:Enumeration" xmi:id="EAID_1E0B8798_161F_491d_ADC5_9FD206CC6125" name="at-voc-new:ResponseStatus">
+					<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="EAID_EADCE343_CBD4_4bd5_92AD_3F07BE4ACCBE" name="Accepted"/>
+					<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="EAID_7EACCF92_5B82_46a7_82F9_20FC14D774C0" name="Rejected"/>
+					<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="EAID_B24F8F57_8DAD_4cdb_9BEE_5767CE983E15" name="ConditionallyAccepted"/>
+					<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="EAID_1FC0B8EF_32D2_4e7a_9594_902B0276FD91" name="InProgress"/>
+					<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="EAID_595C0FF9_E180_4858_A62B_1697C77AFCC4" name="Delivered"/>
+					<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="EAID_CB415AB0_B1A4_4ad2_96CC_EF44569ABA98" name="Cancelled"/>
 				</packagedElement>
-				<packagedElement xmi:type="uml:Association" xmi:id="EAID_7D9D0DA8_2814_41df_86FF_1839F851ACD1">
-					<memberEnd xmi:idref="EAID_dst9D0DA8_2814_41df_86FF_1839F851ACD1"/>
-					<memberEnd xmi:idref="EAID_src9D0DA8_2814_41df_86FF_1839F851ACD1"/>
-					<ownedEnd xmi:type="uml:Property" xmi:id="EAID_src9D0DA8_2814_41df_86FF_1839F851ACD1" association="EAID_7D9D0DA8_2814_41df_86FF_1839F851ACD1">
-						<type xmi:idref="EAID_96EED922_55C7_4a0c_BE58_68CD6D875556"/>
-					</ownedEnd>
-				</packagedElement>
-				<packagedElement xmi:type="uml:Association" xmi:id="EAID_ECF97AE3_C138_47de_9B92_F1BE4B376642">
-					<memberEnd xmi:idref="EAID_dstF97AE3_C138_47de_9B92_F1BE4B376642"/>
-					<memberEnd xmi:idref="EAID_srcF97AE3_C138_47de_9B92_F1BE4B376642"/>
-					<ownedEnd xmi:type="uml:Property" xmi:id="EAID_srcF97AE3_C138_47de_9B92_F1BE4B376642" association="EAID_ECF97AE3_C138_47de_9B92_F1BE4B376642">
-						<type xmi:idref="EAID_96EED922_55C7_4a0c_BE58_68CD6D875556"/>
-					</ownedEnd>
-				</packagedElement>
-				<packagedElement xmi:type="uml:Class" xmi:id="EAID_109E936B_4B55_43d3_98A8_802C2264F5DB" name="epo-ord:OrderResponseInformation">
-					<generalization xmi:type="uml:Generalization" xmi:id="EAID_1B6003C0_D0B7_432f_8EA3_408BD2086789" general="EAID_C774B4DD_2A7A_4428_BAD6_EEC96CE5E33A"/>
-					<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_dstB39003_2ED7_40e3_B01B_D11FF794AF2B" name="epo-ord:isSpecificToOrderResponseLine" association="EAID_41B39003_2ED7_40e3_B01B_D11FF794AF2B">
-						<type xmi:idref="EAID_F655321A_F106_46f3_933E_53ADDFD9113B"/>
-						<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000139__2ED7_40e3_B01B_D11FF794AF2B" value="0"/>
-						<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EAID_LI000140__2ED7_40e3_B01B_D11FF794AF2B" value="*"/>
-					</ownedAttribute>
-				</packagedElement>
-				<packagedElement xmi:type="uml:Association" xmi:id="EAID_41B39003_2ED7_40e3_B01B_D11FF794AF2B">
-					<memberEnd xmi:idref="EAID_dstB39003_2ED7_40e3_B01B_D11FF794AF2B"/>
-					<memberEnd xmi:idref="EAID_srcB39003_2ED7_40e3_B01B_D11FF794AF2B"/>
-					<ownedEnd xmi:type="uml:Property" xmi:id="EAID_srcB39003_2ED7_40e3_B01B_D11FF794AF2B" association="EAID_41B39003_2ED7_40e3_B01B_D11FF794AF2B">
-						<type xmi:idref="EAID_109E936B_4B55_43d3_98A8_802C2264F5DB"/>
-					</ownedEnd>
-				</packagedElement>
-				<packagedElement xmi:type="uml:Dependency" xmi:id="EAID_9898A4B0_1319_468d_ACED_450943028D41" supplier="EAID_1E0B8798_161F_491d_ADC5_9FD206CC6125" client="EAID_109E936B_4B55_43d3_98A8_802C2264F5DB"/>
 				<packagedElement xmi:type="uml:Class" xmi:id="EAID_F655321A_F106_46f3_933E_53ADDFD9113B" name="epo-ord:OrderResponseLine">
 					<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_dstD8DC3D_9B26_49ad_B2DD_43059E6140CF" name="epo-ord:hasBackorderQuantity" association="EAID_0ED8DC3D_9B26_49ad_B2DD_43059E6140CF">
 						<type xmi:idref="EAID_F9677E04_DED2_4052_8D25_BA714BA9C3EC"/>
-						<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000141__9B26_49ad_B2DD_43059E6140CF" value="0"/>
-						<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EAID_LI000142__9B26_49ad_B2DD_43059E6140CF" value="1"/>
+						<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000131__9B26_49ad_B2DD_43059E6140CF" value="0"/>
+						<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EAID_LI000132__9B26_49ad_B2DD_43059E6140CF" value="1"/>
 					</ownedAttribute>
 					<generalization xmi:type="uml:Generalization" xmi:id="EAID_9343C3B2_DB33_4545_A54D_801F70801F89" general="EAID_D0A4903C_A7BD_44ac_960F_C4C98C40706A"/>
 					<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_dstF5C9AF_E278_4ca2_80B9_C8B85FBF7E96" name="epo-ord:isSubmittedForOrderLine" association="EAID_B2F5C9AF_E278_4ca2_80B9_C8B85FBF7E96">
 						<type xmi:idref="EAID_D0A4903C_A7BD_44ac_960F_C4C98C40706A"/>
-						<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000143__E278_4ca2_80B9_C8B85FBF7E96" value="1"/>
-						<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EAID_LI000144__E278_4ca2_80B9_C8B85FBF7E96" value="1"/>
+						<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000133__E278_4ca2_80B9_C8B85FBF7E96" value="1"/>
+						<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EAID_LI000134__E278_4ca2_80B9_C8B85FBF7E96" value="1"/>
 					</ownedAttribute>
 				</packagedElement>
 				<packagedElement xmi:type="uml:Association" xmi:id="EAID_0ED8DC3D_9B26_49ad_B2DD_43059E6140CF">
@@ -1019,13 +974,58 @@
 						<type xmi:idref="EAID_F655321A_F106_46f3_933E_53ADDFD9113B"/>
 					</ownedEnd>
 				</packagedElement>
-				<packagedElement xmi:type="uml:Enumeration" xmi:id="EAID_1E0B8798_161F_491d_ADC5_9FD206CC6125" name="at-voc-new:ResponseStatus">
-					<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="EAID_EADCE343_CBD4_4bd5_92AD_3F07BE4ACCBE" name="Accepted"/>
-					<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="EAID_7EACCF92_5B82_46a7_82F9_20FC14D774C0" name="Rejected"/>
-					<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="EAID_B24F8F57_8DAD_4cdb_9BEE_5767CE983E15" name="ConditionallyAccepted"/>
-					<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="EAID_1FC0B8EF_32D2_4e7a_9594_902B0276FD91" name="InProgress"/>
-					<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="EAID_595C0FF9_E180_4858_A62B_1697C77AFCC4" name="Delivered"/>
-					<ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="EAID_CB415AB0_B1A4_4ad2_96CC_EF44569ABA98" name="Cancelled"/>
+				<packagedElement xmi:type="uml:Association" xmi:id="EAID_41B39003_2ED7_40e3_B01B_D11FF794AF2B">
+					<memberEnd xmi:idref="EAID_dstB39003_2ED7_40e3_B01B_D11FF794AF2B"/>
+					<memberEnd xmi:idref="EAID_srcB39003_2ED7_40e3_B01B_D11FF794AF2B"/>
+					<ownedEnd xmi:type="uml:Property" xmi:id="EAID_srcB39003_2ED7_40e3_B01B_D11FF794AF2B" association="EAID_41B39003_2ED7_40e3_B01B_D11FF794AF2B">
+						<type xmi:idref="EAID_109E936B_4B55_43d3_98A8_802C2264F5DB"/>
+					</ownedEnd>
+				</packagedElement>
+				<packagedElement xmi:type="uml:Association" xmi:id="EAID_7D9D0DA8_2814_41df_86FF_1839F851ACD1">
+					<memberEnd xmi:idref="EAID_dst9D0DA8_2814_41df_86FF_1839F851ACD1"/>
+					<memberEnd xmi:idref="EAID_src9D0DA8_2814_41df_86FF_1839F851ACD1"/>
+					<ownedEnd xmi:type="uml:Property" xmi:id="EAID_src9D0DA8_2814_41df_86FF_1839F851ACD1" association="EAID_7D9D0DA8_2814_41df_86FF_1839F851ACD1">
+						<type xmi:idref="EAID_96EED922_55C7_4a0c_BE58_68CD6D875556"/>
+					</ownedEnd>
+				</packagedElement>
+				<packagedElement xmi:type="uml:Class" xmi:id="EAID_109E936B_4B55_43d3_98A8_802C2264F5DB" name="epo-ord:OrderResponseInformation">
+					<generalization xmi:type="uml:Generalization" xmi:id="EAID_1B6003C0_D0B7_432f_8EA3_408BD2086789" general="EAID_C774B4DD_2A7A_4428_BAD6_EEC96CE5E33A"/>
+					<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_dstB39003_2ED7_40e3_B01B_D11FF794AF2B" name="epo-ord:isSpecificToOrderResponseLine" association="EAID_41B39003_2ED7_40e3_B01B_D11FF794AF2B">
+						<type xmi:idref="EAID_F655321A_F106_46f3_933E_53ADDFD9113B"/>
+						<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000135__2ED7_40e3_B01B_D11FF794AF2B" value="0"/>
+						<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EAID_LI000136__2ED7_40e3_B01B_D11FF794AF2B" value="*"/>
+					</ownedAttribute>
+				</packagedElement>
+				<packagedElement xmi:type="uml:Dependency" xmi:id="EAID_9898A4B0_1319_468d_ACED_450943028D41" supplier="EAID_1E0B8798_161F_491d_ADC5_9FD206CC6125" client="EAID_109E936B_4B55_43d3_98A8_802C2264F5DB"/>
+				<packagedElement xmi:type="uml:Association" xmi:id="EAID_ECF97AE3_C138_47de_9B92_F1BE4B376642">
+					<memberEnd xmi:idref="EAID_dstF97AE3_C138_47de_9B92_F1BE4B376642"/>
+					<memberEnd xmi:idref="EAID_srcF97AE3_C138_47de_9B92_F1BE4B376642"/>
+					<ownedEnd xmi:type="uml:Property" xmi:id="EAID_srcF97AE3_C138_47de_9B92_F1BE4B376642" association="EAID_ECF97AE3_C138_47de_9B92_F1BE4B376642">
+						<type xmi:idref="EAID_96EED922_55C7_4a0c_BE58_68CD6D875556"/>
+					</ownedEnd>
+				</packagedElement>
+				<packagedElement xmi:type="uml:Class" xmi:id="EAID_96EED922_55C7_4a0c_BE58_68CD6D875556" name="epo-ord:OrderResponse">
+					<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_4B7CCAB3_628F_41fd_A787_5AF33D50812B" name="epo-ord:hasResponseDescription">
+						<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000137_628F_41fd_A787_5AF33D50812B" value="0"/>
+						<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EAID_LI000138_628F_41fd_A787_5AF33D50812B" value="1"/>
+						<type xmi:idref="EAJava_rdf_PlainLiteral"/>
+					</ownedAttribute>
+					<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_dst9D0DA8_2814_41df_86FF_1839F851ACD1" name="epo-ord:comprisesOrderResponseLine" association="EAID_7D9D0DA8_2814_41df_86FF_1839F851ACD1">
+						<type xmi:idref="EAID_F655321A_F106_46f3_933E_53ADDFD9113B"/>
+						<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000139__2814_41df_86FF_1839F851ACD1" value="0"/>
+						<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EAID_LI000140__2814_41df_86FF_1839F851ACD1" value="*"/>
+					</ownedAttribute>
+					<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_dstC00307_2C3C_43a2_91E7_AA8247B7CEDD" name="epo-ord:isSubmittedForOrder" association="EAID_AFC00307_2C3C_43a2_91E7_AA8247B7CEDD">
+						<type xmi:idref="EAID_E79A87A0_F565_4e88_B82D_D1167BEF6A0C"/>
+						<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000141__2C3C_43a2_91E7_AA8247B7CEDD" value="1"/>
+						<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EAID_LI000142__2C3C_43a2_91E7_AA8247B7CEDD" value="1"/>
+					</ownedAttribute>
+					<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_dstF97AE3_C138_47de_9B92_F1BE4B376642" name="epo-ord:specifiesOrderResponseInformation" association="EAID_ECF97AE3_C138_47de_9B92_F1BE4B376642">
+						<type xmi:idref="EAID_109E936B_4B55_43d3_98A8_802C2264F5DB"/>
+						<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000143__C138_47de_9B92_F1BE4B376642" value="0"/>
+						<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EAID_LI000144__C138_47de_9B92_F1BE4B376642" value="*"/>
+					</ownedAttribute>
+					<generalization xmi:type="uml:Generalization" xmi:id="EAID_F3DC6C10_C71E_4d6a_8E54_05CFB346E654" general="EAID_E79A87A0_F565_4e88_B82D_D1167BEF6A0C"/>
 				</packagedElement>
 			</packagedElement>
 			<packagedElement xmi:type="uml:Package" xmi:id="EAPK_F7BBFB1F_68AE_4799_A669_02E0D563176C" name="order change">
@@ -2208,7 +2208,7 @@
 			</ownedElement>
 			<ownedElement xmi:type="umldi:UMLClassifierShape" xmi:id="EAID_000A8819_EDF3_4cb3_9BAC_28A7FEB05838" modelElement="EAID_23E9784F_4AEE_4484_9BAC_28A7FEB05838">
 				<ownedElement xmi:type="umldi:UMLNameLabel" xmi:id="EAID_NL000000_EDF3_4cb3_9BAC_28A7FEB05838" text="epo:OriginatorRequest"/>
-				<bounds xmi:type="dc:bounds" xmi:id="EAID_DB000000_EDF3_4cb3_9BAC_28A7FEB05838" x="632" y="1309" width="115" height="33"/>
+				<bounds xmi:type="dc:bounds" xmi:id="EAID_DB000000_EDF3_4cb3_9BAC_28A7FEB05838" x="632" y="1309" width="115" height="43"/>
 			</ownedElement>
 			<ownedElement xmi:type="umldi:UMLClassifierShape" xmi:id="EAID_000A8819_EDF3_4cb3_86BE_1ACC9D34E843" modelElement="EAID_EA36CA1F_5963_4ff6_86BE_1ACC9D34E843">
 				<ownedElement xmi:type="umldi:UMLNameLabel" xmi:id="EAID_NL000000_EDF3_4cb3_86BE_1ACC9D34E843" text="epo-ord:DeliveryAgreement"/>
@@ -2220,7 +2220,7 @@
 			</ownedElement>
 			<ownedElement xmi:type="umldi:UMLClassifierShape" xmi:id="EAID_000A8819_EDF3_4cb3_BA47_E78DE21C76DE" modelElement="EAID_2424C22E_B54F_4b6f_BA47_E78DE21C76DE">
 				<ownedElement xmi:type="umldi:UMLNameLabel" xmi:id="EAID_NL000000_EDF3_4cb3_BA47_E78DE21C76DE" text="locn:Geometry"/>
-				<bounds xmi:type="dc:bounds" xmi:id="EAID_DB000000_EDF3_4cb3_BA47_E78DE21C76DE" x="109" y="272" width="171" height="70"/>
+				<bounds xmi:type="dc:bounds" xmi:id="EAID_DB000000_EDF3_4cb3_BA47_E78DE21C76DE" x="109" y="272" width="171" height="88"/>
 			</ownedElement>
 			<ownedElement xmi:type="umldi:UMLClassifierShape" xmi:id="EAID_000A8819_EDF3_4cb3_AFA8_D5DCED9D61C7" modelElement="EAID_B52CB5AD_2F7E_4e03_AFA8_D5DCED9D61C7">
 				<ownedElement xmi:type="umldi:UMLNameLabel" xmi:id="EAID_NL000000_EDF3_4cb3_AFA8_D5DCED9D61C7" text="dct:Location"/>
@@ -2236,13 +2236,13 @@
 			</ownedElement>
 			<ownedElement xmi:type="umldi:UMLEdge" xmi:id="EAID_000A8819_EDF3_4cb3_8346_839CB32AF64E" source="EAID_B52CB5AD_2F7E_4e03_AFA8_D5DCED9D61C7" target="EAID_2424C22E_B54F_4b6f_BA47_E78DE21C76DE" modelElement="EAID_F48E8C16_CD7F_4664_8346_839CB32AF64E">
 				<ownedElement xmi:type="umldi:UMLAssociationEndLabel" xmi:id="EAID_TEL000000_EDF3_4cb3_8346_839CB32AF64E" text="+locn:geometry" modelElement="EAID_dst8E8C16_CD7F_4664_8346_839CB32AF64E">
-					<bounds xmi:type="dc:bounds" xmi:id="EAID_DBTEL000000_EDF3_4cb3_8346_839CB32AF64E" x="283" y="275" width="64" height="14"/>
+					<bounds xmi:type="dc:bounds" xmi:id="EAID_DBTEL000000_EDF3_4cb3_8346_839CB32AF64E" x="283" y="281" width="64" height="14"/>
 				</ownedElement>
 				<ownedElement xmi:type="umldi:UMLMultiplicityLabel" xmi:id="EAID_TML000000_EDF3_4cb3_8346_839CB32AF64E" text="0..1" modelElement="EAID_dst8E8C16_CD7F_4664_8346_839CB32AF64E">
-					<bounds xmi:type="dc:bounds" xmi:id="EAID_DBTML000000_EDF3_4cb3_8346_839CB32AF64E" x="283" y="304" width="17" height="14"/>
+					<bounds xmi:type="dc:bounds" xmi:id="EAID_DBTML000000_EDF3_4cb3_8346_839CB32AF64E" x="283" y="310" width="17" height="14"/>
 				</ownedElement>
-				<waypoint xmi:type="dc:waypoint" xmi:id="EAID_WP000000_EDF3_4cb3_8346_839CB32AF64E" x="451" y="299"/>
-				<waypoint xmi:type="dc:waypoint" xmi:id="EAID_WP000001_EDF3_4cb3_8346_839CB32AF64E" x="280" y="299"/>
+				<waypoint xmi:type="dc:waypoint" xmi:id="EAID_WP000000_EDF3_4cb3_8346_839CB32AF64E" x="451" y="301"/>
+				<waypoint xmi:type="dc:waypoint" xmi:id="EAID_WP000001_EDF3_4cb3_8346_839CB32AF64E" x="280" y="305"/>
 			</ownedElement>
 			<ownedElement xmi:type="umldi:UMLEdge" xmi:id="EAID_000A8819_EDF3_4cb3_8255_6B2812DC1B0C" source="EAID_B52CB5AD_2F7E_4e03_AFA8_D5DCED9D61C7" target="EAID_ECF07FF0_8693_499d_AD7B_7484B8FDA398" modelElement="EAID_CEDC5261_E7FF_4ca6_8255_6B2812DC1B0C">
 				<ownedElement xmi:type="umldi:UMLAssociationEndLabel" xmi:id="EAID_TEL000000_EDF3_4cb3_8255_6B2812DC1B0C" text="+locn:geographicIdentifier" modelElement="EAID_dstDC5261_E7FF_4ca6_8255_6B2812DC1B0C">
@@ -5096,98 +5096,6 @@
 				<times created="2022-12-02 17:23:33" modified="2022-12-02 17:23:33"/>
 				<flags iscontrolled="0" isprotected="0" batchsave="0" batchload="0" usedtd="0" logxml="0" packageFlags="isModel=1;VICON=3;"/>
 			</element>
-			<element xmi:idref="EAID_D7E32546_10E8_48f1_BCFD_D9808F73B52B" xmi:type="uml:Note" scope="public">
-				<model package="EAPK_44147FFC_CE0D_4cb8_94F5_0B4C7BAF6127" tpos="0" ea_localid="125" ea_eleType="element"/>
-				<properties documentation="If contractually agreed, the Seller also may respond to the order, changing details that are acceptable by the Buyer.&#xA;-- If an order is accepted with change, the buyer and seller need to have an agreement between them regarding the processing of the changed order, i.e. when is a contract concluded and when can the items be shipped.&#xA;&#xA;Proposal: &#xA;If the order  response is &quot;Change&quot; then the Buyer will create (instantiate) a new order implementing the changes and superseding the previously sent order. " isSpecification="false" sType="Note" nType="0" scope="public"/>
-				<project author="andreea" version="1.0" phase="1.0" created="2022-08-10 16:51:11" modified="2023-09-11 18:15:05" complexity="1" status="Proposed"/>
-				<code gentype="&lt;none&gt;"/>
-				<style appearance="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
-				<tags/>
-				<xrefs/>
-				<extendedProperties tagged="0" package_name="order response"/>
-				<links>
-					<NoteLink xmi:id="EAID_C2D6205A_51AB_4613_8874_119FEFAF6080" start="EAID_D7E32546_10E8_48f1_BCFD_D9808F73B52B" end="EAID_96EED922_55C7_4a0c_BE58_68CD6D875556"/>
-				</links>
-			</element>
-			<element xmi:idref="EAID_96EED922_55C7_4a0c_BE58_68CD6D875556" xmi:type="uml:Class" name="epo-ord:OrderResponse" scope="public">
-				<model package="EAPK_44147FFC_CE0D_4cb8_94F5_0B4C7BAF6127" tpos="0" ea_localid="23" ea_eleType="element"/>
-				<properties documentation="A formal reply from the Seller to the Buyer stating the Seller's ability to fulfil the order.&#xA;&#xA;Additional Information:&#xA;The Order Response is used to inform on the acceptance or rejection of an Order or to make a counter-offer.&#xA;" isSpecification="false" sType="Class" nType="0" scope="public" isRoot="false" isLeaf="false" isAbstract="false" isActive="false"/>
-				<project author="andreea" version="1.0" phase="1.0" created="2022-08-10 15:59:27" modified="2024-10-21 10:16:45" complexity="1" status="Proposed"/>
-				<code gentype="Java"/>
-				<style appearance="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
-				<tags>
-					<tag xmi:id="EAID_56D48DCF_6F9A_4ba7_A624_2088902B1A1F" name="epo:status" value="implemented" modelElement="EAID_96EED922_55C7_4a0c_BE58_68CD6D875556"/>
-					<tag xmi:id="EAID_E05B9C21_09B4_4468_8344_8C238B09B1A5" name="skos:historyNote" value="WG Approval 20/04/2023" modelElement="EAID_96EED922_55C7_4a0c_BE58_68CD6D875556"/>
-				</tags>
-				<xrefs/>
-				<extendedProperties tagged="0" package_name="order response"/>
-				<attributes>
-					<attribute xmi:idref="EAID_4B7CCAB3_628F_41fd_A787_5AF33D50812B" name="epo-ord:hasResponseDescription" scope="Public">
-						<initial/>
-						<documentation value="Explanation of the response."/>
-						<model ea_localid="133" ea_guid="{4B7CCAB3-628F-41fd-A787-5AF33D50812B}"/>
-						<properties type="rdf:PlainLiteral" precision="0" collection="false" length="0" static="0" duplicates="0" changeability="changeable"/>
-						<coords ordered="0" scale="0"/>
-						<containment containment="Not Specified" position="0"/>
-						<stereotype/>
-						<bounds lower="0" upper="1"/>
-						<options/>
-						<style/>
-						<styleex value="volatile=0;union=0;"/>
-						<tags>
-							<tag xmi:id="EAID_BD519BE7_F447_4f1c_B788_2A98BEFB5FB9" name="skos:historyNote" value="WG Approval 25/03/2025"/>
-							<tag xmi:id="EAID_9DD82587_6FE3_4fe4_BF28_4C4F66CB4BE2" name="epo:status" value="implemented"/>
-						</tags>
-						<xrefs/>
-					</attribute>
-				</attributes>
-				<links>
-					<Association xmi:id="EAID_7D9D0DA8_2814_41df_86FF_1839F851ACD1" start="EAID_96EED922_55C7_4a0c_BE58_68CD6D875556" end="EAID_F655321A_F106_46f3_933E_53ADDFD9113B"/>
-					<Association xmi:id="EAID_AFC00307_2C3C_43a2_91E7_AA8247B7CEDD" start="EAID_96EED922_55C7_4a0c_BE58_68CD6D875556" end="EAID_E79A87A0_F565_4e88_B82D_D1167BEF6A0C"/>
-					<Association xmi:id="EAID_ECF97AE3_C138_47de_9B92_F1BE4B376642" start="EAID_96EED922_55C7_4a0c_BE58_68CD6D875556" end="EAID_109E936B_4B55_43d3_98A8_802C2264F5DB"/>
-					<Generalization xmi:id="EAID_F3DC6C10_C71E_4d6a_8E54_05CFB346E654" start="EAID_96EED922_55C7_4a0c_BE58_68CD6D875556" end="EAID_E79A87A0_F565_4e88_B82D_D1167BEF6A0C"/>
-					<NoteLink xmi:id="EAID_C2D6205A_51AB_4613_8874_119FEFAF6080" start="EAID_D7E32546_10E8_48f1_BCFD_D9808F73B52B" end="EAID_96EED922_55C7_4a0c_BE58_68CD6D875556"/>
-				</links>
-			</element>
-			<element xmi:idref="EAID_109E936B_4B55_43d3_98A8_802C2264F5DB" xmi:type="uml:Class" name="epo-ord:OrderResponseInformation" scope="public">
-				<model package="EAPK_44147FFC_CE0D_4cb8_94F5_0B4C7BAF6127" tpos="0" ea_localid="113" ea_eleType="element"/>
-				<properties documentation="Information about an Order Response." isSpecification="false" sType="Class" nType="0" scope="public" isRoot="false" isLeaf="false" isAbstract="false" isActive="false"/>
-				<project author="andreea" version="1.0" phase="1.0" created="2023-07-14 13:36:09" modified="2025-09-01 15:50:15" complexity="1" status="Proposed"/>
-				<code gentype="Java"/>
-				<style appearance="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
-				<tags>
-					<tag xmi:id="EAID_921CA99C_3D4E_436a_A827_BCB127B6DF28" name="epo:status" value="implemented" modelElement="EAID_109E936B_4B55_43d3_98A8_802C2264F5DB"/>
-					<tag xmi:id="EAID_3D85CAD5_264C_468b_90C6_F37D0F130D52" name="skos:historyNote" value="WG approval 16/09/2025" modelElement="EAID_109E936B_4B55_43d3_98A8_802C2264F5DB"/>
-				</tags>
-				<xrefs/>
-				<extendedProperties tagged="0" package_name="order response"/>
-				<links>
-					<Generalization xmi:id="EAID_1B6003C0_D0B7_432f_8EA3_408BD2086789" start="EAID_109E936B_4B55_43d3_98A8_802C2264F5DB" end="EAID_C774B4DD_2A7A_4428_BAD6_EEC96CE5E33A"/>
-					<Association xmi:id="EAID_41B39003_2ED7_40e3_B01B_D11FF794AF2B" start="EAID_109E936B_4B55_43d3_98A8_802C2264F5DB" end="EAID_F655321A_F106_46f3_933E_53ADDFD9113B"/>
-					<Dependency xmi:id="EAID_9898A4B0_1319_468d_ACED_450943028D41" start="EAID_109E936B_4B55_43d3_98A8_802C2264F5DB" end="EAID_1E0B8798_161F_491d_ADC5_9FD206CC6125"/>
-					<Association xmi:id="EAID_ECF97AE3_C138_47de_9B92_F1BE4B376642" start="EAID_96EED922_55C7_4a0c_BE58_68CD6D875556" end="EAID_109E936B_4B55_43d3_98A8_802C2264F5DB"/>
-				</links>
-			</element>
-			<element xmi:idref="EAID_F655321A_F106_46f3_933E_53ADDFD9113B" xmi:type="uml:Class" name="epo-ord:OrderResponseLine" scope="public">
-				<model package="EAPK_44147FFC_CE0D_4cb8_94F5_0B4C7BAF6127" tpos="0" ea_localid="699" ea_eleType="element"/>
-				<properties documentation="Details concerning the Seller's ability to fulfil a given Order Line.&#xA;&#xA;Additional Information:&#xA;The Order Response Line is used to inform on the acceptance or rejection of an Order Line or to make a counter-offer." isSpecification="false" sType="Class" nType="0" scope="public" isRoot="false" isLeaf="false" isAbstract="false" isActive="false"/>
-				<project author="lps" version="1.0" phase="1.0" created="2022-09-05 11:45:03" modified="2024-10-21 10:16:54" complexity="1" status="Proposed"/>
-				<code gentype="Java"/>
-				<style appearance="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
-				<tags>
-					<tag xmi:id="EAID_D5589BE0_B67F_437b_86C6_E4179312BD0B" name="epo:status" value="implemented" modelElement="EAID_F655321A_F106_46f3_933E_53ADDFD9113B"/>
-					<tag xmi:id="EAID_8015A296_C37D_4e50_ADA8_F06570F1E7A5" name="skos:historyNote" value="WG Approval 20/04/2023" modelElement="EAID_F655321A_F106_46f3_933E_53ADDFD9113B"/>
-				</tags>
-				<xrefs/>
-				<extendedProperties tagged="0" package_name="order response"/>
-				<links>
-					<Association xmi:id="EAID_0ED8DC3D_9B26_49ad_B2DD_43059E6140CF" start="EAID_F655321A_F106_46f3_933E_53ADDFD9113B" end="EAID_F9677E04_DED2_4052_8D25_BA714BA9C3EC"/>
-					<Generalization xmi:id="EAID_9343C3B2_DB33_4545_A54D_801F70801F89" start="EAID_F655321A_F106_46f3_933E_53ADDFD9113B" end="EAID_D0A4903C_A7BD_44ac_960F_C4C98C40706A"/>
-					<Association xmi:id="EAID_B2F5C9AF_E278_4ca2_80B9_C8B85FBF7E96" start="EAID_F655321A_F106_46f3_933E_53ADDFD9113B" end="EAID_D0A4903C_A7BD_44ac_960F_C4C98C40706A"/>
-					<Association xmi:id="EAID_41B39003_2ED7_40e3_B01B_D11FF794AF2B" start="EAID_109E936B_4B55_43d3_98A8_802C2264F5DB" end="EAID_F655321A_F106_46f3_933E_53ADDFD9113B"/>
-					<Association xmi:id="EAID_7D9D0DA8_2814_41df_86FF_1839F851ACD1" start="EAID_96EED922_55C7_4a0c_BE58_68CD6D875556" end="EAID_F655321A_F106_46f3_933E_53ADDFD9113B"/>
-				</links>
-			</element>
 			<element xmi:idref="EAID_1E0B8798_161F_491d_ADC5_9FD206CC6125" xmi:type="uml:Enumeration" name="at-voc-new:ResponseStatus" scope="public">
 				<model package="EAPK_44147FFC_CE0D_4cb8_94F5_0B4C7BAF6127" tpos="0" ea_localid="700" ea_eleType="element"/>
 				<properties documentation="For Ordering:&#xA;https://docs.peppol.eu/poacc/upgrade-3/codelist/UNCL1229/&#xA;&#xA;For Catalogue:&#xA;https://service.unece.org/trade/uncefact/vocabulary/uncl4343/&#xA;&#xA;" isSpecification="false" sType="Enumeration" nType="0" scope="public" isRoot="false" isLeaf="false" isAbstract="false"/>
@@ -5296,6 +5204,98 @@
 					<Dependency xmi:id="EAID_9898A4B0_1319_468d_ACED_450943028D41" start="EAID_109E936B_4B55_43d3_98A8_802C2264F5DB" end="EAID_1E0B8798_161F_491d_ADC5_9FD206CC6125"/>
 					<NoteLink xmi:id="EAID_A464BB59_9215_41a6_B6B1_829134F89E0E" start="EAID_F6C93F5E_1EBA_409f_BCBF_6403F84C9C27" end="EAID_1E0B8798_161F_491d_ADC5_9FD206CC6125"/>
 					<Dependency xmi:id="EAID_EB02F176_2D40_4f53_8C77_2D7F69EAA399" start="EAID_84590049_CB31_46ad_9E29_90E679D32C10" end="EAID_1E0B8798_161F_491d_ADC5_9FD206CC6125"/>
+				</links>
+			</element>
+			<element xmi:idref="EAID_F655321A_F106_46f3_933E_53ADDFD9113B" xmi:type="uml:Class" name="epo-ord:OrderResponseLine" scope="public">
+				<model package="EAPK_44147FFC_CE0D_4cb8_94F5_0B4C7BAF6127" tpos="0" ea_localid="699" ea_eleType="element"/>
+				<properties documentation="Details concerning the Seller's ability to fulfil a given Order Line.&#xA;&#xA;Additional Information:&#xA;The Order Response Line is used to inform on the acceptance or rejection of an Order Line or to make a counter-offer." isSpecification="false" sType="Class" nType="0" scope="public" isRoot="false" isLeaf="false" isAbstract="false" isActive="false"/>
+				<project author="lps" version="1.0" phase="1.0" created="2022-09-05 11:45:03" modified="2024-10-21 10:16:54" complexity="1" status="Proposed"/>
+				<code gentype="Java"/>
+				<style appearance="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
+				<tags>
+					<tag xmi:id="EAID_D5589BE0_B67F_437b_86C6_E4179312BD0B" name="epo:status" value="implemented" modelElement="EAID_F655321A_F106_46f3_933E_53ADDFD9113B"/>
+					<tag xmi:id="EAID_8015A296_C37D_4e50_ADA8_F06570F1E7A5" name="skos:historyNote" value="WG Approval 20/04/2023" modelElement="EAID_F655321A_F106_46f3_933E_53ADDFD9113B"/>
+				</tags>
+				<xrefs/>
+				<extendedProperties tagged="0" package_name="order response"/>
+				<links>
+					<Association xmi:id="EAID_0ED8DC3D_9B26_49ad_B2DD_43059E6140CF" start="EAID_F655321A_F106_46f3_933E_53ADDFD9113B" end="EAID_F9677E04_DED2_4052_8D25_BA714BA9C3EC"/>
+					<Generalization xmi:id="EAID_9343C3B2_DB33_4545_A54D_801F70801F89" start="EAID_F655321A_F106_46f3_933E_53ADDFD9113B" end="EAID_D0A4903C_A7BD_44ac_960F_C4C98C40706A"/>
+					<Association xmi:id="EAID_B2F5C9AF_E278_4ca2_80B9_C8B85FBF7E96" start="EAID_F655321A_F106_46f3_933E_53ADDFD9113B" end="EAID_D0A4903C_A7BD_44ac_960F_C4C98C40706A"/>
+					<Association xmi:id="EAID_41B39003_2ED7_40e3_B01B_D11FF794AF2B" start="EAID_109E936B_4B55_43d3_98A8_802C2264F5DB" end="EAID_F655321A_F106_46f3_933E_53ADDFD9113B"/>
+					<Association xmi:id="EAID_7D9D0DA8_2814_41df_86FF_1839F851ACD1" start="EAID_96EED922_55C7_4a0c_BE58_68CD6D875556" end="EAID_F655321A_F106_46f3_933E_53ADDFD9113B"/>
+				</links>
+			</element>
+			<element xmi:idref="EAID_D7E32546_10E8_48f1_BCFD_D9808F73B52B" xmi:type="uml:Note" scope="public">
+				<model package="EAPK_44147FFC_CE0D_4cb8_94F5_0B4C7BAF6127" tpos="0" ea_localid="125" ea_eleType="element"/>
+				<properties documentation="If contractually agreed, the Seller also may respond to the order, changing details that are acceptable by the Buyer.&#xA;-- If an order is accepted with change, the buyer and seller need to have an agreement between them regarding the processing of the changed order, i.e. when is a contract concluded and when can the items be shipped.&#xA;&#xA;Proposal: &#xA;If the order  response is &quot;Change&quot; then the Buyer will create (instantiate) a new order implementing the changes and superseding the previously sent order. " isSpecification="false" sType="Note" nType="0" scope="public"/>
+				<project author="andreea" version="1.0" phase="1.0" created="2022-08-10 16:51:11" modified="2023-09-11 18:15:05" complexity="1" status="Proposed"/>
+				<code gentype="&lt;none&gt;"/>
+				<style appearance="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
+				<tags/>
+				<xrefs/>
+				<extendedProperties tagged="0" package_name="order response"/>
+				<links>
+					<NoteLink xmi:id="EAID_C2D6205A_51AB_4613_8874_119FEFAF6080" start="EAID_D7E32546_10E8_48f1_BCFD_D9808F73B52B" end="EAID_96EED922_55C7_4a0c_BE58_68CD6D875556"/>
+				</links>
+			</element>
+			<element xmi:idref="EAID_109E936B_4B55_43d3_98A8_802C2264F5DB" xmi:type="uml:Class" name="epo-ord:OrderResponseInformation" scope="public">
+				<model package="EAPK_44147FFC_CE0D_4cb8_94F5_0B4C7BAF6127" tpos="0" ea_localid="113" ea_eleType="element"/>
+				<properties documentation="Information about an Order Response." isSpecification="false" sType="Class" nType="0" scope="public" isRoot="false" isLeaf="false" isAbstract="false" isActive="false"/>
+				<project author="andreea" version="1.0" phase="1.0" created="2023-07-14 13:36:09" modified="2025-09-01 15:50:15" complexity="1" status="Proposed"/>
+				<code gentype="Java"/>
+				<style appearance="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
+				<tags>
+					<tag xmi:id="EAID_921CA99C_3D4E_436a_A827_BCB127B6DF28" name="epo:status" value="implemented" modelElement="EAID_109E936B_4B55_43d3_98A8_802C2264F5DB"/>
+					<tag xmi:id="EAID_3D85CAD5_264C_468b_90C6_F37D0F130D52" name="skos:historyNote" value="WG approval 16/09/2025" modelElement="EAID_109E936B_4B55_43d3_98A8_802C2264F5DB"/>
+				</tags>
+				<xrefs/>
+				<extendedProperties tagged="0" package_name="order response"/>
+				<links>
+					<Generalization xmi:id="EAID_1B6003C0_D0B7_432f_8EA3_408BD2086789" start="EAID_109E936B_4B55_43d3_98A8_802C2264F5DB" end="EAID_C774B4DD_2A7A_4428_BAD6_EEC96CE5E33A"/>
+					<Association xmi:id="EAID_41B39003_2ED7_40e3_B01B_D11FF794AF2B" start="EAID_109E936B_4B55_43d3_98A8_802C2264F5DB" end="EAID_F655321A_F106_46f3_933E_53ADDFD9113B"/>
+					<Dependency xmi:id="EAID_9898A4B0_1319_468d_ACED_450943028D41" start="EAID_109E936B_4B55_43d3_98A8_802C2264F5DB" end="EAID_1E0B8798_161F_491d_ADC5_9FD206CC6125"/>
+					<Association xmi:id="EAID_ECF97AE3_C138_47de_9B92_F1BE4B376642" start="EAID_96EED922_55C7_4a0c_BE58_68CD6D875556" end="EAID_109E936B_4B55_43d3_98A8_802C2264F5DB"/>
+				</links>
+			</element>
+			<element xmi:idref="EAID_96EED922_55C7_4a0c_BE58_68CD6D875556" xmi:type="uml:Class" name="epo-ord:OrderResponse" scope="public">
+				<model package="EAPK_44147FFC_CE0D_4cb8_94F5_0B4C7BAF6127" tpos="0" ea_localid="23" ea_eleType="element"/>
+				<properties documentation="A formal reply from the Seller to the Buyer stating the Seller's ability to fulfil the order.&#xA;&#xA;Additional Information:&#xA;The Order Response is used to inform on the acceptance or rejection of an Order or to make a counter-offer.&#xA;" isSpecification="false" sType="Class" nType="0" scope="public" isRoot="false" isLeaf="false" isAbstract="false" isActive="false"/>
+				<project author="andreea" version="1.0" phase="1.0" created="2022-08-10 15:59:27" modified="2024-10-21 10:16:45" complexity="1" status="Proposed"/>
+				<code gentype="Java"/>
+				<style appearance="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
+				<tags>
+					<tag xmi:id="EAID_56D48DCF_6F9A_4ba7_A624_2088902B1A1F" name="epo:status" value="implemented" modelElement="EAID_96EED922_55C7_4a0c_BE58_68CD6D875556"/>
+					<tag xmi:id="EAID_E05B9C21_09B4_4468_8344_8C238B09B1A5" name="skos:historyNote" value="WG Approval 20/04/2023" modelElement="EAID_96EED922_55C7_4a0c_BE58_68CD6D875556"/>
+				</tags>
+				<xrefs/>
+				<extendedProperties tagged="0" package_name="order response"/>
+				<attributes>
+					<attribute xmi:idref="EAID_4B7CCAB3_628F_41fd_A787_5AF33D50812B" name="epo-ord:hasResponseDescription" scope="Public">
+						<initial/>
+						<documentation value="Explanation of the response."/>
+						<model ea_localid="133" ea_guid="{4B7CCAB3-628F-41fd-A787-5AF33D50812B}"/>
+						<properties type="rdf:PlainLiteral" precision="0" collection="false" length="0" static="0" duplicates="0" changeability="changeable"/>
+						<coords ordered="0" scale="0"/>
+						<containment containment="Not Specified" position="0"/>
+						<stereotype/>
+						<bounds lower="0" upper="1"/>
+						<options/>
+						<style/>
+						<styleex value="volatile=0;union=0;"/>
+						<tags>
+							<tag xmi:id="EAID_BD519BE7_F447_4f1c_B788_2A98BEFB5FB9" name="skos:historyNote" value="WG Approval 25/03/2025"/>
+							<tag xmi:id="EAID_9DD82587_6FE3_4fe4_BF28_4C4F66CB4BE2" name="epo:status" value="implemented"/>
+						</tags>
+						<xrefs/>
+					</attribute>
+				</attributes>
+				<links>
+					<Association xmi:id="EAID_7D9D0DA8_2814_41df_86FF_1839F851ACD1" start="EAID_96EED922_55C7_4a0c_BE58_68CD6D875556" end="EAID_F655321A_F106_46f3_933E_53ADDFD9113B"/>
+					<Association xmi:id="EAID_AFC00307_2C3C_43a2_91E7_AA8247B7CEDD" start="EAID_96EED922_55C7_4a0c_BE58_68CD6D875556" end="EAID_E79A87A0_F565_4e88_B82D_D1167BEF6A0C"/>
+					<Association xmi:id="EAID_ECF97AE3_C138_47de_9B92_F1BE4B376642" start="EAID_96EED922_55C7_4a0c_BE58_68CD6D875556" end="EAID_109E936B_4B55_43d3_98A8_802C2264F5DB"/>
+					<Generalization xmi:id="EAID_F3DC6C10_C71E_4d6a_8E54_05CFB346E654" start="EAID_96EED922_55C7_4a0c_BE58_68CD6D875556" end="EAID_E79A87A0_F565_4e88_B82D_D1167BEF6A0C"/>
+					<NoteLink xmi:id="EAID_C2D6205A_51AB_4613_8874_119FEFAF6080" start="EAID_D7E32546_10E8_48f1_BCFD_D9808F73B52B" end="EAID_96EED922_55C7_4a0c_BE58_68CD6D875556"/>
 				</links>
 			</element>
 			<element xmi:idref="EAPK_F7BBFB1F_68AE_4799_A669_02E0D563176C" xmi:type="uml:Package" name="order change" scope="public">
@@ -9580,262 +9580,6 @@
 				<xrefs/>
 				<tags/>
 			</connector>
-			<connector xmi:idref="EAID_C2D6205A_51AB_4613_8874_119FEFAF6080">
-				<source xmi:idref="EAID_D7E32546_10E8_48f1_BCFD_D9808F73B52B">
-					<model ea_localid="125" type="Note"/>
-					<role visibility="Public" targetScope="instance"/>
-					<type aggregation="none" containment="Unspecified"/>
-					<constraints/>
-					<modifiers isOrdered="false" changeable="none" isNavigable="false"/>
-					<style value="Union=0;Derived=0;AllowDuplicates=0;"/>
-					<documentation/>
-					<xrefs/>
-					<tags/>
-				</source>
-				<target xmi:idref="EAID_96EED922_55C7_4a0c_BE58_68CD6D875556">
-					<model ea_localid="23" type="Class" name="epo-ord:OrderResponse"/>
-					<role visibility="Public" targetScope="instance"/>
-					<type aggregation="none" containment="Unspecified"/>
-					<constraints/>
-					<modifiers isOrdered="false" changeable="none" isNavigable="true"/>
-					<style value="Union=0;Derived=0;AllowDuplicates=0;"/>
-					<documentation/>
-					<xrefs/>
-					<tags/>
-				</target>
-				<model ea_localid="736"/>
-				<properties ea_type="NoteLink" direction="Source -&gt; Destination"/>
-				<modifiers isRoot="false" isLeaf="false"/>
-				<documentation/>
-				<appearance linemode="2" linecolor="-1" linewidth="0" seqno="0" headStyle="0" lineStyle="0"/>
-				<labels/>
-				<extendedProperties virtualInheritance="0"/>
-				<style/>
-				<xrefs/>
-				<tags/>
-			</connector>
-			<connector xmi:idref="EAID_7D9D0DA8_2814_41df_86FF_1839F851ACD1">
-				<source xmi:idref="EAID_96EED922_55C7_4a0c_BE58_68CD6D875556">
-					<model ea_localid="23" type="Class" name="epo-ord:OrderResponse"/>
-					<role visibility="Public" targetScope="instance"/>
-					<type aggregation="none" containment="Unspecified"/>
-					<constraints/>
-					<modifiers isOrdered="false" changeable="none" isNavigable="false"/>
-					<style value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Non-Navigable;"/>
-					<documentation/>
-					<xrefs/>
-					<tags/>
-				</source>
-				<target xmi:idref="EAID_F655321A_F106_46f3_933E_53ADDFD9113B">
-					<model ea_localid="699" type="Class" name="epo-ord:OrderResponseLine"/>
-					<role name="epo-ord:comprisesOrderResponseLine" visibility="Public" targetScope="instance"/>
-					<type multiplicity="0..*" aggregation="none" containment="Unspecified"/>
-					<constraints/>
-					<modifiers isOrdered="false" changeable="none" isNavigable="false"/>
-					<style value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Navigable;"/>
-					<documentation/>
-					<xrefs/>
-					<tags>
-						<tag xmi:id="EAID_4B6B102D_F799_4d2c_A9F1_B59B09DCEF23" name="skos:historyNote" value="WG approval 25/09/2025"/>
-						<tag xmi:id="EAID_BF488B11_F946_4f52_A6B6_D3598299C7DA" name="epo:status" value="implemented"/>
-					</tags>
-				</target>
-				<model ea_localid="2037"/>
-				<properties ea_type="Association" direction="Source -&gt; Destination"/>
-				<modifiers isRoot="false" isLeaf="false"/>
-				<parameterSubstitutions/>
-				<documentation value="Incorporates Order Response Line."/>
-				<appearance linemode="2" linecolor="-1" linewidth="0" seqno="0" headStyle="0" lineStyle="0"/>
-				<labels rb="0..*" rt="+epo-ord:comprisesOrderResponseLine"/>
-				<extendedProperties virtualInheritance="0"/>
-				<style/>
-				<xrefs/>
-				<tags/>
-			</connector>
-			<connector xmi:idref="EAID_ECF97AE3_C138_47de_9B92_F1BE4B376642">
-				<source xmi:idref="EAID_96EED922_55C7_4a0c_BE58_68CD6D875556">
-					<model ea_localid="23" type="Class" name="epo-ord:OrderResponse"/>
-					<role visibility="Public" targetScope="instance"/>
-					<type aggregation="none" containment="Unspecified"/>
-					<constraints/>
-					<modifiers isOrdered="false" changeable="none" isNavigable="false"/>
-					<style value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Non-Navigable;"/>
-					<documentation/>
-					<xrefs/>
-					<tags/>
-				</source>
-				<target xmi:idref="EAID_109E936B_4B55_43d3_98A8_802C2264F5DB">
-					<model ea_localid="113" type="Class" name="epo-ord:OrderResponseInformation"/>
-					<role name="epo-ord:specifiesOrderResponseInformation" visibility="Public" targetScope="instance"/>
-					<type multiplicity="0..*" aggregation="none" containment="Unspecified"/>
-					<constraints/>
-					<modifiers isOrdered="false" changeable="none" isNavigable="true"/>
-					<style value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Navigable;"/>
-					<documentation/>
-					<xrefs/>
-					<tags>
-						<tag xmi:id="EAID_07FD40D5_9F58_4499_A5B2_8FEF763E79C8" name="skos:historyNote" value="WG approval 25/09/2025"/>
-						<tag xmi:id="EAID_0B5CE60F_91C3_4d70_965C_0E9434DDB8BC" name="epo:status" value="implemented"/>
-					</tags>
-				</target>
-				<model ea_localid="375"/>
-				<properties ea_type="Association" direction="Source -&gt; Destination"/>
-				<modifiers isRoot="false" isLeaf="false"/>
-				<parameterSubstitutions/>
-				<documentation value="Relation indicating the Order Response Information."/>
-				<appearance linemode="2" linecolor="-1" linewidth="0" seqno="0" headStyle="0" lineStyle="0"/>
-				<labels rb="0..*" rt="+epo-ord:specifiesOrderResponseInformation"/>
-				<extendedProperties virtualInheritance="0"/>
-				<style/>
-				<xrefs/>
-				<tags/>
-			</connector>
-			<connector xmi:idref="EAID_1B6003C0_D0B7_432f_8EA3_408BD2086789">
-				<source xmi:idref="EAID_109E936B_4B55_43d3_98A8_802C2264F5DB">
-					<model ea_localid="113" type="Class" name="epo-ord:OrderResponseInformation"/>
-					<role visibility="Public" targetScope="instance"/>
-					<type aggregation="none" containment="Unspecified"/>
-					<constraints/>
-					<modifiers isOrdered="false" changeable="none" isNavigable="false"/>
-					<style value="Union=0;Derived=0;AllowDuplicates=0;"/>
-					<documentation/>
-					<xrefs/>
-					<tags/>
-				</source>
-				<target xmi:idref="EAID_C774B4DD_2A7A_4428_BAD6_EEC96CE5E33A">
-					<model ea_localid="801" type="Class" name="epo-cat:InformationHub"/>
-					<role visibility="Public" targetScope="instance"/>
-					<type aggregation="none" containment="Unspecified"/>
-					<constraints/>
-					<modifiers isOrdered="false" changeable="none" isNavigable="true"/>
-					<style value="Union=0;Derived=0;AllowDuplicates=0;"/>
-					<documentation/>
-					<xrefs/>
-					<tags/>
-				</target>
-				<model ea_localid="403"/>
-				<properties ea_type="Generalization" direction="Source -&gt; Destination"/>
-				<parameterSubstitutions/>
-				<documentation/>
-				<appearance linemode="2" linecolor="-1" linewidth="0" seqno="0" headStyle="0" lineStyle="0"/>
-				<labels/>
-				<extendedProperties virtualInheritance="0"/>
-				<style/>
-				<xrefs/>
-				<tags/>
-			</connector>
-			<connector xmi:idref="EAID_41B39003_2ED7_40e3_B01B_D11FF794AF2B">
-				<source xmi:idref="EAID_109E936B_4B55_43d3_98A8_802C2264F5DB">
-					<model ea_localid="113" type="Class" name="epo-ord:OrderResponseInformation"/>
-					<role visibility="Public" targetScope="instance"/>
-					<type aggregation="none" containment="Unspecified"/>
-					<constraints/>
-					<modifiers isOrdered="false" changeable="none" isNavigable="false"/>
-					<style value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Non-Navigable;"/>
-					<documentation/>
-					<xrefs/>
-					<tags/>
-				</source>
-				<target xmi:idref="EAID_F655321A_F106_46f3_933E_53ADDFD9113B">
-					<model ea_localid="699" type="Class" name="epo-ord:OrderResponseLine"/>
-					<role name="epo-ord:isSpecificToOrderResponseLine" visibility="Public" targetScope="instance"/>
-					<type multiplicity="0..*" aggregation="none" containment="Unspecified"/>
-					<constraints/>
-					<modifiers isOrdered="false" changeable="none" isNavigable="true"/>
-					<style value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Navigable;"/>
-					<documentation/>
-					<xrefs/>
-					<tags>
-						<tag xmi:id="EAID_DEA5D740_4ABA_4f8f_9456_F6453CD6A8E0" name="epo:status" value="implemented"/>
-						<tag xmi:id="EAID_FDFC0A95_746E_49e3_8472_999B890CDCCA" name="skos:historyNote" value="WG approval 25/09/2025"/>
-					</tags>
-				</target>
-				<model ea_localid="386"/>
-				<properties ea_type="Association" direction="Source -&gt; Destination"/>
-				<modifiers isRoot="false" isLeaf="false"/>
-				<parameterSubstitutions/>
-				<documentation value="Information that is particular to an Order Response Line."/>
-				<appearance linemode="2" linecolor="-1" linewidth="0" seqno="0" headStyle="0" lineStyle="0"/>
-				<labels rb="0..*" rt="+epo-ord:isSpecificToOrderResponseLine"/>
-				<extendedProperties virtualInheritance="0"/>
-				<style/>
-				<xrefs/>
-				<tags/>
-			</connector>
-			<connector xmi:idref="EAID_9898A4B0_1319_468d_ACED_450943028D41">
-				<source xmi:idref="EAID_109E936B_4B55_43d3_98A8_802C2264F5DB">
-					<model ea_localid="113" type="Class" name="epo-ord:OrderResponseInformation"/>
-					<role visibility="Public" targetScope="instance"/>
-					<type aggregation="none" containment="Unspecified"/>
-					<constraints/>
-					<modifiers isOrdered="false" changeable="none" isNavigable="false"/>
-					<style value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Non-Navigable;"/>
-					<documentation/>
-					<xrefs/>
-					<tags/>
-				</source>
-				<target xmi:idref="EAID_1E0B8798_161F_491d_ADC5_9FD206CC6125">
-					<model ea_localid="700" type="Enumeration" name="at-voc-new:ResponseStatus"/>
-					<role name="epo-ord:hasStatus" visibility="Public" targetScope="instance"/>
-					<type multiplicity="1" aggregation="none" containment="Unspecified"/>
-					<constraints/>
-					<modifiers isOrdered="false" changeable="none" isNavigable="true"/>
-					<style value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Navigable;"/>
-					<documentation/>
-					<xrefs/>
-					<tags/>
-				</target>
-				<model ea_localid="395"/>
-				<properties ea_type="Dependency" direction="Source -&gt; Destination"/>
-				<documentation value="Relation indicating the status."/>
-				<appearance linemode="2" linecolor="-1" linewidth="0" seqno="0" headStyle="0" lineStyle="0"/>
-				<labels rb="1" rt="+epo-ord:hasStatus"/>
-				<extendedProperties virtualInheritance="0"/>
-				<style/>
-				<xrefs/>
-				<tags>
-					<tag xmi:id="EAID_72E2BCC5_EDB2_454a_97C0_5136C66C8965" name="epo:status" value="implemented"/>
-					<tag xmi:id="EAID_23916038_FEAC_4437_95C6_8E518E341E0C" name="skos:historyNote" value="WG approval 25/09/2025"/>
-				</tags>
-			</connector>
-			<connector xmi:idref="EAID_0ED8DC3D_9B26_49ad_B2DD_43059E6140CF">
-				<source xmi:idref="EAID_F655321A_F106_46f3_933E_53ADDFD9113B">
-					<model ea_localid="699" type="Class" name="epo-ord:OrderResponseLine"/>
-					<role visibility="Public" targetScope="instance"/>
-					<type aggregation="none" containment="Unspecified"/>
-					<constraints/>
-					<modifiers isOrdered="false" changeable="none" isNavigable="false"/>
-					<style value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Non-Navigable;"/>
-					<documentation/>
-					<xrefs/>
-					<tags/>
-				</source>
-				<target xmi:idref="EAID_F9677E04_DED2_4052_8D25_BA714BA9C3EC">
-					<model ea_localid="275" type="Class" name="epo:Quantity"/>
-					<role name="epo-ord:hasBackorderQuantity" visibility="Public" targetScope="instance"/>
-					<type multiplicity="0..1" aggregation="none" containment="Unspecified"/>
-					<constraints/>
-					<modifiers isOrdered="false" changeable="none" isNavigable="false"/>
-					<style value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Navigable;"/>
-					<documentation/>
-					<xrefs/>
-					<tags>
-						<tag xmi:id="EAID_D2968976_A615_402d_9257_08E9DD98245E" name="epo:status" value="implemented"/>
-						<tag xmi:id="EAID_EEB8FABB_F162_4767_B3C2_7A6CFA66B0B2" name="skos:historyNote" value="WG approval 25/09/2025"/>
-					</tags>
-				</target>
-				<model ea_localid="2019"/>
-				<properties ea_type="Association" direction="Source -&gt; Destination"/>
-				<modifiers isRoot="false" isLeaf="false"/>
-				<parameterSubstitutions/>
-				<documentation value="Relation indicating the number of Items that cannot be fulfilled immediately."/>
-				<appearance linemode="2" linecolor="-1" linewidth="0" seqno="0" headStyle="0" lineStyle="0"/>
-				<labels rb="0..1" rt="+epo-ord:hasBackorderQuantity"/>
-				<extendedProperties virtualInheritance="0"/>
-				<style/>
-				<xrefs/>
-				<tags/>
-			</connector>
 			<connector xmi:idref="EAID_15CFDAC6_C396_4655_8C00_52C755BBE7C8">
 				<source xmi:idref="EAID_0937E03F_449B_4e90_A877_CDB2F83BBC32">
 					<model ea_localid="1273" type="Class" name="epo-ord:OrderChangeLine"/>
@@ -9944,6 +9688,42 @@
 					<tag xmi:id="EAID_A071DCD5_FDDB_492a_B57F_B5ABA1631E23" name="skos:historyNote" value="WG approval 25/09/2025"/>
 				</tags>
 			</connector>
+			<connector xmi:idref="EAID_9898A4B0_1319_468d_ACED_450943028D41">
+				<source xmi:idref="EAID_109E936B_4B55_43d3_98A8_802C2264F5DB">
+					<model ea_localid="113" type="Class" name="epo-ord:OrderResponseInformation"/>
+					<role visibility="Public" targetScope="instance"/>
+					<type aggregation="none" containment="Unspecified"/>
+					<constraints/>
+					<modifiers isOrdered="false" changeable="none" isNavigable="false"/>
+					<style value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Non-Navigable;"/>
+					<documentation/>
+					<xrefs/>
+					<tags/>
+				</source>
+				<target xmi:idref="EAID_1E0B8798_161F_491d_ADC5_9FD206CC6125">
+					<model ea_localid="700" type="Enumeration" name="at-voc-new:ResponseStatus"/>
+					<role name="epo-ord:hasStatus" visibility="Public" targetScope="instance"/>
+					<type multiplicity="1" aggregation="none" containment="Unspecified"/>
+					<constraints/>
+					<modifiers isOrdered="false" changeable="none" isNavigable="true"/>
+					<style value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Navigable;"/>
+					<documentation/>
+					<xrefs/>
+					<tags/>
+				</target>
+				<model ea_localid="395"/>
+				<properties ea_type="Dependency" direction="Source -&gt; Destination"/>
+				<documentation value="Relation indicating the status."/>
+				<appearance linemode="2" linecolor="-1" linewidth="0" seqno="0" headStyle="0" lineStyle="0"/>
+				<labels rb="1" rt="+epo-ord:hasStatus"/>
+				<extendedProperties virtualInheritance="0"/>
+				<style/>
+				<xrefs/>
+				<tags>
+					<tag xmi:id="EAID_72E2BCC5_EDB2_454a_97C0_5136C66C8965" name="epo:status" value="implemented"/>
+					<tag xmi:id="EAID_23916038_FEAC_4437_95C6_8E518E341E0C" name="skos:historyNote" value="WG approval 25/09/2025"/>
+				</tags>
+			</connector>
 			<connector xmi:idref="EAID_A464BB59_9215_41a6_B6B1_829134F89E0E">
 				<source xmi:idref="EAID_F6C93F5E_1EBA_409f_BCBF_6403F84C9C27">
 					<model ea_localid="1194" type="Note"/>
@@ -10013,6 +9793,226 @@
 					<tag xmi:id="EAID_8EBEBA63_557E_4cf6_99FD_C972CB91BB6D" name="epo:status" value="implemented"/>
 					<tag xmi:id="EAID_E00A5F8B_530F_45fd_8EEB_26915B66FE97" name="skos:historyNote" value="WG approval 25/09/2025"/>
 				</tags>
+			</connector>
+			<connector xmi:idref="EAID_0ED8DC3D_9B26_49ad_B2DD_43059E6140CF">
+				<source xmi:idref="EAID_F655321A_F106_46f3_933E_53ADDFD9113B">
+					<model ea_localid="699" type="Class" name="epo-ord:OrderResponseLine"/>
+					<role visibility="Public" targetScope="instance"/>
+					<type aggregation="none" containment="Unspecified"/>
+					<constraints/>
+					<modifiers isOrdered="false" changeable="none" isNavigable="false"/>
+					<style value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Non-Navigable;"/>
+					<documentation/>
+					<xrefs/>
+					<tags/>
+				</source>
+				<target xmi:idref="EAID_F9677E04_DED2_4052_8D25_BA714BA9C3EC">
+					<model ea_localid="275" type="Class" name="epo:Quantity"/>
+					<role name="epo-ord:hasBackorderQuantity" visibility="Public" targetScope="instance"/>
+					<type multiplicity="0..1" aggregation="none" containment="Unspecified"/>
+					<constraints/>
+					<modifiers isOrdered="false" changeable="none" isNavigable="false"/>
+					<style value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Navigable;"/>
+					<documentation/>
+					<xrefs/>
+					<tags>
+						<tag xmi:id="EAID_D2968976_A615_402d_9257_08E9DD98245E" name="epo:status" value="implemented"/>
+						<tag xmi:id="EAID_EEB8FABB_F162_4767_B3C2_7A6CFA66B0B2" name="skos:historyNote" value="WG approval 25/09/2025"/>
+					</tags>
+				</target>
+				<model ea_localid="2019"/>
+				<properties ea_type="Association" direction="Source -&gt; Destination"/>
+				<modifiers isRoot="false" isLeaf="false"/>
+				<parameterSubstitutions/>
+				<documentation value="Relation indicating the number of Items that cannot be fulfilled immediately."/>
+				<appearance linemode="2" linecolor="-1" linewidth="0" seqno="0" headStyle="0" lineStyle="0"/>
+				<labels rb="0..1" rt="+epo-ord:hasBackorderQuantity"/>
+				<extendedProperties virtualInheritance="0"/>
+				<style/>
+				<xrefs/>
+				<tags/>
+			</connector>
+			<connector xmi:idref="EAID_41B39003_2ED7_40e3_B01B_D11FF794AF2B">
+				<source xmi:idref="EAID_109E936B_4B55_43d3_98A8_802C2264F5DB">
+					<model ea_localid="113" type="Class" name="epo-ord:OrderResponseInformation"/>
+					<role visibility="Public" targetScope="instance"/>
+					<type aggregation="none" containment="Unspecified"/>
+					<constraints/>
+					<modifiers isOrdered="false" changeable="none" isNavigable="false"/>
+					<style value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Non-Navigable;"/>
+					<documentation/>
+					<xrefs/>
+					<tags/>
+				</source>
+				<target xmi:idref="EAID_F655321A_F106_46f3_933E_53ADDFD9113B">
+					<model ea_localid="699" type="Class" name="epo-ord:OrderResponseLine"/>
+					<role name="epo-ord:isSpecificToOrderResponseLine" visibility="Public" targetScope="instance"/>
+					<type multiplicity="0..*" aggregation="none" containment="Unspecified"/>
+					<constraints/>
+					<modifiers isOrdered="false" changeable="none" isNavigable="true"/>
+					<style value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Navigable;"/>
+					<documentation/>
+					<xrefs/>
+					<tags>
+						<tag xmi:id="EAID_DEA5D740_4ABA_4f8f_9456_F6453CD6A8E0" name="epo:status" value="implemented"/>
+						<tag xmi:id="EAID_FDFC0A95_746E_49e3_8472_999B890CDCCA" name="skos:historyNote" value="WG approval 25/09/2025"/>
+					</tags>
+				</target>
+				<model ea_localid="386"/>
+				<properties ea_type="Association" direction="Source -&gt; Destination"/>
+				<modifiers isRoot="false" isLeaf="false"/>
+				<parameterSubstitutions/>
+				<documentation value="Information that is particular to an Order Response Line."/>
+				<appearance linemode="2" linecolor="-1" linewidth="0" seqno="0" headStyle="0" lineStyle="0"/>
+				<labels rb="0..*" rt="+epo-ord:isSpecificToOrderResponseLine"/>
+				<extendedProperties virtualInheritance="0"/>
+				<style/>
+				<xrefs/>
+				<tags/>
+			</connector>
+			<connector xmi:idref="EAID_7D9D0DA8_2814_41df_86FF_1839F851ACD1">
+				<source xmi:idref="EAID_96EED922_55C7_4a0c_BE58_68CD6D875556">
+					<model ea_localid="23" type="Class" name="epo-ord:OrderResponse"/>
+					<role visibility="Public" targetScope="instance"/>
+					<type aggregation="none" containment="Unspecified"/>
+					<constraints/>
+					<modifiers isOrdered="false" changeable="none" isNavigable="false"/>
+					<style value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Non-Navigable;"/>
+					<documentation/>
+					<xrefs/>
+					<tags/>
+				</source>
+				<target xmi:idref="EAID_F655321A_F106_46f3_933E_53ADDFD9113B">
+					<model ea_localid="699" type="Class" name="epo-ord:OrderResponseLine"/>
+					<role name="epo-ord:comprisesOrderResponseLine" visibility="Public" targetScope="instance"/>
+					<type multiplicity="0..*" aggregation="none" containment="Unspecified"/>
+					<constraints/>
+					<modifiers isOrdered="false" changeable="none" isNavigable="false"/>
+					<style value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Navigable;"/>
+					<documentation/>
+					<xrefs/>
+					<tags>
+						<tag xmi:id="EAID_4B6B102D_F799_4d2c_A9F1_B59B09DCEF23" name="skos:historyNote" value="WG approval 25/09/2025"/>
+						<tag xmi:id="EAID_BF488B11_F946_4f52_A6B6_D3598299C7DA" name="epo:status" value="implemented"/>
+					</tags>
+				</target>
+				<model ea_localid="2037"/>
+				<properties ea_type="Association" direction="Source -&gt; Destination"/>
+				<modifiers isRoot="false" isLeaf="false"/>
+				<parameterSubstitutions/>
+				<documentation value="Incorporates Order Response Line."/>
+				<appearance linemode="2" linecolor="-1" linewidth="0" seqno="0" headStyle="0" lineStyle="0"/>
+				<labels rb="0..*" rt="+epo-ord:comprisesOrderResponseLine"/>
+				<extendedProperties virtualInheritance="0"/>
+				<style/>
+				<xrefs/>
+				<tags/>
+			</connector>
+			<connector xmi:idref="EAID_C2D6205A_51AB_4613_8874_119FEFAF6080">
+				<source xmi:idref="EAID_D7E32546_10E8_48f1_BCFD_D9808F73B52B">
+					<model ea_localid="125" type="Note"/>
+					<role visibility="Public" targetScope="instance"/>
+					<type aggregation="none" containment="Unspecified"/>
+					<constraints/>
+					<modifiers isOrdered="false" changeable="none" isNavigable="false"/>
+					<style value="Union=0;Derived=0;AllowDuplicates=0;"/>
+					<documentation/>
+					<xrefs/>
+					<tags/>
+				</source>
+				<target xmi:idref="EAID_96EED922_55C7_4a0c_BE58_68CD6D875556">
+					<model ea_localid="23" type="Class" name="epo-ord:OrderResponse"/>
+					<role visibility="Public" targetScope="instance"/>
+					<type aggregation="none" containment="Unspecified"/>
+					<constraints/>
+					<modifiers isOrdered="false" changeable="none" isNavigable="true"/>
+					<style value="Union=0;Derived=0;AllowDuplicates=0;"/>
+					<documentation/>
+					<xrefs/>
+					<tags/>
+				</target>
+				<model ea_localid="736"/>
+				<properties ea_type="NoteLink" direction="Source -&gt; Destination"/>
+				<modifiers isRoot="false" isLeaf="false"/>
+				<documentation/>
+				<appearance linemode="2" linecolor="-1" linewidth="0" seqno="0" headStyle="0" lineStyle="0"/>
+				<labels/>
+				<extendedProperties virtualInheritance="0"/>
+				<style/>
+				<xrefs/>
+				<tags/>
+			</connector>
+			<connector xmi:idref="EAID_1B6003C0_D0B7_432f_8EA3_408BD2086789">
+				<source xmi:idref="EAID_109E936B_4B55_43d3_98A8_802C2264F5DB">
+					<model ea_localid="113" type="Class" name="epo-ord:OrderResponseInformation"/>
+					<role visibility="Public" targetScope="instance"/>
+					<type aggregation="none" containment="Unspecified"/>
+					<constraints/>
+					<modifiers isOrdered="false" changeable="none" isNavigable="false"/>
+					<style value="Union=0;Derived=0;AllowDuplicates=0;"/>
+					<documentation/>
+					<xrefs/>
+					<tags/>
+				</source>
+				<target xmi:idref="EAID_C774B4DD_2A7A_4428_BAD6_EEC96CE5E33A">
+					<model ea_localid="801" type="Class" name="epo-cat:InformationHub"/>
+					<role visibility="Public" targetScope="instance"/>
+					<type aggregation="none" containment="Unspecified"/>
+					<constraints/>
+					<modifiers isOrdered="false" changeable="none" isNavigable="true"/>
+					<style value="Union=0;Derived=0;AllowDuplicates=0;"/>
+					<documentation/>
+					<xrefs/>
+					<tags/>
+				</target>
+				<model ea_localid="403"/>
+				<properties ea_type="Generalization" direction="Source -&gt; Destination"/>
+				<parameterSubstitutions/>
+				<documentation/>
+				<appearance linemode="2" linecolor="-1" linewidth="0" seqno="0" headStyle="0" lineStyle="0"/>
+				<labels/>
+				<extendedProperties virtualInheritance="0"/>
+				<style/>
+				<xrefs/>
+				<tags/>
+			</connector>
+			<connector xmi:idref="EAID_ECF97AE3_C138_47de_9B92_F1BE4B376642">
+				<source xmi:idref="EAID_96EED922_55C7_4a0c_BE58_68CD6D875556">
+					<model ea_localid="23" type="Class" name="epo-ord:OrderResponse"/>
+					<role visibility="Public" targetScope="instance"/>
+					<type aggregation="none" containment="Unspecified"/>
+					<constraints/>
+					<modifiers isOrdered="false" changeable="none" isNavigable="false"/>
+					<style value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Non-Navigable;"/>
+					<documentation/>
+					<xrefs/>
+					<tags/>
+				</source>
+				<target xmi:idref="EAID_109E936B_4B55_43d3_98A8_802C2264F5DB">
+					<model ea_localid="113" type="Class" name="epo-ord:OrderResponseInformation"/>
+					<role name="epo-ord:specifiesOrderResponseInformation" visibility="Public" targetScope="instance"/>
+					<type multiplicity="0..*" aggregation="none" containment="Unspecified"/>
+					<constraints/>
+					<modifiers isOrdered="false" changeable="none" isNavigable="true"/>
+					<style value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Navigable;"/>
+					<documentation/>
+					<xrefs/>
+					<tags>
+						<tag xmi:id="EAID_07FD40D5_9F58_4499_A5B2_8FEF763E79C8" name="skos:historyNote" value="WG approval 25/09/2025"/>
+						<tag xmi:id="EAID_0B5CE60F_91C3_4d70_965C_0E9434DDB8BC" name="epo:status" value="implemented"/>
+					</tags>
+				</target>
+				<model ea_localid="375"/>
+				<properties ea_type="Association" direction="Source -&gt; Destination"/>
+				<modifiers isRoot="false" isLeaf="false"/>
+				<parameterSubstitutions/>
+				<documentation value="Relation indicating the Order Response Information."/>
+				<appearance linemode="2" linecolor="-1" linewidth="0" seqno="0" headStyle="0" lineStyle="0"/>
+				<labels rb="0..*" rt="+epo-ord:specifiesOrderResponseInformation"/>
+				<extendedProperties virtualInheritance="0"/>
+				<style/>
+				<xrefs/>
+				<tags/>
 			</connector>
 			<connector xmi:idref="EAID_49BECD24_587C_4e58_B025_88C04B2AF28A">
 				<source xmi:idref="EAID_6F547967_C131_4722_9A48_A10F5BE40024">
@@ -10871,9 +10871,9 @@
 			<diagram xmi:id="EAID_000A8819_EDF3_4cb3_9B22_BB629B0F2EBD">
 				<model package="EAPK_B2290C27_263F_4b18_8490_9BE57A4A1486" localID="40" owner="EAPK_B2290C27_263F_4b18_8490_9BE57A4A1486" tpos="5"/>
 				<properties name="order information hubs" type="Logical"/>
-				<project author="lps" version="1.0" created="2022-12-01 16:09:04" modified="2025-05-29 13:19:02"/>
+				<project author="lps" version="1.0" created="2022-12-01 16:09:04" modified="2026-10-26 14:54:34"/>
 				<style1 value="ShowPrivate=1;ShowProtected=1;ShowPublic=1;HideRelationships=0;Locked=0;Border=1;HighlightForeign=0;PackageContents=1;SequenceNotes=0;ScalePrintImage=0;PPgs.cx=0;PPgs.cy=0;DocSize.cx=791;DocSize.cy=1134;ShowDetails=0;Orientation=P;Zoom=100;ShowTags=0;OpParams=1;VisibleAttributeDetail=0;ShowOpRetType=1;ShowIcons=1;CollabNums=0;HideProps=0;ShowReqs=0;ShowCons=0;PaperSize=9;HideParents=0;UseAlias=0;HideAtts=0;HideOps=0;HideStereo=0;HideElemStereo=0;ShowTests=0;ShowMaint=0;ConnectorNotation=UML 2.1;ExplicitNavigability=0;ShowShape=1;AllDockable=0;AdvancedElementProps=1;AdvancedFeatureProps=1;AdvancedConnectorProps=1;m_bElementClassifier=1;SPT=1;ShowNotes=0;SuppressBrackets=0;SuppConnectorLabels=0;PrintPageHeadFoot=0;ShowAsList=0;"/>
-				<style2 value="ExcludeRTF=0;DocAll=0;HideQuals=0;AttPkg=1;ShowTests=0;ShowMaint=0;SuppressFOC=1;MatrixActive=0;SwimlanesActive=1;KanbanActive=0;MatrixLineWidth=1;MatrixLineClr=0;MatrixLocked=0;TConnectorNotation=UML 2.1;TExplicitNavigability=0;AdvancedElementProps=1;AdvancedFeatureProps=1;AdvancedConnectorProps=1;m_bElementClassifier=1;SPT=1;MDGDgm=;STBLDgm=;ShowNotes=0;VisibleAttributeDetail=0;ShowOpRetType=1;SuppressBrackets=0;SuppConnectorLabels=0;PrintPageHeadFoot=0;ShowAsList=0;SuppressedCompartments=;Theme=:119;SaveTag=317481BF;"/>
+				<style2 value="ExcludeRTF=0;DocAll=0;HideQuals=0;AttPkg=1;ShowTests=0;ShowMaint=0;SuppressFOC=1;MatrixActive=0;SwimlanesActive=1;KanbanActive=0;MatrixLineWidth=1;MatrixLineClr=0;MatrixLocked=0;TConnectorNotation=UML 2.1;TExplicitNavigability=0;AdvancedElementProps=1;AdvancedFeatureProps=1;AdvancedConnectorProps=1;m_bElementClassifier=1;SPT=1;MDGDgm=;STBLDgm=;ShowNotes=0;VisibleAttributeDetail=0;ShowOpRetType=1;SuppressBrackets=0;SuppConnectorLabels=0;PrintPageHeadFoot=0;ShowAsList=0;SuppressedCompartments=;Theme=:119;SaveTag=3E824122;"/>
 				<swimlanes value="locked=false;orientation=0;width=0;inbar=false;names=false;color=-1;bold=false;fcol=0;tcol=-1;ofCol=-1;ufCol=-1;hl=1;ufh=0;hh=0;cls=0;bw=0;hli=0;bro=0;SwimlaneFont=lfh:-16,lfw:0,lfi:0,lfu:0,lfs:0,lfface:Calibri,lfe:0,lfo:0,lfchar:1,lfop:0,lfcp:0,lfq:0,lfpf=0,lfWidth=0;"/>
 				<matrixitems value="locked=false;matrixactive=false;swimlanesactive=true;kanbanactive=false;width=1;clrLine=0;"/>
 				<extendedProperties/>
@@ -10883,10 +10883,10 @@
 					<element geometry="Left=371;Top=1189;Right=461;Bottom=1235;" subject="EAID_EDBDACA0_B647_48d5_BAB3_82CFCB656655" seqno="1" style="NSL=0;DUID=DC45C6B0;"/>
 					<element geometry="Left=902;Top=126;Right=1056;Bottom=175;" subject="EAID_55DB4FF7_0ECE_48e2_A0C8_B0BAA44AF903" seqno="2" style="NSL=0;DUID=E0B85F82;"/>
 					<element geometry="Left=451;Top=271;Right=651;Bottom=341;" subject="EAID_B52CB5AD_2F7E_4e03_AFA8_D5DCED9D61C7" seqno="3" style="NSL=0;DUID=F7E0C537;"/>
-					<element geometry="Left=109;Top=272;Right=280;Bottom=342;" subject="EAID_2424C22E_B54F_4b6f_BA47_E78DE21C76DE" seqno="4" style="NSL=0;BCol=-1;BFol=-1;LCol=-1;LWth=-1;fontsz=0;bold=0;black=0;italic=0;ul=0;charset=0;pitch=0;DUID=D2FF0AED;"/>
+					<element geometry="Left=109;Top=272;Right=280;Bottom=360;" subject="EAID_2424C22E_B54F_4b6f_BA47_E78DE21C76DE" seqno="4" style="NSL=0;BCol=-1;BFol=-1;LCol=-1;LWth=-1;fontsz=0;bold=0;black=0;italic=0;ul=0;charset=0;pitch=0;DUID=D2FF0AED;"/>
 					<element geometry="Left=436;Top=466;Right=643;Bottom=567;" subject="EAID_ECF07FF0_8693_499d_AD7B_7484B8FDA398" seqno="5" style="DUID=9D073F5D;NSL=0;BCol=-1;BFol=-1;LCol=-1;LWth=-1;fontsz=0;bold=0;black=0;italic=0;ul=0;charset=0;pitch=0;"/>
 					<element geometry="Left=419;Top=117;Right=684;Bottom=205;" subject="EAID_EA36CA1F_5963_4ff6_86BE_1ACC9D34E843" seqno="6" style="DUID=49FC0F50;NSL=0;BCol=-1;BFol=-1;LCol=-1;LWth=-1;fontsz=0;bold=0;black=0;italic=0;ul=0;charset=0;pitch=0;"/>
-					<element geometry="Left=632;Top=1309;Right=747;Bottom=1342;" subject="EAID_23E9784F_4AEE_4484_9BAC_28A7FEB05838" seqno="7" style="NSL=0;DUID=F771DD0B;"/>
+					<element geometry="Left=632;Top=1309;Right=747;Bottom=1352;" subject="EAID_23E9784F_4AEE_4484_9BAC_28A7FEB05838" seqno="7" style="NSL=0;DUID=F771DD0B;"/>
 					<element geometry="Left=605;Top=1177;Right=773;Bottom=1247;" subject="EAID_D862AE4B_9219_4f8e_9EF6_4DA5A1D61809" seqno="8" style="DUID=A2DEB53A;"/>
 					<element geometry="Left=221;Top=1053;Right=488;Bottom=1151;" subject="EAID_1F273DD7_0EFA_43d2_9B44_2FCDD6AB5C9D" seqno="9" style="NSL=0;BCol=-1;BFol=-1;LCol=-1;LWth=-1;fontsz=0;bold=0;black=0;italic=0;ul=0;charset=0;pitch=0;DUID=B00C2A3D;"/>
 					<element geometry="Left=587;Top=1054;Right=887;Bottom=1152;" subject="EAID_DB9BDB18_C14B_4262_AAE5_65D2B64C35E1" seqno="10" style="DUID=7DBD414C;NSL=0;"/>
@@ -11374,12 +11374,12 @@
 	<thecustomprofile:epo_status base_Class="EAID_90D05E22_266C_43a6_B8B3_4DB83EC94A01" __EAStereoName="epo:status" epo_status="implemented"/>
 	<thecustomprofile:skos_historyNote base_Class="EAID_BE2F0699_0589_4cbc_B1E8_3925D69F40D4" __EAStereoName="skos:historyNote" skos_historyNote="WG Approval 25/04/2023"/>
 	<thecustomprofile:epo_status base_Class="EAID_BE2F0699_0589_4cbc_B1E8_3925D69F40D4" __EAStereoName="epo:status" epo_status="implemented"/>
-	<thecustomprofile:skos_historyNote base_Class="EAID_96EED922_55C7_4a0c_BE58_68CD6D875556" __EAStereoName="skos:historyNote" skos_historyNote="WG Approval 20/04/2023"/>
-	<thecustomprofile:epo_status base_Class="EAID_96EED922_55C7_4a0c_BE58_68CD6D875556" __EAStereoName="epo:status" epo_status="implemented"/>
-	<thecustomprofile:skos_historyNote base_Class="EAID_109E936B_4B55_43d3_98A8_802C2264F5DB" __EAStereoName="skos:historyNote" skos_historyNote="WG approval 16/09/2025"/>
-	<thecustomprofile:epo_status base_Class="EAID_109E936B_4B55_43d3_98A8_802C2264F5DB" __EAStereoName="epo:status" epo_status="implemented"/>
 	<thecustomprofile:skos_historyNote base_Class="EAID_F655321A_F106_46f3_933E_53ADDFD9113B" __EAStereoName="skos:historyNote" skos_historyNote="WG Approval 20/04/2023"/>
 	<thecustomprofile:epo_status base_Class="EAID_F655321A_F106_46f3_933E_53ADDFD9113B" __EAStereoName="epo:status" epo_status="implemented"/>
+	<thecustomprofile:skos_historyNote base_Class="EAID_109E936B_4B55_43d3_98A8_802C2264F5DB" __EAStereoName="skos:historyNote" skos_historyNote="WG approval 16/09/2025"/>
+	<thecustomprofile:epo_status base_Class="EAID_109E936B_4B55_43d3_98A8_802C2264F5DB" __EAStereoName="epo:status" epo_status="implemented"/>
+	<thecustomprofile:skos_historyNote base_Class="EAID_96EED922_55C7_4a0c_BE58_68CD6D875556" __EAStereoName="skos:historyNote" skos_historyNote="WG Approval 20/04/2023"/>
+	<thecustomprofile:epo_status base_Class="EAID_96EED922_55C7_4a0c_BE58_68CD6D875556" __EAStereoName="epo:status" epo_status="implemented"/>
 	<thecustomprofile:skos_historyNote base_Class="EAID_6F547967_C131_4722_9A48_A10F5BE40024" __EAStereoName="skos:historyNote" skos_historyNote="WG approval 16/09/2025"/>
 	<thecustomprofile:epo_status base_Class="EAID_6F547967_C131_4722_9A48_A10F5BE40024" __EAStereoName="epo:status" epo_status="implemented"/>
 	<thecustomprofile:skos_historyNote base_Class="EAID_1765BB54_A159_47b8_8832_38C5632A1FF6" __EAStereoName="skos:historyNote" skos_historyNote="WG approval 16/09/2025"/>
