@@ -61,6 +61,7 @@
 
 :AwardDecision a owl:Class ;
     rdfs:isDefinedBy :core ;
+    rdfs:subClassOf :Document ;
     skos:definition "Resolution of the Buyer as to the result of the Procurement Procedure."@en ;
     skos:historyNote "WG Approval 14/11/2018"@en ;
     skos:prefLabel "Award Decision"@en .
@@ -135,6 +136,7 @@
 
 :Certifier a owl:Class ;
     rdfs:isDefinedBy :core ;
+    rdfs:subClassOf :AuxiliaryParty ;
     skos:definition "The role of an agent who issues a certificate. Additional Information: The certifier is responsible for verifying and confirming the conformance of the instance of the concept to a defined set of criteria."@en ;
     skos:historyNote "WG approval 16/05/2023"@en ;
     skos:prefLabel "Certifier"@en .
@@ -252,6 +254,7 @@
 
 :EmploymentInformationProvider a owl:Class ;
     rdfs:isDefinedBy :core ;
+    rdfs:subClassOf :AuxiliaryParty ;
     skos:definition "A Role of an Agent responsible for providing information concerning the general regulatory framework for employment protection and working conditions."@en ;
     skos:prefLabel "Employment Information Provider"@en .
 
@@ -271,6 +274,7 @@
 
 :EnvironmentalProtectionInformationProvider a owl:Class ;
     rdfs:isDefinedBy :core ;
+    rdfs:subClassOf :AuxiliaryParty ;
     skos:definition "A Role of an Agent responsible for providing information concerning the general regulatory framework for environmental protection."@en ;
     skos:prefLabel "Environmental Protection Information Provider"@en .
 
@@ -291,12 +295,14 @@
 
 :ExpressionOfInterest a owl:Class ;
     rdfs:isDefinedBy :core ;
+    rdfs:subClassOf :Document ;
     skos:definition "Document presenting an Economic Operator's request to be considered for a Procedure covering a specific domain."@en ;
     skos:historyNote "WG approval 13/04/2021"@en ;
     skos:prefLabel "Expression Of Interest"@en .
 
 :ExpressionOfInterestResponse a owl:Class ;
     rdfs:isDefinedBy :core ;
+    rdfs:subClassOf :Document ;
     skos:definition "A formal reply to an Expression Of Interest."@en ;
     skos:historyNote "WG approval 18/08/2026"@en ;
     skos:prefLabel "Expression Of Interest Response"@en .
@@ -436,6 +442,7 @@
 
 :Notice a owl:Class ;
     rdfs:isDefinedBy :core ;
+    rdfs:subClassOf :Document ;
     skos:definition "Document published by the Buyer about market opportunities and results."@en ;
     skos:historyNote "WG Approval 23/05/2019"@en ;
     skos:prefLabel "Notice"@en .
@@ -448,6 +455,7 @@
 
 :Offer a owl:Class ;
     rdfs:isDefinedBy :core ;
+    rdfs:subClassOf :Document ;
     skos:definition "Document providing the Monetary Value and the details to fulfill the Requirements set out in the Procurement Documents or Request for Offer. Additional information: A quotation is considered to be an Offer in the eProcurement Ontology."@en ;
     skos:historyNote "WG approval 09/02/2023"@en ;
     skos:prefLabel "Offer"@en .
@@ -481,6 +489,7 @@
 
 :OriginatorRequest a owl:Class ;
     rdfs:isDefinedBy :core ;
+    rdfs:subClassOf :Document ;
     skos:definition "Document in which the Originator describes his needs."@en ;
     skos:historyNote "WG approval 09/02/2023"@en ;
     skos:prefLabel "Originator Request"@en .
@@ -566,6 +575,7 @@
 
 :ProcurementDocument a owl:Class ;
     rdfs:isDefinedBy :core ;
+    rdfs:subClassOf :Document ;
     skos:definition "Document produced or referred to by the Buyer to describe or determine elements of the Procurement. Additional information: Procurement Documents are to be accessible since the date of publication of the Contract Notice or the prior information Notice when used as a call for competition. Examples of Procurement Documents are Technical Specifications, the Descriptive Document, proposed conditions of Contract, formats for the presentation of Documents by Candidates and Tenderers, information on generally applicable obligations. Other Documents related to the Procedure such as Notices are not considered to be Procurement Documents."@en ;
     skos:historyNote "WG Approval 23/05/2019"@en ;
     skos:prefLabel "Procurement Document"@en .
@@ -634,6 +644,7 @@
 
 :ReviewDecision a owl:Class ;
     rdfs:isDefinedBy :core ;
+    rdfs:subClassOf :Document ;
     skos:definition "Information about Review Decisions."@en ;
     skos:prefLabel "Review Decision"@en .
 
@@ -659,6 +670,7 @@
 
 :ReviewRequest a owl:Class ;
     rdfs:isDefinedBy :core ;
+    rdfs:subClassOf :Document ;
     skos:definition "Information about requests to review procedures."@en ;
     skos:historyNote "WG Approval 23/10/2021"@en ;
     skos:prefLabel "Review Request"@en .
@@ -757,6 +769,7 @@
 
 :SubmissionChecklist a owl:Class ;
     rdfs:isDefinedBy :core ;
+    rdfs:subClassOf :ProcurementDocument ;
     skos:definition "Document listing all the documents to be submitted by the Economic Operator to participate in a Procurement Procedure."@en ;
     skos:prefLabel "Submission Checklist"@en .
 
@@ -791,6 +804,7 @@
 
 :TaxInformationProvider a owl:Class ;
     rdfs:isDefinedBy :core ;
+    rdfs:subClassOf :AuxiliaryParty ;
     skos:definition "A Role of an Agent responsible for providing information concerning the general regulatory framework for taxes."@en ;
     skos:prefLabel "Tax Information Provider"@en .
 
@@ -803,13 +817,15 @@
 
 :TechnicalSpecification a owl:Class ;
     rdfs:isDefinedBy :core ;
+    rdfs:subClassOf :ProcurementDocument ;
     skos:definition "A set of documented Requirements applicable to the object of the Procurement. Additional Information: A specification often includes technical standards."@en ;
     skos:historyNote "WG approval 20/04/2021"@en ;
     skos:prefLabel "Technical Specification"@en .
 
 :Tender a owl:Class ;
     rdfs:isDefinedBy :core ;
-    rdfs:subClassOf :MaskableObject ;
+    rdfs:subClassOf :Document,
+        :MaskableObject ;
     skos:definition "Information submitted by the Economic Operator to specify its Offer regarding a specific Lot, in response to the call for Tender."@en ;
     skos:historyNote "WG approval 03/05/2022"@en ;
     skos:prefLabel "Tender"@en .
@@ -834,6 +850,7 @@
 
 :TenderReceipt a owl:Class ;
     rdfs:isDefinedBy :core ;
+    rdfs:subClassOf :Document ;
     skos:definition "A formal reply from the Buyer to the Tenderer acknowledging the reception of a Tender."@en ;
     skos:historyNote "WG approval 18/08/2026"@en ;
     skos:prefLabel "Tender Receipt"@en .
@@ -4607,6 +4624,7 @@
 
 :Contract a owl:Class ;
     rdfs:isDefinedBy :core ;
+    rdfs:subClassOf :Document ;
     skos:definition "A voluntary, deliberate, and legally binding agreement between two or more competent parties."@en ;
     skos:historyNote "WG approval 19/03/2024"@en ;
     skos:prefLabel "Contract"@en .
