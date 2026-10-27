@@ -1206,7 +1206,7 @@
                         <td>rdf:PlainLiteral [0..*]</td>
                      </tr>
                      <tr>
-                        <td>epo:ProcurementElement<br>epo:ProcurementCriterion<br>epo:Certificate<br>epo:Document<br>epo:ChangeInformation<br></td>
+                        <td>epo:ProcurementElement<br>epo:Certificate<br>epo:ProcurementCriterion<br>epo:Document<br>epo:ChangeInformation<br></td>
                         <td>epo:hasAdditionalInformation</td>
                         <td>Supplementary data about the instance of the concept. Supplementary data about the instance of the concept. Supplementary data about the instance of the concept. Supplementary data about the instance of the concept. Supplementary data about the instance of the concept.
                            </td>
@@ -2875,10 +2875,10 @@
                         <td>xsd:boolean [0..1]</td>
                      </tr>
                      <tr>
-                        <td>epo:ProcurementElement<br>epo:LotGroup<br></td>
+                        <td>epo:LotGroup<br>epo:ProcurementElement<br></td>
                         <td>epo:isSMESuitable</td>
-                        <td>The procurement is suitable for small and medium enterprises (SMEs).
-                            The procurement is suitable for small and medium enterprises (SMEs).</td>
+                        <td>The procurement is suitable for small and medium enterprises (SMEs). The procurement is suitable for small and medium enterprises (SMEs).
+                           </td>
                         <td>xsd:boolean [0..1]<br>xsd:boolean [0..1]<br></td>
                      </tr>
                      <tr>
@@ -3173,8 +3173,12 @@
                      </tr>
                      <tr>
                         <td>epo:concernsMaskedObject</td>
-                        <td>Relates to Masked Object.</td>
-                        <td>epo:NonPublishedInformation -&gt; epo:MaskableObject [1]</td>
+                        <td>Relates to Masked Object.
+                            Relates to Masked Object.
+                            Relates to Masked Object.
+                            Relates to Masked Object.
+                            Relates to Masked Object.</td>
+                        <td>epo:NonPublishedInformation -&gt; person:Person [0..1]<br>epo:NonPublishedInformation -&gt; org:Organization [0..1]<br>epo:NonPublishedInformation -&gt; cpov:ContactPoint [0..1]<br>epo:NonPublishedInformation -&gt; cccev:Constraint [0..1]<br>epo:NonPublishedInformation -&gt; epo:MaskableObject [0..1]<br></td>
                      </tr>
                      <tr>
                         <td>epo:concernsNotice</td>
@@ -3781,8 +3785,7 @@
                            from the rest of Directives about procurement.
                            
                            In the case of framework agreements and dynamic purchasing systems this refers to
-                           the maximum estimated value.
-                            A forecast of the value of the procurement before competition.
+                           the maximum estimated value. A forecast of the value of the procurement before competition.
                            
                            Additional Information:
                            Different cases of estimated values may refer to a lot, the global value of the procedure,
@@ -3793,8 +3796,9 @@
                            from the rest of Directives about procurement.
                            
                            In the case of framework agreements and dynamic purchasing systems this refers to
-                           the maximum estimated value.</td>
-                        <td>epo:ProcurementElement -&gt; epo:MonetaryValue [0..1]<br>epo:LotGroup -&gt; epo:MonetaryValue [0..1]<br></td>
+                           the maximum estimated value.
+                           </td>
+                        <td>epo:LotGroup -&gt; epo:MonetaryValue [0..1]<br>epo:ProcurementElement -&gt; epo:MonetaryValue [0..1]<br></td>
                      </tr>
                      <tr>
                         <td>epo:hasESubmissionPermission</td>
@@ -3879,7 +3883,7 @@
                         <td>Relation indicating the in-house Identifier used by an Organization.
                             Relation indicating the in-house Identifier used by an Organization.
                            </td>
-                        <td>epo:ProcurementElement -&gt; adms:Identifier [0..*]<br>epo:LotGroup -&gt; adms:Identifier [0..*]<br></td>
+                        <td>epo:LotGroup -&gt; adms:Identifier [0..*]<br>epo:ProcurementElement -&gt; adms:Identifier [0..*]<br></td>
                      </tr>
                      <tr>
                         <td>epo:hasInternationalProcurementInstrumentExceptionInformation</td>
@@ -3955,7 +3959,7 @@
                             Relation indicating that the maximum value allowed for a Framework Agreement as defined
                            by the Buyer at the outset.
                            </td>
-                        <td>epo:ProcurementElement -&gt; epo:MonetaryValue [0..1]<br>epo:LotGroup -&gt; epo:MonetaryValue [0..1]<br></td>
+                        <td>epo:LotGroup -&gt; epo:MonetaryValue [0..1]<br>epo:ProcurementElement -&gt; epo:MonetaryValue [0..1]<br></td>
                      </tr>
                      <tr>
                         <td>epo:hasLegalBasis</td>
@@ -4124,7 +4128,7 @@
                      <tr>
                         <td>epo:hasPrimaryContactPoint</td>
                         <td>Relation indicating the main Contact Point. Relation indicating the main Contact Point.</td>
-                        <td>org:Organization -&gt; cpov:ContactPoint [0..1]<br>person:Person -&gt; cpov:ContactPoint [0..1]<br></td>
+                        <td>person:Person -&gt; cpov:ContactPoint [0..1]<br>org:Organization -&gt; cpov:ContactPoint [0..1]<br></td>
                      </tr>
                      <tr>
                         <td>epo:hasPrizeValue</td>
@@ -4199,7 +4203,7 @@
                             Explanation as to whether a procurement may be reserved for the participation of certain
                            types of organisation.
                            </td>
-                        <td>epo:ParticipationCondition -&gt; at-voc:reserved-procurement [0..*]<br>epo:ParticipationConditionsSummary -&gt; at-voc:reserved-procurement [0..*]<br></td>
+                        <td>epo:ParticipationConditionsSummary -&gt; at-voc:reserved-procurement [0..*]<br>epo:ParticipationCondition -&gt; at-voc:reserved-procurement [0..*]<br></td>
                      </tr>
                      <tr>
                         <td>epo:hasReviewBodyType</td>
@@ -4534,7 +4538,7 @@
                      <tr>
                         <td>epo:isSubjectToTerm</td>
                         <td>Relation indicating that the instance of the concept applies a Term. Relation indicating that the instance of the concept applies a Term. Relation indicating that the instance of the concept applies a Term.</td>
-                        <td>epo:ProcurementElement -&gt; epo:Term [0..*]<br>epo:LotGroup -&gt; epo:Term [0..*]<br>epo:Contract -&gt; epo:Term [0..*]<br></td>
+                        <td>epo:LotGroup -&gt; epo:Term [0..*]<br>epo:ProcurementElement -&gt; epo:Term [0..*]<br>epo:Contract -&gt; epo:Term [0..*]<br></td>
                      </tr>
                      <tr>
                         <td>epo:isSubmittedBy</td>
@@ -4595,11 +4599,11 @@
                      </tr>
                      <tr>
                         <td>epo:playedBy</td>
-                        <td>Relation indicating the Agent that fulfills the function of the instance of the concept. Relation indicating the Agent that fulfills the function of the instance of the concept. Relation indicating the Agent that fulfills the function of the instance of the concept.
+                        <td>Relation indicating the Agent that fulfills the function of the instance of the concept. Relation indicating the Agent that fulfills the function of the instance of the concept.
                             Relation indicating the Agent that fulfills the function of the instance of the concept.
                             Relation indicating the Agent that fulfills the function of the instance of the concept.
-                           </td>
-                        <td>epo:AgentInRole -&gt; foaf:Agent [1]<br>epo-ful:TransportMeansOperator -&gt; foaf:Person [0..1]<br>epo-eva:Evaluator -&gt; person:Person [0..1]<br>epo:UniqueResponsibleOfTheProcurement -&gt; person:Person [0..1]<br>epo:JuryMember -&gt; person:Person [0..1]<br></td>
+                            Relation indicating the Agent that fulfills the function of the instance of the concept.</td>
+                        <td>epo-ful:TransportMeansOperator -&gt; foaf:Person [0..1]<br>epo-eva:Evaluator -&gt; person:Person [0..1]<br>epo:UniqueResponsibleOfTheProcurement -&gt; person:Person [0..1]<br>epo:JuryMember -&gt; person:Person [0..1]<br>epo:AgentInRole -&gt; foaf:Agent [1]<br></td>
                      </tr>
                      <tr>
                         <td>epo:preparesForPotentialProcurementObject</td>
@@ -4868,7 +4872,7 @@
                         <td>Relation indicating the Procurement Criterion to be used.
                             Relation indicating the Procurement Criterion to be used.
                             Relation indicating the Procurement Criterion to be used.</td>
-                        <td>epo:ProcurementElement -&gt; epo:ProcurementCriterion [0..*]<br>epo:LotGroup -&gt; epo:ProcurementCriterion [0..*]<br>epo-acc:ESPDRequest -&gt; epo:ProcurementCriterion [1..*]<br></td>
+                        <td>epo:LotGroup -&gt; epo:ProcurementCriterion [0..*]<br>epo:ProcurementElement -&gt; epo:ProcurementCriterion [0..*]<br>epo-acc:ESPDRequest -&gt; epo:ProcurementCriterion [1..*]<br></td>
                      </tr>
                      <tr>
                         <td>epo:specifiesReviewer</td>

@@ -2750,22 +2750,22 @@ epo:ProcurementElement → epo:Term [0..&#42;]</p></td>
 cccev:InformationRequirement → epo:Lot [0..&#42;]<br>
 epo:LotAwardOutcome → epo:Lot [1]<br>
 epo:ProcurementProcessInformation → epo:Lot [0..1]<br>
-epo-qua:EvidenceSubmission → epo:Lot [1..&#42;]<br>
-epo-qua:EvidenceRequest → epo:Lot [1..&#42;]<br>
-epo-acc:InformationRequest → epo:Lot [0..&#42;]<br>
-epo-not:ResultNotice → epo:Lot [1..&#42;]<br>
+epo-not:CompletionNotice → epo:Lot [1..&#42;]<br>
 epo-not:ContractModificationNotice → epo:Lot [1..&#42;]<br>
-epo-not:CompletionNotice → epo:Lot [1..&#42;]</p></td>
+epo-not:ResultNotice → epo:Lot [1..&#42;]<br>
+epo-qua:EvidenceRequest → epo:Lot [1..&#42;]<br>
+epo-qua:EvidenceSubmission → epo:Lot [1..&#42;]<br>
+epo-acc:InformationRequest → epo:Lot [0..&#42;]</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo:concernsLotGroup</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Relates to Lot Group.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo:ContractLotCompletionInformation → epo:LotGroup [0..1]<br>
 cccev:InformationRequirement → epo:LotGroup [0..&#42;]<br>
-epo-acc:InformationRequest → epo:LotGroup [0..&#42;]<br>
-epo-not:ResultNotice → epo:LotGroup [0..&#42;]<br>
+epo-not:CompletionNotice → epo:LotGroup [0..&#42;]<br>
 epo-not:ContractModificationNotice → epo:LotGroup [0..&#42;]<br>
-epo-not:CompletionNotice → epo:LotGroup [0..&#42;]</p></td>
+epo-not:ResultNotice → epo:LotGroup [0..&#42;]<br>
+epo-acc:InformationRequest → epo:LotGroup [0..&#42;]</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo:providesContractTotalPaymentValue</p></td>
@@ -2996,17 +2996,17 @@ epo-cat:Catalogue → time:Interval [0..1]</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo:ExpressionOfInterest → epo:Procedure [1]<br>
 cccev:InformationRequirement → epo:Procedure [0..&#42;]<br>
 epo:ProcurementProcessInformation → epo:Procedure [0..1]<br>
-epo-acc:ProcurementDocumentsProvision → epo:Procedure [1]<br>
+epo-not:CompletionNotice → epo:Procedure [1]<br>
+epo-not:ContractModificationNotice → epo:Procedure [1]<br>
+epo-not:ResultNotice → epo:Procedure [1]<br>
+epo-qua:EvidenceRequest → epo:Procedure [1]<br>
 epo-qua:EvidenceSubmission → epo:Procedure [1]<br>
+epo-acc:InformationRequest → epo:Procedure [0..&#42;]<br>
+epo-acc:ProcurementDocumentsProvision → epo:Procedure [1]<br>
 epo-awa:AwardDecisionNotification → epo:Procedure [1]<br>
 epo-acc:InvitationToTender → epo:Procedure [1]<br>
-epo-qua:EvidenceRequest → epo:Procedure [1]<br>
-epo-acc:InformationRequest → epo:Procedure [0..&#42;]<br>
-epo-not:ResultNotice → epo:Procedure [1]<br>
-epo-not:ContractModificationNotice → epo:Procedure [1]<br>
 epo-acc:ESPDRequest → epo:Procedure [1]<br>
 epo-acc:ProcurementDocumentsRequest → epo:Procedure [1]<br>
-epo-not:CompletionNotice → epo:Procedure [1]<br>
 epo-acc:UnsubscribeFromProcedure → epo:Procedure [1]</p></td>
 </tr>
 <tr>
@@ -3018,10 +3018,10 @@ epo-acc:UnsubscribeFromProcedure → epo:Procedure [1]</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo:specifiesEconomicOperator</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating that the instance of the concept involves the Economic Operator.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo:ExpressionOfInterest → epo:OfferingParty [0..&#42;]<br>
-epo-acc:ProcurementDocumentsProvision → epo:OfferingParty [1]<br>
-epo-qua:EvidenceSubmission → epo:OfferingParty [1]<br>
-epo-acc:InvitationToTender → epo:OfferingParty [1]<br>
 epo-qua:EvidenceRequest → epo:OfferingParty [1]<br>
+epo-qua:EvidenceSubmission → epo:OfferingParty [1]<br>
+epo-acc:ProcurementDocumentsProvision → epo:OfferingParty [1]<br>
+epo-acc:InvitationToTender → epo:OfferingParty [1]<br>
 epo-acc:ProcurementDocumentsRequest → epo:OfferingParty [1]<br>
 epo-acc:UnsubscribeFromProcedure → epo:OfferingParty [1]<br>
 epo-eva:TenderClarificationRequest → epo:OfferingParty [1]<br>
@@ -3167,7 +3167,11 @@ epo-acc:ESPDRequest → epo:ProcurementCriterion [1..&#42;]</p></td>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo:concernsMaskedObject</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Relates to Masked Object.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">epo:NonPublishedInformation → epo:MaskableObject [1]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:NonPublishedInformation → person:Person [0..1]<br>
+epo:NonPublishedInformation → org:Organization [0..1]<br>
+epo:NonPublishedInformation → cpov:ContactPoint [0..1]<br>
+epo:NonPublishedInformation → cccev:Constraint [0..1]<br>
+epo:NonPublishedInformation → epo:MaskableObject [0..1]</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo:hasNonPublicationJustification</p></td>
@@ -3849,10 +3853,10 @@ epo-not:CompetitionNotice → epo:Procedure [1]</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo:announcesRole</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating the formal communication of a Role.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo-not:PlanningNotice → epo:AgentInRole [1..&#42;]<br>
-epo-not:ResultNotice → epo:AgentInRole [0..&#42;]<br>
+epo-not:CompletionNotice → epo:AgentInRole [0..&#42;]<br>
 epo-not:DirectAwardPrenotificationNotice → epo:AgentInRole [1..&#42;]<br>
 epo-not:CompetitionNotice → epo:AgentInRole [1..&#42;]<br>
-epo-not:CompletionNotice → epo:AgentInRole [0..&#42;]</p></td>
+epo-not:ResultNotice → epo:AgentInRole [0..&#42;]</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo-ord:hasAmountDueForPayment</p></td>
@@ -3918,14 +3922,14 @@ epo-inv:Invoice → epo:Project [0..1]</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating that the instance of the concept involves the Buyer.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo-ord:Order → epo:Buyer [1]<br>
 epo-inv:Invoice → epo:Buyer [1]<br>
-epo-cat:Catalogue → epo:Buyer [0..&#42;]<br>
-epo-req:RequestForOffer → epo:Buyer [0..1]<br>
 epo-ful:ReceiptAdvice → epo:Buyer [0..1]<br>
 epo-ord:OrderChangeRejection → epo:Buyer [1]<br>
 epo-ord:OrderCancellationRejection → epo:Buyer [1]<br>
+epo-req:RequestForOffer → epo:Buyer [0..1]<br>
 epo-ord:OrderCancellation → epo:Buyer [1]<br>
 epo-ord:OrderCancellationConfirmation → epo:Buyer [1]<br>
 epo-ord:OrderChangeConfirmation → epo:Buyer [1]<br>
+epo-cat:Catalogue → epo:Buyer [0..&#42;]<br>
 epo-pay:RemittanceAdvice → epo:Buyer [1]</p></td>
 </tr>
 <tr>
@@ -3957,9 +3961,101 @@ epo-pay:RemittanceAdvice → epo:Buyer [1]</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo:refersToRole</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Reference to a Role.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo-not:PreMarketConsultationNotice → epo:AgentInRole [0..&#42;]<br>
-epo-not:ResultNotice → epo:AgentInRole [1..&#42;]<br>
+epo-not:CompletionNotice → epo:AgentInRole [0..&#42;]<br>
 epo-not:ContractModificationNotice → epo:AgentInRole [0..&#42;]<br>
-epo-not:CompletionNotice → epo:AgentInRole [0..&#42;]</p></td>
+epo-not:ResultNotice → epo:AgentInRole [1..&#42;]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-qua:providesDecisionFor</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Makes available the resolution.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-qua:QualificationDecisionInformation → epo:Lot [1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:announcesCompletionOfContract</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating the formal communication of the Completion of a Contract.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-not:CompletionNotice → epo:Contract [1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:refersToAwardDecision</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Reference to an Award Decision.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-not:CompletionNotice → epo:AwardDecision [0..&#42;]<br>
+epo-not:ContractModificationNotice → epo:AwardDecision [0..&#42;]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:refersToLotGroupAwardInformation</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Reference to a Lot Group Award Information.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-not:CompletionNotice → epo:LotGroupAwardInformation [0..&#42;]<br>
+epo-not:ContractModificationNotice → epo:LotGroupAwardInformation [0..&#42;]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:refersToNoticeAwardInformation</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Reference to a Notice Award Information.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-not:CompletionNotice → epo:NoticeAwardInformation [0..1]<br>
+epo-not:ContractModificationNotice → epo:NoticeAwardInformation [0..1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:refersToReviewDecision</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Reference to a Review Decision.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-not:CompletionNotice → epo:ReviewDecision [0..&#42;]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:refersToReviewRequest</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Reference to a Review Request.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-not:CompletionNotice → epo:ReviewRequest [0..&#42;]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:announcesAwardDecision</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating the formal communication of an Award Decision.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-not:DirectAwardPrenotificationNotice → epo:AwardDecision [0..&#42;]<br>
+epo-not:ResultNotice → epo:AwardDecision [0..&#42;]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:announcesContract</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating the formal communication of a Contract.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-not:DirectAwardPrenotificationNotice → epo:Contract [0..&#42;]<br>
+epo-not:ResultNotice → epo:Contract [0..&#42;]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:announcesLotGroupAwardInformation</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating the formal communication of a Lot Group Award Information.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-not:DirectAwardPrenotificationNotice → epo:LotGroupAwardInformation [0..&#42;]<br>
+epo-not:ResultNotice → epo:LotGroupAwardInformation [0..&#42;]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:announcesNoticeAwardInformation</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating the formal communication of a Notice Award Information.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-not:DirectAwardPrenotificationNotice → epo:NoticeAwardInformation [0..1]<br>
+epo-not:ResultNotice → epo:NoticeAwardInformation [0..1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-eva:hasJuryMember</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">An agent involved in an evaluation board.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-eva:EvaluationBoard → epo:JuryMember [0..&#42;]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-eva:isAppointedBy</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating that by whom the instance of the concept is formally assigned.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-eva:EvaluationBoard → epo:UniqueResponsibleOfTheProcurement [1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:isAssignedForEvaluationOf</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating that the instance of the concept is selected for Evaluation.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-eva:EvaluationBoard → epo:Lot [0..&#42;]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:refersToContractToBeModified</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Reference to a Contract which is altered.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-not:ContractModificationNotice → epo:Contract [1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:announcesReviewDecision</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating the formal communication of a Review Decision.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-not:ResultNotice → epo:ReviewDecision [0..&#42;]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:announcesReviewRequest</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating the formal communication of a Review Request.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-not:ResultNotice → epo:ReviewRequest [0..&#42;]</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo-acc:containsProvidedProcurementDocument</p></td>
@@ -3978,101 +4074,9 @@ epo-acc:InvitationToTender → epo:ProcurementDocument [0..&#42;]</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo-awa:AwardDecisionNotification → epo:Tenderer [1]</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">epo:announcesAwardDecision</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating the formal communication of an Award Decision.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">epo-not:ResultNotice → epo:AwardDecision [0..&#42;]<br>
-epo-not:DirectAwardPrenotificationNotice → epo:AwardDecision [0..&#42;]</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">epo:announcesContract</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating the formal communication of a Contract.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">epo-not:ResultNotice → epo:Contract [0..&#42;]<br>
-epo-not:DirectAwardPrenotificationNotice → epo:Contract [0..&#42;]</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">epo:announcesLotGroupAwardInformation</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating the formal communication of a Lot Group Award Information.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">epo-not:ResultNotice → epo:LotGroupAwardInformation [0..&#42;]<br>
-epo-not:DirectAwardPrenotificationNotice → epo:LotGroupAwardInformation [0..&#42;]</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">epo:announcesNoticeAwardInformation</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating the formal communication of a Notice Award Information.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">epo-not:ResultNotice → epo:NoticeAwardInformation [0..1]<br>
-epo-not:DirectAwardPrenotificationNotice → epo:NoticeAwardInformation [0..1]</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">epo:announcesReviewDecision</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating the formal communication of a Review Decision.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">epo-not:ResultNotice → epo:ReviewDecision [0..&#42;]</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">epo:announcesReviewRequest</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating the formal communication of a Review Request.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">epo-not:ResultNotice → epo:ReviewRequest [0..&#42;]</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">epo:refersToAwardDecision</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Reference to an Award Decision.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">epo-not:ContractModificationNotice → epo:AwardDecision [0..&#42;]<br>
-epo-not:CompletionNotice → epo:AwardDecision [0..&#42;]</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">epo:refersToContractToBeModified</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Reference to a Contract which is altered.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">epo-not:ContractModificationNotice → epo:Contract [1]</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">epo:refersToLotGroupAwardInformation</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Reference to a Lot Group Award Information.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">epo-not:ContractModificationNotice → epo:LotGroupAwardInformation [0..&#42;]<br>
-epo-not:CompletionNotice → epo:LotGroupAwardInformation [0..&#42;]</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">epo:refersToNoticeAwardInformation</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Reference to a Notice Award Information.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">epo-not:ContractModificationNotice → epo:NoticeAwardInformation [0..1]<br>
-epo-not:CompletionNotice → epo:NoticeAwardInformation [0..1]</p></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo-acc:refersToNotice</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Reference to a Notice.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo-acc:ESPDRequest → epo:Notice [0..&#42;]</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">epo:announcesCompletionOfContract</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating the formal communication of the Completion of a Contract.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">epo-not:CompletionNotice → epo:Contract [1]</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">epo:refersToReviewDecision</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Reference to a Review Decision.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">epo-not:CompletionNotice → epo:ReviewDecision [0..&#42;]</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">epo:refersToReviewRequest</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Reference to a Review Request.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">epo-not:CompletionNotice → epo:ReviewRequest [0..&#42;]</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">epo-qua:providesDecisionFor</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Makes available the resolution.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">epo-qua:QualificationDecisionInformation → epo:Lot [1]</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">epo-eva:hasJuryMember</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">An agent involved in an evaluation board.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">epo-eva:EvaluationBoard → epo:JuryMember [0..&#42;]</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">epo-eva:isAppointedBy</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating that by whom the instance of the concept is formally assigned.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">epo-eva:EvaluationBoard → epo:UniqueResponsibleOfTheProcurement [1]</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">epo:isAssignedForEvaluationOf</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating that the instance of the concept is selected for Evaluation.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">epo-eva:EvaluationBoard → epo:Lot [0..&#42;]</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo-sub:concernsOrganisation</p></td>
@@ -4100,18 +4104,6 @@ epo-not:CompletionNotice → epo:NoticeAwardInformation [0..1]</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo-sub:ESPD → org:Organization [0..&#42;]</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">epo:specifiesCatalogueProvider</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating that the instance of the concept involves the Catalogue Provider.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">epo-cat:Catalogue → epo:CatalogueProvider [0..1]<br>
-epo-cat:CatalogueResponse → epo:CatalogueProvider [1]</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">epo:specifiesCatalogueReceiver</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating that the instance of the concept involves the Catalogue Receiver.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">epo-cat:Catalogue → epo:CatalogueReceiver [0..1]<br>
-epo-cat:CatalogueResponse → epo:CatalogueReceiver [1]</p></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo:hasDestinationCountryCode</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating the Country code of the destination.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo-req:RequestForOffer → at-voc:country [0..1]</p></td>
@@ -4135,6 +4127,18 @@ epo-cat:CatalogueResponse → epo:CatalogueReceiver [1]</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo-ful:agreedByBuyer</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Accepted by Buyer.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo-ful:ShipmentAgreement → epo:Buyer [1..&#42;]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:specifiesCatalogueProvider</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating that the instance of the concept involves the Catalogue Provider.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-cat:Catalogue → epo:CatalogueProvider [0..1]<br>
+epo-cat:CatalogueResponse → epo:CatalogueProvider [1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:specifiesCatalogueReceiver</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating that the instance of the concept involves the Catalogue Receiver.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-cat:Catalogue → epo:CatalogueReceiver [0..1]<br>
+epo-cat:CatalogueResponse → epo:CatalogueReceiver [1]</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo-pay:hasTotalCreditAmount</p></td>
@@ -4242,36 +4246,6 @@ epo-cat:CatalogueResponse → epo:CatalogueReceiver [1]</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo-eva:EvaluationReport → epo:AwardEvaluationTerm [0..1]</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">epo-sub:answersQuestion</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating that the Response replies to a question.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">epo-sub:Response → cccev:InformationRequirement [0..&#42;]</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">epo-sub:isReinforcedBy</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating an Evidence that supports the Response.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">epo-sub:Response → cccev:Evidence [0..&#42;]</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">epo-sub:refersToApplicablePeriod</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating the period to which the Response shall apply.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">epo-sub:Response → time:Interval [0..1]</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">epo:specifiesEvidence</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating the Evidence.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">epo-qua:EvidenceOutcome → cccev:Evidence [1]</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">epo-sub:summarisesInformationAboutEvidence</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating the Certificate that the information refers to.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">epo-sub:EvidenceInformation → cccev:Evidence [1]</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">epo-eva:evaluatesProcurementCriterion</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Assesses Procurement Criterion.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">epo-eva:EvaluationCriterion → epo:ProcurementCriterion [1]</p></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo:hasBuyerItemID</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The general identifier assigned to the concept as defined by the Buyer.​</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo-cat:AbstractItem → adms:Identifier [0..1]</p></td>
@@ -4315,6 +4289,36 @@ epo-cat:CatalogueResponse → epo:CatalogueReceiver [1]</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo:hasSerialID</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The identifier assigned to the specific instance of the produced concept.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo-cat:AbstractItem → adms:Identifier [0..1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-sub:answersQuestion</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating that the Response replies to a question.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-sub:Response → cccev:InformationRequirement [0..&#42;]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-sub:isReinforcedBy</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating an Evidence that supports the Response.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-sub:Response → cccev:Evidence [0..&#42;]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-sub:refersToApplicablePeriod</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating the period to which the Response shall apply.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-sub:Response → time:Interval [0..1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo:specifiesEvidence</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating the Evidence.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-qua:EvidenceOutcome → cccev:Evidence [1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-sub:summarisesInformationAboutEvidence</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relation indicating the Certificate that the information refers to.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-sub:EvidenceInformation → cccev:Evidence [1]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-eva:evaluatesProcurementCriterion</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Assesses Procurement Criterion.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">epo-eva:EvaluationCriterion → epo:ProcurementCriterion [1]</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">epo-ful:hasAssociatedDocument</p></td>
@@ -4646,7 +4650,7 @@ epo-cat:EnvironmentalEmissionInformation → epo:Quantity [1]</p></td>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2026-10-26 13:38:57 UTC
+Last updated 2026-10-27 05:53:50 UTC
 </div>
 </div>
 </body>

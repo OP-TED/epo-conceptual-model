@@ -3638,12 +3638,12 @@ epo:ProcurementElement → epo:Term [0..&#42;]
 cccev:InformationRequirement → epo:Lot [0..&#42;] +
 epo:LotAwardOutcome → epo:Lot [1] +
 epo:ProcurementProcessInformation → epo:Lot [0..1] +
-epo-qua:EvidenceSubmission → epo:Lot [1..&#42;] +
-epo-qua:EvidenceRequest → epo:Lot [1..&#42;] +
-epo-acc:InformationRequest → epo:Lot [0..&#42;] +
-epo-not:ResultNotice → epo:Lot [1..&#42;] +
+epo-not:CompletionNotice → epo:Lot [1..&#42;] +
 epo-not:ContractModificationNotice → epo:Lot [1..&#42;] +
-epo-not:CompletionNotice → epo:Lot [1..&#42;]
+epo-not:ResultNotice → epo:Lot [1..&#42;] +
+epo-qua:EvidenceRequest → epo:Lot [1..&#42;] +
+epo-qua:EvidenceSubmission → epo:Lot [1..&#42;] +
+epo-acc:InformationRequest → epo:Lot [0..&#42;]
 
   
 
@@ -3652,10 +3652,10 @@ epo-not:CompletionNotice → epo:Lot [1..&#42;]
 | epo:concernsLotGroup| 
   Relates to Lot Group.|epo:ContractLotCompletionInformation → epo:LotGroup [0..1] +
 cccev:InformationRequirement → epo:LotGroup [0..&#42;] +
-epo-acc:InformationRequest → epo:LotGroup [0..&#42;] +
-epo-not:ResultNotice → epo:LotGroup [0..&#42;] +
+epo-not:CompletionNotice → epo:LotGroup [0..&#42;] +
 epo-not:ContractModificationNotice → epo:LotGroup [0..&#42;] +
-epo-not:CompletionNotice → epo:LotGroup [0..&#42;]
+epo-not:ResultNotice → epo:LotGroup [0..&#42;] +
+epo-acc:InformationRequest → epo:LotGroup [0..&#42;]
 
   
 
@@ -4146,17 +4146,17 @@ epo-cat:Catalogue → time:Interval [0..1]
   Relates to Procedure.|epo:ExpressionOfInterest → epo:Procedure [1] +
 cccev:InformationRequirement → epo:Procedure [0..&#42;] +
 epo:ProcurementProcessInformation → epo:Procedure [0..1] +
-epo-acc:ProcurementDocumentsProvision → epo:Procedure [1] +
+epo-not:CompletionNotice → epo:Procedure [1] +
+epo-not:ContractModificationNotice → epo:Procedure [1] +
+epo-not:ResultNotice → epo:Procedure [1] +
+epo-qua:EvidenceRequest → epo:Procedure [1] +
 epo-qua:EvidenceSubmission → epo:Procedure [1] +
+epo-acc:InformationRequest → epo:Procedure [0..&#42;] +
+epo-acc:ProcurementDocumentsProvision → epo:Procedure [1] +
 epo-awa:AwardDecisionNotification → epo:Procedure [1] +
 epo-acc:InvitationToTender → epo:Procedure [1] +
-epo-qua:EvidenceRequest → epo:Procedure [1] +
-epo-acc:InformationRequest → epo:Procedure [0..&#42;] +
-epo-not:ResultNotice → epo:Procedure [1] +
-epo-not:ContractModificationNotice → epo:Procedure [1] +
 epo-acc:ESPDRequest → epo:Procedure [1] +
 epo-acc:ProcurementDocumentsRequest → epo:Procedure [1] +
-epo-not:CompletionNotice → epo:Procedure [1] +
 epo-acc:UnsubscribeFromProcedure → epo:Procedure [1]
 
   
@@ -4172,10 +4172,10 @@ epo-acc:UnsubscribeFromProcedure → epo:Procedure [1]
   
 | epo:specifiesEconomicOperator| 
   Relation indicating that the instance of the concept involves the Economic Operator.|epo:ExpressionOfInterest → epo:OfferingParty [0..&#42;] +
-epo-acc:ProcurementDocumentsProvision → epo:OfferingParty [1] +
-epo-qua:EvidenceSubmission → epo:OfferingParty [1] +
-epo-acc:InvitationToTender → epo:OfferingParty [1] +
 epo-qua:EvidenceRequest → epo:OfferingParty [1] +
+epo-qua:EvidenceSubmission → epo:OfferingParty [1] +
+epo-acc:ProcurementDocumentsProvision → epo:OfferingParty [1] +
+epo-acc:InvitationToTender → epo:OfferingParty [1] +
 epo-acc:ProcurementDocumentsRequest → epo:OfferingParty [1] +
 epo-acc:UnsubscribeFromProcedure → epo:OfferingParty [1] +
 epo-eva:TenderClarificationRequest → epo:OfferingParty [1] +
@@ -4493,7 +4493,11 @@ epo-acc:ESPDRequest → epo:ProcurementCriterion [1..&#42;]
   
   
 | epo:concernsMaskedObject| 
-  Relates to Masked Object.|epo:NonPublishedInformation → epo:MaskableObject [1]
+  Relates to Masked Object.|epo:NonPublishedInformation → person:Person [0..1] +
+epo:NonPublishedInformation → org:Organization [0..1] +
+epo:NonPublishedInformation → cpov:ContactPoint [0..1] +
+epo:NonPublishedInformation → cccev:Constraint [0..1] +
+epo:NonPublishedInformation → epo:MaskableObject [0..1]
 
   
 
@@ -5949,10 +5953,10 @@ epo-not:CompetitionNotice → epo:Procedure [1]
   
 | epo:announcesRole| 
   Relation indicating the formal communication of a Role.|epo-not:PlanningNotice → epo:AgentInRole [1..&#42;] +
-epo-not:ResultNotice → epo:AgentInRole [0..&#42;] +
+epo-not:CompletionNotice → epo:AgentInRole [0..&#42;] +
 epo-not:DirectAwardPrenotificationNotice → epo:AgentInRole [1..&#42;] +
 epo-not:CompetitionNotice → epo:AgentInRole [1..&#42;] +
-epo-not:CompletionNotice → epo:AgentInRole [0..&#42;]
+epo-not:ResultNotice → epo:AgentInRole [0..&#42;]
 
   
 
@@ -6040,14 +6044,14 @@ epo-inv:Invoice → epo:Project [0..1]
 | epo:specifiesBuyer| 
   Relation indicating that the instance of the concept involves the Buyer.|epo-ord:Order → epo:Buyer [1] +
 epo-inv:Invoice → epo:Buyer [1] +
-epo-cat:Catalogue → epo:Buyer [0..&#42;] +
-epo-req:RequestForOffer → epo:Buyer [0..1] +
 epo-ful:ReceiptAdvice → epo:Buyer [0..1] +
 epo-ord:OrderChangeRejection → epo:Buyer [1] +
 epo-ord:OrderCancellationRejection → epo:Buyer [1] +
+epo-req:RequestForOffer → epo:Buyer [0..1] +
 epo-ord:OrderCancellation → epo:Buyer [1] +
 epo-ord:OrderCancellationConfirmation → epo:Buyer [1] +
 epo-ord:OrderChangeConfirmation → epo:Buyer [1] +
+epo-cat:Catalogue → epo:Buyer [0..&#42;] +
 epo-pay:RemittanceAdvice → epo:Buyer [1]
 
   
@@ -6091,9 +6095,135 @@ epo-pay:RemittanceAdvice → epo:Buyer [1]
   
 | epo:refersToRole| 
   Reference to a Role.|epo-not:PreMarketConsultationNotice → epo:AgentInRole [0..&#42;] +
-epo-not:ResultNotice → epo:AgentInRole [1..&#42;] +
+epo-not:CompletionNotice → epo:AgentInRole [0..&#42;] +
 epo-not:ContractModificationNotice → epo:AgentInRole [0..&#42;] +
-epo-not:CompletionNotice → epo:AgentInRole [0..&#42;]
+epo-not:ResultNotice → epo:AgentInRole [1..&#42;]
+
+  
+
+  
+  
+| epo-qua:providesDecisionFor| 
+  Makes available the resolution.|epo-qua:QualificationDecisionInformation → epo:Lot [1]
+
+  
+
+  
+  
+| epo:announcesCompletionOfContract| 
+  Relation indicating the formal communication of the Completion of a Contract.|epo-not:CompletionNotice → epo:Contract [1]
+
+  
+
+  
+  
+| epo:refersToAwardDecision| 
+  Reference to an Award Decision.|epo-not:CompletionNotice → epo:AwardDecision [0..&#42;] +
+epo-not:ContractModificationNotice → epo:AwardDecision [0..&#42;]
+
+  
+
+  
+  
+| epo:refersToLotGroupAwardInformation| 
+  Reference to a Lot Group Award Information.|epo-not:CompletionNotice → epo:LotGroupAwardInformation [0..&#42;] +
+epo-not:ContractModificationNotice → epo:LotGroupAwardInformation [0..&#42;]
+
+  
+
+  
+  
+| epo:refersToNoticeAwardInformation| 
+  Reference to a Notice Award Information.|epo-not:CompletionNotice → epo:NoticeAwardInformation [0..1] +
+epo-not:ContractModificationNotice → epo:NoticeAwardInformation [0..1]
+
+  
+
+  
+  
+| epo:refersToReviewDecision| 
+  Reference to a Review Decision.|epo-not:CompletionNotice → epo:ReviewDecision [0..&#42;]
+
+  
+
+  
+  
+| epo:refersToReviewRequest| 
+  Reference to a Review Request.|epo-not:CompletionNotice → epo:ReviewRequest [0..&#42;]
+
+  
+
+  
+  
+| epo:announcesAwardDecision| 
+  Relation indicating the formal communication of an Award Decision.|epo-not:DirectAwardPrenotificationNotice → epo:AwardDecision [0..&#42;] +
+epo-not:ResultNotice → epo:AwardDecision [0..&#42;]
+
+  
+
+  
+  
+| epo:announcesContract| 
+  Relation indicating the formal communication of a Contract.|epo-not:DirectAwardPrenotificationNotice → epo:Contract [0..&#42;] +
+epo-not:ResultNotice → epo:Contract [0..&#42;]
+
+  
+
+  
+  
+| epo:announcesLotGroupAwardInformation| 
+  Relation indicating the formal communication of a Lot Group Award Information.|epo-not:DirectAwardPrenotificationNotice → epo:LotGroupAwardInformation [0..&#42;] +
+epo-not:ResultNotice → epo:LotGroupAwardInformation [0..&#42;]
+
+  
+
+  
+  
+| epo:announcesNoticeAwardInformation| 
+  Relation indicating the formal communication of a Notice Award Information.|epo-not:DirectAwardPrenotificationNotice → epo:NoticeAwardInformation [0..1] +
+epo-not:ResultNotice → epo:NoticeAwardInformation [0..1]
+
+  
+
+  
+  
+| epo-eva:hasJuryMember| 
+  An agent involved in an evaluation board.|epo-eva:EvaluationBoard → epo:JuryMember [0..&#42;]
+
+  
+
+  
+  
+| epo-eva:isAppointedBy| 
+  Relation indicating that by whom the instance of the concept is formally assigned.|epo-eva:EvaluationBoard → epo:UniqueResponsibleOfTheProcurement [1]
+
+  
+
+  
+  
+| epo:isAssignedForEvaluationOf| 
+  Relation indicating that the instance of the concept is selected for Evaluation.|epo-eva:EvaluationBoard → epo:Lot [0..&#42;]
+
+  
+
+  
+  
+| epo:refersToContractToBeModified| 
+  Reference to a Contract which is altered.|epo-not:ContractModificationNotice → epo:Contract [1]
+
+  
+
+  
+  
+| epo:announcesReviewDecision| 
+  Relation indicating the formal communication of a Review Decision.|epo-not:ResultNotice → epo:ReviewDecision [0..&#42;]
+
+  
+
+  
+  
+| epo:announcesReviewRequest| 
+  Relation indicating the formal communication of a Review Request.|epo-not:ResultNotice → epo:ReviewRequest [0..&#42;]
 
   
 
@@ -6121,134 +6251,8 @@ epo-acc:InvitationToTender → epo:ProcurementDocument [0..&#42;]
 
   
   
-| epo:announcesAwardDecision| 
-  Relation indicating the formal communication of an Award Decision.|epo-not:ResultNotice → epo:AwardDecision [0..&#42;] +
-epo-not:DirectAwardPrenotificationNotice → epo:AwardDecision [0..&#42;]
-
-  
-
-  
-  
-| epo:announcesContract| 
-  Relation indicating the formal communication of a Contract.|epo-not:ResultNotice → epo:Contract [0..&#42;] +
-epo-not:DirectAwardPrenotificationNotice → epo:Contract [0..&#42;]
-
-  
-
-  
-  
-| epo:announcesLotGroupAwardInformation| 
-  Relation indicating the formal communication of a Lot Group Award Information.|epo-not:ResultNotice → epo:LotGroupAwardInformation [0..&#42;] +
-epo-not:DirectAwardPrenotificationNotice → epo:LotGroupAwardInformation [0..&#42;]
-
-  
-
-  
-  
-| epo:announcesNoticeAwardInformation| 
-  Relation indicating the formal communication of a Notice Award Information.|epo-not:ResultNotice → epo:NoticeAwardInformation [0..1] +
-epo-not:DirectAwardPrenotificationNotice → epo:NoticeAwardInformation [0..1]
-
-  
-
-  
-  
-| epo:announcesReviewDecision| 
-  Relation indicating the formal communication of a Review Decision.|epo-not:ResultNotice → epo:ReviewDecision [0..&#42;]
-
-  
-
-  
-  
-| epo:announcesReviewRequest| 
-  Relation indicating the formal communication of a Review Request.|epo-not:ResultNotice → epo:ReviewRequest [0..&#42;]
-
-  
-
-  
-  
-| epo:refersToAwardDecision| 
-  Reference to an Award Decision.|epo-not:ContractModificationNotice → epo:AwardDecision [0..&#42;] +
-epo-not:CompletionNotice → epo:AwardDecision [0..&#42;]
-
-  
-
-  
-  
-| epo:refersToContractToBeModified| 
-  Reference to a Contract which is altered.|epo-not:ContractModificationNotice → epo:Contract [1]
-
-  
-
-  
-  
-| epo:refersToLotGroupAwardInformation| 
-  Reference to a Lot Group Award Information.|epo-not:ContractModificationNotice → epo:LotGroupAwardInformation [0..&#42;] +
-epo-not:CompletionNotice → epo:LotGroupAwardInformation [0..&#42;]
-
-  
-
-  
-  
-| epo:refersToNoticeAwardInformation| 
-  Reference to a Notice Award Information.|epo-not:ContractModificationNotice → epo:NoticeAwardInformation [0..1] +
-epo-not:CompletionNotice → epo:NoticeAwardInformation [0..1]
-
-  
-
-  
-  
 | epo-acc:refersToNotice| 
   Reference to a Notice.|epo-acc:ESPDRequest → epo:Notice [0..&#42;]
-
-  
-
-  
-  
-| epo:announcesCompletionOfContract| 
-  Relation indicating the formal communication of the Completion of a Contract.|epo-not:CompletionNotice → epo:Contract [1]
-
-  
-
-  
-  
-| epo:refersToReviewDecision| 
-  Reference to a Review Decision.|epo-not:CompletionNotice → epo:ReviewDecision [0..&#42;]
-
-  
-
-  
-  
-| epo:refersToReviewRequest| 
-  Reference to a Review Request.|epo-not:CompletionNotice → epo:ReviewRequest [0..&#42;]
-
-  
-
-  
-  
-| epo-qua:providesDecisionFor| 
-  Makes available the resolution.|epo-qua:QualificationDecisionInformation → epo:Lot [1]
-
-  
-
-  
-  
-| epo-eva:hasJuryMember| 
-  An agent involved in an evaluation board.|epo-eva:EvaluationBoard → epo:JuryMember [0..&#42;]
-
-  
-
-  
-  
-| epo-eva:isAppointedBy| 
-  Relation indicating that by whom the instance of the concept is formally assigned.|epo-eva:EvaluationBoard → epo:UniqueResponsibleOfTheProcurement [1]
-
-  
-
-  
-  
-| epo:isAssignedForEvaluationOf| 
-  Relation indicating that the instance of the concept is selected for Evaluation.|epo-eva:EvaluationBoard → epo:Lot [0..&#42;]
 
   
 
@@ -6289,22 +6293,6 @@ epo-not:CompletionNotice → epo:NoticeAwardInformation [0..1]
 
   
   
-| epo:specifiesCatalogueProvider| 
-  Relation indicating that the instance of the concept involves the Catalogue Provider.|epo-cat:Catalogue → epo:CatalogueProvider [0..1] +
-epo-cat:CatalogueResponse → epo:CatalogueProvider [1]
-
-  
-
-  
-  
-| epo:specifiesCatalogueReceiver| 
-  Relation indicating that the instance of the concept involves the Catalogue Receiver.|epo-cat:Catalogue → epo:CatalogueReceiver [0..1] +
-epo-cat:CatalogueResponse → epo:CatalogueReceiver [1]
-
-  
-
-  
-  
 | epo:hasDestinationCountryCode| 
   Relation indicating the Country code of the destination.|epo-req:RequestForOffer → at-voc:country [0..1]
 
@@ -6335,6 +6323,22 @@ epo-cat:CatalogueResponse → epo:CatalogueReceiver [1]
   
 | epo-ful:agreedByBuyer| 
   Accepted by Buyer.|epo-ful:ShipmentAgreement → epo:Buyer [1..&#42;]
+
+  
+
+  
+  
+| epo:specifiesCatalogueProvider| 
+  Relation indicating that the instance of the concept involves the Catalogue Provider.|epo-cat:Catalogue → epo:CatalogueProvider [0..1] +
+epo-cat:CatalogueResponse → epo:CatalogueProvider [1]
+
+  
+
+  
+  
+| epo:specifiesCatalogueReceiver| 
+  Relation indicating that the instance of the concept involves the Catalogue Receiver.|epo-cat:Catalogue → epo:CatalogueReceiver [0..1] +
+epo-cat:CatalogueResponse → epo:CatalogueReceiver [1]
 
   
 
@@ -6487,50 +6491,6 @@ epo-cat:CatalogueResponse → epo:CatalogueReceiver [1]
 
   
   
-| epo-sub:answersQuestion| 
-  Relation indicating that the Response replies to a question.|epo-sub:Response → cccev:InformationRequirement [0..&#42;]
-
-  
-
-  
-  
-| epo-sub:isReinforcedBy| 
-  Relation indicating an Evidence that supports the Response.|epo-sub:Response → cccev:Evidence [0..&#42;]
-
-  
-
-  
-  
-| epo-sub:refersToApplicablePeriod| 
-  Relation indicating the period to which the Response shall apply.|epo-sub:Response → time:Interval [0..1]
-
-  
-
-  
-  
-| epo:specifiesEvidence| 
-  Relation indicating the Evidence.|epo-qua:EvidenceOutcome → cccev:Evidence [1]
-
-  
-
-  
-  
-| epo-sub:summarisesInformationAboutEvidence| 
-  Relation indicating the Certificate that the information refers to.|epo-sub:EvidenceInformation → cccev:Evidence [1]
-
-  
-
-  
-
-  
-  
-| epo-eva:evaluatesProcurementCriterion| 
-  Assesses Procurement Criterion.|epo-eva:EvaluationCriterion → epo:ProcurementCriterion [1]
-
-  
-
-  
-  
 | epo:hasBuyerItemID| 
   The general identifier assigned to the concept as defined by the Buyer.​|epo-cat:AbstractItem → adms:Identifier [0..1]
 
@@ -6589,6 +6549,50 @@ epo-cat:CatalogueResponse → epo:CatalogueReceiver [1]
   
 | epo:hasSerialID| 
   The identifier assigned to the specific instance of the produced concept.|epo-cat:AbstractItem → adms:Identifier [0..1]
+
+  
+
+  
+  
+| epo-sub:answersQuestion| 
+  Relation indicating that the Response replies to a question.|epo-sub:Response → cccev:InformationRequirement [0..&#42;]
+
+  
+
+  
+  
+| epo-sub:isReinforcedBy| 
+  Relation indicating an Evidence that supports the Response.|epo-sub:Response → cccev:Evidence [0..&#42;]
+
+  
+
+  
+  
+| epo-sub:refersToApplicablePeriod| 
+  Relation indicating the period to which the Response shall apply.|epo-sub:Response → time:Interval [0..1]
+
+  
+
+  
+  
+| epo:specifiesEvidence| 
+  Relation indicating the Evidence.|epo-qua:EvidenceOutcome → cccev:Evidence [1]
+
+  
+
+  
+  
+| epo-sub:summarisesInformationAboutEvidence| 
+  Relation indicating the Certificate that the information refers to.|epo-sub:EvidenceInformation → cccev:Evidence [1]
+
+  
+
+  
+
+  
+  
+| epo-eva:evaluatesProcurementCriterion| 
+  Assesses Procurement Criterion.|epo-eva:EvaluationCriterion → epo:ProcurementCriterion [1]
 
   
 
